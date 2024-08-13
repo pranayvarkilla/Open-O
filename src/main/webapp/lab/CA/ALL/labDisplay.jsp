@@ -1523,13 +1523,17 @@ for(int mcount=0; mcount<multiID.length; mcount++){
                                int obxCount = handler.getOBXCount(j);
 
                                if (handler.getMsgType().equals("ExcellerisON") && handler.getObservationHeader(j, 0).equals(headers.get(i))) {
-                               String orderRequestStatus = ((ExcellerisOntarioHandler) handler).getOrderStatus(j);
-                               %>
-                                    <tr bgcolor="<%=(linenum % 2 == 1 ? highlight : "")%>" >
-                                        <td valign="top" align="left"><span style="font-size:16px;font-weight: bold;"><%=handler.getOBRName(j)%></span></td>
-                                        <td colspan="1"><%=orderRequestStatus%></td>
-                                    </tr>
-                               <%
+                                    String orderRequestStatus = ((ExcellerisOntarioHandler) handler).getOrderStatus(j);
+                                    int obrCommentCount = handler.getOBRCommentCount(j);
+                                    if (obxCount > 0 || !orderRequestStatus.isEmpty() || obrCommentCount > 0) {
+                                        obrFlag = true;
+                                        %>
+                                            <tr bgcolor="<%=(linenum % 2 == 1 ? highlight : "")%>" >
+                                                <td valign="top" align="left"><span style="font-size:16px;font-weight: bold;"><%=handler.getOBRName(j)%></span></td>
+                                                <td colspan="1"><%=orderRequestStatus%></td>
+                                            </tr>
+                                        <%
+                                    }                               
                                }
 
                                for (k=0; k < obxCount; k++){

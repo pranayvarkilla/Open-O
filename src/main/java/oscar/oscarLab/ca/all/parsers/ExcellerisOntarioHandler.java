@@ -82,7 +82,7 @@ public class ExcellerisOntarioHandler implements MessageHandler {
     public enum OrderStatus {
         CORRECTED("C", "Corrected"),
         PENDING("I", "Pending"),
-        PARTIAL_RESULTS("A", "Partial results"),
+        PARTIAL_RESULTS("A", "Partial"),
         PRELIMINARY("P", "Preliminary"),
         COMPLETED("F", "Completed"),
         RETRANSMITTED("R", "Retransmitted"),
@@ -354,11 +354,22 @@ public class ExcellerisOntarioHandler implements MessageHandler {
 
     //OBR-7
     public String getServiceDate(){
-        try{
-            return(formatDateTime(getString(msg.getPIDPD1NK1NTEPV1PV2ORCOBRNTEOBXNTECTI().getORCOBRNTEOBXNTECTI(0).getOBR().getObservationDateTime().getTimeOfAnEvent().getValue())));
-        }catch(Exception e){
-            return("");
+        int obrCount = getOBRCount();
+        String earliestServiceDate = "";
+        List<String> serviceDates = new ArrayList<>();
+        for (int i = 0; i < obrCount; i++) {
+            try {
+                String date = getString(msg.getPIDPD1NK1NTEPV1PV2ORCOBRNTEOBXNTECTI().getORCOBRNTEOBXNTECTI(i).getOBR().getObservationDateTime().getTimeOfAnEvent().getValue());
+                serviceDates.add(date);
+            } catch(Exception e){
+                serviceDates.add("");
+            }
         }
+        
+        for (String reportStatusChangeDate : serviceDates) {
+            if (earliestServiceDate.isEmpty() || reportStatusChangeDate.compareTo(earliestServiceDate) < 0) { earliestServiceDate = reportStatusChangeDate; }
+        }
+        return earliestServiceDate.isEmpty() ? earliestServiceDate : formatDateTime(earliestServiceDate);
     }
 
     //OBR-6
@@ -403,14 +414,15 @@ public class ExcellerisOntarioHandler implements MessageHandler {
     * @see oscar.oscarLab.ca.all.parsers.MessageHandler#getOrderStatus()
     */
     public String getOrderStatus(){
-    	Set<String> orderStatuses = new HashSet<>();
+    	Set<String> orderStatusSet = new HashSet<>();
+        String orderStatus = "";
         try{
         	for(int x=0;x<msg.getPIDPD1NK1NTEPV1PV2ORCOBRNTEOBXNTECTIReps();x++) {
         		ORU_R01_PIDPD1NK1NTEPV1PV2ORCOBRNTEOBXNTECTI items =  msg.getPIDPD1NK1NTEPV1PV2ORCOBRNTEOBXNTECTI(x);
         		for(int y=0;y<items.getORCOBRNTEOBXNTECTIReps();y++) {
         			String status = items.getORCOBRNTEOBXNTECTI(y).getOBR().getResultStatus().getValue();
         			if(status == null) { continue; }
-                    orderStatuses.add(status);
+                    orderStatusSet.add(status);
         		}
         		
         	}
@@ -420,14 +432,38 @@ public class ExcellerisOntarioHandler implements MessageHandler {
              * the value "A" or "I" supersedes "F" or Completed and the requirement is that the overall report status be displayed as "Pending" or "Partial."
              */
             for (OrderStatus status : OrderStatus.values()) {
-                if (!orderStatuses.contains(status.getCode())) { continue; }
-                return status.getDescription();
+                if (!orderStatusSet.contains(status.getCode())) { continue; }
+
+                orderStatus = status.getDescription();
+                if (status.equals(OrderStatus.CORRECTED)) {
+                    orderStatus = checkForDualStatus(orderStatusSet);
+                }
+                return orderStatus;
             }
         }catch(Exception e){
-            return("");
+            return orderStatus;
         }
         
         return "N/A";
+    }
+
+    /**
+     * Checks for dual statuses where one of the statuses is 'Corrected'.
+     *
+     * @param orderStatusSet A set of status codes to check.
+     * @return A string combining another status with 'Corrected', or just 'Corrected' if no match is found.
+     */
+    public String checkForDualStatus(Set<String> orderStatusSet) {
+        String correctedStatus = OrderStatus.CORRECTED.getDescription();
+
+        for (OrderStatus status : OrderStatus.values()) {
+            if (status.equals(OrderStatus.CORRECTED)) { continue; }
+            if (orderStatusSet.contains(status.getCode())) {
+                return status.getDescription() + "/" + correctedStatus;
+            }
+        }
+
+        return correctedStatus;
     }
 
     /*
