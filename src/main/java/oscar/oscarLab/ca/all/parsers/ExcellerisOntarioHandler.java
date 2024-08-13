@@ -482,6 +482,7 @@ public class ExcellerisOntarioHandler implements MessageHandler {
                             break;
                         case PRELIMINARY:
                         case CORRECTED:
+                        case DELETED:
                             statusDescription = orderStatus.getDescription();
                             break;
                         default:

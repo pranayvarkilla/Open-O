@@ -1525,6 +1525,8 @@ for(int mcount=0; mcount<multiID.length; mcount++){
                                if (handler.getMsgType().equals("ExcellerisON") && handler.getObservationHeader(j, 0).equals(headers.get(i))) {
                                     String orderRequestStatus = ((ExcellerisOntarioHandler) handler).getOrderStatus(j);
                                     int obrCommentCount = handler.getOBRCommentCount(j);
+                                    if (orderRequestStatus.equals(ExcellerisOntarioHandler.OrderStatus.DELETED.getDescription())) { continue; }
+                                    
                                     if (obxCount > 0 || !orderRequestStatus.isEmpty() || obrCommentCount > 0) {
                                         obrFlag = true;
                                         %>
