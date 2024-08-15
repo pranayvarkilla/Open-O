@@ -25,16 +25,17 @@
 
 package oscar.oscarReport.data;
 
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Properties;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.common.dao.OscarAppointmentDao;
 import org.oscarehr.common.model.Appointment;
 import org.oscarehr.common.model.Demographic;
+import org.oscarehr.integration.mcedt.mailbox.ActionUtils;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
 
@@ -101,44 +102,24 @@ public class ObecData {
 		return outputString;
 	}
 
-	public static String zero(String oldString, int leng) {
-
-		String outputString = "";
-		int i;
-		for (i = oldString.length(); i < leng; i++) {
-			outputString = outputString + "0";
-		}
-		outputString = oldString + outputString;
-		return outputString;
-	}
-
 	public String writeFile(String value1, Properties pp) {
-
 		String obecFilename = "";
-
 		try {
+			String oscarHome = pp.getProperty("DOCUMENT_DIR");
+			File outbox = new File(pp.getProperty("ONEDT_OUTBOX", ""));
+						
+			// Construct the filename
+			obecFilename = "OBECE" + System.currentTimeMillis() + ".TXT";
+			File srcFile = Paths.get(oscarHome, obecFilename).toFile();
 
-
-			String oscar_home = pp.getProperty("DOCUMENT_DIR");
-			Calendar calendar = new GregorianCalendar();
-			String randomDate = String.valueOf(calendar.get(Calendar.SECOND)) + String.valueOf(calendar.get(Calendar.MILLISECOND));
-			if (randomDate.length() > 3) {
-				randomDate = randomDate.substring(0, 3);
-			}
-			if (randomDate.length() < 3) {
-				randomDate = zero(randomDate, 3);
-			}
-			obecFilename = "OBECE" + randomDate + ".TXT";
-			FileOutputStream out;
-			out = new FileOutputStream(oscar_home + obecFilename);
-			PrintStream p;
-			p = new PrintStream(out);
-
-			p.println(value1);
-
-			p.close();
+			// Write the content to the file
+			Files.write(srcFile.toPath(), value1.getBytes(), StandardOpenOption.CREATE);
+			
+			// Copy the file to the EDT outbox directory
+			if (!outbox.exists()) { ActionUtils.createOnEDTOutboxDir(); }
+			ActionUtils.copyFileToDirectory(srcFile, outbox, false, true);
 		} catch (Exception e) {
-			logger.error("", e);
+			logger.error("Error writing or copying file", e);
 		}
 		return obecFilename;
 	}
