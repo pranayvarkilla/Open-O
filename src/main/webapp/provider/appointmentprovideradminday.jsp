@@ -1814,9 +1814,9 @@
 																  nameBuilder.append(UtilMisc.toUpperLowerCase(demographic.getLastName()))
 																  .append(", ")
 																  .append(UtilMisc.toUpperLowerCase(demographic.getFirstName()));
-																  if(demographic.getPrefName() != null && ! demographic.getPrefName().isEmpty()) {
+																  if(demographic.getAlias() != null && ! demographic.getAlias().isEmpty()) {
                                                                       nameBuilder.append(" (")
-                                                                      .append(UtilMisc.toUpperLowerCase(demographic.getPrefName()))
+                                                                      .append(UtilMisc.toUpperLowerCase(demographic.getAlias()))
                                                                       .append(")");
 																  }
 																  if(demographic.getPronoun() != null && ! demographic.getPronoun().isEmpty()) {
@@ -2121,9 +2121,8 @@
                                                             <oscar:oscarPropertiesCheck property="SHOW_APPT_REASON_TOOLTIP" value="yes" defaultVal="true">
                                                                 title="<%=Encode.forHtmlAttribute(name)%><%= (type != null && ! type.isEmpty()) ? "&#013;&#010;type: " + Encode.forHtmlAttribute(type) : "" %>&#013;&#010;<%="reason: " + Encode.forHtmlAttribute(reason)%>&#013;&#010;<%="notes: " + Encode.forHtmlAttribute(notes)%>"
                                                             </oscar:oscarPropertiesCheck> >
-                                                        <%=(view == 0) ? (name.length() > len ? Encode.forHtmlContent(name.substring(0, len)) : Encode.forHtmlContent(name)) : Encode.forHtmlContent(name)%>
+                                                        <%=(name.length() > len ? Encode.forHtmlContent(name.substring(0, len)) : Encode.forHtmlContent(name))%>
                                                     </a>
-
                                                             <% if(len==lenLimitedL || view!=0 || numAvailProvider==1 ) {%>
 
 
