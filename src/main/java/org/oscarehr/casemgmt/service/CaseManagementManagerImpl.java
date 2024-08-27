@@ -83,6 +83,8 @@ public class CaseManagementManagerImpl implements CaseManagementManager {
     private IssueDAO issueDAO;
     private CaseManagementCPPDAO caseManagementCPPDAO;
     private DemographicDao demographicDao;
+    
+    @Autowired
     private ProviderExtDao providerExtDao;
     private RoleProgramAccessDAO roleProgramAccessDAO;
     private RolesManager roleManager;
@@ -2174,19 +2176,17 @@ public class CaseManagementManagerImpl implements CaseManagementManager {
         try {
             // Null check for providerExtDao and cproviderNo
             if (providerExtDao == null || cproviderNo == null) {
-                logger.warn("providerExtDao or cproviderNo is null. Cannot fetch provider's signature.");
-                return "";
-            }
-
-            // Fetch provider's signature
-            ProviderExt pe = providerExtDao.find(cproviderNo);
-            if (pe != null) {
-                tempS = pe.getSignature();
+                logger.warn("providerExtDao or cproviderNo is null. Cannot fetch provider's signature.");                
             } else {
-                // Handle the case where ProviderExt is not found
-                logger.warn("ProviderExt not found for provider number: " + cproviderNo);
+                // Fetch provider's signature
+                ProviderExt pe = providerExtDao.find(cproviderNo);
+                if (pe != null) {
+                    tempS = pe.getSignature();
+                } else {
+                    // Handle the case where ProviderExt is not found
+                    logger.warn("ProviderExt not found for provider number: " + cproviderNo);
+                }
             }
-            return "";
         } catch (Exception e) {
             // Log the exception with error details
             logger.error("Error fetching provider's signature for provider number: " + cproviderNo, e);
