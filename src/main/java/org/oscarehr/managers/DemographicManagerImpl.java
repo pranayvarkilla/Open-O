@@ -141,22 +141,35 @@
      @Autowired
      AppointmentManager appointmentManager;
  
+     /**
+	 *  Get the patient demographic profile.
+	 *  This particular method also sets the Demographic.MRP and Demographic.nextAppointment
+	 *  properties.
+	 * @param  loggedInInfo
+	 * @param demographicId
+	 * @return
+	 * @throws PatientDirectiveException
+	 */
      @Override
-     public Demographic getDemographic(LoggedInInfo loggedInInfo, Integer demographicId)
-             throws PatientDirectiveException {
-         checkPrivilege(loggedInInfo, SecurityInfoManager.READ, (demographicId != null) ? demographicId : null);
- 
-         Demographic result = demographicDao.getDemographicById(demographicId);
- 
-         // --- log action ---
-         // if (result != null) {
-         // LogAction.addLog(loggedInInfo, "DemographicManager.getDemographic", null,
-         // null, ""+demographicId, null);
-         // }
- 
-         return (result);
+     public Demographic getDemographic(LoggedInInfo loggedInInfo, Integer demographicId) throws PatientDirectiveException {
+        checkPrivilege(loggedInInfo, SecurityInfoManager.READ, (demographicId != null) ? demographicId : null); 
+        Demographic demographic = demographicDao.getDemographicById(demographicId); 
+        if(demographic != null) {
+			this.getMRP(loggedInInfo, demographic);
+			this.getNextAppointmentDate(loggedInInfo, demographic);
+		}
+		return demographic;
      }
  
+     /**
+	 *  Get the patient demographic profile.
+	 *  This particular method also sets the Demographic.MRP and Demographic.nextAppointment
+	 *  properties.
+	 * @param  loggedInInfo
+	 * @param demographicNo
+	 * @return
+	 * @throws PatientDirectiveException
+	 */
      @Override
      public Demographic getDemographic(LoggedInInfo loggedInInfo, String demographicNo) {
          checkPrivilege(loggedInInfo, SecurityInfoManager.READ);
@@ -1353,6 +1366,7 @@
          for (DemographicContact demographicContact : demographicContacts) {
              if (demographicContact.isMrp()) {
                  mrp = demographicContact;
+                 break;
              }
          }
  
@@ -1360,7 +1374,7 @@
          // not indicated.
          if (mrp == null) {
              for (DemographicContact demographicContact : demographicContacts) {
-                 if (demographicContact.getType() == 0) {
+                 if (demographicContact.getType() == DemographicContact.TYPE_PROVIDER ) {
                      mrp = demographicContact;
                  }
              }
