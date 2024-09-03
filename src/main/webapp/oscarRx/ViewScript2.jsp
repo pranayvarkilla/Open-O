@@ -604,7 +604,7 @@ var requestIdKey = "<%=signatureRequestId %>";
 </head>
 
 <body topmargin="0" leftmargin="0" vlink="#0000FF"
-	onload="addressSelect();printPharmacy('<%=prefPharmacyId%>','<%=prefPharmacy%>');showFaxWarning();">
+	onload="addressSelect();printPharmacy('<%=prefPharmacyId%>');showFaxWarning();">
 
 <!-- added by vic, hsfo -->
 <%
@@ -705,7 +705,7 @@ function toggleView(form) {
                                 }
 
 
-                                function printPharmacy(id,name){
+                                function printPharmacy(id){
                                     //ajax call to get all info about a pharmacy
                                     //use json to write to html
 	                                if(! id) {
