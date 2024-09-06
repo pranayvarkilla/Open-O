@@ -128,9 +128,9 @@ public class EctConsultationFormRequestAction extends Action {
 		}
 	
 		
-        ConsultationRequestDao consultationRequestDao=(ConsultationRequestDao)SpringUtils.getBean("consultationRequestDao");
-        ConsultationRequestExtDao consultationRequestExtDao=(ConsultationRequestExtDao)SpringUtils.getBean("consultationRequestExtDao");
-        ProfessionalSpecialistDao professionalSpecialistDao=(ProfessionalSpecialistDao)SpringUtils.getBean("professionalSpecialistDao");
+        ConsultationRequestDao consultationRequestDao=(ConsultationRequestDao)SpringUtils.getBean(ConsultationRequestDao.class);;
+        ConsultationRequestExtDao consultationRequestExtDao=(ConsultationRequestExtDao)SpringUtils.getBean(ConsultationRequestExtDao.class);
+        ProfessionalSpecialistDao professionalSpecialistDao=(ProfessionalSpecialistDao)SpringUtils.getBean(ProfessionalSpecialistDao.class);
         DemographicManager demographicManager = SpringUtils.getBean( DemographicManager.class );
         
         String[] format = new String[] {"yyyy-MM-dd","yyyy/MM/dd"};
@@ -202,8 +202,12 @@ public class EctConsultationFormRequestAction extends Action {
                                     consult.setFollowUpDate(date);
                                 }
 
-                                Integer specId = new Integer( frm.getSpecialist() );
-                                
+								Integer specId = null;
+
+								if(! frm.getSpecialist().isEmpty()) {
+									specId = Integer.parseInt(frm.getSpecialist());
+								}
+
                                 // converting the newer Contacts Table and Health Care Team back and forth
                                 // from the older professionalSpecialist module.
                                 // This should persist and retrieve values to be backwards compatible.
@@ -297,10 +301,13 @@ public class EctConsultationFormRequestAction extends Action {
         		consult.setLetterheadName(frm.getLetterheadName());
         		consult.setLetterheadAddress(frm.getLetterheadAddress());
         		consult.setLetterheadPhone(frm.getLetterheadPhone());
-        		consult.setLetterheadFax(frm.getLetterheadFax());                
+        		consult.setLetterheadFax(frm.getLetterheadFax());
 
-        		Integer specId = new Integer( frm.getSpecialist() );
-                
+				Integer specId = null;
+				if(!frm.getSpecialist().isEmpty()) {
+					specId = new Integer(frm.getSpecialist());
+				}
+
                 // converting the newer Contacts Table and Health Care Team back and forth
                 // from the older professionalSpecialist module.
                 // This should persist and retrieve values to be backwards compatible.
@@ -317,8 +324,11 @@ public class EctConsultationFormRequestAction extends Action {
                 } 
                  
                 // only add the professionalSpecialist if it checks out.
-                ProfessionalSpecialist professionalSpecialist=professionalSpecialistDao.find( specId );
-        			
+                ProfessionalSpecialist professionalSpecialist = new ProfessionalSpecialist();
+				if(specId != null) {
+					professionalSpecialist = professionalSpecialistDao.find(specId);
+				}
+
                 if( professionalSpecialist != null ) {
                 		request.setAttribute("professionalSpecialistName", professionalSpecialist.getFormattedTitle());
                     consult.setProfessionalSpecialist(professionalSpecialist);                                   
@@ -513,10 +523,10 @@ public class EctConsultationFormRequestAction extends Action {
 	
 	private void doHl7Send(LoggedInInfo loggedInInfo, Integer consultationRequestId) throws InvalidKeyException, SignatureException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeySpecException, IOException, HL7Exception, ServletException {
 		
-	    ConsultationRequestDao consultationRequestDao=(ConsultationRequestDao)SpringUtils.getBean("consultationRequestDao");
-	    ProfessionalSpecialistDao professionalSpecialistDao=(ProfessionalSpecialistDao)SpringUtils.getBean("professionalSpecialistDao");
-	    Hl7TextInfoDao hl7TextInfoDao=(Hl7TextInfoDao)SpringUtils.getBean("hl7TextInfoDao");
-	    ClinicDAO clinicDAO=(ClinicDAO)SpringUtils.getBean("clinicDAO");
+	    ConsultationRequestDao consultationRequestDao=(ConsultationRequestDao)SpringUtils.getBean(ConsultationRequestDao.class);;
+	    ProfessionalSpecialistDao professionalSpecialistDao=(ProfessionalSpecialistDao)SpringUtils.getBean(ProfessionalSpecialistDao.class);
+	    Hl7TextInfoDao hl7TextInfoDao=(Hl7TextInfoDao)SpringUtils.getBean(Hl7TextInfoDao.class);
+	    ClinicDAO clinicDAO=(ClinicDAO)SpringUtils.getBean(ClinicDAO.class);
 
 	    ConsultationRequest consultationRequest=consultationRequestDao.find(consultationRequestId);
 	    ProfessionalSpecialist professionalSpecialist=professionalSpecialistDao.find(consultationRequest.getSpecialistId());

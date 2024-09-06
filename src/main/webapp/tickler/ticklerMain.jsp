@@ -156,7 +156,7 @@
 
 %>
 
-<html:html locale="true">
+<html:html lang="en">
 	<head>
 		<title><bean:message key="tickler.ticklerMain.title"/> Manager</title>
 
@@ -243,6 +243,14 @@
 				// });
 				let groupColumn = 11;
 				ticklerResultsTable = jQuery("#ticklerResults").dataTable({
+					// cache the datatable state to persist through page refreshes
+					bStateSave: true,
+					fnStateSave: function(oSettings, oData) {
+						localStorage.setItem('ticklerDataTable', JSON.stringify(oData));
+					},
+					fnStateLoad: function() {
+						return JSON.parse(localStorage.getItem('ticklerDataTable'));
+					},
 					"searching": false,
 					"aLengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
 					"iDisplayLength": 50,
@@ -609,7 +617,7 @@
 						<option value="all" <%=mrpview.equals("all") ? "selected" : ""%>><bean:message
 								key="tickler.ticklerMain.formAllProviders"/></option>
 						<%
-							ProviderDao providerDao = (ProviderDao) SpringUtils.getBean("providerDao");
+							ProviderDao providerDao = (ProviderDao) SpringUtils.getBean(ProviderDao.class);
 							List<Provider> providers = providerDao.getActiveProviders();
 							for (Provider p : providers) {
 						%>
@@ -642,7 +650,7 @@
 					<label for="assignedTo"><bean:message key="tickler.ticklerMain.msgAssignedTo"/></label>
 					<%
 						if (org.oscarehr.common.IsPropertiesOn.isMultisitesEnable()) {
-							SiteDao siteDao = (SiteDao) SpringUtils.getBean("siteDao");
+							SiteDao siteDao = (SiteDao) SpringUtils.getBean(SiteDao.class);
 							List<Site> sites = siteDao.getActiveSitesByProviderNo(user_no);
 					%>
 					<script>

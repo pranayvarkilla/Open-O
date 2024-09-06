@@ -376,7 +376,11 @@ try
 		</div>
 
 		<div id="encounterTools" >
-
+			<!--  This leaves the OCEAN toolbar accessible -->
+			<div id="ocean_placeholder" style="display:none; width: 100%">
+				<span style="display:none">Ocean Toolbar</span>
+			</div>
+			
 			<%
 				if (privateConsentEnabled && showPopup && showConsentsThisTime) {
 			%>
@@ -453,7 +457,7 @@ try
 						<option value="-1">------------------</option>
 						</security:oscarSec>
 						<%
-							EncounterTemplateDao encounterTemplateDao=(EncounterTemplateDao)SpringUtils.getBean("encounterTemplateDao");
+							EncounterTemplateDao encounterTemplateDao=(EncounterTemplateDao)SpringUtils.getBean(EncounterTemplateDao.class);
 							List<EncounterTemplate> allTemplates=encounterTemplateDao.findAll();
 
 							for (EncounterTemplate encounterTemplate : allTemplates)
