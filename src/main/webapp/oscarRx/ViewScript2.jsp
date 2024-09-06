@@ -421,7 +421,7 @@ function printPaste2Parent(print, fax, pasteRx){
 	function writeToEncounter(print, text) {
     	try {
 			var url = "<%=request.getContextPath() %>/oscarRx/WriteToEncounter.do";
-			var prefPharmacy = "<%=prefPharmacy != null ? Encode.forHtml(prefPharmacy) : ""%>";
+			var prefPharmacy = "<%=prefPharmacy != null ? Encode.forJavaScriptBlock(prefPharmacy) : ""%>";
 			new Ajax.Request(url, {method: 'post',
 				parameters: "prefPharmacy=" + encodeURIComponent(prefPharmacy) +
 						"&additionalNotes=" +
