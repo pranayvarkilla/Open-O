@@ -2970,7 +2970,7 @@ var month=new Array(12);
 var msgDraftSaved;
 var lostNoteLock = false;
 function autoSave(async) {
-
+    sanitizeElementByPattern(document.getElementById(caseNote), CONTROL_CHAR_PATTERN_2);
     var url = ctx + "/CaseManagementEntry.do";
     var programId = case_program_id;
     var demoNo = demographicNo;
