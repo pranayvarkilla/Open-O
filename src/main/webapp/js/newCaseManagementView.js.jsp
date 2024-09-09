@@ -931,6 +931,7 @@ function openAnnotation() {
 }
 
 function updateCPPNote() {
+    sanitizeElementByPattern(document.forms["frmIssueNotes"].elements["noteEditTxt"], CONTROL_CHAR_PATTERN_2);
    var url = $("frmIssueNotes").action;
    var reloadUrl = $("reloadUrl").value;
    var div = $("containerDiv").value;
