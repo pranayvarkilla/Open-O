@@ -27,6 +27,7 @@ package oscar.oscarReport.data;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Properties;
@@ -106,7 +107,10 @@ public class ObecData {
 		String obecFilename = "";
 		try {
 			String oscarHome = pp.getProperty("DOCUMENT_DIR");
-			File outbox = new File(pp.getProperty("ONEDT_OUTBOX", ""));
+			
+			String outbox = pp.getProperty("ONEDT_OUTBOX", "");
+			Path outboxPath = Paths.get(outbox);
+			File outboxFile = outboxPath.toFile();
 						
 			// Construct the filename
 			obecFilename = "OBECE" + System.currentTimeMillis() + ".TXT";
@@ -116,8 +120,8 @@ public class ObecData {
 			Files.write(srcFile.toPath(), value1.getBytes(), StandardOpenOption.CREATE);
 			
 			// Copy the file to the EDT outbox directory
-			if (!outbox.exists()) { ActionUtils.createOnEDTOutboxDir(); }
-			ActionUtils.copyFileToDirectory(srcFile, outbox, false, true);
+			if (!outboxFile.exists()) { ActionUtils.createOnEDTOutboxDir(); }
+			ActionUtils.copyFileToDirectory(srcFile, outboxFile, false, true);
 		} catch (Exception e) {
 			logger.error("Error writing or copying file", e);
 		}
