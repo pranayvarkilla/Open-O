@@ -2994,7 +2994,7 @@ if ( Dead.equals(PatStat) ) {%>
 								<td align="right"><b><bean:message
 									key="demographic.demographiceditdemographic.formHin" />: </b></td>
 								<td align="left" nowrap><input type="text" name="hin" id="hinBox" <%=getDisabled("hin")%>
-									value="<%=StringUtils.trimToEmpty(demographic.getHin())%>" size="17">
+									value="<%=StringUtils.trimToEmpty(demographic.getHin())%>" size="17" oninput="sanitizeInput(this)">
 								<bean:message
 									key="demographic.demographiceditdemographic.formVer" /><input
 									type="text" name="ver" style="width:20% !important;" <%=getDisabled("ver")%>
