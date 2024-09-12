@@ -26,19 +26,7 @@
 
 package org.oscarehr.common.dao;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Formatter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import javax.persistence.Query;
-
+import org.apache.commons.lang.StringUtils;
 import org.oscarehr.PMmodule.model.Program;
 import org.oscarehr.common.NativeSql;
 import org.oscarehr.common.model.Appointment;
@@ -47,9 +35,11 @@ import org.oscarehr.common.model.Facility;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Repository;
-
-import org.apache.commons.lang.StringUtils;
 import oscar.util.UtilDateUtilities;
+
+import javax.persistence.Query;
+import java.util.*;
+import java.util.Map.Entry;
 
 @Repository
 @SuppressWarnings("unchecked")
@@ -489,7 +479,7 @@ public class OscarAppointmentDaoImpl extends AbstractDaoImpl<Appointment> implem
 
     @Override
     public List<Appointment> search_unbill_history_daterange(String providerNo, Date startDate, Date endDate) {
-        String sql = "select a from Appointment a where a.providerNo=? and a.appointmentDate >=? and a.appointmentDate<=? and (a.status='P' or a.status='H' or a.status='PV' or a.status='PS') and a.demographicNo <> 0 order by a.appointmentDate desc, a.startTime desc";
+        String sql = "select a from Appointment a where a.providerNo=? and a.appointmentDate >=? and a.appointmentDate<=? and a.status NOT LIKE 'B%' and a.demographicNo <> 0 order by a.appointmentDate desc, a.startTime desc";
         Query query = entityManager.createQuery(sql);
         query.setParameter(0, providerNo);
         query.setParameter(1, startDate);

@@ -27,14 +27,12 @@
 
 package org.oscarehr.common.dao;
 
-import java.util.*;
-
-import javax.persistence.Query;
-
-import org.oscarehr.common.dao.DemographicExtDao;
 import org.oscarehr.common.model.DemographicExt;
 import org.oscarehr.common.model.enumerator.DemographicExtKey;
 import org.springframework.stereotype.Repository;
+
+import javax.persistence.Query;
+import java.util.*;
 
 @Repository
 public class DemographicExtDaoImpl extends AbstractDaoImpl<DemographicExt> implements DemographicExtDao {
@@ -56,7 +54,7 @@ public class DemographicExtDaoImpl extends AbstractDaoImpl<DemographicExt> imple
         }
 
         Query query = entityManager
-                .createQuery("SELECT d from DemographicExt d where d.demographicNo=? order by d.dateCreated");
+                .createQuery("SELECT d from DemographicExt d where d.demographicNo=? order by d.dateCreated DESC");
         query.setParameter(0, demographicNo);
 
         @SuppressWarnings("unchecked")
