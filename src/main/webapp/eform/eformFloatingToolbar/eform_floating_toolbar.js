@@ -85,9 +85,8 @@ function remoteSave() {
 				document.getElementsByName("SubmitButton")[0].click();
 				return true;
 			} catch (error) {
-				console.log(error);
-			} finally {
 				showErrorAlert();
+				console.log(error);
 			}
 		}
 		
@@ -99,9 +98,8 @@ function remoteSave() {
 				document.forms[0].submit();
 				return true;
 			} catch (error) {
-				console.log(error);
-			} finally {
 				showErrorAlert();
+				console.log(error);
 			}
 		}
 		
@@ -111,16 +109,14 @@ function remoteSave() {
 			document.forms[0].submit();
 			return true;
 		} catch (error) {
-			console.log(error);
-		} finally {
 			showErrorAlert();
+			console.log(error);
 		}
 
 		HideSpin();
 	} catch (e) {
-		console.error(e);
-	} finally {
 		showErrorAlert();
+		console.error(e);
 	}
 
 	return false;
