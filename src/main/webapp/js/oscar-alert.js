@@ -34,13 +34,18 @@ let oscarAlert;
  * @param {string} message - the message to display inside the alert
  * @param {string} alertType - type of the alert ('success', 'danger', 'warning')
  * @param {number} duration - time in seconds before the alert disappears
+ * @param {event} onDismissEvent - action to trigger on alert dismiss event
  */
-function createAndShowAlert(alertId, message, alertType, duration) {
+function createAndShowAlert(alertId, message, alertType, duration, onDismissEvent) {
     // Check if the alert already exists
     if (oscarAlert) {
         oscarAlert.dismissAlert();
     }
     oscarAlert = new OscarAlert(alertId, alertType, message, duration);
+
+    if (onDismissEvent) {
+        oscarAlert.setOnDismissEvent(onDismissEvent);
+    }
 
     oscarAlert.injectInToParentBefore(document.body);
 
@@ -51,14 +56,14 @@ function createAndShowAlert(alertId, message, alertType, duration) {
  * Show an error alert
  */
 function showErrorAlert() {
-    createAndShowAlert('submit-error-alert', 'The form could not be saved. Please try again.', 'danger', 5);
+    this.createAndShowAlert('submit-error-alert', 'The form could not be saved. Please try again.', 'danger', 5, undefined);
 }
 
 /**
  * Show a success alert
  */
-function showSuccessAlert() {
-    createAndShowAlert('submit-success-alert', 'The form has been saved successfully.', 'success', 5);
+function showSuccessAlert(onDismissEvent) {
+    this.createAndShowAlert('submit-success-alert', 'The form has been saved successfully.', 'success', 5, onDismissEvent);
 }
 
 function sleep(ms) {
@@ -100,7 +105,6 @@ class OscarAlert {
     }
 
     startCountdown() {
-        clearInterval(this.counterHandlerNumber);
         const counterFunc = () => this.counter();
         this.resetCountdownInterval();
         this.counterHandlerNumber = setInterval(counterFunc, 1000);
@@ -124,6 +128,8 @@ class OscarAlert {
         this.updateAlertVisibility(false);
         this.resetCountdownInterval();
         this.alertDiv.remove();
+        if (this.onDismissEvent)
+            this.onDismissEvent();
     }
 
     resetCountdownInterval() {
@@ -131,7 +137,12 @@ class OscarAlert {
     }
 
     injectInToParentBefore(parent) {
-        parent.insertBefore(this.alertDiv, document.body.lastChild);
+        parent.appendChild(this.alertDiv);
+    }
+
+    setOnDismissEvent(onDismissEvent) {
+        this.alertDiv.addEventListener('close.bs.alert', onDismissEvent);
+        this.onDismissEvent = onDismissEvent;
     }
 
     updateAlertVisibility(isShow) {
@@ -144,10 +155,23 @@ class OscarAlert {
 
     getInnerHTML(message) {
         return `
-            <strong>${this.alertType === 'danger' ? 'Error!' : 'Success!'}</strong> ${message}
-            <br> <small>This message will disappear in <span id="countdown-${this.alertDiv.id}">${this.countdown}</span> seconds.</small>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong>${this.getLabel()}</strong> ${message}
+            <br> <small>${this.getDismissalMessage()}<span id="countdown-${this.alertDiv.id}">${this.countdown}</span> seconds.</small>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
         `;
+    }
+
+    getDismissalMessage() {
+        return this.alertType === 'success' ? 'This form will close in ' : 'This message will disappear in ';
+
+    }
+
+    getLabel() {
+        const labels = {
+            danger: 'Error!', warning: 'Warning!', success: 'Success!'
+        };
+
+        return labels[this.alertType] || 'Unknown';
     }
 }
 

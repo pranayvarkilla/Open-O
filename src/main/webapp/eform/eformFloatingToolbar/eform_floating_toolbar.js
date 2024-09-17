@@ -35,6 +35,12 @@ document.addEventListener("DOMContentLoaded", function(){
 		 *  Enable Are-you-sure dirty page detection.
 		 */
 		jQuery("form:first").areYouSure();
+
+	const isSuccessAndAutoclose = document.getElementById("isSuccess_Autoclose") &&
+		document.getElementById("isSuccess_Autoclose").value === 'true';
+	if (isSuccessAndAutoclose) {
+		showSuccessAlert(remoteClose);
+	}
 	});
 
 	window.onerror = function uncaughtExceptionHandler(message, source, lineNumber, colno, error) {
