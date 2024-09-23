@@ -33,7 +33,7 @@
 	String deepColor = "#CCCCFF" , weakColor = "#EEEEFF" ;
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="java.util.*, oscar.eform.*"%>
+<%@ page import="java.util.*, oscar.eform.*" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ page import="org.oscarehr.managers.DemographicManager" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>

@@ -24,8 +24,13 @@
 
 --%>
 <!DOCTYPE html>
+<%@page import="org.oscarehr.sharingcenter.SharingCenterUtil"%>
+<%@page import="org.oscarehr.sharingcenter.dao.AffinityDomainDao"%>
+<%@page import="org.oscarehr.sharingcenter.model.AffinityDomainDataObject"%>
+<%@page import="org.oscarehr.util.SpringUtils"%>
 
 <%@page import="java.util.*,oscar.eform.*" %>
+<%@page import="org.oscarehr.web.eform.EfmPatientFormList" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="org.oscarehr.managers.DemographicManager" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
@@ -33,24 +38,19 @@
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-    LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
+    LoggedInInfo loggedInInfo =
+    LoggedInInfo.getLoggedInInfoFromSession(request);
     String demographic_no = request.getParameter("demographic_no");
     String deepColor = "#CCCCFF", weakColor = "#EEEEFF";
 
-	if (session.getAttribute("userrole") == null) {
-		response.sendRedirect("../logout.jsp");
-	}
+    if (session.getAttribute("userrole") == null) response.sendRedirect("../logout.jsp");
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
     String country = request.getLocale().getCountry();
     String orderByRequest = request.getParameter("orderby");
     String orderBy = "";
-	if (orderByRequest == null) {
-		orderBy = EFormUtil.DATE;
-	} else if (orderByRequest.equals("form_subject")) {
-		orderBy = EFormUtil.SUBJECT;
-	} else if (orderByRequest.equals("form_name")) {
-		orderBy = EFormUtil.NAME;
-	}
+    if (orderByRequest == null) orderBy = EFormUtil.DATE;
+    else if (orderByRequest.equals("form_subject")) orderBy = EFormUtil.SUBJECT;
+    else if (orderByRequest.equals("form_name")) orderBy = EFormUtil.NAME;
 
     String groupView = request.getParameter("group_view");
     if (groupView == null) {
@@ -267,4 +267,4 @@
         </div>
     </div>
     </body>
-</html:html>
+</html>
