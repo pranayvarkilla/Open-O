@@ -49,6 +49,7 @@ if(!authed) {
 <%@ taglib uri="/WEB-INF/special_tag.tld" prefix="special" %>
 <!-- end -->
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar"%>
+<%@ taglib prefix="encode" uri="https://www.owasp.org/index.php/OWASP_Java_Encoder_Project#advanced" %>
 
 
 <%@page import="java.util.ArrayList, java.util.List, java.util.*, oscar.OscarProperties, oscar.oscarLab.ca.on.*"%>
@@ -101,7 +102,7 @@ if(!authed) {
 <%
 	LoggedInInfo loggedInInfo=LoggedInInfo.getLoggedInInfoFromSession(request);
 	DemographicManager demographicManager = SpringUtils.getBean( DemographicManager.class );
-	displayServiceUtil.estSpecialist();	
+	displayServiceUtil.estSpecialist();
 
 	//multi-site support
 	String appNo = request.getParameter("appNo");
@@ -143,14 +144,14 @@ if(!authed) {
 		List<Provider> prList = rx.getAllProviders();
 		Provider thisProvider = rx.getProvider(providerNo);
 		ClinicData clinic = new ClinicData();
-		
+
 		EctConsultationFormRequestUtil consultUtil = new EctConsultationFormRequestUtil();
-		
-		if (requestId != null) { 
-			consultUtil.estRequestFromId(loggedInInfo, requestId);		
+
+		if (requestId != null) {
+			consultUtil.estRequestFromId(loggedInInfo, requestId);
 		}
-		
-		if (demo == null) { 
+
+		if (demo == null) {
 			demo = consultUtil.demoNo;
 		}
 
@@ -171,18 +172,18 @@ if(!authed) {
 		UserPropertyDAO userPropertyDAO = SpringUtils.getBean(UserPropertyDAO.class);
 		if (demo != null) {
 			demoData = new oscar.oscarDemographic.data.DemographicData();
-			demographic = demoData.getDemographic(loggedInInfo, demo);			
+			demographic = demoData.getDemographic(loggedInInfo, demo);
 			providerNoFromChart = demographic.getProviderNo();
 			demo_mrp = demographic.getProviderNo();
-		
+
 			if( demo_mrp == null || demo_mrp.isEmpty() ) {
 				DemographicContact demographicContact = demographicManager.getMostResponsibleProviderFromHealthCareTeam(loggedInInfo, Integer.parseInt(demo));
-				
+
 				if( demographicContact != null ) {
 					demo_mrp = demographicContact.getContactId();
 				}
 			}
-			
+
 			consultUtil.estPatient(loggedInInfo, demo);
 			consultUtil.estActiveTeams();
 		} else if (requestId == null && segmentId == null) {
@@ -212,7 +213,7 @@ if(!authed) {
 %>
 		<%--
 			// Get attached documents and labs
-		 --%>			
+		 --%>
 <%
 	if(requestId != null && Integer.parseInt(requestId) > 0) {
 		List<EDoc> attachedDocuments = EDocUtil.listDocs(loggedInInfo, demo, requestId, EDocUtil.ATTACHED);
@@ -249,7 +250,7 @@ if(!authed) {
 		pageContext.setAttribute("attachedHRMDocuments", attachedHRMDocuments);
 
 	}
-%>		
+%>
 		<%--
 			// Look up list for appointment instructions.
 		 --%>
@@ -263,85 +264,85 @@ if(!authed) {
 	// enable option to populate the patients Health Care Team into the Specialist/Service fields.
 	// The Health Care Team module will be available to add additional contacts to the patient demographic
  --%>
-<% 
+<%
 
 // A null demo varialbe means that this iteration is a postback. This script need not be run on postback.
 if( demo != null && "true".equals( props.getProperty("ENABLE_HEALTH_CARE_TEAM_IN_CONSULTATION_REQUESTS") ) ) {
-	
+
 	ContactSpecialtyDao contactSpecialtyDao = SpringUtils.getBean(ContactSpecialtyDao.class);
 	List<DemographicContact> demographicContacts = demographicManager.getHealthCareTeam(loggedInInfo, Integer.parseInt(demo) );
 	HashSet<ConsultationServices> consultationServices = new HashSet<ConsultationServices>();
 	List<DemographicContact> healthCareTeam = new ArrayList<DemographicContact>();
 	DemographicContactDao demographicContactDao = SpringUtils.getBean(DemographicContactDao.class);
-	
-	// incoming professionalSpecialists can be added to the patient health care team. 
-	// The id for these stray professionalSpecialists are identified as less than 0 
-	// - only if the Health Care Team module is enabled. 
+
+	// incoming professionalSpecialists can be added to the patient health care team.
+	// The id for these stray professionalSpecialists are identified as less than 0
+	// - only if the Health Care Team module is enabled.
 	String currentSpecialistId = consultUtil.getSpecialist();
 	Integer currentSpecialistIdInt = 0;
 	String currentDemographicContact = null;
-	
+
 	if( currentSpecialistId != null ) {
 		currentSpecialistIdInt = Integer.parseInt( currentSpecialistId );
 	}
-	
+
 	if( currentSpecialistIdInt < 0 ) {
 
 		// Set the DemographicContact list into an array for further processing.
 		// This list contains a guranteed id from the ProfessionalSpecialist model
-		for( DemographicContact demographicContact : demographicContacts ) {	
+		for( DemographicContact demographicContact : demographicContacts ) {
 			// separate method to check the current list for existing professionalSpecialist
-			// This will determine if a new DemographicContact should be created. 
+			// This will determine if a new DemographicContact should be created.
 			if( currentDemographicContact == null && ( (currentSpecialistIdInt * -1) + "" ).equals( demographicContact.getContactId() ) ) {
 				currentDemographicContact = demographicContact.getId() + "";
 			}
 		}
 	}
-	
+
 	if( currentDemographicContact != null ) {
-		
+
 		// this ProfessionalSpecialist is already in the DemographicContacts.
 		consultUtil.setSpecialist( currentDemographicContact );
-		
+
 	} else if( currentSpecialistIdInt < 0 ) {
 
-		// this ProfessionalSpecialist needs to have a DemographicContact created. 
+		// this ProfessionalSpecialist needs to have a DemographicContact created.
 		String service = consultUtil.getService();
 
 		ContactSpecialty contactSpecialty = contactSpecialtyDao.findBySpecialty( service );
-		
+
 		if( contactSpecialty == null ) {
 			contactSpecialty = contactSpecialtyDao.findBySpecialty( "other" );
 		}
-		
+
 		service = contactSpecialty.getId() + "";
-		
+
 		if( service == null ){
 			service = "";
 		}
 
 		DemographicContact demographicContact = addDemographicContact( loggedInInfo, demo, (currentSpecialistIdInt * -1), service );
-		
-		demographicContactDao.persist( demographicContact );		
-		demographicContacts = demographicManager.getHealthCareTeam(loggedInInfo, Integer.parseInt(demo) );		
+
+		demographicContactDao.persist( demographicContact );
+		demographicContacts = demographicManager.getHealthCareTeam(loggedInInfo, Integer.parseInt(demo) );
 		consultUtil.setSpecialist( demographicContact.getId() + "" );
 	}
-	
+
 	setHealthCareTeam( demographicContacts, healthCareTeam, consultationServices, consultationServiceDao );
-		
+
 	pageContext.setAttribute("consultUtil", consultUtil);
 	pageContext.setAttribute( "consultationServices", consultationServices );
 	pageContext.setAttribute( "healthCareTeam", healthCareTeam );
 }
 %>
 <%!
-private static DemographicContact addDemographicContact(LoggedInInfo loggedInInfo, 
+private static DemographicContact addDemographicContact(LoggedInInfo loggedInInfo,
 		String demographicNo, int contactId, String role ) {
-	
+
 	if( role == null ) {
 		role = "0";
 	}
-	
+
 	DemographicContact demographicContact = new DemographicContact();
 	demographicContact.setFacilityId( loggedInInfo.getCurrentFacility().getId() );
 	demographicContact.setCreator( loggedInInfo.getLoggedInProviderNo() );
@@ -353,27 +354,27 @@ private static DemographicContact addDemographicContact(LoggedInInfo loggedInInf
 	demographicContact.setRole( role );
 	demographicContact.setType( 3 );
 	demographicContact.setCategory( "professional" );
-	
+
 	return demographicContact;
 }
 %>
 
 <%!
-private static void setHealthCareTeam( List<DemographicContact> demographicContacts, 
+private static void setHealthCareTeam( List<DemographicContact> demographicContacts,
 		List<DemographicContact> healthCareTeam, HashSet<ConsultationServices> consultationServices,
 		ConsultationServiceDao consultationServiceDao ) {
 
 	for( DemographicContact demographicContact : demographicContacts ) {
 		// ensure consent has been given to contact this specialist.
 		// ensure that this specialist has a cpso (specialist, msp, or college id)
-		if( demographicContact.isConsentToContact() && 
+		if( demographicContact.isConsentToContact() &&
 				( ( (ProfessionalContact) demographicContact.getDetails() ).getCpso() != null ) &&
 				( ! ( (ProfessionalContact) demographicContact.getDetails() ).getCpso().isEmpty() )
 			) {
 			healthCareTeam.add( demographicContact );
-			
+
 			// Get the specialty list for this group of specialist.
-			// This is a hack. Do not expand on it. There are several specialty look up tables in Oscar 
+			// This is a hack. Do not expand on it. There are several specialty look up tables in Oscar
 			// The health care team uses the ContactSpecialty table and this Consultation feature uses the consultatationServices
 			ConsultationServices consultService = consultationServiceDao.findByDescription( demographicContact.getRole() );
 			if( consultService != null ) {
@@ -391,9 +392,9 @@ private static void setHealthCareTeam( List<DemographicContact> demographicConta
 <c:if test="${ not empty consultationServices }" >
 	<script type="text/javascript" >
 		var consultationServices = [];
-	</script>	
+	</script>
 	<c:forEach items="${ consultationServices }" var="consultationService" varStatus="loop">
-		<script type="text/javascript"> 
+		<script type="text/javascript">
 		//<!--
 			var service = {};
 			service.id = `${ consultationService.serviceId }`;
@@ -401,7 +402,7 @@ private static void setHealthCareTeam( List<DemographicContact> demographicConta
 			if( service ) {
 				consultationServices.push( service );
 			}
-		//--> 
+		//-->
 		</script>
 	</c:forEach>
 </c:if>
@@ -411,9 +412,9 @@ private static void setHealthCareTeam( List<DemographicContact> demographicConta
  <c:if test="${ not empty healthCareTeam }" >
 	<script type="text/javascript" >
 		var healthCareTeam = [];
-	</script>	
+	</script>
 	<c:forEach items="${ healthCareTeam }" var="demographicContact" varStatus="loop">
-		<script type="text/javascript"> 
+		<script type="text/javascript">
 		//<!--
 			var contact = {};
 			contact.contactId = `${ demographicContact.details.id }`;
@@ -421,49 +422,49 @@ private static void setHealthCareTeam( List<DemographicContact> demographicConta
 			contact.phoneNum = `${ demographicContact.details.workPhone }`;
 			contact.specName = `${ demographicContact.details.formattedName }`;
 			contact.service = `${ demographicContact.role }`;
-			contact.specFax = `${ demographicContact.details.fax }`;		
-			contact.specAddress = `${ demographicContact.details.address }`;		
+			contact.specFax = `${ demographicContact.details.fax }`;
+			contact.specAddress = `${ demographicContact.details.address }`;
 			contact.specAddress2 = `${ demographicContact.details.address2 }`;
 			contact.city = `${ demographicContact.details.city }`;
 			contact.province = `${ demographicContact.details.province }`;
-			contact.postal = `${ demographicContact.details.postal }`; 
+			contact.postal = `${ demographicContact.details.postal }`;
 			contact.note = `${ demographicContact.details.note }`;
 			healthCareTeam[ `${ demographicContact.id }` ] = contact;
-		//--> 
+		//-->
 		</script>
 	</c:forEach>
 </c:if>
- 
+
 <%-- Add function for specialist selection events. --%>
-<script type="text/javascript"> 
+<script type="text/javascript">
 	//<!--
 	function getSpecialist( selected ) {
 		var specialistIndex = selected.value;
 		var form = document.EctConsultationFormRequestForm;
 
-		if( specialistIndex < 0 ) {		
+		if( specialistIndex < 0 ) {
 			form.phone.value = ("");
 			form.fax.value = ("");
 			form.address.value = ("");
-			
-			specialistFaxNumber = ""; // global variable		
+
+			specialistFaxNumber = ""; // global variable
 		}
-		
+
 		if( specialistIndex > -1 ) {
-			form.annotation.value = healthCareTeam[ specialistIndex ].note; 
+			form.annotation.value = healthCareTeam[ specialistIndex ].note;
 			form.phone.value = healthCareTeam[ specialistIndex ].phoneNum;
-			form.fax.value = healthCareTeam[ specialistIndex ].specFax;					
+			form.fax.value = healthCareTeam[ specialistIndex ].specFax;
 			form.address.value = healthCareTeam[ specialistIndex ].specAddress;
-			
+
 			specialistFaxNumber = healthCareTeam[ specialistIndex ].specFax; // global variable
 			updateFaxButton();
-			
+
 			var service = healthCareTeam[ specialistIndex ].service;
 
 			if( ! service ) {
-				
+
 				form.service.value = '57';
-				
+
 			} else {
 				form.service.value = "";
 				for( var i = 0; consultationServices.length; i++ ) {
@@ -475,7 +476,7 @@ private static void setHealthCareTeam( List<DemographicContact> demographicConta
 			}
 		}
 	}
-//--> 
+//-->
 </script>
 
 <head>
@@ -511,7 +512,7 @@ private static void setHealthCareTeam( List<DemographicContact> demographicConta
    </script>
 
 <!-- Instead of importing conreq.js using the CME tag (as done in Oscar19/OscarPro), we are opting to directly import conreq.js without utilizing the CME tag. -->
-<% if ("ocean".equals(props.get("cme_js"))) { 
+<% if ("ocean".equals(props.get("cme_js"))) {
 	int randomNo = new Random().nextInt();%>
 <script id="mainScript" src="${ pageContext.request.contextPath }/js/custom/ocean/conreq.js?no-cache=<%=randomNo%>&autoRefresh=true" ocean-host=<%=Encode.forUriComponent(props.getProperty("ocean_host"))%>></script>
 <% } %>
@@ -526,7 +527,7 @@ span.oceanRefer	{
 	align-items: center;
     padding-top:20px
 }
-	
+
 span.oceanRefer a {
 	margin-right: 5px;
 }
@@ -662,7 +663,7 @@ function K( serviceNumber, service ){
 	services[serviceNumber] = new Service( );
 }
 //-------------------------------------------------------------------
-	
+
 	//-----------------disableDateFields() disables date fields if "Patient Will Book" selected
 	var disableFields=false;
 </script>
@@ -670,7 +671,7 @@ function K( serviceNumber, service ){
 <oscar:oscarPropertiesCheck defaultVal="false" value="true" property="CONSULTATION_PATIENT_WILL_BOOK">
 	<script type="text/javascript" >
 
-	
+
 	function disableDateFields(){
 		if(document.forms[0].patientWillBook.checked){
 			setDisabledDateFields(document.forms[0], true);
@@ -684,7 +685,7 @@ function K( serviceNumber, service ){
 
 <oscar:oscarPropertiesCheck defaultVal="false" value="false" property="CONSULTATION_PATIENT_WILL_BOOK">
 	<script type="text/javascript" >
-	
+
 	function disableDateFields(){
 
 		setDisabledDateFields(document.forms[0], false);
@@ -703,7 +704,7 @@ function getClinicalData( data, target ) {
 		data : data,
 		dataType : 'JSON',
 		success: function(data) {
-			jQuery(target).val( jQuery(target).val() + "\n" + data.note );			
+			jQuery(target).val( jQuery(target).val() + "\n" + data.note );
 		}
 	});
 }
@@ -711,15 +712,15 @@ function getClinicalData( data, target ) {
 jQuery(document).ready(function(){
 	jQuery(".medicationData").click(function(){
 		var data = new Object();
-		var target = "#" + this.id.split("_")[1];		
+		var target = "#" + this.id.split("_")[1];
 		data.method = this.id.split("_")[0];
 		data.demographicNo = <%= demo %>;
 		getClinicalData( data, target )
 	});
-	
+
 	jQuery(".clinicalData").click(function(){
 		var data = new Object();
-		var target = "#" + this.id.split("_")[1];		
+		var target = "#" + this.id.split("_")[1];
 		data.method = "fetchIssueNote";
 		data.issueType = this.id.split("_")[0];
 		data.demographicNo = <%= demo %>;
@@ -863,7 +864,7 @@ function fillSpecialistSelect( aSelectedService ){
         var i = 1;
 	var specs = (services[makeNbr].specialists);
 	for ( var specIndex = 0; specIndex < specs.length; ++specIndex ){
-		   aPit = specs[ specIndex ];	   	
+		   aPit = specs[ specIndex ];
            document.EctConsultationFormRequestForm.specialist.options[ i++ ] = new Option( aPit.specName , aPit.specNbr );
 	}
 
@@ -878,7 +879,7 @@ function fillSpecialistSelect1( makeNbr )
 	var specs = (services[makeNbr].specialists);
 	var i=1;
     var match = false;
-        
+
 	for ( var specIndex = 0; specIndex < specs.length; ++specIndex )
 	{
 		aPit = specs[specIndex];
@@ -896,7 +897,7 @@ function fillSpecialistSelect1( makeNbr )
 	}
 
 	<%if(requestId!=null){ %>
-		if(!match){ 
+		if(!match){
 			//if no match then most likely doctor has been removed from specialty list so just add specialist
 			document.EctConsultationFormRequestForm.specialist.options[0] = new Option("<%=consultUtil.getSpecailistsName(consultUtil.specialist)%>", "<%=consultUtil.specialist%>",false ,true );
 
@@ -920,7 +921,7 @@ function setSpec(servNbr,specialNbr){
 //    //window.alert("got specs");
     var i=1;
     var NotSelected = true;
- 
+
     for ( var specIndex = 0; specIndex < specs.length; ++specIndex ){
 //      //  window.alert("loop");
         aPit = specs[specIndex];
@@ -1004,12 +1005,12 @@ function onSelectSpecialist(SelectedSpec)	{
 		specialistFaxNumber = "";
 		updateFaxButton();
 		<% } %>
-		
+
 		return;
 	}
 	var selectedService = document.EctConsultationFormRequestForm.service.value;  				// get the service that is selected now
 	var specs = (services[selectedService].specialists); 			// get all the specs the offer this service
-    
+
 	// load the text fields with phone fax and address for past consult review even if spec has been removed from service list
 	<%if(requestId!=null && ! "null".equals( consultUtil.specialist ) ){ %>
 	form.phone.value = '<%=Encode.forJavaScript(consultUtil.specPhone)%>';
@@ -1019,25 +1020,25 @@ function onSelectSpecialist(SelectedSpec)	{
 	//make sure this dislaimer is displayed
 	document.getElementById("consult-disclaimer").style.display='inline';
 	<%}%>
-	
-								
+
+
         for( var idx = 0; idx < specs.length; ++idx ) {
             aSpeci = specs[idx];									// get the specialist Object for the currently selected spec
             if( aSpeci.specNbr === SelectedSpec.value ) {
             	form.phone.value = (aSpeci.phoneNum.replace(null,""));
             	form.fax.value = (aSpeci.specFax.replace(null,""));					// load the text fields with phone fax and address
             	form.address.value = (aSpeci.specAddress.replace(null,""));
-            	
+
        			//since there is a match make sure the dislaimer is hidden
        			document.getElementById("consult-disclaimer").style.display='none';
-        	
+
             	<%
         		if (props.isConsultationFaxEnabled()) {//
 				%>
 				specialistFaxNumber = aSpeci.specFax.trim();
 				updateFaxButton();
         		<% } %>
-            	
+
             	jQuery.post(ctx + "/getProfessionalSpecialist.do", {id: aSpeci.specNbr},
                     function(xml)
                     {
@@ -1053,13 +1054,13 @@ function onSelectSpecialist(SelectedSpec)	{
             	break;
             }
         }//spec loop
-	 
+
 	}
 
 function updateEFormLink(eformID) {
     if (eformID > 0) {
 		let eFormURL = '<%=request.getContextPath()%>/eform/efmformadd_data.jsp?fid='+eformID+'&demographic_no=<%=demo%>&appointment=null';
-        document.getElementById("eFormButton").style.display = "inline";		
+        document.getElementById("eFormButton").style.display = "inline";
         document.getElementById("eFormButton").onclick = function(){popup(eFormURL);};  //opening as a popup deliberately because the consult is already a popup so best to just have another popup
     } else {
         document.getElementById("eFormButton").style.display = "none";
@@ -1161,23 +1162,23 @@ function popupOscarCal(vheight,vwidth,varpage) { //open a new popup window
 <script type="text/javascript">
 //<!--
 	function checkFormHCT(){
-	
-		var msg = "Please select a Consultant. Or add a Consultant using edit Health Care Team.";    
+
+		var msg = "Please select a Consultant. Or add a Consultant using edit Health Care Team.";
 	   	var specialistElement = document.EctConsultationFormRequestForm.specialist.options;
-		if( ! specialistElement || specialistElement.selectedIndex < 0 ) {	   
+		if( ! specialistElement || specialistElement.selectedIndex < 0 ) {
 		   	document.EctConsultationFormRequestForm.specialist.focus();
 		   	alert(msg);
 		   	return false;
 	   	}
-		
+
 		msg = "The selected consultant contains an invalid specialty type. Please add or correct the current specialty using edit Health Care Team";
 	   	var serviceElement = document.EctConsultationFormRequestForm.service;
-	   	if( ! serviceElement || serviceElement.value == "" ) {	   
+	   	if( ! serviceElement || serviceElement.value == "" ) {
 		   	document.EctConsultationFormRequestForm.service.focus();
 		   	alert(msg);
 		   	return false;
 	   	}
-	   	
+
 		return true;
 	}
 //-->
@@ -1190,13 +1191,13 @@ function checkForm(submissionVal,formName){
 	ShowSpin(true);
 	var success = true;
 
-   if (typeof checkFormHCT === "function") { 
+   if (typeof checkFormHCT === "function") {
    		if( ! checkFormHCT() ) {
 			HideSpin();
    			return false;
    		}
    }
-   
+
    var msg = "<bean:message key="Errors.service.noServiceSelected"/>";
    msg  = msg.replace('<li>','');
    msg  = msg.replace('</li>','');
@@ -1210,15 +1211,15 @@ function checkForm(submissionVal,formName){
   var faxNumber = document.EctConsultationFormRequestForm.fax.value;
   faxNumber = faxNumber.trim();
   var apptDate = document.EctConsultationFormRequestForm.appointmentDate.value;
-  var hasApptTime = document.EctConsultationFormRequestForm.appointmentHour.options.selectedIndex != 0 && 
+  var hasApptTime = document.EctConsultationFormRequestForm.appointmentHour.options.selectedIndex != 0 &&
   	document.EctConsultationFormRequestForm.appointmentMinute.options.selectedIndex != 0;
-  
+
   if(apptDate.length > 0 && !hasApptTime) {
 	  alert('Please enter appointment time. You cannot choose appointment date only.');
 	  HideSpin();
 	  return false;
   }
-  
+
   if('Submit And Fax' === submissionVal && !faxNumber) {
 	  alert('Please enter a valid 10 digit consultant fax number');
 	  HideSpin();
@@ -1230,7 +1231,7 @@ function checkForm(submissionVal,formName){
       getConsultFormPrintPreview(document.forms[formName]);
 	  return false;
   }
-  
+
   $("saved").value = "true";
   document.forms[formName].submission.value=submissionVal;
   document.forms[formName].submit();
@@ -1262,7 +1263,7 @@ if(consultUtil.letterheadName == null ){
 			//clinic
 			lhndType = "clinic";
 		}
-	}	
+	}
 
 }
 %>
@@ -1340,6 +1341,17 @@ function switchProvider(value) {
 		document.getElementById("letterheadPhone").value = "<%=Encode.forHtmlAttribute(clinic.getClinicPhone()) %>";
 		document.getElementById("letterheadPhoneSpan").innerHTML = "<%=Encode.forHtmlContent(clinic.getClinicPhone()) %>";
 		document.getElementById("letterheadFax").value = "<%=Encode.forHtmlAttribute(clinic.getClinicFax()) %>";
+		document.getElementById("letterheadFaxSpan").innerHTML = "<%=Encode.forHtmlAttribute(clinic.getClinicFax()) %>";
+		document.getElementById("faxAccount").value = "<%=Encode.forHtmlAttribute(clinic.getClinicFax()) %>".replace(/[^0-9.]/g, '');
+
+		let faxAccountOptions = document.getElementById("faxAccount");
+		for(let option in faxAccountOptions.options) {
+			if(faxAccountOptions.options[option].value === "<%=clinic.getClinicFax() %>".replace(/[^0-9.]/g, '')) {
+				faxAccountOptions.value = "<%=clinic.getClinicFax()%>".replace(/[^0-9.]/g, '');
+				break;
+			}
+		}
+
 	} else {
 		let origValue = value;
 		if (typeof providerData["prov_" + value.toString()] != "undefined") {
@@ -1351,6 +1363,15 @@ function switchProvider(value) {
 		document.getElementById("letterheadPhone").value = providerData[value]['phone'];
 		document.getElementById("letterheadPhoneSpan").innerHTML = providerData[value]['phone'];
 		document.getElementById("letterheadFax").value = providerData[value]['fax'];
+		document.getElementById("letterheadFaxSpan").innerHTML = providerData[value]['fax'];
+
+		let faxAccountOptions = document.getElementById("faxAccount");
+		for(let option in faxAccountOptions.options) {
+			if(faxAccountOptions.options[option].value === providerData[value]['fax'].replace(/[^0-9.]/g, '')) {
+				faxAccountOptions.value = providerData[value]['fax'].replace(/[^0-9.]/g, '');
+				break;
+			}
+		}
 	}
 }
 
@@ -1485,9 +1506,9 @@ function getConsultFormPrintPreview(form) {
 		dataType: "json",
 		success: function(data) {
 			HideSpin();
-			if(data.errorMessage) { 
+			if(data.errorMessage) {
 				alert(data.errorMessage.replace(/\\n/g, '\n'));
-				return; 
+				return;
 			}
 			showPreview(data.consultPDF, data.consultPDFName);
 		},
@@ -1518,7 +1539,7 @@ function clearAppointmentDateAndTime() {
 
 <%=WebUtils.popErrorMessagesAsAlert(session)%>
 
-<body topmargin="0" leftmargin="0" vlink="#0000FF" 
+<body topmargin="0" leftmargin="0" vlink="#0000FF"
 	onload="window.focus();disableDateFields();disableEditing();showSignatureImage();">
 <jsp:include page="../../images/spinner.jsp" flush="true"/>
 <html:errors />
@@ -1546,12 +1567,12 @@ function clearAppointmentDateAndTime() {
 			{
 				oscar.oscarDemographic.data.RxInformation RxInfo = new oscar.oscarDemographic.data.RxInformation();
                 EctViewRequestAction.fillFormValues(thisForm,consultUtil);
-				
-                if( "true".equalsIgnoreCase( props.getProperty("CONSULTATION_AUTO_INCLUDE_ALLERGIES", "true") ) ) { 
+
+                if( "true".equalsIgnoreCase( props.getProperty("CONSULTATION_AUTO_INCLUDE_ALLERGIES", "true") ) ) {
                 	String allergies = RxInfo.getAllergies( loggedInInfo, demo );
 					thisForm.setAllergies( allergies );
                 }
-                
+
                 if( "true".equalsIgnoreCase( props.getProperty( "CONSULTATION_AUTO_INCLUDE_MEDICATIONS", "true" ) ) ) {
 					if (props.getProperty("currentMedications", "").equalsIgnoreCase("otherMedications"))
 					{
@@ -1563,7 +1584,7 @@ function clearAppointmentDateAndTime() {
 						thisForm.setCurrentMedications(RxInfo.getCurrentMedication(demo));
 					}
                 }
-                
+
 				team = consultUtil.getProviderTeam(consultUtil.mrp);
 			}
 
@@ -1612,7 +1633,7 @@ function clearAppointmentDateAndTime() {
 						</h2>
 					</td>
 						<% if ("ocean".equals(props.get("cme_js"))) { %>
-					<td>						
+					<td>
                         <span id="ocean" style="display:none"></span>
                         <% if (requestId == null) { %>
 						<span id="oceanReferButton" class="oceanRefer"></span>
@@ -1752,7 +1773,7 @@ function clearAppointmentDateAndTime() {
 									</td>
 								</tr>
 							</c:forEach>
-						</table></td></tr>	
+						</table></td></tr>
 
 						<tr><td><table id="attachedDocumentsTable">
 							<tr>
@@ -1760,7 +1781,7 @@ function clearAppointmentDateAndTime() {
 							</tr>
 							<c:forEach items="${ attachedDocuments }" var="attachedDocument">
 								<tr id="entry_docNo${ attachedDocument.docId }">
-									<td> 
+									<td>
 										<c:out value="${ attachedDocument.description }" />
 										<input name="docNo" value="${ attachedDocument.docId }" id="delegate_docNo${ attachedDocument.docId }" class="delegateAttachment" type="hidden">
 									</td>
@@ -1774,7 +1795,7 @@ function clearAppointmentDateAndTime() {
 							</tr>
 							<c:forEach items="${ attachedLabs }" var="attachedLab">
 								<tr id="entry_labNo${ attachedLab.segmentID }">
-									<td> 
+									<td>
 										<c:set var="labName" value="${ fn:trim(attachedLab.label) != '' ? attachedLab.label : attachedLab.discipline}" />
 										<c:if test="${empty labName}"><c:set var="labName" value="UNLABELLED" /></c:if>
 										<c:out value="${attachedLab.description} ${ labName }" />
@@ -1834,18 +1855,18 @@ function clearAppointmentDateAndTime() {
 				<% if (thisForm.geteReferralId() == null) { %>
 				<tr>
 					<td class="tite4 controlPanel" colspan=2>
-	
+
 					<% if (request.getAttribute("id") != null) { %>
 						<input name="update" type="button" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdate"/>" onclick="return checkForm('Update Consultation Request','EctConsultationFormRequestForm');" />
 						<input name="updateAndPrint" type="button" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndPrint"/>" onclick="return checkForm('Update Consultation Request And Print Preview','EctConsultationFormRequestForm');" />
 						<input name="printPreview" type="button" value="Print Preview" onclick="return checkForm('And Print Preview','EctConsultationFormRequestForm');" />
-												
+
 						<logic:equal value="true" name="EctConsultationFormRequestForm" property="eReferral">
-							<input name="updateAndSendElectronicallyTop" type="button" 
-								value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndSendElectronicReferral"/>" 
+							<input name="updateAndSendElectronicallyTop" type="button"
+								value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndSendElectronicReferral"/>"
 								onclick="return checkForm('Update_esend','EctConsultationFormRequestForm');" />
 						</logic:equal>
-			
+
 						<oscar:oscarPropertiesCheck value="yes" property="consultation_fax_enabled">
 							<input id="fax_button" name="updateAndFax" type="button" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndFax"/>" onclick="return checkForm('Update And Fax','EctConsultationFormRequestForm');" />
 						</oscar:oscarPropertiesCheck>
@@ -1855,11 +1876,11 @@ function clearAppointmentDateAndTime() {
 						<input name="submitAndPrint" type="button" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndPrint"/>" onclick="return checkForm('Submit Consultation Request And Print Preview','EctConsultationFormRequestForm'); " />
 
 						<logic:equal value="true" name="EctConsultationFormRequestForm" property="eReferral">
-							<input name="submitAndSendElectronicallyTop" type="button" 
-							value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndSendElectronicReferral"/>" 
+							<input name="submitAndSendElectronicallyTop" type="button"
+							value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndSendElectronicReferral"/>"
 							onclick="return checkForm('Submit_esend','EctConsultationFormRequestForm');" />
 						</logic:equal>
-				
+
 						<oscar:oscarPropertiesCheck value="yes" property="consultation_fax_enabled">
 							<input id="fax_button" name="submitAndFax" type="button" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndFax"/>" onclick="return checkForm('Submit And Fax','EctConsultationFormRequestForm');" />
 						</oscar:oscarPropertiesCheck>
@@ -1894,34 +1915,34 @@ function clearAppointmentDateAndTime() {
 							</td>
 						</tr>
 						<% } %>
-						<tr>						
+						<tr>
 						<td class="tite4">
 							<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.formRefDate" />
 						</td>
-								
-						<oscar:oscarPropertiesCheck value="false" property="CONSULTATION_LOCK_REFERRAL_DATE">	
+
+						<oscar:oscarPropertiesCheck value="false" property="CONSULTATION_LOCK_REFERRAL_DATE">
 	                            <td class="tite3">
-	                            <img alt="calendar" id="referalDate_cal" src="../../images/cal.gif" /> 
+	                            <img alt="calendar" id="referalDate_cal" src="../../images/cal.gif" />
 								<%
 								if (request.getAttribute("id") != null)	{
-								%> 
+								%>
 								<html:text styleId="referalDate" property="referalDate" ondblclick="this.value='';"/>
 								 <%
 	 							} else {
-	 							%> 
+	 							%>
 	 							<html:text styleId="referalDate" property="referalDate" ondblclick="this.value='';" value="<%=formattedDate%>"/>
 	 							<%
 	 							}
 		 						%>
-								</td>							
+								</td>
 						</oscar:oscarPropertiesCheck>
-						
+
 						<oscar:oscarPropertiesCheck value="true" property="CONSULTATION_LOCK_REFERRAL_DATE">
-						
+
 								<td  class="tite3" >
 									<html:text styleId="referalDate" property="referalDate" readonly="true" value="<%=formattedDate%>" />
 								</td>
-													
+
 						</oscar:oscarPropertiesCheck>
 
 						</tr>
@@ -1934,7 +1955,7 @@ function clearAppointmentDateAndTime() {
 									<%= thisForm.geteReferralService() %>
 								<% } else { %>
 									<html:select styleId="service" property="service" onchange="fillSpecialistSelect(this);"></html:select>
-								<% } %>							
+								<% } %>
 								</td>
 							</tr>
 						</oscar:oscarPropertiesCheck>
@@ -1943,22 +1964,22 @@ function clearAppointmentDateAndTime() {
 							</td>
 							<td  class="tite3">
 							<% if (thisForm.iseReferral()) { %>
-							
-									<%=thisForm.getProfessionalSpecialistName()%>	
-																
+
+									<%=thisForm.getProfessionalSpecialistName()%>
+
 							<% } else if( OscarProperties.getInstance().getBooleanProperty("ENABLE_HEALTH_CARE_TEAM_IN_CONSULTATION_REQUESTS", "true") ) { %>
-								
-									<select name="specialist" id="specialist" onchange="getSpecialist(this)" >	
-										<c:forEach items="${ healthCareTeam }" var="contact" varStatus="loop">											
+
+									<select name="specialist" id="specialist" onchange="getSpecialist(this)" >
+										<c:forEach items="${ healthCareTeam }" var="contact" varStatus="loop">
 											<option value="${ contact.id }" ${ specialist eq contact.id ? 'selected' : ''} >
 												${ contact.details.formattedName } ( ${ contact.role } )
 											</option>
 										</c:forEach>
 									</select>
-								
+
 							<% } else { %>
-									
-									<span id="consult-disclaimer" title="When consult was saved this was the saved consultant but is no longer on this specialist list." style="display:none;font-size:24px;" >*</span> 
+
+									<span id="consult-disclaimer" title="When consult was saved this was the saved consultant but is no longer on this specialist list." style="display:none;font-size:24px;" >*</span>
 									<html:select styleId="specialist" property="specialist" size="1" onchange="onSelectSpecialist(this)" ></html:select>
 
 							<%} // end specialist list condition block %>
@@ -1970,14 +1991,14 @@ function clearAppointmentDateAndTime() {
 								<input type="hidden" id="hctService" name="service" value="0" />
 							</td>
 							<td class="tite4" style="font-size:11px;" >
-								<a href="javascript:void(0);" 
+								<a href="javascript:void(0);"
 								onclick="popupPage(500,700,'${ctx}/demographic/Contact.do?method=manageContactList&contactList=HCT&view=detached&demographic_no=<%=demo%>' ); return false;" >
 									edit Health Care Team
 								</a>
 							</td>
 						</tr>
 						</oscar:oscarPropertiesCheck>
-                                                
+
                         <tr>
                             <td class="tite4">
                                 <bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.formInstructions" /> </br><br>
@@ -2016,7 +2037,7 @@ function clearAppointmentDateAndTime() {
 									<span style="font-size:80%;color:red;" >Status: <c:out value="${ consultUtil.specialistFaxLog.status }" /></span>
 								</c:if>
 							</td>
-							<td  class="tite3">							
+							<td  class="tite3">
 								<input readonly type="text" name="fax" class="righty" />
 							</td>
 						</tr>
@@ -2029,13 +2050,13 @@ function clearAppointmentDateAndTime() {
 								<textarea readonly name="address" rows="5" ><%=thisForm.getProfessionalSpecialistAddress()%></textarea>
 							</td>
 						</tr>
-	
+
 						<oscar:oscarPropertiesCheck defaultVal="false" value="true" property="CONSULTATION_APPOINTMENT_INSTRUCTIONS_LOOKUP">
 							<tr>
 								<td class="tite4">
 									<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.appointmentInstr" />
 								</td>
-								<td  class="tite3">														
+								<td  class="tite3">
 									<html:select property="appointmentInstructions" styleId="appointmentInstructions" >
 										<html:option value="" ></html:option>
 										<c:forEach items="${ appointmentInstructionList.items }" var="appointmentInstruction">
@@ -2045,11 +2066,11 @@ function clearAppointmentDateAndTime() {
 													<c:out value="${ appointmentInstruction.label }" />
 												</html:option>
 											</c:if>
-										</c:forEach>								
+										</c:forEach>
 									</html:select>
 								</td>
 							</tr>
-						</oscar:oscarPropertiesCheck>	
+						</oscar:oscarPropertiesCheck>
 						<oscar:oscarPropertiesCheck defaultVal="false" value="true" property="CONSULTATION_PATIENT_WILL_BOOK">
 							<tr>
 								<td class="tite4"><bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.formPatientBook" /></td>
@@ -2057,12 +2078,12 @@ function clearAppointmentDateAndTime() {
 								</html:checkbox></td>
 							</tr>
 						</oscar:oscarPropertiesCheck>
-	
-	
-						<tr>						
+
+
+						<tr>
 							<td class="tite4"><bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnAppointmentDate" />
 							</td>
-                            <td  class="tite3"><img alt="calendar" id="appointmentDate_cal" src="../../images/cal.gif"> 
+                            <td  class="tite3"><img alt="calendar" id="appointmentDate_cal" src="../../images/cal.gif">
  							<html:text styleId="appointmentDate" property="appointmentDate" readonly="true" ondblclick="this.value='';" />
 							</td>
 						</tr>
@@ -2103,11 +2124,11 @@ function clearAppointmentDateAndTime() {
 									<td><html:select property="appointmentPm">
 										<html:option value="AM">AM</html:option>
 										<html:option value="PM">PM</html:option>
-									</html:select></td>					
+									</html:select></td>
 									<td><input type="button" value="Clear Date & Time" onclick="clearAppointmentDateAndTime()" /></td>
 								</tr>
 							</table>
-			
+
 							</td>
 						</tr>
 						<%if (bMultisites) { %>
@@ -2215,8 +2236,8 @@ function clearAppointmentDateAndTime() {
 						<tr>
 							<td colspan="2" class="tite3"><html:textarea property="appointmentNotes"></html:textarea></td>
 						</tr>
-                       
-						
+
+
 						<tr>
 							<td class="tite4"><bean:message
 								key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.formLastFollowup" />
@@ -2225,9 +2246,9 @@ function clearAppointmentDateAndTime() {
 	                             <img alt="calendar" id="followUpDate_cal" src="../../images/cal.gif" />
 	                             <html:text styleId="followUpDate" property="followUpDate" ondblclick="this.value='';" />
                              </td>
-						
+
 						</tr>
-						
+
 						<%
 							if(thisForm.getFdid() != null) {
 						%>
@@ -2250,13 +2271,13 @@ function clearAppointmentDateAndTime() {
 					<td colspan="2">
 					<table>
 						<tr>
-						
+
 							<td class="tite4">
 								<label for="letterheadName">
 									<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.letterheadName" />
 								</label>
-							</td>							
-							<td  class="tite1">				
+							</td>
+							<td  class="tite1">
 								<select name="letterheadName" id="letterheadName" onchange="switchProvider(this.value)">
 									<option value="<%=Encode.forHtmlAttribute(clinic.getClinicName())%>" <%=(consultUtil.letterheadName != null && consultUtil.letterheadName.equalsIgnoreCase(clinic.getClinicName())) ? "selected='selected'" : (lhndType.equals("clinic") ? "selected='selected'" : "") %>>
 										<%=Encode.forHtmlContent(clinic.getClinicName()) %>
@@ -2265,7 +2286,7 @@ function clearAppointmentDateAndTime() {
 									for (Provider p : prList) {
 										if (p.getProviderNo().compareTo("-1") != 0 && (p.getFirstName() != null || p.getSurname() != null)) {
 								%>
-								<option value="<%=p.getProviderNo() %>" 
+								<option value="<%=p.getProviderNo() %>"
 								<%=(consultUtil.letterheadName != null && consultUtil.letterheadName.equalsIgnoreCase(p.getProviderNo())) ? "selected='selected'"  : (consultUtil.letterheadName == null && p.getProviderNo().equalsIgnoreCase(providerDefault) && lhndType.equals("provider") ? "selected='selected'"  : "") %>>
 									<%=Encode.forHtmlContent(p.getSurname())%>,&nbsp;<%=Encode.forHtmlContent(p.getFirstName().replace("Dr.", ""))%>
 								</option>
@@ -2315,7 +2336,7 @@ function clearAppointmentDateAndTime() {
 								%>
 									<input type="hidden" name="letterheadPhone" id="letterheadPhone" value="<%=Encode.forHtmlAttribute(consultUtil.letterheadPhone) %>" />
 								 	<span id="letterheadPhoneSpan">
-										<%=consultUtil.letterheadPhone%>
+										<%=Encode.forHtmlContent(consultUtil.letterheadPhone)%>
 									</span>
 								<% } else { %>
 									<input type="hidden" name="letterheadPhone" id="letterheadPhone" value="<%=Encode.forHtmlAttribute(clinic.getClinicPhone()) %>" />
@@ -2326,35 +2347,66 @@ function clearAppointmentDateAndTime() {
 							</td>
 						</tr>
 						<tr>
-							<td class="tite4">
-								<label for="letterheadFax"><bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.letterheadFax" /></label>
+							<td class="tite4" style="width:30%;">
+								<label for="letterheadFaxSpan"><bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.letterheadFax" /></label>
 							</td>
-							<td  class="tite1">
-							   <%								
-									FaxConfigDao faxConfigDao = SpringUtils.getBean(FaxConfigDao.class);
-									List<FaxConfig> faxConfigs = faxConfigDao.findAll(null, null);
-								%>
-									<span id="letterheadFaxSpan">
-										<select name="letterheadFax" id="letterheadFax">
-								<%
-									for( FaxConfig faxConfig : faxConfigs ) {
-								%>
-										<option value="<%=Encode.forHtmlAttribute(faxConfig.getFaxNumber())%>" <%=faxConfig.getFaxNumber().equalsIgnoreCase(consultUtil.letterheadFax) ? "selected" : ""%>><%=Encode.forHtmlContent(faxConfig.getAccountName())%></option>
-								<%	    
-									}								
-								%>
-									</select>
-								</span>
-							
+							<td  class="tite1" style="width:70%;">
+								<c:choose>
+								    <c:when test="${not empty consultUtil.letterheadFax}">
+									    <input type="hidden" name="letterheadFax" id="letterheadFax" value="<encode:forHtmlAttribute value="${consultUtil.letterheadFax}"/>" />
+									    <span id="letterheadFaxSpan">
+										    <c:out value="${consultUtil.letterheadFax}" />
+									    </span>
+								    </c:when>
+									<c:otherwise>
+										<input type="hidden" name="letterheadFax" id="letterheadFax" value="<%=Encode.forHtmlContent(clinic.getClinicFax())%>" />
+										<span id="letterheadFaxSpan">
+										    <%=Encode.forHtmlContent(clinic.getClinicFax())%>
+									    </span>
+									</c:otherwise>
+								</c:choose>
 							</td>
 						</tr>
 					</table>
 					</td>
 				</tr>
 				<% if (props.isConsultationFaxEnabled()) { %>
-	
 					<tr>
-						<td colspan=2 class="tite4 heading">									
+						<td colspan=2 class="tite4 heading">
+							Fax Account
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<table>
+								<tr>
+									<td class="tite4" style="width:30%;">
+										<label for="faxAccount">Select Account</label>
+									</td>
+									<td class="tite1" style="width:70%;">
+										<%
+											FaxConfigDao faxConfigDao = SpringUtils.getBean(FaxConfigDao.class);
+											List<FaxConfig> faxConfigs = faxConfigDao.findAll(null, null);
+										%>
+										<select name="faxAccount" id="faxAccount">
+											<%
+												for( FaxConfig faxConfig : faxConfigs ) {
+											%>
+													<option value="<%=Encode.forHtmlAttribute(faxConfig.getFaxNumber())%>"
+															<%=faxConfig.getFaxNumber().equalsIgnoreCase(consultUtil.letterheadFax) ? "selected" : ""%>>
+														<%=Encode.forHtmlContent(faxConfig.getAccountName())%>
+													</option>
+											<%
+												}
+											%>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2 class="tite4 heading">
 							Additional Fax Recipients
 						</td>
 					</tr>
@@ -2366,14 +2418,14 @@ function clearAppointmentDateAndTime() {
 									<td class="tite4">
 										Name <input type="text" id="searchHealthCareTeamInput" value="" placeholder="last, first"  />
 									</td>
-									
+
 									<td class="tite4">
 										Fax <input type="text" id="copytoSpecialistFax" placeholder="xxx-xxx-xxxx" value="" />
 									</td>
 									<td class="tite4">
 										<button onclick="AddOtherFaxProvider(); return false;" > Add Recipient </button>
 									</td>
-								</tr>									
+								</tr>
 								<c:if test="${ not empty consultUtil.copyToFaxLog }">
 									<c:forEach items="${ consultUtil.copyToFaxLog }" var="faxLog">
 										<tr>
@@ -2387,11 +2439,11 @@ function clearAppointmentDateAndTime() {
 									</c:forEach>
 								</c:if>
 							</table>
-						</td>	
+						</td>
 					</tr>
 				<% } %>
-				
-	
+
+
 				<tr>
 					<td colspan="2" class="tite4 heading"><bean:message
 						key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.formReason" />
@@ -2407,7 +2459,7 @@ function clearAppointmentDateAndTime() {
 					<table style="border-collapse: collapse;" width="100%">
 						<tr>
 							<td width="30%" class="tite4 heading">
-								<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.formClinInf" />						
+								<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.formClinInf" />
 							</td>
 							<td id="clinicalInfoButtonBar" class="tite4 buttonBar" >
 								<% if (thisForm.geteReferralId() == null) { %>
@@ -2416,7 +2468,7 @@ function clearAppointmentDateAndTime() {
 								<input id="MedHistory_clinicalInformation" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportMedHistory"/>"  />
 								<input id="Concerns_clinicalInformation" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportConcerns"/>"  />
 								<input id="OMeds_clinicalInformation" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportOtherMeds"/>"  />
-								<input id="Reminders_clinicalInformation" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportReminders"/>"  />								
+								<input id="Reminders_clinicalInformation" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportReminders"/>"  />
 								<input id="RiskFactors_clinicalInformation" type="button" class="btn clinicalData" value="Risk Factors" />
 								<input id="fetchMedications_clinicalInformation" type="button" class="btn medicationData" value="Active Medications" />
 								<input id="fetchLongTermMedications_clinicalInformation" type="button" class="btn medicationData" value="Long Term Medications" />
@@ -2454,7 +2506,7 @@ function clearAppointmentDateAndTime() {
 								<input id="MedHistory_concurrentProblems" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportMedHistory"/>"  />
 								<input id="Concerns_concurrentProblems" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportConcerns"/>"  />
 								<input id="OMeds_concurrentProblems" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportOtherMeds"/>"  />
-								<input id="Reminders_concurrentProblems" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportReminders"/>"  />	
+								<input id="Reminders_concurrentProblems" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportReminders"/>"  />
 								<input id="RiskFactors_concurrentProblems" type="button" class="btn clinicalData" value="Risk Factors" />
 								<input id="fetchMedications_concurrentProblems" type="button" class="btn medicationData" value="Active Medications" />
 								<input id="fetchLongTermMedications_concurrentProblems" type="button" class="btn medicationData" value="Long Term Medications" />
@@ -2467,7 +2519,7 @@ function clearAppointmentDateAndTime() {
 				</tr>
 				<tr id="trConcurrentProblems">
 					<td colspan=2>
-					
+
 					<html:textarea rows="10" styleId="concurrentProblems" property="concurrentProblems"></html:textarea>
 					</td>
 				</tr>
@@ -2478,13 +2530,13 @@ function clearAppointmentDateAndTime() {
 							<td width="30%" class="tite4 heading">
 								<% if (props.getProperty("currentMedicationsTitle", "").length() > 1) {
 									out.print( props.getProperty("currentMedicationsTitle", "") );
-								}else { %> 										
+								}else { %>
 									<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.formCurrMedications" />
 								<% }  %>
 							</td>
 							<td id="medsButtonBar" class="tite4 buttonBar">
 								<% if (thisForm.geteReferralId() == null) { %>
-								<input id="OMeds_currentMedications" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportOtherMeds"/>"  />								
+								<input id="OMeds_currentMedications" type="button" class="btn clinicalData" value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnImportOtherMeds"/>"  />
 								<input id="fetchMedications_currentMedications" type="button" class="btn medicationData" value="Active Medications" />
 								<input id="fetchLongTermMedications_currentMedications" type="button" class="btn medicationData" value="Long Term Medications" />
 								<% } %>
@@ -2510,7 +2562,7 @@ function clearAppointmentDateAndTime() {
 								<input id="fetchAllergies_allergies" type="button" class="btn medicationData" value="Allergies" />
 								<% } %>
 							</td>
-						</tr>						
+						</tr>
 						</table>
 					</td>
 					</tr>
@@ -2550,64 +2602,64 @@ function clearAppointmentDateAndTime() {
 
 				<td colspan=2 class="tite4 controlPanel">
 						<input type="hidden" name="submission" value="" />
-						
+
 						<%if (request.getAttribute("id") != null) {%>
-						
-							<input name="update" type="button" 
-								value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdate"/>" 
+
+							<input name="update" type="button"
+								value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdate"/>"
 								onclick="return checkForm('Update Consultation Request','EctConsultationFormRequestForm');" />
-							<input name="updateAndPrint" type="button" 
-								value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndPrint"/>" 
+							<input name="updateAndPrint" type="button"
+								value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndPrint"/>"
 								onclick="return checkForm('Update Consultation Request And Print Preview','EctConsultationFormRequestForm');" />
-							
+
 							<logic:equal value="true" name="EctConsultationFormRequestForm" property="eReferral">
-								<input name="updateAndSendElectronically" type="button" 
-									value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndSendElectronicReferral"/>" 
+								<input name="updateAndSendElectronically" type="button"
+									value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndSendElectronicReferral"/>"
 									onclick="return checkForm('Update_esend','EctConsultationFormRequestForm');" />
 							</logic:equal>
-							
+
 							<oscar:oscarPropertiesCheck value="yes" property="consultation_fax_enabled">
-								<input id="fax_button2" name="updateAndFax" type="button" 
-									value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndFax"/>" 
+								<input id="fax_button2" name="updateAndFax" type="button"
+									value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndFax"/>"
 									onclick="return checkForm('Update And Fax','EctConsultationFormRequestForm');" />
 							</oscar:oscarPropertiesCheck>
-							
+
 						<%} else {%>
-						
-							<input name="submitSaveOnly" type="button" 
-								value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmit"/>" 
+
+							<input name="submitSaveOnly" type="button"
+								value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmit"/>"
 								onclick="return checkForm('Submit Consultation Request','EctConsultationFormRequestForm'); " />
-							<input name="submitAndPrint" type="button" 
-								value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndPrint"/>" 
+							<input name="submitAndPrint" type="button"
+								value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndPrint"/>"
 								onclick="return checkForm('Submit Consultation Request And Print Preview','EctConsultationFormRequestForm'); " />
-								
+
 							<logic:equal value="true" property="eReferral" name="EctConsultationFormRequestForm" >
-								<input name="submitAndSendElectronically" type="button" 
-									value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndSendElectronicReferral"/>" 
+								<input name="submitAndSendElectronically" type="button"
+									value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndSendElectronicReferral"/>"
 									onclick="return checkForm('Submit_esend','EctConsultationFormRequestForm');" />
 							</logic:equal>
 							<oscar:oscarPropertiesCheck value="yes" property="consultation_fax_enabled">
-								<input id="fax_button2" name="submitAndFax" type="button" 
-									value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndFax"/>" 
+								<input id="fax_button2" name="submitAndFax" type="button"
+									value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndFax"/>"
 									onclick="return checkForm('Submit And Fax','EctConsultationFormRequestForm');" />
 							</oscar:oscarPropertiesCheck>
 							<logic:equal value="true" name="EctConsultationFormRequestForm" property="eReferral">
 									<input type="button" value="Send eResponse" onclick="$('saved').value='true';document.location='<%=thisForm.getOruR01UrlString(request)%>'" />
 							</logic:equal>
-							
+
 						<% }%>
-						
+
 					</td>
 				</tr>
 				<% } %>
-				
+
 			<script type="text/javascript">
 			//<!--
 				function initConsultationServices() {
 					initMaster();
 			        initService('<%=consultUtil.service%>','<%=((consultUtil.service==null)?"":Encode.forJavaScript(consultUtil.getServiceName(consultUtil.service.toString())))%>','<%=consultUtil.specialist%>','<%=((consultUtil.specialist==null)?"":Encode.forJavaScript(consultUtil.getSpecailistsName(consultUtil.specialist.toString())))%>','<%=Encode.forJavaScript(consultUtil.specPhone)%>','<%=Encode.forJavaScript(consultUtil.specFax)%>','<%=Encode.forJavaScript(consultUtil.specAddr)%>');
 		            initSpec();
-		            
+
 		            document.EctConsultationFormRequestForm.phone.value = ("");
 		        	document.EctConsultationFormRequestForm.fax.value = ("");
 		        	document.EctConsultationFormRequestForm.address.value = ("");
@@ -2621,16 +2673,16 @@ function clearAppointmentDateAndTime() {
 		                document.EctConsultationFormRequestForm.service.options.selectedIndex = 0;
 		                document.EctConsultationFormRequestForm.specialist.options.selectedIndex = 0;
 		            <%}%>
-		
+
 		            onSelectSpecialist(document.EctConsultationFormRequestForm.specialist);
-		            
+
 		            <%
-		            	//new with BORN referrals. Allow form to be loaded with service and 
+		            	//new with BORN referrals. Allow form to be loaded with service and
 		            	//specialist pre-selected
 		            	String reqService = request.getParameter("service");
-		            	
+
 		            	String reqSpecialist = request.getParameter("specialist");
-		            	
+
 		            	if(reqService != null && reqSpecialist != null) {
 		            		ConsultationServices consultService = consultationServiceDao.findByDescription(reqService);
 		            		if(consultService != null) {
@@ -2641,7 +2693,7 @@ function clearAppointmentDateAndTime() {
 		            		onSelectSpecialist(document.getElementById('specialist'));
 		            		<%
 		            	} }
-		            	
+
 		            	String serviceId = request.getParameter("serviceId");
 		            	if(serviceId != null) {
 		            		%>
@@ -2653,7 +2705,7 @@ function clearAppointmentDateAndTime() {
 				}
         //-->
         </script>
-        
+
        	<oscar:oscarPropertiesCheck value="false" property="ENABLE_HEALTH_CARE_TEAM_IN_CONSULTATION_REQUESTS" defaultVal="false" >
 			<script type="text/javascript">
 			//<!--
@@ -2661,7 +2713,7 @@ function clearAppointmentDateAndTime() {
 			//-->
 			</script>
 		</oscar:oscarPropertiesCheck>
-		
+
 		<oscar:oscarPropertiesCheck value="true" property="ENABLE_HEALTH_CARE_TEAM_IN_CONSULTATION_REQUESTS" defaultVal="false" >
 			<script type="text/javascript">
 				const specialist = "${ consultUtil.specialist }";
@@ -2671,9 +2723,9 @@ function clearAppointmentDateAndTime() {
 				document.EctConsultationFormRequestForm.service.value = servicevalue;
 
 				if(  typeof healthCareTeam !== 'undefined' && healthCareTeam !== null ) {
-					document.EctConsultationFormRequestForm.annotation.value = healthCareTeam[ specialist ].note; 
+					document.EctConsultationFormRequestForm.annotation.value = healthCareTeam[ specialist ].note;
 					document.EctConsultationFormRequestForm.phone.value = healthCareTeam[ specialist ].phoneNum;
-					document.EctConsultationFormRequestForm.fax.value = healthCareTeam[ specialist ].specFax;					
+					document.EctConsultationFormRequestForm.fax.value = healthCareTeam[ specialist ].specFax;
 					document.EctConsultationFormRequestForm.address.value = healthCareTeam[ specialist ].specAddress;
 				}
 
@@ -2701,42 +2753,42 @@ function clearAppointmentDateAndTime() {
 jQuery(document).ready( function() {
 	var ctx = "${pageContext.request.contextPath}";
 	//--> Autocomplete searches
-	jQuery( "#searchHealthCareTeamInput" ).autocomplete({				
-		source: function( request, response ) { 
+	jQuery( "#searchHealthCareTeamInput" ).autocomplete({
+		source: function( request, response ) {
 			var url = ctx + "/demographic/Contact.do?method=searchAllContacts&searchMode=search_name&orderBy=c.lastName,c.firstName";
 			jQuery.ajax({
 				url: url,
 				type: "GET",
 				dataType: "json",
 				data: {
-				 	term: request.term   			  
+				 	term: request.term
 				},
 				contentType: "application/json",
 				success: function( data ) {
-					response(jQuery.map(data, function( item ) {					
+					response(jQuery.map(data, function( item ) {
 						return {
-						  label: item.lastName + ", " 
+						  label: item.lastName + ", "
 						  + item.firstName + " :: "
 						  + item.residencePhone
-						  + " :: " + item.address 
+						  + " :: " + item.address
 						  + " " + item.city,
 						  value: item.id,
 						  contact: item
-						 }						 
+						 }
 					}));
 				}
 			});
 	    },
-	    minLength: 2,  
+	    minLength: 2,
 	    focus: function( event, ui ) {
 	    		event.preventDefault();
 	        return false;
 	    },
-	    select: function(event, ui) { 
-	    		event.preventDefault(); 	    		
+	    select: function(event, ui) {
+	    		event.preventDefault();
 	    		jQuery("#copytoSpecialistFax").val(ui.item.contact.fax);
 	    		jQuery("#searchHealthCareTeamInput").val( ui.item.contact.lastName + ", " + ui.item.contact.firstName );
-	    }      
+	    }
 	});
 })
 </script>
@@ -2750,9 +2802,9 @@ Calendar.setup( { inputField : "appointmentDate", ifFormat : "%Y/%m/%d", showsTi
 	Calendar.setup( { inputField : "referalDate", ifFormat : "%Y/%m/%d", showsTime :false, trigger : "referalDate", singleClick : true, step : 1 } );
 <%}%>
 jQuery(document).ready(function(){
-	
+
 	/**
-	 * This function adds the old form to the attachment window only if that form is displayed in the consultForm/eForm attachments. 
+	 * This function adds the old form to the attachment window only if that form is displayed in the consultForm/eForm attachments.
 	 * The attachment window only displays the latest (updated) forms.
 	 */
 	function addFormIfNotFound(form, demographicNo, delegate) {
@@ -2789,15 +2841,15 @@ jQuery(document).ready(function(){
 			class: 'form',
 		}).append(checkbox).append(label).append(previewButton);
 		jQuery('#formList').find('.selectAllHeading').after(newLiFormElement);
-		
+
 		return jQuery('#attachDocumentsForm').find(delegate);
 	}
 
 	/**
-		DOCUMENT ATTACHMENT MANAGER JAVASCRIPT		
+		DOCUMENT ATTACHMENT MANAGER JAVASCRIPT
 	**/
 	jQuery(document).on( 'click', '*[data-poload]', function() {
-		
+
 		var trigger = jQuery(this);
 		trigger.off('click');
 		var triggerId = "#" + trigger.attr('id');
@@ -2877,11 +2929,11 @@ jQuery(document).ready(function(){
 
 					jQuery('#consultationRequestForm').find(target).append(row);
 				});
-			
+
 				// remove unchecked elements from the request form.
 				jQuery('#attachDocumentsForm').find(".document_pre_check:not(input[disabled='disabled']), .lab_pre_check:not(input[disabled='disabled']), .form_pre_check:not(input[disabled='disabled']), .eForm_pre_check:not(input[disabled='disabled']), .hrm_pre_check:not(input[disabled='disabled'])").each(function(index,data){
 					var checkedElement = jQuery(this);
-				
+
 					if( !checkedElement.is(':checked') ) {
 						var checkedElementClass = checkedElement.attr("class");
 						jQuery('#consultationRequestForm').find("#entry_" + checkedElement.attr("id")).remove();
