@@ -66,7 +66,7 @@ import ca.ontario.health.ebs.idp.IdpHeader;
  * to 1
  * 
  * <p/>
- * 
+ *
  * The service requester must sign all headers and the body using a certificate
  * issued by an issuer approved by MHLTC. The signature must meet the following requirements:
  * Identifier Type
@@ -128,7 +128,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Initializes the EdtClientBuilder with the specified configuration.
-	 * 
+	 *
 	 * @param config the configuration to be used by this builder
 	 */
 	public EdtClientBuilder(EdtClientBuilderConfig config) {
@@ -138,7 +138,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Retrieves the current configuration for this client builder.
-	 * 
+	 *
 	 * @return the configuration being used by this client builder
 	 */
 	public EdtClientBuilderConfig getConfig() {
@@ -147,7 +147,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Sets the configuration for this client builder.
-	 * 
+	 *
 	 * @param config the configuration to set
 	 */
 	public void setConfig(EdtClientBuilderConfig config) {
@@ -156,7 +156,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Initializes service client for carrying out the request operation.
-	 * 
+	 *
 	 * @param clientClass the class of the service client to be built
      * @return an instance of the service client
      * @param <T> the type of the service client
@@ -199,7 +199,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Creates a new delegate instance of the specified client class.
-	 * 
+	 *
 	 * @param clientClass the class of the client to create
 	 * @return a new instance of the client
 	 * @param <T> the type of the client class
@@ -214,7 +214,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Configures the header list to be included in the SOAP request.
-	 * 
+	 *
 	 * @param bindingProvider the binding provider to configure
 	 * @throws Exception if an error occurs during configuration
 	 */
@@ -244,7 +244,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Configures the inbound interceptors for the client.
-	 * 
+	 *
 	 * @param client the client to configure
 	 */
 	protected void configureInInterceptor(Client client) {
@@ -261,7 +261,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Creates a new configuration for the inbound WSS4J interceptor.
-	 * 
+	 *
 	 * @return a map of properties for configuring the inbound interceptor
 	 */
 	protected Map<String, Object> newWSSInInterceptorConfiguration() {
@@ -277,7 +277,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Configures the outbound interceptors for the client.
-	 * 
+	 *
 	 * @param client the client to configure
 	 */
 	protected void configureOutInterceptor(Client client) {
@@ -293,7 +293,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Creates a new configuration for the outbound WSS4J interceptor.
-	 * 
+	 *
 	 * @return a map of properties for configuring the outbound interceptor
 	 */
 	protected Map<String, Object> newWSSOutInterceptorConfiguration() {
@@ -316,7 +316,7 @@ public class EdtClientBuilder {
 	/**
 	 * Returns the CXF directives for the outbound handler configuration, including
 	 * additional encryption directives.
-	 * 
+	 *
 	 * @return a string of directives for the outbound handler, including encryption
 	 */
 	protected String getCxfOutHandlerDirectives() {
@@ -325,9 +325,9 @@ public class EdtClientBuilder {
 	}
 
 	/**
-	 * Returns the CXF directives for the outbound handler configuration, specifying 
+	 * Returns the CXF directives for the outbound handler configuration, specifying
 	 * the required security actions such as username token, timestamp, and signature.
-	 * 
+	 *
 	 * @return a string of directives for the outbound handler
 	 */
 	protected String getCxfOutHandlerDriectives() {
@@ -338,7 +338,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Creates a new callback for client password handling.
-	 * 
+	 *
 	 * @return a new ClientPasswordCallback instance
 	 */
 	protected ClientPasswordCallback newCallback() {
@@ -348,7 +348,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Creates an IDP header with the specified user MUID.
-	 * 
+	 *
 	 * @param userMuid the user MUID to include in the header
 	 * @return a new IdpHeader instance
 	 */
@@ -360,7 +360,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Configures SSL settings for the specified HTTP conduit.
-	 * 
+	 *
 	 * @param httpConduit the HTTP conduit to configure
 	 */
 	public static void configureSsl(HTTPConduit httpConduit) {
@@ -379,7 +379,7 @@ public class EdtClientBuilder {
 
 	/**
 	 * Sets the client keystore filename to the specified file in the classpath.
-	 * 
+	 *
 	 * @param fileInClassPath the filename of the keystore in the classpath
 	 */
 	public static void setClientKeystoreFilename(String fileInClassPath) {
