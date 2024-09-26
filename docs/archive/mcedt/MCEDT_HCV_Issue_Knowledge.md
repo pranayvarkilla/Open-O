@@ -1,4 +1,4 @@
-# MCEDT and HCV Issue Knowledge
+MCEDT and HCV Issue Knowledge
 
 The MCEDT and HCV functionalities are working now, this document is a reference for future review / update / fix.
 
