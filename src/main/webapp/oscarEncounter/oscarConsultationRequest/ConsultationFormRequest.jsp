@@ -330,10 +330,11 @@ if( demo != null && "true".equals( props.getProperty("ENABLE_HEALTH_CARE_TEAM_IN
 
 	setHealthCareTeam( demographicContacts, healthCareTeam, consultationServices, consultationServiceDao );
 
-	pageContext.setAttribute("consultUtil", consultUtil);
 	pageContext.setAttribute( "consultationServices", consultationServices );
 	pageContext.setAttribute( "healthCareTeam", healthCareTeam );
 }
+
+	pageContext.setAttribute("consultUtil", consultUtil);
 %>
 <%!
 private static DemographicContact addDemographicContact(LoggedInInfo loggedInInfo,
@@ -1241,31 +1242,63 @@ function checkForm(submissionVal,formName){
 
 
 <%
-String lhndType = "provider"; //set default as provider
-String providerDefault = providerNo;
+	/*
+	 * set and select the default provider to be used in the Letterhead.
+	 * It is possible for this value to be different than the letterhead provider.
+	 * 1). logged in provider
+	 * 2). MRP on patient file
+	 * 3). Clinic Address.
+	 * See calls to javascript switchProvider for methods and order of change.
+	 */
+	String lhndType = "provider"; //set default as provider
+	String providerDefault = providerNo;
+	//TODO set up consultation properties for default letterhead provider selection.
+	if(consultUtil.letterheadName == null || consultUtil.letterheadName.isEmpty()) {
+		//nothing saved so find default
+		UserProperty lhndProperty = userPropertyDAO.getProp(providerNo, UserProperty.CONSULTATION_LETTERHEADNAME_DEFAULT);
+		String lhnd = null;
 
-if(consultUtil.letterheadName == null ){
-	//nothing saved so find default
-	UserProperty lhndProperty = userPropertyDAO.getProp(providerNo, UserProperty.CONSULTATION_LETTERHEADNAME_DEFAULT);
-	String lhnd = null;
+		if(lhndProperty != null) {
+			lhnd = lhndProperty.getValue();
+		}
 
-	if(lhndProperty != null) {
-		lhnd = lhndProperty.getValue();
-	}
+		//1 or null = provider, 2 = MRP and 3 = clinic
 
-	//1 or null = provider, 2 = MRP and 3 = clinic
-
-	if(lhnd != null){
-		if("2".equals(lhnd)){
-			//mrp
-			providerDefault = providerNoFromChart;
-		}else if("3".equals(lhnd)){
-			//clinic
-			lhndType = "clinic";
+		if(lhnd != null){
+			if("2".equals(lhnd)){
+				//mrp
+				providerDefault = providerNoFromChart;
+			}else if("3".equals(lhnd)){
+				//clinic
+				lhndType = "clinic";
+			}
 		}
 	}
 
-}
+	//TODO set up user settings for selecting default referring provider
+	/*
+	 * set and select the default referring provider.
+	 * It is possible for this value to be different than the letterhead provider.
+	 * 1). or NULL:   use logged in provider
+	 * 2). use MRP on patient file.
+	 */
+	// providerNo is the logged in provider
+	String referringProviderDefault = providerNo;
+	if(consultUtil.providerNo == null || consultUtil.providerNo.isEmpty()) {
+		UserProperty defaultReferringPractitioner = userPropertyDAO.getProp(providerNo, UserProperty.DEFAULT_REF_PRACTITIONER);
+		String defaultValue = null;
+		if(defaultReferringPractitioner != null) {
+			defaultValue = defaultReferringPractitioner.getValue();
+		}
+		if("2".equals(defaultValue)) {
+			referringProviderDefault = providerNoFromChart;
+		}
+
+	}
+	pageContext.setAttribute("referringProviderDefault", referringProviderDefault);
+	pageContext.setAttribute("lhndType", lhndType);
+	pageContext.setAttribute("providerDefault", providerDefault);
+
 %>
 
 <script>
@@ -1330,7 +1363,6 @@ if (OscarProperties.getInstance().getBooleanProperty("consultation_program_lette
 		}
 	}
 } %>
-console.log(providerData);
 
 function switchProvider(value) {
 
@@ -1893,7 +1925,13 @@ function clearAppointmentDateAndTime() {
 				<% } %>
                     <tr class="consultDemographicData" >
 					<td>
-
+						<% // Determine if curUser has selected a default practitioner in preferences
+							UserProperty refPracProp = userPropertyDAO.getProp(providerNo,  UserProperty.DEFAULT_REF_PRACTITIONER);
+							String refPrac = "";
+							if (refPracProp != null && refPracProp.getValue() != null) {
+								refPrac = refPracProp.getValue();
+							}
+						%>
 					<table>
 						<% if (props.isConsultationFaxEnabled() && OscarProperties.getInstance().isPropertyActive("consultation_dynamic_labelling_enabled")) { %>
 						<tr>
@@ -1904,7 +1942,10 @@ function clearAppointmentDateAndTime() {
 										for (Provider p : prList) {
 											if (p.getProviderNo().compareTo("-1") != 0) {
 									%>
-									<option value="<%=p.getProviderNo() %>" <%=((consultUtil.providerNo != null && consultUtil.providerNo.equalsIgnoreCase(p.getProviderNo())) || (consultUtil.providerNo == null &&  providerNo.equalsIgnoreCase(p.getProviderNo())) ? "selected='selected'" : "") %>>
+									<option value="<%=p.getProviderNo() %>"
+											<%=((consultUtil.providerNo != null && consultUtil.providerNo.equalsIgnoreCase(p.getProviderNo()))
+													|| (consultUtil.providerNo == null && referringProviderDefault.equalsIgnoreCase(p.getProviderNo()))
+													? "selected" : "") %>>
 										<%=Encode.forHtmlContent(p.getFirstName().replace("Dr.", "")) %>&nbsp;<%=Encode.forHtmlContent(p.getSurname()) %>
 									</option>
 									<% }
@@ -2279,15 +2320,14 @@ function clearAppointmentDateAndTime() {
 							</td>
 							<td  class="tite1">
 								<select name="letterheadName" id="letterheadName" onchange="switchProvider(this.value)">
-									<option value="<%=Encode.forHtmlAttribute(clinic.getClinicName())%>" <%=(consultUtil.letterheadName != null && consultUtil.letterheadName.equalsIgnoreCase(clinic.getClinicName())) ? "selected='selected'" : (lhndType.equals("clinic") ? "selected='selected'" : "") %>>
+									<option value="<%=Encode.forHtmlAttribute(clinic.getClinicName())%>" selected >
 										<%=Encode.forHtmlContent(clinic.getClinicName()) %>
 									</option>
 								<%
 									for (Provider p : prList) {
 										if (p.getProviderNo().compareTo("-1") != 0 && (p.getFirstName() != null || p.getSurname() != null)) {
 								%>
-								<option value="<%=p.getProviderNo() %>"
-								<%=(consultUtil.letterheadName != null && consultUtil.letterheadName.equalsIgnoreCase(p.getProviderNo())) ? "selected='selected'"  : (consultUtil.letterheadName == null && p.getProviderNo().equalsIgnoreCase(providerDefault) && lhndType.equals("provider") ? "selected='selected'"  : "") %>>
+								<option value="<%=p.getProviderNo() %>" <%=p.getProviderNo().equals(consultUtil.letterheadName) ? "selected" : "" %> >
 									<%=Encode.forHtmlContent(p.getSurname())%>,&nbsp;<%=Encode.forHtmlContent(p.getFirstName().replace("Dr.", ""))%>
 								</option>
 								<% }
@@ -2750,47 +2790,67 @@ function clearAppointmentDateAndTime() {
 </body>
 
 <script type="text/javascript" >
-jQuery(document).ready( function() {
-	var ctx = "${pageContext.request.contextPath}";
-	//--> Autocomplete searches
-	jQuery( "#searchHealthCareTeamInput" ).autocomplete({
-		source: function( request, response ) {
-			var url = ctx + "/demographic/Contact.do?method=searchAllContacts&searchMode=search_name&orderBy=c.lastName,c.firstName";
-			jQuery.ajax({
-				url: url,
-				type: "GET",
-				dataType: "json",
-				data: {
-				 	term: request.term
-				},
-				contentType: "application/json",
-				success: function( data ) {
-					response(jQuery.map(data, function( item ) {
-						return {
-						  label: item.lastName + ", "
-						  + item.firstName + " :: "
-						  + item.residencePhone
-						  + " :: " + item.address
-						  + " " + item.city,
-						  value: item.id,
-						  contact: item
-						 }
-					}));
-				}
-			});
-	    },
-	    minLength: 2,
-	    focus: function( event, ui ) {
-	    		event.preventDefault();
-	        return false;
-	    },
-	    select: function(event, ui) {
-	    		event.preventDefault();
-	    		jQuery("#copytoSpecialistFax").val(ui.item.contact.fax);
-	    		jQuery("#searchHealthCareTeamInput").val( ui.item.contact.lastName + ", " + ui.item.contact.firstName );
-	    }
-	});
-})
+	jQuery(document).ready( function() {
+		var ctx = "${pageContext.request.contextPath}";
+		//--> Autocomplete searches
+		jQuery( "#searchHealthCareTeamInput" ).autocomplete({
+			source: function( request, response ) {
+				var url = ctx + "/demographic/Contact.do?method=searchAllContacts&searchMode=search_name&orderBy=c.lastName,c.firstName";
+				jQuery.ajax({
+					url: url,
+					type: "GET",
+					dataType: "json",
+					data: {
+					    term: request.term
+					},
+					contentType: "application/json",
+					success: function( data ) {
+						response(jQuery.map(data, function( item ) {
+							return {
+							  label: item.lastName + ", "
+							  + item.firstName + " :: "
+							  + item.residencePhone
+							  + " :: " + item.address
+							  + " " + item.city,
+							  value: item.id,
+							  contact: item
+							 }
+						}));
+					}
+				});
+		    },
+		    minLength: 2,
+		    focus: function( event, ui ) {
+		            event.preventDefault();
+		        return false;
+		    },
+		    select: function(event, ui) {
+		            event.preventDefault();
+		            jQuery("#copytoSpecialistFax").val(ui.item.contact.fax);
+		            jQuery("#searchHealthCareTeamInput").val( ui.item.contact.lastName + ", " + ui.item.contact.firstName );
+		    }
+		});
+
+		/*
+		 * Selecting which letterhead to load for new consult requests.
+		 * Default is logged in provider on page load
+		 * Options are:
+		 *  2 : MRP on patient file
+		 *  3 : Clinic address.
+		 * Clinic address is set if no selection is detected.
+		 */
+		if("${empty pageScope.consultUtil.letterheadName}" === "true") {
+			if("${pageScope.lhndType eq 'provider'}" === "true"){
+				switchProvider("${pageScope.providerDefault}");
+			} else if("${pageScope.lhndType eq 'clinic'}" === "true"){
+				switchProvider("<%=clinic.getClinicName()%>");
+			} else {
+				switchProvider("-1");
+			}
+		}
+	})
+
+
 </script>
 
 
