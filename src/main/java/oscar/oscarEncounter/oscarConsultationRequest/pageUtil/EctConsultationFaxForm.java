@@ -25,16 +25,14 @@
 
 package oscar.oscarEncounter.oscarConsultationRequest.pageUtil;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.servlet.http.HttpServletRequest;
-
+import net.sf.json.JSONObject;
 import org.apache.struts.action.ActionForm;
 import org.oscarehr.fax.core.FaxAccount;
 import org.oscarehr.fax.core.FaxRecipient;
 
-import net.sf.json.JSONObject;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class EctConsultationFaxForm extends ActionForm {
 
