@@ -2432,7 +2432,7 @@ function clearAppointmentDateAndTime() {
 											<%
 												for( FaxConfig faxConfig : faxConfigs ) {
 											%>
-													<option value="<%=Encode.forHtmlAttribute(faxConfig.getFaxNumber())%>"
+													<option value="<%= faxConfig.getId() %>"
 															<%=faxConfig.getFaxNumber().equalsIgnoreCase(consultUtil.letterheadFax) ? "selected" : ""%>>
 														<%=Encode.forHtmlContent(faxConfig.getAccountName())%>
 													</option>
