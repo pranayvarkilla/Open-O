@@ -42,6 +42,7 @@ public final class EctConsultationFaxForm extends ActionForm {
     private String recipientFaxNumber;
     private String sendersPhone;
     private String sendersFax;
+	private String senderFaxNumber;
     private String comments;
     private String requestId;
     private String transType;
@@ -92,6 +93,15 @@ public final class EctConsultationFaxForm extends ActionForm {
 	public void setSendersFax(String sendersFax) {
 		this.sendersFax = sendersFax;
 	}
+
+	public String getSenderFaxNumber() {
+		return senderFaxNumber;
+	}
+
+	public void setSenderFaxNumber(String senderFaxNumber) {
+		this.senderFaxNumber = senderFaxNumber;
+	}
+
 	public String getComments() {
 		return comments;
 	}
@@ -164,10 +174,12 @@ public final class EctConsultationFaxForm extends ActionForm {
 			sender = new FaxAccount();
 		}
 
-		sender.setFax(getSendersFax());
+		sender.setFax(getSenderFaxNumber());
 		sender.setLetterheadName(getFrom());
 		sender.setPhone(getSendersPhone());
 
 		return sender;
 	}
+
+
 }

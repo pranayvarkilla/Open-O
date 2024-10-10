@@ -234,8 +234,8 @@
 							<div class="col-sm-12">				
 							  <label for="senderFaxAccount">Fax account</label>
 							  <select class="form-control" name="senderFaxNumber"  id="senderFaxAccount">
-									<c:forEach items="${ accounts }" var="account">
-							    		<option value="${ account.faxNumber }" ${ account.faxNumber eq letterheadFax or account.faxNumber eq param.letterheadFax ? 'selected' : '' } >
+									<c:forEach items="${ requestScope.accounts }" var="account">
+							    		<option value="${ account.faxNumber }" ${ account.id eq requestScope.faxAccount ? 'selected' : '' } >
 							    			<c:out value="${ account.accountName }"/> <c:out value="(${ account.faxNumber })"/>
 							    		</option>
 									</c:forEach>
