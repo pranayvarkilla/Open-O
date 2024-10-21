@@ -387,54 +387,11 @@ private static void setHealthCareTeam( List<DemographicContact> demographicConta
 }
 
 %>
-<%--
-	// Read the Health Care Team from the pageScope into a Javascript globalScope;
- --%>
-<c:if test="${ not empty consultationServices }" >
-	<script type="text/javascript" >
-		var consultationServices = [];
-	</script>
-	<c:forEach items="${ consultationServices }" var="consultationService" varStatus="loop">
-		<script type="text/javascript">
-		//<!--
-			var service = {};
-			service.id = `${ consultationService.serviceId }`;
-			service.description = `${ consultationService.serviceDesc }`;
-			if( service ) {
-				consultationServices.push( service );
-			}
-		//-->
-		</script>
-	</c:forEach>
-</c:if>
-<%--
-	// Read the associated services and specialties from the pageScope into a Javascript globalScope;
- --%>
- <c:if test="${ not empty healthCareTeam }" >
-	<script type="text/javascript" >
-		var healthCareTeam = [];
-	</script>
-	<c:forEach items="${ healthCareTeam }" var="demographicContact" varStatus="loop">
-		<script type="text/javascript">
-		//<!--
-			var contact = {};
-			contact.contactId = `${ demographicContact.details.id }`;
-			contact.specNbr = `${ demographicContact.details.cpso }`;
-			contact.phoneNum = `${ demographicContact.details.workPhone }`;
-			contact.specName = `${ demographicContact.details.formattedName }`;
-			contact.service = `${ demographicContact.role }`;
-			contact.specFax = `${ demographicContact.details.fax }`;
-			contact.specAddress = `${ demographicContact.details.address }`;
-			contact.specAddress2 = `${ demographicContact.details.address2 }`;
-			contact.city = `${ demographicContact.details.city }`;
-			contact.province = `${ demographicContact.details.province }`;
-			contact.postal = `${ demographicContact.details.postal }`;
-			contact.note = `${ demographicContact.details.note }`;
-			healthCareTeam[ `${ demographicContact.id }` ] = contact;
-		//-->
-		</script>
-	</c:forEach>
-</c:if>
+
+	<head>
+		<title>
+			<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.title" />
+		</title>
 
 <%-- Add function for specialist selection events. --%>
 <script type="text/javascript">
@@ -480,11 +437,6 @@ private static void setHealthCareTeam( List<DemographicContact> demographicConta
 //-->
 </script>
 
-<head>
-<title>
-<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.title" />
-</title>
-<html:base />
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <script>
 	var ctx = '<%=request.getContextPath()%>';
@@ -550,8 +502,8 @@ background-color: #ddddff;
 }
 
 #attachedDocumentsTable h3, #attachedLabsTable h3, #attachedFormsTable h3, #attachedEFormsTable h3, #attachedHRMDocumentsTable h3 {
-    margin: 0px !important;
-    padding: 0px !important;
+    margin: 0 !important;
+    padding: 0 !important;
     border-bottom: grey thin solid;
 }
 
@@ -635,7 +587,7 @@ textarea {
 
 
 </style>
-</head>
+
 
 
 <script type="text/javascript">
@@ -917,17 +869,17 @@ function fillSpecialistSelect1( makeNbr )
 
 /////////////////////////////////////////////////////////////////////
 function setSpec(servNbr,specialNbr){
-//    //window.alert("get Called");
+
     specs = (services[servNbr].specialists);
-//    //window.alert("got specs");
+
     var i=1;
     var NotSelected = true;
 
     for ( var specIndex = 0; specIndex < specs.length; ++specIndex ){
-//      //  window.alert("loop");
+
         aPit = specs[specIndex];
         if (aPit.specNbr == specialNbr){
-//        //    window.alert("if");
+
             document.EctConsultationFormRequestForm.specialist.options[i].selected = true;
             NotSelected = false;
         }
@@ -935,9 +887,9 @@ function setSpec(servNbr,specialNbr){
         i++;
     }
 
-    if( NotSelected )
-        document.EctConsultationFormRequestForm.specialist.options[0].selected = true;
-//    window.alert("exiting");
+    if( NotSelected ) {
+	    document.EctConsultationFormRequestForm.specialist.options[0].selected = true;
+    }
 
 }
 //=------------------------------------------------------------------
@@ -1304,33 +1256,32 @@ function checkForm(submissionVal,formName){
 <script>
 
 const providerData = {};
-
-providerData['<%=Encode.forHtmlContent(clinic.getClinicName())%>'] = {};
+let clinicName = '<%=Encode.forJavaScript(clinic.getClinicName().replaceAll("[^A-Za-z0-9]+", "")) %>';
+providerData[clinicName] = {};
 
 let addr, ph, fx;
 
 <% if (consultUtil.letterheadAddress != null) { %>
-	addr = '<%= Encode.forHtmlContent(consultUtil.letterheadAddress).replace('\n', ' ') %>';
+	addr = '<%= Encode.forJavaScript(consultUtil.letterheadAddress).replace('\n', ' ') %>';
 <%} else {%>
-	addr = '<%=Encode.forHtmlContent(clinic.getClinicAddress()) + " " + Encode.forHtmlContent(clinic.getClinicCity()) + " " + Encode.forHtmlContent(clinic.getClinicProvince()) + " " + Encode.forHtmlContent(clinic.getClinicPostal()) %>';
+	addr = '<%=Encode.forJavaScript(clinic.getClinicAddress()) + " " + Encode.forJavaScript(clinic.getClinicCity()) + " " + Encode.forJavaScript(clinic.getClinicProvince()) + " " + Encode.forJavaScript(clinic.getClinicPostal()) %>';
 <%}%>
 
 <% if(consultUtil.letterheadPhone != null) { %>
-	ph = '<%=Encode.forHtmlContent(consultUtil.letterheadAddress).replace('\n', ' ')%>';
+	ph = '<%=Encode.forJavaScript(consultUtil.letterheadAddress).replace('\n', ' ')%>';
 <%} else { %>
-	ph = '<%=Encode.forHtmlContent(clinic.getClinicPhone())%>';
+	ph = '<%=Encode.forJavaScript(clinic.getClinicPhone())%>';
 <% }%>
 
 <%if(consultUtil.letterheadFax != null) { %>
-	fx = '<%=Encode.forHtmlContent(consultUtil.letterheadFax)%>';
+	fx = '<%=Encode.forJavaScript(consultUtil.letterheadFax)%>';
 <% } else {%>
-	fx = '<%=Encode.forHtmlContent(clinic.getClinicFax())%>';
+	fx = '<%=Encode.forJavaScript(clinic.getClinicFax())%>';
 <% } %>
 
-providerData['<%=Encode.forJavaScript(clinic.getClinicName())%>'].address = addr;
-providerData['<%=Encode.forJavaScript(clinic.getClinicName())%>'].phone = ph;
-providerData['<%=Encode.forJavaScript(clinic.getClinicName())%>'].fax = fx;
-
+providerData[clinicName].address = addr;
+providerData[clinicName].phone = ph;
+providerData[clinicName].fax = fx;
 
 <%
 for (Provider providerItem: prList) {
@@ -1340,9 +1291,9 @@ for (Provider providerItem: prList) {
 		%>
 	 providerData['<%=prov_no%>'] = {};
 
-	providerData['<%=prov_no%>'].address = "<%=Encode.forHtmlContent(providerItem.getFullAddress())%>";
-	providerData['<%=prov_no%>'].phone = "<%=Encode.forHtmlContent(providerItem.getClinicPhone())%>";
-	providerData['<%=prov_no%>'].fax = "<%=Encode.forHtmlContent(providerItem.getClinicFax())%>";
+	providerData['<%=prov_no%>'].address = "<%=Encode.forJavaScript(providerItem.getFullAddress())%>";
+	providerData['<%=prov_no%>'].phone = "<%=Encode.forJavaScript(providerItem.getClinicPhone())%>";
+	providerData['<%=prov_no%>'].fax = "<%=Encode.forJavaScript(providerItem.getClinicFax())%>";
 
 <%	}
 }
@@ -1386,9 +1337,11 @@ function switchProvider(value) {
 
 	} else {
 		let origValue = value;
+		value = value.replace(/[^A-Za-z0-9]+/g, '');
 		if (typeof providerData["prov_" + value.toString()] != "undefined") {
 			value = "prov_" + value;
 		}
+
 		document.getElementById("letterheadName").value = origValue;
 		document.getElementById("letterheadAddress").value = providerData[value]['address'];
 		document.getElementById("letterheadAddressSpan").innerHTML = providerData[value]['address'];
@@ -1568,11 +1521,10 @@ function clearAppointmentDateAndTime() {
 	document.EctConsultationFormRequestForm.appointmentPm.options.selectedIndex = 0;
 }
 </script>
-
-<%=WebUtils.popErrorMessagesAsAlert(session)%>
-
+</head>
 <body topmargin="0" leftmargin="0" vlink="#0000FF"
 	onload="window.focus();disableDateFields();disableEditing();showSignatureImage();">
+<%=WebUtils.popErrorMessagesAsAlert(session)%>
 <jsp:include page="../../images/spinner.jsp" flush="true"/>
 <html:errors />
 <html:form styleId="consultationRequestForm" action="/oscarEncounter/RequestConsultation" onsubmit="alert('HTHT'); return false;" >
@@ -3009,6 +2961,55 @@ jQuery(document).ready(function(){
 })
 
 </script>
+
+	<%--
+	// Read the Health Care Team from the pageScope into a Javascript globalScope;
+ --%>
+	<c:if test="${ not empty consultationServices }" >
+		<script type="text/javascript" >
+			var consultationServices = [];
+		</script>
+		<c:forEach items="${ consultationServices }" var="consultationService" varStatus="loop">
+			<script type="text/javascript">
+				//<!--
+				var service = {};
+				service.id = `${ consultationService.serviceId }`;
+				service.description = `${ consultationService.serviceDesc }`;
+				if( service ) {
+					consultationServices.push( service );
+				}
+				//-->
+			</script>
+		</c:forEach>
+	</c:if>
+	<%--
+        // Read the associated services and specialties from the pageScope into a Javascript globalScope;
+     --%>
+	<c:if test="${ not empty healthCareTeam }" >
+		<script type="text/javascript" >
+			var healthCareTeam = [];
+		</script>
+		<c:forEach items="${ healthCareTeam }" var="demographicContact" varStatus="loop">
+			<script type="text/javascript">
+				//<!--
+				var contact = {};
+				contact.contactId = `${ demographicContact.details.id }`;
+				contact.specNbr = `${ demographicContact.details.cpso }`;
+				contact.phoneNum = `${ demographicContact.details.workPhone }`;
+				contact.specName = `${ demographicContact.details.formattedName }`;
+				contact.service = `${ demographicContact.role }`;
+				contact.specFax = `${ demographicContact.details.fax }`;
+				contact.specAddress = `${ demographicContact.details.address }`;
+				contact.specAddress2 = `${ demographicContact.details.address2 }`;
+				contact.city = `${ demographicContact.details.city }`;
+				contact.province = `${ demographicContact.details.province }`;
+				contact.postal = `${ demographicContact.details.postal }`;
+				contact.note = `${ demographicContact.details.note }`;
+				healthCareTeam[ `${ demographicContact.id }` ] = contact;
+				//-->
+			</script>
+		</c:forEach>
+	</c:if>
 
 </html:html>
 
