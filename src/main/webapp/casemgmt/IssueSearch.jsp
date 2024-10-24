@@ -28,7 +28,7 @@
 
 <%@ include file="/casemgmt/taglibs.jsp" %>
 <%
-    String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName$%>" objectName="_casemgmt.issues" rights="w" reverse="<%=true%>">
@@ -113,24 +113,30 @@
                 <tr bgcolor="<%= (ind.intValue()%2==0)?"#EEEEFF":"white" %>" align="center">
                     <td><nested:checkbox indexed="true" name="newIssueCheckList" property="checked"></nested:checkbox>
                     <td>
-                        <logic:equal name="newIssueCheckList" property="communityString" value="false">
+                    <c:choose>
+                        <c:when test="${newIssueCheckList.communityString == 'false'}">
                             Local
-                        </logic:equal>
-                        <logic:notEqual name="newIssueCheckList" property="communityString" value="false">
+                        </c:when>
+                        <c:otherwise>
                             Community
-                        </logic:notEqual>
-                    </td>
+                        </c:otherwise>
+                    </c:choose>
+
+                </td>
                     <td><nested:write name="newIssueCheckList" property="issue.code"/></td>
-                    <logic:equal name="newIssueCheckList" property="issue.priority" value="allergy">
-                        <td bgcolor="yellow">
-                            <nested:write name="newIssueCheckList" property="issue.description"/>
-                        </td>
-                    </logic:equal>
-                    <logic:notEqual name="newIssueCheckList" property="issue.priority" value="allergy">
-                        <td>
-                            <nested:write name="newIssueCheckList" property="issue.description"/>
-                        </td>
-                    </logic:notEqual>
+                    <c:choose>
+                        <c:when test="${newIssueCheckList.issue.priority == 'allergy'}">
+                            <td bgcolor="yellow">
+                                <c:out value="${newIssueCheckList.issue.description}"/>
+                            </td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>
+                                <c:out value="${newIssueCheckList.issue.description}"/>
+                            </td>
+                        </c:otherwise>
+                    </c:choose>
+
                     <td><nested:write name="newIssueCheckList" property="issue.role"/></td>
                 </tr>
             </nested:iterate>
@@ -142,13 +148,16 @@
                onclick="this.form.method.value='issueAdd'; this.disabled = true; this.className='processing' ;this.form.submit();"/>
     </nested:equal>
 
-    <logic:equal name="from" value="casemgmt" scope="request">
-        <nested:submit value="back to notes"
-                       onclick="this.form.method.value='edit';backToNote('casemgmt');return false;"/>
-    </logic:equal>
-    <logic:notEqual name="from" value="casemgmt" scope="request">
-        <nested:submit value="back to notes" onclick="this.form.method.value='edit';backToNote(); return false;"/>
-    </logic:notEqual>
+    <c:choose>
+        <c:when test="${from == 'casemgmt'}">
+            <input type="submit" value="back to notes"
+                   onclick="this.form.method.value='edit'; backToNote('casemgmt'); return false;"/>
+        </c:when>
+        <c:otherwise>
+            <input type="submit" value="back to notes"
+                   onclick="this.form.method.value='edit'; backToNote(); return false;"/>
+        </c:otherwise>
+    </c:choose>
 
 </nested:form>
 </body>

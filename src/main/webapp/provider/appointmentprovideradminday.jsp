@@ -68,7 +68,6 @@
 
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ taglib uri="/WEB-INF/special_tag.tld" prefix="special" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="/WEB-INF/indivo-tag.tld" prefix="myoscar" %>
@@ -832,7 +831,7 @@
                     <img alt="OSCAR EMR" src="<%=request.getContextPath()%>/images/oscar_logo_small.png" width="19px">
                 </div>
                 <ul id="navlist">
-                    <logic:notEqual name="infirmaryView_isOscar" value="false">
+                    <c:if test="${infirmaryView_isOscar != 'false'}">
                         <% if (request.getParameter("viewall") != null && request.getParameter("viewall").equals("1")) { %>
                         <li>
                             <a href=# onClick="review('0')"
@@ -846,9 +845,8 @@
                                 <bean:message key="provider.appointmentProviderAdminDay.schedView"/>
                             </a>
                         </li>
-
                         <% } %>
-                    </logic:notEqual>
+                    </c:if>
 
                     <li>
                         <a href='providercontrol.jsp?year=<%=curYear%>&month=<%=curMonth%>&day=<%=curDay%>&view=0&displaymode=day&dboperation=searchappointmentday&caseload=1&clProv=<%=loggedInInfo1.getLoggedInProviderNo()%>'><bean:message
@@ -1231,7 +1229,7 @@
                            <%=isWeekView?URLEncoder.encode("&provider_no="+provNum, "UTF-8"):""%>')"><bean:message
                         key="global.calendar"/></a>
 
-                <logic:notEqual name="infirmaryView_isOscar" value="false">
+                <c:if test="${infirmaryView_isOscar != 'false'}">
                     <% if (request.getParameter("viewall") != null && request.getParameter("viewall").equals("1")) { %>
                     <u><a href=# onClick="review('0')"
                           title="<bean:message key="provider.appointmentProviderAdminDay.viewAllProv"/>"><bean:message
@@ -1242,7 +1240,7 @@
                           title="<bean:message key="provider.appointmentProviderAdminDay.viewAllProv"/>"><bean:message
                             key="provider.appointmentProviderAdminDay.viewAll"/></a></u>
                     <%}%>
-                </logic:notEqual>
+                </c:if>
 
                 <caisi:isModuleLoad moduleName="TORONTO_RFQ" reverse="true">
                     <security:oscarSec roleName="<%=roleName$%>" objectName="_day" rights="r">
@@ -1386,8 +1384,7 @@
                                     <!-- caisi infirmary view extension add end ffffffffffffff-->
 
 
-                                    <logic:notEqual name="infirmaryView_isOscar" value="false">
-
+                                    <c:if test="${infirmaryView_isOscar != 'false'}">
                                         <%
                                             //session.setAttribute("case_program_id", null);
                                         %>
@@ -1486,12 +1483,7 @@
                                                 %>
                                             </security:oscarSec>
                                         </select>
-
-                                    </logic:notEqual>
-
-                                        <%--                                <logic:equal name="infirmaryView_isOscar" value="false">--%>
-                                        <%--                                    &nbsp;&nbsp;&nbsp;&nbsp;--%>
-                                        <%--                                </logic:equal>--%>
+                                    </c:if>
 
                                     <%
                                         }
@@ -1655,8 +1647,7 @@
                                     <td class="infirmaryView" NOWRAP ALIGN="center"
                                         BGCOLOR="<%=bColor?"#bfefff":"silver"%>">
                                         <!-- caisi infirmary view extension modify ffffffffffff-->
-                                        <logic:notEqual name="infirmaryView_isOscar" value="false">
-
+                                        <c:if test="${infirmaryView_isOscar != 'false'}">
                                             <%
                                                 if (isWeekView) {
                                             %>
@@ -1691,13 +1682,12 @@
                                                title='<bean:message key="provider.appointmentProviderAdminDay.zoomView"/>'>
                                                 <c:out value='<%=curProviderName[nProvider]  + " (" + appointmentCount + ") " %>'/>
                                             </a>
-                                            <oscar:oscarPropertiesCheck value="yes" property="TOGGLE_REASON_BY_PROVIDER"
-                                                                        defaultVal="yes">
-                                                <a id="expandReason" href="#"
-                                                   onclick="return toggleReason('<%=curProvider_no[nProvider]%>');"
-                                                   title="<bean:message key="provider.appointmentProviderAdminDay.expandreason"/>">*</a>
-                                            </oscar:oscarPropertiesCheck>
 
+                                                    <oscar:oscarPropertiesCheck value="yes" property="TOGGLE_REASON_BY_PROVIDER" defaultVal="yes">
+                                                        <a id="expandReason" href="#"
+                                                           onclick="return toggleReason('${curProvider_no[nProvider]}');"
+                                                           title="<bean:message key='provider.appointmentProviderAdminDay.expandreason'/>">*</a>
+                                                    </oscar:oscarPropertiesCheck>
                                             <% } %>
 
                                             <%
@@ -1707,24 +1697,21 @@
                                             <%
                                                 }
                                             %>
-                                        </logic:notEqual>
-                                        <logic:equal name="infirmaryView_isOscar" value="false">
-                                            <%String prID = "1";%>
-                                            <logic:present name="infirmaryView_programId">
-                                                <% prID = (String) session.getAttribute(SessionConstants.CURRENT_PROGRAM_ID);%>
-                                            </logic:present>
-                                            <logic:iterate id="pb" name="infirmaryView_programBeans"
-                                                           type="org.apache.struts.util.LabelValueBean">
-                                                <%
-                                                    if (pb.getValue().equals(prID)) {
-                                                %>
-                                                <b><label><%=pb.getLabel()%>
-                                                </label></b>
-                                                <%
-                                                    }
-                                                %>
-                                            </logic:iterate>
-                                        </logic:equal>
+                                        </c:if>
+
+                                        <c:if test="${infirmaryView_isOscar == 'false'}">
+                                            <c:set var="prID" value="1" scope="page" />
+
+                                            <c:if test="${not empty infirmaryView_programId}">
+                                                <c:set var="prID" value="${sessionScope[SessionConstants.CURRENT_PROGRAM_ID]}" />
+                                            </c:if>
+
+                                            <c:forEach var="pb" items="${infirmaryView_programBeans}">
+                                                <c:if test="${pb.value == prID}">
+                                                    <b><label>${pb.label}</label></b>
+                                                </c:if>
+                                            </c:forEach>
+                                        </c:if>
                                         <!-- caisi infirmary view extension modify end ffffffffffffffff-->
                                     </td>
                                 </tr>
@@ -1739,8 +1726,8 @@
                                             <jsp:include page="infirmarydemographiclist.jspf"/>
                                         </caisi:isModuleLoad>
 
-                                        <logic:notEqual name="infirmaryView_isOscar" value="false">
-                                            <!-- caisi infirmary view exteion add end ffffffffffffffffff-->
+                                        <c:if test="${infirmaryView_isOscar != 'false'}">
+                                        <!-- caisi infirmary view exteion add end ffffffffffffffffff-->
                                             <!-- =============== following block is the original oscar code. -->
                                             <!-- table for hours of day start -->
                                             <table id="providerSchedule" bgcolor="<%=userAvail?"#486ebd":"silver"%>">
@@ -2391,7 +2378,7 @@
                                             </table>
                                             <!-- end table for each provider schedule display -->
                                             <!-- caisi infirmary view extension add fffffffffff-->
-                                        </logic:notEqual>
+                                        </c:if>
                                         <!-- caisi infirmary view extension add end fffffffffffffff-->
 
                                     </td>

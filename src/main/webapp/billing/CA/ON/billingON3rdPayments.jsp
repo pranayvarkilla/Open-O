@@ -41,11 +41,8 @@
 * Yi Li
 */
 -->
-<%@page import="java.awt.ItemSelectable" %>
-<%@page import="org.oscarehr.common.model.BillingONItem" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
 <%@ page import="java.math.*,java.util.*,java.sql.*,oscar.*,java.net.*,java.text.*"
          errorPage="/errorpage.jsp" %>
@@ -270,7 +267,7 @@
 <security:oscarSec roleName="<%=roleName$%>" objectName="_billing" rights="w">
 <body bgcolor="ivory" text="#000000" topmargin="0" leftmargin="0" rightmargin="0">
 
-<logic:present name="paymentTypeList" scope="request">
+<c:if test="${not empty paymentTypeList}">
     <form name="editPayment" id="editPayment" method="GET" action="">
         <input type="hidden" name="method" value="savePayment"/>
         <input type="hidden" name="billingNo" value="<%= billingNo %>"/>
@@ -340,7 +337,7 @@
                 </td>
                 <td align="left">
                     <table width="100%">
-                        <logic:iterate id="billingPaymentType" name="paymentTypeList" indexId="ttr">
+                        <c:forEach var="billingPaymentType" items="${paymentTypeList}" varStatus="ttr">
                             <%= ttr.intValue() % 2 == 0 ? "<tr>" : "" %>
                             <td width="50%">
                                 <input type="radio" name="paymentType"
@@ -349,7 +346,7 @@
                                 <bean:write name="billingPaymentType" property="paymentType"/>
                             </td>
                             <%= ttr.intValue() % 2 == 0 ? "" : "</tr>" %>
-                        </logic:iterate>
+                        </c:forEach>
                     </table>
                 </td>
             </tr>
@@ -372,7 +369,7 @@
         </table>
         <input type="hidden" name="size" value="<%=items.size() %>">
     </form>
-</logic:present>
+</c:if>
 </security:oscarSec>
 
 <% BillingPaymentTypeDao paymentTypeDao = (BillingPaymentTypeDao) SpringUtils.getBean(BillingPaymentTypeDao.class);
@@ -433,8 +430,8 @@
         </tr>
         </thead>
         <tbody>
-        <logic:present name="paymentsList" scope="request">
-            <logic:iterate id="displayPayment" name="paymentsList" indexId="ctr">
+        <c:if test="${not empty paymentsList}">
+            <c:forEach var="displayPayment" items="${paymentsList}" varStatus="ctr">
                 <tr>
                     <td><%= ctr + 1 %>
                     </td>
@@ -456,8 +453,8 @@
                         <a href="javascript:onViewPayment('<bean:write name="displayPayment" property="id" />')">view</a>
                     </td>
                 </tr>
-            </logic:iterate>
-        </logic:present>
+            </c:forEach>
+        </c:if>
         <tr>
             <td/>
             <td/>

@@ -24,17 +24,12 @@
 --%>
 <%@ include file="/taglibs.jsp" %>
 <%@ include file="/common/messages.jsp" %>
-<%@page import="oscar.OscarProperties" %>
-<%@page import="org.oscarehr.PMmodule.web.utils.UserRoleUtils" %>
-<%@page import="java.util.*" %>
-<%@page import="org.oscarehr.common.model.Demographic" %>
-<%@page import="org.oscarehr.PMmodule.model.Program" %>
 
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     if (session.getAttribute("userrole") == null) response.sendRedirect("../logout.jsp");
-    String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
 %>
 
 <script>
@@ -150,14 +145,14 @@
                 </tr>
                 <tr>
                     <th>Gender</th>
-                    <td><select name="criteria.gender">
-                        <option value="">Any</option>
+                    <td><html-el:select property="criteria.gender">
+                        <html-el:option value="">Any</html-el:option>
                         <c:forEach var="gen" items="${genders}">
-                            <option value="${gen.code}">
+                            <html-el:option value="${gen.code}">
                                 <c:out value="${gen.description}"/>
-                            </option>
+                            </html-el:option>
                         </c:forEach>
-                    </select></td>
+                    </html-el:select></td>
                 </tr>
             </table>
             <table>
@@ -203,12 +198,17 @@
                 <c:out value="${client.chartNo}"/>
             </display:column>
             <display:column sortable="true" title="Admitted to Bed Program">
-                <logic:equal value="0" property="activeCount" name="client">No</logic:equal>
-                <logic:notEqual value="0" property="activeCount" name="client">Yes</logic:notEqual>
+                <c:choose>
+                    <c:when test="${client.activeCount == 0}">No</c:when>
+                    <c:otherwise>Yes</c:otherwise>
+                </c:choose>
             </display:column>
+
             <display:column sortable="true" title="H&S Alert">
-                <logic:equal value="0" property="hsAlertCount" name="client">No</logic:equal>
-                <logic:notEqual value="0" property="hsAlertCount" name="client">Yes</logic:notEqual>
+                <c:choose>
+                    <c:when test="${client.hsAlertCount == 0}">No</c:when>
+                    <c:otherwise>Yes</c:otherwise>
+                </c:choose>
             </display:column>
 
             <security:oscarSec roleName="<%=roleName$%>" objectName="_merge"

@@ -39,20 +39,20 @@
     <body>
 
     <table border="0" cellspacing="0" cellpadding="18" width="100%">
-        <logic:messagesPresent message="true">
-            <html:messages id="message" message="true" bundle="survey">
+        <c:if test="${not empty messages}">
+            <c:forEach var="message" items="${messages}">
                 <tr>
                     <td colspan="3" class="message"><c:out value="${message}"/></td>
                 </tr>
-            </html:messages>
-        </logic:messagesPresent>
-        <logic:messagesPresent>
-            <html:messages id="error" bundle="survey">
+            </c:forEach>
+        </c:if>
+        <c:if test="${not empty errors}">
+            <c:forEach var="error" items="${errors}">
                 <tr>
                     <td colspan="3" class="error"><c:out value="${error}"/></td>
                 </tr>
-            </html:messages>
-        </logic:messagesPresent>
+            </c:forEach>
+        </c:if>
         <tr>
             <td><a href="javascript:history.go(-1);">back</a></td>
         </tr>

@@ -120,27 +120,37 @@
         hashVal0 = getHash();
     }
 </script>
-<logic:notPresent name="isReadOnly">
-    <script type="text/javascript">
-        readOnly = false;
-        needToConfirm = true;
-        window.onbeforeunload = confirmClose;
-    </script>
-</logic:notPresent>
-<logic:present name="isReadOnly">
-    <logic:equal name="isReadOnly" value="true">
-        <script type="text/javascript">
-            readOnly = true;
-            needToConfirm = false;
-            setReadOnly();
-        </script>
-    </logic:equal>
-    <logic:equal name="isReadOnly" value="false">
+<c:choose>
+    <!-- 检查 isReadOnly 是否为空，即是否不存在 -->
+    <c:when test="${empty isReadOnly}">
         <script type="text/javascript">
             readOnly = false;
             needToConfirm = true;
             window.onbeforeunload = confirmClose;
         </script>
-    </logic:equal>
-</logic:present>
+    </c:when>
+
+    <!-- 如果 isReadOnly 存在 -->
+    <c:otherwise>
+        <c:choose>
+            <!-- 如果 isReadOnly 的值为 true -->
+            <c:when test="${isReadOnly == 'true'}">
+                <script type="text/javascript">
+                    readOnly = true;
+                    needToConfirm = false;
+                    setReadOnly();
+                </script>
+            </c:when>
+
+            <!-- 如果 isReadOnly 的值为 false -->
+            <c:when test="${isReadOnly == 'false'}">
+                <script type="text/javascript">
+                    readOnly = false;
+                    needToConfirm = true;
+                    window.onbeforeunload = confirmClose;
+                </script>
+            </c:when>
+        </c:choose>
+    </c:otherwise>
+</c:choose>
 <input type="hidden" name="token" value="<c:out value="${token}"/>"/>

@@ -24,15 +24,12 @@
 
 --%>
 
-
-<%@ page import="java.util.*,oscar.oscarReport.data.*" %>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
-    String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName$%>" objectName="_report,_admin.reporting" rights="r" reverse="<%=true%>">
@@ -153,10 +150,11 @@
         <table width="100%" border="1" cellpadding="0" cellspacing="0"
                bgcolor="#D6D5C5">
             <tr>
-                <td><font size="2" face="Tahoma"> <logic:present
-                        name="resultText">
-                    <pre><bean:write name="resultText" filter="false"/></pre>
-                </logic:present> </font></td>
+                <td><font size="2" face="Tahoma">
+                    <c:if test="${not empty resultText}">
+                        <pre><c:out value="${resultText}" escapeXml="false"/></pre>
+                    </c:if>
+                </font></td>
             </tr>
         </table>
     </div>
@@ -220,9 +218,11 @@
                     </tr>
                     <tr></tr>
                     <tr>
-                        <td><logic:present name="results">
-                            <bean:write name="results" filter="false"/>
-                        </logic:present></td>
+                        <td>
+                            <c:if test="${not empty results}">
+                                <c:out value="${results}" escapeXml="false"/>
+                            </c:if>
+                        </td>
                     </tr>
                 </table>
             </td>

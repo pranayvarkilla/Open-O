@@ -27,7 +27,6 @@
         import="oscar.oscarProvider.data.*, oscar.oscarRx.data.*,oscar.OscarProperties, oscar.oscarClinic.ClinicData, java.util.*" %>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -77,16 +76,15 @@
         <title><bean:message key="ViewScript.title"/></title>
 
         <html:base/>
-        <logic:notPresent name="RxSessionBean" scope="session">
-            <logic:redirect href="error.html"/>
-        </logic:notPresent>
-        <logic:present name="RxSessionBean" scope="session">
-            <bean:define id="bean" type="oscar.oscarRx.pageUtil.RxSessionBean"
-                         name="RxSessionBean" scope="session"/>
-            <logic:equal name="bean" property="valid" value="false">
-                <logic:redirect href="error.html"/>
-            </logic:equal>
-        </logic:present>
+        <c:if test="${empty sessionScope.RxSessionBean}">
+            <c:redirect url="error.html"/>
+        </c:if>
+        <c:if test="${not empty sessionScope.RxSessionBean}">
+            <c:set var="bean" value="${sessionScope.RxSessionBean}" scope="page"/>
+            <c:if test="${bean.valid == false}">
+                <c:redirect url="error.html"/>
+            </c:if>
+        </c:if>
         <c:set var="ctx" value="${pageContext.request.contextPath}"/>
         <%!
             ProviderManager providerManager = SpringUtils.getBean(ProviderManager.class);

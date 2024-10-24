@@ -44,7 +44,6 @@
 
 <%@taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -2030,12 +2029,11 @@
                                                     disabled the user will be presented with the other selected tables.
                                                  --%>
                                             <c:set scope="page" var="icd10" value="false"/>
-                                            <logic:iterate id="codeSystem" name="dxCodeSystemList"
-                                                           property="codingSystems">
-                                                <c:if test="${ codeSystem eq 'icd10' }">
-                                                    <c:set scope="page" var="isIcd10" value="true"/>
-                                                </c:if>
-                                            </logic:iterate>
+                                                    <c:forEach var="codeSystem" items="${dxCodeSystemList.codingSystems}">
+                                                        <c:if test="${codeSystem == 'icd10'}">
+                                                            <c:set var="isIcd10" scope="page" value="true"/>
+                                                        </c:if>
+                                                    </c:forEach>
                                             <c:choose>
                                                 <c:when test="${ isIcd10 }">
 										<span class="input-group-addon">
@@ -2047,11 +2045,11 @@
                                                                                     property="DISABLE_MSP_DX_SYSTEM">
                                                             <option value="msp" selected>MSP Dx</option>
                                                         </oscar:oscarPropertiesCheck>
-                                                        <logic:iterate id="codeSystem" name="dxCodeSystemList"
-                                                                       property="codingSystems">
-                                                            <option value="<bean:write name="codeSystem"/>"><bean:write
-                                                                    name="codeSystem"/></option>
-                                                        </logic:iterate>
+                                                        <c:forEach var="codeSystem" items="${dxCodeSystemList.codingSystems}">
+                                                            <option value="${codeSystem}">
+                                                                <c:out value="${codeSystem}"/>
+                                                            </option>
+                                                        </c:forEach>
                                                     </select>
                                                 </c:when>
                                                 <c:otherwise>

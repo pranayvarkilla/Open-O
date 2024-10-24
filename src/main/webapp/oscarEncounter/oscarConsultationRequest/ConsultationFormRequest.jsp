@@ -26,7 +26,7 @@
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
-    String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName$%>" objectName="_con" rights="w" reverse="<%=true%>">
@@ -42,7 +42,6 @@
 <%@page import="org.oscarehr.util.WebUtils" %>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -1908,11 +1907,11 @@ if (userAgent != null) {
                                 <input name="printPreview" type="button" value="Print Preview"
                                        onclick="return checkForm('And Print Preview','EctConsultationFormRequestForm');"/>
 
-                                <logic:equal value="true" name="EctConsultationFormRequestForm" property="eReferral">
+                                <c:if test="${EctConsultationFormRequestForm.eReferral == true}">
                                     <input name="updateAndSendElectronicallyTop" type="button"
-                                           value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndSendElectronicReferral"/>"
-                                           onclick="return checkForm('Update_esend','EctConsultationFormRequestForm');"/>
-                                </logic:equal>
+                                           value="<fmt:message key='oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndSendElectronicReferral'/>"
+                                           onclick="return checkForm('Update_esend', 'EctConsultationFormRequestForm');"/>
+                                </c:if>
 
                                 <oscar:oscarPropertiesCheck value="yes" property="consultation_fax_enabled">
                                     <input id="fax_button" name="updateAndFax" type="button"
@@ -1928,21 +1927,23 @@ if (userAgent != null) {
                                        value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndPrint"/>"
                                        onclick="return checkForm('Submit Consultation Request And Print Preview','EctConsultationFormRequestForm'); "/>
 
-                                <logic:equal value="true" name="EctConsultationFormRequestForm" property="eReferral">
+                                <c:if test="${EctConsultationFormRequestForm.eReferral == true}">
                                     <input name="submitAndSendElectronicallyTop" type="button"
-                                           value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndSendElectronicReferral"/>"
-                                           onclick="return checkForm('Submit_esend','EctConsultationFormRequestForm');"/>
-                                </logic:equal>
+                                           value="<fmt:message key='oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndSendElectronicReferral'/>"
+                                           onclick="return checkForm('Submit_esend', 'EctConsultationFormRequestForm');"/>
+                                </c:if>
+
 
                                 <oscar:oscarPropertiesCheck value="yes" property="consultation_fax_enabled">
                                     <input id="fax_button" name="submitAndFax" type="button"
                                            value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndFax"/>"
                                            onclick="return checkForm('Submit And Fax','EctConsultationFormRequestForm');"/>
                                 </oscar:oscarPropertiesCheck>
-                                <logic:equal value="true" name="EctConsultationFormRequestForm" property="eReferral">
+                                <c:if test="${EctConsultationFormRequestForm.eReferral == true}">
                                     <input type="button" value="Send eResponse"
-                                           onclick="$('saved').value='true';document.location='<%=thisForm.getOruR01UrlString(request)%>'"/>
-                                </logic:equal>
+                                           onclick="document.getElementById('saved').value='true'; document.location='${thisForm.oruR01UrlString(request)}'"/>
+                                </c:if>
+
                                 <% } %>
                             </td>
                         </tr>
@@ -2750,11 +2751,11 @@ if (userAgent != null) {
                                        value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndPrint"/>"
                                        onclick="return checkForm('Update Consultation Request And Print Preview','EctConsultationFormRequestForm');"/>
 
-                                <logic:equal value="true" name="EctConsultationFormRequestForm" property="eReferral">
+                                <c:if test="${EctConsultationFormRequestForm.eReferral == true}">
                                     <input name="updateAndSendElectronically" type="button"
-                                           value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndSendElectronicReferral"/>"
+                                           value="<fmt:message key='oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnUpdateAndSendElectronicReferral'/>"
                                            onclick="return checkForm('Update_esend','EctConsultationFormRequestForm');"/>
-                                </logic:equal>
+                                </c:if>
 
                                 <oscar:oscarPropertiesCheck value="yes" property="consultation_fax_enabled">
                                     <input id="fax_button2" name="updateAndFax" type="button"
@@ -2771,23 +2772,22 @@ if (userAgent != null) {
                                        value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndPrint"/>"
                                        onclick="return checkForm('Submit Consultation Request And Print Preview','EctConsultationFormRequestForm'); "/>
 
-                                <logic:equal value="true" property="eReferral" name="EctConsultationFormRequestForm">
+                                <c:if test="${EctConsultationFormRequestForm.eReferral == true}">
                                     <input name="submitAndSendElectronically" type="button"
-                                           value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndSendElectronicReferral"/>"
+                                           value="<fmt:message key='oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndSendElectronicReferral'/>"
                                            onclick="return checkForm('Submit_esend','EctConsultationFormRequestForm');"/>
-                                </logic:equal>
+                                </c:if>
+
                                 <oscar:oscarPropertiesCheck value="yes" property="consultation_fax_enabled">
                                     <input id="fax_button2" name="submitAndFax" type="button"
                                            value="<bean:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.btnSubmitAndFax"/>"
                                            onclick="return checkForm('Submit And Fax','EctConsultationFormRequestForm');"/>
                                 </oscar:oscarPropertiesCheck>
-                                <logic:equal value="true" name="EctConsultationFormRequestForm" property="eReferral">
+                                <c:if test="${EctConsultationFormRequestForm.eReferral == true}">
                                     <input type="button" value="Send eResponse"
-                                           onclick="$('saved').value='true';document.location='<%=thisForm.getOruR01UrlString(request)%>'"/>
-                                </logic:equal>
-
+                                           onclick="document.getElementById('saved').value='true'; document.location='${thisForm.oruR01UrlString(request)}'"/>
+                                </c:if>
                                 <% }%>
-
                             </td>
                         </tr>
                         <% } %>

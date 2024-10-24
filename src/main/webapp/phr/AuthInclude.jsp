@@ -39,8 +39,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%@page import="org.oscarehr.phr.util.MyOscarUtils" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="oscar.oscarProvider.data.ProviderData" %>
 
 <%
@@ -114,18 +113,21 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             request.setAttribute("phrUserLoginErrorMsg", request.getParameter("phrUserLoginErrorMsg"));
             request.setAttribute("phrTeAttributechLoginErrorMsg", request.getParameter("phrTechLoginErrorMsg"));
         %>
-        <logic:present name="phrUserLoginErrorMsg">
-            <div class="phrLoginErrorMsg" style="color: red;"><bean:write name="phrUserLoginErrorMsg"/>
-                <logic:present name="phrTechLoginErrorMsg">
-                    <a href="javascript:;"
-                       title="fade=[on] requireclick=[off] cssheader=[moreInfoBoxoverHeader] cssbody=[moreInfoBoxoverBody] singleclickstop=[on] header=[MyOSCAR Server Response:] body=[<bean:write name="phrTechLoginErrorMsg"/> </br>]">More
-                        Info</a>
-                </logic:present>
-            </div>
-        </logic:present>
-        <logic:notPresent name="phrUserLoginErrorMsg">
-            Login Required.
-        </logic:notPresent>
+        <c:choose>
+            <c:when test="${not empty phrUserLoginErrorMsg}">
+                <div class="phrLoginErrorMsg" style="color: red;">
+                    <c:out value="${phrUserLoginErrorMsg}"/>
+                    <c:if test="${not empty phrTechLoginErrorMsg}">
+                        <a href="javascript:;"
+                           title="fade=[on] requireclick=[off] cssheader=[moreInfoBoxoverHeader] cssbody=[moreInfoBoxoverBody] singleclickstop=[on] header=[MyOSCAR Server Response:] body=[${phrTechLoginErrorMsg}] </br>">More
+                            Info</a>
+                    </c:if>
+                </div>
+            </c:when>
+            <c:otherwise>
+                Login Required.
+            </c:otherwise>
+        </c:choose>
         Status: <b>Not logged in</b><br/>
         <%=providerName%> password: <input type="password" id="phrPassword" name="phrPassword"
                                            style="font-size: 8px; width: 40px;"> <a

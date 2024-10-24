@@ -120,22 +120,19 @@
             if (request.getAttribute("program") != null) {
         %>
 
-        <logic:equal name="program" property="facilityId"
-                     value="<%=((Facility)facility).getId().toString()%>">
+        <% if (request.getAttribute("program") != null && ((org.oscarehr.common.model.Program) request.getAttribute("program")).getFacilityId().equals(((org.oscarehr.common.model.Facility) request.getAttribute("facility")).getId())) { %>
             <display:column sortable="true" sortProperty="name"
                             title="Program Name">
                 <a
                         href="<html:rewrite action="/PMmodule/ProgramManagerView"/>?id=<c:out value="${program.id}"/>"><c:out
                         value="${program.name}"/></a>
             </display:column>
-        </logic:equal>
-        <logic:notEqual name="program" property="facilityId"
-                        value="<%=((Facility)facility).getId().toString()%>">
+        <% } else { %>
             <display:column sortable="true" sortProperty="name"
                             title="Program Name">
                 <c:out value="${program.name}"/>
             </display:column>
-        </logic:notEqual>
+        <% } %>
 
         <display:column property="type" sortable="true" title="Program Type"/>
         <display:column property="queueSize" sortable="true"
@@ -163,20 +160,18 @@
             <th>Bed Program</th>
             <th>Discharge Date/Time</th>
         </tr>
-        <c:forEach var="client" items="${associatedClients}">
-
-            <%String styleColor = ""; %>
-            <c:if test="${client.inOneDay}">
-                <%styleColor = "style=\"color:red;\"";%>
-            </c:if>
+        <% for (org.oscarehr.common.model.Client client : (List<org.oscarehr.common.model.Client>) request.getAttribute("associatedClients")) { %>
+            <% String styleColor = ""; %>
+            <% if (client.isInOneDay()) { %>
+                <% styleColor = "style=\"color:red;\""; %>
+            <% } %>
             <tr class="b" <%=styleColor%>>
                 <td><c:out value="${client.name}"/></td>
                 <td><c:out value="${client.dob}"/></td>
                 <td><c:out value="${client.programName}"/></td>
                 <td><c:out value="${client.dischargeDate}"/></td>
             </tr>
-
-        </c:forEach>
+        <% } %>
     </table>
 
 

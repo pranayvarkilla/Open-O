@@ -26,7 +26,7 @@
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
-    String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName$%>" objectName="_report" rights="r" reverse="<%=true%>">
@@ -42,8 +42,7 @@
 
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-<%@ page import="oscar.oscarReport.oscarMeasurements.pageUtil.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>\
 <%@ page import="java.util.*, java.sql.*, java.text.*, java.net.*" %>
 <%
     GregorianCalendar now = new GregorianCalendar();
@@ -58,9 +57,9 @@
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><logic:present name="title">
+        <title><c:if test="${not empty title}">
             <bean:write name="title"/>
-        </logic:present></title>
+        </c:if></title>
         <html:base/>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
     </head>
@@ -98,25 +97,24 @@
                                 <tr>
                                     <td>
                                 <tr>
-                                    <th align="left" class="subTitles" width="600"><logic:present
-                                            name="title">
+                                    <th align="left" class="subTitles" width="600"><c:if test="${not empty title}">
                                         <bean:write name="title"/>
-                                    </logic:present></th>
+                                    </c:if></th>
                                 </tr>
-                                <logic:present name="headings">
+                                <c:if test="${not empty headings}">
                                 <tr>
-                                    <logic:iterate id="hd" name="headings">
+                                    <c:forEach var="hd" items="${headings}">
                                         <td><bean:write name="hd"/></td>
-                                    </logic:iterate>
+                                    </c:forEach>
                                 </tr>
-                                </logic:present>
-                                <logic:present name="messages">
-                                <logic:iterate id="msg" name="messages">
+                                </c:if>
+                                <c:if test="${not empty messages}">
+                                <c:forEach var="msg" items="${messages}">
                                 <tr>
                                     <td><bean:write name="msg"/></td>
                                 </tr>
-                                </logic:iterate>
-                                </logic:present>
+                                </c:forEach>
+                                </c:if>
                         </td>
                     </tr>
                 </table>

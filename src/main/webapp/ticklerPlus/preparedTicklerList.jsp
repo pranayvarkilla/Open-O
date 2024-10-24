@@ -43,26 +43,17 @@
             int index = 0;
             String bgcolor;
         %>
-        <logic:iterate id="preparedTickler"
-                       collection='<%=request.getAttribute("preparedTicklers")%>'>
-            <%
-
-                if (index++ % 2 != 0) {
-                    bgcolor = "white";
-                } else {
-                    bgcolor = "#EEEEFF";
-                }
-            %>
-            <tr bgcolor="<%=bgcolor %>" align="center"
+        <c:forEach var="preparedTickler" items="${preparedTicklers}" varStatus="status">
+            <c:set var="bgcolor" value="${status.index % 2 == 0 ? '#EEEEFF' : 'white'}"/>
+            <tr bgcolor="${bgcolor}" align="center"
                 onMouseOver="this.style.cursor='hand';this.style.backgroundColor='pink';"
-                onMouseout="this.style.backgroundColor='<%=bgcolor %>';"
-                onclick="location.href='../Tickler.do?method=prepared_tickler_edit&id=<bean:write name="preparedTickler"
-                                                                                                  property="name"/>';">
+                onMouseout="this.style.backgroundColor='${bgcolor}';"
+                onclick="location.href='../Tickler.do?method=prepared_tickler_edit&id=${preparedTickler.name}';">
                 <td valign="middle"><input type="checkbox" name="checkbox"
-                                           value="<bean:write name="preparedTickler" property="name"/>"/></td>
-                <td><bean:write name="preparedTickler" property="name"/></td>
+                                           value="${preparedTickler.name}"/></td>
+                <td>${preparedTickler.name}</td>
             </tr>
-        </logic:iterate>
+        </c:forEach>
     </html:form>
 </table>
 
