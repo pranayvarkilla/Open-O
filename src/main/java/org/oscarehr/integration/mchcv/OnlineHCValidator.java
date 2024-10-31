@@ -49,6 +49,7 @@ import org.apache.cxf.message.Message;
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.integration.ebs.client.ng.EdtClientBuilder;
 import org.oscarehr.integration.ebs.client.ng.EdtClientBuilderConfig;
+import org.oscarehr.integration.ebs.client.ng.DownloadInInterceptor;
 import org.oscarehr.util.MiscUtils;
 
 import oscar.OscarProperties;
