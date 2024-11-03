@@ -27,7 +27,7 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ include file="/taglibs.jsp" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="org.oscarehr.provider.web.UserPreference2Action" %>
+<%@ page import="org.oscarehr.provider.web.UserPreferenceAction" %>
 <%@ page import="org.oscarehr.common.model.UserProperty" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <%
@@ -39,7 +39,7 @@
 <html>
 <head>
     <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-    <title><bean:message key="provider.pref.title"/></title>
+    <title><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.title"/></title>
     <script src="<c:out value="${ctx}/js/checkPassword.js.jsp"/>"></script>
     <script type="text/javascript" src="../share/javascript/prototype.js"></script>
     <script src="<c:out value="${ctx}/js/jquery.js"/>"></script>
@@ -155,7 +155,7 @@
       onSubmit="return validateForm();">
     <input type="hidden" name="method" value="saveGeneral"/>
     <div style="background-color:#CCCCFF;text-align:center;font-weight:bold;">
-        <bean:message key="provider.pref.title"/>
+        <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.title"/>
         <span style="float:right;clear:right;text-align:right;font-weight:normal;font-size:10pt;margin-right:4px">
 			<%=loggedInInfo.getLoggedInProvider().getFormattedName() %>
 			</span>
@@ -165,16 +165,15 @@
     <!-- TOC -->
     <div style="float:left;clear:left;width:20%;border:3px solid #EEEEFF;height:inherit;text-align:left;font-weight:normal;overflow:auto">
         <div id="accordion">
-            <h3 class="head" pane="general"><a href="#"><bean:message key="provider.pref.section.general"/></a></h3>
-            <h3 class="head" pane="scheduling"><a href="#"><bean:message key="provider.pref.section.scheduling"/></a>
+            <h3 class="head" pane="general"><a href="#"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.section.general"/></a></h3>
+            <h3 class="head" pane="scheduling"><a href="#"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.section.scheduling"/></a>
             </h3>
-            <h3 class="head" pane="billing"><a href="#"><bean:message key="provider.pref.section.billing"/></a></h3>
-            <h3 class="head" pane="encounter"><a href="#"><bean:message key="provider.pref.section.encounter"/></a></h3>
-            <h3 class="head" pane="rx"><a href="#"><bean:message key="provider.pref.section.rx"/></a></h3>
-            <h3 class="head" pane="consultation"><a href="#"><bean:message
-                    key="provider.pref.section.consultation"/></a></h3>
-            <h3 class="head" pane="myoscar"><a href="#"><bean:message key="provider.pref.section.phr"/></a></h3>
-            <h3 class="head" pane="caisi"><a href="#"><bean:message key="provider.pref.section.caisi"/></a></h3>
+            <h3 class="head" pane="billing"><a href="#"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.section.billing"/></a></h3>
+            <h3 class="head" pane="encounter"><a href="#"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.section.encounter"/></a></h3>
+            <h3 class="head" pane="rx"><a href="#"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.section.rx"/></a></h3>
+            <h3 class="head" pane="consultation"><a href="#"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.section.consultation"/></a></h3>
+            <h3 class="head" pane="myoscar"><a href="#"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.section.phr"/></a></h3>
+            <h3 class="head" pane="caisi"><a href="#"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.section.caisi"/></a></h3>
         </div>
     </div>
 
@@ -189,76 +188,76 @@
             <div style="float:left;clear:left;width:48%">
                 <table border="0">
                     <tr>
-                        <td colspan="2"><b><bean:message key="provider.pref.changepw.title"/></b></td>
+                        <td colspan="2"><b><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.changepw.title"/></b></td>
                     </tr>
                     <tr>
-                        <td nowrap="nowrap"><bean:message key="provider.pref.changepw.current"/>:</td>
+                        <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.changepw.current"/>:</td>
                         <td><input type="password" name="current_password" size="12"/></td>
                     </tr>
                     <tr>
-                        <td nowrap="nowrap"><bean:message key="provider.pref.changepw.new"/>:</td>
+                        <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.changepw.new"/>:</td>
                         <td><input name="new_password" type="password" size="12"/></td>
                     </tr>
                     <tr>
-                        <td nowrap="nowrap"><bean:message key="provider.pref.changepw.confirm"/>:</td>
+                        <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.changepw.confirm"/>:</td>
                         <td><input name="confirm_password" type="password" size="12"/></td>
                     </tr>
                     <tr style="height:20px">
                         <td colspan="2"></td>
                     </tr>
                     <tr>
-                        <td><bean:message key="provider.pref.general.fax"/>:</td>
+                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.general.fax"/>:</td>
                         <td><input type="text"
-                                   size="25" <%=UserPreference2Action.getTextData(prefs, "pref." + UserProperty.FAX)%>/>
+                                   size="25" <%=UserPreferenceAction.getTextData(prefs, "pref." + UserProperty.FAX)%>/>
                         </td>
                     </tr>
                     <tr>
-                        <td><bean:message key="provider.pref.general.drugrefid"/>:</td>
+                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.general.drugrefid"/>:</td>
                         <td><input type="text"
-                                   size="25" <%=UserPreference2Action.getTextData(prefs, "pref." + UserProperty.MYDRUGREF_ID)%> />
+                                   size="25" <%=UserPreferenceAction.getTextData(prefs, "pref." + UserProperty.MYDRUGREF_ID)%> />
                         </td>
                     </tr>
                     <tr style="height:20px">
                         <td colspan="2"></td>
                     </tr>
                     <tr>
-                        <td><bean:message key="provider.pref.general.signature"/>:</td>
+                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.general.signature"/>:</td>
                         <td><input type="text"
-                                   size="45" <%=UserPreference2Action.getTextData(prefs, "pref." + UserProperty.SIGNATURE)%>/>
+                                   size="45" <%=UserPreferenceAction.getTextData(prefs, "pref." + UserProperty.SIGNATURE)%>/>
                         </td>
                     </tr>
                 </table>
                 <br/><br/>
-                <input type="submit" value="<bean:message key="provider.pref.btnSave"/>"/>
+                <input type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.btnSave"/>"/>
             </div>
             <div style="float:right;clear:right;width:48%">
                 <table border="0" cellspacing="2" cellpadding="2">
 
                     <tr>
-                        <td><bean:message key="provider.pref.general.colour"/>:</td>
+                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.general.colour"/>:</td>
                         <td>
-                            <input type="hidden" <%=UserPreference2Action.getTextData(prefs, "pref." + UserProperty.COLOUR)%> />
+                            <input type="hidden" <%=UserPreferenceAction.getTextData(prefs, "pref." + UserProperty.COLOUR)%> />
                             <span id='cdisp' style='width: 100%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             <a href="javascript:TCP.popup(document.forms[0].elements['pref.colour'])"><img
                                     width="15" height="13" border="0" src="../images/sel.gif"></a>
                         </td>
                     </tr>
                     <tr>
-                        <td><bean:message key="provider.pref.general.sex"/>:</td>
+                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.general.sex"/>:</td>
                         <td>
-                            <%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.SEX) %>
+                            <%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.SEX) %>
                         </td>
                     </tr>
                     <tr>
-                        <td><bean:message key="provider.pref.general.hc_type"/>:</td>
+                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.general.hc_type"/>:</td>
                         <td>
-                            <%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.HC_TYPE) %>
+                            <%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.HC_TYPE) %>
                         </td>
                     </tr>
                     <tr>
-                        <td><bean:message key="provider.pref.general.workload"/>:</td>
+                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.general.workload"/>:</td>
                         <td>
-                            <%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.WORKLOAD_MANAGEMENT) %>
+                            <%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.WORKLOAD_MANAGEMENT) %>
                         </td>
                     </tr>
                 </table>
@@ -267,110 +266,109 @@
 
 
         <div id="scheduling" class="pref_pane">
-            <h3 style="text-align:center"><bean:message key="provider.pref.scheduling.title"/></h3>
+            <h3 style="text-align:center"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.scheduling.title"/></h3>
             <!-- change password -->
             <br/><br/>
             <table border="0">
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.scheduling.start_hour"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.SCHEDULE_START_HOUR) %>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.scheduling.start_hour"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.SCHEDULE_START_HOUR) %>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.scheduling.end_hour"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.SCHEDULE_END_HOUR) %>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.scheduling.end_hour"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.SCHEDULE_END_HOUR) %>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.scheduling.period"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.SCHEDULE_PERIOD) %>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.scheduling.period"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.SCHEDULE_PERIOD) %>
                     </td>
                 </tr>
                 <tr style="height:20px">
                     <td colspan="2"></td>
                 </tr>
                 <tr>
-                    <td><bean:message key="provider.pref.scheduling.group_no"/>:</td>
+                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.scheduling.group_no"/>:</td>
                     <td>
-                        <%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.MYGROUP_NO) %>&nbsp;
-                        <input type="button" value="<bean:message key="provider.pref.scheduling.group_no.btn" />"/>
+                        <%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.MYGROUP_NO) %>&nbsp;
+                        <input type="button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.scheduling.group_no.btn"/>"/>
                     </td>
                 </tr>
             </table>
             <br/><br/>
-            <input type="submit" value="<bean:message key="provider.pref.btnSave"/>"/>
+            <input type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.btnSave"/>"/>
         </div>    <!-- scheduling -->
 
         <div id="billing" class="pref_pane">
-            <h3 style="text-align:center"><bean:message key="provider.pref.billing.title"/></h3>
+            <h3 style="text-align:center"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.billing.title"/></h3>
             <br/><br/>
             <table border="0">
                 <tr>
-                    <td><bean:message key="provider.pref.billing.diag_code"/>:</td>
+                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.billing.diag_code"/>:</td>
                     <td>
                         <input type="text" size="5" maxlength="5" name="pref.<%=UserProperty.DEFAULT_DX_CODE%>"
                                ondblClick="dxScriptAttach('dxCode')" value=""/>
-                        <a href=# onclick="dxScriptAttach('dxCode');"><bean:message
-                                key="provider.pref.billing.search"/></a>
+                        <a href=# onclick="dxScriptAttach('dxCode');"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.billing.search"/></a>
                     </td>
                 </tr>
 
                 <oscar:oscarPropertiesCheck property="billregion" value="BC">
                     <tr>
-                        <td nowrap="nowrap"><bean:message key="provider.pref.billing.bc.referral_type"/>:</td>
+                        <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.billing.bc.referral_type"/>:</td>
                         <td>
-                            <%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.DEFAULT_REFERRAL_TYPE) %>
+                            <%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.DEFAULT_REFERRAL_TYPE) %>
                         </td>
                     </tr>
                     <tr>
-                        <td nowrap="nowrap"><bean:message key="provider.pref.billing.bc.payee"/>:</td>
+                        <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.billing.bc.payee"/>:</td>
                         <td>
-                            <%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.DEFAULT_PAYEE) %>
+                            <%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.DEFAULT_PAYEE) %>
                         </td>
                     </tr>
                 </oscar:oscarPropertiesCheck>
                 <oscar:oscarPropertiesCheck property="billregion" value="ON">
                     <tr>
-                        <td nowrap="nowrap"><bean:message key="provider.pref.billing.on.form"/>:</td>
+                        <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.billing.on.form"/>:</td>
                         <td>
-                            <%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.DEFAULT_BILLING_FORM) %>
+                            <%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.DEFAULT_BILLING_FORM) %>
                         </td>
                     </tr>
                 </oscar:oscarPropertiesCheck>
             </table>
             <br/><br/>
-            <input type="submit" value="<bean:message key="provider.pref.btnSave"/>"/>
+            <input type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.btnSave"/>"/>
         </div>    <!-- billing -->
 
 
         <div id="encounter" class="pref_pane">
-            <h3 style="text-align:center"><bean:message key="provider.pref.encounter.title"/></h3>
+            <h3 style="text-align:center"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.encounter.title"/></h3>
             <br/><br/>
             <table border="0">
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.encounter.cme_ui"/>:</td>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.encounter.cme_ui"/>:</td>
                     <td>
-                        <%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.NEW_CME) %>
+                        <%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.NEW_CME) %>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.encounter.stale_date"/>:</td>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.encounter.stale_date"/>:</td>
                     <td>
-                        <%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.STALE_NOTEDATE) %> (months)
+                        <%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.STALE_NOTEDATE) %> (months)
                     </td>
                 </tr>
                 <tr>
-                    <td>F<bean:message key="provider.pref.encounter.eform_group"/>:</td>
+                    <td>F<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.encounter.eform_group"/>:</td>
                     <td>
-                        <%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.EFORM_FAVOURITE_GROUP) %>
+                        <%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.EFORM_FAVOURITE_GROUP) %>
                     </td>
                 </tr>
 
                 <tr>
-                    <td><bean:message key="provider.pref.encounter.form_length"/>:</td>
+                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.encounter.form_length"/>:</td>
                     <td>
                         <input type="text"
-                               size="5" <%=UserPreference2Action.getTextData(prefs, "pref." + UserProperty.ENCOUNTER_FORM_LENGTH)%> />
+                               size="5" <%=UserPreferenceAction.getTextData(prefs, "pref." + UserProperty.ENCOUNTER_FORM_LENGTH)%> />
                     </td>
                 </tr>
 
@@ -379,11 +377,11 @@
                 </tr>
 
                 <tr>
-                    <td valign="top"><bean:message key="provider.pref.encounter.forms"/></td>
+                    <td valign="top"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.encounter.forms"/></td>
                     <td>
 
                         <div style="height: 10em; border: 1px solid grey; overflow: auto; width: 25em;">
-                            <%=UserPreference2Action.getEncounterFormHTML(prefs, "pref." + UserProperty.ENCOUNTER_FORM_NAME)%>
+                            <%=UserPreferenceAction.getEncounterFormHTML(prefs, "pref." + UserProperty.ENCOUNTER_FORM_NAME)%>
                         </div>
 
 
@@ -391,11 +389,11 @@
                 </tr>
 
                 <tr>
-                    <td><bean:message key="provider.pref.encounter.eforms"/></td>
+                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.encounter.eforms"/></td>
                     <td>
 
                         <div style="height: 10em; border: 1px solid grey; overflow: auto; width: 25em;">
-                            <%=UserPreference2Action.getEformHTML(prefs, "pref." + UserProperty.EFORM_NAME)%>
+                            <%=UserPreferenceAction.getEformHTML(prefs, "pref." + UserProperty.EFORM_NAME)%>
                         </div>
 
 
@@ -403,39 +401,39 @@
                 </tr>
             </table>
             <br/><br/>
-            <input type="submit" value="<bean:message key="provider.pref.btnSave"/>"/>
+            <input type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.btnSave"/>"/>
 
         </div>    <!-- encounter -->
 
 
         <div id="rx" class="pref_pane">
-            <h3 style="text-align:center"><bean:message key="provider.pref.rx.title"/></h3>
+            <h3 style="text-align:center"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.rx.title"/></h3>
             <br/><br/>
             <table border="0">
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.rx.rx3"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.RX_USE_RX3) %>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.rx.rx3"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.RX_USE_RX3) %>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.rx.qr"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.RX_SHOW_QR_CODE) %>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.rx.qr"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.RX_SHOW_QR_CODE) %>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.rx.page_size"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.RX_PAGE_SIZE) %>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.rx.page_size"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.RX_PAGE_SIZE) %>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.rx.dob"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.RX_SHOW_PATIENT_DOB) %>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.rx.dob"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.RX_SHOW_PATIENT_DOB) %>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.rx.quantity"/>:</td>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.rx.quantity"/>:</td>
                     <td><input type="text"
-                               size="20" <%=UserPreference2Action.getTextData(prefs, "pref." + UserProperty.RX_DEFAULT_QUANTITY)%>/>
+                               size="20" <%=UserPreferenceAction.getTextData(prefs, "pref." + UserProperty.RX_DEFAULT_QUANTITY)%>/>
                     </td>
                 </tr>
                 <tr style="height:20px">
@@ -443,28 +441,28 @@
                 </tr>
             </table>
             <br/><br/>
-            <input type="submit" value="<bean:message key="provider.pref.btnSave"/>"/>
+            <input type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.btnSave"/>"/>
         </div>    <!-- rx -->
 
 
         <div id="consultation" class="pref_pane">
-            <h3 style="text-align:center"><bean:message key="provider.pref.consult.title"/></h3>
+            <h3 style="text-align:center"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.consult.title"/></h3>
             <br/><br/>
             <table border="0">
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.consult.cutoff"/>:</td>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.consult.cutoff"/>:</td>
                     <td><input type="text"
-                               size="20" <%=UserPreference2Action.getTextData(prefs, "pref." + UserProperty.CONSULTATION_TIME_PERIOD_WARNING)%>/>
+                               size="20" <%=UserPreferenceAction.getTextData(prefs, "pref." + UserProperty.CONSULTATION_TIME_PERIOD_WARNING)%>/>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.consult.team"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.CONSULTATION_TEAM_WARNING)%>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.consult.team"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.CONSULTATION_TEAM_WARNING)%>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.consult.paste"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.CONSULTATION_REQ_PASTE_FMT)%>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.consult.paste"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.CONSULTATION_REQ_PASTE_FMT)%>
                     </td>
                 </tr>
                 <tr style="height:20px">
@@ -472,23 +470,23 @@
                 </tr>
             </table>
             <br/><br/>
-            <input type="submit" value="<bean:message key="provider.pref.btnSave"/>"/>
+            <input type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.btnSave"/>"/>
         </div>    <!-- consultations -->
 
 
         <div id="myoscar" class="pref_pane">
-            <h3 style="text-align:center"><bean:message key="provider.pref.phr.title"/></h3>
+            <h3 style="text-align:center"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.phr.title"/></h3>
             <br/><br/>
             <table border="0">
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.phr.id"/>:</td>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.phr.id"/>:</td>
                     <td><input type="text"
-                               size="20" <%=UserPreference2Action.getTextData(prefs, "pref." + UserProperty.MYOSCAR_ID)%>/>
+                               size="20" <%=UserPreferenceAction.getTextData(prefs, "pref." + UserProperty.MYOSCAR_ID)%>/>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.phr.mymeds"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.MYMEDS)%>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.phr.mymeds"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.MYMEDS)%>
                     </td>
                 </tr>
                 <tr style="height:20px">
@@ -496,26 +494,26 @@
                 </tr>
             </table>
             <br/><br/>
-            <input type="submit" value="<bean:message key="provider.pref.btnSave"/>"/>
+            <input type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.btnSave"/>"/>
         </div>    <!-- myoscar -->
 
         <div id="caisi" class="pref_pane">
-            <h3 style="text-align:center"><bean:message key="provider.pref.caisi.title"/></h3>
+            <h3 style="text-align:center"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.caisi.title"/></h3>
             <br/><br/>
             <table border="0">
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.caisi.tickler_warning"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.NEW_TICKLER_WARNING_WINDOW)%>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.caisi.tickler_warning"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.NEW_TICKLER_WARNING_WINDOW)%>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.caisi.pmm"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.CAISI_DEFAULT_PMM)%>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.caisi.pmm"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.CAISI_DEFAULT_PMM)%>
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap="nowrap"><bean:message key="provider.pref.caisi.prev_billing"/>:</td>
-                    <td><%=UserPreference2Action.getSelect(prefs, "pref." + UserProperty.CAISI_PREV_BILLING)%>
+                    <td nowrap="nowrap"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.caisi.prev_billing"/>:</td>
+                    <td><%=UserPreferenceAction.getSelect(prefs, "pref." + UserProperty.CAISI_PREV_BILLING)%>
                     </td>
                 </tr>
                 <tr style="height:20px">
@@ -523,7 +521,7 @@
                 </tr>
             </table>
             <br/><br/>
-            <input type="submit" value="<bean:message key="provider.pref.btnSave"/>"/>
+            <input type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.btnSave"/>"/>
         </div>    <!-- caisi -->
 
 

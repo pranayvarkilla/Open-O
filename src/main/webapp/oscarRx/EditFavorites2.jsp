@@ -24,7 +24,7 @@
 
 --%>
 <!DOCTYPE html>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -178,7 +178,7 @@
            id="AutoNumber1">
         <tr>
             <td>
-                <h1><bean:message key="StaticScript.title.EditFavorites"/></h1>
+                <h1><fmt:setBundle basename="oscarResources"/><fmt:message key="StaticScript.title.EditFavorites"/></h1>
                 <!-- <%@ include file="TopLinks.jsp"%>--><!-- Row One included here-->
             </td>
         </tr>
@@ -188,9 +188,7 @@
                 <table style="width:100%; height:100%">
                     <tr>
                         <td style="width:10%; vertical-align:top">
-                            <div class="DivCCBreadCrumbs"><a href="SearchDrug3.jsp"> <bean:message
-                                    key="SearchDrug.title"/></a> > <b><bean:message
-                                    key="StaticScript.title.EditFavorites"/></b></div>
+                            <div class="DivCCBreadCrumbs"><a href="SearchDrug3.jsp"> <fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title"/></a> > <b><fmt:setBundle basename="oscarResources"/><fmt:message key="StaticScript.title.EditFavorites"/></b></div>
                         </td>
                     </tr>
 

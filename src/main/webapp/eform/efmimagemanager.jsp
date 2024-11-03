@@ -25,7 +25,7 @@
 --%>
 <%@page import="java.net.URLEncoder" %>
 <%@ page import="oscar.eform.data.*, oscar.OscarProperties, oscar.eform.*, java.util.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
             }
 
             function deleteImg(image) {
-                if (confirm("<bean:message key="eform.uploadimages.imgDelete"/>")) {
+                if (confirm("<fmt:setBundle basename="oscarResources"/><fmt:message key="eform.uploadimages.imgDelete"/>")) {
                     document.location = "../eform/deleteImage.do?filename=" + image;
                 }
             }
@@ -59,8 +59,8 @@
     <table class="table table-condensed table-striped table-hover" id="tblImage">
         <thead>
         <tr>
-            <th><bean:message key="eform.uploadimages.msgimgName"/></th>
-            <th><bean:message key="eform.uploadimages.msgImgAction"/></th>
+            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.uploadimages.msgimgName"/></th>
+            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.uploadimages.msgImgAction"/></th>
         </tr>
         </thead>
 
@@ -85,7 +85,7 @@
 
             <td>
                 <a href="<%= request.getContextPath() %>/eform/deleteImage.do?filename=<%=URLEncoder.encode(curimage, "UTF-8")%>"
-                   class="contentLink"><bean:message key="eform.uploadimages.btnDelete"/></a>
+                   class="contentLink"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.uploadimages.btnDelete"/></a>
             </td>
         </tr>
         <% } %>

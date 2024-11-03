@@ -39,7 +39,7 @@
     }
 %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
@@ -52,8 +52,7 @@
     %>
     <head>
 
-        <title><bean:message
-                key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.title"/>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.title"/>
         </title>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
@@ -84,8 +83,7 @@
                 <td class="MainTableTopRowRightColumn">
                     <table class="TopStatusBar">
                         <tr>
-                            <td class="Header"><bean:message
-                                    key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.title"/>
+                            <td class="Header"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.title"/>
                             </td>
                         </tr>
                     </table>
@@ -105,8 +103,7 @@
                         <!----Start new rows here-->
                         <tr>
                             <td>
-                                <bean:message
-                                        key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.msgClickOn"/><br>
+                                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.msgClickOn"/><br>
 
                             </td>
                         </tr>
@@ -116,17 +113,13 @@
                                 <table>
                                     <tr>
                                         <th>&nbsp;</th>
-                                        <th><bean:message
-                                                key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.specialist"/>
+                                        <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.specialist"/>
                                         </th>
-                                        <th><bean:message
-                                                key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.address"/>
+                                        <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.address"/>
                                         </th>
-                                        <th><bean:message
-                                                key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.phone"/>
+                                        <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.phone"/>
                                         </th>
-                                        <th><bean:message
-                                                key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.fax"/>
+                                        <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.fax"/>
                                         </th>
 
                                     </tr>

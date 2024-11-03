@@ -27,15 +27,14 @@
 <%
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
-<%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
-<html>
+<html:html lang="en">
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message
-                key="oscarEncounter.Measurements.msgAddMeasurementInstruction"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgAddMeasurementInstruction"/></title>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
 
         <script type="text/javascript">
@@ -53,13 +52,11 @@
             action="/oscarEncounter/oscarMeasurements/AddMeasuringInstruction.do">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
-                <td class="MainTableTopRowLeftColumn"><bean:message
-                        key="oscarEncounter.Measurements.msgMeasurements"/></td>
+                <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgMeasurements"/></td>
                 <td class="MainTableTopRowRightColumn">
                     <table class="TopStatusBar">
                         <tr>
-                            <td><bean:message
-                                    key="oscarEncounter.Measurements.msgAddMeasurementInstruction"/></td>
+                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgAddMeasurementInstruction"/></td>
                         </tr>
                     </table>
                 </td>
@@ -84,8 +81,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th align="left" class="td.tite"><bean:message
-                                                key="oscarEncounter.oscarMeasurements.Measurements.headingType"/>
+                                        <th align="left" class="td.tite"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingType"/>
                                         </th>
                                         <td><html:select property="typeDisplayName">
                                             <html:options collection="typeDisplayNames"
@@ -93,20 +89,18 @@
                                         </html:select></td>
                                     </tr>
                                     <tr>
-                                        <th align="left" class="td.tite"><bean:message
-                                                key="oscarEncounter.oscarMeasurements.Measurements.headingMeasuringInstrc"/>
+                                        <th align="left" class="td.tite"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingMeasuringInstrc"/>
                                         </th>
                                         <td><html:text property="measuringInstrc"/></td>
                                     </tr>
                                     <tr>
-                                        <th align="left" class="td.tite"><bean:message
-                                                key="oscarEncounter.oscarMeasurements.Measurements.headingValidation"/>
+                                        <th align="left" class="td.tite"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingValidation"/>
                                         </th>
                                         <td><html:select property="validation">
                                             <html:options collection="validations" property="id"
                                                           labelProperty="name"/>
                                         </html:select> <input type="hidden" name="msgBetween"
-                                                              value="<bean:message key="oscarEncounter.oscarMeasurements.AddMeasurementType.successful"/>"/>
+                                                              value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.AddMeasurementType.successful"/>"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -114,10 +108,10 @@
                                             <table>
                                                 <tr>
                                                     <td><input type="button" name="Button"
-                                                               value="<bean:message key="global.btnClose"/>"
+                                                               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>"
                                                                onClick="window.close()"/></td>
                                                     <td><input type="button" name="Button"
-                                                               value="<bean:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.addBtn"/>"
+                                                               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.addBtn"/>"
                                                                onclick="submit();"/></td>
                                                 <tr>
                                             </table>
@@ -139,4 +133,4 @@
         </table>
     </html:form>
     </body>
-</html>
+</html:html>

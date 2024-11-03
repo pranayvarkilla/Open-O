@@ -40,7 +40,7 @@
 <%@ page import="org.apache.struts.util.LabelValueBean" %>
 
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
@@ -48,7 +48,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <p>&nbsp;</p>
-<h3 align="center"><bean:message key="provider.selectClinicSite"/></h3>
+<h3 align="center"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.selectClinicSite"/></h3>
 <head>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.js"></script>
 </head>
@@ -70,7 +70,7 @@
 <p>&nbsp;</p>
 <table align="center">
     <tr>
-        <td align="right" width="30%"><bean:message key="provider.clinicSite"/>:</td>
+        <td align="right" width="30%"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.clinicSite"/>:</td>
         <td align="left" width="60%">
 
             <select id="programIdForLocation" name="programIdForLocation">

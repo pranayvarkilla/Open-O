@@ -139,20 +139,20 @@
 <table class="MainTable" id="scrollNumber1" name="encounterTable">
     <tr class="MainTableTopRow">
         <td class="MainTableTopRowLeftColumn">
-            <bean:message key="oscarMessenger.DisplayMessages.msgMessenger"/>
+            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgMessenger"/>
         </td>
         <td class="MainTableTopRowRightColumn">
             <table class="TopStatusBar">
                 <tr>
                     <td>
-                        <div class="DivContentTitle"><bean:message key="oscarMessenger.DisplayMessages.msgInbox"/></div>
+                        <div class="DivContentTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgInbox"/></div>
                     </td>
                     <td>
                     </td>
                     <td style="text-align:right">
                         <oscar:help keywords="myoscar message" key="app.top1"/> | <a
-                            href="javascript:popupStart(300,400,'About.jsp')"><bean:message key="global.about"/></a> |
-                        <a href="javascript:popupStart(300,400,'License.jsp')"><bean:message key="global.license"/></a>
+                            href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> |
+                        <a href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a>
                     </td>
                 </tr>
             </table>
@@ -174,7 +174,7 @@
                                             <td class="messengerButtonsA">
                                                 <html:link page="/phr/PhrMessage.do?method=viewMessages"
                                                            styleClass="messengerButtons">
-                                                    <bean:message key="oscarMessenger.DisplayMessages.btnRefresh"/>
+                                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.btnRefresh"/>
                                                 </html:link>
                                             </td>
                                         </tr>
@@ -261,22 +261,22 @@
                     <th align="left" bgcolor="#DDDDFF">
                         <a href="<%= request.getContextPath() %>/phr/PhrMessage?orderby=0">
 
-                            <bean:message key="oscarMessenger.DisplayMessages.msgStatus"/>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgStatus"/>
                         </a>
                     </th>
                     <th align="left" bgcolor="#DDDDFF">
                         <a href="<%= request.getContextPath() %>/phr/PhrMessage?orderby=1">
-                            <bean:message key="oscarMessenger.DisplayMessages.msgFrom"/>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgFrom"/>
                         </a>
                     </th>
                     <th align="left" bgcolor="#DDDDFF">
                         <a action="<%= request.getContextPath() %>/phr/PhrMessage?orderby=2">
-                            <bean:message key="oscarMessenger.DisplayMessages.msgSubject"/>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgSubject"/>
                         </a>
                     </th>
                     <th align="left" bgcolor="#DDDDFF">
                         <a action="<%= request.getContextPath() %>/phr/PhrMessage?orderby=3">
-                            <bean:message key="oscarMessenger.DisplayMessages.msgDate"/>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgDate"/>
                         </a>
                     </th>
                 </tr>

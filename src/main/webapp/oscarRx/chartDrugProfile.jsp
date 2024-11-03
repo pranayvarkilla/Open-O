@@ -41,7 +41,7 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ page
         import="java.util.*,oscar.oscarLab.ca.on.*,oscar.oscarDemographic.data.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%
@@ -90,14 +90,14 @@
 <head>
     <script type="text/javascript" src="<%= request.getContextPath()%>/js/global.js"></script>
     <html:base/>
-    <title><bean:message key="oscarRx.chartDrugProfile.title"/></title>
+    <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarRx.chartDrugProfile.title"/></title>
     <link rel="stylesheet" type="text/css" href="../../../share/css/OscarStandardLayout.css">
     <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
 </head>
 
 <script language="JavaScript">
     function getComment() {
-        var commentVal = prompt('<bean:message key="oscarMDS.segmentDisplay.msgComment"/>', '');
+        var commentVal = prompt('<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.msgComment"/>', '');
         document.acknowledgeForm.comment.value = commentVal;
         return true;
     }
@@ -119,13 +119,12 @@
                    bgcolor="black">
                 <tr>
                     <td width="66%" align="left" class="Cell">
-                        <div style="color:white;margin-left:5px;" class="Field2"><bean:message
-                                key="oscarMDS.segmentDisplay.formDetailResults"/></div>
+                        <div style="color:white;margin-left:5px;" class="Field2"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDetailResults"/></div>
                     </td>
                     <td align="right">
 
-                        <input type="button" value="<bean:message key="global.btnClose"/>" onClick="window.close()"/>
-                        <input type="button" value="<bean:message key="global.btnPrint"/>" onClick="window.print()"/>
+                        <input type="button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>" onClick="window.close()"/>
+                        <input type="button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnPrint"/>" onClick="window.print()"/>
 
 
                     </td>

@@ -52,7 +52,7 @@
 <%@page import="org.oscarehr.util.SpringUtils" %>
 <%@page import="java.util.List" %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
@@ -653,8 +653,7 @@
                                         %>
                                         <td class="borderGrayBottomRight"
                                             style="border-right: 0px; width: 130px;"><font
-                                                class="subHeading"><bean:message
-                                                key="oscarEncounter.form.labreq.patientChartNo"/></font><br/>
+                                                class="subHeading"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.form.labreq.patientChartNo"/></font><br/>
                                             <input type="hidden" style="width: 90%" name="patientChartNo"
                                                    value="<%=demoChartNo%>"/> <%=props.getProperty("patientChartNo", "")%>
                                         </td>

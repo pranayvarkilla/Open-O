@@ -42,7 +42,7 @@
 
 <%@ page import="java.util.ResourceBundle" %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <html>
@@ -56,8 +56,7 @@
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message
-                key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.title"/>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.title"/>
         </title>
         <html:base/>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
@@ -77,13 +76,11 @@
             <td class="MainTableTopRowRightColumn">
                 <table class="TopStatusBar">
                     <tr>
-                        <td class="Header"><bean:message
-                                key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.title"/>
+                        <td class="Header"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.title"/>
                         </td>
                         <td></td>
                         <td style="text-align: right" NOWRAP><a
-                                href="javascript:window.close();"><bean:message
-                                key="global.btnClose"/></a> |
+                                href="javascript:window.close();"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/></a> |
                         </td>
                     </tr>
                 </table>
@@ -103,8 +100,7 @@
 
                     <!----Start new rows here-->
                     <tr>
-                        <td><bean:message
-                                key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.msgCheckOff"/><br>
+                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.msgCheckOff"/><br>
 
                         </td>
                     </tr>
@@ -112,13 +108,12 @@
                         <td>
                             <html:form action="/oscarEncounter/DelService">
                             <input type="submit" name="delete"
-                                   value="<bean:message key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.btnDeleteService"/>">
+                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.btnDeleteService"/>">
                             <div class="ChooseRecipientsBox1">
                                 <table>
                                     <tr>
                                         <th>&nbsp;</th>
-                                        <th><bean:message
-                                                key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.service"/>
+                                        <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.service"/>
                                         </th>
 
 

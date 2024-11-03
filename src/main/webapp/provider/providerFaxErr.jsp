@@ -24,7 +24,7 @@
 
 --%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <html>
@@ -35,22 +35,19 @@
         <link rel="stylesheet" type="text/css"
               href="../oscarEncounter/encounterStyles.css">
 
-        <title><bean:message key="provider.editRxFax.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editRxFax.title"/></title>
     </head>
 
     <body class="BodyStyle" vlink="#0000FF">
 
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr class="MainTableTopRow">
-            <td class="MainTableTopRowLeftColumn"><bean:message
-                    key="provider.editRxFax.msgPrefs"/></td>
-            <td style="color: white" class="MainTableTopRowRightColumn"><bean:message
-                    key="provider.editRxFax.msgProviderFaxNumber"/></td>
+            <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editRxFax.msgPrefs"/></td>
+            <td style="color: white" class="MainTableTopRowRightColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editRxFax.msgProviderFaxNumber"/></td>
         </tr>
         <tr>
             <td class="MainTableLeftColumn">&nbsp;</td>
-            <td style="color: red" class="MainTableRightColumn"><bean:message
-                    key="provider.editRxFax.msgError"/></td>
+            <td style="color: red" class="MainTableRightColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editRxFax.msgError"/></td>
         </tr>
         <tr>
             <td class="MainTableBottomRowLeftColumn"></td>

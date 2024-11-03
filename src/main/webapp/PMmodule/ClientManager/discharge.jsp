@@ -288,31 +288,41 @@ Community Program:&nbsp;
         <tr>
             <td>Discharge Reason</td>
             <td><html:select property="admission.radioDischargeReason">
-                <html:option value='<%="" + DischargeReason.ADMITTED_TO_LTC_FACILITY.ordinal()%>'><bean:message
-                        bundle="pmm" key="discharge.reason.ADMITTED_TO_LTC_FACILITY"/></html:option>
-                <html:option value='<%="" + DischargeReason.DOES_NOT_FIT_CRITERIA.ordinal()%>'><bean:message
-                        bundle="pmm" key="discharge.reason.DOES_NOT_FIT_CRITERIA"/></html:option>
-                <html:option value='<%="" + DischargeReason.REQUIRES_ACUTE_CARE.ordinal()%>'><bean:message bundle="pmm"
-                                                                                                           key="discharge.reason.REQUIRES_ACUTE_CARE"/></html:option>
-                <html:option value='<%="" + DischargeReason.COMPLETION_WITH_REFERRAL.ordinal()%>'><bean:message
-                        bundle="pmm" key="discharge.reason.COMPLETION_WITH_REFERRAL"/></html:option>
-                <html:option value='<%="" + DischargeReason.COMPLETION_WITHOUT_REFERRAL.ordinal()%>'><bean:message
-                        bundle="pmm" key="discharge.reason.COMPLETION_WITHOUT_REFERRAL"/></html:option>
-                <html:option value='<%="" + DischargeReason.DEATH.ordinal()%>'><bean:message bundle="pmm"
-                                                                                             key="discharge.reason.DEATH"/></html:option>
-                <html:option value='<%="" + DischargeReason.NO_SPACE_AVAILABLE.ordinal()%>'><bean:message bundle="pmm"
-                                                                                                          key="discharge.reason.NO_SPACE_AVAILABLE"/></html:option>
-                <html:option value='<%="" + DischargeReason.RELOCATION.ordinal()%>'><bean:message bundle="pmm"
-                                                                                                  key="discharge.reason.RELOCATION"/></html:option>
-                <html:option value='<%="" + DischargeReason.SERVICE_PLAN_COMPLETED.ordinal()%>'><bean:message
-                        bundle="pmm" key="discharge.reason.SERVICE_PLAN_COMPLETED"/></html:option>
-                <html:option value='<%="" + DischargeReason.SUICIDE.ordinal()%>'><bean:message bundle="pmm"
-                                                                                               key="discharge.reason.SUICIDE"/></html:option>
-                <html:option value='<%="" + DischargeReason.WITHDRAWL_CLIENT_PREFERENCE.ordinal()%>'><bean:message
-                        bundle="pmm" key="discharge.reason.WITHDRAWL_CLIENT_PREFERENCE"/></html:option>
-                <html:option value='<%="" + DischargeReason.OTHER.ordinal()%>'><bean:message bundle="pmm"
-                                                                                             key="discharge.reason.OTHER"/></html:option>
-
+                <html:option value='<%="" + DischargeReason.ADMITTED_TO_LTC_FACILITY.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.ADMITTED_TO_LTC_FACILITY"/>
+                </html:option>
+                <html:option value='<%="" + DischargeReason.DOES_NOT_FIT_CRITERIA.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.DOES_NOT_FIT_CRITERIA"/>
+                </html:option>
+                <html:option value='<%="" + DischargeReason.REQUIRES_ACUTE_CARE.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.REQUIRES_ACUTE_CARE"/>
+                </html:option>
+                <html:option value='<%="" + DischargeReason.COMPLETION_WITH_REFERRAL.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.COMPLETION_WITH_REFERRAL"/>
+                </html:option>
+                <html:option value='<%="" + DischargeReason.COMPLETION_WITHOUT_REFERRAL.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.COMPLETION_WITHOUT_REFERRAL"/>
+                </html:option>
+                <html:option value='<%="" + DischargeReason.DEATH.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.DEATH"/>
+                </html:option>
+                <html:option value='<%="" + DischargeReason.NO_SPACE_AVAILABLE.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.NO_SPACE_AVAILABLE"/>
+                </html:option>
+                <html:option value='<%="" + DischargeReason.RELOCATION.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.RELOCATION"/>
+                </html:option>
+                <html:option value='<%="" + DischargeReason.SERVICE_PLAN_COMPLETED.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.SERVICE_PLAN_COMPLETED"/>
+                </html:option>
+                <html:option value='<%="" + DischargeReason.SUICIDE.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.SUICIDE"/>
+                </html:option>
+                <html:option value='<%="" + DischargeReason.WITHDRAWL_CLIENT_PREFERENCE.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.WITHDRAWL_CLIENT_PREFERENCE"/>
+                </html:option>
+                <html:option value='<%="" + DischargeReason.OTHER.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.OTHER"/></html:option>
             </html:select>
             </td>
         </tr>

@@ -48,7 +48,7 @@
 <%@ page
         import="java.util.*, java.sql.*, oscar.util.*,oscar.oscarProvider.data.ProviderData,oscar.oscarBilling.ca.bc.data.*,oscar.entities.*" %>
 <%@ page import="org.owasp.encoder.Encode" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -84,7 +84,7 @@
 
 <html>
 <head>
-    <title><bean:message key="admin.admin.simulateSubFile2"/></title>
+    <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.simulateSubFile2"/></title>
     <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
     <script language="JavaScript">
 
@@ -140,7 +140,7 @@
 </head>
 
 <body>
-<h3><bean:message key="admin.admin.simulateSubFile2"/></h3>
+<h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.simulateSubFile2"/></h3>
 <div class="container-fluid well noprint">
 
     <h4>Simulate Teleplan Report - <%=thisyear%>

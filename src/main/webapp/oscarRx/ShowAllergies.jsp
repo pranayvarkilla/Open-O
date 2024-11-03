@@ -32,9 +32,7 @@
 <%@page import="oscar.oscarRx.pageUtil.AllergyDisplay" %>
 <%@page import="java.util.List" %>
 <%@page import="oscar.OscarProperties" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -73,10 +71,10 @@
 
     com.quatro.service.security.SecurityManager securityManager = new com.quatro.service.security.SecurityManager();
 %>
-<html>
+<html:html lang="en">
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="EditAllergies.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.title"/></title>
         <link rel="stylesheet" type="text/css" href="styles.css">
 
         <style type="text/css">
@@ -197,24 +195,21 @@
                        height="100%">
                     <tr>
                         <td width="0%" valign="top">
-                            <div class="DivCCBreadCrumbs"><a href="SearchDrug.jsp"> <bean:message
-                                    key="SearchDrug.title"/></a>&nbsp;&gt;&nbsp; <b><bean:message
-                                    key="EditAllergies.title"/></b></div>
+                            <div class="DivCCBreadCrumbs"><a href="SearchDrug.jsp"> <fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title"/></a>&nbsp;&gt;&nbsp; <b><fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.title"/></b></div>
                         </td>
                     </tr>
                     <!----Start new rows here-->
 
                     <tr>
                         <td>
-                            <div class="DivContentSectionHead"><bean:message
-                                    key="EditAllergies.section1Title"/></div>
+                            <div class="DivContentSectionHead"><fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.section1Title"/></div>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <table>
                                 <tr>
-                                    <td><b><bean:message key="SearchDrug.nameText"/></b>
+                                    <td><b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.nameText"/></b>
                                         <jsp:getProperty name="patient" property="surname"/>
                                         ,
                                         <jsp:getProperty name="patient" property="firstName"/>
@@ -230,8 +225,7 @@
 
                     <tr>
                         <td>
-                            <div class="DivContentSectionHead"><bean:message
-                                    key="EditAllergies.section2Title"/>
+                            <div class="DivContentSectionHead"><fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.section2Title"/>
                                 | <span class="view_menu">View:
 				
 				<%
@@ -443,8 +437,7 @@
                     <%if (securityManager.hasWriteAccess("_allergies", roleName2$)) {%>
                     <tr>
                         <td>
-                            <div class="DivContentSectionHead"><bean:message
-                                    key="EditAllergies.section3Title"/></div>
+                            <div class="DivContentSectionHead"><fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.section3Title"/></div>
                         </td>
                     </tr>
                     <tr>
@@ -581,4 +574,4 @@
         <% } %>
     </table>
     </body>
-</html>
+</html:html>

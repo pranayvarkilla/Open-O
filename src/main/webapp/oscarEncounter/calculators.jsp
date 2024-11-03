@@ -43,7 +43,7 @@
 <%@page import="oscar.util.StringUtils" %>
 <%@ page
         import="oscar.oscarDemographic.data.*, org.oscarehr.common.model.Demographic" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <%
@@ -85,13 +85,13 @@
             <td align="center" class="menuLayer"><a
                     href="javascript: function myFunction() {return false; }"
                     onclick="popperup(650,775,'http://www.mcw.edu/calculators/body-mass-index.htm','BodyMassIndex');">
-                <bean:message key="oscarEncounter.Index.bodyMass"/> </a></td>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.bodyMass"/> </a></td>
         </tr>
         <tr>
             <td align="center" class="menuLayer"><a
                     href="javascript: function myFunction() {return false; }"
                     onclick="popperup(525,775,'calculators/CoronaryArteryDiseaseRiskPrediction.jsp?sex=<%= sex%>&age=<%=age%>','CoronaryArteryDiseaseRisk');">
-                <bean:message key="oscarEncounter.Index.coronary"/> </a></td>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.coronary"/> </a></td>
         </tr>
         <tr>
             <td align="center" class="menuLayer"><a
@@ -111,25 +111,25 @@
             <td align="center" class="menuLayer"><a
                     href="javascript: function myFunction() {return false; }"
                     onclick="popperup(525,775,'calculators/OsteoporoticFracture.jsp?sex=<%=sex%>&age=<%=age%>','OsteoporoticFracture');">
-                <bean:message key="oscarEncounter.Index.msgOsteoporotic"/> </a></td>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.msgOsteoporotic"/> </a></td>
         </tr>
         <tr>
             <td align="center" class="menuLayer"><a
                     href="javascript: function myFunction() {return false; }"
                     onclick="popperup(650,775,'http://www.mcw.edu/calculators/pregnancydate.htm','PregancyCalculator');">
-                <bean:message key="oscarEncounter.Index.pregnancy"/> </a></td>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.pregnancy"/> </a></td>
         </tr>
         <tr>
             <td align="center" class="menuLayer"><a
                     href="javascript: function myFunction() {return false; }"
                     onclick="popperup(400,500,'calculators/SimpleCalculator.jsp','SimpleCalc');">
-                <bean:message key="oscarEncounter.Index.simpleCalculator"/> </a></td>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.simpleCalculator"/> </a></td>
         </tr>
         <tr>
             <td align="center" class="menuLayer"><a
                     href="javascript: function myFunction() {return false; }"
                     onclick="popperup(650,775,'calculators/GeneralCalculators.jsp','GeneralConversions'); ">
-                <bean:message key="oscarEncounter.Index.generalConversions"/> </a></td>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.generalConversions"/> </a></td>
         </tr>
     </table>
     </body>

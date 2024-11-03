@@ -32,7 +32,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.oscar-emr.com/tags/integration" prefix="i" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="java.lang.*, java.util.*, java.text.*,java.sql.*, oscar.*" %>
 <%
@@ -67,7 +67,7 @@
 
 
             if (document.getElementById("password").value == "") {
-                alert('<bean:message key="admin.securityrecord.formPassword" /> <bean:message key="admin.securityrecord.msgIsRequired"/>');
+                alert('<fmt:setBundle basename="oscarResources"/><fmt:message key="admin.securityrecord.formPassword"/> <fmt:setBundle basename="oscarResources"/><fmt:message key="admin.securityrecord.msgIsRequired"/>');
                 setfocus('password');
                 return false;
             }
@@ -76,7 +76,7 @@
             //	return false;
             //}
             if (document.getElementById("password").value != document.getElementById("conPassword").value) {
-                alert('<bean:message key="admin.securityrecord.msgPasswordNotConfirmed" />');
+                alert('<fmt:setBundle basename="oscarResources"/><fmt:message key="admin.securityrecord.msgPasswordNotConfirmed"/>');
                 setfocus('conPassword');
                 return false;
             }

@@ -24,7 +24,7 @@
 
 --%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -46,8 +46,7 @@
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message
-                key="oscarEncounter.immunization.config.createImmunizationSetinit.title"/>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.title"/>
         </title>
         <html:base/>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
@@ -80,8 +79,7 @@
             <td width="10%" height="37" bgcolor="#000000">&nbsp;</td>
             <td width="100%" bgcolor="#000000"
                 style="border-left: 2px solid #A9A9A9; padding-left: 5" height="0%">
-                <p class="ScreenTitle"><bean:message
-                        key="oscarEncounter.immunization.config.createImmunizationSetinit.msgCreateNewSet"/></p>
+                <p class="ScreenTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.msgCreateNewSet"/></p>
             </td>
         </tr>
         <tr>
@@ -95,20 +93,16 @@
                     <!----Start new rows here-->
                     <tr>
                         <td>
-                            <div><bean:message
-                                    key="oscarEncounter.immunization.config.createImmunizationSetinit.msgFollowSteps"/>
+                            <div><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.msgFollowSteps"/>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <div class="DivContentTitle"><br>
-                                <bean:message
-                                        key="oscarEncounter.immunization.config.createImmunizationSetinit.msgStep1"/><br>
-                                <bean:message
-                                        key="oscarEncounter.immunization.config.createImmunizationSetinit.msgStep2"/><br>
-                                <bean:message
-                                        key="oscarEncounter.immunization.config.createImmunizationSetinit.msgStep3"/><br>
+                                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.msgStep1"/><br>
+                                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.msgStep2"/><br>
+                                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.msgStep3"/><br>
 
                                 <br>
                                 <br>
@@ -122,27 +116,24 @@
                                 action="/oscarEncounter/immunization/config/CreateInitImmunization">
                             <table cellspacing="1">
                                 <tr>
-                                    <td class="cells"><bean:message
-                                            key="oscarEncounter.immunization.config.createImmunizationSetinit.formSetName"/>:
+                                    <td class="cells"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.formSetName"/>:
                                     </td>
                                     <td class="cells"><html:text property="setName"/></td>
                                 </tr>
                                 <tr>
-                                    <td class="cells"><bean:message
-                                            key="oscarEncounter.immunization.config.createImmunizationSetinit.formNRows"/>:
+                                    <td class="cells"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.formNRows"/>:
                                     </td>
                                     <td class="cells"><html:text property="numRows"/></td>
                                 </tr>
                                 <tr>
-                                    <td class="cells"><bean:message
-                                            key="oscarEncounter.immunization.config.createImmunizationSetinit.formNCol"/>:
+                                    <td class="cells"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.formNCol"/>:
                                     </td>
                                     <td class="cells"><html:text property="numCols"/></td>
                                 </tr>
 
                                 <tr>
                                     <td><input type="submit"
-                                               value="<bean:message key="oscarEncounter.immunization.config.createImmunizationSetinit.btnNext"/>"/>
+                                               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.btnNext"/>"/>
                                     </td>
                                 </tr>
                             </table>

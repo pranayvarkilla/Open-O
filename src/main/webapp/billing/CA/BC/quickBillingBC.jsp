@@ -276,7 +276,7 @@
     <div id="header" class="bgLilac">
         <ul>
             <li>
-                <bean:message key="billing.provider.billProvider"/>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="billing.provider.billProvider"/>
 
                 <select id="provider" name="provider">
                     <option value="empty">- Select Provider -</option>

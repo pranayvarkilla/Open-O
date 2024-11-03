@@ -41,7 +41,7 @@
 %>
 
 <%@ page import="java.math.*,java.util.*,oscar.oscarBilling.ca.bc.MSP.*,oscar.util.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
@@ -107,7 +107,7 @@
 <html>
 <head>
     <html:base/>
-    <title><bean:message key="admin.admin.editInvoices"/></title>
+    <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.editInvoices"/></title>
     <script src="<%=request.getContextPath()%>/csrfguard" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/library/jquery/jquery-3.6.4.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/library/bootstrap/3.0.0/js/bootstrap.min.js"
@@ -230,7 +230,7 @@
 
 <body>
 <div class="container">
-    <h3><bean:message key="admin.admin.editInvoices"/></h3>
+    <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.editInvoices"/></h3>
 
     <div class="row well hidden-print">
 

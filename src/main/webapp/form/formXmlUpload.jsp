@@ -38,7 +38,7 @@
     }
 %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
@@ -55,7 +55,7 @@
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="admin.admin.btnImportFormData"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.btnImportFormData"/></title>
         <link rel="stylesheet" type="text/css"
               href="<%= request.getContextPath() %>/js/jquery_css/smoothness/jquery-ui-1.10.2.custom.min.css"/>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-1.9.1.js"></script>
@@ -72,7 +72,7 @@
 
     <div class="well">
 
-        <h3><bean:message key="admin.admin.btnImportFormData"/></h3>
+        <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.btnImportFormData"/></h3>
 
         <html:form action="/form/xmlUpload.do" method="POST" enctype="multipart/form-data">
 
@@ -82,7 +82,7 @@
             Select data in zip format:<br />
 
             <input type="file" name="file1" value="">
-            <span title="<bean:message key="global.uploadWarningBody"/>"
+            <span title="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.uploadWarningBody"/>"
                   style="vertical-align:middle;font-family:arial;font-size:20px;font-weight:bold;color:#ABABAB;cursor:pointer"><img
                     border="0" src="../images/icon_alertsml.gif"/></span></span>
 

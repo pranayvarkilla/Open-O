@@ -49,7 +49,7 @@
 <%@page import="org.oscarehr.sharingcenter.model.AffinityDomainDataObject" %>
 <%@page
         import="java.util.*,oscar.oscarDemographic.data.*,oscar.oscarPrevention.*,oscar.oscarProvider.data.*,oscar.util.*,oscar.oscarReport.data.*,oscar.oscarPrevention.pageUtil.*,oscar.oscarDemographic.pageUtil.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -89,7 +89,7 @@
 <html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
-        <title><bean:message key="demographic.demographicexport.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.title"/></title>
 
         <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
 
@@ -213,28 +213,26 @@
         if (!userRole.toLowerCase().contains("admin")) { %>
     <div class="alert alert-block alert-error">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <bean:message key="demographic.demographicexport.msgsorry"/>
+        <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.msgsorry"/>
     </div>
     <%
     } else if (!tmp_dir_ready) { %>
     <div class="alert alert-block alert-error">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <bean:message key="demographic.demographicexport.msgerror"/>
+        <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.msgerror"/>
     </div>
     <%
     } else {
     %>
 
     <div class="container-fluid well">
-        <h3><bean:message key="demographic.demographicexport.title"/> <small><oscar:help keywords="export demographic"
+        <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.title"/> <small><oscar:help keywords="export demographic"
                                                                                          key="app.top1"/></small></h3>
 
         <div class="span2">
             <% if (demographicNo == null) { %>
-            <a href='<c:out value="${ctx}/demographic/cihiExportOMD4.do"></c:out>'><bean:message
-                    key="demographic.demographicexport.cihiexport"/></a><br>
-            <a href='<c:out value="${ctx}/demographic/eRourkeExport.do"></c:out>'><bean:message
-                    key="demographic.demographicexport.rourke2009export"/></a>
+            <a href='<c:out value="${ctx}/demographic/cihiExportOMD4.do"></c:out>'><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.cihiexport"/></a><br>
+            <a href='<c:out value="${ctx}/demographic/eRourkeExport.do"></c:out>'><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.rourke2009export"/></a>
             <%} %>
         </div><!--span2-->
 
@@ -244,11 +242,11 @@
 
                 <% if (demographicNo != null) { %>
                 <html:hidden property="demographicNo" value="<%=demographicNo%>"/>
-                <bean:message key="demographic.demographicexport.exportingdemographicno"/><%=demographicNo%>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.exportingdemographicno"/><%=demographicNo%>
                 <%} else {%>
-                <bean:message key="demographic.demographicexport.patientset"/><br>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.patientset"/><br>
                 <html:select style="width: 189px" property="patientSet" styleId="patientSet">
-                    <html:option value="-1"><bean:message key="demographic.demographicexport.selectset"/></html:option>
+                    <html:option value="-1"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.selectset"/></html:option>
                     <%
                         /*			    for (int i =0 ; i < queryArray.size(); i++){
                         RptSearchData.SearchCriteria sc = (RptSearchData.SearchCriteria) queryArray.get(i);
@@ -265,10 +263,9 @@
 
                 <br>
 
-                <bean:message key="demographic.demographicexport.providers"/><br>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.providers"/><br>
                 <html:select style="width: 189px" property="providerNo" styleId="providerNo">
-                    <html:option value="-1"><bean:message
-                            key="demographic.demographicexport.selectProvider"/></html:option>
+                    <html:option value="-1"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.selectProvider"/></html:option>
                     <%
                         ProviderDao providerDao = SpringUtils.getBean(ProviderDao.class);
                         List<Provider> providers = providerDao.getActiveProviders();
@@ -291,7 +288,7 @@
                 <br>
 
 
-                <bean:message key="demographic.demographicexport.exporttemplate"/><br>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.exporttemplate"/><br>
                 <html:select style="width: 189px" property="template">
                     <html:option
                             value="<%=(new Integer(DemographicExportAction4.CMS4)).toString() %>">EMR DM 5.0</html:option>
@@ -300,37 +297,25 @@
 
                 <br>
 
-                <bean:message key="demographic.demographicexport.exportcategories"/><br>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.exportcategories"/><br>
 
                 <input type="checkbox" onClick="toggle(this)"/>Select All<br/>
 
-                <html:checkbox property="exPersonalHistory"><bean:message
-                        key="demographic.demographicexport.personalhistory"/></html:checkbox><br>
-                <html:checkbox property="exFamilyHistory"><bean:message
-                        key="demographic.demographicexport.familyhistory"/></html:checkbox><br>
-                <html:checkbox property="exPastHealth"><bean:message
-                        key="demographic.demographicexport.pasthealth"/></html:checkbox><br>
-                <html:checkbox property="exProblemList"><bean:message key="demographic.demographicexport.problemlist"/></html:checkbox><br>
-                <html:checkbox property="exRiskFactors"><bean:message key="demographic.demographicexport.riskfactors"/></html:checkbox><br>
-                <html:checkbox property="exAllergiesAndAdverseReactions"><bean:message
-                        key="demographic.demographicexport.allergiesadversereaction"/></html:checkbox><br>
-                <html:checkbox property="exMedicationsAndTreatments"><bean:message
-                        key="demographic.demographicexport.medicationstreatments"/></html:checkbox><br>
+                <html:checkbox property="exPersonalHistory"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.personalhistory"/></html:checkbox><br>
+                <html:checkbox property="exFamilyHistory"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.familyhistory"/></html:checkbox><br>
+                <html:checkbox property="exPastHealth"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.pasthealth"/></html:checkbox><br>
+                <html:checkbox property="exProblemList"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.problemlist"/></html:checkbox><br>
+                <html:checkbox property="exRiskFactors"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.riskfactors"/></html:checkbox><br>
+                <html:checkbox property="exAllergiesAndAdverseReactions"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.allergiesadversereaction"/></html:checkbox><br>
+                <html:checkbox property="exMedicationsAndTreatments"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.medicationstreatments"/></html:checkbox><br>
 
-                <html:checkbox property="exImmunizations"><bean:message
-                        key="demographic.demographicexport.immunization"/></html:checkbox><br>
-                <html:checkbox property="exLaboratoryResults"><bean:message
-                        key="demographic.demographicexport.laboratoryresults"/></html:checkbox><br>
-                <html:checkbox property="exAppointments"><bean:message
-                        key="demographic.demographicexport.appointments"/></html:checkbox><br>
-                <html:checkbox property="exClinicalNotes"><bean:message
-                        key="demographic.demographicexport.clinicalnotes"/></html:checkbox><br>
-                <html:checkbox property="exReportsReceived"><bean:message
-                        key="demographic.demographicexport.reportsreceived"/></html:checkbox><br>
-                <html:checkbox property="exCareElements"><bean:message
-                        key="demographic.demographicexport.careelements"/></html:checkbox><br>
-                <html:checkbox property="exAlertsAndSpecialNeeds"><bean:message
-                        key="demographic.demographicexport.alertsandspecialneeds"/></html:checkbox>
+                <html:checkbox property="exImmunizations"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.immunization"/></html:checkbox><br>
+                <html:checkbox property="exLaboratoryResults"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.laboratoryresults"/></html:checkbox><br>
+                <html:checkbox property="exAppointments"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.appointments"/></html:checkbox><br>
+                <html:checkbox property="exClinicalNotes"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.clinicalnotes"/></html:checkbox><br>
+                <html:checkbox property="exReportsReceived"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.reportsreceived"/></html:checkbox><br>
+                <html:checkbox property="exCareElements"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.careelements"/></html:checkbox><br>
+                <html:checkbox property="exAlertsAndSpecialNeeds"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.alertsandspecialneeds"/></html:checkbox>
 
                 <br>
                 <html:hidden property="pgpReady" value="<%=pgp_ready%>"/>
@@ -341,12 +326,12 @@
 
                 <div class="alert alert-block alert-error">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <bean:message key="demographic.demographicexport.msgwarning"/>
+                    <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.msgwarning"/>
                 </div>
 
                 <% } %>
 
-                <input class="btn btn-primary" type="submit" value="<bean:message key="export" />"/>
+                <input class="btn btn-primary" type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="export"/>"/>
 
                 <% if (isSharingCenterEnabled) { %>
                 <!-- Sharing Center Submission -->

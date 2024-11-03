@@ -41,7 +41,7 @@
 
 <%@ page
         import="java.util.*,oscar.oscarReport.oscarMeasurements.pageUtil.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <link rel="stylesheet" type="text/css"
@@ -49,8 +49,7 @@
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message
-                key="oscarReport.CDMReport.msgSelectCDMGroup"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgSelectCDMGroup"/></title>
 
         <script type="text/javascript">
             function set(target) {
@@ -74,23 +73,19 @@
     <html:form action="oscarReport/oscarMeasurements/SelectCDMReport">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
-                <td class="MainTableTopRowLeftColumn"><bean:message
-                        key="oscarReport.CDMReport.msgReport"/></td>
+                <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgReport"/></td>
                 <td class="MainTableTopRowRightColumn">
                     <table class="TopStatusBar">
                         <tr>
-                            <td><bean:message key="oscarReport.CDMReport.msgTitle"/></td>
-                            <td><bean:message
-                                    key="oscarReport.CDMReport.msgSelectCDMGroup"/> <html:select
+                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTitle"/></td>
+                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgSelectCDMGroup"/> <html:select
                                     property="value(CDMgroup)">
                                 <html:options collection="CDMGroups" property="groupName"
                                               labelProperty="groupName"/>
                             </html:select></td>
                             <td style="text-align: right"><oscar:help keywords="report" key="app.top1"/> | <a
-                                    href="javascript:popupStart(300,400,'About.jsp')"><bean:message
-                                    key="global.about"/></a> | <a
-                                    href="javascript:popupStart(300,400,'License.jsp')"><bean:message
-                                    key="global.license"/></a></td>
+                                    href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
+                                    href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                         </tr>
                     </table>
                 </td>
@@ -104,33 +99,30 @@
                                 <table>
                                     <input type="hidden" name="forward" value="error"/>
                                     <tr>
-                                        <td width="450" class="fieldBox"><bean:message
-                                                key="oscarReport.CDMReport.msgPercentageOfPatientWhoMetGuideline"/>
+                                        <td width="450" class="fieldBox"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgPercentageOfPatientWhoMetGuideline"/>
                                         </td>
 
                                         <td width="120" class="fieldBox"><input type="button"
                                                                                 name="button"
-                                                                                value="<bean:message key="oscarReport.CDMReport.btnContinue"/>"
+                                                                                value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.btnContinue"/>"
                                                                                 onclick="set('patientWhoMetGuideline');submit();checkGroup();"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td width="450" class="fieldBox"><bean:message
-                                                key="oscarReport.CDMReport.msgPercentageOfPatientInAbnormalRange"/>
+                                        <td width="450" class="fieldBox"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgPercentageOfPatientInAbnormalRange"/>
                                         </td>
                                         <td width="120" class="fieldBox"><input type="button"
                                                                                 name="button"
-                                                                                value="<bean:message key="oscarReport.CDMReport.btnContinue"/>"
+                                                                                value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.btnContinue"/>"
                                                                                 onclick="set('patientInAbnormalRange');submit();checkGroup();"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td width="450" class="fieldBox"><bean:message
-                                                key="oscarReport.CDMReport.msgFrequencyOfRelevantTestsBeingPerformed"/>
+                                        <td width="450" class="fieldBox"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgFrequencyOfRelevantTestsBeingPerformed"/>
                                         </td>
                                         <td width="120" class="fieldBox"><input type="button"
                                                                                 name="button"
-                                                                                value="<bean:message key="oscarReport.CDMReport.btnContinue"/>"
+                                                                                value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.btnContinue"/>"
                                                                                 onclick="set('freqencyOfReleventTests');submit();checkGroup();"/>
                                         </td>
                                     </tr>

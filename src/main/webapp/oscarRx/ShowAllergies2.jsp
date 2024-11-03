@@ -31,7 +31,7 @@
 <%@page import="org.oscarehr.phr.util.MyOscarUtils" %>
 <%@page import="org.oscarehr.util.MiscUtils" %>
 <%@ page language="java" import="oscar.OscarProperties" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -82,7 +82,7 @@
 %>
 <html>
     <head>
-        <title><bean:message key="EditAllergies.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.title"/></title>
 
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.js"></script>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -388,16 +388,16 @@
                 <table>
                     <tr class="DivCCBreadCrumbs">
                         <td>
-                            <a href="SearchDrug3.jsp"><bean:message key="SearchDrug.title"/></a>
+                            <a href="SearchDrug3.jsp"><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title"/></a>
                             &nbsp;&gt;&nbsp;
-                            <b><bean:message key="EditAllergies.title"/></b>
+                            <b><fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.title"/></b>
                         </td>
                     </tr>
                     <!----Start new rows here-->
 
                     <tr class="DivContentSectionHead">
                         <td>
-                            <bean:message key="EditAllergies.section1Title"/>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.section1Title"/>
                         </td>
                     </tr>
                     <tr id="patientDataRow">
@@ -405,7 +405,7 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <b><bean:message key="SearchDrug.nameText"/></b>
+                                        <b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.nameText"/></b>
                                         <jsp:getProperty name="patient" property="surname"/>
                                         ,
                                         <jsp:getProperty name="patient" property="firstName"/>
@@ -420,7 +420,7 @@
                     </tr>
                     <tr>
                         <td class="DivContentSectionHead">
-                            <bean:message key="EditAllergies.section2Title"/>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.section2Title"/>
                             <span class="view_menu">View:
 <%
 

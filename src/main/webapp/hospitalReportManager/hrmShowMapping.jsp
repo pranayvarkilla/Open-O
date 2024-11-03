@@ -26,7 +26,7 @@
 
 <%@page import="java.util.*, org.oscarehr.hospitalReportManager.*, org.oscarehr.hospitalReportManager.model.HRMCategory" %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <!DOCTYPE html >
 <html>
@@ -50,7 +50,7 @@
                     "order": [],
                     "bPaginate": false,
                     "language": {
-                        "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<bean:message key="global.i18nLanguagecode"/>.json"
+                        "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.i18nLanguagecode"/>.json"
                     }
                 });
             });
@@ -64,9 +64,9 @@
         <div class="col-sm-12">
             <h4>Show Mappings</h4>
             <p class="pull-right">
-                <a href="javascript:popupStart(300,400,'Help.jsp')"><bean:message key="global.help"/></a> |
-                <a href="javascript:popupStart(300,400,'About.jsp')"><bean:message key="global.about"/></a> |
-                <a href="javascript:popupStart(300,400,'License.jsp')"><bean:message key="global.license"/></a>
+                <a href="javascript:popupStart(300,400,'Help.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.help"/></a> |
+                <a href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> |
+                <a href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a>
             </p>
             <div>
                 <% if (request.getAttribute("success") != null) {
