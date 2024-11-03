@@ -30,7 +30,7 @@
 %>
 
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
@@ -56,7 +56,7 @@
 
 
     <head>
-        <title><bean:message key="oscarLearning.courseManager.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarLearning.courseManager.title"/></title>
         <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
 
         <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.9.1.js"></script>
@@ -240,7 +240,7 @@ removed for now since "course" provides no usefule results that I can see
 <small><oscar:help keywords="course" key="app.top1"/></small>
 -->
 
-    <h3><bean:message key="admin.admin.learning.manageCourses"/></h3>
+    <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.learning.manageCourses"/></h3>
     <div class="container-fluid">
 
         <div class="well form-inline">

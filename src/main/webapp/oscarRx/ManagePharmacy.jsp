@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page
@@ -48,7 +48,7 @@
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="ManagePharmacy.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.title"/></title>
         <html:base/>
         <%
             // Check if RxSessionBean is missing in the session
@@ -90,23 +90,19 @@
                        height="100%">
                     <tr>
                         <td width="0%" valign="top">
-                            <div class="DivCCBreadCrumbs"><a href="SearchDrug.jsp"> <bean:message
-                                    key="SearchDrug.title"/></a></div>
+                            <div class="DivCCBreadCrumbs"><a href="SearchDrug.jsp"> <fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title"/></a></div>
                         </td>
                     </tr>
                     <!----Start new rows here-->
                     <tr>
                         <td>
-                            <div class="DivContentTitle"><bean:message
-                                    key="ManagePharmacy.title"/></div>
+                            <div class="DivContentTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.title"/></div>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <div class="DivContentSectionHead" style="height:8px; text-indent: 10px">
-                                <% if (request.getParameter("ID") == null) { %> <bean:message
-                                    key="ManagePharmacy.subTitle.add"/> <%} else {%> <bean:message
-                                    key="ManagePharmacy.subTitle.update"/> <%}%>
+                                <% if (request.getParameter("ID") == null) { %> <fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.subTitle.add"/> <%} else {%> <fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.subTitle.update"/> <%}%>
                             </div>
                         </td>
                     </tr>
@@ -118,61 +114,58 @@
                                         <%String type = request.getParameter("type"); %>
                                         <html:hidden property="pharmacyAction" value="<%=type%>"/>
                                         <html:hidden property="pharmacyAction" value="<%=type%>"/>
-                                        <html:hidden property="ID"/> <bean:message
-                                            key="ManagePharmacy.txtfld.label.pharmacyName"/> :
+                                        <html:hidden property="ID"/> <fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.pharmacyName"/> :
                                     </td>
                                     <td><html:text property="name"/></td>
                                 </tr>
                                 <tr>
-                                    <td><bean:message key="ManagePharmacy.txtfld.label.address"/>
+                                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.address"/>
                                         :
                                     </td>
                                     <td><html:text property="address"/></td>
                                 </tr>
                                 <tr>
-                                    <td><bean:message key="ManagePharmacy.txtfld.label.city"/>
+                                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.city"/>
                                         :
                                     </td>
                                     <td><html:text property="city"/></td>
                                 </tr>
                                 <tr>
-                                    <td><bean:message key="ManagePharmacy.txtfld.label.province"/>
+                                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.province"/>
                                         :
                                     </td>
                                     <td><html:text property="province"/></td>
                                 </tr>
                                 <tr>
-                                    <td><bean:message
-                                            key="ManagePharmacy.txtfld.label.postalCode"/> :
+                                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.postalCode"/> :
                                     </td>
                                     <td><html:text property="postalCode"/></td>
                                 </tr>
                                 <tr>
-                                    <td><bean:message key="ManagePharmacy.txtfld.label.phone1"/>
+                                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.phone1"/>
                                         :
                                     </td>
                                     <td><html:text property="phone1"/></td>
                                 </tr>
                                 <tr>
-                                    <td><bean:message key="ManagePharmacy.txtfld.label.phone2"/>
+                                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.phone2"/>
                                         :
                                     </td>
                                     <td><html:text property="phone2"/></td>
                                 </tr>
                                 <tr>
-                                    <td><bean:message key="ManagePharmacy.txtfld.label.fax"/> :
+                                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.fax"/> :
                                     </td>
                                     <td><html:text property="fax"/></td>
                                 </tr>
                                 <tr>
-                                    <td><bean:message key="ManagePharmacy.txtfld.label.email"/>
+                                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.email"/>
                                         :
                                     </td>
                                     <td><html:text property="email"/></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><bean:message
-                                            key="ManagePharmacy.txtfld.label.notes"/> :
+                                    <td colspan="2"><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.notes"/> :
                                     </td>
                                 </tr>
                                 <tr>
@@ -182,7 +175,7 @@
 
                                 <tr>
                                     <td><input type="submit"
-                                               value="<bean:message key="ManagePharmacy.submitBtn.label.submit"/>"/>
+                                               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.submitBtn.label.submit"/>"/>
                                     </td>
                                 </tr>
                             </table>

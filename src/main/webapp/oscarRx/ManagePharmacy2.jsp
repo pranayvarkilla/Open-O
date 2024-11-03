@@ -24,7 +24,7 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -162,7 +162,7 @@
             }
 
         </script>
-        <title><bean:message key="ManagePharmacy.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.title"/></title>
         <script src="<%=request.getContextPath()%>/csrfguard" type="text/javascript"></script>
         <html:base/>
 
@@ -194,9 +194,7 @@
                     <tr>
                         <td>
                             <div class="DivContentSectionHead" style="height:8px; text-indent: 10px">
-                                <% if (request.getParameter("ID") == null) { %> <bean:message
-                                    key="ManagePharmacy.subTitle.add"/> <%} else {%> <bean:message
-                                    key="ManagePharmacy.subTitle.update"/> <%}%>
+                                <% if (request.getParameter("ID") == null) { %> <fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.subTitle.add"/> <%} else {%> <fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.subTitle.update"/> <%}%>
                             </div>
                         </td>
                     </tr>
@@ -209,59 +207,58 @@
                                             <input type="hidden" id="pharmacyId" name="pharmacyId"/>
                                             <input type="hidden" id="demographicNo" name="demographicNo"
                                                    value="<%=bean.getDemographicNo()%>"/>
-                                            <bean:message key="ManagePharmacy.txtfld.label.pharmacyName"/> :
+                                            <fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.pharmacyName"/> :
                                         </td>
                                         <td><input type="text" id="pharmacyName" name="pharmacyName"/></td>
                                     </tr>
                                     <tr>
-                                        <td><bean:message key="ManagePharmacy.txtfld.label.address"/>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.address"/>
                                             :
                                         </td>
                                         <td><input type="text" id="pharmacyAddress" name="pharmacyAddress"/></td>
                                     </tr>
                                     <tr>
-                                        <td><bean:message key="ManagePharmacy.txtfld.label.city"/>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.city"/>
                                             :
                                         </td>
                                         <td><input type="text" id="pharmacyCity" name="pharmacyCity"/></td>
                                     </tr>
                                     <tr>
-                                        <td><bean:message key="ManagePharmacy.txtfld.label.province"/>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.province"/>
                                             :
                                         </td>
                                         <td><input type="text" id="pharmacyProvince" name="pharmacyProvince"/></td>
                                     </tr>
                                     <tr>
-                                        <td><bean:message
-                                                key="ManagePharmacy.txtfld.label.postalCode"/> :
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.postalCode"/> :
                                         </td>
                                         <td><input type="text" id="pharmacyPostalCode" name="pharmacyPostalCode"/></td>
                                     </tr>
                                     <tr>
-                                        <td><bean:message key="ManagePharmacy.txtfld.label.phone1"/>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.phone1"/>
                                             :
                                         </td>
                                         <td><input type="text" id="pharmacyPhone1" name="pharmacyPhone1"/></td>
                                     </tr>
                                     <tr>
-                                        <td><bean:message key="ManagePharmacy.txtfld.label.phone2"/>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.phone2"/>
                                             :
                                         </td>
                                         <td><input type="text" id="pharmacyPhone2" name="pharmacyPhone2"/></td>
                                     </tr>
                                     <tr>
-                                        <td><bean:message key="ManagePharmacy.txtfld.label.fax"/> :
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.fax"/> :
                                         </td>
                                         <td><input type="text" id="pharmacyFax" name="pharmacyFax"/></td>
                                     </tr>
                                     <tr>
-                                        <td><bean:message key="ManagePharmacy.txtfld.label.email"/>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.email"/>
                                             :
                                         </td>
                                         <td><input type="text" id="pharmacyEmail" name="pharmacyEmail"/></td>
                                     </tr>
                                     <tr>
-                                        <td><bean:message key="ManagePharmacy.txtfld.label.serviceLocationIdentifier"/>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.serviceLocationIdentifier"/>
                                             :
                                         </td>
                                         <td><input type="text" id="pharmacyServiceLocationId"
@@ -269,15 +266,14 @@
                                     </tr>
 
                                     <tr>
-                                        <td><bean:message
-                                                key="ManagePharmacy.txtfld.label.notes"/> :
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.notes"/> :
                                         </td>
                                         <td><textarea id="pharmacyNotes" name="pharmacyNotes" rows="4"></textarea></td>
                                     </tr>
 
                                     <tr>
                                         <td><input type="button" onclick="savePharmacy();"
-                                                   value="<bean:message key="ManagePharmacy.submitBtn.label.submit"/>"/>
+                                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.submitBtn.label.submit"/>"/>
                                         </td>
                                     </tr>
                                 </table>

@@ -9,7 +9,7 @@
 
 --%>
 <%@ page language="java" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="oscar.oscarMDS.data.ProviderData, java.util.ArrayList" %>
@@ -19,7 +19,7 @@
 <html>
 <head>
     <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-    <title><bean:message key="oscarMDS.selectProvider.title"/></title>
+    <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.selectProvider.title"/></title>
 </head>
 
 <script language='JavaScript'>
@@ -50,8 +50,7 @@
 <body>
 <form name="providerSelectForm" method="post" action="AssignLab.do">
     <center>
-        <p><font size="-1"><bean:message
-                key="oscarMDS.selectProvider.msgSelectProvider"/>:</font></p>
+        <p><font size="-1"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.selectProvider.msgSelectProvider"/>:</font></p>
         <select name="selectedProviders" size="10" multiple>
             <% ArrayList providers = ProviderData.getProviderList();
                 for (int i = 0; i < providers.size(); i++) { %>
@@ -62,9 +61,9 @@
             <% } %>
         </select>
         <p><input type="button" class="button"
-                  value="<bean:message key="oscarMDS.selectProvider.btnOk"/>"
+                  value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.selectProvider.btnOk"/>"
                   onclick="doStuff()"> <input type="button" class="button"
-                                              value="<bean:message key="oscarMDS.selectProvider.btnCancel"/>"
+                                              value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.selectProvider.btnCancel"/>"
                                               onclick="window.close()"></p>
     </center>
 </form>

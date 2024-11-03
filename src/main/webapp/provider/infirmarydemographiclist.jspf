@@ -2,7 +2,7 @@
 <%@ page import="org.oscarehr.common.model.Tickler" %>
 
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
@@ -111,8 +111,8 @@
 						<%
 							String eURL = base_eURL + "&appointmentNo=" + rsAppointNO + "&demographicNo=" + demographic_no + "&reason=" + URLEncoder.encode(reason) + "&startTime=" + apptime.getHours() + ":" + apptime.getMinutes() + "&status=" + status;
 						%>
-						<a href="#" onClick="popupWithApptNo(710, 1024, '../oscarSurveillance/CheckSurveillance.do?demographicNo=${demographic_no}&proceed=${eURL}', 'encounter'); return false;" title="<bean:message key='global.encounter'/>">
-							|<bean:message key="provider.appointmentProviderAdminDay.btnE"/>
+						<a href="#" onClick="popupWithApptNo(710, 1024, '../oscarSurveillance/CheckSurveillance.do?demographicNo=${demographic_no}&proceed=${eURL}', 'encounter'); return false;" title="<fmt:setBundle basename='oscarResources'/><fmt:message key='global.encounter'/>">
+							|<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.appointmentProviderAdminDay.btnE"/>
 						</a>
 					</c:if>
 				</td>

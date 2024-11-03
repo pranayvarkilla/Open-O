@@ -25,7 +25,7 @@
 --%>
 
 <%@ page import="java.util.*, org.w3c.dom.*, oscar.util.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -46,8 +46,7 @@
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message
-                key="oscarEncounter.immunization.config.immunizationSetDisplay.title"/>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.immunizationSetDisplay.title"/>
         </title>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
 
@@ -116,8 +115,7 @@
 
             int i = 0;
         %>
-        <h1><bean:message
-                key="oscarEncounter.immunization.config.immunizationSetDisplay.msgSet"/>:
+        <h1><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.immunizationSetDisplay.msgSet"/>:
             <%=setNamed%>
         </h1>
         <table cellpadding=2 cellspacing=0 border="2px" rules="all"

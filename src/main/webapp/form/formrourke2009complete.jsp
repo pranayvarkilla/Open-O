@@ -39,7 +39,7 @@
     }
 %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
@@ -73,7 +73,7 @@
 
     <!-- language for the calendar -->
     <script type="text/javascript"
-            src="../share/calendar/lang/<bean:message key="global.javascript.calendar"/>"></script>
+            src="../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
 
     <!-- the following script defines the Calendar.setup helper function, which makes
            adding a calendar a matter of 1 or 2 lines of code. -->
@@ -293,7 +293,7 @@
                     var elem = document.forms["frmP1"].elements[measurements[dateIdx][elemIdx]];
 
                     if ($(elem).value.length > 0 && (isNaN($(elem).value) || $(date).value.length == 0)) {
-                        alert('<bean:message key="oscarEncounter.formRourke2006.frmError"/>');
+                        alert('<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.formRourke2006.frmError"/>');
                         return false;
                     }
                 }

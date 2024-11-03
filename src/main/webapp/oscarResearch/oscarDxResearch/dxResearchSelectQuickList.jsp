@@ -26,15 +26,14 @@
 
 
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css" href="dxResearch.css">
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message
-                key="oscarResearch.oscarDxResearch.dxCustomization.selectQuickList"/>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxCustomization.selectQuickList"/>
         </title>
 
         <script type="text/javascript">
@@ -57,8 +56,7 @@
                 <td>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr bgcolor="#000000">
-                            <td class="subject" colspan="2">&nbsp;&nbsp;&nbsp;<bean:message
-                                    key="oscarResearch.oscarDxResearch.dxResearch.msgDxResearch"/></td>
+                            <td class="subject" colspan="2">&nbsp;&nbsp;&nbsp;<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxResearch.msgDxResearch"/></td>
                         </tr>
                     </table>
                 </td>
@@ -68,8 +66,7 @@
                     <table width="100%" border="0" cellpadding="0" cellspacing="1"
                            bgcolor="#EEEEFF" height="125">
                         <tr>
-                            <td align="left"><bean:message
-                                    key="oscarResearch.oscarDxResearch.dxCustomization.pleaseSelectAQuickList"/>
+                            <td align="left"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxCustomization.pleaseSelectAQuickList"/>
                                 <html:select property="quickListName" style="width:200px">
                                     <c:forEach var="quickLists" items="${allQuickLists.dxQuickListBeanVector}">
                                         <option value="${quickLists.quickListName}" ${quickLists.lastUsed == 'true' ? 'selected' : ''}>
@@ -84,7 +81,7 @@
                                     <tr>
                                         <input type="hidden" name="forward" value="error"/>
                                         <td><input type="button" class="mbttn" name="Button"
-                                                   value="<bean:message key="global.btnClose"/>"
+                                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>"
                                                    onClick="window.close()"></td>
                                         <td><input type="submit" class="mbttn" name="Button"
                                                    value="Continue"/></td>

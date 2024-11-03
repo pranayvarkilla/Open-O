@@ -27,4 +27,4 @@
 <%@page import="java.util.*" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 
-<p style="color:red"><bean:message key="oscarRx.MyDrugref.error.msgFailed"/></p>
+<p style="color:red"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarRx.MyDrugref.error.msgFailed"/></p>

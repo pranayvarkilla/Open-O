@@ -94,5 +94,5 @@
 
 <div id="rightColLoader" style="width: 100%;">
     <h3 style="width: 100%; background-color: #CCCCFF;">
-        <bean:message key="oscarEncounter.LeftNavBar.msgLoading"/></h3>
+        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.LeftNavBar.msgLoading"/></h3>
 </div>

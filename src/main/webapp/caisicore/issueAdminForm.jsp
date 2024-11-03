@@ -49,15 +49,15 @@
 
     <table>
         <tr>
-            <th><bean:message key="issueAdmin.code"/>:</th>
+            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="issueAdmin.code"/>:</th>
             <td><html:text property="issueAdmin.code"/></td>
         </tr>
         <tr>
-            <th><bean:message key="issueAdmin.description"/>:</th>
+            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="issueAdmin.description"/>:</th>
             <td><html:text property="issueAdmin.description"/></td>
         </tr>
         <tr>
-            <th><bean:message key="issueAdmin.role"/>:</th>
+            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="issueAdmin.role"/>:</th>
             <td>
                 <%
                     String role = (String) request.getAttribute("issueRole");
@@ -81,7 +81,7 @@
         </tr>
         <!--
 <tr>
-     <th><bean:message key="issueAdmin.update_date"/>: </th>
+     <th><fmt:setBundle basename="oscarResources"/><fmt:message key="issueAdmin.update_date"/>: </th>
      <td><html:text property="issueAdmin.update_date"/></td>
 </tr>
 -->

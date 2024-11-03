@@ -26,7 +26,7 @@
 --%>
 
 <%@page import="oscar.oscarDemographic.data.*,java.util.*,oscar.oscarBilling.ca.bc.Teleplan.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
@@ -37,7 +37,7 @@
 <html>
 
     <head>
-        <title><bean:message key="admin.admin.manageTeleplan"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.manageTeleplan"/></title>
         <html:base/>
         <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
 
@@ -50,7 +50,7 @@
     </head>
 
     <body>
-    <h3><bean:message key="admin.admin.manageTeleplan"/></h3>
+    <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.manageTeleplan"/></h3>
 
     <div class="container-fluid well well-small">
 

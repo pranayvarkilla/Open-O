@@ -45,7 +45,7 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="1"
        bgcolor="#C0C0C0">
     <tr class="title">
-        <td><bean:message key="casemgmt.ongoingconcerns"/></td>
+        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="casemgmt.ongoingconcerns"/></td>
     </tr>
     <tr>
         <td bgcolor="white"><html:textarea property="cpp.ongoingConcerns"

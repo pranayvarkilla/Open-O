@@ -52,7 +52,7 @@
 <%@ page import="org.oscarehr.common.model.ProviderData" %>
 <%@ page import="org.oscarehr.common.dao.ProviderDataDao" %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -122,7 +122,7 @@
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="report.reportdaysheet.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.title"/></title>
         <link rel="stylesheet" href="../web.css">
         <style> td {
             font-size: 16px;
@@ -172,15 +172,14 @@
 
     <table border="0" cellspacing="0" cellpadding="0" width="100%">
         <tr bgcolor="<%=deepColor%>">
-            <th><bean:message key="report.reportdaysheet.msgMainLabel"/>
-                <input type="checkbox" onclick="hideOnSource();" id="onlySelfBooked"/><bean:message
-                        key="report.reportdaysheet.msgSelfBookedCheck"/>
+            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.msgMainLabel"/>
+                <input type="checkbox" onclick="hideOnSource();" id="onlySelfBooked"/><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.msgSelfBookedCheck"/>
             </th>
             <th width="10%" nowrap><%=createtime%> <input type="button"
                                                           name="Button"
-                                                          value="<bean:message key="report.reportdaysheet.btnPrint"/>"
+                                                          value="<fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.btnPrint"/>"
                                                           onClick="window.print()"><input type="button" name="Button"
-                                                                                          value="<bean:message key="global.btnExit"/>"
+                                                                                          value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnExit"/>"
                                                                                           onClick="window.close()"></th>
         </tr>
     </table>
@@ -276,14 +275,12 @@
     <table width="100%" border="1" bgcolor="#ffffff" cellspacing="0"
            cellpadding="1">
         <tr bgcolor="#CCCCFF" align="center">
-            <!--<TH width="14%"><b><a href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=appointment_date"><bean:message key="report.reportdaysheet.msgAppointmentDate"/></a></b></TH>-->
+            <!--<TH width="14%"><b><a href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=appointment_date"><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.msgAppointmentDate"/></a></b></TH>-->
             <TH width="6%"><b><a
-                    href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=start_time<%=request.getParameter("dsmode")==null?"":"&dsmode="+request.getParameter("dsmode")%>"><bean:message
-                    key="report.reportdaysheet.msgAppointmentTime"/></a></b></TH>
+                    href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=start_time<%=request.getParameter("dsmode")==null?"":"&dsmode="+request.getParameter("dsmode")%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.msgAppointmentTime"/></a></b></TH>
             <TH width="15%"><b><a
-                    href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=name<%=request.getParameter("dsmode")==null?"":"&dsmode="+request.getParameter("dsmode")%>"><bean:message
-                    key="report.reportdaysheet.msgPatientLastName"/></a> </b></TH>
-            <!--<TH width="20%"><b><a href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=p_first_name"><bean:message key="report.reportdaysheet.msgPatientFirstName"/></a> </b></TH>-->
+                    href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=name<%=request.getParameter("dsmode")==null?"":"&dsmode="+request.getParameter("dsmode")%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.msgPatientLastName"/></a> </b></TH>
+            <!--<TH width="20%"><b><a href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=p_first_name"><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.msgPatientFirstName"/></a> </b></TH>-->
 
             <TH width="10%"><b><a
                     href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=phone<%=request.getParameter("dsmode")==null?"":"&dsmode="+request.getParameter("dsmode")%>">
@@ -299,24 +296,20 @@
                 Version </a></b></TH>
 
             <TH width="6%"><b><a
-                    href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=chart_no<%=request.getParameter("dsmode")==null?"":"&dsmode="+request.getParameter("dsmode")%>"><bean:message
-                    key="report.reportdaysheet.msgChartNo"/></a></b></TH>
+                    href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=chart_no<%=request.getParameter("dsmode")==null?"":"&dsmode="+request.getParameter("dsmode")%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.msgChartNo"/></a></b></TH>
             <!--<TH width="6%"><b><a
-			href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=hin<%=request.getParameter("dsmode")==null?"":"&dsmode="+request.getParameter("dsmode")%>"><bean:message
-			key="oscarEncounter.search.demographicSearch.msgHin" /></a></b></TH>-->
+			href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=hin<%=request.getParameter("dsmode")==null?"":"&dsmode="+request.getParameter("dsmode")%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.search.demographicSearch.msgHin"/></a></b></TH>-->
             <% if (!bDob) {%>
             <TH width="6%"><b><a
-                    href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=roster_status<%=request.getParameter("dsmode")==null?"":"&dsmode="+request.getParameter("dsmode")%>"><bean:message
-                    key="report.reportdaysheet.msgRosterStatus"/></a></b></TH>
+                    href="reportdaysheet.jsp?provider_no=<%=provider_no%>&sdate=<%=sdate%>&edate=<%=edate%>&orderby=roster_status<%=request.getParameter("dsmode")==null?"":"&dsmode="+request.getParameter("dsmode")%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.msgRosterStatus"/></a></b></TH>
             <% } else {%>
             <TH width="10%"><b>DOB</b></TH>
             <% }%>
 
 
-            <th><bean:message key="report.reportdaysheet.msgBookingStatus"/></th>
+            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.msgBookingStatus"/></th>
 
-            <TH width="30%"><b><bean:message
-                    key="report.reportdaysheet.msgComments"/></b></TH>
+            <TH width="30%"><b><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.msgComments"/></b></TH>
         </tr>
         <%
             }
@@ -354,7 +347,7 @@
                 <%if (rsdemo.getString("bookingSource") == null) {%>
                 &nbsp;
                 <%} else {%>
-                <bean:message key="report.reportdaysheet.msgSelfBooked"/>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.msgSelfBooked"/>
                 <%}%>
             </td>
             <td>

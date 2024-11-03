@@ -43,7 +43,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
-        <title><bean:message key="provider.setNoteStaleDate.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setNoteStaleDate.title"/></title>
 
         <link rel="stylesheet" type="text/css"
               href="../oscarEncounter/encounterStyles.css">
@@ -76,10 +76,8 @@
 
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr class="MainTableTopRow">
-            <td class="MainTableTopRowLeftColumn"><bean:message
-                    key="provider.setNoteStaleDate.msgPrefs"/></td>
-            <td style="color: white" class="MainTableTopRowRightColumn"><bean:message
-                    key="provider.setNoteStaleDate.msgProviderStaleDate"/></td>
+            <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setNoteStaleDate.msgPrefs"/></td>
+            <td style="color: white" class="MainTableTopRowRightColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setNoteStaleDate.msgProviderStaleDate"/></td>
         </tr>
         <tr>
             <td class="MainTableLeftColumn">&nbsp;</td>
@@ -93,7 +91,7 @@
                 <html:hidden property="dateProperty.name"/>
                 <html:hidden property="dateProperty.providerNo"/>
                 <html:hidden property="dateProperty.id"/>
-                <bean:message key="provider.setNoteStaleDate.msgEdit"/>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setNoteStaleDate.msgEdit"/>
                 <html:select property="dateProperty.value" styleId="staleDate">
                     <html:option value="A">All</html:option>
                     <html:option value="0">0</html:option>
@@ -146,12 +144,12 @@
 
                 <br/>
                 <input type="submit"
-                       value="<bean:message key="provider.setNoteStaleDate.btnSubmit"/>"/>
+                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setNoteStaleDate.btnSubmit"/>"/>
                 <input type="submit" onclick="$('method').value='remove';"
-                       value="<bean:message key="provider.setNoteStaleDate.btnReset"/>"/>
+                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setNoteStaleDate.btnReset"/>"/>
             </html:form> <%
             } else {
-            %> <bean:message key="provider.setNoteStaleDate.msgSuccess"/>
+            %> <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setNoteStaleDate.msgSuccess"/>
                 <br>
 
                 <%

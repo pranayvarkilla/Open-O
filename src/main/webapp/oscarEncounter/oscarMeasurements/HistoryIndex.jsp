@@ -32,7 +32,7 @@
 <%
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
@@ -50,7 +50,7 @@
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="oscarEncounter.Index.oldMeasurements"/>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.oldMeasurements"/>
         </title>
         <html:base/>
 
@@ -70,15 +70,13 @@
     <%=WebUtils.popErrorAndInfoMessagesAsHtml(session)%>
 
     <div style="display:inline-block; text-align:center">
-        <bean:message key="oscarEncounter.oscarMeasurements.oldmesurementindex"/>
+        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.oldmesurementindex"/>
 
         <table>
             <tr>
-                <th align="left" class="Header" width="20"><bean:message
-                        key="oscarEncounter.oscarMeasurements.displayHistory.headingType"/>
+                <th align="left" class="Header" width="20"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.headingType"/>
                 </th>
-                <th align="left" class="Header" width="200"><bean:message
-                        key="oscarEncounter.oscarMeasurements.typedescription"/></th>
+                <th align="left" class="Header" width="200"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.typedescription"/></th>
                 <th align="left" class="Header" width="50"></th>
             </tr>
             <c:if test="${not empty measurementsData}">
@@ -87,15 +85,15 @@
                         <td width="20">${data.type}</td>
                         <td width="200">${data.typeDescription}</td>
                         <td width="50"><a href="#"
-                                          name='<bean:message key="oscarEncounter.Index.oldMeasurements"/>'
+                                          name='<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.oldMeasurements"/>'
                                           onClick="popupPage(300,800,'SetupDisplayHistory.do?type=${data.type}'); return false;">more...</a></td>
                     </tr>
                 </c:forEach>
             </c:if>
         </table>
 
-        <input type="button" name="Button" value="<bean:message key="global.btnPrint"/>" onClick="window.print()">
-        <input type="button" name="Button" value="<bean:message key="global.btnClose"/>" onClick="window.close()">
+        <input type="button" name="Button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnPrint"/>" onClick="window.print()">
+        <input type="button" name="Button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>" onClick="window.close()">
         <c:if test="${not empty type}">
             <input type="hidden" name="type" value="${type}"/>
         </c:if>

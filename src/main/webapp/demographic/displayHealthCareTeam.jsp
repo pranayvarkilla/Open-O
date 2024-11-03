@@ -62,7 +62,7 @@
     <%-- DETACHED VIEW ENABLED  --%>
     <c:if test="${ param.view eq 'detached' }">
 
-        <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
         <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
         <!DOCTYPE html>
@@ -123,9 +123,9 @@
                         <td style="text-align: right">
                             <oscar:help keywords="contact" key="app.top1"/> |
                             <a href="javascript:popupStart(300,400,'About.jsp')">
-                                <bean:message key="global.about"/></a> | <a
+                                <fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                 href="javascript:popupStart(300,400,'License.jsp')">
-                            <bean:message key="global.license"/></a></td>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                     </tr>
                 </table>
             </td>

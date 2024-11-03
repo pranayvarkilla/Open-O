@@ -28,15 +28,14 @@
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message
-                key="oscarEncounter.Measurements.msgAddMeasurementType"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgAddMeasurementType"/></title>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
 
         <script type="text/javascript">
@@ -53,13 +52,11 @@
     <html:form action="/oscarEncounter/oscarMeasurements/AddMeasurementType.do" onsubmit="return validateForm()">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
-                <td class="MainTableTopRowLeftColumn"><bean:message
-                        key="oscarEncounter.Measurements.msgMeasurements"/></td>
+                <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgMeasurements"/></td>
                 <td class="MainTableTopRowRightColumn">
                     <table class="TopStatusBar">
                         <tr>
-                            <td><bean:message
-                                    key="oscarEncounter.Measurements.msgAddMeasurementType"/></td>
+                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgAddMeasurementType"/></td>
                         </tr>
                     </table>
                 </td>
@@ -84,33 +81,28 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th align="left" class="td.tite" width="5"><bean:message
-                                                key="oscarEncounter.oscarMeasurements.Measurements.headingType"/>
+                                        <th align="left" class="td.tite" width="5"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingType"/>
 
                                         </th>
                                         <td><html:text property="type"/></td>
                                     </tr>
                                     <tr>
-                                        <th align="left" class="td.tite"><bean:message
-                                                key="oscarEncounter.oscarMeasurements.Measurements.headingTypeDesc"/>
+                                        <th align="left" class="td.tite"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingTypeDesc"/>
                                         </th>
                                         <td><html:text property="typeDesc"/></td>
                                     </tr>
                                     <tr>
-                                        <th align="left" class="td.tite" width="50"><bean:message
-                                                key="oscarEncounter.oscarMeasurements.Measurements.headingDisplayName"/>
+                                        <th align="left" class="td.tite" width="50"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingDisplayName"/>
                                         </th>
                                         <td><html:text property="typeDisplayName"/></td>
                                     </tr>
                                     <tr>
-                                        <th align="left" class="td.tite"><bean:message
-                                                key="oscarEncounter.oscarMeasurements.Measurements.headingMeasuringInstrc"/>
+                                        <th align="left" class="td.tite"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingMeasuringInstrc"/>
                                         </th>
                                         <td><html:text property="measuringInstrc"/></td>
                                     </tr>
                                     <tr>
-                                        <th align="left" class="td.tite"><bean:message
-                                                key="oscarEncounter.oscarMeasurements.Measurements.headingValidation"/>
+                                        <th align="left" class="td.tite"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingValidation"/>
                                         </th>
                                         <td><html:select property="validation">
                                             <html:options collection="validations" property="id"
@@ -122,19 +114,19 @@
                                             <table>
                                                 <tr>
                                                     <td><input type="button" name="Button"
-                                                               value="<bean:message key="global.btnClose"/>"
+                                                               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>"
                                                                onClick="window.close()"></td>
                                                     <td><input type="submit" name="submit"
-                                                               value="<bean:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.addBtn"/>"/>
+                                                               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.addBtn"/>"/>
                                                     </td>
                                                 </tr>
                                             </table>
                                         </td>
                                     </tr>
                                     <input type="hidden" name="msgBetween"
-                                           value="<bean:message key="oscarEncounter.oscarMeasurements.AddMeasurementType.duplicateType"/>"/>
+                                           value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.AddMeasurementType.duplicateType"/>"/>
                                     <input type="hidden" name="msgBetween"
-                                           value="<bean:message key="oscarEncounter.oscarMeasurements.AddMeasurementType.successful"/>"/>
+                                           value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.AddMeasurementType.successful"/>"/>
                             </td>
                         </tr>
                     </table>

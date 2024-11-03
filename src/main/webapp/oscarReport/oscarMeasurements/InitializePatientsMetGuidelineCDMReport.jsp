@@ -27,7 +27,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ page import="oscar.oscarReport.oscarMeasurements.pageUtil.*" %>
 <%@ page import="java.util.*, java.sql.*, java.text.*, java.net.*" %>
@@ -44,8 +44,7 @@
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message
-                key="oscarReport.CDMReport.msgPercentageOfPatientWhoMetGuideline"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgPercentageOfPatientWhoMetGuideline"/></title>
         <html:base/>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
     </head>
@@ -91,19 +90,16 @@
             action="oscarReport/oscarMeasurements/InitializePatientsMetGuidelineCDMReport.do">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
-                <td class="MainTableTopRowLeftColumn"><bean:message
-                        key="oscarReport.CDMReport.msgReport"/></td>
+                <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgReport"/></td>
                 <td class="MainTableTopRowRightColumn">
                     <table class="TopStatusBar">
                         <tr>
-                            <td><bean:message key="oscarReport.CDMReport.msgTitle"/>: <bean:write
+                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTitle"/>: <bean:write
                                     name="CDMGroup"/></td>
                             <td></td>
                             <td style="text-align: right"><oscar:help keywords="report" key="app.top1"/> | <a
-                                    href="javascript:popupStart(300,400,'About.jsp')"><bean:message
-                                    key="global.about"/></a> | <a
-                                    href="javascript:popupStart(300,400,'License.jsp')"><bean:message
-                                    key="global.license"/></a></td>
+                                    href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
+                                    href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                         </tr>
                     </table>
                 </td>
@@ -116,15 +112,12 @@
                             <td>
                                 <table>
                                     <tr>
-                                        <td class="nameBox" colspan='4'><bean:message
-                                                key="oscarReport.CDMReport.msgNumberOfPatientsSeen"/></td>
+                                        <td class="nameBox" colspan='4'><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgNumberOfPatientsSeen"/></td>
                                     </tr>
                                     <tr>
                                         <th align="left" class="subTitles" width="2"></th>
-                                        <th align="left" class="subTitles" width="120"><bean:message
-                                                key="oscarReport.CDMReport.msgStartDate"/></th>
-                                        <th align="left" class="subTitles" width="120"><bean:message
-                                                key="oscarReport.CDMReport.msgEndDate"/></th>
+                                        <th align="left" class="subTitles" width="120"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgStartDate"/></th>
+                                        <th align="left" class="subTitles" width="120"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgEndDate"/></th>
                                         <th align="left" class="subTitles" width="650"></th>
                                     </tr>
                                     <tr>
@@ -161,26 +154,18 @@
                                     <tr>
                                         <td>
                                     <tr>
-                                        <td class="nameBox" colspan='8'><bean:message
-                                                key="oscarReport.CDMReport.msgPercentageOfPatientWhoMetGuideline"/>
+                                        <td class="nameBox" colspan='8'><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgPercentageOfPatientWhoMetGuideline"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th align="left" class="subTitles" width="2"></th>
-                                        <th align="left" class="subTitles" width="4"><bean:message
-                                                key="oscarReport.CDMReport.msgTest"/></th>
-                                        <th align="left" class="subTitles" width="200"><bean:message
-                                                key="oscarReport.CDMReport.msgTestDescription"/></th>
-                                        <th align="left" class="subTitles" width="200"><bean:message
-                                                key="oscarReport.CDMReport.msgMeasuringInstruction"/></th>
-                                        <th align="left" class="subTitles" width="10"><bean:message
-                                                key="oscarReport.CDMReport.msgAboveBelow"/></th>
-                                        <th align="left" class="subTitles" width="50"><bean:message
-                                                key="oscarReport.CDMReport.msgGuideline"/></th>
-                                        <th align="left" class="subTitles" width="120"><bean:message
-                                                key="oscarReport.CDMReport.msgStartDate"/></th>
-                                        <th align="left" class="subTitles" width="120"><bean:message
-                                                key="oscarReport.CDMReport.msgEndDate"/></th>
+                                        <th align="left" class="subTitles" width="4"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTest"/></th>
+                                        <th align="left" class="subTitles" width="200"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTestDescription"/></th>
+                                        <th align="left" class="subTitles" width="200"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgMeasuringInstruction"/></th>
+                                        <th align="left" class="subTitles" width="10"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgAboveBelow"/></th>
+                                        <th align="left" class="subTitles" width="50"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgGuideline"/></th>
+                                        <th align="left" class="subTitles" width="120"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgStartDate"/></th>
+                                        <th align="left" class="subTitles" width="120"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgEndDate"/></th>
                                     </tr>
                                     <c:forEach var="measurementType" items="${measurementTypes.measurementTypeVector}" varStatus="ctr">
                                     <tr>
@@ -263,7 +248,7 @@
                 <table>
                     <tr>
                         <td align="left"><input type="submit" name="submitBtn"
-                                                value="<bean:message key="oscarReport.CDMReport.btnGenerateReport"/>"/>
+                                                value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.btnGenerateReport"/>"/>
                         </td>
                     </tr>
                 </table>

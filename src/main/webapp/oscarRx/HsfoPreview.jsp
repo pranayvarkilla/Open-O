@@ -24,7 +24,7 @@
 
 --%>
 <%@page import="oscar.oscarRx.data.RxPatientData" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -162,7 +162,7 @@
                                 <%= patient.getCity() %> <%= patient.getPostal() %><br>
                                 <%= patient.getPhone() %><br>
                                 <b><% if (!props.getProperty("showRxHin", "").equals("false")) { %>
-                                    <bean:message key="oscar.oscarRx.hin"/><%= patient.getHin() %> <% } %>
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.oscarRx.hin"/><%= patient.getHin() %> <% } %>
                                 </b></td>
                             <td align=right valign=top>
                                 <b><%= oscar.oscarRx.util.RxUtil.DateToString(oscar.oscarRx.util.RxUtil.Today(), "MMMM d, yyyy") %>

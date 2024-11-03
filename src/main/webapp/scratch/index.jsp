@@ -27,7 +27,7 @@
 <%@ page
         import="oscar.oscarDemographic.data.*,java.util.*,oscar.oscarPrevention.*,oscar.oscarLab.ca.on.*,oscar.util.*,oscar.oscarLab.*,oscar.scratch.*" %>
 <%@ page import="oscar.oscarProvider.data.ProviderColourUpdater" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
@@ -64,7 +64,7 @@
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="ScratchPad.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="ScratchPad.title"/></title>
 
         <link rel="stylesheet" type="text/css" href="../share/css/OscarStandardLayout.css">
 
@@ -213,7 +213,7 @@
     <body class="BodyStyle">
     <table class="MainTable" id="scrollNumber1">
         <tr class="MainTableTopRow">
-            <td class="MainTableTopRowLeftColumn"><bean:message key="ScratchPad.title"/></td>
+            <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="ScratchPad.title"/></td>
             <td class="MainTableTopRowRightColumn">
                 <table class="TopStatusBar">
                     <tr>
@@ -223,8 +223,7 @@
                         <td style="text-align: right">
                             <oscar:help keywords="pad" key="app.top1"/> |
                             <a href="javascript:void(0)"
-                               onclick="javascript:popup(600,700,'../oscarEncounter/About.jsp')"><bean:message
-                                    key="global.about"/></a>
+                               onclick="javascript:popup(600,700,'../oscarEncounter/About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
                         </td>
                     </tr>
                 </table>

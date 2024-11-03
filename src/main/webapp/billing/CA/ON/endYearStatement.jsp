@@ -19,12 +19,12 @@
 
 --%>
 <%@ page language="java" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <html>
 <head>
-    <title><bean:message key="admin.admin.endYearStatement"/></title>
+    <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.endYearStatement"/></title>
 
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.9.1.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
@@ -99,7 +99,7 @@
     }
 %>
 <body>
-<h3><bean:message key="admin.admin.endYearStatement"/></h3>
+<h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.endYearStatement"/></h3>
 
 <div class="container-fluid">
 

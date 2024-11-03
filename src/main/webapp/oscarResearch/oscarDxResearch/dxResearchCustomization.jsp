@@ -25,13 +25,13 @@
 --%>
 
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
 <html>
     <head>
-        <title><bean:message key="oscarResearch.oscarDxResearch.dxCustomization.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxCustomization.title"/></title>
         <script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/global.js"></script>
         <html:base/>
         <link rel="stylesheet" type="text/css" href="dxResearch.css"/>
@@ -42,12 +42,10 @@
     <html:errors/>
     <table width="100%" bgcolor="#EEEEFF">
         <tr bgcolor="#000000">
-            <td class="subject" colspan="3">&nbsp;&nbsp;&nbsp;<bean:message
-                    key="oscarResearch.oscarDxResearch.dxResearch.msgDxResearch"/></td>
+            <td class="subject" colspan="3">&nbsp;&nbsp;&nbsp;<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxResearch.msgDxResearch"/></td>
         </tr>
         <tr>
-            <td class=heading colspan="3"><bean:message
-                    key="oscarResearch.oscarDxResearch.dxCustomization.title"/></td>
+            <td class=heading colspan="3"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxCustomization.title"/></td>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -56,17 +54,17 @@
             <td valign="center"><input type="button" class="mbttn"
                                        style="width: 180px"
                                        onClick="popupPage(230,600,'dxResearchNewQuickList.jsp')"
-                                       value="<bean:message key="oscarResearch.oscarDxResearch.dxCustomization.addNewQuickList"/>"/>
+                                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxCustomization.addNewQuickList"/>"/>
             </td>
             <td valign="center"><input type="button" class="mbttn"
                                        style="width: 180px"
                                        onClick="popupPage(230,600,'dxResearchLoadQuickList.do')"
-                                       value="<bean:message key="oscarResearch.oscarDxResearch.dxCustomization.editQuickList"/>"/>
+                                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxCustomization.editQuickList"/>"/>
             </td>
             <td valign="center"><input type="button" class="mbttn"
                                        style="width: 180px"
                                        onClick="popupPage(230,600,'dxResearchSelectAssociations.jsp')"
-                                       value="<bean:message key="oscarResearch.oscarDxResearch.dxCustomization.editAssociations"/>"/>
+                                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxCustomization.editAssociations"/>"/>
             </td>
         </tr>
         <tr>

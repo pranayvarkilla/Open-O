@@ -24,7 +24,7 @@
 
 --%>
 <%@page import="org.oscarehr.common.model.PharmacyInfo" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -109,12 +109,11 @@
                     </tr>
                     <tr>
                         <td>
-                            <div class="DivContentSectionHead"><bean:message
-                                    key="SearchDrug.section1Title"/></div>
+                            <div class="DivContentSectionHead"><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.section1Title"/></div>
                         </td>
                     </tr>
                     <tr>
-                        <td><!-- <b><bean:message key="SearchDrug.nameText" /></b>-->
+                        <td><!-- <b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.nameText"/></b>-->
                             <c:out value="${patient.surname}"/>,
                             <c:out value="${patient.firstName}"/>
                             <br/>
@@ -131,7 +130,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <b><bean:message key="SearchDrug.ageText"/></b> <c:out value="${patient.age}"/>
+                            <b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.ageText"/></b> <c:out value="${patient.age}"/>
                             <b>Gender:</b> <c:out value="${patient.sex}"/> <b>HC:</b> <c:out value="${patient.hin}"/>
                             <br/>
                             <b>User:</b> <%=userlastname%>, <%=userfirstname %><br/>
@@ -142,8 +141,7 @@
                             <table cellspacing="0" width="100%" cellpadding="0">
                                 <tr>
                                     <td>
-                                        <div class="DivContentSectionHead"><bean:message
-                                                key="SearchDrug.section2Title"/></div>
+                                        <div class="DivContentSectionHead"><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.section2Title"/></div>
                                     </td>
                                     <td align="right" class="noPrint">
                                         <div class="DivContentSectionHead">
@@ -166,10 +164,8 @@
                                     <td width="100%"><!--<div class="Step1Text" style="width:100%">-->
                                         <table width="100%" cellpadding="3">
                                             <tr>
-                                                <th align=left width=20%><b><bean:message
-                                                        key="SearchDrug.msgRxDate"/></b></th>
-                                                <th align=left width=100%><b><bean:message
-                                                        key="SearchDrug.msgPrescription"/></b></th>
+                                                <th align=left width=20%><b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.msgRxDate"/></b></th>
+                                                <th align=left width=100%><b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.msgPrescription"/></b></th>
                                             </tr>
 
                                             <%

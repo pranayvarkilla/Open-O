@@ -40,7 +40,7 @@
 %>
 
 <%@ page import="java.util.*,oscar.oscarReport.data.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -51,9 +51,7 @@
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message
-                key="oscarReport.RptByExample.MsgQueryByExamples"/> - <bean:message
-                key="oscarReport.RptByExample.MsgAllQueriesExecuted"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.RptByExample.MsgQueryByExamples"/> - <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.RptByExample.MsgAllQueriesExecuted"/></title>
 
         <script type="text/javascript">
             function set(text) {
@@ -67,16 +65,13 @@
 
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr class="MainTableTopRow">
-            <td class="MainTableTopRowLeftColumn"><bean:message
-                    key="oscarReport.CDMReport.msgReport"/></td>
+            <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgReport"/></td>
             <td class="MainTableTopRowRightColumn">
                 <table class="TopStatusBar">
                     <html:form action="/oscarReport/RptViewAllQueryByExamples.do">
                         <tr>
-                            <td><bean:message
-                                    key="oscarReport.RptByExample.MsgAllQueriesExecutedFrom"/>: <html:text
-                                    property="startDate" size="8"/> <bean:message
-                                    key="oscarReport.RptByExample.MsgTo"/> <html:text
+                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.RptByExample.MsgAllQueriesExecutedFrom"/>: <html:text
+                                    property="startDate" size="8"/> <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.RptByExample.MsgTo"/> <html:text
                                     property="endDate" size="8"/> <input type="submit"
                                                                          value="Refresh"/></td>
                         </tr>
@@ -89,12 +84,9 @@
             <td class="MainTableRightColumn">
                 <table>
                     <tr class="Header">
-                        <td align="left" width="140"><bean:message
-                                key="oscarReport.RptByExample.MsgDate"/></td>
-                        <td align="left" width="400"><bean:message
-                                key="oscarReport.RptByExample.MsgQuery"/></td>
-                        <td align="left" width="100"><bean:message
-                                key="oscarReport.RptByExample.MsgProvider"/></td>
+                        <td align="left" width="140"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.RptByExample.MsgDate"/></td>
+                        <td align="left" width="400"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.RptByExample.MsgQuery"/></td>
+                        <td align="left" width="100"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.RptByExample.MsgProvider"/></td>
                         <td></td>
                     </tr>
 

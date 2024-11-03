@@ -44,7 +44,7 @@
     }
 %>
 <fmt:setBundle basename="oscarResources"/>
-<html>
+<html:html lang="en">
 
 
     <head>
@@ -146,4 +146,4 @@
         </tr>
     </table>
     </body>
-</html>
+</html:html>

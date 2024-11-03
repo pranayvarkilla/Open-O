@@ -24,7 +24,7 @@
 
 --%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>
@@ -82,10 +82,9 @@
 
                     <!----Start new rows here-->
                     <tr>
-                        <td><%--bean:message
+                        <td><%--fmt:message
 					key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.msgCheckOff" /--%><br>
-                            <bean:message
-                                    key="oscarEncounter.oscarConsultationRequest.config.EditInstitutions.msgClickOn"/><br>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditInstitutions.msgClickOn"/><br>
 
 
                         </td>
@@ -94,7 +93,7 @@
                         <td>
                             <html:form action="/oscarEncounter/EditSpecialists">
                                 <%-- input type="submit" name="delete"
-                                    value="<bean:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.btnDeleteSpecialist"/>"--%>
+                                    value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.btnDeleteSpecialist"/>"--%>
                             <div class="ChooseRecipientsBox1">
                                 <table>
                                     <tr>

@@ -28,15 +28,14 @@
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message
-                key="oscarEncounter.Measurements.msgEditMeasurementGroup"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgEditMeasurementGroup"/></title>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
 
         <script type="text/javascript">
@@ -63,13 +62,11 @@
             action="/oscarEncounter/oscarMeasurements/EditMeasurementGroup.do">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
-                <td class="MainTableTopRowLeftColumn"><bean:message
-                        key="oscarEncounter.Measurements.msgMeasurements"/></td>
+                <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgMeasurements"/></td>
                 <td class="MainTableTopRowRightColumn">
                     <table class="TopStatusBar">
                         <tr>
-                            <td><bean:message
-                                    key="oscarEncounter.Measurements.msgEditMeasurementGroup"/></td>
+                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgEditMeasurementGroup"/></td>
                         </tr>
                     </table>
                 </td>
@@ -82,18 +79,15 @@
                             <td>
                                 <table>
                                     <tr>
-                                        <th align="left"><bean:message
-                                                key="oscarEncounter.oscarMeasurements.MeasurementGroup.allTypes"/>
+                                        <th align="left"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementGroup.allTypes"/>
                                         </th>
 
                                         <th align="left"><bean:write name="groupName"/></th>
                                     </tr>
                                     <tr>
-                                        <td><bean:message
-                                                key="oscarEncounter.oscarMeasurements.MeasurementGroup.add2Group"/><bean:write
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementGroup.add2Group"/><bean:write
                                                 name="groupName"/></td>
-                                        <td><bean:message
-                                                key="oscarEncounter.oscarMeasurements.MeasurementGroup.deleteTypes"/><bean:write
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementGroup.deleteTypes"/><bean:write
                                                 name="groupName"/></td>
                                     <tr>
                                         <td><html:select multiple="true" property="selectedAddTypes"
@@ -110,15 +104,15 @@
                                     <tr>
                                         <input type="hidden" name="forward" value="error"/>
                                         <td><input type="button" name="button"
-                                                   value="<bean:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.addBtn"/>"
+                                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.addBtn"/>"
                                                    onclick="set('add');submit();"/></td>
                                         <td><input type="button" name="button"
-                                                   value="<bean:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.deleteBtn"/>"
+                                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.deleteBtn"/>"
                                                    onclick="set('delete');submit();"/></td>
                                     </tr>
                                     <tr>
                                         <td><input type="button" name="Button"
-                                                   value="<bean:message key="global.btnClose"/>"
+                                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>"
                                                    onClick="window.close()"></td>
                                         <td></td>
                                     </tr>

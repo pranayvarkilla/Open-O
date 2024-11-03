@@ -29,7 +29,7 @@
 %>
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <link rel="stylesheet" type="text/css"
       href="../oscarEncounter/encounterStyles.css">
@@ -72,8 +72,7 @@
         </tr>
         <tr>
             <td class="MainTableLeftColumn"><a
-                    href="../demographic/demographiccontrol.jsp?demographic_no=<bean:write name="demographicNo"/>&displaymode=edit&dboperation=search_detail"><bean:message
-                    key="global.btnBack"/>&nbsp;</a></td>
+                    href="../demographic/demographiccontrol.jsp?demographic_no=<bean:write name="demographicNo"/>&displaymode=edit&dboperation=search_detail"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnBack"/>&nbsp;</a></td>
             <td class="MainTableRightColumn">
                 <table border=0 cellspacing=4 width=700>
                     <tr>
@@ -113,7 +112,7 @@
                 <table>
                     <tr>
                         <td><input type="button" name="Button"
-                                   value="<bean:message key="global.btnClose"/>"
+                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>"
                                    onClick="window.close()"></td>
                     </tr>
                 </table>

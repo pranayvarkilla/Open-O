@@ -45,7 +45,8 @@
         <c:otherwise>
             <h3><c:out value="${param.topic}"/></h3>
             <br/>
-            <bean:message key="<%=topic%>" bundle="help"/>
+            <fmt:setBundle basename="HelpResources" var="help"/>
+            <fmt:message bundle="${help}" key="<%=topic%>"/>
         </c:otherwise>
     </c:choose>
     <br/>

@@ -24,7 +24,7 @@
 
 --%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -48,7 +48,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title><bean:message key="SelectPharmacy.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.title"/></title>
         <html:base/>
         <jsp:include page="../images/spinner.jsp" flush="true"/>
 
@@ -475,9 +475,9 @@
             <table id="AutoNumber1">
                 <tr>
                     <th class="DivContentTitle">
-                        <h2><bean:message key="SelectPharmacy.title"/>
+                        <h2><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.title"/>
                             <span style="font-size: small;">
-						<bean:message key="SearchDrug.nameText"/>
+						<fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.nameText"/>
 						<jsp:getProperty name="patient" property="surname"/>
 						,
 						<jsp:getProperty name="patient" property="firstName"/>
@@ -550,12 +550,12 @@
                                     <table id="pharmacyList" class="table-condensed table-striped"
                                            style="margin-top:5px;width:100%">
                                         <tr class="sticky-heading">
-                                            <th><bean:message key="SelectPharmacy.table.pharmacyName"/></th>
-                                            <th><bean:message key="SelectPharmacy.table.address"/></th>
-                                            <th><bean:message key="SelectPharmacy.table.city"/></th>
-                                            <th><bean:message key="SelectPharmacy.table.postalCode"/></th>
-                                            <th><bean:message key="SelectPharmacy.table.phone"/></th>
-                                            <th><bean:message key="SelectPharmacy.table.fax"/></th>
+                                            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.table.pharmacyName"/></th>
+                                            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.table.address"/></th>
+                                            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.table.city"/></th>
+                                            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.table.postalCode"/></th>
+                                            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.table.phone"/></th>
+                                            <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.table.fax"/></th>
                                             <th></th>
                                             <th></th>
                                         </tr>
@@ -584,11 +584,9 @@
                                                                rights="w" reverse="false">
 
                                                 <td onclick="event.stopPropagation()"><a href="javascript:void(0)"
-                                                                                         onclick="editPharmacy(<%=ph.getId()%>);"><bean:message
-                                                        key="SelectPharmacy.editLink"/></a></td>
+                                                                                         onclick="editPharmacy(<%=ph.getId()%>);"><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.editLink"/></a></td>
                                                 <td onclick="event.stopPropagation()"><a href="javascript:void(0)"
-                                                                                         class="deletePharm"><bean:message
-                                                        key="SelectPharmacy.deleteLink"/></a></td>
+                                                                                         class="deletePharm"><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.deleteLink"/></a></td>
 
                                             </security:oscarSec>
                                         </tr>

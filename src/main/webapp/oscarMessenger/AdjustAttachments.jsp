@@ -42,7 +42,7 @@
 
 <%@page contentType='text/xml'
         import="oscar.oscarMessenger.docxfer.send.*, oscar.oscarMessenger.docxfer.util.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <c:if test="${empty sessionScope.msgSessionBean}">

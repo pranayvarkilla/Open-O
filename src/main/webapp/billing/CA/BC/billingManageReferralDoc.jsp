@@ -40,7 +40,7 @@
     }
 %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ page
         import="java.util.*,oscar.oscarBilling.ca.bc.data.*,oscar.oscarBilling.ca.bc.pageUtil.*" %>
@@ -53,7 +53,7 @@
 <html>
 
     <head>
-        <title><bean:message key="admin.admin.ManageReferralDoc"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.ManageReferralDoc"/></title>
 
         <script type="text/javascript">
 
@@ -88,7 +88,7 @@
         </style>
 
     <body>
-    <h3><bean:message key="admin.admin.ManageReferralDoc"/></h3>
+    <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.ManageReferralDoc"/></h3>
     <div class="container-fluid">
 
         <%

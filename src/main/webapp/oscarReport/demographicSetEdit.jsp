@@ -44,7 +44,7 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@page
         import="oscar.oscarDemographic.data.*,java.util.*,oscar.oscarPrevention.*,oscar.oscarProvider.data.*,oscar.util.*,oscar.oscarReport.data.*,oscar.oscarPrevention.pageUtil.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <jsp:useBean id="providerBean" class="java.util.Properties"
@@ -127,8 +127,7 @@
     <div class="container">
 
         <div class="page-header">
-            <h3><bean:message key="oscarReport.oscarReportDemoSetEdit.msgDemographic"/> - <bean:message
-                    key="oscarReport.oscarReportDemoSetEdit.msgSetEdit"/></h3>
+            <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgDemographic"/> - <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgSetEdit"/></h3>
         </div>
 
         <section id="mainContent">
@@ -143,17 +142,16 @@
                 <div class="span12">
                     <html:form styleClass="form-horizontal well form-search"
                                action="/report/DemographicSetEdit">
-                    <div><bean:message key="oscarReport.oscarReportDemoSetEdit.msgPatientSet"/>: <html:select
+                    <div><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgPatientSet"/>: <html:select
                             property="patientSet">
-                        <html:option value="-1"><bean:message
-                                key="oscarReport.oscarReportDemoSetEdit.msgOptionSet"/></html:option>
+                        <html:option value="-1"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgOptionSet"/></html:option>
                         <% for (int i = 0; i < sets.size(); i++) {
                             String s = sets.get(i);%>
                         <html:option value="<%=s%>"><%=s%>
                         </html:option>
                         <%}%>
                     </html:select> <input type="submit" class="btn"
-                                          value="<bean:message key="oscarReport.oscarReportDemoSetEdit.btnDisplaySet"/>"/>
+                                          value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.btnDisplaySet"/>"/>
                     </div>
 
                     </html:form> <%if( request.getAttribute("SET") != null ) {
@@ -161,12 +159,12 @@
                    String setName = (String) request.getAttribute("setname");%>
                     <div><html:form action="/report/SetEligibility">
                         <input type="button" class="btn" data-toggle="tooltip"
-                               title="<bean:message key="oscarReport.oscarReportDemoSetEdit.msgIneligible"/>"
-                               value="<bean:message key="oscarReport.oscarReportDemoSetEdit.btnSetIneligible"/>"
+                               title="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgIneligible"/>"
+                               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.btnSetIneligible"/>"
                                onclick="submit();">
                         <input type="submit" class="btn" name="delete"
-                               title="<bean:message key="oscarReport.oscarReportDemoSetEdit.msgDelete"/>"
-                               value="<bean:message key="oscarReport.oscarReportDemoSetEdit.btnDelete"/>"/>
+                               title="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgDelete"/>"
+                               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.btnDelete"/>"/>
                         <input type="hidden" name="setName" value="<%=setName%>">
                         <input type="hidden" name="deleteSet" id="deleteSet">
 
@@ -175,13 +173,13 @@
                             <tr>
                                 <th>&nbsp;<input type="checkbox" id="select_all"
                                                  onClick="check_uncheck_checkbox(this.checked);"></th>
-                                <th><bean:message key="oscarReport.oscarReportDemoSetEdit.msgDemo"/></th>
-                                <th><bean:message key="oscarReport.oscarReportDemoSetEdit.msgName"/></th>
-                                <th><bean:message key="oscarReport.oscarReportDemoSetEdit.msgDOB"/></th>
-                                <th><bean:message key="oscarReport.oscarReportDemoSetEdit.msgAge"/></th>
-                                <th><bean:message key="oscarReport.oscarReportDemoSetEdit.msgRoster"/></th>
-                                <th><bean:message key="oscarReport.oscarReportDemoSetEdit.msgDoctor"/></th>
-                                <th><bean:message key="oscarReport.oscarReportDemoSetEdit.msgEligibility"/></th>
+                                <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgDemo"/></th>
+                                <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgName"/></th>
+                                <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgDOB"/></th>
+                                <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgAge"/></th>
+                                <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgRoster"/></th>
+                                <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgDoctor"/></th>
+                                <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoSetEdit.msgEligibility"/></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -212,8 +210,7 @@
                             </tbody>
                         </table>
                         <!-- Button to trigger modal delete confirmation. Backend not implimented-->
-                        <!--<a href="#delete-set-confirm" role="button" class="btn btn-alert" data-toggle="modal"><bean:message
-                            key="eform.groups.delGroup"/></a>-->
+                        <!--<a href="#delete-set-confirm" role="button" class="btn btn-alert" data-toggle="modal"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.groups.delGroup"/></a>-->
                     </html:form></div>
                     <script>
 
@@ -240,7 +237,7 @@
                             "order": [[1, 'asc']],
                             "paging": false,
                             "language": {
-                                "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<bean:message key="global.i18nLanguagecode"/>.json"
+                                "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.i18nLanguagecode"/>.json"
                             }
                         });
 
