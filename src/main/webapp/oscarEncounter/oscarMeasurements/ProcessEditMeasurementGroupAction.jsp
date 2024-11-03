@@ -27,7 +27,7 @@
 <%
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page
@@ -37,8 +37,7 @@
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message
-                key="oscarEncounter.Measurements.msgProcessEditMeasurementGroupAction"/>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgProcessEditMeasurementGroupAction"/>
         </title>
         <html:base/>
     </head>

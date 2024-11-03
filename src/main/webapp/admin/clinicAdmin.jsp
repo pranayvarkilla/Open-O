@@ -43,7 +43,7 @@
 
 <%@ page import="java.util.*" %>
 <%@ page import="oscar.oscarReport.reportByTemplate.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <html:html lang="en">
@@ -57,7 +57,7 @@
 
     </head>
     <body class="BodyStyle">
-    <h4><bean:message key="admin.admin.clinicAdmin"/></h4></h4>
+    <h4><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.clinicAdmin"/></h4></h4>
     <div class="well">
 
         <html:form action="/admin/ManageClinic" styleClass="form-horizontal">
@@ -66,77 +66,69 @@
             <html:hidden property="method" value="update"/>
 
             <div class="control-group">
-                <label class="control-label" for="clinic.clinicName"><bean:message key="admin.k2a.clinicName"/></label>
+                <label class="control-label" for="clinic.clinicName"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.k2a.clinicName"/></label>
                 <div class="controls">
                     <html:text property="clinic.clinicName"/>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="clinic.clinicAddress"><bean:message
-                        key="admin.provider.formAddress"/></label>
+                <label class="control-label" for="clinic.clinicAddress"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.provider.formAddress"/></label>
                 <div class="controls">
                     <html:text property="clinic.clinicAddress"/>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="clinic.clinicCity"><bean:message
-                        key="oscarReport.oscarReportCatchment.msgCity"/></label>
+                <label class="control-label" for="clinic.clinicCity"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportCatchment.msgCity"/></label>
                 <div class="controls">
                     <html:text property="clinic.clinicCity"/>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="clinic.clinicPostal"><bean:message
-                        key="oscarReport.oscarReportCatchment.msgPostal"/></label>
+                <label class="control-label" for="clinic.clinicPostal"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportCatchment.msgPostal"/></label>
                 <div class="controls">
                     <html:text property="clinic.clinicPostal"/>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="clinic.clinicPhone"><bean:message
-                        key="appointment.addappointment.msgPhone"/></label>
+                <label class="control-label" for="clinic.clinicPhone"><fmt:setBundle basename="oscarResources"/><fmt:message key="appointment.addappointment.msgPhone"/></label>
                 <div class="controls">
                     <html:text property="clinic.clinicPhone"/>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="clinic.clinicFax"><bean:message key="admin.provider.formFax"/></label>
+                <label class="control-label" for="clinic.clinicFax"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.provider.formFax"/></label>
                 <div class="controls">
                     <html:text property="clinic.clinicFax"/>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="clinic.clinicLocationCode"><bean:message key="location"/>&nbsp;
-                    <bean:message key="billing.billingDigSearch.formCode"/></label>
+                <label class="control-label" for="clinic.clinicLocationCode"><fmt:setBundle basename="oscarResources"/><fmt:message key="location"/>&nbsp;
+                    <fmt:setBundle basename="oscarResources"/><fmt:message key="billing.billingDigSearch.formCode"/></label>
                 <div class="controls">
                     <html:text property="clinic.clinicLocationCode"/>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="clinic.clinicProvince"><bean:message
-                        key="demographic.demographicaddrecordhtm.formprovince"/></label>
+                <label class="control-label" for="clinic.clinicProvince"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicaddrecordhtm.formprovince"/></label>
                 <div class="controls">
                     <html:text property="clinic.clinicProvince"/>
                 </div>
             </div>
             <div class="control-group" title="Multi phone delimited by |">
-                <label class="control-label" for="clinic.clinicDelimPhone"><bean:message
-                        key="appointment.addappointment.msgPhone"/>|<bean:message
-                        key="appointment.addappointment.msgPhone"/></label>
+                <label class="control-label" for="clinic.clinicDelimPhone"><fmt:setBundle basename="oscarResources"/><fmt:message key="appointment.addappointment.msgPhone"/>|<fmt:setBundle basename="oscarResources"/><fmt:message key="appointment.addappointment.msgPhone"/></label>
                 <div class="controls">
                     <html:text property="clinic.clinicDelimPhone"/>
                 </div>
             </div>
             <div class="control-group" title="Multi fax delimited by |">
-                <label class="control-label" for="clinic.clinicDelimFax"><bean:message
-                        key="admin.provider.formFax"/>|<bean:message key="admin.provider.formFax"/></label>
+                <label class="control-label" for="clinic.clinicDelimFax"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.provider.formFax"/>|<fmt:setBundle basename="oscarResources"/><fmt:message key="admin.provider.formFax"/></label>
                 <div class="controls">
                     <html:text property="clinic.clinicDelimFax"/>
                 </div>
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <input type="submit" value="<bean:message key="global.btnSubmit" />" class="btn btn-primary">
+                    <input type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnSubmit"/>" class="btn btn-primary">
                 </div>
             </div>
 

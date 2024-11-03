@@ -29,7 +29,7 @@
 %>
 <%@ page import="java.sql.*, java.util.*, oscar.MyDateFormat" errorPage="../errorpage.jsp" %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import="org.oscarehr.common.model.MyGroup" %>
@@ -55,7 +55,7 @@
         <table border="0" cellspacing="0" cellpadding="0" width="90%">
             <tr bgcolor="#486ebd">
                 <th align="CENTER"><font face="Helvetica" color="#FFFFFF">
-                    <bean:message key="provider.providersavemygroup.msgTitle"/></font></th>
+                    <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.providersavemygroup.msgTitle"/></font></th>
             </tr>
         </table>
         <%
@@ -80,7 +80,7 @@
             if (rowsAffected == 1) {
         %>
         <p>
-        <h1><bean:message key="provider.providersavemygroup.msgSuccessful"/></h1>
+        <h1><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.providersavemygroup.msgSuccessful"/></h1>
         </p>
         <script LANGUAGE="JavaScript">
             self.close();
@@ -90,7 +90,7 @@
         } else {
         %>
         <p>
-        <h1><bean:message key="provider.providersavemygroup.msgFailed"/></h1>
+        <h1><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.providersavemygroup.msgFailed"/></h1>
         </p>
         <%
             }
@@ -98,7 +98,7 @@
         <p></p>
         <hr width="90%"/>
         <form><input type="button"
-                     value="<bean:message key="provider.providersavemygroup.btnClose"/>"
+                     value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.providersavemygroup.btnClose"/>"
                      onClick="window.close()"></form>
     </center>
     </body>

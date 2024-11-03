@@ -84,7 +84,7 @@
       onsubmit="return validaeIssues();">
     <input type="hidden" name="method" value="save"/>
     <input type="hidden" name="issuenotempty"
-           value="<bean:message key='admin.admin.defaultEncounterIssue.issuenotempty' />"/>
+           value="<fmt:setBundle basename='oscarResources'/><fmt:message key='admin.admin.defaultEncounterIssue.issuenotempty'/>"/>
     <table width="100%" border="0" cellpadding="0" cellspacing="1"
            bgcolor="#C0C0C0">
         <tr>

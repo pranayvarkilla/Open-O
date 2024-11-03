@@ -24,7 +24,7 @@
 
 --%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ page import="oscar.oscarProvider.data.*" %>
 
@@ -44,7 +44,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
-        <title><bean:message key="provider.setPHRLogin.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.title"/></title>
 
         <link rel="stylesheet" type="text/css"
               href="../oscarEncounter/encounterStyles.css">
@@ -69,10 +69,8 @@
 
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr class="MainTableTopRow">
-            <td class="MainTableTopRowLeftColumn"><bean:message
-                    key="provider.setColour.msgPrefs"/></td>
-            <td style="color: white" class="MainTableTopRowRightColumn"><bean:message
-                    key="provider.setPHRLogin.msgMyOscarId"/></td>
+            <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setColour.msgPrefs"/></td>
+            <td style="color: white" class="MainTableTopRowRightColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.msgMyOscarId"/></td>
         </tr>
         <tr>
             <td class="MainTableLeftColumn">&nbsp;</td>
@@ -85,15 +83,15 @@
                 if (request.getAttribute("status") == null) {
 
             %> <html:form action="/setMyOscarId.do">
-                <bean:message key="provider.setPHRLogin.msgEdit"/>&nbsp;&nbsp;
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.msgEdit"/>&nbsp;&nbsp;
                 <html:text property="myOscarLoginId" value="<%=login%>"
                            size="20"/>
                 <br>
                 <input type="submit" onclick="return validate();"
-                       value="<bean:message key="provider.setPHRLogin.btnSubmit"/>"/>
+                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.btnSubmit"/>"/>
             </html:form> <%
             } else if (((String) request.getAttribute("status")).equals("complete")) {
-            %> <bean:message key="provider.setPHRLogin.msgSuccess"/>&nbsp;'<%=login%>'
+            %> <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.msgSuccess"/>&nbsp;'<%=login%>'
 
                 <%
                     }

@@ -24,7 +24,7 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <html:html lang="en">
     <head>
@@ -164,9 +164,7 @@
                        width="100%" height="100%">
                     <tr>
                         <td width="0%" valign="top">
-                            <div class="DivCCBreadCrumbs"><a href="SearchDrug.jsp"> <bean:message
-                                    key="SearchDrug.title"/></a> > <b><bean:message
-                                    key="StaticScript.title.EditFavorites"/></b></div>
+                            <div class="DivCCBreadCrumbs"><a href="SearchDrug.jsp"> <fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title"/></a> > <b><fmt:setBundle basename="oscarResources"/><fmt:message key="StaticScript.title.EditFavorites"/></b></div>
                         </td>
                     </tr>
 

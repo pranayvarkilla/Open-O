@@ -65,8 +65,7 @@
                 <%if (request.getAttribute("status") == null) {%> <%=bundle.getString(providermsgEdit)%>
                 <html:form action="/setProviderStaleDate.do">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
-                    <html:checkbox property="eDocBrowserInMasterFileProperty.checked"><bean:message
-                            key="provider.btnSetEDocBrowserInMasterFile"/></html:checkbox>
+                    <html:checkbox property="eDocBrowserInMasterFileProperty.checked"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.btnSetEDocBrowserInMasterFile"/></html:checkbox>
                     <br/>
                     <html:submit property="btnApply"/>
                 </html:form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>

@@ -43,7 +43,7 @@
         import="oscar.oscarEncounter.immunization.data.*,oscar.util.UtilXML" %>
 <%@ page
         import="oscar.oscarEncounter.immunization.pageUtil.*, java.util.*, org.w3c.dom.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
@@ -170,28 +170,24 @@
             }
         </script>
 
-        <title><bean:message key="oscarEncounter.ViewAttachment.title"/>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.ViewAttachment.title"/>
         </title>
     </head>
 
     <body class="BodyStyle" vlink="#0000FF">
     <!--  -->
     <table class="MainTable" id="scrollNumber1"
-           name="<bean:message key="oscarEncounter.ViewAttachment.msgEncounterTable"/>">
+           name="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.ViewAttachment.msgEncounterTable"/>">
         <tr class="MainTableTopRow">
-            <td class="MainTableTopRowLeftColumn"><bean:message
-                    key="global.oscarComm"/></td>
+            <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.oscarComm"/></td>
             <td class="MainTableTopRowRightColumn">
                 <table class="TopStatusBar">
                     <tr>
-                        <td><bean:message
-                                key="oscarEncounter.ViewAttachment.msgViewAtt"/></td>
+                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.ViewAttachment.msgViewAtt"/></td>
                         <td></td>
                         <td style="text-align: right"><oscar:help keywords="attachment" key="app.top1"/> | <a
-                                href="javascript:popupStart(300,400,'About.jsp')"><bean:message
-                                key="global.about"/></a> | <a
-                                href="javascript:popupStart(300,400,'License.jsp')"><bean:message
-                                key="global.license"/></a></td>
+                                href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
+                                href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                     </tr>
                 </table>
             </td>
@@ -202,24 +198,20 @@
 
                 <table cellspacing="1" valign="top">
                     <tr>
-                        <td bgcolor="#DDDDFF"><bean:message
-                                key="oscarEncounter.ViewAttachment.msgFrom"/>:
+                        <td bgcolor="#DDDDFF"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.ViewAttachment.msgFrom"/>:
                         </td>
-                        <td bgcolor="#CCCCFF"><%= sentBy%> <bean:message
-                                key="oscarEncounter.ViewAttachment.msgAt"/> <%=remoteName%>
+                        <td bgcolor="#CCCCFF"><%= sentBy%> <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.ViewAttachment.msgAt"/> <%=remoteName%>
                         </td>
                     </tr>
                     <tr>
-                        <td bgcolor="#DDDDFF"><bean:message
-                                key="oscarEncounter.ViewAttachment.msgSubject"/>:
+                        <td bgcolor="#DDDDFF"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.ViewAttachment.msgSubject"/>:
                         </td>
                         <td bgcolor="#BBBBFF"><%= thesubject%>
                         </td>
                     </tr>
 
                     <tr>
-                        <td bgcolor="#DDDDFF"><bean:message
-                                key="oscarEncounter.ViewAttachment.msgDate"/>:
+                        <td bgcolor="#DDDDFF"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.ViewAttachment.msgDate"/>:
                         </td>
                         <td bgcolor="#B8B8FF"><%= thedate %>&nbsp;&nbsp; <%= theime %>
                         </td>
@@ -239,10 +231,8 @@
                 <div style="height: 6px;"></div>
                 <% DrawDoc(root, out); %>
                 <div style="font-size: 8pt; margin-top: 15px;"><a
-                        href="javascript:expandAll();"><bean:message
-                        key="oscarEncounter.ViewAttachment.msgExpandAll"/></a> &nbsp;|&nbsp; <a
-                        href="javascript:collapseAll();"><bean:message
-                        key="oscarEncounter.ViewAttachment.msgColapseAll"/></a></div>
+                        href="javascript:expandAll();"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.ViewAttachment.msgExpandAll"/></a> &nbsp;|&nbsp; <a
+                        href="javascript:collapseAll();"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.ViewAttachment.msgColapseAll"/></a></div>
 
             </td>
         </tr>

@@ -25,7 +25,7 @@
 --%>
 
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 
@@ -89,7 +89,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-1.7.1.min.js"></script>
-        <title><bean:message key="admin.groupacl.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.groupacl.title"/></title>
 
         <script>
             function changeGroup() {
@@ -114,7 +114,7 @@
             <tr bgcolor="#486ebd">
                 <th align=CENTER NOWRAP>
                     <font face="Helvetica" color="#FFFFFF">
-                        <bean:message key="admin.groupacl.description"/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="admin.groupacl.description"/>
                     </font>
                 </th>
             </tr>
@@ -191,8 +191,8 @@
             <tr>
                 <TD align="center">
                     <input type=button name="Submit" onClick="save_acl()"
-                           value="<bean:message key="admin.adminnewgroup.btnSubmit"/>"/>
-                    <INPUT TYPE="RESET" VALUE="<bean:message key="global.btnClose"/>" onClick="window.close();">
+                           value="<fmt:setBundle basename="oscarResources"/><fmt:message key="admin.adminnewgroup.btnSubmit"/>"/>
+                    <INPUT TYPE="RESET" VALUE="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>" onClick="window.close();">
                 </TD>
             </tr>
         </TABLE>

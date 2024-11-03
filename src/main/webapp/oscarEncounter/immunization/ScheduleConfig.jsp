@@ -43,15 +43,14 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ page import="oscar.oscarEncounter.immunization.data.*, oscar.util.*, oscar.oscarDemographic.data.*" %>
 <%@ page import="oscar.oscarEncounter.immunization.pageUtil.*, java.util.*, org.w3c.dom.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
 <html>
 <head>
     <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-    <title><bean:message
-            key="oscarEncounter.immunization.ScheduleConfig.title"/></title>
+    <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.ScheduleConfig.title"/></title>
     <%
         oscar.oscarEncounter.pageUtil.EctSessionBean bean = (oscar.oscarEncounter.pageUtil.EctSessionBean) request.getSession().getAttribute("EctSessionBean");
 
@@ -85,7 +84,7 @@
 <table class="MainTable" id="scrollNumber1" name="encounterTable">
     <tr class="MainTableTopRow">
         <td class="MainTableTopRowLeftColumn">
-            <bean:message key="oscarEncounter.immunization.ScheduleConfig.msgImm"/>
+            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.ScheduleConfig.msgImm"/>
         </td>
         <td class="MainTableTopRowRightColumn">
             <table class="TopStatusBar">
@@ -98,8 +97,8 @@
                     <td>
                     </td>
                     <td style="text-align:right" NOWRAP>
-                        <a href="javascript:history.go(-1);"><bean:message key="global.btnBack"/></a> | <a
-                            href="javascript:window.close();"><bean:message key="global.btnClose"/></a> |
+                        <a href="javascript:history.go(-1);"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnBack"/></a> | <a
+                            href="javascript:window.close();"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/></a> |
                     </td>
                 </tr>
             </table>
@@ -139,14 +138,14 @@
                     <tr>
                         <td>
                             <html:submit>
-                                <bean:message key="oscarEncounter.immunization.ScheduleConfig.addTemplate"/>
+                                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.ScheduleConfig.addTemplate"/>
                             </html:submit>
-                            <input type="button" value='<bean:message key="global.btnCancel"/>'
+                            <input type="button" value='<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnCancel"/>'
                                    onclick="javascript:location.href='loadSchedule.do?demographic_no=<%=demoNo%>';"/>
                         </td>
                         <td align="right">
                             <input type="button"
-                                   value='<bean:message key="oscarEncounter.immunization.ScheduleConfig.createTemplate"/>'
+                                   value='<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.ScheduleConfig.createTemplate"/>'
                                    onclick="javascript:location.href='config/initConfig.do';"/>
                         </td>
                     </tr>

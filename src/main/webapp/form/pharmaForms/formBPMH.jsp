@@ -33,7 +33,7 @@
 	Comment: The Pharmacists Clinic, Faculty of Pharmaceutical Sciences, University of British Columbia.
 --%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -54,7 +54,7 @@
 <html:html>
 
     <head>
-        <title><bean:message key="colcamex.formBPMH.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.title"/></title>
         <link rel="stylesheet" type="text/css" media="screen"
               href="${ pageContext.request.contextPath }/form/pharmaForms/index.css"/>
         <link rel="stylesheet" type="text/css" media="screen"
@@ -94,7 +94,7 @@
         <html:hidden property="formId"/>
         <header>
 
-            <h1><bean:message key="colcamex.formBPMH.title"/></h1>
+            <h1><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.title"/></h1>
 
             <c:set var="controls" value="on" scope="page"/>
 
@@ -102,8 +102,8 @@
 
                 <c:if test="${empty bpmh.provider}">
                     <span class="red">
-                        <bean:message key="colcamex.formBPMH.preparedby"/>
-                        <bean:message key="colcamex.formBPMH.error.unknown"/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.preparedby"/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.error.unknown"/>
                     </span>
                 </c:if>
 
@@ -111,14 +111,14 @@
                 <c:if test="${not empty bpmh.provider}">
 		
 				<span>	
-						<bean:message key="colcamex.formBPMH.preparedby"/>
+						<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.preparedby"/>
 						<bean:write name="bpmh" property="provider.formattedName"/>
 						<c:choose>
                             <c:when test="${not empty bpmh.provider.ohipNo}">
                                 &#40;<bean:write name="bpmh" property="provider.ohipNo"/>&#41;
                             </c:when>
                             <c:otherwise>
-                                &#40;<bean:message key="colcamex.formBPMH.error.unknown"/>&#41;
+                                &#40;<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.error.unknown"/>&#41;
                             </c:otherwise>
                         </c:choose>
 
@@ -134,12 +134,12 @@
                     <span>
                 </c:if>
 
-					<bean:message key="colcamex.formBPMH.preparedon"/>
+					<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.preparedon"/>
 					<bean:write name="bpmh" property="formDateFormatted"/>
 				</span>
 									
 				<span>				
-					<bean:message key="colcamex.formBPMH.printedon"/>
+					<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.printedon"/>
 					<bean:write name="bpmh" property="editDateFormatted"/>
 				</span>
 
@@ -152,29 +152,29 @@
             <!--  PATIENT  -->
             <table id="patientId">
                 <tr>
-                    <th colspan="6"><bean:message key="colcamex.formBPMH.patient"/></th>
+                    <th colspan="6"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.patient"/></th>
                 </tr>
                 <tr>
-                    <td rowspan="2" class="columnTitle"><bean:message key="colcamex.formBPMH.patient.name"/></td>
+                    <td rowspan="2" class="columnTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.patient.name"/></td>
                     <td rowspan="2">
                         <bean:write name="bpmh" property="demographic.fullName"/>
                     </td>
-                    <td class="columnTitle"><bean:message key="colcamex.formBPMH.patient.insurance"/></td>
+                    <td class="columnTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.patient.insurance"/></td>
                     <td>
                         <bean:write name="bpmh" property="demographic.hin"/>
                     </td>
-                    <td class="columnTitle"><bean:message key="colcamex.formBPMH.patient.gender"/></td>
+                    <td class="columnTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.patient.gender"/></td>
                     <td>
                         <bean:write name="bpmh" property="demographic.sex"/>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="columnTitle"><bean:message key="colcamex.formBPMH.patient.dob"/></td>
+                    <td class="columnTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.patient.dob"/></td>
                     <td>
                         <bean:write name="bpmh" property="demographic.formattedDob"/>
                     </td>
-                    <td class="columnTitle"><bean:message key="colcamex.formBPMH.patient.phone"/></td>
+                    <td class="columnTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.patient.phone"/></td>
                     <td>
                         <bean:write name="bpmh" property="demographic.phone"/>
                     </td>
@@ -183,7 +183,7 @@
             <table id="allergies">
                 <tr>
                     <td class="columnTitle">
-                        <bean:message key="colcamex.formBPMH.patient.allergies"/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.patient.allergies"/>
                     </td>
                     <td>
                         <c:if test="${not empty bpmh.allergiesString}">
@@ -199,10 +199,10 @@
             <html:hidden name="bpmh" property="familyDrContactId" styleId="familyDrContactId"/>
             <table id="providerId">
                 <tr>
-                    <th colspan="7"><bean:message key="colcamex.formBPMH.familyDr"/></th>
+                    <th colspan="7"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.familyDr"/></th>
                 </tr>
                 <tr>
-                    <td class="columnTitle"><bean:message key="colcamex.formBPMH.familyDr.name"/></td>
+                    <td class="columnTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.familyDr.name"/></td>
                     <td>
                         <c:choose>
                             <c:when test="${empty bpmh.familyDrName}">
@@ -215,7 +215,7 @@
 
                     </td>
 
-                    <td class="columnTitle"><bean:message key="colcamex.formBPMH.familyDr.phone"/></td>
+                    <td class="columnTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.familyDr.phone"/></td>
                     <td>
                         <c:choose>
                             <c:when test="${empty bpmh.familyDrPhone}">
@@ -227,7 +227,7 @@
                         </c:choose>
                     </td>
 
-                    <td class="columnTitle"><bean:message key="colcamex.formBPMH.familyDr.fax"/></td>
+                    <td class="columnTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.familyDr.fax"/></td>
                     <td>
                         <c:choose>
                             <c:when test="${empty bpmh.familyDrFax}">
@@ -256,32 +256,32 @@
             <table id="drugtable">
 
                 <tr>
-                    <th colspan="4"><bean:message key="colcamex.formBPMH.drugs"/></th>
+                    <th colspan="4"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.drugs"/></th>
                 </tr>
                 <tr id="drugtableSubheading">
 
                     <td class="columnTitle">
-                        <bean:message key="colcamex.formBPMH.drugs.what"/><br/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.drugs.what"/><br/>
                         <span class="smallText">
-							<bean:message key="colcamex.formBPMH.drugs.what.sub"/>
+							<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.drugs.what.sub"/>
 						</span>
                     </td>
                     <td class="columnTitle">
-                        <bean:message key="colcamex.formBPMH.drugs.how"/><br/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.drugs.how"/><br/>
                         <span class="smallText">
-							<bean:message key="colcamex.formBPMH.drugs.how.sub"/>
+							<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.drugs.how.sub"/>
 						</span>
                     </td>
                     <td class="columnTitle">
-                        <bean:message key="colcamex.formBPMH.drugs.why"/><br/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.drugs.why"/><br/>
                         <span class="smallText">
-							<bean:message key="colcamex.formBPMH.drugs.why.sub"/>
+							<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.drugs.why.sub"/>
 						</span>
                     </td>
                     <td class="columnTitle">
-                        <bean:message key="colcamex.formBPMH.drugs.instructions"/><br/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.drugs.instructions"/><br/>
                         <span class="smallText">
-							<bean:message key="colcamex.formBPMH.drugs.instructions.sub"/>
+							<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.drugs.instructions.sub"/>
 						</span>
                     </td>
                 </tr>
@@ -353,7 +353,7 @@
                 <tr>
                     <td>
                         <html:checkbox name="bpmh" property="confirm" value="checked"/>
-                        <label for="confirm"><bean:message key="colcamex.formBPMH.confirm"/></label>
+                        <label for="confirm"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.confirm"/></label>
                     </td>
                 </tr>
             </table>
@@ -362,7 +362,7 @@
             <table>
                 <tr>
                     <td>
-                        <bean:message key="colcamex.formBPMH.notes"/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.notes"/>
                     </td>
                 </tr>
                 <tr>
@@ -398,7 +398,7 @@
                             <c:when test="${empty bpmh.provider}">
                                 <c:set var="controls" value="off" scope="page"/>
                                 <span class="red">
-                                    <bean:message key="colcamex.formBPMH.error.missing.provider"/>
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.error.missing.provider"/>
                                 </span>
                             </c:when>
                         </c:choose>
@@ -407,12 +407,12 @@
                         <c:if test="${ controls eq 'on' }">
 
                             <html:submit property="method">
-                                <bean:message key="colcamex.formBPMH.print"/>
+                                <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.print"/>
                             </html:submit>
 
                             <c:if test="${bpmh.formId == 0}">
                                 <html:submit property="method">
-                                    <bean:message key="colcamex.formBPMH.save"/>
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.save"/>
                                 </html:submit>
                             </c:if>
 
@@ -435,7 +435,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <span><bean:message key="colcamex.formBPMH.formowner"/></span>
+        <span><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.formowner"/></span>
     </footer>
 
     </body>

@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -76,29 +76,26 @@
                     <tr>
                         <td width="0%" valign="top">
                             <div class="DivCCBreadCrumbs"><a href="SearchPatient.jsp">
-                                <bean:message key="SearchPatient.title"/></a> > <b><bean:message
-                                    key="ChoosePatient.title"/></b></div>
+                                <fmt:setBundle basename="oscarResources"/><fmt:message key="SearchPatient.title"/></a> > <b><fmt:setBundle basename="oscarResources"/><fmt:message key="ChoosePatient.title"/></b></div>
                         </td>
                     </tr>
 
                     <!----Start new rows here-->
                     <tr>
                         <td>
-                            <div class="DivContentTitle"><bean:message
-                                    key="ChoosePatient.title"/></div>
+                            <div class="DivContentTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="ChoosePatient.title"/></div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div class="DivContentSectionHead"><bean:message
-                                    key="ChoosePatient.searchAgain"/></div>
+                            <div class="DivContentSectionHead"><fmt:setBundle basename="oscarResources"/><fmt:message key="ChoosePatient.searchAgain"/></div>
                         </td>
                     </tr>
                     <tr>
                         <td><html:form action="/oscarRx/searchPatient" focus="surname">
                             <table>
                                 <tr>
-                                    <td><bean:message key="ChoosePatient.textBox"/></td>
+                                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ChoosePatient.textBox"/></td>
                                     <td><html:text property="surname" size="16" maxlength="16"/>
                                     </td>
                                     <td><html:submit property="submit" value="Search"
@@ -109,8 +106,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <div class="DivContentSectionHead"><bean:message
-                                    key="ChoosePatient.choose"/></div>
+                            <div class="DivContentSectionHead"><fmt:setBundle basename="oscarResources"/><fmt:message key="ChoosePatient.choose"/></div>
                         </td>
                     </tr>
 

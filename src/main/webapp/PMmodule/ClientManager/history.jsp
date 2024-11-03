@@ -194,8 +194,7 @@
 
             <a href=#
                onClick="popupPage(710, 1024,'../oscarSurveillance/CheckSurveillance.do?programId=<%=programId%>&demographicNo=<%=demographic_no%>&proceed=<%=java.net.URLEncoder.encode(eURL)%>');return false;"
-               title="<bean:message key="global.encounter"/>"> <bean:message
-                    key="provider.appointmentProviderAdminDay.btnE"/></a>
+               title="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.encounter"/>"> <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.appointmentProviderAdminDay.btnE"/></a>
 
         </c:if>
         <% }

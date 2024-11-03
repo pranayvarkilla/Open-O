@@ -14,7 +14,7 @@
 %>
 
 <%@ page import="oscar.util.*, oscar.form.*, oscar.form.data.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>

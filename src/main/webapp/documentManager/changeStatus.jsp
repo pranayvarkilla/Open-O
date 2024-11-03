@@ -58,8 +58,7 @@
     </script>
     <% Iterator iter = doctypeerrors.keySet().iterator();
         while (iter.hasNext()) {%>
-    <font class="warning">Error: <bean:message
-            key="<%=doctypeerrors.get(iter.next())%>"/></font><br/>
+    <font class="warning">Error: <fmt:setBundle basename="oscarResources"/><fmt:message key="<%=doctypeerrors.get(iter.next())%>"/></font><br/>
     <% } %>
 
     <link rel="stylesheet" type="text/css" href="../share/yui/css/fonts-min.css"/>

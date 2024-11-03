@@ -24,7 +24,7 @@
 
 --%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%
     Integer latestFrmId = (Integer) session.getAttribute("latestFrmId");
@@ -43,7 +43,6 @@
         </script>
     </head>
     <body>
-    <a href="javascript:window.close();"><bean:message
-            key="oscarEncounter.close.btnHere"/></a>
+    <a href="javascript:window.close();"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.close.btnHere"/></a>
     </body>
 </html:html>

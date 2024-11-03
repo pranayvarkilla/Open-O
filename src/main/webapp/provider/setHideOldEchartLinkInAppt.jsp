@@ -65,7 +65,7 @@
                 <html:form action="/setProviderStaleDate.do">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
                     <html:checkbox property="hideOldEchartLinkInApptProperty.checked">
-                        <bean:message key="provider.btnHideOldEchartLinkInAppt"/></html:checkbox>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.btnHideOldEchartLinkInAppt"/></html:checkbox>
                     <br/><br/>
                     <input type="submit" value="<%=bundle.getString(providerbtnSubmit)%>"/>
                     <input type="button" value="<%=bundle.getString(providerbtnCancel)%>"

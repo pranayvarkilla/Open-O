@@ -55,7 +55,7 @@
 <html:html>
     <head>
         <html:base/>
-        <title><bean:message key="provider.btnSetIntegratorPreferences"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.btnSetIntegratorPreferences"/></title>
 
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.9.1.js"></script>
@@ -185,8 +185,8 @@
     </head>
 
     <body class="BodyStyle" vlink="#0000FF">
-    <h4><bean:message key="provider.integratorPreferences.preferences"/></h4>
-    <p><bean:message key="provider.integratorPreferences.chooseDataSets"/></p>
+    <h4><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.integratorPreferences.preferences"/></h4>
+    <p><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.integratorPreferences.chooseDataSets"/></p>
 
     <% if (request.getAttribute("saved") != null) { %>
     <div style="colour: red; border: 1px solid red; padding: 5px; margin: 10px;">Preferences Saved</div>
@@ -237,13 +237,13 @@
         </oscar:oscarPropertiesCheck>
         <hr/>
         <input class="btn btn-primary" type="submit" onclick="$('input[type=radio]').removeAttr('disabled');"
-               value="<bean:message key="provider.integratorPreferences.save" />"/>
+               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.integratorPreferences.save"/>"/>
             <%--
             <table id="integratorPrefTable" border=0>
                 <tr>
                     <td></td>
-                    <th><bean:message key="provider.integratorPreferences.enabled" /></th>
-                    <th><bean:message key="provider.integratorPreferences.disabled" /></th>
+                    <th><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.integratorPreferences.enabled"/></th>
+                    <th><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.integratorPreferences.disabled"/></th>
                 </tr>
                 <tr>
                     <td>Demographic Records</td>

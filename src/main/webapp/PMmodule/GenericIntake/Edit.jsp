@@ -563,14 +563,10 @@
                                         <html:select property="client.rosterStatus" styleId="width: 120">
                                             <%String rosterStatus = ""; %>
                                             <html:option value=""></html:option>
-                                            <html:option value="RO"><bean:message
-                                                    key="demographic.demographiceditdemographic.optRostered"/></html:option>
-                                            <html:option value="NR"><bean:message
-                                                    key="demographic.demographiceditdemographic.optNotRostered"/></html:option>
-                                            <html:option value="TE"><bean:message
-                                                    key="demographic.demographiceditdemographic.optTerminated"/></html:option>
-                                            <html:option value="FS"><bean:message
-                                                    key="demographic.demographiceditdemographic.optFeeService"/></html:option>
+                                            <html:option value="RO"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographiceditdemographic.optRostered"/></html:option>
+                                            <html:option value="NR"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographiceditdemographic.optNotRostered"/></html:option>
+                                            <html:option value="TE"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographiceditdemographic.optTerminated"/></html:option>
+                                            <html:option value="FS"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographiceditdemographic.optFeeService"/></html:option>
                                             <%
                                                 DemographicDao demographicDao = (DemographicDao) SpringUtils.getBean(DemographicDao.class);
                                                 List<String> statuses = demographicDao.getRosterStatuses();

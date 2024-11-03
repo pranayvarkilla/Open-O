@@ -44,7 +44,7 @@
     EChartDao eChartDao = SpringUtils.getBean(EChartDao.class);
 %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -99,7 +99,7 @@
 <html:html lang="en">
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="oscarMessenger.CreateMessage.title"/>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.title"/>
         </title>
 
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
@@ -223,8 +223,7 @@
     <!--  -->
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr class="MainTableTopRow">
-            <td class="MainTableTopRowLeftColumn"><bean:message
-                    key="oscarMessenger.CreateMessage.msgMessenger"/></td>
+            <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.msgMessenger"/></td>
             <td class="MainTableTopRowRightColumn">
                 <table class="TopStatusBar">
                     <tr>
@@ -232,10 +231,8 @@
                         </td>
                         <td>&nbsp;</td>
                         <td style="text-align: right"><oscar:help keywords="message" key="app.top1"/> | <a
-                                href="javascript:popupStart(300,400,'About.jsp')"><bean:message
-                                key="global.about"/></a> | <a
-                                href="javascript:popupStart(300,400,'License.jsp')"><bean:message
-                                key="global.license"/></a></td>
+                                href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
+                                href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                     </tr>
                 </table>
             </td>

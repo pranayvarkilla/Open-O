@@ -93,7 +93,7 @@
                 if (wcb.verifyFormNotNeeded() != null && wcb.verifyFormNotNeeded().size() > 0) {
                     List<String> errs = wcb.verifyFormNotNeeded();
             %>
-            <td title="header=[To bill WCB without a form the following is needed] body=[<%for (String s : errs) { %><bean:message key="<%=s%>"/><%  }%>]">
+            <td title="header=[To bill WCB without a form the following is needed] body=[<%for (String s : errs) { %><fmt:setBundle basename="oscarResources"/><fmt:message key="<%=s%>"/><%  }%>]">
                     <%}else{%>
             <td>
                 <%}%>
@@ -106,7 +106,7 @@
                 if (wcb.verifyEverythingOnForm() != null && wcb.verifyEverythingOnForm().size() > 0) {
                     List<String> errs = wcb.verifyEverythingOnForm();
             %>
-            <td title="header=[To bill WCB with a form the following is needed] body=[<%for (String s : errs) { %><bean:message key="<%=s%>"/><%  }%>]">
+            <td title="header=[To bill WCB with a form the following is needed] body=[<%for (String s : errs) { %><fmt:setBundle basename="oscarResources"/><fmt:message key="<%=s%>"/><%  }%>]">
                     <%}else{%>
             <td>
                 <%}%>

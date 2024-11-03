@@ -292,20 +292,20 @@
 <table class="MainTable" id="scrollNumber1" name="encounterTable">
     <tr class="MainTableTopRow">
         <td class="MainTableTopRowLeftColumn">
-            <bean:message key="oscarMessenger.DisplayMessages.msgMessenger"/>
+            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgMessenger"/>
         </td>
         <td class="MainTableTopRowRightColumn">
             <table class="TopStatusBar">
                 <tr>
                     <td>
-                        <div class="DivContentTitle"><bean:message key="oscarMessenger.DisplayMessages.msgInbox"/></div>
+                        <div class="DivContentTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgInbox"/></div>
                     </td>
                     <td>
                     </td>
                     <td style="text-align:right">
                         <oscar:help keywords="myoscar message" key="app.top1"/> | <a
-                            href="javascript:popupStart(300,400,'About.jsp')"><bean:message key="global.about"/></a> |
-                        <a href="javascript:popupStart(300,400,'License.jsp')"><bean:message key="global.license"/></a>
+                            href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> |
+                        <a href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a>
                     </td>
                 </tr>
             </table>
@@ -341,7 +341,7 @@
                                             <td class="messengerButtonsA<%if (pageMethod.equals("viewMessages")) {%>Current<%}%>">
                                                 <html:link page="/phr/PhrMessage.do?method=viewMessages"
                                                            styleClass="messengerButtons">
-                                                    <bean:message key="oscarMessenger.DisplayMessages.msgInbox"/>
+                                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgInbox"/>
                                                 </html:link>
                                             </td>
                                         </tr>
@@ -353,7 +353,7 @@
                                             <td class="messengerButtonsA<%if (pageMethod.equals("viewSentMessages")) {%>Current<%}%>">
                                                 <html:link page="/phr/PhrMessage.do?method=viewSentMessages"
                                                            styleClass="messengerButtons">
-                                                    <bean:message key="oscarMessenger.DisplayMessages.msgSentTitle"/>
+                                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgSentTitle"/>
                                                 </html:link>
                                             </td>
                                         </tr>
@@ -365,7 +365,7 @@
                                             <td class="messengerButtonsA<%if (pageMethod.equals("viewArchivedMessages")) {%>Current<%}%>">
                                                 <html:link page="/phr/PhrMessage.do?method=viewArchivedMessages"
                                                            styleClass="messengerButtons">
-                                                    <bean:message key="oscarMessenger.DisplayMessages.msgArchived"/>
+                                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgArchived"/>
                                                 </html:link>
                                             </td>
                                         </tr>
@@ -452,9 +452,9 @@
                 }
             %>
             <a href="?method=<%=pageMethod%>&startIndex=<%=MyOscarMessagesHelper.getPreviousPageStartIndex(startIndex)%>"/>
-            <bean:message key="oscarMessenger.DisplayMessages.msgNewerMessage"/></a>
+            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgNewerMessage"/></a>
             <a href="?method=<%=pageMethod%>&startIndex=<%=MyOscarMessagesHelper.getNextPageStartIndex(startIndex)%>"/>
-            <bean:message key="oscarMessenger.DisplayMessages.msgOlderMessage"/></a>
+            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgOlderMessage"/></a>
         </td>
     </tr>
     <tr>
@@ -498,20 +498,20 @@
                     </th>
                     <th align="left" bgcolor="#DDDDFF">
                         <a href="../phr/PhrMessage.do?orderby=0&method=${pageMethod}">
-                            <bean:message key="oscarMessenger.DisplayMessages.msgStatus"/>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgStatus"/>
                         </a>
                     </th>
                     <th align="left" bgcolor="#DDDDFF">
-                        <bean:message key="oscarMessenger.DisplayMessages.msgFrom"/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgFrom"/>
                     </th>
                     <th align="left" bgcolor="#DDDDFF">
-                        <bean:message key="oscarMessenger.DisplayMessages.msgTo"/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgTo"/>
                     </th>
                     <th align="left" bgcolor="#DDDDFF">
-                        <bean:message key="oscarMessenger.DisplayMessages.msgSubject"/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgSubject"/>
                     </th>
                     <th align="left" bgcolor="#DDDDFF">
-                        <bean:message key="oscarMessenger.DisplayMessages.msgDate"/>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgDate"/>
                     </th>
                     <th align="center" style="width: 30px;" bgcolor="#DDDDFF">
                         &nbsp;
@@ -641,11 +641,11 @@
                             <%
                                 if (recipientAttributesTransfer.isActive()) {
                             %>
-                            <bean:message key="oscarMessenger.DisplayMessages.formArchive"/>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.formArchive"/>
                             <%
                             } else {
                             %>
-                            <bean:message key="oscarMessenger.DisplayMessages.formUnarchive"/>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.formUnarchive"/>
                             <%
                                 }
                             %>

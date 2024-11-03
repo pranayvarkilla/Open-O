@@ -17,7 +17,7 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 --%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -33,7 +33,7 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td height="40" width="10%" class="Header"><input type='button'
-                                                              name='print' value='<bean:message key="global.btnPrint"/>'
+                                                              name='print' value='<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnPrint"/>'
                                                               onClick='window.print()'></td>
             <td width="90%" align="left" class="Header">oscar<font size="3">Billing</font>
             </td>
@@ -245,7 +245,7 @@
 
         <tr>
             <td><input type="button" name="Button"
-                       value="<bean:message key="global.btnClose"/>"
+                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>"
                        onClick="window.close()"></td>
         </tr>
 

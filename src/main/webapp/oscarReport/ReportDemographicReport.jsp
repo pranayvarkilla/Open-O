@@ -39,7 +39,7 @@
     }
 %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="oscar.oscarReport.data.RptSearchData,java.util.*" %>
@@ -92,7 +92,7 @@
 
         <script type="text/javascript" src="../share/calendar/calendar.js"></script>
         <script type="text/javascript"
-                src="../share/calendar/lang/<bean:message key="global.javascript.calendar"/>"></script>
+                src="../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
         <script type="text/javascript" src="../share/calendar/calendar-setup.js"></script>
 
         <script language="JavaScript">
@@ -317,7 +317,7 @@
                                         <html:multibox property="select" value="email"/>
                                     </td>
                                     <td>
-                                        <bean:message key="oscarReport.oscarReportscpbDemo.msgEmail"/>
+                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportscpbDemo.msgEmail"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -471,7 +471,7 @@
 
                                     </td>
                                     <td>
-                                        <bean:message key="oscarReport.oscarReportDemoReport.frmNewsletter"/>
+                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoReport.frmNewsletter"/>
                                     </td>
                                 </tr>
                             </table>

@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -44,7 +44,7 @@
 <html:html lang="en">
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="AddReaction.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="AddReaction.title"/></title>
         <html:base/>
 
         <c:if test="${empty RxSessionBean}">
@@ -111,11 +111,8 @@
                        height="100%">
                     <tr>
                         <td width="0%" valign="top">
-                            <div class="DivCCBreadCrumbs"><a href="SearchDrug3.jsp"> <bean:message
-                                    key="SearchDrug.title"/></a>&nbsp;&gt;&nbsp; <a
-                                    href="ShowAllergies2.jsp"> <bean:message
-                                    key="EditAllergies.title"/></a>&nbsp;&gt;&nbsp; <b><bean:message
-                                    key="AddReaction.title"/></b></div>
+                            <div class="DivCCBreadCrumbs"><a href="SearchDrug3.jsp"> <fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title"/></a>&nbsp;&gt;&nbsp; <a
+                                    href="ShowAllergies2.jsp"> <fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.title"/></a>&nbsp;&gt;&nbsp; <b><fmt:setBundle basename="oscarResources"/><fmt:message key="AddReaction.title"/></b></div>
                         </td>
                     </tr>
                     <!----Start new rows here-->
@@ -211,7 +208,7 @@
                                         <script type="text/javascript"
                                                 src="<%= request.getContextPath() %>/share/calendar/calendar.js"></script>
                                         <script type="text/javascript"
-                                                src="<%= request.getContextPath() %>/share/calendar/lang/<bean:message key="global.javascript.calendar"/>"></script>
+                                                src="<%= request.getContextPath() %>/share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
                                         <script type="text/javascript"
                                                 src="<%= request.getContextPath() %>/share/calendar/calendar-setup.js"></script>
                                         <script type="text/javascript">
@@ -241,20 +238,14 @@
 
 
                                 <tr valign="center">
-                                    <td><span class="label"><bean:message key="oscarEncounter.lifestage.title"/>:</span>
+                                    <td><span class="label"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.title"/>:</span>
                                         <html:select property="lifeStage" value="<%=lifeStage%>">
-                                            <html:option value=""><bean:message
-                                                    key="oscarEncounter.lifestage.opt.notset"/></html:option>
-                                            <html:option value="N"><bean:message
-                                                    key="oscarEncounter.lifestage.opt.newborn"/></html:option>
-                                            <html:option value="I"><bean:message
-                                                    key="oscarEncounter.lifestage.opt.infant"/></html:option>
-                                            <html:option value="C"><bean:message
-                                                    key="oscarEncounter.lifestage.opt.child"/></html:option>
-                                            <html:option value="T"><bean:message
-                                                    key="oscarEncounter.lifestage.opt.adolescent"/></html:option>
-                                            <html:option value="A"><bean:message
-                                                    key="oscarEncounter.lifestage.opt.adult"/></html:option>
+                                            <html:option value=""><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.notset"/></html:option>
+                                            <html:option value="N"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.newborn"/></html:option>
+                                            <html:option value="I"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.infant"/></html:option>
+                                            <html:option value="C"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.child"/></html:option>
+                                            <html:option value="T"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.adolescent"/></html:option>
+                                            <html:option value="A"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.adult"/></html:option>
                                         </html:select>
                                     </td>
                                 </tr>

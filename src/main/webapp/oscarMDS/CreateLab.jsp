@@ -42,7 +42,7 @@
 <%@page contentType="text/html" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <html>
@@ -53,7 +53,7 @@
           title="win2k-cold-1"/>
     <script type="text/javascript" src="<%=request.getContextPath()%>/share/calendar/calendar.js"></script>
     <script type="text/javascript"
-            src="<%=request.getContextPath()%>/share/calendar/lang/<bean:message key="global.javascript.calendar"/>"></script>
+            src="<%=request.getContextPath()%>/share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/share/calendar/calendar-setup.js"></script>
 
     <script src="<%=request.getContextPath()%>/js/jquery.js"></script>

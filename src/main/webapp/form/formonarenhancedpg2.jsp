@@ -44,7 +44,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.apache.struts.util.LabelValueBean" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
@@ -126,7 +126,7 @@
         <link rel="stylesheet" type="text/css" media="all" href="../share/calendar/calendar.css" title="win2k-cold-1"/>
         <script type="text/javascript" src="../share/calendar/calendar.js"></script>
         <script type="text/javascript"
-                src="../share/calendar/lang/<bean:message key="global.javascript.calendar"/>"></script>
+                src="../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
         <script type="text/javascript" src="../share/calendar/calendar-setup.js"></script>
         <script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
         <script src="<%=ctx%>/js/jquery-ui-1.8.18.custom.min.js"></script>
@@ -770,7 +770,7 @@ if(bView) {
                 document.forms[0].submit.value = "print";
                 var ret = checkAllDates();
                 if (ret == true) {
-                    if (document.forms[0].c_finalEDB.value == "" && !confirm("<bean:message key="oscarEncounter.formOnar.msgNoEDB"/>")) {
+                    if (document.forms[0].c_finalEDB.value == "" && !confirm("<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.formOnar.msgNoEDB"/>")) {
                         ret = false;
                     } else {
                         <%
@@ -1582,7 +1582,7 @@ if (!fedb.equals("") && fedb.length()==10 ) {
                                     }
                                 }
                                 if (!(typeof printAr2 == "undefined")) {
-                                    if (document.forms[0].c_finalEDB.value == "" && !confirm("<bean:message key="oscarEncounter.formOnar.msgNoEDB"/>")) {
+                                    if (document.forms[0].c_finalEDB.value == "" && !confirm("<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.formOnar.msgNoEDB"/>")) {
                                         return;
                                     }
                                     if (!(typeof printAr1 == "undefined")) {

@@ -95,7 +95,7 @@
 <html:html>
     <head>
         <title>
-            <bean:message key="billing.bc.title"/>
+            <fmt:setBundle basename="oscarResources"/><fmt:message key="billing.bc.title"/>
         </title>
         <link rel="stylesheet" type="text/css" href="billReceiptPrint.css" id="printStyle" media="print"/>
         <style>
@@ -458,7 +458,7 @@
                                                     <td></td>
                                                     <td>Line#</td>
                                                     <td>
-                                                        <bean:message key="billing.service.desc"/>
+                                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="billing.service.desc"/>
                                                     </td>
                                                     <td>Service Code</td>
                                                     <td>QTY</td>

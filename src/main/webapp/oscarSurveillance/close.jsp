@@ -24,7 +24,7 @@
 
 --%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <html:html lang="en">
@@ -35,8 +35,7 @@
         </script>
     </head>
     <body>
-    <bean:message key="oscarEncounter.close.msgClick1"/>
-    <a href="javascript:window.close();"><bean:message
-            key="oscarEncounter.close.btnHere"/></a>
+    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.close.msgClick1"/>
+    <a href="javascript:window.close();"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.close.btnHere"/></a>
     </body>
 </html:html>

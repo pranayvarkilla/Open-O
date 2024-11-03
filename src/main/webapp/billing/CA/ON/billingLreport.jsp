@@ -11,7 +11,7 @@
 <%@page import="java.nio.charset.Charset" %>
 <%@page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page language="java" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="java.util.*,oscar.*,java.io.*,java.net.*,oscar.util.*,org.apache.commons.io.FileUtils"
@@ -130,7 +130,7 @@
                 <font size="3">Billing</font>
             </td>
             <td width="90%" align="right" class="Header">
-                <input type="button" name="print" value="<bean:message key="global.btnPrint"/>"
+                <input type="button" name="print" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnPrint"/>"
                        onClick="window.print()">
             </td>
         </tr>

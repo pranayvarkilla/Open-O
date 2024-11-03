@@ -135,8 +135,8 @@
                         if (dischargeReason == null || dischargeReason == "" || "".equals(dischargeReason) || "NULL".equals(dischargeReason))
                             dischargeReason = "0";
                         DischargeReason reason = DischargeReason.values()[Integer.valueOf(dischargeReason)];
-                    %> <bean:message bundle="pmm"
-                                     key='<%="discharge.reason." + reason.toString()%>'/></td>
+                    %> <fmt:message bundle="${pmm}" key='<%="discharge.reason." + reason.toString()%>'/>
+                </td>
             </tr>
             <tr class="b">
                 <td width="20%">Discharge notes:</td>

@@ -39,7 +39,7 @@
     }
 %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
@@ -148,7 +148,7 @@
           title="win2k-cold-1"/>
     <script type="text/javascript" src="../../../share/calendar/calendar.js"></script>
     <script type="text/javascript"
-            src="../../../share/calendar/lang/<bean:message key="global.javascript.calendar"/>"></script>
+            src="../../../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
     <script type="text/javascript" src="../../../share/calendar/calendar-setup.js"></script>
     <script type="text/javascript" src="../../../share/javascript/prototype.js"></script>
     <script type="text/javascript" src="../../../share/javascript/Oscar.js"></script>
@@ -202,7 +202,7 @@
             var page = "" + varpage;
             windowprops = "height=700,width=800,location=no,"
                 + "scrollbars=yes,menubars=no,toolbars=no,resizable=yes,top=0,left=0";
-            window.open(page, "<bean:message key="oscarEncounter.Index.popupPage2Window"/>", windowprops);
+            window.open(page, "<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.popupPage2Window"/>", windowprops);
         }
 
         var awnd = null;
@@ -538,7 +538,7 @@
                 Patient Name:
                 <a href=#
                    onClick="popupPage2('../../../demographic/demographiccontrol.jsp?demographic_no=<%=DemoNo%>&displaymode=edit&dboperation=search_detail');return false;"
-                   title="<bean:message key="provider.appointmentProviderAdminDay.msgMasterFile"/>">
+                   title="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.appointmentProviderAdminDay.msgMasterFile"/>">
                     <%=Encode.forHtmlContent(DemoName)%>
                 </a>
                 <input type="hidden" name="demo_name" value="<%=Encode.forHtmlAttribute(DemoName)%>">

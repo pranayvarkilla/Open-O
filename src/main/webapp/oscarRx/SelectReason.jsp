@@ -24,7 +24,7 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ page
@@ -280,14 +280,14 @@
                                 <legend>Current Indications</legend>
                                 <table>
                                     <tr>
-                                        <th><bean:message key="SelectReason.table.codingSystem"/></th>
-                                        <th><bean:message key="SelectReason.table.code"/></th>
-                                        <th><bean:message key="SelectReason.table.description"/></th>
-                                        <th><bean:message key="SelectReason.table.comments"/></th>
-                                        <th><bean:message key="SelectReason.table.primaryReasonFlag"/></th>
-                                        <th><bean:message key="SelectReason.table.provider"/></th>
+                                        <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectReason.table.codingSystem"/></th>
+                                        <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectReason.table.code"/></th>
+                                        <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectReason.table.description"/></th>
+                                        <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectReason.table.comments"/></th>
+                                        <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectReason.table.primaryReasonFlag"/></th>
+                                        <th><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectReason.table.provider"/></th>
                                         <th>
-                                                <bean:message key="SelectReason.table.dateCoded"/>
+                                                <fmt:setBundle basename="oscarResources"/><fmt:message key="SelectReason.table.dateCoded"/>
                                         <th>
                                         <th>&nbsp;</th>
                                     </tr>

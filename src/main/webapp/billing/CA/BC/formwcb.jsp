@@ -45,7 +45,7 @@
 %>
 <%@ page
         import="oscar.form.*, java.util.*,oscar.oscarBilling.ca.bc.pageUtil.*,oscar.oscarDB.*,oscar.oscarBilling.ca.bc.MSP.*, oscar.oscarBilling.ca.bc.Teleplan.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
@@ -92,7 +92,7 @@
         <script src="../../../share/javascript/Oscar.js"></script>
         <script src="../../../share/calendar/calendar.js"></script>
         <script
-                src="../../../share/calendar/lang/<bean:message key="global.javascript.calendar"/>"
+                src="../../../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"
                 type="text/javascript"></script>
         <script src="../../../share/calendar/calendar-setup.js"
                 type="text/javascript"></script>

@@ -306,12 +306,10 @@
         %>
         <a href=#
            onClick="popupPage(710, 1024,'../oscarSurveillance/CheckSurveillance.do?demographicNo=<%=demographic_no%>&proceed=<%=java.net.URLEncoder.encode(eURL)%>');return false;"
-           title="<bean:message key="global.encounter"/>"> <bean:message
-                key="provider.appointmentProviderAdminDay.btnEncounter"/></a>&nbsp;&nbsp;
+           title="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.encounter"/>"> <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.appointmentProviderAdminDay.btnEncounter"/></a>&nbsp;&nbsp;
         <a href=#
            onClick="popupPage(710,1024,'<%=request.getContextPath()%>/eform/efmshowform_data.jsp?demographicNo=<%=demographic_no%>&fdid=<%=curform.get("fdid")%>','0'); return false;"
-           title="<bean:message key="global.remoteReferral"/>"> <bean:message
-                key="provider.appointmentProviderAdminDay.btnIntake"/></a>
+           title="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.remoteReferral"/>"> <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.appointmentProviderAdminDay.btnIntake"/></a>
 
 
         <% }

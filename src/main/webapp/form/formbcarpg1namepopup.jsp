@@ -33,7 +33,7 @@
 %>
 
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <html:html lang="en">
     <head>
@@ -66,9 +66,9 @@
         </tr>
         <tr>
             <td align="right">
-                <!--input type="button" name="Button" value="<bean:message key="global.btnPrint"/>" onClick="window.print()"-->
+                <!--input type="button" name="Button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnPrint"/>" onClick="window.print()"-->
                 <input type="button" name="Button"
-                       value="<bean:message key="global.btnCancel" />"
+                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnCancel"/>"
                        onClick="window.close()">
                 </th>
         </tr>

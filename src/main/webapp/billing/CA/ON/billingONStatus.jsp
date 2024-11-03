@@ -34,7 +34,7 @@
 <%@page import="oscar.oscarBilling.ca.on.pageUtil.*" %>
 <%@page import="oscar.util.*" %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%--
@@ -220,7 +220,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
-            <bean:message key="admin.admin.invoiceRpts"/>
+            <fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.invoiceRpts"/>
         </title>
         <script src="<%=request.getContextPath() %>/library/jquery/jquery-3.6.4.min.js"></script>
         <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
@@ -428,7 +428,7 @@
     <body>
     <jsp:include page="../../../images/spinner.jsp" flush="true"/>
     <h3>
-        <bean:message key="admin.admin.invoiceRpts"/>
+        <fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.invoiceRpts"/>
     </h3>
     <div class="container-fluid">
         <!--Hiding for now since this does not seem to manage the providers in the select
@@ -861,7 +861,7 @@
                         <% }%>
                         <th class="hidden-print">
                             <a href="#" onClick="checkAll(document.invoiceForm.invoiceAction)">
-                                <bean:message key="billing.billingStatus.action"/>
+                                <fmt:setBundle basename="oscarResources"/><fmt:message key="billing.billingStatus.action"/>
                             </a>
                         </th>
                     </tr>
@@ -1043,7 +1043,7 @@
                         "bPaginate": false,
                         "order": [],
                         "language": {
-                            "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<bean:message key="global.i18nLanguagecode"/>.json"
+                            "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.i18nLanguagecode"/>.json"
                         }
                     });
 
@@ -1091,10 +1091,10 @@
                         <% }%>
                         <td style="text-align:center" class="hidden-print">
                             <a href="#" onClick="submitForm('print')">
-                                <bean:message key="billing.billingStatus.print"/>
+                                <fmt:setBundle basename="oscarResources"/><fmt:message key="billing.billingStatus.print"/>
                             </a>
                                 <%-- <a href="#" onClick="submitForm('email')">
-                                    <bean:message key="billing.billingStatus.email"/>
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="billing.billingStatus.email"/>
                                 </a> --%>
                         </td>
                     </tr>
@@ -1112,7 +1112,7 @@
                     "bPaginate": false,
                     "order": [],
                     "language": {
-                        "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<bean:message key="global.i18nLanguagecode"/>.json"
+                        "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.i18nLanguagecode"/>.json"
                     }
                 });
 

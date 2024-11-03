@@ -26,7 +26,7 @@
 
 <%@page
         import="oscar.oscarDemographic.data.*,java.util.*,oscar.oscarPrevention.*,oscar.oscarLab.ca.on.*,oscar.util.*,oscar.oscarLab.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
@@ -189,10 +189,8 @@
                         <td><oscar:nameage demographicNo="<%=demographic_no%>"/></td>
                         <td>&nbsp;</td>
                         <td style="text-align: right"><oscar:help keywords="lab" key="app.top1"/> | <a
-                                href="javascript:popupStart(300,400,'About.jsp')"><bean:message
-                                key="global.about"/></a> | <a
-                                href="javascript:popupStart(300,400,'License.jsp')"><bean:message
-                                key="global.license"/></a></td>
+                                href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
+                                href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                     </tr>
                 </table>
             </td>

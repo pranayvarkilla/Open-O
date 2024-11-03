@@ -29,7 +29,7 @@
 <%@page
         import="oscar.oscarDemographic.data.*,java.util.*,oscar.oscarPrevention.*,oscar.oscarProvider.data.*,oscar.util.*,oscar.oscarReport.ClinicalReports.*,oscar.oscarWorkflow.*" %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
@@ -56,7 +56,7 @@
                 src="../share/javascript/Oscar.js"></script>
         <script type="text/javascript" src="../share/calendar/calendar.js"></script>
         <script type="text/javascript"
-                src="../share/calendar/lang/<bean:message key="global.javascript.calendar"/>"></script>
+                src="../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
         <script type="text/javascript" src="../share/calendar/calendar-setup.js"></script>
 
 
@@ -103,10 +103,8 @@
                         </td>
                         <td>&nbsp;</td>
                         <td style="text-align: right"><oscar:help keywords="workflow" key="app.top1"/> | <a
-                                href="javascript:popupStart(300,400,'About.jsp')"><bean:message
-                                key="global.about"/></a> | <a
-                                href="javascript:popupStart(300,400,'License.jsp')"><bean:message
-                                key="global.license"/></a></td>
+                                href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
+                                href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                     </tr>
                 </table>
             </td>

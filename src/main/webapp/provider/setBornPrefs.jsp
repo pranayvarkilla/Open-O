@@ -64,7 +64,7 @@
                 <html:form action="/setProviderStaleDate.do">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
                     <html:checkbox property="bornPromptsProperty.checked">
-                        <bean:message key="provider.pref.bornPrompts"/></html:checkbox>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.bornPrompts"/></html:checkbox>
                     <br/><br/>
                     <input type="submit" value="<%=bundle.getString(providerbtnSubmit)%>"/>
                     <input type="button" value="<%=bundle.getString(providerbtnCancel)%>"

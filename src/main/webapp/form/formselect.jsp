@@ -26,21 +26,21 @@
 
 
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
 <html:html lang="en">
     <head>
 
-        <title><bean:message key="admin.admin.btnSelectForm"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.btnSelectForm"/></title>
 
 
     </head>
 
     <body>
 
-    <h3><bean:message key="admin.admin.btnSelectForm"/></h3>
+    <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.btnSelectForm"/></h3>
 
     <div class="well">
 
@@ -54,11 +54,9 @@
                                 <td>
                                     <table>
                                         <tr>
-                                            <th align="left"><bean:message
-                                                    key="oscarEncounter.form.msgAllAvailableForms"/></th>
+                                            <th align="left"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.form.msgAllAvailableForms"/></th>
                                             <th></th>
-                                            <th align="left"><bean:message
-                                                    key="oscarEncounter.form.msgSelectedForms"/></th>
+                                            <th align="left"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.form.msgSelectedForms"/></th>
                                         </tr>
                                         <td><html:select multiple="true" property="selectedAddTypes"
                                                          size="10" style="width:150">
@@ -70,14 +68,14 @@
                                                 <tr>
                                                     <td><input type="button" name="button" id="add" class="btn function"
                                                                style="width:80px"
-                                                               value="<bean:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.addBtn"/> >>"
+                                                               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.addBtn"/> >>"
                                                     /></td>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                         <input type="button" name="button" class="btn function"
                                                                id="delete" style="width:80px"
-                                                               value="<< <bean:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.deleteBtn"/>"/>
+                                                               value="<< <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementsAction.deleteBtn"/>"/>
                                                     </td>
                                                 </tr>
                                             </table>

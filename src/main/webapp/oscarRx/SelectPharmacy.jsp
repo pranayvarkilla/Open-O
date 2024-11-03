@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="oscar.oscarRx.data.*,java.util.*" %>
@@ -45,7 +45,7 @@
 <html:html lang="en">
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="SelectPharmacy.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.title"/></title>
         <html:base/>
 
         <c:if test="${empty RxSessionBean}">
@@ -84,15 +84,13 @@
                        height="100%">
                     <tr>
                         <td width="0%" valign="top">
-                            <div class="DivCCBreadCrumbs"><a href="SearchDrug.jsp"> <bean:message
-                                    key="SearchDrug.title"/></a> > <bean:message key="SelectPharmacy.title"/></div>
+                            <div class="DivCCBreadCrumbs"><a href="SearchDrug.jsp"> <fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title"/></a> > <fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.title"/></div>
                         </td>
                     </tr>
                     <!----Start new rows here-->
                     <tr>
                         <td>
-                            <div class="DivContentTitle"><b><bean:message
-                                    key="SearchDrug.nameText"/></b>
+                            <div class="DivContentTitle"><b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.nameText"/></b>
                                 <jsp:getProperty name="patient"
                                                  property="surname"/>
                                 ,
@@ -100,13 +98,12 @@
                                                  property="firstName"/>
                             </div>
                             <br/>
-                            &nbsp; <bean:message key="SelectPharmacy.instructions"/></td>
+                            &nbsp; <fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.instructions"/></td>
                     </tr>
                     <tr>
                         <td>
                             <div class="DivContentSectionHead"><a
-                                    href="ManagePharmacy.jsp?type=Add"><bean:message
-                                    key="SelectPharmacy.addLink"/></a></div>
+                                    href="ManagePharmacy.jsp?type=Add"><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.addLink"/></a></div>
                         </td>
                     </tr>
                     <tr>
@@ -118,11 +115,11 @@
                             <div style=" width:860px; height:460px; overflow:auto;">
                                 <table>
                                     <tr>
-                                        <td><bean:message key="SelectPharmacy.table.pharmacyName"/></td>
-                                        <td><bean:message key="SelectPharmacy.table.address"/></td>
-                                        <td><bean:message key="SelectPharmacy.table.city"/></td>
-                                        <td><bean:message key="SelectPharmacy.table.phone"/></td>
-                                        <td><bean:message key="SelectPharmacy.table.fax"/></td>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.table.pharmacyName"/></td>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.table.address"/></td>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.table.city"/></td>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.table.phone"/></td>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.table.fax"/></td>
                                         <td>&nbsp;</td>
                                         <td>&nbsp;</td>
                                     </tr>
@@ -141,10 +138,8 @@
                                         </td>
                                         <td><%=ph.getFax()%>
                                         </td>
-                                        <td><a href="ManagePharmacy.jsp?type=Edit&ID=<%=ph.getId()%>"><bean:message
-                                                key="SelectPharmacy.editLink"/></a></td>
-                                        <td><a href="ManagePharmacy.jsp?type=Delete&ID=<%=ph.getId()%>"><bean:message
-                                                key="SelectPharmacy.deleteLink"/></a></td>
+                                        <td><a href="ManagePharmacy.jsp?type=Edit&ID=<%=ph.getId()%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.editLink"/></a></td>
+                                        <td><a href="ManagePharmacy.jsp?type=Delete&ID=<%=ph.getId()%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.deleteLink"/></a></td>
                                     </tr>
                                     <% } %>
                                 </table>

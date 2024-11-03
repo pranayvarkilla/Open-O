@@ -20,7 +20,7 @@
 <%@ page import="org.oscarehr.util.SessionConstants" %>
 <%@ page import="org.oscarehr.common.model.ProviderPreference" %>
 <%@ include file="/taglibs.jsp" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
@@ -56,7 +56,7 @@
 <!DOCTYPE html>
 <html:html lang="en">
     <head>
-        <title><bean:message key="admin.admin.DiseaseRegistry"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.DiseaseRegistry"/></title>
 
         <link rel="stylesheet" type="text/css" media="all"
               href="${pageContext.servletContext.contextPath}/library/jquery/jquery-ui.theme-1.12.1.min.css"/>
@@ -139,7 +139,7 @@
     <div class="container-fluid">
         <div class="navbar">
             <div class="navbar-inner">
-                <a class="brand" href="#"><bean:message key="admin.admin.DiseaseRegistry"/></a>
+                <a class="brand" href="#"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.DiseaseRegistry"/></a>
             </div>
         </div>
 
@@ -215,7 +215,7 @@
 
 
                 <select id="provider_no" name="provider_no" class="sel">
-                    <option value="*"><bean:message key="report.reportindex.formAllProviders"/></option>
+                    <option value="*"><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportindex.formAllProviders"/></option>
 
                     <option disabled>___________</option>
 

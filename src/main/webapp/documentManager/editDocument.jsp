@@ -46,7 +46,7 @@
     String userlastname = (String) session.getAttribute("userlastname");
 %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib prefix="csrf" uri="http://www.owasp.org/index.php/Category:OWASP_CSRFGuard_Project/Owasp.CsrfGuard.tld" %>
@@ -180,7 +180,7 @@
     </style>
     <script type="text/javascript" src="../share/calendar/calendar.js"></script>
     <script type="text/javascript"
-            src="../share/calendar/lang/<bean:message key="global.javascript.calendar"/>"></script>
+            src="../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
     <script type="text/javascript" src="../share/calendar/calendar-setup.js"></script>
     <script type="text/javascript">
         window.onload = function () {
@@ -231,8 +231,7 @@
 <div class="maindiv">
     <div class="maindivheading">Edit Document</div>
     <%-- Lists docerrors --%> <% for (Enumeration errorkeys = docerrors.keys(); errorkeys.hasMoreElements(); ) {%>
-    <font class="warning">Error: <bean:message
-            key="<%=(String) docerrors.get(errorkeys.nextElement())%>"/></font><br/>
+    <font class="warning">Error: <fmt:setBundle basename="oscarResources"/><fmt:message key="<%=(String) docerrors.get(errorkeys.nextElement())%>"/></font><br/>
     <% } %> <html:form action="/documentManager/addEditDocument" method="POST"
                        enctype="multipart/form-data" onsubmit="return submitUpload(this);">
     <input type="hidden" name="<csrf:tokenname />" value="<csrf:tokenvalue />"/>
@@ -255,8 +254,7 @@
             <td><select name="docType" id="docType"
                     <% if (docerrors.containsKey("typemissing")) {%> class="warning"
                     <%}%>>
-                <option value=""><bean:message
-                        key="dms.addDocument.formSelect"/></option>
+                <option value=""><fmt:setBundle basename="oscarResources"/><fmt:message key="dms.addDocument.formSelect"/></option>
                 <%
                     for (int i = 0; i < doctypes.size(); i++) {
                         String doctype = (String) doctypes.get(i);
@@ -268,9 +266,9 @@
             </select></td>
         </tr>
         <tr>
-            <td><bean:message key="dms.addDocument.msgDocClass"/>:</td>
+            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="dms.addDocument.msgDocClass"/>:</td>
             <td><select name="docClass" id="docClass">
-                <option value=""><bean:message key="dms.addDocument.formSelectClass"/></option>
+                <option value=""><fmt:setBundle basename="oscarResources"/><fmt:message key="dms.addDocument.formSelectClass"/></option>
                 <% boolean consultShown = false;
                     for (String reportClass : reportClasses) {
                         if (reportClass.startsWith("Consultant Report")) {
@@ -286,7 +284,7 @@
             </td>
         </tr>
         <tr>
-            <td><bean:message key="dms.addDocument.msgDocSubClass"/>:</td>
+            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="dms.addDocument.msgDocSubClass"/>:</td>
             <td><input type="text" name="docSubClass" id="docSubClass"
                        value="<%=Encode.forHtmlAttribute(formdata.getDocSubClass())%>" style="width:330px">
                 <div class="autocomplete_style" id="docSubClass_list"></div>
@@ -333,7 +331,7 @@
             </td>
         </tr>
         <tr>
-            <td><bean:message key="dms.addDocument.formContentAddedUpdated"/>:</td>
+            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="dms.addDocument.formContentAddedUpdated"/>:</td>
             <td><%=Encode.forHtmlContent(formdata.getContentDateTime())%>
             </td>
         </tr>

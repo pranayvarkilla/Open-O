@@ -30,7 +30,7 @@
 %>
 
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@page import="java.util.*,org.oscarehr.learning.web.CourseManagerAction,org.oscarehr.common.model.SecRole" %>
 
@@ -38,7 +38,7 @@
 <html:html lang="en">
 
     <head>
-        <title><bean:message key="oscarLearning.studentImport.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarLearning.studentImport.title"/></title>
         <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
@@ -47,7 +47,7 @@
 
     <div class="container-fluid">
 
-        <h3><bean:message key="admin.admin.learning.importStudent"/></h3>
+        <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.learning.importStudent"/></h3>
         <div class="well">
 
 

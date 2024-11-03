@@ -28,7 +28,7 @@
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
 %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
@@ -41,7 +41,7 @@
 <html:html lang="en">
 
     <head>
-        <title><bean:message key="oscarEncounter.Index.oldMeasurements"/>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.oldMeasurements"/>
         </title>
         <html:base/>
 
@@ -62,7 +62,7 @@
                     "bPaginate": false,
                     "searching": false,
                     "language": {
-                        "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<bean:message key="global.i18nLanguagecode"/>.json"
+                        "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.i18nLanguagecode"/>.json"
                     }
                 });
             });
@@ -97,8 +97,7 @@
                     <table style="border-width: 1px; width: 100%; border-spacing: 0px; border-color:black; border-style: solid; ">
                         <tr>
                             <td style="width: 100%; text-align: center;" class="Cell">
-                                <div class="Field2"><bean:message
-                                        key="oscarMDS.segmentDisplay.formDetailResults"/></div>
+                                <div class="Field2"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDetailResults"/></div>
                             </td>
                         </tr>
                         <tr>
@@ -110,8 +109,7 @@
                                             <table style="width: 66%; border-spacing: 0px;">
                                                 <tr>
                                                     <td>
-                                                        <div class="FieldData"><strong><bean:message
-                                                                key="oscarMDS.segmentDisplay.formPatientName"/>: </strong>
+                                                        <div class="FieldData"><strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formPatientName"/>: </strong>
                                                             <oscar:nameage demographicNo="<%=demo%>"/></div>
 
                                                     </td>
@@ -143,30 +141,22 @@
                     <table id="tblDiscs" class="table table-condensed table-striped">
                         <thead>
                         <tr>
-                            <th class="Header"><bean:message
-                                    key="oscarEncounter.oscarMeasurements.displayHistory.headingType"/>
+                            <th class="Header"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.headingType"/>
                             </th>
-                            <th class="Header"><bean:message
-                                    key="oscarEncounter.oscarMeasurements.displayHistory.headingProvider"/>
+                            <th class="Header"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.headingProvider"/>
                             </th>
-                            <th class="Header"><bean:message
-                                    key="oscarEncounter.oscarMeasurements.displayHistory.headingMeasuringInstruction"/>
+                            <th class="Header"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.headingMeasuringInstruction"/>
                             </th>
-                            <th class="Header"><bean:message
-                                    key="oscarEncounter.oscarMeasurements.displayHistory.headingData"/>
+                            <th class="Header"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.headingData"/>
                             </th>
-                            <th class="Header"><bean:message
-                                    key="oscarEncounter.oscarMeasurements.displayHistory.headingComments"/>
+                            <th class="Header"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.headingComments"/>
                             </th>
-                            <th class="Header"><bean:message
-                                    key="oscarEncounter.oscarMeasurements.displayHistory.headingObservationDate"/>
+                            <th class="Header"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.headingObservationDate"/>
                             </th>
-                            <th class="Header"><bean:message
-                                    key="oscarEncounter.oscarMeasurements.displayHistory.headingDateEntered"/>
+                            <th class="Header"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.headingDateEntered"/>
                             </th>
                             <security:oscarSec roleName="<%=roleName$%>" objectName="_flowsheet" rights="w">
-                                <th class="Header DoNotPrint"><bean:message
-                                        key="oscarEncounter.oscarMeasurements.displayHistory.headingDelete"/>
+                                <th class="Header DoNotPrint"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.headingDelete"/>
                                 </th>
                             </security:oscarSec>
 
@@ -223,22 +213,22 @@
                     <table>
                         <tr>
                             <td><input type="button" name="Button" class="btn DoNotPrint"
-                                       value="<bean:message key="oscarEncounter.oscarMeasurements.oldmesurementindex"/>"
+                                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.oldmesurementindex"/>"
                                        onClick="javascript: popupPage(300,800,'SetupHistoryIndex.do')"></td>
                             <td><input type="button" name="Button" class="btn DoNotPrint"
-                                       value="<bean:message key="global.btnPrint"/>"
+                                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnPrint"/>"
                                        onClick="window.print()"></td>
                             <td><input type="button" name="Button" class="btn DoNotPrint"
-                                       value="<bean:message key="global.btnClose"/>"
+                                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>"
                                        onClick="window.close()"></td>
                             <security:oscarSec roleName="<%=roleName$%>" objectName="_flowsheet" rights="w">
                                 <td><input type="button" name="Button" class="btn DoNotPrint"
-                                           value="<bean:message key="oscarEncounter.oscarMeasurements.displayHistory.headingDelete"/>"
+                                           value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.headingDelete"/>"
                                            onclick="submit();"></td>
                             </security:oscarSec>
                             <c:if test="${not empty data.canPlot}">
                                 <td><input type="button" name="Button" class="btn DoNotPrint"
-                                           value="<bean:message key="oscarEncounter.oscarMeasurements.displayHistory.plot"/>"
+                                           value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.plot"/>"
                                            onClick="javascript: popupPage(600,1000,'../../oscarEncounter/GraphMeasurements.do?demographic_no=<%=demo%>&type=
                                                ${type}')">
                                 </td>

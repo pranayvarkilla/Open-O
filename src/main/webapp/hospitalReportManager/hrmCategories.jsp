@@ -28,7 +28,7 @@
 <%@page import="org.oscarehr.hospitalReportManager.model.HRMCategory" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>
 <%@page import="org.oscarehr.hospitalReportManager.dao.HRMCategoryDao" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%
     HRMCategoryDao hrmCategoryDao = SpringUtils.getBean(HRMCategoryDao.class);
@@ -60,7 +60,7 @@
                     "order": [],
                     "bPaginate": false,
                     "language": {
-                        "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<bean:message key="global.i18nLanguagecode"/>.json"
+                        "url": "<%=request.getContextPath() %>/library/DataTables/i18n/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.i18nLanguagecode"/>.json"
                     }
                 });
             });

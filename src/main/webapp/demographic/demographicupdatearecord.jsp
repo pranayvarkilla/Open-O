@@ -72,7 +72,7 @@
 <%@page import="org.oscarehr.common.model.ConsentType" %>
 <%@page import="oscar.OscarProperties" %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
@@ -331,8 +331,8 @@
                         if (hinDemo.getVer() != null && !hinDemo.getVer().equals("66")) {
 
         %>
-        ***<font color='red'><bean:message key="demographic.demographicaddarecord.msgDuplicatedHIN"/></font>
-        ***<br><br><a href=# onClick="history.go(-1);return false;"><b>&lt;-<bean:message key="global.btnBack"/></b></a>
+        ***<font color='red'><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicaddarecord.msgDuplicatedHIN"/></font>
+        ***<br><br><a href=# onClick="history.go(-1);return false;"><b>&lt;-<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnBack"/></b></a>
         <%
                             return;
                         }
@@ -345,8 +345,8 @@
                 if (myoscarDemographic != null && !myoscarDemographic.getDemographicNo().equals(demographic.getDemographicNo())) {
 
         %>
-        ***<font color='red'><bean:message key="demographic.demographicaddarecord.msgDuplicatedPHR"/></font>
-        ***<br><br><a href=# onClick="history.go(-1);return false;"><b>&lt;-<bean:message key="global.btnBack"/></b></a>
+        ***<font color='red'><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicaddarecord.msgDuplicatedPHR"/></font>
+        ***<br><br><a href=# onClick="history.go(-1);return false;"><b>&lt;-<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnBack"/></b></a>
         <%
                     return;
                 }

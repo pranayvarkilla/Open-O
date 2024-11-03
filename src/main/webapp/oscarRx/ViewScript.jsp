@@ -39,7 +39,7 @@
 %>
 
 <%@ page import="oscar.oscarProvider.data.*, oscar.OscarProperties, oscar.oscarClinic.ClinicData, java.util.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%! boolean bMultisites = org.oscarehr.common.IsPropertiesOn.isMultisitesEnable(); %>
@@ -58,7 +58,7 @@
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="ViewScript.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.title"/></title>
 
         <html:base/>
         <c:if test="${empty RxSessionBean}">
@@ -326,7 +326,7 @@
                             <tr>
                                 <td><span class="ScreenTitle"> oscarRx </span></td>
                                 <td width=10px></td>
-                                <td><span style="color: #FFFFFF"> <b> <bean:message key="ViewScript.msgRightClick"/></b> </span>
+                                <td><span style="color: #FFFFFF"> <b> <fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.msgRightClick"/></b> </span>
                                 </td>
                                     <%-- right click on prescription<br>
                                     and select "print" from the menu.
@@ -346,8 +346,7 @@
                             <tr>
                                 <td colspan=2>
                                     <div class="DivContentPadding"><span class="DivContentTitle"
-                                                                         valign="middle"> <bean:message
-                                            key="ViewScript.title"/> </span></div>
+                                                                         valign="middle"> <fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.title"/> </span></div>
                                 </td>
                             </tr>
 
@@ -379,7 +378,7 @@
                                     <table cellpadding=10 cellspacing=0>
                                         <% if (vecAddress != null) { %>
                                         <tr>
-                                            <td align="center" colspan=2><bean:message key="ViewScript.msgAddress"/>
+                                            <td align="center" colspan=2><fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.msgAddress"/>
                                                 <select
                                                         name="addressSel" id="addressSel" onChange="addressSelect()">
                                                     <% String rxAddr = (String) session.getAttribute("RX_ADDR");
@@ -397,30 +396,28 @@
                                         </tr>
                                         <% } %>
                                         <tr>
-                                            <td colspan=2 style="font-weight: bold;"><span><bean:message
-                                                    key="ViewScript.msgActions"/></span>
+                                            <td colspan=2 style="font-weight: bold;"><span><fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.msgActions"/></span>
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <td width=10px></td>
                                             <td><span><input type=button
-                                                             value="<bean:message key="ViewScript.msgPrint"/>"
+                                                             value="<fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.msgPrint"/>"
                                                              class="ControlPushButton" style="width: 200px"
                                                              onClick="javascript:printIframe();"/></span></td>
                                         </tr>
                                         <tr>
                                             <td width=10px></td>
                                             <td><span><input type=button
-							<%=reprint.equals("true") ? "disabled='true'" : ""%>" value="<bean:message
-                                                        key="ViewScript.msgPrintPasteEmr"/>"
+							<%=reprint.equals("true") ? "disabled='true'" : ""%>" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.msgPrintPasteEmr"/>"
 							class="ControlPushButton" style="width: 200px"
 							onClick="javascript:printPaste2Parent();" /></span></td>
                                         </tr>
                                         <tr>
                                             <td width=10px></td>
                                             <td><span><input type=button
-                                                             value="<bean:message key="ViewScript.msgCreateNewRx"/>"
+                                                             value="<fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.msgCreateNewRx"/>"
                                                              class="ControlPushButton"
                                                              style="width: 200px" onClick="<%=createAnewRx%>"/></span>
                                             </td>
@@ -428,7 +425,7 @@
                                         <tr>
                                             <td width=10px></td>
                                             <td><span><input type=button
-                                                             value="<bean:message key="ViewScript.msgBackToOscar"/>"
+                                                             value="<fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.msgBackToOscar"/>"
                                                              class="ControlPushButton" style="width: 200px"
                                                              onClick="javascript:clearPending('close');"/></span></td>
                                         </tr>
@@ -436,23 +433,21 @@
                                         <%if (request.getAttribute("rePrint") == null) {%>
 
                                         <tr>
-                                            <td colspan=2 style="font-weight: bold"><span><bean:message
-                                                    key="ViewScript.msgAddNotesRx"/></span></td>
+                                            <td colspan=2 style="font-weight: bold"><span><fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.msgAddNotesRx"/></span></td>
                                         </tr>
                                         <tr>
                                             <td width=10px></td>
                                             <td>
                                                 <textarea id="additionalNotes" style="width: 200px"
                                                           onchange="javascript:addNotes();"></textarea>
-                                                <input type="button" value="<bean:message key="ViewScript.msgAddToRx"/>"
+                                                <input type="button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.msgAddToRx"/>"
                                                        onclick="javascript:addNotes();"/>
                                             </td>
                                         </tr>
 
                                         <%}%>
                                         <tr>
-                                            <td colspan=2 style="font-weight: bold"><span><bean:message
-                                                    key="ViewScript.msgDrugInfo"/></span></td>
+                                            <td colspan=2 style="font-weight: bold"><span><fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.msgDrugInfo"/></span></td>
                                         </tr>
                                         <%
                                             for (int i = 0; i < bean.getStashSize(); i++) {

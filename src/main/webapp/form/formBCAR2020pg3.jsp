@@ -45,7 +45,7 @@
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="oscar.util.UtilMisc" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
@@ -73,7 +73,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <script type="text/javascript" src="../share/calendar/calendar.js"></script>
         <script type="text/javascript"
-                src="../share/calendar/lang/<bean:message key="global.javascript.calendar"/>"></script>
+                src="../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
         <script type="text/javascript" src="../share/calendar/calendar-setup.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/formBCAR2020Record.js"></script>
         <script src="<%=request.getContextPath() %>/library/jquery/jquery-1.12.0.min.js"

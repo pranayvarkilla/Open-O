@@ -46,7 +46,7 @@
     String userlastname = (String) session.getAttribute("userlastname");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@ taglib uri="/WEB-INF/oscarProperties-tag.tld" prefix="oscarProp" %>
@@ -128,7 +128,7 @@
 <html:html lang="en">
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="dms.documentReport.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="dms.documentReport.title"/></title>
         <link rel="stylesheet" type="text/css"
               href="../share/css/OscarStandardLayout.css"/>
         <script type="text/javascript" src="../share/javascript/Oscar.js"></script>
@@ -228,7 +228,7 @@
 
             function checkDelete(url, docDescription) {
                 // revision Apr 05 2004 - we now allow anyone to delete documents
-                if (confirm("<bean:message key="dms.documentReport.msgDelete"/> " + docDescription)) {
+                if (confirm("<fmt:setBundle basename="oscarResources"/><fmt:message key="dms.documentReport.msgDelete"/> " + docDescription)) {
                     window.location = url;
                 }
             }

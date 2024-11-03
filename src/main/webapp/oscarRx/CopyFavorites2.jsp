@@ -24,7 +24,7 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ page import="java.util.*" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
@@ -42,7 +42,7 @@
 <html:html lang="en">
     <head>
         <script type="text/javascript" src="<%= request.getContextPath()%>/js/global.js"></script>
-        <title><bean:message key="SearchDrug.title.CopyFavorites"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title.CopyFavorites"/></title>
         <html:base/>
 
         <c:choose>
@@ -111,9 +111,7 @@
                            width="100%" height="100%">
                         <tr>
                             <td width="0%" valign="top">
-                                <div class="DivCCBreadCrumbs"><a href="SearchDrug3.jsp"> <bean:message
-                                        key="SearchDrug.title"/></a> > <b><bean:message
-                                        key="SearchDrug.title.CopyFavorites"/></b></div>
+                                <div class="DivCCBreadCrumbs"><a href="SearchDrug3.jsp"> <fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title"/></a> > <b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title.CopyFavorites"/></b></div>
                             </td>
                         </tr>
 
@@ -341,9 +339,8 @@
                         <tr>
                             <td width="0%" valign="top">
                                 <div class="DivCCBreadCrumbs">
-                                    <div class="DivCCBreadCrumbs"><a href="SearchDrug3.jsp"> <bean:message
-                                            key="SearchDrug.title"/></a> > <b>
-                                            <bean:message key="SearchDrug.title.CopyFavorites"/> > <b>Setting</b></div>
+                                    <div class="DivCCBreadCrumbs"><a href="SearchDrug3.jsp"> <fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title"/></a> > <b>
+                                            <fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title.CopyFavorites"/> > <b>Setting</b></div>
                             </td>
                         </tr>
 

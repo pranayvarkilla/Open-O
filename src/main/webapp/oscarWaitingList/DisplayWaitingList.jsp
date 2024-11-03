@@ -33,7 +33,7 @@
 %>
 <%@ page
         import="java.util.*,oscar.util.*, oscar.oscarWaitingList.bean.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
@@ -58,7 +58,7 @@
 
         <!-- language for the calendar -->
         <script type="text/javascript"
-                src="../share/calendar/lang/<bean:message key="global.javascript.calendar"/>"></script>
+                src="../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
 
         <!-- the following script defines the Calendar.setup helper function, which makes
                adding a calendar a matter of 1 or 2 lines of code. -->
@@ -124,7 +124,7 @@
             }
             var page = varpage + '&provider_no=' + selected + '&startDate=' + startDate + '&demographic_no=' + demographicNo + '&demographic_name=' + patientName;
             var windowprops = "height=" + vheight + ",width=" + vwidth + ",location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,screenX=50,screenY=50,top=0,left=0";
-            var popup = window.open(page, "<bean:message key="provider.appointmentProviderAdminDay.apptProvider"/>", windowprops);
+            var popup = window.open(page, "<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.appointmentProviderAdminDay.apptProvider"/>", windowprops);
             if (popup != null) {
                 if (popup.opener == null) {
                     popup.opener = self;
@@ -299,7 +299,7 @@
                         <tr>
 
                             <td><input type="button" name="closeWindow"
-                                       value="<bean:message key="global.btnClose"/>"
+                                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>"
                                        style="font-size: 8pt;" onClick="window.close()"></td>
                         </tr>
                     </table>

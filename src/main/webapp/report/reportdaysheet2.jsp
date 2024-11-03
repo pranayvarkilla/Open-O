@@ -41,7 +41,7 @@
 <%@ page
         import="java.util.*, java.sql.*, oscar.*, java.text.*, oscar.login.*,java.net.*"
         errorPage="../appointment/errorpage.jsp" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <jsp:useBean id="daySheetBean" class="oscar.AppointmentMainBean" scope="page"/>
 <jsp:useBean id="myGroupBean" class="java.util.Properties" scope="page"/>
@@ -79,7 +79,7 @@
 <html:html lang="en">
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="report.reportdaysheet.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.title"/></title>
         <link rel="stylesheet" href="../web.css">
         <style>
             td {
@@ -125,9 +125,9 @@
         <tr bgcolor="<%=deepColor%>">
             <input type="button"
                    name="Button"
-                   value="<bean:message key="report.reportdaysheet.btnPrint"/>"
+                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.btnPrint"/>"
                    onClick="window.print()"><input type="button" name="Button"
-                                                   value="<bean:message key="global.btnExit"/>"
+                                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnExit"/>"
                                                    onClick="window.close()">
         </tr>
     </table>

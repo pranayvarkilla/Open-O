@@ -158,7 +158,7 @@
 
 
 %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <html:html lang="en">
     <head>
@@ -173,7 +173,7 @@
         <script type="text/javascript" src="../../../share/calendar/calendar.js"></script>
         <!-- language for the calendar -->
         <script type="text/javascript"
-                src="../../../share/calendar/lang/<bean:message key="global.javascript.calendar"/>">
+                src="../../../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>">
         </script>
         <!-- the following script defines the Calendar.setup helper function, which makes
                adding a calendar a matter of 1 or 2 lines of code. -->
@@ -377,10 +377,10 @@
                 <td align="center" class="myGreen" colspan="2"><input
                         type="hidden" name="action" value='<%=action%>'> <input
                         type="submit" name="submit"
-                        value="<bean:message key="admin.resourcebaseurl.btnSave"/>"
+                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="admin.resourcebaseurl.btnSave"/>"
                         onclick="javascript:return onSave();"> <input type="button"
                                                                       name="Cancel"
-                                                                      value="<bean:message key="admin.resourcebaseurl.btnExit"/>"
+                                                                      value="<fmt:setBundle basename="oscarResources"/><fmt:message key="admin.resourcebaseurl.btnExit"/>"
                                                                       onClick="window.close()"> <input type="hidden"
                                                                                                        name="id"
                                                                                                        value="<%=prop.getProperty("id", "")%>"/>

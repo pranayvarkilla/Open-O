@@ -24,7 +24,7 @@
 --%>
 <%@ page errorPage="/common/error.jsp" %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>

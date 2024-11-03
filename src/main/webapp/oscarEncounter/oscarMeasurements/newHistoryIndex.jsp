@@ -20,7 +20,7 @@
 <%
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -38,7 +38,7 @@
 
     <head>
         <title>
-            <bean:message key="oscarEncounter.Index.oldMeasurements"/>
+            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.oldMeasurements"/>
         </title>
         <html:base/>
 
@@ -50,11 +50,11 @@
         function popupPage(vheight, vwidth, varpage) { //open a new popup window
             var page = "" + varpage;
             windowprops = "height=" + vheight + ",width=" + vwidth + ",location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,screenX=600,screenY=200,top=0,left=0";
-            var popup = window.open(page, "<bean:message key="oscarEncounter.Index.popupPageWindow"/>", windowprops);
+            var popup = window.open(page, "<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.popupPageWindow"/>", windowprops);
             if (popup != null) {
                 if (popup.opener == null) {
                     popup.opener = self;
-                    alert("<bean:message key="oscarEncounter.Index.popupPageAlert"/>");
+                    alert("<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.popupPageAlert"/>");
                 }
             }
         }
@@ -67,12 +67,11 @@
                 <td>
                     <table>
                         <tr>
-                            <th colspan='3'><bean:message
-                                    key="oscarEncounter.oscarMeasurements.oldmesurementindex"/></th>
+                            <th colspan='3'><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.oldmesurementindex"/></th>
                         </tr>
                         <tr>
                             <th align="left" class="Header" style="color:white" width="20">
-                                <bean:message key="oscarEncounter.oscarMeasurements.displayHistory.headingType"/>
+                                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.displayHistory.headingType"/>
                             </th>
                             <th align="left" class="Header" style="color:white">
                                 Type Description
@@ -124,7 +123,7 @@
                                     </c:if>
                                 </c:forEach>
 
-                                <td><a href="#" name='<bean:message key="oscarEncounter.Index.oldMeasurements"/>'
+                                <td><a href="#" name='<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.oldMeasurements"/>'
                                        onClick="popupPage(300,800,'SetupDisplayHistory.do?type=<c:out
                                                value="${pair.key}"/>'); return false;">more...</a></td>
                             </tr>
@@ -133,9 +132,9 @@
                     </table>
                     <table>
                         <tr>
-                            <td><input type="button" name="Button" value="<bean:message key="global.btnPrint"/>"
+                            <td><input type="button" name="Button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnPrint"/>"
                                        onClick="window.print()"></td>
-                            <td><input type="button" name="Button" value="<bean:message key="global.btnClose"/>"
+                            <td><input type="button" name="Button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>"
                                        onClick="window.close()"></td>
                             <c:if test="${not empty type}">
                                 <input type="hidden" name="type" value="${type}"/>

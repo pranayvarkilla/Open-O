@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
@@ -45,7 +45,7 @@
 <html:html lang="en">
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <title><bean:message key="AddReaction.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="AddReaction.title"/></title>
         <html:base/>
 
         <c:if test="${empty RxSessionBean}">
@@ -82,11 +82,8 @@
                        height="100%">
                     <tr>
                         <td width="0%" valign="top">
-                            <div class="DivCCBreadCrumbs"><a href="SearchDrug.jsp"> <bean:message
-                                    key="SearchDrug.title"/></a>&nbsp;&gt;&nbsp; <a
-                                    href="ShowAllergies.jsp"> <bean:message
-                                    key="EditAllergies.title"/></a>&nbsp;&gt;&nbsp; <b><bean:message
-                                    key="AddReaction.title"/></b></div>
+                            <div class="DivCCBreadCrumbs"><a href="SearchDrug.jsp"> <fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title"/></a>&nbsp;&gt;&nbsp; <a
+                                    href="ShowAllergies.jsp"> <fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.title"/></a>&nbsp;&gt;&nbsp; <b><fmt:setBundle basename="oscarResources"/><fmt:message key="AddReaction.title"/></b></div>
                         </td>
                     </tr>
                     <!----Start new rows here-->

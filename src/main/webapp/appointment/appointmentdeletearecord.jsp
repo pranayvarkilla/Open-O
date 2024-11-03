@@ -28,7 +28,7 @@
 <%
     if (session.getAttribute("user") == null) response.sendRedirect("../logout.jsp");
 %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@page import="org.oscarehr.common.dao.AppointmentArchiveDao" %>
 <%@page import="org.oscarehr.common.dao.OscarAppointmentDao" %>
@@ -48,7 +48,7 @@
         <table border="0" cellspacing="0" cellpadding="0" width="90%">
             <tr bgcolor="#486ebd">
                 <th align="CENTER"><font face="Helvetica" color="#FFFFFF">
-                    <bean:message key="appointment.appointmentdeletearecord.msgLabel"/></font></th>
+                    <fmt:setBundle basename="oscarResources"/><fmt:message key="appointment.appointmentdeletearecord.msgLabel"/></font></th>
             </tr>
         </table>
         <%
@@ -66,8 +66,7 @@
             if (rowsAffected == 1) {
         %>
         <p>
-        <h1><bean:message
-                key="appointment.appointmentdeletearecord.msgDeleteSuccess"/></h1>
+        <h1><fmt:setBundle basename="oscarResources"/><fmt:message key="appointment.appointmentdeletearecord.msgDeleteSuccess"/></h1>
 
         <script LANGUAGE="JavaScript">
             self.opener.refresh();
@@ -77,8 +76,7 @@
         } else {
         %>
         <p>
-        <h1><bean:message
-                key="appointment.appointmentdeletearecord.msgDeleteFailure"/></h1>
+        <h1><fmt:setBundle basename="oscarResources"/><fmt:message key="appointment.appointmentdeletearecord.msgDeleteFailure"/></h1>
 
         <%
             }
@@ -86,7 +84,7 @@
         <p></p>
         <hr width="90%"/>
         <form>
-            <input type="button" value="<bean:message key="global.btnClose"/>" onClick="closeit()">
+            <input type="button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>" onClick="closeit()">
         </form>
     </center>
     </body>

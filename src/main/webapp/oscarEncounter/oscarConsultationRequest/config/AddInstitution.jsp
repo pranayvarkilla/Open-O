@@ -26,7 +26,7 @@
 
 <%@ page import="java.util.ResourceBundle" %>
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -106,9 +106,12 @@
                         String added = (String) request.getAttribute("Added");
                         if (added != null) { %>
                     <tr>
-                        <td><font color="red"> <bean:message
-                                key="oscarEncounter.oscarConsultationRequest.config.AddInstitution.msgInstitutionAdded"
-                                arg0="<%=added%>"/> </font></td>
+                        <td style="color: red;">
+                            <fmt:setBundle basename="oscarResources"/>
+                            <fmt:message  key="oscarEncounter.oscarConsultationRequest.config.AddInstitution.msgInstitutionAdded">
+                                <fmt:param value="${added}" />
+                            </fmt:message>
+                        </td>
                     </tr>
                     <%}%>
                     <tr>

@@ -42,7 +42,7 @@
 
 <%@page import="oscar.oscarDemographic.data.*,java.util.*,oscar.oscarDemographic.pageUtil.Util" %>
 <%@page import="org.oscarehr.PMmodule.dao.ProgramDao, org.oscarehr.util.SpringUtils,org.oscarehr.PMmodule.model.Program" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <%
@@ -60,7 +60,7 @@
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <!--I18n-->
-        <title><bean:message key="admin.admin.DemoImport"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.DemoImport"/></title>
         <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
 
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
@@ -190,12 +190,12 @@
     %>
 
     <div class="container-fluid well">
-        <h3><bean:message key="admin.admin.DemoImport"/></h3>
+        <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.DemoImport"/></h3>
 
         <html:form action="/form/importUpload.do" method="POST"
                    enctype="multipart/form-data">
         <p><input type="file" name="importFile" id="importFile" multiple="multiple"/>
-            <span id="uploadWarn" title="<bean:message key="global.uploadWarningBody"/>"
+            <span id="uploadWarn" title="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.uploadWarningBody"/>"
                   style="vertical-align:middle;font-family:arial;font-size:20px;font-weight:bold;color:#ABABAB;cursor:pointer"><img
                     border="0" src="../images/icon_alertsml.gif"/></span></span>
 

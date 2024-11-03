@@ -62,7 +62,7 @@
 <%@    page import="javax.swing.text.rtf.RTFEditorKit" %>
 <%@    page import="java.io.ByteArrayInputStream" %>
 <%@ page import="org.owasp.encoder.Encode" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
@@ -799,7 +799,7 @@
                     comment = "";
                 }
             }
-            var commentVal = prompt('<bean:message key="oscarMDS.segmentDisplay.msgComment"/>', comment);
+            var commentVal = prompt('<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.msgComment"/>', comment);
 
             if (commentVal == null) {
                 ret = false;
@@ -919,23 +919,23 @@
 
         function confirmAck() {
             <% if (props.getProperty("confirmAck", "").equals("yes")) { %>
-            return confirm('<bean:message key="oscarMDS.index.msgConfirmAcknowledge"/>');
+            return confirm('<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.index.msgConfirmAcknowledge"/>');
             <% } else { %>
             return true;
             <% } %>
         }
 
         function confirmCommentUnmatched() {
-            return confirm('<bean:message key="oscarMDS.index.msgConfirmAcknowledgeUnmatched"/>');
+            return confirm('<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.index.msgConfirmAcknowledgeUnmatched"/>');
         }
 
         function confirmAckUnmatched() {
-            return confirm('<bean:message key="oscarMDS.index.msgConfirmAcknowledgeUnmatched"/>');
+            return confirm('<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.index.msgConfirmAcknowledgeUnmatched"/>');
         }
 
         function unlinkDemographic(labNo) {
             var reason = "Incorrect demographic";
-            reason = prompt('<bean:message key="oscarMDS.segmentDisplay.msgUnlink"/>', reason);
+            reason = prompt('<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.msgUnlink"/>', reason);
 
             //must include reason
             if (reason == null || reason.length === 0) {
@@ -1157,28 +1157,28 @@
                                 <% } %>
 
                                 <input type="button"
-                                       value="<bean:message key="oscarMDS.segmentDisplay.btnAcknowledge"/>"
+                                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.btnAcknowledge"/>"
                                        onclick="<%=ackLabFunc%>">
                                 <% } %>
-                                <input type="button" value="<bean:message key="oscarMDS.segmentDisplay.btnComment"/>"
+                                <input type="button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.btnComment"/>"
                                        onclick="return getComment('addComment',<%=Encode.forJavaScript(segmentID)%>);">
                                 <input type="button" class="smallButton"
-                                       value="<bean:message key="oscarMDS.index.btnForward"/>"
+                                       value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.index.btnForward"/>"
                                        onClick="ForwardSelectedRows(<%=Encode.forJavaScript(segmentID)%> + ':HL7', '', '')">
-                                <input type="button" value=" <bean:message key="global.btnClose"/> "
+                                <input type="button" value=" <fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/> "
                                        onClick="window.close()">
-                                <input type="button" value=" <bean:message key="global.btnPrint"/> "
+                                <input type="button" value=" <fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnPrint"/> "
                                        onClick="printPDF('<%=Encode.forJavaScript(segmentID)%>')">
 
                                 <input type="button" value="Msg"
                                        onclick="handleLab('','<%=Encode.forJavaScript(segmentID)%>','msgLab');"/>
                                 <input type="button" value="Tickler"
                                        onclick="handleLab('','<%=Encode.forJavaScript(segmentID)%>','ticklerLab');"/>
-                                <input type="button" value="<bean:message key="oscarMDS.segmentDisplay.btnUnlinkDemo"/>"
+                                <input type="button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.btnUnlinkDemo"/>"
                                        onclick="unlinkDemographic(<%=Encode.forJavaScript(segmentID)%>)"/>
 
                                 <% if (searchProviderNo != null) { // null if we were called from e-chart%>
-                                <input type="button" value=" <bean:message key="oscarMDS.segmentDisplay.btnEChart"/>"
+                                <input type="button" value=" <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.btnEChart"/>"
                                        onClick="popupStart(360, 680, '../../../oscarMDS/SearchPatient.do?labType=HL7&segmentID=<%= Encode.forJavaScript(segmentID) %>&name=<%=java.net.URLEncoder.encode(handler.getLastName()+", "+handler.getFirstName())%>', 'encounter')">
                                 <% } %>
                                 <input type="button" value="Req# <%=reqTableID%>" title="Link to Requisition"
@@ -1283,12 +1283,12 @@
                         <tr>
                             <td width="66%" align="middle" class="Cell">
                                 <div class="Field2">
-                                    <bean:message key="oscarMDS.segmentDisplay.formDetailResults"/>
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDetailResults"/>
                                 </div>
                             </td>
                             <td width="33%" align="middle" class="Cell">
                                 <div class="Field2">
-                                    <bean:message key="oscarMDS.segmentDisplay.formResultsInfo"/>
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formResultsInfo"/>
                                 </div>
                             </td>
                         </tr>
@@ -1308,8 +1308,7 @@
                                                             <tr>
                                                                 <td nowrap>
                                                                     <div class="FieldData">
-                                                                        <strong><bean:message
-                                                                                key="oscarMDS.segmentDisplay.formPatientName"/>: </strong>
+                                                                        <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formPatientName"/>: </strong>
                                                                     </div>
                                                                 </td>
                                                                 <td nowrap>
@@ -1328,8 +1327,7 @@
                                                             <tr>
                                                                 <td nowrap>
                                                                     <div class="FieldData">
-                                                                        <strong><bean:message
-                                                                                key="oscarMDS.segmentDisplay.formDateBirth"/>: </strong>
+                                                                        <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDateBirth"/>: </strong>
                                                                     </div>
                                                                 </td>
                                                                 <td nowrap>
@@ -1342,8 +1340,7 @@
                                                             <tr>
                                                                 <td nowrap>
                                                                     <div class="FieldData">
-                                                                        <strong><bean:message
-                                                                                key="oscarMDS.segmentDisplay.formAge"/>: </strong>
+                                                                        <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formAge"/>: </strong>
                                                                     </div>
                                                                 </td>
                                                                 <td nowrap>
@@ -1357,8 +1354,7 @@
                                                                 <td nowrap>
                                                                     <div class="FieldData">
                                                                         <strong>
-                                                                            <bean:message
-                                                                                    key="oscarMDS.segmentDisplay.formHealthNumber"/>
+                                                                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formHealthNumber"/>
                                                                         </strong>
                                                                     </div>
                                                                 </td>
@@ -1377,8 +1373,7 @@
                                                             <tr>
                                                                 <td nowrap>
                                                                     <div align="left" class="FieldData">
-                                                                        <strong><bean:message
-                                                                                key="oscarMDS.segmentDisplay.formHomePhone"/>: </strong>
+                                                                        <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formHomePhone"/>: </strong>
                                                                     </div>
                                                                 </td>
                                                                 <td nowrap>
@@ -1390,8 +1385,7 @@
                                                             <tr>
                                                                 <td nowrap>
                                                                     <div align="left" class="FieldData">
-                                                                        <strong><bean:message
-                                                                                key="oscarMDS.segmentDisplay.formWorkPhone"/>: </strong>
+                                                                        <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formWorkPhone"/>: </strong>
                                                                     </div>
                                                                 </td>
                                                                 <td nowrap>
@@ -1403,8 +1397,7 @@
                                                             <tr>
                                                                 <td nowrap>
                                                                     <div class="FieldData">
-                                                                        <strong><bean:message
-                                                                                key="oscarMDS.segmentDisplay.formSex"/>: </strong>
+                                                                        <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formSex"/>: </strong>
                                                                     </div>
                                                                 </td>
                                                                 <td align="left" nowrap>
@@ -1419,8 +1412,7 @@
                                                                         <% if ("ExcellerisON".equals(handler.getMsgType())) { %>
                                                                         <strong>Reported by:</strong>
                                                                         <% } else { %>
-                                                                        <strong><bean:message
-                                                                                key="oscarMDS.segmentDisplay.formPatientLocation"/>: </strong>
+                                                                        <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formPatientLocation"/>: </strong>
                                                                         <% } %>
                                                                     </div>
                                                                 </td>
@@ -1444,10 +1436,9 @@
                                         <td>
                                             <div class="FieldData">
                                                 <% if ("CLS".equals(handler.getMsgType())) { %>
-                                                <strong><bean:message key="oscarMDS.segmentDisplay.formDateServiceCLS"/>:</strong>
+                                                <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDateServiceCLS"/>:</strong>
                                                 <% } else { %>
-                                                <strong><bean:message
-                                                        key="oscarMDS.segmentDisplay.formDateService"/>:</strong>
+                                                <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDateService"/>:</strong>
                                                 <% } %>
                                             </div>
                                         </td>
@@ -1474,8 +1465,7 @@
                                     <tr>
                                         <td>
                                             <div class="FieldData">
-                                                <strong><bean:message
-                                                        key="oscarMDS.segmentDisplay.formDateReceivedCLS"/>:</strong>
+                                                <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDateReceivedCLS"/>:</strong>
 
                                             </div>
                                         </td>
@@ -1488,8 +1478,7 @@
                                     <tr>
                                         <td>
                                             <div class="FieldData">
-                                                <strong><bean:message
-                                                        key="oscarMDS.segmentDisplay.formReportStatus"/>:</strong>
+                                                <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formReportStatus"/>:</strong>
                                             </div>
                                         </td>
                                         <td>
@@ -1504,8 +1493,7 @@
                                     <tr>
                                         <td nowrap>
                                             <div class="FieldData">
-                                                <strong><bean:message
-                                                        key="oscarMDS.segmentDisplay.formClientRefer"/>:</strong>
+                                                <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formClientRefer"/>:</strong>
                                             </div>
                                         </td>
                                         <td nowrap>
@@ -1517,8 +1505,7 @@
                                     <tr>
                                         <td>
                                             <div class="FieldData">
-                                                <strong><bean:message
-                                                        key="oscarMDS.segmentDisplay.formAccession"/>:</strong>
+                                                <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formAccession"/>:</strong>
                                             </div>
                                         </td>
                                         <td>
@@ -1579,21 +1566,19 @@
                                     <tr>
                                         <td bgcolor="white">
                                             <div class="FieldData">
-                                                <strong><bean:message
-                                                        key="oscarMDS.segmentDisplay.formRequestingClient"/>: </strong>
+                                                <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formRequestingClient"/>: </strong>
                                                 <%= handler.getDocName()%>
                                             </div>
                                         </td>
                                         <%-- <td bgcolor="white">
                                 <div class="FieldData">
-                                    <strong><bean:message key="oscarMDS.segmentDisplay.formReportToClient"/>: </strong>
+                                    <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formReportToClient"/>: </strong>
                                         <%= No admitting Doctor for CML messages%>
                                 </div>
                             </td> --%>
                                         <td bgcolor="white" align="right">
                                             <div class="FieldData">
-                                                <strong><bean:message
-                                                        key="oscarMDS.segmentDisplay.formCCClient"/>: </strong>
+                                                <strong><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formCCClient"/>: </strong>
                                                 <%= handler.getCCDocs()%>
 
                                             </div>
@@ -1775,22 +1760,14 @@
                     <table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#CCCCFF"
                            bordercolor="#9966FF" bordercolordark="#bfcbe3" name="tblDiscs" id="tblDiscs">
                         <tr class="Field2">
-                            <td width="25%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formTestName"/></td>
-                            <td width="15%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formResult"/></td>
-                            <td width="5%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formAbn"/></td>
-                            <td width="15%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formReferenceRange"/></td>
-                            <td width="10%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formUnits"/></td>
-                            <td width="15%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formDateTimeCompleted"/></td>
-                            <td width="6%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formNew"/></td>
-                            <td width="6%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formAnnotate"/></td>
+                            <td width="25%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formTestName"/></td>
+                            <td width="15%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formResult"/></td>
+                            <td width="5%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formAbn"/></td>
+                            <td width="15%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formReferenceRange"/></td>
+                            <td width="10%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formUnits"/></td>
+                            <td width="15%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDateTimeCompleted"/></td>
+                            <td width="6%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formNew"/></td>
+                            <td width="6%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formAnnotate"/></td>
                         </tr>
                         <tr class="TDISRes">
                             <td valign="top" align="left" colspan="8">
@@ -1868,24 +1845,17 @@
 
                         <tr class="Field2">
 
-                            <td width="20%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formTestName"/></td>
-                            <td width="60%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formResult"/></td>
+                            <td width="20%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formTestName"/></td>
+                            <td width="60%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formResult"/></td>
                             <% if ("CLS".equals(handler.getMsgType())) { %>
-                            <td width="20%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formDateTimeCompletedCLS"/></td>
+                            <td width="20%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDateTimeCompletedCLS"/></td>
                             <% } else { %>
-                            <td width="20%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formDateTimeCompleted"/></td>
+                            <td width="20%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDateTimeCompleted"/></td>
                             <% } %>
 
-                            <td width="31%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formTestName"/></td>
-                            <td width="31%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formResult"/></td>
-                            <td width="31%" align="middle" valign="bottom" class="Cell"><bean:message
-                                    key="oscarMDS.segmentDisplay.formDateTimeCompleted"/></td>
+                            <td width="31%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formTestName"/></td>
+                            <td width="31%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formResult"/></td>
+                            <td width="31%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDateTimeCompleted"/></td>
 
                         </tr>
                             <%
@@ -1919,27 +1889,18 @@
                                 <% }%>
 
                             <tr class="Field2">
-                                <td width="25%" align="middle" valign="bottom" class="Cell"><bean:message
-                                        key="oscarMDS.segmentDisplay.formTestName"/></td>
-                                <td width="15%" align="middle" valign="bottom" class="Cell"><bean:message
-                                        key="oscarMDS.segmentDisplay.formResult"/></td>
-                                <td width="5%" align="middle" valign="bottom" class="Cell"><bean:message
-                                        key="oscarMDS.segmentDisplay.formAbn"/></td>
-                                <td width="15%" align="middle" valign="bottom" class="Cell"><bean:message
-                                        key="oscarMDS.segmentDisplay.formReferenceRange"/></td>
-                                <td width="10%" align="middle" valign="bottom" class="Cell"><bean:message
-                                        key="oscarMDS.segmentDisplay.formUnits"/></td>
+                                <td width="25%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formTestName"/></td>
+                                <td width="15%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formResult"/></td>
+                                <td width="5%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formAbn"/></td>
+                                <td width="15%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formReferenceRange"/></td>
+                                <td width="10%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formUnits"/></td>
                                 <% if ("CLS".equals(handler.getMsgType())) { %>
-                                <td width="15%" align="middle" valign="bottom" class="Cell"><bean:message
-                                        key="oscarMDS.segmentDisplay.formDateTimeCompletedCLS"/></td>
+                                <td width="15%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDateTimeCompletedCLS"/></td>
                                 <% } else { %>
-                                <td width="15%" align="middle" valign="bottom" class="Cell"><bean:message
-                                        key="oscarMDS.segmentDisplay.formDateTimeCompleted"/></td>
+                                <td width="15%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDateTimeCompleted"/></td>
                                 <% } %>
-                                <td width="6%" align="middle" valign="bottom" class="Cell"><bean:message
-                                        key="oscarMDS.segmentDisplay.formNew"/></td>
-                                <td width="6%" align="middle" valign="bottom" class="Cell"><bean:message
-                                        key="oscarMDS.segmentDisplay.formAnnotate"/></td>
+                                <td width="6%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formNew"/></td>
+                                <td width="6%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formAnnotate"/></td>
                                 <% if ("ExcellerisON".equals(handler.getMsgType())) { %>
                                 <td width="6%" align="middle" valign="bottom" class="Cell">License #</td>
                             </tr>
@@ -2528,16 +2489,11 @@
                     if (numZDS > 0) {
             %>
             <tr class="Field2">
-                <td width="25%" align="middle" valign="bottom" class="Cell"><bean:message
-                        key="oscarMDS.segmentDisplay.formTestName"/></td>
-                <td width="15%" align="middle" valign="bottom" class="Cell"><bean:message
-                        key="oscarMDS.segmentDisplay.formResult"/></td>
-                <td width="15%" align="middle" valign="bottom" class="Cell"><bean:message
-                        key="oscarMDS.segmentDisplay.formProvider"/></td>
-                <td width="15%" align="middle" valign="bottom" class="Cell"><bean:message
-                        key="oscarMDS.segmentDisplay.formDateTimeCompleted"/></td>
-                <td width="6%" align="middle" valign="bottom" class="Cell"><bean:message
-                        key="oscarMDS.segmentDisplay.formNew"/></td>
+                <td width="25%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formTestName"/></td>
+                <td width="15%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formResult"/></td>
+                <td width="15%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formProvider"/></td>
+                <td width="15%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formDateTimeCompleted"/></td>
+                <td width="6%" align="middle" valign="bottom" class="Cell"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.formNew"/></td>
             </tr>
             <%
                 }
@@ -2574,31 +2530,31 @@
             <tr>
                 <td align="left" width="50%">
                     <% if (!ackFlag) { %>
-                    <input type="button" value="<bean:message key="oscarMDS.segmentDisplay.btnAcknowledge" />"
+                    <input type="button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.btnAcknowledge"/>"
                            onclick="<%=ackLabFunc%>">
                     <% } %>
-                    <input type="button" value="<bean:message key="oscarMDS.segmentDisplay.btnComment"/>"
+                    <input type="button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.btnComment"/>"
                            onclick="return getComment('addComment',<%=Encode.forJavaScript(segmentID)%>);">
-                    <input type="button" class="smallButton" value="<bean:message key="oscarMDS.index.btnForward"/>"
+                    <input type="button" class="smallButton" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.index.btnForward"/>"
                            onClick="ForwardSelectedRows(<%=Encode.forJavaScript(segmentID)%> + ':HL7', '', '')">
-                    <input type="button" value=" <bean:message key="global.btnClose"/> " onClick="window.close()">
-                    <input type="button" value=" <bean:message key="global.btnPrint"/> "
+                    <input type="button" value=" <fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/> " onClick="window.close()">
+                    <input type="button" value=" <fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnPrint"/> "
                            onClick="printPDF('<%=Encode.forJavaScript(segmentID)%>')">
                     <indivo:indivoRegistered demographic="<%=demographicID%>" provider="<%=providerNo%>">
-                        <input type="button" value="<bean:message key="global.btnSendToPHR"/>"
+                        <input type="button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnSendToPHR"/>"
                                onClick="sendToPHR('<%=Encode.forJavaScript(segmentID)%>', '<%=demographicID%>')">
                     </indivo:indivoRegistered>
                     <% if (searchProviderNo != null) { // we were called from e-chart %>
-                    <input type="button" value=" <bean:message key="oscarMDS.segmentDisplay.btnEChart"/> "
+                    <input type="button" value=" <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.btnEChart"/> "
                            onClick="popupStart(360, 680, '../../../oscarMDS/SearchPatient.do?labType=HL7&segmentID=<%= Encode.forJavaScript(segmentID) %>&name=<%=java.net.URLEncoder.encode(handler.getLastName()+", "+handler.getFirstName())%>', 'encounter')">
 
                     <% } %>
                 </td>
                 <td width="50%" valign="center" align="left">
                     <% if ("CLS".equals(handler.getMsgType())) { %>
-                    <span class="Field2"><i><bean:message key="oscarMDS.segmentDisplay.msgReportEndCLS"/></i></span>
+                    <span class="Field2"><i><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.msgReportEndCLS"/></i></span>
                     <% } else { %>
-                    <span class="Field2"><i><bean:message key="oscarMDS.segmentDisplay.msgReportEnd"/></i></span>
+                    <span class="Field2"><i><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.msgReportEnd"/></i></span>
                     <% } %>
                 </td>
             </tr>

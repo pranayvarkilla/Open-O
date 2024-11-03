@@ -39,7 +39,7 @@
 
 <%@ page import="java.util.*, java.sql.*, oscar.eform.*" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@page import="org.oscarehr.common.dao.UserPropertyDAO, org.oscarehr.common.model.UserProperty" %>
@@ -72,7 +72,7 @@
 
     <head>
         <title>
-            <bean:message key="eform.myform.title"/>
+            <fmt:setBundle basename="oscarResources"/><fmt:message key="eform.myform.title"/>
         </title>
         <link rel="stylesheet" type="text/css" href="../share/css/OscarStandardLayout.css">
         <link rel="stylesheet" type="text/css" href="../share/css/eformStyle.css">
@@ -107,22 +107,21 @@
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr class="MainTableTopRow">
             <td class="MainTableTopRowLeftColumn" width="175">
-                <bean:message key="eform.myform.msgEForm"/>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="eform.myform.msgEForm"/>
             </td>
             <td class="MainTableTopRowRightColumn">
                 <table class="TopStatusBar">
                     <tr>
                         <td>
-                            <bean:message key="eform.myform.msgFormLib"/>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="eform.myform.msgFormLib"/>
                         </td>
                         <td>&nbsp;
 
                         </td>
                         <td style="text-align:right">
                             <oscar:help keywords="eform" key="app.top1"/> | <a
-                                href="javascript:popupStart(300,400,'About.jsp')"><bean:message key="global.about"/></a>
-                            | <a href="javascript:popupStart(300,400,'License.jsp')"><bean:message
-                                key="global.license"/></a>
+                                href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
+                            | <a href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a>
                         </td>
                     </tr>
                 </table>
@@ -131,23 +130,20 @@
         <tr>
             <td class="MainTableLeftColumn" valign="top">
 
-                <a href="../demographic/demographiccontrol.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&displaymode=edit&dboperation=search_detail"><bean:message
-                        key="demographic.demographiceditdemographic.btnMasterFile"/></a>
+                <a href="../demographic/demographiccontrol.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&displaymode=edit&dboperation=search_detail"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographiceditdemographic.btnMasterFile"/></a>
 
                 <br>
                 <a href="efmformslistadd.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&parentAjaxId=<%=parentAjaxId%>"
-                   class="current"> <bean:message key="eform.showmyform.btnAddEForm"/></a><br/>
-                <a href="efmpatientformlist.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&parentAjaxId=<%=parentAjaxId%>"><bean:message
-                        key="eform.calldeletedformdata.btnGoToForm"/></a><br/>
-                <a href="efmpatientformlistdeleted.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&parentAjaxId=<%=parentAjaxId%>"><bean:message
-                        key="eform.showmyform.btnDeleted"/></a>
+                   class="current"> <fmt:setBundle basename="oscarResources"/><fmt:message key="eform.showmyform.btnAddEForm"/></a><br/>
+                <a href="efmpatientformlist.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&parentAjaxId=<%=parentAjaxId%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.calldeletedformdata.btnGoToForm"/></a><br/>
+                <a href="efmpatientformlistdeleted.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&parentAjaxId=<%=parentAjaxId%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.showmyform.btnDeleted"/></a>
 
                 <security:oscarSec roleName="<%=roleName$%>" objectName="_admin,_admin.eform" rights="w"
                                    reverse="<%=false%>">
                     <br/>
                     <a href="#"
                        onclick="javascript: return popup(600, 1200, '../administration/?show=Forms', 'manageeforms');"
-                       style="color: #835921;"><bean:message key="eform.showmyform.msgManageEFrm"/></a>
+                       style="color: #835921;"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.showmyform.msgManageEFrm"/></a>
                 </security:oscarSec>
                 <jsp:include page="efmviewgroups.jsp">
                     <jsp:param name="url" value="../eform/efmformslistadd.jsp"/>
@@ -160,16 +156,13 @@
                 <table class="elements" style="margin-left: 0px; margin-right: 0px;" width="100%">
                     <tr bgcolor=<%=deepColor%>>
                         <th>
-                            <a href="efmformslistadd.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&group_view=<%=groupView%>&parentAjaxId=<%=parentAjaxId%>"><bean:message
-                                    key="eform.showmyform.btnFormName"/></a></th>
+                            <a href="efmformslistadd.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&group_view=<%=groupView%>&parentAjaxId=<%=parentAjaxId%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.showmyform.btnFormName"/></a></th>
                         <th>
-                            <a href="efmformslistadd.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&group_view=<%=groupView%>&orderby=form_subject&parentAjaxId=<%=parentAjaxId%>"><bean:message
-                                    key="eform.showmyform.btnSubject"/></a></th>
-                        <!--<th><a href="myform.jsp?demographic_no=<%=demographic_no%>&group_view=<%=groupView%>&orderby=file_name"><bean:message key="eform.myform.btnFile"/></a></th>-->
+                            <a href="efmformslistadd.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&group_view=<%=groupView%>&orderby=form_subject&parentAjaxId=<%=parentAjaxId%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.showmyform.btnSubject"/></a></th>
+                        <!--<th><a href="myform.jsp?demographic_no=<%=demographic_no%>&group_view=<%=groupView%>&orderby=file_name"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.myform.btnFile"/></a></th>-->
                         <th>
-                            <a href="efmformslistadd.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&group_view=<%=groupView%>&orderby=form_date&parentAjaxId=<%=parentAjaxId%>"><bean:message
-                                    key="eform.showmyform.formDate"/></a></th>
-                        <!--<th><a href="myform.jsp?demographic_no=<%=demographic_no%>&group_view=<%=groupView%>"><bean:message key="eform.showmyform.formTime"/></a></th> -->
+                            <a href="efmformslistadd.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&group_view=<%=groupView%>&orderby=form_date&parentAjaxId=<%=parentAjaxId%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.showmyform.formDate"/></a></th>
+                        <!--<th><a href="myform.jsp?demographic_no=<%=demographic_no%>&group_view=<%=groupView%>"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.showmyform.formTime"/></a></th> -->
                     </tr>
 
                     <%
@@ -200,7 +193,7 @@
                     } else {
                     %>
                     <tr>
-                        <td colspan="3" align="center"><bean:message key="eform.showmyform.msgNoData"/></td>
+                        <td colspan="3" align="center"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.showmyform.msgNoData"/></td>
                     </tr>
                     <%}%>
 

@@ -150,7 +150,7 @@
     <div id="header" class="bgLilac">
         <ul>
             <li>
-                <bean:message key="billing.provider.billProvider"/>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="billing.provider.billProvider"/>
 
                 <select id="billingProviderNo" name="billingProviderNo">
                     <option value="empty">- Select Provider -</option>
@@ -179,7 +179,7 @@
             </li>
 
             <li>
-                <!--   bean:message key="billing.provider.billProvider"/ -->
+                <!--   fmt:message key="billing.provider.billProvider"/ -->
 
                 Status
                 <input type="text" name="patientStatus" value="<c:out value="${methadoneBillingBC.patientStatus}" />">

@@ -24,7 +24,7 @@
 
 --%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ page import="oscar.oscarProvider.data.*" %>
 
@@ -43,7 +43,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
-        <title><bean:message key="provider.setColour.title"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setColour.title"/></title>
 
         <link rel="stylesheet" type="text/css"
               href="../oscarEncounter/encounterStyles.css">
@@ -63,10 +63,8 @@
 
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr class="MainTableTopRow">
-            <td class="MainTableTopRowLeftColumn"><bean:message
-                    key="provider.setColour.msgPrefs"/></td>
-            <td style="color: white" class="MainTableTopRowRightColumn"><bean:message
-                    key="provider.setColour.msgProviderColour"/></td>
+            <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setColour.msgPrefs"/></td>
+            <td style="color: white" class="MainTableTopRowRightColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setColour.msgProviderColour"/></td>
         </tr>
         <tr>
             <td class="MainTableLeftColumn">&nbsp;</td>
@@ -80,19 +78,19 @@
                 %>
                 <html:form action="/setProviderColour.do">
                 <html:hidden property="colour" value="<%=colour%>"/>
-                <bean:message key="provider.setColour.msgEdit"/>
+                <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setColour.msgEdit"/>
                 <a href="javascript:TCP.popup(document.forms[0].elements['colour'])"><img
                         width="15" height="13" border="0" src="../images/sel.gif"></a>
-                <p><bean:message key="provider.setColour.msgSatus"/>
+                <p><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setColour.msgSatus"/>
                 <div id='cdisp' style='width: 33%'>&nbsp;</div>
                 </p>
                 <p><input type="submit" onclick="return validate();"
-                          value="<bean:message key="provider.setColour.btnSubmit"/>"/>
+                          value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setColour.btnSubmit"/>"/>
                     </html:form> <%
                }
                else if( ((String)request.getAttribute("status")).equals("complete") ) {
             %>
-                        <bean:message key="provider.setColour.msgSuccess"/> <br>
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setColour.msgSuccess"/> <br>
 
                             <%
                }

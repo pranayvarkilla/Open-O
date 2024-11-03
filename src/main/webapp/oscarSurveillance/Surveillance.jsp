@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@page import="oscar.oscarSurveillance.*,java.util.*,org.commonmark.node.*,org.commonmark.parser.Parser,org.commonmark.renderer.html.HtmlRenderer" %>
 <%
@@ -45,7 +45,7 @@
 
     <head>
         <html:base/>
-        <title><bean:message key="admin.admin.surveillanceConfig"/></title>
+        <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.surveillanceConfig"/></title>
         <link href="<%=request.getContextPath() %>/library/bootstrap/3.0.0/css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="<%=request.getContextPath() %>/css/font-awesome.min.css">
         <script type="text/javascript" src="<%=request.getContextPath() %>/library/angular.min.js"></script>

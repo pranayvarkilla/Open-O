@@ -34,7 +34,7 @@
 <%@page import="org.oscarehr.phr.util.MyOscarUtils" %>
 <%@page import="org.oscarehr.phr.util.MyOscarServerRelationManager" %>
 <%@page import="org.oscarehr.myoscar_server.ws.MessageTransfer" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="org.w3c.dom.*" %>
@@ -160,16 +160,15 @@
                 <table class="TopStatusBar">
                     <tr>
                         <td>
-                            <bean:message key="oscarMessenger.CreateMessage.msgCreate"/>
+                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.msgCreate"/>
                         </td>
                         <td>
                             &nbsp;
                         </td>
                         <td style="text-align:right">
                             <oscar:help keywords="myoscar message" key="app.top1"/> | <a
-                                href="javascript:popupStart(300,400,'About.jsp')"><bean:message key="global.about"/></a>
-                            | <a href="javascript:popupStart(300,400,'License.jsp')"><bean:message
-                                key="global.license"/></a>
+                                href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
+                            | <a href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a>
                         </td>
                     </tr>
                 </table>
@@ -192,7 +191,7 @@
                                                 <td class="messengerButtonsA">
                                                     <html:link action="/phr/PhrMessage.do?method=viewMessages"
                                                                styleClass="messengerButtons">
-                                                        <bean:message key="oscarMessenger.ViewMessage.btnInbox"/>
+                                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnInbox"/>
                                                     </html:link>
                                                 </td>
                                             </tr>
@@ -203,8 +202,7 @@
                                             <tr>
                                                 <td class="messengerButtonsA">
                                                     <a href="javascript:document.forms[0].body.value=''; return false;"
-                                                       class="messengerButtons"><bean:message
-                                                            key="oscarMessenger.CreateMessage.btnClear"/></a>
+                                                       class="messengerButtons"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.btnClear"/></a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -214,8 +212,7 @@
                                             <tr>
                                                 <td class="messengerButtonsA">
                                                     <a href="javascript:window.close()"
-                                                       class="messengerButtons"><bean:message
-                                                            key="oscarMessenger.ViewMessage.btnExit"/></a>
+                                                       class="messengerButtons"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnExit"/></a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -254,7 +251,7 @@
                                 <html:form action="/phr/PhrMessage" enctype="multipart/form-data">
                                     <tr>
                                         <th align="left" bgcolor="#DDDDFF">
-                                            <bean:message key="oscarMessenger.CreateMessage.msgMessage"/>
+                                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.msgMessage"/>
                                         </th>
                                     </tr>
                                     <tr>
@@ -315,8 +312,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="right"><bean:message
-                                                            key="oscarMessenger.CreateMessage.formSubject"/> :
+                                                    <td align="right"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.formSubject"/> :
                                                     </td>
                                                     <td>
                                                         <%
@@ -367,16 +363,14 @@
 
                                                 </tr>
                                                 <tr>
-                                                    <td><bean:message
-                                                            key="oscarMessenger.CreateMessage.AttachFile"/></td>
+                                                    <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.AttachFile"/></td>
                                                     <td>
                                                         <input type="file" name="fileAttachment"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">
-                                                        <bean:message
-                                                                key="oscarMessenger.CreateMessage.SaveAttachmentToDocs"/>
+                                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.SaveAttachmentToDocs"/>
                                                         <input type="checkbox" name="saveFileAttachmentToDocs"/>
                                                     </td>
                                                 </tr>
@@ -384,7 +378,7 @@
 
                                             <input type="hidden" name="andPasteToEchart" id="andPasteToEchart"/>
                                             <input type="submit" class="ControlPushButton"
-                                                   value="<bean:message key="oscarMessenger.CreateMessage.btnSendMessage"/>">
+                                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.btnSendMessage"/>">
                                             <%
                                                 if (replyToMessage != null) {
                                             %>
@@ -397,26 +391,26 @@
                                             <input type="submit"
                                                     <%if (demographic == null){%>
                                                    disabled="disabled"
-                                                   title="<bean:message key="global.no.phr.account.registered"/>"
+                                                   title="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.no.phr.account.registered"/>"
                                                     <%}%>
                                                    class="ControlPushButton"
-                                                   value="<bean:message key="oscarMessenger.CreateMessage.btnSendMessageCpyToeChart"/>"
+                                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.btnSendMessageCpyToeChart"/>"
                                                    onclick="setCpyToChart();">
                                             <input type="button"
                                                     <%if (demographic == null) {%>
                                                    disabled="disabled"
-                                                   title="<bean:message key="global.no.phr.account.registered"/>"
+                                                   title="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.no.phr.account.registered"/>"
                                                     <%}%>
                                                    class="ControlPushButton"
-                                                   value="<bean:message key="oscarMessenger.CreateMessage.btnOpenEchart"/>"
+                                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.btnOpenEchart"/>"
                                                    onclick="gotoEchart2('<%=request.getParameter("demographicNo")%>','<%=replyToMessageId%>');"/>
                                             <!-- commented out as this doesn't seem to work, constant js null reference error
                                             			<input type="button" 
                                             				<%if (demographic == null){%>
 		                                   						disabled="disabled"
-		                                   						title="<bean:message key="global.no.phr.account.registered"/>"
+		                                   						title="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.no.phr.account.registered"/>"
 		                                					<%}%> 
-                                            				class="ControlPushButton" value="<bean:message key="oscarMessenger.CreateMessage.btnPasteToEchart"/>" onclick="paste2Echart();"/>
+                                            				class="ControlPushButton" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.btnPasteToEchart"/>" onclick="paste2Echart();"/>
                                             			-->
                                             <%
                                             } else {

@@ -26,7 +26,7 @@
 <!DOCTYPE html>
 <html>
 <%@ page import="oscar.eform.data.*, oscar.eform.*, java.util.*" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -88,7 +88,7 @@
             <label class="control-label" for="zippedForm">Import eForm:</label>
             <input type="file" class="input-file" id="zippedForm" name="zippedForm" size="50" required/>
             <span style="color:red;">
-		         <i class="icon-warning-sign" title="<bean:message key="global.uploadWarningBody"/>"></i>
+		         <i class="icon-warning-sign" title="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.uploadWarningBody"/>"></i>
 		         </span>
             <input type="submit" name="subm" value="Import" class="btn btn-primary upload" disabled>
         </div>
