@@ -63,8 +63,6 @@
             }
         %>
         <%
-            oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) pageContext.findAttribute("bean");
-
             if (request.getParameter("ID") != null && request.getParameter("type") != null && request.getParameter("type").equals("Delete")) {
                 RxPharmacyData rxp = new RxPharmacyData();
                 rxp.deletePharmacy(request.getParameter("ID"));

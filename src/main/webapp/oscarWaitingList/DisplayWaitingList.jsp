@@ -115,7 +115,7 @@
 
 
         function popupPage(ctr, patientName, demographicNo, startDate, vheight, vwidth, varpage) {
-            var nbPatients = "<bean:write name="nbPatients"/>";
+            var nbPatients = "<c:out value="${nbPatients}"/>";
             if (nbPatients > 1) {
                 var selected = document.forms[0].selectedProvider[ctr].options[document.forms[0].selectedProvider[ctr].selectedIndex].value;
             } else {

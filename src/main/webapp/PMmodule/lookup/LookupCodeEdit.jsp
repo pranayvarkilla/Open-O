@@ -50,8 +50,9 @@
     <table width="100%" height="100%" cellpadding="0px" cellspacing="0px">
         <tr>
             <th class="pageTitle" align="center"><span
-                    id="lblTitle" align="left">Code Edit - <bean:write name="lookupCodeEditForm"
-                                                                       property="tableDef.description"/></span></th>
+                    id="lblTitle" align="left">Code Edit - 
+                <c:out value="${lookupCodeEditForm.tableDef.description}"/>
+            </span></th>
         </tr>
         <tr>
             <td align="left" class="buttonBar2">

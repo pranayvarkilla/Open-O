@@ -21,7 +21,6 @@
 
 --%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -61,7 +60,7 @@
         <tr>
             <th class="pageTitle" align="center"><span
                     id="_ctl0_phBody_lblTitle" align="left">Lookup Tables &nbsp;-&nbsp;
-			<bean:write name="lookupListForm" property="tableDef.description"/>
+			<c:out value="${lookupListForm.tableDef.description}"/>
 			</span></th>
         </tr>
         <tr>

@@ -52,15 +52,19 @@
 <%@page import="java.util.ArrayList,oscar.util.*,java.util.*,org.oscarehr.common.model.Drug,org.oscarehr.common.dao.*" %>
 <%@page import="org.oscarehr.managers.DrugDispensingManager" %>
 <%@page import="org.oscarehr.managers.CodingSystemManager" %>
-<bean:define id="patient" type="oscar.oscarRx.data.RxPatientData.Patient" name="Patient"/>
 <c:if test="${empty sessionScope.RxSessionBean}">
     <c:redirect url="error.html"/>
 </c:if>
 <c:if test="${not empty sessionScope.RxSessionBean}">
-    <c:set var="bean" value="${sessionScope.RxSessionBean}" scope="page"/>
-    <c:if test="${bean.valid == false}">
-        <c:redirect url="error.html"/>
-    </c:if>
+    <%
+        // Directly access the RxSessionBean from the session
+        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        if (bean != null && !bean.isValid()) {
+            response.sendRedirect("error.html");
+            return; // Ensure no further JSP processing
+        }
+        oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
+    %>
 </c:if>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
@@ -81,7 +85,6 @@
 <%
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
     com.quatro.service.security.SecurityManager securityManager = new com.quatro.service.security.SecurityManager();
-    oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) pageContext.findAttribute("bean");
     PartialDateDao partialDateDao = SpringUtils.getBean(PartialDateDao.class);
 
     boolean showall = false;

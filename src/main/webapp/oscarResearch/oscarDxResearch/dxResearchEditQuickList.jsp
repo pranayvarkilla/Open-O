@@ -119,16 +119,16 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="0"
                        bgcolor="#EEEEFF" height="200">
                     <tr>
-                        <td class="heading"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.codingSystem"/>: <%-- <bean:write name="codingSystem"/> --%>
+                        <td class="heading"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.codingSystem"/>: <%-- <c:out value="${codingSystem}"/> --%>
                             <html:select property="selectedCodingSystem">
                                 <c:forEach var="codingSys" items="${codingSystem.codingSystems}">
                                     <option value="${codingSys}">${codingSys}</option>
                                 </c:forEach>
                             </html:select></td>
                         <td class="heading"></td>
-                        <td class="heading"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.quickListItemsOf"/> <bean:write
-                                name="quickListName"/> <input type="hidden" name="quickListName"
-                                                              value="<bean:write name="quickListName"/>"/></td>
+                        <td class="heading"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.quickListItemsOf"/> 
+                            <c:out value="${quickListName}"/> 
+                            <input type="hidden" name="quickListName" value="<c:out value="${quickListName}"/>"/></td>
                     </tr>
                     <tr>
                         <td colspan="3"><html:errors/></td>

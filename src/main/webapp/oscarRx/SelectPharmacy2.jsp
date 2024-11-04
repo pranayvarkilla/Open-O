@@ -67,26 +67,22 @@
                 src="<%= request.getContextPath() %>/share/lightwindow/javascript/lightwindow.js"></script>
         <link rel="stylesheet" type="text/css"
               href="<%= request.getContextPath() %>/share/lightwindow/css/lightwindow.css">
-        <%
-            // Check if RxSessionBean is missing in the session
-            if (session.getAttribute("RxSessionBean") == null) {
-                response.sendRedirect("error.html");
-            } else {
-                // Check if RxSessionBean is present but not valid
-                oscar.oscarRx.pageUtil.RxSessionBean rxBean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
-                if (!rxBean.isValid()) {
+
+
+        <c:if test="${empty RxSessionBean}">
+            <% response.sendRedirect("error.html"); %>
+        </c:if>
+        <c:if test="${not empty sessionScope.RxSessionBean}">
+            <%
+                // Directly access the RxSessionBean from the session
+                oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+                if (bean != null && !bean.isValid()) {
                     response.sendRedirect("error.html");
+                    return; // Ensure no further JSP processing
                 }
-            }
-        %>
-        <%
-            oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) pageContext.findAttribute("bean");
-        %>
-
-        <bean:define id="patient" type="oscar.oscarRx.data.RxPatientData.Patient" name="Patient"/>
-
-            <%--		<link rel="stylesheet" type="text/css" href="styles.css">--%>
-
+                oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
+            %>
+        </c:if>
         <script type="text/javascript">
             ShowSpin(true);
             (function ($) {
@@ -478,10 +474,8 @@
                         <h2><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.title"/>
                             <span style="font-size: small;">
 						<fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.nameText"/>
-						<jsp:getProperty name="patient" property="surname"/>
-						,
-						<jsp:getProperty name="patient" property="firstName"/>
-							</span>
+                        ${patient.surname}, ${patient.firstName}
+                    </span>
                             <input type=button class="btn btn-default pull-right" onclick="returnToRx();"
                                    value="Return to RX"/>
                         </h2>

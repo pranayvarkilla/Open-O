@@ -55,16 +55,18 @@
 <c:if test="${empty RxSessionBean}">
     <c:redirect url="error.html"/>
 </c:if>
-<c:if test="${not empty RxSessionBean}">
-    <c:set var="bean" value="${RxSessionBean}" scope="page"/>
-    <c:if test="${bean.valid == false}">
-        <c:redirect url="error.html"/>
-    </c:if>
+<c:if test="${not empty sessionScope.RxSessionBean}">
+    <%
+        // Directly access the RxSessionBean from the session
+        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        if (bean != null && !bean.isValid()) {
+            response.sendRedirect("error.html");
+            return; // Ensure no further JSP processing
+        }
+    %>
 </c:if>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <%
-    oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) pageContext.findAttribute("bean");
-
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
     RxPharmacyData pharmacyData = new RxPharmacyData();
     List<PharmacyInfo> pharmacyList = pharmacyData.getPharmacyFromDemographic(Integer.toString(bean.getDemographicNo()));
@@ -247,12 +249,9 @@
 
     <%
         boolean showall = false;
-
+        oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
         if (request.getParameter("show") != null) if (request.getParameter("show").equals("all")) showall = true;
     %>
-
-    <bean:define id="patient" type="oscar.oscarRx.data.RxPatientData.Patient" name="Patient"/>
-
     <body topmargin="0" leftmargin="0" vlink="#0000FF" onload="load()">
     <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111"
            width="100%" id="AutoNumber1" height="100%">
@@ -286,12 +285,11 @@
                             <table>
                                 <tr>
                                     <td><b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.nameText"/></b>
-                                        <jsp:getProperty name="patient" property="firstName"/>
-                                        <jsp:getProperty name="patient" property="surname"/>
+                                        ${patient.firstName} ${patient.surname}
                                     </td>
                                     <td></td>
                                     <td><b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.ageText"/></b>
-                                        <jsp:getProperty name="patient" property="age"/>
+                                        ${patient.age}
                                     </td>
                                     <td></td>
                                     <td><b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.PreferedPharmacy"/> :</b> <a
@@ -668,8 +666,7 @@
                                             <tr>
                                                 <td><a href="javascript:submitPending(${status.index}, 'edit');"><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.msgEdit"/></a></td>
                                                 <td><a href="javascript:submitPending(${status.index}, 'delete');"><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.msgDelete"/></a></td>
-                                                <td><a href="javascript:submitPending(${status.index}, 'edit');"> <bean:write
-                                                        name="rx" property="rxDisplay"/> </a></td>
+                                                <td><a href="javascript:submitPending(${status.index}, 'edit');"> <c:out value="${rx.rxDisplay}"/> </a></td>
                                                 <td>
                                                     <a href="javascript:ShowDrugInfo('${rx.genericName}');"><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.msgInfo"/></a></td>
                                             </tr>

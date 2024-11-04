@@ -26,7 +26,6 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ page import="oscar.oscarReport.oscarMeasurements.pageUtil.*" %>
 <%@ page import="java.util.*, java.sql.*, java.text.*, java.net.*" %>
@@ -95,8 +94,7 @@
                 <td class="MainTableTopRowRightColumn">
                     <table class="TopStatusBar">
                         <tr>
-                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTitle"/>: <bean:write
-                                    name="CDMGroup"/></td>
+                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTitle"/>: <c:out value="${CDMGroup}"/></td>
                             <td></td>
                             <td style="text-align: right"><oscar:help keywords="report" key="app.top1"/> | <a
                                     href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
@@ -127,12 +125,12 @@
                                                 checked="checked"/></td>
                                         <td width="120" class="fieldBox" bgcolor="#ddddff"><input
                                                 type="text" name='startDateA'
-                                                value='<bean:write name="lastYear"/>' size="10"> <img
+                                                value='<c:out value="${lastYear}"/>' size="10"> <img
                                                 src="../img/calendar.gif" border="0"
                                                 onClick="window.open('../../oscarReport/oscarReportCalendarPopup.jsp?type=startDateA&amp;year=<%=curYear%>&amp;month=<%=curMonth%>&amp;form=<%="RptInitializeFrequencyOfRelevantTestsCDMReportForm"%>','','width=300,height=300')"/>
                                         </td>
                                         <td width="120" class="fieldBox" bgcolor="#ddddff"><input
-                                                type="text" name='endDateA' value='<bean:write name="today"/>'
+                                                type="text" name='endDateA' value='<c:out value="${today}"/>'
                                                 size="10"> <img src="../img/calendar.gif" border="0"
                                                                 onClick="window.open('../../oscarReport/oscarReportCalendarPopup.jsp?type=endDateA&amp;year=<%=curYear%>&amp;month=<%=curMonth%>&amp;form=<%="RptInitializeFrequencyOfRelevantTestsCDMReportForm"%>','','width=300,height=300')"/>
                                         </td>
@@ -147,7 +145,7 @@
                                     <tr>
                                         <c:if test="${not empty messages}">
                                             <c:forEach var="msg" items="${messages}">
-                                                <bean:write name="msg"/>
+                                                <c:out value="${msg}"/>
                                                 <br>
                                             </c:forEach>
                                         </c:if>
@@ -173,31 +171,19 @@
                                     <tr>
                                         <td width="2" class="fieldBox" bgcolor="#ddddff"><input
                                                 type="checkbox" name="frequencyCheckbox" value="${ctr.index}"/></td>
-                                        <td width="4" class="fieldBox" bgcolor="#ddddff"><bean:write
-                                                name="measurementType" property="typeDisplayName"/></td>
-                                        <td width="200" class="fieldBox" bgcolor="#ddddff"><bean:write
-                                                name="measurementType" property="typeDesc"/></td>
+                                        <td width="4" class="fieldBox" bgcolor="#ddddff"><c:out value="${measurementType.typeDisplayName}"/></td>
+                                        <td width="200" class="fieldBox" bgcolor="#ddddff"><c:out value="${measurementType.typeDesc}"/></td>
                                         <td width="200" class="fieldBox" bgcolor="#ddddff"></td>
-                                        <td width="80" class="fieldBox" bgcolor="#ddddff"><input
-                                                type="text" name="exactly" size="6"/></td>
-                                        <td width="80" class="fieldBox" bgcolor="#ddddff"><input
-                                                type="text" name="moreThan" size="6"/></td>
-                                        <td width="80" class="fieldBox" bgcolor="#ddddff"><input
-                                                type="text" name="lessThan" size="6"/></td>
-                                        <td width="120" class="fieldBox" bgcolor="#ddddff"><input
-                                                type="text" name="startDateD"
-                                                value='<bean:write name="lastYear"/>' size="10"> <img
-                                                src="../img/calendar.gif" border="0"
-                                                onClick="window.open('../../oscarReport/oscarReportCalendarPopup.jsp?type=startDateD[${ctr.index}]&amp;year=<%=curYear%>&amp;month=<%=curMonth%>&amp;form=RptInitializeFrequencyOfRelevantTestsCDMReportForm','','width=300,height=300')"/>
+                                        <td width="80" class="fieldBox" bgcolor="#ddddff"><input type="text" name="exactly" size="6"/></td>
+                                        <td width="80" class="fieldBox" bgcolor="#ddddff"><input type="text" name="moreThan" size="6"/></td>
+                                        <td width="80" class="fieldBox" bgcolor="#ddddff"><input type="text" name="lessThan" size="6"/></td>
+                                        <td width="120" class="fieldBox" bgcolor="#ddddff"><input type="text" name="startDateD" value='<c:out value="${lastYear}"/>' size="10"> 
+                                            <img src="../img/calendar.gif" border="0" onClick="window.open('../../oscarReport/oscarReportCalendarPopup.jsp?type=startDateD[${ctr.index}]&amp;year=<%=curYear%>&amp;month=<%=curMonth%>&amp;form=RptInitializeFrequencyOfRelevantTestsCDMReportForm','','width=300,height=300')"/>
                                         </td>
-                                        <td width="120" class="fieldBox" bgcolor="#ddddff"><input
-                                                type="text" name="endDateD" value='<bean:write name="today"/>'
-                                                size="10"> <img src="../img/calendar.gif" border="0"
-                                                                onClick="window.open('../../oscarReport/oscarReportCalendarPopup.jsp?type=endDateD[${ctr.index}]&amp;year=<%=curYear%>&amp;month=<%=curMonth%>&amp;form=RptInitializeFrequencyOfRelevantTestsCDMReportForm','','width=300,height=300')"/>
+                                        <td width="120" class="fieldBox" bgcolor="#ddddff"><input type="text" name="endDateD" value='<c:out value="${today}"/>' size="10"> 
+                                            <img src="../img/calendar.gif" border="0" onClick="window.open('../../oscarReport/oscarReportCalendarPopup.jsp?type=endDateD[${ctr.index}]&amp;year=<%=curYear%>&amp;month=<%=curMonth%>&amp;form=RptInitializeFrequencyOfRelevantTestsCDMReportForm','','width=300,height=300')"/>
                                         </td>
-                                        <input type="hidden"
-                                               name='value(measurementTypeD${ctr.index})'
-                                               value="<bean:write name="measurementType" property="type" />"/>
+                                        <input type="hidden" name='value(measurementTypeD${ctr.index})' value="<c:out value="${measurementType.type}"/>"/>
                                     </tr>
                                     <tr>
                                         <td width="2" class="fieldBox" bgcolor="#ddddff"></td>
@@ -211,8 +197,9 @@
                                                         <td><input type="checkbox"
                                                                    name='value(mInstrcsCheckboxD${ctr.index}${index.index})'
                                                                    checked="checked"
-                                                                   value='<bean:write name="mInstrc" property="measuringInstrc" />'/><bean:write
-                                                                name="mInstrc" property="measuringInstrc"/></td>
+                                                                   value='<c:out value="${mInstrc.measuringInstrc}"/>'/>
+                                                                   <c:out value='${mInstrc.measuringInstrc}'/>
+                                                                   </td>
                                                     </tr>
                                                     <%k++;%>
                                                 </c:forEach>

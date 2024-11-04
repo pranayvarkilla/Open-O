@@ -48,11 +48,15 @@
 <c:if test="${empty RxSessionBean}">
     <% response.sendRedirect("error.html"); %>
 </c:if>
-<c:if test="${not empty RxSessionBean}">
-    <bean:define id="bean" type="oscar.oscarRx.pageUtil.RxSessionBean" name="RxSessionBean" scope="session"/>
-    <c:if test="${bean.valid == false}">
-        <% response.sendRedirect("error.html"); %>
-    </c:if>
+<c:if test="${not empty sessionScope.RxSessionBean}">
+    <%
+        // Directly access the RxSessionBean from the session
+        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        if (bean != null && !bean.isValid()) {
+            response.sendRedirect("error.html");
+            return; // Ensure no further JSP processing
+        }
+    %>
 </c:if>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
@@ -63,7 +67,6 @@
         <script type="text/javascript" src="<c:out value="../share/javascript/prototype.js"/>"></script>
 
         <%
-            RxSessionBean bean = (RxSessionBean) pageContext.findAttribute("bean");
             RxDrugData.DrugSearch drugSearch = (RxDrugData.DrugSearch) request.getAttribute("drugSearch");//set from searchdrugaction
             String demoNo = (String) request.getAttribute("demoNo");//set from searchdrugaction
             ArrayList brand = drugSearch.getBrand();

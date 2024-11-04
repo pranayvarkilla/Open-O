@@ -28,6 +28,7 @@
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
@@ -77,14 +78,13 @@
                                         <th align="left" class="td.tite"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementGroup.allTypes"/>
                                         </th>
 
-                                        <th align="left" class="td.tite"><bean:write
-                                                name="groupName"/></th>
+                                        <th align="left" class="td.tite"><c:out value="${groupName}"/></th>
                                     </tr>
                                     <tr>
-                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementGroup.add2Group"/><bean:write
-                                                name="groupName"/></td>
-                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementGroup.deleteTypes"/><bean:write
-                                                name="groupName"/></td>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementGroup.add2Group"/>
+                                            <c:out value="${groupName}"/></td>
+                                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementGroup.deleteTypes"/>
+                                            <c:out value="${groupName}"/></td>
                                     <tr>
                                         <td><html:select multiple="true" property="selectedAddTypes"
                                                          size="10">
@@ -113,7 +113,7 @@
                                         <td></td>
                                     </tr>
                                     <input type="hidden" name="groupName"
-                                           value="<bean:write name="groupName"/>"/>
+                                           value="<c:out value="${groupName}"/>"/>
                                 </table>
                             </td>
                         </tr>
