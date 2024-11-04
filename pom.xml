@@ -1708,7 +1708,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>11.0.20</version>
+                <version>11.0.24</version>
             </plugin>
             <!--
             Comming soon. After spring and java upgrades
