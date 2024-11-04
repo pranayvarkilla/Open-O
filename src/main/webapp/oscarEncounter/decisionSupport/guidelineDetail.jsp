@@ -102,7 +102,6 @@ Conditions:
         <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarrx.showallergies.evaluate"/></th>
     </tr>
     <c:forEach var="conditionResult" items="${conditionResults}" varStatus="status">
-        <bean:define id="condition" name="conditionResult" property="condition"/>
         <%
             String cssClass = "even";
             if (status.index % 2 == 1) cssClass = "odd";%>

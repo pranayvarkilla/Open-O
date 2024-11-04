@@ -27,6 +27,7 @@
 <%
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
@@ -60,7 +61,7 @@
         <form action="SetupEditMeasurementGroup.do">
             <tr>
                 <input type="hidden" name="value(groupName)"
-                       value="<bean:write name="groupName"/>"/>
+                       value="<c:out value="${groupName}"/>"/>
                 <td>Processing...</td>
                 <script>
                     submitForm();

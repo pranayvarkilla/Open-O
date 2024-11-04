@@ -69,7 +69,7 @@
 <body>
 <div style="font-size: 16px; font-weight: bold;"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarencounter.guidelinelist.youcurrently"/></div>
 <c:if test="${not empty demographic_no}">
-    <div style="font-size: 10px;"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarencounter.guidelinelist.demographicno"/> <bean:write name="demographic_no"/></div>
+    <div style="font-size: 10px;"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarencounter.guidelinelist.demographicno"/> <c:out value="${demographic_no}"/></div>
 </c:if>
 <br>
 <table class="dsTable">

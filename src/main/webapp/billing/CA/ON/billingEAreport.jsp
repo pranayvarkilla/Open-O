@@ -42,7 +42,7 @@
 
     <table width="100%">
         <tr>
-            <td class="Header1"><bean:write name="ReportName"/></td>
+            <td class="Header1"><c:out value="${ReportName}"/></td>
         </tr>
     </table>
     <table width="100%">

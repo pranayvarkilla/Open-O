@@ -23,14 +23,11 @@
     Ontario, Canada
 
 --%>
-
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-<%@ page
-        import="java.lang.*,oscar.oscarEncounter.oscarMeasurements.pageUtil.*" %>
-
+<%@ page import="java.lang.*,oscar.oscarEncounter.oscarMeasurements.pageUtil.*" %>
 <html:html lang="en">
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -58,7 +55,7 @@
         <tr>
             <td>Processing...</td>
             <script>
-                var text = "<bean:write name="templateValue"/>";
+                var text = "<c:out value="${templateValue}"/>";
                 text = text.replace(/\\u000A/g, "\u000A");
                 text = text.replace(/\\u003E/g, ">");
                 text = text.replace(/\\u003C/g, "<");

@@ -53,18 +53,17 @@
         <c:if test="${empty RxSessionBean}">
             <% response.sendRedirect("error.html"); %>
         </c:if>
-        <c:if test="${not empty RxSessionBean}">
-            <bean:define id="bean" type="oscar.oscarRx.pageUtil.RxSessionBean"
-                         name="RxSessionBean" scope="session"/>
-            <c:if test="${bean.valid == false}">
-                <% response.sendRedirect("error.html"); %>
-            </c:if>
+        <c:if test="${not empty sessionScope.RxSessionBean}">
+    <%
+        // Directly access the RxSessionBean from the session
+        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        if (bean != null && !bean.isValid()) {
+            response.sendRedirect("error.html");
+            return; // Ensure no further JSP processing
+        }
+    %>
         </c:if>
-
-
         <%
-            oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) pageContext.findAttribute("bean");
-
             if (request.getParameter("ID") != null && request.getParameter("type") != null && request.getParameter("type").equals("Delete")) {
                 RxPharmacyData rxp = new RxPharmacyData();
                 rxp.deletePharmacy(request.getParameter("ID"));

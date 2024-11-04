@@ -431,11 +431,11 @@
                                 <td><label>Health Card #<br>
                                     <input type="text" size="10" maxlength="10" dojoType="IntegerTextBox"
                                            name="client.hin"
-                                           value="<bean:write name="genericIntakeEditForm"  property="client.hin"/>"/>
+                                           value="<c:out value="${genericIntakeEditForm.client.hin}"/>"/>
                                 </label></td>
                                 <td><label>HC Version<br>
                                     <input type="text" size="2" maxlength="2" dojoType="AlphaTextBox" name="client.ver"
-                                           value="<bean:write name="genericIntakeEditForm"  property="client.ver"/>"/>
+                                           value="<c:out value="${genericIntakeEditForm.client.ver}"/>"/>
                                 </label></td>
                                 <td>
                                     <label>HC Type</label>
@@ -507,19 +507,19 @@
                                     <label>Email<br>
                                         <input type="text" size="20" maxlength="100" dojoType="EmailTextBox"
                                                name="client.email"
-                                               value="<bean:write name="genericIntakeEditForm"  property="client.email"/>"/>
+                                               value="<c:out value="${genericIntakeEditForm.client.email}"/>"/>
                                     </label></td>
                                 <td>
                                     <label>Phone #<br>
                                         <input type="text" size="20" maxlength="20" dojoType="UsPhoneNumberTextbox"
                                                name="client.phone"
-                                               value="<bean:write name="genericIntakeEditForm"  property="client.phone"/>"/>
+                                               value="<c:out value="${genericIntakeEditForm.client.phone}"/>"/>
                                     </label></td>
                                 <td>
                                     <label>Secondary Phone #<br>
                                         <input type="text" size="20" maxlength="20" dojoType="UsPhoneNumberTextbox"
                                                name="client.phone2"
-                                               value="<bean:write name="genericIntakeEditForm"  property="client.phone2"/>"/>
+                                               value="<c:out value="${genericIntakeEditForm.client.phone2}"/>"/>
                                     </label>
                                 </td>
                                 <td>

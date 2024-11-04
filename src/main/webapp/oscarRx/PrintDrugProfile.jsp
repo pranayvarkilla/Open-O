@@ -87,11 +87,9 @@
         if (request.getParameter("show") != null)
             if (request.getParameter("show").equals("all"))
                 showall = true;
+        oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) session.getAttribute("Patient");
+
     %>
-
-    <bean:define id="patient"
-                 type="oscar.oscarRx.data.RxPatientData.Patient" name="Patient"/>
-
     <body topmargin="0" leftmargin="0" vlink="#0000FF">
     <table border="0" cellpadding="0" cellspacing="0"
            style="border-collapse: collapse" bordercolor="#111111" width="100%"
@@ -112,27 +110,16 @@
                     </tr>
                     <tr>
                         <td><!-- <b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.nameText"/></b>-->
-                                <jsp:getProperty name="patient" property="surname"/>,
-                                <jsp:getProperty name="patient" property="firstName"/>
-                            <br/>
-
-                                <jsp:getProperty name="patient" property="address"/>
-                            <br/>
-                                <jsp:getProperty name="patient" property="city"/>,
-                                <jsp:getProperty name="patient" property="province"/>
-                                <jsp:getProperty name="patient" property="postal"/>
-                            <br/>
-                            <br/>
+                            ${patient.surname}, ${patient.firstName}<br/>
+                            ${patient.address}<br/>
+                            ${patient.city}, ${patient.province} ${patient.postal}<br/><br/>
                     </tr>
                     <tr>
                         <td>
                             <b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.ageText"/></b>
-                            <jsp:getProperty name="patient" property="age"/>
-                            <b>Gender:</b>
-                            <jsp:getProperty name="patient" property="sex"/>
-                            <b>HC:</b>
-                            <jsp:getProperty name="patient" property="hin"/>
-                            <br/>
+                            ${patient.age}
+                            <b>Gender:</b> ${patient.sex}
+                            <b>HC:</b> ${patient.hin}<br/>
                             <b>User:</b> <%=userlastname%>, <%=userfirstname %><br/>
                         </td>
                     </tr>

@@ -25,8 +25,8 @@
 <table width="100%" height="100%" cellpadding="0px" cellspacing="0px">
     <tr>
         <th class="pageTitle" align="center"><span
-                id="_ctl0_phBody_lblTitle" align="left">Lookup Table &nbsp;-&nbsp;<bean:write name="lookupCodeListForm"
-                                                                                              property="tableDef.description"/></span>
+                id="_ctl0_phBody_lblTitle" align="left">Lookup Table &nbsp;-&nbsp;
+                <c:out value="${lookupCodeListForm.tableDef.description}"/></span>
         </th>
     </tr>
     <tr>
@@ -60,11 +60,11 @@
                 <table>
                     <tr>
                         <th>Category:</th>
-                        <th align="left"><bean:write name="lookupCodeListForm" property="tableDef.moduleName"/></th>
+                        <th align="left"><c:out value="${lookupCodeListForm.tableDef.moduleName}"/></th>
                     </tr>
                     <tr>
                         <th>Field:</th>
-                        <th alighn="left"><bean:write name="lookupCodeListForm" property="tableDef.description"/></th>
+                        <th alighn="left"><c:out value="${lookupCodeListForm.tableDef.description}"/></th>
                     </tr>
                     <tr>
                         <td colspan="2">&nbsp;</td>
@@ -85,13 +85,13 @@
                             <td>
                                 <html:link action="/Lookup/LookupCodeEdit.do" paramId="id" paramProperty="codeId"
                                            paramName="lkCode">
-                                    <bean:write name="lkCode" property="code"/>
+                                    <c:out value="${lkCode.code}"/>
                                 </html:link>
                             </td>
                             <td>
                                 <html:link action="/Lookup/LookupCodeEdit.do" paramId="id" paramProperty="codeId"
                                            paramName="lkCode">
-                                    <bean:write name="lkCode" property="description"/>
+                                    <c:out value="${lkCode.description}"/>
                                 </html:link>
                             </td>
                             <c:if test="${lookupCodeListForm.tableDef.hasActive eq 'true'}">
@@ -108,7 +108,7 @@
                             </c:if>
                             <c:if test="${lookupCodeListForm.tableDef.hasDisplayOrder eq 'true'}">
                                 <td>
-                                    <bean:write name="lkCode" property="orderByIndex"/>
+                                    <c:out value="${lkCode.orderByIndex}"/>
                                 </td>
                             </c:if>
                         </tr>

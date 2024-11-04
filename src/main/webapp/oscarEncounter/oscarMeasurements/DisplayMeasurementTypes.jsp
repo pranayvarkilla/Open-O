@@ -69,7 +69,7 @@
                                     <tr>
                                         <c:if test="${not empty messages}">
                                             <c:forEach var="msg" items="${messages}">
-                                                <bean:write name="msg"/>
+                                                <c:out value="${msg}"/>
                                                 <br>
                                             </c:forEach>
                                         </c:if>

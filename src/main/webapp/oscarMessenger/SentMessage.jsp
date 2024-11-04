@@ -50,17 +50,10 @@
             <c:redirect url="index.jsp"/>
         </c:if>
         <c:if test="${not empty msgSessionBean}">
-            <bean:define id="bean"
-                         type="oscar.oscarMessenger.pageUtil.MsgSessionBean"
-                         name="msgSessionBean" scope="session"/>
-            <c:if test="${bean.valid == false}">
+            <c:if test="${msgSessionBean.valid == false}">
                 <c:redirect url="index.jsp"/>
             </c:if>
         </c:if>
-        <%
-            oscar.oscarMessenger.pageUtil.MsgSessionBean bean = (oscar.oscarMessenger.pageUtil.MsgSessionBean) pageContext.findAttribute("bean");
-        %>
-
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.SentMessage.title"/></title>
         <link rel="stylesheet" type="text/css" href="encounterStyles.css">
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>

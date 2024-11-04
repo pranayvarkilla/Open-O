@@ -72,7 +72,7 @@
                                         <td>
                                     <tr>
                                         <td align="left"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.SelectMeasurementGroup.msgCurrentStyleSheet"/>
-                                            <bean:write name='groupName'/>: <c:if test="${not empty css}">
+                                            <c:out name='${groupName}'/>: <c:if test="${not empty css}">
                                                 <c:out value="${css}"/>
                                             </c:if></td>
                                     <tr>
@@ -95,7 +95,7 @@
                                                    value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnCancel"/>"
                                                    onClick="window.close()"></td>
                                         <input type="hidden" name="groupName"
-                                               value="<bean:write name='groupName'/>"/>
+                                               value="<c:out name='${groupName}'/>"/>
                                     </tr>
                                 </table>
                             </td>

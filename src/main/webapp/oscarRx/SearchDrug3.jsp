@@ -54,13 +54,13 @@
 <%@page import="org.oscarehr.common.model.ProviderPreference" %>
 <%@page import="org.oscarehr.web.admin.ProviderPreferencesUIBean" %>
 <%@page import="org.oscarehr.study.StudyFactory, org.oscarehr.study.Study, org.oscarehr.study.types.MyMedsStudy" %>
-<bean:define id="patient" type="oscar.oscarRx.data.RxPatientData.Patient" name="Patient"/>
 <%@page import="org.oscarehr.casemgmt.service.CaseManagementManager" %>
 <%@page import="org.oscarehr.casemgmt.model.CaseManagementNote" %>
 <%@page import="org.oscarehr.casemgmt.model.Issue" %>
 
 <%
     String rx_enhance = OscarProperties.getInstance().getProperty("rx_enhance");
+    oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
 %>
 
 <%
@@ -96,15 +96,17 @@
     <c:redirect url="error.html"/>
 </c:if>
 <c:if test="${not empty sessionScope.RxSessionBean}">
-    <c:set var="bean" scope="page" value="${sessionScope.RxSessionBean}" />
-    <c:if test="${bean.valid == false}">
-        <c:redirect url="error.html"/>
-    </c:if>
+    <%
+        // Directly access the RxSessionBean from the session
+        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        if (bean != null && !bean.isValid()) {
+            response.sendRedirect("error.html");
+            return; // Ensure no further JSP processing
+        }
+    %>
 </c:if>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <%
-    oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) pageContext.findAttribute("bean");
-
     String usefav = request.getParameter("usefav");
     String favid = request.getParameter("favid");
     int demoNo = bean.getDemographicNo();

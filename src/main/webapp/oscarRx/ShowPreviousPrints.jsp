@@ -49,15 +49,16 @@
 <c:if test="${empty RxSessionBean}">
     <c:redirect url="error.html"/>
 </c:if>
-<c:if test="${not empty RxSessionBean}">
-    <c:set var="bean" value="${RxSessionBean}" scope="page"/>
-    <c:if test="${bean.valid == false}">
-        <c:redirect url="error.html"/>
-    </c:if>
+<c:if test="${not empty sessionScope.RxSessionBean}">
+    <%
+        // Directly access the RxSessionBean from the session
+        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        if (bean != null && !bean.isValid()) {
+            response.sendRedirect("error.html");
+            return; // Ensure no further JSP processing
+        }
+    %>
 </c:if>
-<%
-    oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) pageContext.findAttribute("bean");
-%>
 <html:html lang="en">
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -69,9 +70,8 @@
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
 
     </head>
-
-    <bean:define id="patient" type="oscar.oscarRx.data.RxPatientData.Patient" name="Patient"/>
     <%
+        oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");\
         String scriptNo = request.getParameter("scriptNo");
         //load prescription
         oscar.oscarRx.data.RxPrescriptionData.Prescription[] prescribedDrugs = patient.getPrescribedDrugScripts();

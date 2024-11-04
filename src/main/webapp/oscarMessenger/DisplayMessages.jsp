@@ -90,13 +90,12 @@
     <c:redirect url="index.jsp"/>
 </c:if>
 <c:if test="${not empty msgSessionBean}">
-    <bean:define id="bean" type="oscar.oscarMessenger.pageUtil.MsgSessionBean" name="msgSessionBean" scope="session"/>
-    <c:if test="${bean.valid == 'false'}">
+    <c:if test="${msgSessionBean.valid == 'false'}">
         <c:redirect url="index.jsp"/>
     </c:if>
 </c:if>
 <%
-    oscar.oscarMessenger.pageUtil.MsgSessionBean bean = (oscar.oscarMessenger.pageUtil.MsgSessionBean) pageContext.findAttribute("bean");
+    oscar.oscarMessenger.pageUtil.MsgSessionBean bean = (oscar.oscarMessenger.pageUtil.MsgSessionBean) session.getAttribute("msgSessionBean");
 %>
 <jsp:useBean id="DisplayMessagesBeanId" scope="session" class="oscar.oscarMessenger.pageUtil.MsgDisplayMessagesBean"/>
 <% DisplayMessagesBeanId.setProviderNo(bean.getProviderNo());

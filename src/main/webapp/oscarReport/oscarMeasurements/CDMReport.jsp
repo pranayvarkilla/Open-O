@@ -39,7 +39,6 @@
     }
 %>
 
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>\
@@ -58,7 +57,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><c:if test="${not empty title}">
-            <bean:write name="title"/>
+            <c:out value="${title}"/>
         </c:if></title>
         <html:base/>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
@@ -74,8 +73,7 @@
             <td class="MainTableTopRowRightColumn">
                 <table class="TopStatusBar">
                     <tr>
-                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTitle"/>: <bean:write
-                                name="CDMGroup"/></td>
+                        <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTitle"/>: <c:out value="${CDMGroup}"/></td>
                         <td></td>
                         <td style="text-align: right"><oscar:help keywords="report" key="app.top1"/> | <a
                                 href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
@@ -95,20 +93,20 @@
                                     <td>
                                 <tr>
                                     <th align="left" class="subTitles" width="600"><c:if test="${not empty title}">
-                                        <bean:write name="title"/>
+                                        <c:out value="${title}"/>
                                     </c:if></th>
                                 </tr>
                                 <c:if test="${not empty headings}">
                                 <tr>
                                     <c:forEach var="hd" items="${headings}">
-                                        <td><bean:write name="hd"/></td>
+                                        <td><c:out value="${hd}"/></td>
                                     </c:forEach>
                                 </tr>
                                 </c:if>
                                 <c:if test="${not empty messages}">
                                 <c:forEach var="msg" items="${messages}">
                                 <tr>
-                                    <td><bean:write name="msg"/></td>
+                                    <td><c:out value="${msg}"/></td>
                                 </tr>
                                 </c:forEach>
                                 </c:if>

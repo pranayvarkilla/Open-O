@@ -117,9 +117,9 @@
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
                     <c:forEach var="viewChoice" items="${viewChoices}">
                         <html:multibox property="rxProfileViewProperty.valueArray">
-                            <bean:write name="viewChoice" property="value"/>
+                            <c:out value="${viewChoice.value}"/>
                         </html:multibox>
-                        <bean:write name="viewChoice" property="label"/>
+                        <c:out value="${viewChoice.label}"/>
                     </c:forEach>
                     <br/>
                     <input type="submit" value="<%=bundle.getString(providerbtnSubmit)%>"/>

@@ -43,12 +43,15 @@
             <% response.sendRedirect("error.html"); %>
         </c:if>
         <c:if test="${not empty RxSessionBean}">
-            <bean:define id="bean" type="oscar.oscarRx.pageUtil.RxSessionBean" name="RxSessionBean" scope="session"/>
-            <c:if test="${bean.valid == false}">
-                <% response.sendRedirect("error.html"); %>
-            </c:if>
+            <%
+                // Directly access the RxSessionBean from the session
+                oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+                if (bean != null && !bean.isValid()) {
+                    response.sendRedirect("error.html");
+                    return; // Ensure no further JSP processing
+                }
+            %>
         </c:if>
-        <bean:define id="bean" type="oscar.oscarRx.pageUtil.RxSessionBean" name="bean" scope="page"/>
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
 
