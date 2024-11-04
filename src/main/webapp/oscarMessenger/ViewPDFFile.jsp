@@ -49,12 +49,13 @@
     <% response.sendRedirect("index.jsp"); %>
 </c:if>
 <c:if test="${not empty sessionScope.msgSessionBean}">
-    <bean:define id="bean"
-                 type="oscar.oscarMessenger.pageUtil.MsgSessionBean"
-                 name="msgSessionBean" scope="session"/>
-    <c:if test="${bean.valid == false}">
-        <% response.sendRedirect("index.jsp"); %>
-    </c:if>
+    <% 
+        // Directly accessing the bean from the session
+        oscar.oscarMessenger.pageUtil.MsgSessionBean bean = (oscar.oscarMessenger.pageUtil.MsgSessionBean) session.getAttribute("msgSessionBean");
+        if (!bean.isValid()) {
+            response.sendRedirect("index.jsp");
+        }
+    %>
 </c:if>
 <%
     String pdfAttch = (String) request.getAttribute("PDFAttachment");

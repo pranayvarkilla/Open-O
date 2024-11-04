@@ -102,8 +102,10 @@ Conditions:
         <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarrx.showallergies.evaluate"/></th>
     </tr>
     <c:forEach var="conditionResult" items="${conditionResults}" varStatus="status">
-        <bean:define id="condition" name="conditionResult" property="condition"/>
-        <tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
+        <%
+            String cssClass = "even";
+            if (status.index % 2 == 1) cssClass = "odd";%>
+        <tr class="<%=cssClass%>">
             <td><c:out value="${conditionResult.condition.conditionType}"/></td>
             <td><c:out value="${conditionResult.condition.listOperator}"/></td>
             <td><c:out value="${conditionResult.condition.values}"/></td>

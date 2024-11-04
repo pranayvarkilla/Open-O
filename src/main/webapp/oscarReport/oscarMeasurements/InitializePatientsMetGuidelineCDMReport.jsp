@@ -27,7 +27,6 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ page import="oscar.oscarReport.oscarMeasurements.pageUtil.*" %>
 <%@ page import="java.util.*, java.sql.*, java.text.*, java.net.*" %>
@@ -94,8 +93,7 @@
                 <td class="MainTableTopRowRightColumn">
                     <table class="TopStatusBar">
                         <tr>
-                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTitle"/>: <bean:write
-                                    name="CDMGroup"/></td>
+                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTitle"/>: <c:out value="${CDMGroup}"/></td>
                             <td></td>
                             <td style="text-align: right"><oscar:help keywords="report" key="app.top1"/> | <a
                                     href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
@@ -126,12 +124,12 @@
                                                 value="ctr"/></td>
                                         <td width="120" class="fieldBox" bgcolor="#ddddff"><input
                                                 type="text" name='startDateA'
-                                                value='<bean:write name="lastYear"/>' size="10"> <img
+                                                value='<c:out value="${lastYear}"/>' size="10"> <img
                                                 src="../img/calendar.gif" border="0"
                                                 onClick="window.open('../../oscarReport/oscarReportCalendarPopup.jsp?type=startDateA&amp;year=<%=curYear%>&amp;month=<%=curMonth%>&amp;form=<%="RptInitializePatientsMetGuidelineCDMReportForm"%>','','width=300,height=300')"/>
                                         </td>
                                         <td width="120" class="fieldBox" bgcolor="#ddddff"><input
-                                                type="text" name='endDateA' value='<bean:write name="today"/>'
+                                                type="text" name='endDateA' value='<c:out value="${today}"/>'
                                                 size="10"> <img src="../img/calendar.gif" border="0"
                                                                 onClick="window.open('../../oscarReport/oscarReportCalendarPopup.jsp?type=endDateA&amp;year=<%=curYear%>&amp;month=<%=curMonth%>&amp;form=<%="RptInitializePatientsMetGuidelineCDMReportForm"%>','','width=300,height=300')"/>
                                         </td>
@@ -146,7 +144,7 @@
                                     <tr>
                                         <c:if test="${not empty messages}">
                                             <c:forEach var="msg" items="${messages}">
-                                                <bean:write name="msg"/>
+                                                <c:out value="${msg}"/>
                                                 <br>
                                             </c:forEach>
                                         </c:if>

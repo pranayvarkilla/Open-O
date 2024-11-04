@@ -51,22 +51,17 @@
         <c:if test="${empty RxSessionBean}">
             <c:redirect url="error.html"/>
         </c:if>
-        <c:if test="${not empty RxSessionBean}">
-            <bean:define id="bean" type="oscar.oscarRx.pageUtil.RxSessionBean"
-                         name="RxSessionBean" scope="session"/>
-            <c:if test="${bean.valid == false}">
-                <c:redirect url="error.html"/>
-            </c:if>
+        <c:if test="${not empty sessionScope.RxSessionBean}">
+    <%
+        // Directly access the RxSessionBean from the session
+        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        if (bean != null && !bean.isValid()) {
+            response.sendRedirect("error.html");
+            return; // Ensure no further JSP processing
+        }
+        oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
+    %>
         </c:if>
-
-        <%
-            oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) pageContext.findAttribute("bean");
-
-        %>
-
-        <bean:define id="patient"
-                     type="oscar.oscarRx.data.RxPatientData.Patient" name="Patient"/>
-
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body topmargin="0" leftmargin="0" vlink="#0000FF">
@@ -91,11 +86,9 @@
                     <tr>
                         <td>
                             <div class="DivContentTitle"><b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.nameText"/></b>
-                                <jsp:getProperty name="patient"
-                                                 property="surname"/>
+                                ${patient.surname}
                                 ,
-                                <jsp:getProperty name="patient"
-                                                 property="firstName"/>
+                                ${patient.firstName}
                             </div>
                             <br/>
                             &nbsp; <fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.instructions"/></td>
@@ -128,7 +121,7 @@
                                     %>
                                     <tr>
                                         <td><a
-                                                href="LinkPharmacy.do?ID=<%=ph.getId()%>&DemoId=<jsp:getProperty name="patient" property="demographicNo"/>"><%=ph.getName()%>
+                                                href="LinkPharmacy.do?ID=<%=ph.getId()%>&DemoId=<%=patient.getDemographicNo()%>"><%=ph.getName()%>
                                         </a></td>
                                         <td><%=ph.getAddress()%>
                                         </td>

@@ -20,6 +20,7 @@
 <%@ page
         import="java.util.*, java.sql.*, oscar.*, java.text.*, java.lang.*,java.net.*, oscar.appt.*, org.oscarehr.common.dao.AppointmentTypeDao, org.oscarehr.common.model.AppointmentType, org.oscarehr.util.SpringUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ include file="../admin/dbconnection.jsp" %>
@@ -148,7 +149,7 @@
                             <html:form action="appointment/appointmentTypeAction">
                                 <input TYPE="hidden" NAME="oper" VALUE="save"/>
                                 <input TYPE="hidden" NAME="id"
-                                       VALUE="<bean:write name="AppointmentTypeForm" property="id"/>"/>
+                                       VALUE="<c:out value="${AppointmentTypeForm.id}"/>"/>
                                 <table border=0 cellspacing=0 cellpadding=0 width="100%">
                                     <tr bgcolor="#CCCCFF">
                                         <th><font face="Helvetica">EDIT APPOINTMENT TYPE</font></th>
@@ -164,7 +165,7 @@
                                                         <div align="right"><font face="arial">Name:</font></div>
                                                     </td>
                                                     <td width="25%"><INPUT TYPE="TEXT" NAME="name"
-                                                                           VALUE="<bean:write name="AppointmentTypeForm" property="name"/>"
+                                                                           VALUE="<c:out value="${AppointmentTypeForm.name}"/>"
                                                                            WIDTH="10" HEIGHT="20" border="0" hspace="2"
                                                                            maxlength="50"
                                                                            onChange="checkTimeTypeIn(this)">
@@ -172,7 +173,7 @@
                                                         <div align="right"><font face="arial">Duration:</font></div>
                                                     </td>
                                                     <td width="25%"><INPUT TYPE="TEXT" NAME="duration"
-                                                                           VALUE="<bean:write name="AppointmentTypeForm" property="duration"/>"
+                                                                           VALUE="<c:out value="${AppointmentTypeForm.duration}"/>"
                                                                            WIDTH="5" HEIGHT="20" border="0"
                                                                            onChange="checkTimeTypeIn(this)"></td>
                                                 </tr>
@@ -181,15 +182,15 @@
                                                         <div align="right"><font face="arial"><font
                                                                 face="arial">Reason:</font></font></div>
                                                     </td>
-                                                    <td><TEXTAREA NAME="reason" COLS="40" ROWS="2" border="0"
-                                                                  hspace="2"><bean:write name="AppointmentTypeForm"
-                                                                                         property="reason"/></TEXTAREA>
+                                                    <td><TEXTAREA NAME="reason" COLS="40" ROWS="2" border="0" hspace="2">
+                                                        <c:out value="${AppointmentTypeForm.reason}"/></TEXTAREA>
                                                     </td>
                                                     <td>
                                                         <div align="right"><font face="arial">Notes:</font></div>
                                                     </td>
-                                                    <td><TEXTAREA NAME="notes" COLS="40" ROWS="2" border="0" hspace="2"><bean:write
-                                                            name="AppointmentTypeForm" property="notes"/></TEXTAREA>
+                                                    <td><TEXTAREA NAME="notes" COLS="40" ROWS="2" border="0" hspace="2">
+                                                        <c:out value="${AppointmentTypeForm.notes}"/>
+                                                    </TEXTAREA>
                                                     </td>
                                                 </tr>
                                                 <tr valign="middle" BGCOLOR="#EEEEFF">
@@ -217,7 +218,7 @@
                                                         <div align="right"><font face="arial">Resources:</font></div>
                                                     </td>
                                                     <td><INPUT TYPE="TEXT" NAME="resources"
-                                                               VALUE="<bean:write name="AppointmentTypeForm" property="resources"/>"
+                                                               VALUE="<c:out value="${AppointmentTypeForm.resources}"/>"
                                                                WIDTH="10" HEIGHT="20" maxlength="10" border="0"
                                                                hspace="2"></td>
                                                 </tr>

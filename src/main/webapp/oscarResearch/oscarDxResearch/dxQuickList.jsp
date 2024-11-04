@@ -59,7 +59,7 @@ Required Parameters to plug-in:
                          onchange="javascript:changeList(this,'${ demographicNo }','${ providerNo }');">
                 <c:forEach var="quickLists" items="${allQuickLists.dxQuickListBeanVector}">
                     <option value="${ quickLists.quickListName }" ${ quickLists.quickListName eq param.quickList || quickLists.lastUsed eq 'Selected' ? 'selected' : '' } >
-                        <bean:write name="quickLists" property="quickListName"/>
+                        <c:out value="${quickLists.quickListName}"/>
                     </option>
                 </c:forEach>
             </html:select>
@@ -72,8 +72,8 @@ Required Parameters to plug-in:
                             add
                         </html:link>
 					</span>
-                        <bean:write name="item" property="type"/>:
-                        <bean:write name="item" property="description"/>
+                        <c:out value="${item.type}"/>:
+                        <c:out value="${item.description}"/>
                     </li>
                 </c:forEach>
             </ul>

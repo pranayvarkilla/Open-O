@@ -38,10 +38,14 @@
     <c:redirect url="error.html"/>
 </c:if>
 <c:if test="${not empty sessionScope.RxSessionBean}">
-    <c:set var="bean" value="${sessionScope.RxSessionBean}" scope="page"/>
-    <c:if test="${bean.valid == false}">
-        <c:redirect url="error.html"/>
-    </c:if>
+    <%
+        // Directly access the RxSessionBean from the session
+        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        if (bean != null && !bean.isValid()) {
+            response.sendRedirect("error.html");
+            return; // Ensure no further JSP processing
+        }
+    %>
 </c:if>
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -60,8 +64,6 @@
 %>
 
 <%
-    oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) pageContext.findAttribute("bean");
-
     String userfirstname = (String) session.getAttribute("userfirstname");
     String userlastname = (String) session.getAttribute("userlastname");
 
@@ -105,11 +107,8 @@
                 showall = true;
             }
         }
+        oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
     %>
-
-    <bean:define id="patient"
-                 type="oscar.oscarRx.data.RxPatientData.Patient" name="Patient"/>
-
     <body topmargin="0" leftmargin="0" vlink="#0000FF">
     <table border="0" cellpadding="0" cellspacing="0"
            style="border-collapse: collapse" bordercolor="#111111" width="100%"
@@ -130,17 +129,9 @@
                     </tr>
                     <tr>
                         <td><!-- <b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.nameText"/></b>-->
-                            <jsp:getProperty name="patient" property="surname"/>
-                            ,
-                            <jsp:getProperty name="patient" property="firstName"/>
-                            <br/>
-
-                            <jsp:getProperty name="patient" property="address"/>
-                            <br/>
-                            <jsp:getProperty name="patient" property="city"/>
-                            ,
-                            <jsp:getProperty name="patient" property="province"/>
-                            <jsp:getProperty name="patient" property="postal"/>
+                            ${patient.surname}, ${patient.firstName}<br/>
+                            ${patient.address}<br/>
+                            ${patient.city}, ${patient.province} ${patient.postal}
                             <br/>
                             <br/>
                         </td>
@@ -148,13 +139,10 @@
                     <tr>
                         <td>
                             <b><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.ageText"/></b>
-                            <jsp:getProperty name="patient" property="age"/>
-                            <b>Gender:</b>
-                            <jsp:getProperty name="patient" property="sex"/>
-                            <b>HC:</b>
-                            <jsp:getProperty name="patient" property="hin"/>
-                            <br/>
-                            <b>User:</b> <%=userlastname%>, <%=userfirstname %><br/>
+                            ${patient.age}
+                            <b>Gender:</b> ${patient.sex}
+                            <b>HC:</b> ${patient.hin}<br/>
+                            <b>User:</b> ${userlastname}, ${userfirstname}<br/>
                         </td>
                     </tr>
                     <tr>

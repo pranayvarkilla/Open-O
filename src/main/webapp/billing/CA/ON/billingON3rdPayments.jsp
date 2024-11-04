@@ -43,7 +43,7 @@
 -->
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.math.*,java.util.*,java.sql.*,oscar.*,java.net.*,java.text.*"
          errorPage="/errorpage.jsp" %>
 <%@page import="org.oscarehr.common.model.Site,org.oscarehr.common.dao.SiteDao" %>
@@ -341,9 +341,9 @@
                             <%= ttr.intValue() % 2 == 0 ? "<tr>" : "" %>
                             <td width="50%">
                                 <input type="radio" name="paymentType"
-                                       id="paymentType<bean:write name='billingPaymentType' property='id'/>"
-                                       value="<bean:write name='billingPaymentType' property='id'/>" <%=(ttr == 0 ? "checked=true" : "")%> />
-                                <bean:write name="billingPaymentType" property="paymentType"/>
+                                       id="paymentType<c:out value='${billingPaymentType.id}'/>"
+                                       value="<c:out value='${billingPaymentType.id}'/>" <%=(ttr == 0 ? "checked=true" : "")%> />
+                                <c:out value="${billingPaymentType.paymentType}"/>
                             </td>
                             <%= ttr.intValue() % 2 == 0 ? "" : "</tr>" %>
                         </c:forEach>
@@ -435,13 +435,13 @@
                 <tr>
                     <td><%= ctr + 1 %>
                     </td>
-                    <td><bean:write name="displayPayment" property="total_payment"/></td>
+                    <td><c:out value="${displayPayment.total_payment}"/></td>
                     <td><%=types.get(ctr.intValue()) %>
                     </td>
-                    <td><bean:write name="displayPayment" property="paymentDateFormatted"/></td>
-                    <td><bean:write name="displayPayment" property="total_discount"/></td>
-                    <td><bean:write name="displayPayment" property="total_credit"/></td>
-                    <td><bean:write name="displayPayment" property="total_refund"/></td>
+                    <td><c:out value="${displayPayment.paymentDateFormatted}"/></td>
+                    <td><c:out value="${displayPayment.total_discount}"/></td>
+                    <td><c:out value="${displayPayment.total_credit}"/></td>
+                    <td><c:out value="${displayPayment.total_refund}"/></td>
                     <%if (((BigDecimal) balances.get(index)).compareTo(BigDecimal.ZERO) == -1) {%>
                     <td><%= "-" + currency.format(balances.get(index++)) %>
                     </td>
@@ -450,7 +450,7 @@
                     </td>
                     <%} %>
                     <td>
-                        <a href="javascript:onViewPayment('<bean:write name="displayPayment" property="id" />')">view</a>
+                        <a href="javascript:onViewPayment('<c:out value="${displayPayment.id}"/>')">view</a>
                     </td>
                 </tr>
             </c:forEach>

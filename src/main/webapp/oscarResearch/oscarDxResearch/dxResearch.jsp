@@ -237,9 +237,9 @@
                                         <td><html:text styleClass="form-control" property="xml_research1"
                                                        disabled="<%=disable%>"/>
                                             <input type="hidden" name="demographicNo"
-                                                   value="<bean:write name="demographicNo"/>">
+                                                   value="<c:out value="${demographicNo}"/>">
                                             <input type="hidden" name="providerNo"
-                                                   value="<bean:write name="providerNo"/>"></td>
+                                                   value="<c:out value="${providerNo}"/>"></td>
                                     </tr>
                                     <tr>
                                         <td><html:text styleClass="form-control" property="xml_research2"

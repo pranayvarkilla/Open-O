@@ -60,48 +60,40 @@
         <table width="100%" border="1" cellspacing="2" cellpadding="3">
             <tr class="b">
                 <td width="20%">Client name:</td>
-                <td><bean:write name="clientManagerForm"
-                                property="client.formattedName"/></td>
+                <td><c:out value="${clientManagerForm.client.formattedName}"/></td>
             </tr>
             <tr class="b">
                 <td width="20%">Provider name:</td>
-                <td><bean:write name="clientManagerForm"
-                                property="provider.formattedName"/></td>
+                <td><c:out value="${clientManagerForm.provider.formattedName}"/></td>
             </tr>
             <tr class="b">
                 <td width="20%">Program name:</td>
-                <td><bean:write name="clientManagerForm"
-                                property="admission.programName"/></td>
+                <td><c:out value="${clientManagerForm.admission.programName}"/></td>
             </tr>
             <tr class="b">
                 <td width="20%">Team name:</td>
-                <td><bean:write name="clientManagerForm"
-                                property="admission.teamName"/></td>
+                <td><c:out value="${clientManagerForm.admission.teamName}"/></td>
             </tr>
             <tr class="b">
                 <td width="20%">Program type:</td>
-                <td><bean:write name="clientManagerForm"
-                                property="admission.programType"/></td>
+                <td><c:out value="${clientManagerForm.admission.programType}"/></td>
             </tr>
             <tr class="b">
                 <td width="20%">Client status:</td>
-                <td><bean:write name="clientManagerForm"
-                                property="admission.clientStatus"/></td>
+                <td><c:out value="${clientManagerForm.admission.clientStatus}"/></td>
             </tr>
             <tr class="b">
                 <td width="20%">Admission status:</td>
-                <td><bean:write name="clientManagerForm"
-                                property="admission.admissionStatus"/></td>
+                <td><c:out value="${clientManagerForm.admission.admissionStatus}"/></td>
             </tr>
             <tr class="b">
                 <td width="20%">Admission notes:</td>
-                <td><bean:write name="clientManagerForm"
-                                property="admission.admissionNotes"/></td>
+                <td><c:out value="${clientManagerForm.admission.admissionNotes}"/></td>
             </tr>
             <tr class="b">
                 <td width="20%">Admission date:</td>
                 <td>
-                    <bean:write name="clientManagerForm" property="admission.admissionDate"/>
+                    <c:out value="${clientManagerForm.admission.admissionDate}"/>
                     <%if (request.getAttribute("admission_date_updates") != null) { %>
                     <sup><a href="javascript:void(0)"
                             onclick="popupPage(600,400,'<%=request.getContextPath()%>/PMmodule/ClientManager/showHistory.jsp?type=update_admission_date&title=Admission Date Updates&id=<%=admission.getId()%>');return false;"><%=((List<OscarLog>) request.getAttribute("admission_date_updates")).size() %>
@@ -111,13 +103,12 @@
             </tr>
             <tr class="b">
                 <td width="20%">Temporary admission?</td>
-                <td><bean:write name="clientManagerForm"
-                                property="admission.temporaryAdmission"/></td>
+                <td><c:out value="${clientManagerForm.admission.temporaryAdmission}"/></td>
             </tr>
             <tr class="b">
                 <td width="20%">Discharge date:</td>
                 <td>
-                    <bean:write name="clientManagerForm" property="admission.dischargeDate"/>
+                    <c:out value="${clientManagerForm.admission.dischargeDate}"/>
                     <%if (request.getAttribute("discharge_date_updates") != null) { %>
                     <sup><a href="javascript:void(0)"
                             onclick="popupPage(600,400,'<%=request.getContextPath()%>/PMmodule/ClientManager/showHistory.jsp?type=update_discharge_date&title=Discharge Date Updates&id=<%=admission.getId()%>');return false;"><%=((List<OscarLog>) request.getAttribute("discharge_date_updates")).size() %>
@@ -140,11 +131,9 @@
             </tr>
             <tr class="b">
                 <td width="20%">Discharge notes:</td>
-                <td><bean:write name="clientManagerForm"
-                                property="admission.dischargeNotes"/></td>
+                <td><c:out value="${clientManagerForm.admission.dischargeNotes}"/></td>
             </tr>
         </table>
-
 
     </html:form>
     </body>

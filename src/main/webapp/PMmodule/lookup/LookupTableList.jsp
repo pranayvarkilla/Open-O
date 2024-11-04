@@ -21,8 +21,6 @@
 
 --%>
 <%@ include file="/taglibs.jsp" %>
-
-
 <table width="100%" height="100%" cellpadding="0px" cellspacing="0px">
     <tr>
         <th class="pageTitle" align="center"><span
@@ -56,7 +54,7 @@
                                 <c:forEach var="lkTable" items="${module.associates}">
                                     <li><html:link action="/Lookup/LookupCodeList.do" paramName="lkTable"
                                                    paramProperty="code" paramId="id">
-                                        <bean:write name="lkTable" property="description"/></html:link></li>
+                                        <c:out value="${lkTable.description}"/></html:link></li>
                                 </c:forEach>
                             </ul>
                         </li>

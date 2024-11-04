@@ -75,7 +75,7 @@
                 </td>
                 <td class="MainTableRightColumn" valign="top">
                     <html:messages id="errors" header="errors.header" footer="errors.footer">
-                        <li><bean:write name="errors"/></li>
+                        <li><c:out value="${errors}"/></li>
                     </html:messages>
 
                     <table>

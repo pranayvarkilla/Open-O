@@ -949,7 +949,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="dataEntryTable"><bean:write name="ExerDesc"/>
+                                                    <td class="dataEntryTable"><c:out value="${ExerDesc}"/>
                                                         <font class="eightyPercent"><%=request.getAttribute("ExerMeasuringInstrc")%>
                                                         </font></td>
                                                     <td class="dataEntryTable" align="center">
@@ -974,7 +974,7 @@
                                                             tabindex="9999"/></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="dataEntryTable"><bean:write name="DietDesc"/>
+                                                    <td class="dataEntryTable"><c:out value="${DietDesc}"/>
                                                         <font class="eightyPercent"><%=request.getAttribute("DietMeasuringInstrc")%>
                                                         </font></td>
                                                     <td class="dataEntryTable" align="center">
@@ -1852,7 +1852,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="dataEntryTable"><bean:write name="iRefDesc"/></td>
+                                                    <td class="dataEntryTable"><c:out value="${iRefDesc}"/></td>
                                                     <td class="dataEntryTable" align="center">
                                                         <table cellpadding='0' cellspacing='0'>
                                                             <tr>
