@@ -68,7 +68,7 @@
 
 %>
 
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -219,4 +219,4 @@
     <br>
     <a href="Contact.do?method=addContact">Add/Edit Contact</a>
     </body>
-</html:html>
+</html>

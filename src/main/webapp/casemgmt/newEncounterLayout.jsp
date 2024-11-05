@@ -64,7 +64,7 @@
     pageContext.setAttribute("cppPreferences", cppPreferences, PageContext.PAGE_SCOPE);
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <title>
             Encounter
@@ -997,4 +997,4 @@
     <%}%>
 
     </body>
-</html:html>
+</html>

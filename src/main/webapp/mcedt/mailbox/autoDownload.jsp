@@ -42,7 +42,7 @@
 %>
 
 
-<html:html>
+<html>
     <head>
         <jsp:include page="head-includes.jsp"/>
         <link href="mailbox/css/mcedt.css" rel="stylesheet" type="text/css">
@@ -199,4 +199,4 @@
         </div>
     </div>
     </body>
-</html:html>
+</html>

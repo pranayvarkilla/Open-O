@@ -64,7 +64,7 @@
     UserPropertyDAO propertyDao = SpringUtils.getBean(UserPropertyDAO.class);
 %>
 
-<html:html lang="en">
+<html>
 
     <head>
         <c:set var="ctx" value="${pageContext.request.contextPath}"/>
@@ -1018,4 +1018,4 @@
     </FORM>
 
     </body>
-</html:html>
+</html>

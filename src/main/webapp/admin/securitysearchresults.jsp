@@ -66,7 +66,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="admin.securitysearchresults.title"/></title>
         <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
@@ -182,4 +182,4 @@
     <br>
     <p><bean:message key="admin.securitysearchresults.msgClickForDetail"/></p>
     </body>
-</html:html>
+</html>

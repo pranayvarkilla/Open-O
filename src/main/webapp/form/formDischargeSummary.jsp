@@ -92,7 +92,7 @@
 * Ontario, Canada
 */
 -->
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>MULTI-DISCIPLINARY TEAM DISCHARGE SUMMARY</title>
@@ -798,4 +798,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

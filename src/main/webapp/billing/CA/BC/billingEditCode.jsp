@@ -43,7 +43,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ page import="java.util.*,oscar.oscarBilling.ca.bc.data.BillingCodeData,oscar.oscarBilling.ca.bc.pageUtil.*" %>
 
-<html:html lang="en">
+<html>
 
     <%@ page
             import="org.oscarehr.common.dao.BillingServiceDao,org.oscarehr.util.SpringUtils,org.oscarehr.common.model.*" %>
@@ -203,4 +203,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

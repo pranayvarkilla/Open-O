@@ -102,7 +102,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <%@page import="oscar.Misc" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Add/Edit 3rd Bill Address</title>
@@ -294,7 +294,7 @@
         <br>
         <a href="onAddEdit3rdAddr.jsp">Add/Edit Address</a></center>
     </body>
-</html:html>
+</html>
 <%!
     String str(String d) {
         if (d == null || d.trim().equals("")) {

@@ -43,7 +43,7 @@
 <%@ page import="oscar.form.*" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message
@@ -668,7 +668,7 @@
 
 
     </body>
-</html:html>
+</html>
 
 <%! String checkMarks(String val) {
     String ret = "<img src='graphics/notChecked.gif'>";

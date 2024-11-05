@@ -52,7 +52,7 @@
     }
 %>
 
-<html:html>
+<html>
 
     <head>
         <title><bean:message key="colcamex.formBPMH.title"/></title>
@@ -421,4 +421,4 @@
     </footer>
 
     </body>
-</html:html>
+</html>

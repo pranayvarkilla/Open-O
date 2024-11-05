@@ -40,7 +40,7 @@
     //get list of courses for the drop down
     List<Program> courses = org.oscarehr.learning.web.CourseManagerAction.getCoursesByModerator(loggedInInfo.getLoggedInProviderNo());
 %>
-<html:html lang="en">
+<html>
 
 
     <head>
@@ -203,4 +203,4 @@
     </body>
 
 
-</html:html>
+</html>

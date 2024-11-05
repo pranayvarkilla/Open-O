@@ -60,7 +60,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="admin.admin.btnUpdatePatientProvider"/></title>
 
@@ -507,4 +507,4 @@
         </div>
     </div>
     </body>
-</html:html>
+</html>

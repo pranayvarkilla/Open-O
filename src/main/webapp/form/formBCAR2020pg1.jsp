@@ -72,7 +72,7 @@
 
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
 
     <head>
         <title>BC Antenatal Record 2020 Part 1</title>
@@ -2716,4 +2716,4 @@
     </body>
 
 
-</html:html>
+</html>

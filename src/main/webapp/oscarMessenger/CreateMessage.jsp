@@ -108,7 +108,7 @@
 
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="oscarMessenger.CreateMessage.title"/></title>
 
@@ -618,4 +618,4 @@
         </table>
     </div>
     </body>
-</html:html>
+</html>

@@ -73,7 +73,7 @@
 <%@page import="org.oscarehr.common.model.Site" %>
 <%@page import="oscar.login.*,org.apache.commons.lang.StringUtils" %>
 <%@page import="org.oscarehr.PMmodule.dao.ProviderDao" %>
-<html:html lang="en">
+<html>
     <%@page import="org.oscarehr.common.model.ProviderSite" %>
     <%@page import="org.oscarehr.common.model.ProviderSitePK" %>
     <%@page import="org.oscarehr.common.dao.ProviderSiteDao" %>
@@ -659,4 +659,4 @@
 
     </center>
     </body>
-</html:html>
+</html>

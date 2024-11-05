@@ -43,7 +43,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Print Preview</title>
@@ -143,4 +143,4 @@
 
     </body>
 
-</html:html>
+</html>

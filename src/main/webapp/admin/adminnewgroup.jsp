@@ -51,7 +51,7 @@
 </security:oscarSec>
 
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
 
         <title><bean:message key="admin.adminnewgroup.title"/></title>
@@ -193,4 +193,4 @@
         });
     </script>
     </body>
-</html:html>
+</html>

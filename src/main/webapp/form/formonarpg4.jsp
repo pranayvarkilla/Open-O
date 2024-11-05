@@ -50,7 +50,7 @@
     String ar1CompleteSignal = "AR1 labs Complete";
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Antenatal Record 2</title>
@@ -1748,4 +1748,4 @@
         });
 
     </script>
-</html:html>
+</html>

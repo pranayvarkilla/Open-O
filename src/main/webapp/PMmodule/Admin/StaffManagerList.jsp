@@ -25,7 +25,7 @@
 <%@ include file="/taglibs.jsp" %>
 <%@ taglib uri="/WEB-INF/quatro-tag.tld" prefix="quatro" %>
 
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Staff Manager</title>
@@ -154,4 +154,4 @@
     </html:form>
 
     </body>
-</html:html>
+</html>

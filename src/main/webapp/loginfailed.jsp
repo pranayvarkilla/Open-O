@@ -34,7 +34,7 @@
     String errormsg = request.getParameter("errormsg");
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
@@ -46,4 +46,4 @@
     <p><%=errormsg%>
     <p>Please correct and try again.
     </body>
-</html:html>
+</html>

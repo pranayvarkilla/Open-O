@@ -137,7 +137,7 @@
     props.setProperty("c_lastVisited", "pg1");
 
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>B.C. Health Passport</title>
@@ -1794,4 +1794,4 @@
         });
     </script>
 
-</html:html>
+</html>

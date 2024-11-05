@@ -30,7 +30,7 @@
     Integer latestFrmId = (Integer) session.getAttribute("latestFrmId");
     session.removeAttribute("latestFrmId");
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <script language=javascript>
@@ -46,4 +46,4 @@
     <a href="javascript:window.close();"><bean:message
             key="oscarEncounter.close.btnHere"/></a>
     </body>
-</html:html>
+</html>

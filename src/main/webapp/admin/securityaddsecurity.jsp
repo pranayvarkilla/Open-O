@@ -52,7 +52,7 @@
     SecurityDao securityDao = SpringUtils.getBean(SecurityDao.class);
 %>
 <%@page import="org.oscarehr.util.MiscUtils" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="admin.securityaddsecurity.title"/></title>
@@ -75,4 +75,4 @@
 
     </center>
     </body>
-</html:html>
+</html>

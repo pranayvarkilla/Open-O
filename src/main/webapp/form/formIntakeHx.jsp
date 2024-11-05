@@ -44,7 +44,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
-<html:html lang="en">
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><bean:message key="oscarEncounter.formIntakeHx.title"/></title>
@@ -165,4 +165,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

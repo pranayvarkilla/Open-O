@@ -25,7 +25,7 @@
 --%>
 <%@ page session="true" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<html:html>
+<html>
 
     <html>
 
@@ -34,4 +34,4 @@
         <html:errors/>
     </head>
     <html>
-</html:html>
+</html>

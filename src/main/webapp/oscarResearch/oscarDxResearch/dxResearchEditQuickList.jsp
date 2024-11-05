@@ -35,7 +35,7 @@
 %>
 
 <link rel="stylesheet" type="text/css" href="dxResearch.css">
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message
@@ -208,4 +208,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

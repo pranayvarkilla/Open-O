@@ -100,7 +100,7 @@
 <%@page import="oscar.oscarDB.DBPreparedHandler" %>
 
 <%@page import="oscar.Misc" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>PHCP Report</title>
@@ -1011,4 +1011,4 @@
             return sTotal;
         }
     %>
-</html:html>
+</html>

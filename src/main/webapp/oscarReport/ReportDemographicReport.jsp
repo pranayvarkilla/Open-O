@@ -82,7 +82,7 @@
     }
 %>
 
-<html:html>
+<html>
     <head>
         <title>
             Demographic Report tool
@@ -241,8 +241,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="demographic_no"
-                                                       styleId="demographicNoCheckbox"/>
+                                        <html:multibox property="select" value="demographic_no" styleId="demographicNoCheckbox"/>
                                     </td>
                                     <td>
                                         Demographic #
@@ -772,4 +771,4 @@
         });
     </script>
     </body>
-</html:html>
+</html>

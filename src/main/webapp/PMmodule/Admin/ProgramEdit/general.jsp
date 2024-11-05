@@ -316,7 +316,7 @@
         <td><html:checkbox property="program.enableOCAN"/></td>
     </tr>
     <tr>
-        <td colspan="2"><input type="button" value="Save" onclick="return save()"/> <html:cancel/></td>
+        <td colspan="2"><input type="button" value="Save" onclick="return save()"/> <button type="button" onclick="window.history.back();">Cancel</button></td>
     </tr>
 </table>
 

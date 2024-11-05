@@ -31,7 +31,7 @@
 <%@page import="org.oscarehr.app.AppOAuth1Config" %>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<html:html lang="en">
+<html>
 
     <%@ page session="true" %>
     <head>
@@ -176,7 +176,7 @@
     <% } %>
     <div>&nbsp;</div>
     </body>
-</html:html>
+</html>
 
 <%!
     String stripDrugref(Object obj) {

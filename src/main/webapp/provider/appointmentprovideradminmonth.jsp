@@ -315,7 +315,7 @@
 <%@page import="org.oscarehr.common.model.Site" %>
 <%@page import="oscar.appt.JdbcApptImpl" %>
 <%@page import="oscar.appt.ApptUtil" %>
-<html:html lang="en">
+<html>
     <body bgcolor="#EEEEFF" onLoad="refreshAllTabAlerts();">
 
     <head>
@@ -1086,4 +1086,4 @@
         }
 
     </script>
-</html:html>
+</html>

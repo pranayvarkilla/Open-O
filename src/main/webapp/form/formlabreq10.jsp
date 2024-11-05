@@ -57,7 +57,7 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Laboratory Requisition</title>
@@ -1434,4 +1434,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

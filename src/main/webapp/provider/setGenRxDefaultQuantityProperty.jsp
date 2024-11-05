@@ -45,7 +45,7 @@
 %>
 <!DOCTYPE html>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
-<html:html>
+<html>
     <head>
         <html:base/>
         <title><%=bundle.getString(providertitle)%></title>
@@ -87,4 +87,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

@@ -68,7 +68,7 @@
 <%
     PreventionsLotNrsDao PreventionsLotNrsDao = (PreventionsLotNrsDao) SpringUtils.getBean(PreventionsLotNrsDao.class);
 %>
-<html:html lang="en">
+<html>
     <script LANGUAGE="JavaScript">
         function setfocus() {
             document.deletelotnr.prevention.focus();
@@ -136,4 +136,4 @@
         <p></p>
     </center>
     </body>
-</html:html>
+</html>

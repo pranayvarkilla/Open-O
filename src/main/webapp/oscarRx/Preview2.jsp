@@ -77,7 +77,7 @@
 %>
 
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
             <%--<script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>--%>
             <%--<script type="text/javascript" src="../share/javascript/prototype.js"></script>--%>
@@ -665,4 +665,4 @@
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

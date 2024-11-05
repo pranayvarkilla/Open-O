@@ -230,7 +230,7 @@
 <%@page import="oscar.appt.ApptUtil" %>
 <%@page import="org.oscarehr.common.dao.SiteDao" %>
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="schedule.schedulecreatedate.title"/></title>
@@ -432,4 +432,4 @@
 
 
     </body>
-</html:html>
+</html>

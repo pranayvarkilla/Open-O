@@ -45,7 +45,7 @@
 <%@page import="java.text.SimpleDateFormat" %>
 <%@page import="org.oscarehr.eyeform.model.EyeformConsultationReport" %>
 <%@page import="oscar.OscarProperties" %>
-<html:html>
+<html>
 
     <head>
         <style type="text/css" media="print">
@@ -592,4 +592,4 @@
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

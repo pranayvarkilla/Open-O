@@ -73,7 +73,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-<html:html lang="en">
+<html>
     <head>
         <title>HRM Preferences</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -150,4 +150,4 @@
             </div>
             </table>
     </form>
-</html:html>
+</html>

@@ -46,7 +46,7 @@
     }
 %>
 <!DOCTYPE HTML>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="SelectPharmacy.title"/></title>
         <html:base/>
@@ -605,4 +605,4 @@
     </div>
     </body>
 
-</html:html>
+</html>

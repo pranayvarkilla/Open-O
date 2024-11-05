@@ -26,7 +26,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"
        scope="request"/>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Program Management Module</title>
@@ -116,4 +116,4 @@
     </table>
     </body>
 
-</html:html>
+</html>

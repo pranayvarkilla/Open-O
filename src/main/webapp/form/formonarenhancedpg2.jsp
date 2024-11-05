@@ -117,7 +117,7 @@
     String hbsag = UtilMisc.htmlEscape(ar1Props.getProperty("pg1_labHBsAg", ""));
     String rubella = UtilMisc.htmlEscape(ar1Props.getProperty("pg1_labRubella", ""));
 %>
-<html:html lang="en">
+<html>
     <head>
         <title>Antenatal Record 2</title>
         <html:base/>
@@ -3245,4 +3245,4 @@ if (!fedb.equals("") && fedb.length()==10 ) {
         });
     </script>
     </body>
-</html:html>
+</html>

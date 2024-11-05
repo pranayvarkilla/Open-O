@@ -68,7 +68,7 @@
         }
     }
 %>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="schedule.scheduletemplatecodesetting.title"/></title>
 
@@ -252,4 +252,4 @@
         </form>
     </div>
     </body>
-</html:html>
+</html>

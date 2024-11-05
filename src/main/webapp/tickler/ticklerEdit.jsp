@@ -115,7 +115,7 @@
     DateFormat timeOnlyFormat = new SimpleDateFormat("HH:mm:ss", locale);
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <style>
             .tickler-comment-row:nth-child(odd) td {
@@ -530,4 +530,4 @@
     </div>
 
     </body>
-</html:html>
+</html>

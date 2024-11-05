@@ -30,7 +30,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <link rel="stylesheet" type="text/css" href="dxResearch.css">
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message
@@ -92,4 +92,4 @@
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

@@ -180,7 +180,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
     <head>
         <title>Annotation</title>
         <% if (isMobileOptimized) { %>
@@ -254,7 +254,7 @@
     </form>
     </body>
 
-</html:html>
+</html>
 
 
 <%!

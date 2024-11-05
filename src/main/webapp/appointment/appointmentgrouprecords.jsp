@@ -308,7 +308,7 @@
         return;
     } // if (request.getParameter("groupappt") != null)
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message
@@ -615,4 +615,4 @@
 
     </form>
     </body>
-</html:html>
+</html>

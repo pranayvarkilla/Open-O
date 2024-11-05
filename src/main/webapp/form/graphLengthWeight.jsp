@@ -42,7 +42,7 @@
         import="oscar.form.*, oscar.form.data.*, oscar.util.*, java.util.Date" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Length & Weight Graph</title>
@@ -349,4 +349,4 @@
                                                                                                       onclick="javascript: window.close();"
                                                                                                       style="position: relative; width: 100px;"/> </span>
     </body>
-</html:html>
+</html>

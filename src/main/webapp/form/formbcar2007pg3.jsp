@@ -86,7 +86,7 @@
     if (props.getProperty("ar2_age", "").equals(""))
         props.setProperty("ar2_age", props.getProperty("pg1_ageAtEDD", ""));
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Antenatal Record 2</title>
@@ -3117,4 +3117,4 @@ if (!fedb.equals("") && fedb.length()==10 ) {
     </script>
 
     </body>
-</html:html>
+</html>

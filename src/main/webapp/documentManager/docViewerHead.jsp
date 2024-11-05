@@ -27,7 +27,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="dms.docViewerHead.title"/></title>
@@ -38,4 +38,4 @@
                               size="3"><b><font color="#FFFFFF"><bean:message
             key="dms.docViewerHead.msgDocumentViewer"/></font></b></font></div>
     </body>
-</html:html>
+</html>

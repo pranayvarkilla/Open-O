@@ -41,7 +41,7 @@
 %>
 <!DOCTYPE html>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
-<html:html>
+<html>
     <head>
         <html:base/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -89,4 +89,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

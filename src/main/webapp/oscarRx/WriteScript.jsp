@@ -50,7 +50,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="WriteScript.title"/></title>
@@ -1653,7 +1653,7 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
 
     </table>
     </body>
-</html:html>
+</html>
 <%long end = System.currentTimeMillis() - start; %>
 
 <%!

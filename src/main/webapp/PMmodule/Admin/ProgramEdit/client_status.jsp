@@ -78,7 +78,7 @@
     </tr>
     <tr>
         <td colspan="2">
-            <input type="button" value="Save" onclick="add_status(this.form)"/> <html:cancel/>
+            <input type="button" value="Save" onclick="add_status(this.form)"/> <button type="button" onclick="window.history.back();">Cancel</button>
         </td>
     </tr>
 </table>

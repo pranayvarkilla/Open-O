@@ -35,7 +35,7 @@
     HtmlRenderer renderer = HtmlRenderer.builder().build();
     String surveyQuestion = renderer.render(document);
 %>
-<html:html lang="en">
+<html>
 
     <%--
 
@@ -76,4 +76,4 @@
             </html:form>
         </div>
     </body>
-</html:html>
+</html>

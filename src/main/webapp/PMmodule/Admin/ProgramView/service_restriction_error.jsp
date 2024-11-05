@@ -102,7 +102,7 @@
             <td colspan="2"><c:if
                     test="${requestScope.hasOverridePermission}">
                 <html:submit property="submit.override">Override</html:submit>
-            </c:if> <html:cancel property="submit.cancel">Cancel</html:cancel></td>
+            </c:if> <button type="button" onclick="window.history.back();">Cancel</button></td>
         </tr>
 
     </table>

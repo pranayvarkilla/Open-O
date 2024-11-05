@@ -249,7 +249,7 @@
 <%@page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
 
     <head>
         <title><bean:message key="demographic.demographiceditdemographic.title"/></title>
@@ -5084,7 +5084,7 @@ if (privateConsentEnabled) {
 
     </script>
     </body>
-</html:html>
+</html>
 
 
 <%!

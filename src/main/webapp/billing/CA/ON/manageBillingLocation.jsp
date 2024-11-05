@@ -47,7 +47,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="admin.admin.btnAddBillingLocation"/></title>
         <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
@@ -196,4 +196,4 @@
         </table>
     </div>
     </body>
-</html:html>
+</html>

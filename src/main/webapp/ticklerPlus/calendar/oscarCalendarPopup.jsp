@@ -40,7 +40,7 @@
     year = now.get(Calendar.YEAR);
     month = now.get(Calendar.MONTH) + 1;
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="billing.billingCalendarPopup.title"/></title>
@@ -158,4 +158,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

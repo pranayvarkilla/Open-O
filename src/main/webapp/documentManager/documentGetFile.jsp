@@ -62,7 +62,7 @@
             if (downloadMethod == null) {
                 filePath = "../../OscarDocument" + request.getContextPath() + "/document/" + filename;
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="dms.documentGetFile.title"/></title>
@@ -77,7 +77,7 @@
         <body bgcolor="#FFFFFF" text="#000000">
         </body>
     </noframes>
-</html:html>
+</html>
 
 <%
         } else {

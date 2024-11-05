@@ -63,7 +63,7 @@
     ProviderDataDao providerDao = SpringUtils.getBean(ProviderDataDao.class);
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="demographic.demographiclabelprintsetting.title"/></title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -315,4 +315,4 @@
     </form>
 
     </body>
-</html:html>
+</html>

@@ -56,7 +56,7 @@
     }
 
 %>
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <!--I18n-->
@@ -227,4 +227,4 @@
         <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 
     </body>
-</html:html>
+</html>

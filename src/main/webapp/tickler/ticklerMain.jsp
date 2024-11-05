@@ -156,7 +156,7 @@
 
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="tickler.ticklerMain.title"/> Manager</title>
 
@@ -1104,4 +1104,4 @@
 
     </div>
     </body>
-</html:html>
+</html>

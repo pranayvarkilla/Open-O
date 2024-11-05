@@ -56,7 +56,7 @@
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
     Provider provider = loggedInInfo.getLoggedInProvider();
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>OSCAR Jobs</title>
@@ -278,4 +278,4 @@
     </table>
     <input type="button" class="btn btn-primary" value="Add New" onClick="addNewTarget()"/>
     </body>
-</html:html>
+</html>

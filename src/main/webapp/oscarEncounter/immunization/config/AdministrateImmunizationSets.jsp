@@ -53,7 +53,7 @@
 
 %>
 
-<html:html lang="en">
+<html>
 
 
     <head>
@@ -175,4 +175,4 @@
 
 
     </body>
-</html:html>
+</html>

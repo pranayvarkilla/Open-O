@@ -35,7 +35,7 @@
     else if (orderByRequest.equals("file_name")) orderBy = EFormUtil.FILE_NAME;
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="eform.uploadhtml.title"/></title>
@@ -121,4 +121,4 @@
         }
     </script>
     </body>
-</html:html>
+</html>

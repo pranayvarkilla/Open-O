@@ -76,7 +76,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="oscarReport.ConsultationReport.title"/>
@@ -279,4 +279,4 @@ nsult.do?requestId=<%=demoCon.requestId%>')"><%=demoCon.referalDate%>
         </tr>
     </table>
     </body>
-</html:html>
+</html>

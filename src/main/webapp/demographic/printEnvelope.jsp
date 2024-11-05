@@ -45,7 +45,7 @@
         }
     }
 %>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="report.printLabel.title"/></title>
     </head>
@@ -71,5 +71,5 @@
 
     </object>
     </body>
-</html:html>
+</html>
 

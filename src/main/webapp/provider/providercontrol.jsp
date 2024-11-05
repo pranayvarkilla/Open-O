@@ -174,5 +174,6 @@
     String operation = requestParamDict.getDef("displaymode", "");
 
     // redirect to a file associated with operation
+    System.out.println((opToFileDict.getDef(operation, ""));
     pageContext.forward(opToFileDict.getDef(operation, ""));
 %>

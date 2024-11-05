@@ -134,7 +134,7 @@
 
 
 <!DOCTYPE HTML>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="admin.admin.addRole"/></title>
         <script src="${pageContext.request.contextPath}/js/global.js"></script>
@@ -273,4 +273,4 @@
     </div>
 
     </body>
-</html:html>
+</html>

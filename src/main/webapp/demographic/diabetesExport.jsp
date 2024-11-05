@@ -60,7 +60,7 @@
     String userRole = (String) session.getAttribute("userrole");
 %>
 
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <!--I18n-->
@@ -149,7 +149,7 @@
                     <%}%>
     </div>
     </body>
-</html:html>
+</html>
 <%!
 
 %>

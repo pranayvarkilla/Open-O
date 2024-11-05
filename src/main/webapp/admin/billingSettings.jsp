@@ -137,7 +137,7 @@
     pageContext.setAttribute("clinicData", new ClinicData());
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <title>Billing Settings</title>
         <script src="<%=request.getContextPath()%>/csrfguard" type="text/javascript"></script>
@@ -260,4 +260,4 @@
             ${ success ? "<span style=\'color:green;\'>Settings Saved</span>" : "<span style=\'color:red;\'></span>" }
     </form>
     </body>
-</html:html>
+</html>
