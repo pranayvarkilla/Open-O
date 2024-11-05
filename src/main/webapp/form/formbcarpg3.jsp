@@ -55,7 +55,7 @@
     boolean bView = false;
     if (request.getParameter("view") != null && request.getParameter("view").equals("1")) bView = true;
 %>
-<html:html lang="en">
+<html>
     <head>
         <title>Antenatal Record 2</title>
         <html:base/>
@@ -2820,4 +2820,4 @@ if (!fedb.equals("") && fedb.length()==10 ) {
         });
     </script>
     </body>
-</html:html>
+</html>

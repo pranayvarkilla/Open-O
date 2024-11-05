@@ -55,7 +55,7 @@
     </c:if>
 </c:if>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="ChooseDrug.title.DrugSearchResults"/></title>
         <html:base/>
@@ -415,7 +415,7 @@
 
     </body>
 
-</html:html>
+</html>
 <%!
 
     String getColor(boolean t) {

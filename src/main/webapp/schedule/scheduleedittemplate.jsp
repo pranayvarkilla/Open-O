@@ -68,7 +68,7 @@
 
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="schedule.scheduleedittemplate.title"/></title>
@@ -278,4 +278,4 @@
     </table>
 
     </body>
-</html:html>
+</html>

@@ -38,7 +38,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
 
     <%
 
@@ -76,4 +76,4 @@
         <input class="btn btn-primary" type="submit" value="save" onclick="submitcheck()"/>
     </html:form>
     </body>
-</html:html>
+</html>

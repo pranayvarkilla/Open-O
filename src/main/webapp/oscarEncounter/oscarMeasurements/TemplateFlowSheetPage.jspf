@@ -152,7 +152,7 @@
 
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
 
 <head>
 <title><%=flowSheet%> - <oscar:nameage demographicNo="<%=demographic_no%>"/></title><!--I18n-->
@@ -1036,7 +1036,7 @@ if(idExists("WT") && idExists("HT" ) && idExists("BMI")){
 </script>
 </div>
 </body>
-</html:html>
+</html>
 
 <%!String refused(Object re){
         String ret = "Given";

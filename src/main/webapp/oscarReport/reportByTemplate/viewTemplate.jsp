@@ -44,7 +44,7 @@
 </security:oscarSec>
 <!DOCTYPE html>
 
-<html:html lang="en">
+<html>
     <head>
         <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="${pageContext.request.contextPath}/css/DT_bootstrap.css" rel="stylesheet" type="text/css">
@@ -88,4 +88,4 @@
                onclick="document.location='addEditTemplate.jsp?templateid=<%=templateid%>&opentext=1'"/>
     </div>
 
-</html:html>
+</html>

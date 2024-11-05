@@ -37,7 +37,7 @@
     String demo = ((Integer) request.getAttribute("demographicNo")).toString();
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
 
     <head>
         <title><bean:message key="oscarEncounter.Index.oldMeasurements"/>
@@ -254,4 +254,4 @@
         </c:if>
     </html:form>
     </body>
-</html:html>
+</html>

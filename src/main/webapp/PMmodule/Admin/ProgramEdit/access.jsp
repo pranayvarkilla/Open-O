@@ -90,6 +90,6 @@
     <tr>
         <td colspan="2"><input type="button" value="Save"
                                onclick="this.form.method.value='save_access';this.form.submit()"/>
-            <html:cancel/></td>
+            <button type="button" onclick="window.history.back();">Cancel</button></td>
     </tr>
 </table>

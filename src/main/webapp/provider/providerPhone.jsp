@@ -36,7 +36,7 @@
     if (session.getValue("user") == null) response.sendRedirect("../logout.htm");
     String curUser_no = (String) session.getAttribute("user");
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
 
@@ -116,4 +116,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

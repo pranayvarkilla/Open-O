@@ -21,7 +21,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="billing.billingCorrectionSubmit.title"/></title>
@@ -151,4 +151,4 @@
                                                                                                          onClick="window.close()">
     </form>
     </body>
-</html:html>
+</html>

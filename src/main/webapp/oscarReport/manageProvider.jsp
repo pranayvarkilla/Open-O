@@ -70,7 +70,7 @@
 %>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="oscarReport.manageProvider.title"/></title>
         <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
@@ -173,4 +173,4 @@
         </form>
     </div>
     </body>
-</html:html>
+</html>

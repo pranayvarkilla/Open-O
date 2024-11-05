@@ -44,7 +44,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="admin.admin.traceabilityReport"/></title>
         <!--<script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>-->
@@ -129,4 +129,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

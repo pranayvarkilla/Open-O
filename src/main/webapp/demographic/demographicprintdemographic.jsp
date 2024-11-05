@@ -30,7 +30,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message
@@ -181,4 +181,4 @@
                onClick="javascript:history.go(-1);return false;"></div>
 
     </body>
-</html:html>
+</html>

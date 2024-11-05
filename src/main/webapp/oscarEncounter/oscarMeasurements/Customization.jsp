@@ -34,7 +34,7 @@
 <%@ page import="oscar.oscarEncounter.oscarMeasurements.pageUtil.*" %>
 <%@ page import="java.util.Vector" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message
@@ -183,4 +183,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

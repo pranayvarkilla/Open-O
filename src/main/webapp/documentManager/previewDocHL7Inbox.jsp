@@ -54,7 +54,7 @@
 <%@page import="org.oscarehr.util.SessionConstants" %>
 <%@ page import="org.oscarehr.documentManager.EDoc" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="dms.documentReport.title"/></title>
@@ -355,4 +355,4 @@
     </form>
 
     </body>
-</html:html>
+</html>

@@ -83,7 +83,7 @@
         }
     }
 %>
-<html:html lang="en">
+<html>
     <head>
 
         <title><bean:message key="admin.fieldNote.report"/></title>
@@ -303,4 +303,4 @@
     </script>
 
     </body>
-</html:html>
+</html>

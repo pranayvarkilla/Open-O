@@ -60,7 +60,7 @@
         }
     }
 %>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="report.printLabel.title"/></title>
     </head>
@@ -78,5 +78,5 @@
             data="printClientLabLabelAction.do?demographic_no=<%=request.getParameter("demographic_no")%>" height="80%"
             width="100%"></object>
     </body>
-</html:html>
+</html>
 

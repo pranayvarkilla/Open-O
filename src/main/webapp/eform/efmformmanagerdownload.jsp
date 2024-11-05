@@ -36,7 +36,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@page import="org.oscarehr.util.MiscUtils" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="eform.download.msgDownloadEform"/></title>
@@ -130,7 +130,7 @@
 
     <%}%>
     </body>
-</html:html>
+</html>
 <%!
 
     String stripDrugref(Object obj) {

@@ -151,7 +151,7 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="admin.admin.ManagePrivFrm"/></title>
         <script src="<%=request.getContextPath()%>/csrfguard" type="text/javascript"></script>
@@ -265,4 +265,4 @@
             $('#billingservice_date').datepicker();
         });
     </script>
-</html:html>
+</html>

@@ -46,7 +46,7 @@
 <%@page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@page import="org.oscarehr.eyeform.model.EyeformConsultationReport" %>
 
-<html:html>
+<html>
     <head>
         <html:base/>
         <title>Generate Consultation Report</title>
@@ -279,4 +279,4 @@
     </html:form>
 
     </body>
-</html:html>
+</html>

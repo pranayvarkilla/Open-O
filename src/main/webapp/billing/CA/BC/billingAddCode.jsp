@@ -43,7 +43,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
 
 
     <head>
@@ -149,10 +149,8 @@
                     <tr>
                         <td>&nbsp;</td>
                         <td>
-                                <html:submit value="Add"/>
-                                <html:button
-                                        onclick="javascript: document.location = 'billingCodeAdjust.jsp'"
-                                        property="back" value="Back"/>
+                            <html:submit value="Add"/>
+                            <button type="button" onclick="document.location = 'billingCodeAdjust.jsp'">Back</button>
                     </tr>
                 </table>
             </html:form></td>
@@ -163,4 +161,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

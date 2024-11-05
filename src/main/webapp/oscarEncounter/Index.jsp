@@ -148,7 +148,7 @@
 
 
 <%@page import="org.oscarehr.util.MiscUtils" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="oscarEncounter.Index.title"/> - <oscar:nameage
@@ -1715,4 +1715,4 @@
     <%}%>
 
     </body>
-</html:html>
+</html>

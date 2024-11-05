@@ -35,7 +35,7 @@
 <%@page import="java.util.*,org.oscarehr.learning.web.CourseManagerAction,org.oscarehr.common.model.SecRole" %>
 
 
-<html:html lang="en">
+<html>
 
     <head>
         <title><bean:message key="oscarLearning.studentImport.title"/></title>
@@ -78,4 +78,4 @@
         </div>
     </div>
     </body>
-</html:html>
+</html>

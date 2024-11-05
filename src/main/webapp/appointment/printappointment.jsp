@@ -48,7 +48,7 @@
         }
     }
 %>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="report.appointmentReceipt.title"/></title>
     </head>
@@ -66,4 +66,4 @@
             data="printAppointmentReceiptAction.do?appointment_no=<%=request.getParameter("appointment_no")%>"
             height="80%" width="100%"></object>
     </body>
-</html:html>
+</html>

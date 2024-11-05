@@ -58,7 +58,7 @@
     EctFormData.Form[] forms = EctFormData.getForms();
     oscar.util.UtilDateUtilities dateConvert = new oscar.util.UtilDateUtilities();
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="oscarEncounter.formlist.title"/></title>
@@ -209,4 +209,4 @@
         </table>
     </center>
     </body>
-</html:html>
+</html>

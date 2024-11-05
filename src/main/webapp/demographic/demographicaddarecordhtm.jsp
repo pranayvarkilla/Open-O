@@ -156,7 +156,7 @@
     String today = fmt.format(new Date());
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -2514,4 +2514,4 @@ if (privateConsentEnabled) {
     <!--<iframe src="../eform/efmshowform_data.jsp?fid=<%=fid%>" width="100%" height="100%"></iframe>-->
     <%//}%>
     </body>
-</html:html>
+</html>

@@ -69,7 +69,7 @@
         prefPharmacy = pharmacyList.get(0).getName();
     }
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Print Drug Profile</title>
@@ -245,4 +245,4 @@
 
 
     </body>
-</html:html>
+</html>

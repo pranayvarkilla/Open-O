@@ -44,7 +44,7 @@
 </security:oscarSec>
 <!DOCTYPE html>
 
-<html:html lang="en">
+<html>
     <head>
 
         <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -226,4 +226,4 @@
     </script>
 
     </body>
-</html:html>
+</html>

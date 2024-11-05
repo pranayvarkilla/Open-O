@@ -55,7 +55,7 @@
     //String xml_vdate=request.getParameter("xml_vdate") == null?"":request.getParameter("xml_vdate");
 %>
 
-<html:html lang="en">
+<html>
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -142,4 +142,4 @@
     </tr>
     </table>
     </body>
-</html:html>
+</html>

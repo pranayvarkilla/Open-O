@@ -53,7 +53,7 @@
     boolean color = false;
 %>
 
-<html:html lang="en">
+<html>
     <head>
     <html:base/>
     <title>OSCAR Billing Fee Item</title>

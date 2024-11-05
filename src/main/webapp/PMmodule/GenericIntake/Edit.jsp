@@ -75,13 +75,13 @@
 
         <title>Generic Intake Edit</title>
         <style type="text/css">
-            @import "<%= request.getContextPath() %>/css/genericIntake.css";
+            @import "<html:rewrite page="/css/genericIntake.css" />";
         </style>
-        <link rel="stylesheet" type="text/css" href='<%= request.getContextPath() %>/share/calendar/skins/aqua/theme.css'/>
-        <script type="text/javascript" src="<%= request.getContextPath() %>/share/calendar/calendar.js""/>
+        <link rel="stylesheet" type="text/css" href='<html:rewrite page="/share/calendar/skins/aqua/theme.css" />'/>
+        <script type="text/javascript" src="<html:rewrite page="/share/calendar/calendar.js" />"/>
         </script>
-        <script type="text/javascript" src="<%= request.getContextPath() %>/share/calendar/lang/calendar-en.js"></script>
-        <script type="text/javascript" src="<%= request.getContextPath() %>/share/calendar/calendar-setup.js"></script>
+        <script type="text/javascript" src="<html:rewrite page="/share/calendar/lang/calendar-en.js" />"></script>
+        <script type="text/javascript" src="<html:rewrite page="/share/calendar/calendar-setup.js" />"></script>
 
         <script type="text/javascript">
             <!--
@@ -109,7 +109,7 @@
                     return;
                 }
                 var id = document.getElementById('formInstanceId').value;
-                var url = '<%= request.getContextPath() %>/PMmodule/Forms/SurveyExecute.do?method=survey&type=provider&formId=' + formId + '&formInstanceId=' + id + '&clientId=' + <%=clientId%>;
+                var url = '<html:rewrite action="/PMmodule/Forms/SurveyExecute"/>?method=survey&type=provider&formId=' + formId + '&formInstanceId=' + id + '&clientId=' + <%=clientId%>;
                 ctl.selectedIndex = 0;
                 popupPage(url);
             }
@@ -245,16 +245,16 @@
             }
 
         </script>
-        <script type="text/javascript" src="<%= request.getContextPath() %>/dojoAjax/dojo.js"></script>
-        <script type="text/javascript" src="<%= request.getContextPath() %>/js/AlphaTextBox.js"></script>
+        <script type="text/javascript" src="<html:rewrite page="/dojoAjax/dojo.js" />"></script>
+        <script type="text/javascript" src="<html:rewrite page="/js/AlphaTextBox.js" />"></script>
         <script type="text/javascript">
             <!--
             dojo.require("dojo.widget.*");
             dojo.require("dojo.validate.*");
             // -->
         </script>
-        <script type="text/javascript" src="<%= request.getContextPath() %>/js/genericIntake.js"></script>
-        <script type="text/javascript" src="<%= request.getContextPath() %>/js/checkDate.js"></script>
+        <script type="text/javascript" src="<html:rewrite page="/js/genericIntake.js" />"></script>
+        <script type="text/javascript" src="<html:rewrite page="/js/checkDate.js" />"></script>
 
 
         <script type="text/javascript">
@@ -326,11 +326,12 @@
                 text-decoration: none;
             }
         </style>
+        <html:base/>
     </head>
     <body class="edit">
 
-    <form action="<%= request.getContextPath() %>/PMmodule/GenericIntake/Edit.do" onsubmit="return validateEdit()">
-        <input type="hidden" name="method" value="<%=intakeEditForm.getMethod()%>"/>
+    <html:form action="/PMmodule/GenericIntake/Edit" onsubmit="return validateEdit()">
+        <html:hidden property="method"/>
         <input type="hidden" name="currentBedCommunityProgramId_old"
                value="<%=session.getAttribute("intakeCurrentBedCommunityId")%>"/>
         <input type="hidden" name="intakeType" value="<%=intakeType %>"/>
@@ -382,18 +383,16 @@
                      labelNodeClass="intakeSectionLabel" containerNodeClass="intakeSectionContainer">
                     <table class="intakeTable">
                         <tr>
-                            <td><label>First Name<br><input type="text" name="client.firstName" value="<%=intakeEditForm.getClient().getFirstName()%>" size="20" maxlength="30" />
-                            </label></td>
-                            <td><label>Last Name<br><<input type="text" name="client.lastName"  value="<%=intakeEditForm.getClient().getLastName()%>" size="20" maxlength="30" />
-                            </label></td>
+                            <td><label>First Name<br><html:text property="client.firstName" size="20"
+                                                                maxlength="30"/></label></td>
+                            <td><label>Last Name<br><html:text property="client.lastName" size="20"
+                                                               maxlength="30"/></label></td>
                             <td>
                                 <label>Gender<br>
-                                    <select name="client.sex">
+                                    <html:select property="client.sex">
                                         <option value=""></option>
-                                        <c:forEach var="gender" items="${intakeEditForm.getGenders()}">
-                                            <option value="${gender.code}">${gender.description}</option>
-                                        </c:forEach>
-                                    </select>
+                                        <html:optionsCollection property="genders" value="code" label="description"/>
+                                    </html:select>
                                 </label>
                                 <span id="genderreq" style="display:none;color:red">* Value is required.</span>
                             </td>
@@ -423,8 +422,8 @@
                         </tr>
                         <tr>
                             <caisi:isModuleLoad moduleName="TORONTO_RFQ" reverse="false">
-                                <td><label>Alias<br><input type="text" name="client.alias" size="40" maxlength="70"
-                                                               value="<%=intakeEditForm.getClient().getAlias()%>"/></label>
+                                <td><label>Alias<br><html:text size="40" maxlength="70"
+                                                               property="client.alias"/></label>
                                 </td>
                             </caisi:isModuleLoad>
 
@@ -432,20 +431,18 @@
                                 <td><label>Health Card #<br>
                                     <input type="text" size="10" maxlength="10" dojoType="IntegerTextBox"
                                            name="client.hin"
-                                           value="<bean:write name="genericIntakeEditForm"  property="client.hin"/>"/>
+                                           value="<c:out value="${genericIntakeEditForm.client.hin}"/>"/>
                                 </label></td>
                                 <td><label>HC Version<br>
                                     <input type="text" size="2" maxlength="2" dojoType="AlphaTextBox" name="client.ver"
-                                           value="<bean:write name="genericIntakeEditForm"  property="client.ver"/>"/>
+                                           value="<c:out value="${genericIntakeEditForm.client.ver}"/>"/>
                                 </label></td>
                                 <td>
                                     <label>HC Type</label>
                                     <br/>
-                                    <select name="client.hcType">
-                                        <c:forEach var="province" items="${GenericIntakeConstants.getProvinces()}">
-                                            <option value="${province.value}">${province.label}</option>
-                                        </c:forEach>
-                                    </select>
+                                    <html:select property="client.hcType">
+                                        <html:optionsCollection property="provinces" value="value" label="label"/>
+                                    </html:select>
                                 </td>
                                 <td>
                                     <table style="border-collapse:collapse">
@@ -510,19 +507,19 @@
                                     <label>Email<br>
                                         <input type="text" size="20" maxlength="100" dojoType="EmailTextBox"
                                                name="client.email"
-                                               value="<bean:write name="genericIntakeEditForm"  property="client.email"/>"/>
+                                               value="<c:out value="${genericIntakeEditForm.client.email}"/>"/>
                                     </label></td>
                                 <td>
                                     <label>Phone #<br>
                                         <input type="text" size="20" maxlength="20" dojoType="UsPhoneNumberTextbox"
                                                name="client.phone"
-                                               value="<bean:write name="genericIntakeEditForm"  property="client.phone"/>"/>
+                                               value="<c:out value="${genericIntakeEditForm.client.phone}"/>"/>
                                     </label></td>
                                 <td>
                                     <label>Secondary Phone #<br>
                                         <input type="text" size="20" maxlength="20" dojoType="UsPhoneNumberTextbox"
                                                name="client.phone2"
-                                               value="<bean:write name="genericIntakeEditForm"  property="client.phone2"/>"/>
+                                               value="<c:out value="${genericIntakeEditForm.client.phone2}"/>"/>
                                     </label>
                                 </td>
                                 <td>
@@ -545,9 +542,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><label>Street<br><input type="text" size="20" maxlength="60"
-                                                                name="client.address"/></label></td>
-                                <td><label>City<br><input type="text" size="20" maxlength="20" name="client.city"/></label>
+                                <td><label>Street<br><html:text size="20" maxlength="60"
+                                                                property="client.address"/></label></td>
+                                <td><label>City<br><html:text size="20" maxlength="20" property="client.city"/></label>
                                 </td>
                                 <td><label>Province<br>
                                     <html:select property="client.province">
@@ -555,25 +552,21 @@
                                     </html:select>
                                 </label>
                                 </td>
-                                <td><label>Postal Code<br><input type="text" name="client.postal" size="9"
+                                <td><label>Postal Code<br><html:text property="client.postal" size="9"
                                                                      maxlength="9"/></label></td>
                             </tr>
                             <tr>
-                                <td><label>Chart No<br/><input type="text" size="20" maxlength="40" name="client.chartNo"/></label>
+                                <td><label>Chart No<br/><html:text size="20" maxlength="40" property="client.chartNo"/></label>
                                 </td>
                                 <td>
                                     <label>Roster Status<br/>
                                         <html:select property="client.rosterStatus" styleId="width: 120">
                                             <%String rosterStatus = ""; %>
                                             <html:option value=""></html:option>
-                                            <html:option value="RO"><bean:message
-                                                    key="demographic.demographiceditdemographic.optRostered"/></html:option>
-                                            <html:option value="NR"><bean:message
-                                                    key="demographic.demographiceditdemographic.optNotRostered"/></html:option>
-                                            <html:option value="TE"><bean:message
-                                                    key="demographic.demographiceditdemographic.optTerminated"/></html:option>
-                                            <html:option value="FS"><bean:message
-                                                    key="demographic.demographiceditdemographic.optFeeService"/></html:option>
+                                            <html:option value="RO"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographiceditdemographic.optRostered"/></html:option>
+                                            <html:option value="NR"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographiceditdemographic.optNotRostered"/></html:option>
+                                            <html:option value="TE"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographiceditdemographic.optTerminated"/></html:option>
+                                            <html:option value="FS"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographiceditdemographic.optFeeService"/></html:option>
                                             <%
                                                 DemographicDao demographicDao = (DemographicDao) SpringUtils.getBean(DemographicDao.class);
                                                 List<String> statuses = demographicDao.getRosterStatuses();
@@ -623,15 +616,15 @@
                     <div id="admissionsTable" dojoType="TitlePane" label="Program Admissions"
                          labelNodeClass="intakeSectionLabel"
                          containerNodeClass="intakeSectionContainer">
-                        <c:if test="${not empty requestScope['org.apache.struts.action.ERROR']}">
+                        <logic:messagesPresent>
                             <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#C0C0C0">
-                                <c:forEach var="error" items="${requestScope['org.apache.struts.action.ERROR']}">
+                                <html:messages id="error" bundle="pmm">
                                     <tr>
                                         <td class="error"><c:out value="${error}"/></td>
                                     </tr>
-                                </c:forEach>
+                                </html:messages>
                             </table>
-                        </c:if>
+                        </logic:messagesPresent>
                         <table class="intakeTable">
                             <tr>
                                 <c:if test="${not empty sessionScope.genericIntakeEditForm.bedPrograms}">
@@ -663,7 +656,8 @@
                                     <td>
                                         <c:forEach var="serviceProgram"
                                                    items="${sessionScope.genericIntakeEditForm.servicePrograms}">
-                                            <input type="checkbox" name="serviceProgramIds" value="${serviceProgram.value}" />&nbsp;<c:out
+                                            <html-el:multibox property="serviceProgramIds"
+                                                              value="${serviceProgram.value}"/>&nbsp;<c:out
                                                 value="${serviceProgram.label}"/><br/>
                                         </c:forEach>
                                     </td>
@@ -781,20 +775,20 @@
             </div>
             <div id="bottomPane" dojoType="ContentPane" layoutAlign="bottom" class="intakeBottomPane">
                 <table class="intakeTable">
-                    <c:if test="${not empty requestScope['org.apache.struts.action.ERROR']}">
-                        <c:forEach var="error" items="${requestScope['org.apache.struts.action.ERROR']}">
+                    <logic:messagesPresent>
+                        <html:messages id="error" bundle="pmm">
                             <tr>
                                 <td class="error"><c:out value="${error}"/></td>
                             </tr>
-                        </c:forEach>
-                    </c:if>
-                    <c:if test="${not empty requestScope['org.apache.struts.action.MESSAGE']}">
-                        <c:forEach var="message" items="${requestScope['org.apache.struts.action.MESSAGE']}">
+                        </html:messages>
+                    </logic:messagesPresent>
+                    <logic:messagesPresent message="true">
+                        <html:messages id="message" message="true" bundle="pmm">
                             <tr>
                                 <td class="message"><c:out value="${message}"/></td>
                             </tr>
-                        </c:forEach>
-                    </c:if>
+                        </html:messages>
+                    </logic:messagesPresent>
                     <tr>
                         <td>
                             <caisi:isModuleLoad moduleName="TORONTO_RFQ" reverse="true">
@@ -821,12 +815,12 @@
                                 <html:submit
                                         onclick="return save_notAdmit()">Intake Without Admission, Sign And Save</html:submit>
                             </caisi:isModuleLoad>
-                            <input type="reset" value="Reset">
+                            <input type="reset" value="Reset"/>
                         </td>
                         <td align="right">
                             <c:choose>
                                 <c:when test="${not empty sessionScope.genericIntakeEditForm.client.demographicNo}">
-                                    <input type="submit" value="Close" onclick="clientEdit();">
+                                    <html:submit onclick="clientEdit()">Close</html:submit>
                                     <input type="button" value="Back to Search" onclick="history.go(-1)"/>
                                 </c:when>
                                 <c:otherwise>
@@ -838,6 +832,6 @@
                 </table>
             </div>
         </div>
-    </form>
+    </html:form>
     </body>
 </html>

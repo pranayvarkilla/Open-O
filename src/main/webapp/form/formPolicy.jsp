@@ -67,7 +67,7 @@
 
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -161,4 +161,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

@@ -65,7 +65,7 @@
     List<EyeformSpecsHistory> specs = (List<EyeformSpecsHistory>) request.getAttribute("specs");
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Specs History
@@ -140,4 +140,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

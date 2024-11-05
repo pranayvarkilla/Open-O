@@ -56,7 +56,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ include file="/common/webAppContextAndSuperMgr.jsp" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <style type="text/css" media="print">
@@ -248,4 +248,4 @@
         </form>
     </center>
     </body>
-</html:html>
+</html>

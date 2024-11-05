@@ -452,7 +452,7 @@
     <c:set var="masterLinkRights" value="true" scope="page"/>
 </security:oscarSec>
 
-<html:html lang="en">
+<html>
     <head>
         <title><%=WordUtils.capitalize(userlastname + ", " + org.apache.commons.lang.StringUtils.substring(userfirstname, 0, 1)) + "-"%><bean:message
                 key="provider.appointmentProviderAdminDay.title"/></title>
@@ -2522,7 +2522,7 @@
     <jsp:include page="/hcHandler/hcHandler.html"/>
     <% } %>
     </body>
-</html:html>
+</html>
 
 <%!
     public boolean checkRestriction(List<MyGroupAccessRestriction> restrictions, String name) {

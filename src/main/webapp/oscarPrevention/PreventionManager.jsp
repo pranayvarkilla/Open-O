@@ -59,7 +59,7 @@
 
 <!DOCTYPE html>
 
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="oscarprevention.index.oscarpreventiontitre"/> - <bean:message
                 key="admin.admin.preventionNotification.title"/></title>
@@ -370,4 +370,4 @@
         });
     </script>
     </body>
-</html:html>
+</html>

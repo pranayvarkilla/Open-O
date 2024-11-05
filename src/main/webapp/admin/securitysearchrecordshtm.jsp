@@ -49,7 +49,7 @@
     <%isSiteAccessPrivacy = true; %>
 </security:oscarSec>
 
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -125,4 +125,4 @@
 
     </center>
     </body>
-</html:html>
+</html>

@@ -272,14 +272,13 @@
 
             </display:table></td>
             <td width="20%"><br/>
-                <input type=hidden name="roomslines"
-                       value="<c:out value="${room_rowNum}" />"> <html:button
-                        property="submit.saveRooms" onclick="javascript:saveRooms();">Save Rooms</html:button>
+                <input type=hidden name="roomslines" value="<c:out value="${room_rowNum}" />"> 
+                <button type="button" onclick="saveRooms();" data-property="submit.saveRooms">Save Rooms</button>
                 <input type=hidden name="submit.saveRoom" value=""></td>
         </tr>
         <tr>
-            <td><html:text property="numRooms"/> <html:button
-                    property="submit.addRooms" onclick="javascript:addRooms();">Add Rooms</html:button>
+            <td><html:text property="numRooms"/> 
+                <button type="button" onclick="addRooms();" data-property="submit.addRooms">Add Rooms</button>
                 <input type=hidden name="submit.addRoom" value=""></td>
         </tr>
         <tr>
@@ -379,17 +378,15 @@
 
             </display:table></td>
             <td width="20%"><br/>
-                <html:button property="submit.saveBeds"
-                             onclick="javascript:saveBeds();">Save Beds</html:button> <input
-                        type=hidden name="submit.saveBed" value=""></td>
+                <button type="button" onclick="saveBeds();" data-property="submit.saveBeds">Save Beds</button>
+                <input type=hidden name="submit.saveBed" value=""></td>
         </tr>
         <tr>
             <td><input type=hidden name="bedslines"
                        value="<c:out value="${bed_rowNum}" />"> <c:choose>
                 <c:when test="${not empty bedManagerForm.rooms}">
                     <html:text property="numBeds"/>
-                    <html:button property="submit.addBeds"
-                                 onclick="javascript:addBeds();">Add Beds</html:button>
+                    <button type="button" onclick="addBeds();" data-property="submit.addBeds">Add Beds</button>
                     <input type=hidden name="submit.addBed" value="">
                 </c:when>
                 <c:otherwise>

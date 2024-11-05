@@ -92,7 +92,7 @@
 
 <%@page import="oscar.Misc" %>
 <%@ page import="org.owasp.encoder.Encode" %>
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
 
@@ -314,4 +314,4 @@ for (int i = 0; i < vec.size(); i++) {
             });
         </script>
     </body>
-</html:html>
+</html>

@@ -41,7 +41,7 @@
     String providerbtnSubmit = (String) request.getAttribute("providerbtnSubmit");
     String providermsgSuccess = (String) request.getAttribute("providermsgSuccess");
 %>
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
@@ -84,4 +84,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

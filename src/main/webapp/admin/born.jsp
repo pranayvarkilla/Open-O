@@ -45,7 +45,7 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>BORN Mappings</title>
@@ -222,4 +222,4 @@
     </div>
 
     </body>
-</html:html>
+</html>

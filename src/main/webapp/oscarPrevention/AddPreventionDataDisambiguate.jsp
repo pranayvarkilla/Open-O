@@ -89,7 +89,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
 
     <head>
         <title>
@@ -313,5 +313,5 @@
     </table>
 
     </body>
-</html:html>
+</html>
 

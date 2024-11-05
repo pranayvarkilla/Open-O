@@ -39,7 +39,7 @@
     WLWaitingListUtil.removeFromWaitingList(waitingListId, request.getParameter("demographicNo"));
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title></title>
@@ -62,4 +62,4 @@
 
 
     </body>
-</html:html>
+</html>

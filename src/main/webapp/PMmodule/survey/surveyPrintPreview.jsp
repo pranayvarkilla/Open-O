@@ -25,7 +25,7 @@
 
 
 <%@ include file="/taglibs.jsp" %>
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Oscar Forms</title>
@@ -174,4 +174,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

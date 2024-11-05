@@ -103,7 +103,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <html:base/>
         <title><bean:message
@@ -224,4 +224,4 @@
 
     </div>
     </body>
-</html:html>
+</html>

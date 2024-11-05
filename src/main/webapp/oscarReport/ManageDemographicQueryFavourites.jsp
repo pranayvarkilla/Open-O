@@ -50,7 +50,7 @@
 %>
 
 
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Manage Saved Demographic Queries</title>
@@ -129,4 +129,4 @@
     </table>
 
     </body>
-</html:html>
+</html>

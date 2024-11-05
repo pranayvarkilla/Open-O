@@ -42,7 +42,7 @@
     month = now.get(Calendar.MONTH) + 1;
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message
@@ -155,4 +155,4 @@
     </table>
 
     </body>
-</html:html>
+</html>

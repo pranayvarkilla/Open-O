@@ -104,7 +104,7 @@
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@page import="oscar.appt.ApptUtil" %>
 <%@ page import="org.owasp.encoder.Encode" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="schedule.scheduleflipview.title"/></title>
@@ -418,4 +418,4 @@
             href="scheduleflipview.jsp?originalpage=<%=originalPage%>&provider_no=<%=curProvider_no%>&startDate=<%=nextMonth.get(Calendar.YEAR)+"-"+(nextMonth.get(Calendar.MONTH)+1)+"-"+nextMonth.get(Calendar.DATE)%>"><bean:message
             key="schedule.scheduleflipview.btnNextMonth"/></a>
     </body>
-</html:html>
+</html>

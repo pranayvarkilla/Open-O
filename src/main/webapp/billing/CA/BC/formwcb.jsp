@@ -81,7 +81,7 @@
     String fromBilling = request.getParameter("fromBilling");
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
@@ -988,7 +988,7 @@
 
 
     </body>
-</html:html>
+</html>
 
 
 <%!

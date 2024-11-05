@@ -171,7 +171,7 @@
     ResultSet rsPatient = null;
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="billing.billingCorrection.title"/></title>
 
@@ -1397,4 +1397,4 @@
         });
     </script>
 
-</html:html>
+</html>

@@ -53,7 +53,7 @@
             .getLoggedInInfoFromSession(request);
     Provider provider = loggedInInfo.getLoggedInProvider();
 %>
-<html:html lang="en">
+<html>
     <head>
         <html:base/>
         <script src="<%=request.getContextPath()%>/js/global.js"></script>
@@ -420,4 +420,4 @@
     </script>
 
     </body>
-</html:html>
+</html>

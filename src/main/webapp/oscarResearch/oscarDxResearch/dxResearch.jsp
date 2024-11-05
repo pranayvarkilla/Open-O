@@ -68,7 +68,7 @@
 %>
 
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="oscarResearch.oscarDxResearch.dxResearch.title"/></title>
 
@@ -384,5 +384,5 @@
         </table>
     </div>
     </body>
-</html:html>
+</html>
 

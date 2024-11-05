@@ -44,7 +44,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <c:set var="ctx" value="${pageContext.request.contextPath}"
        scope="request"/>
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
@@ -80,4 +80,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

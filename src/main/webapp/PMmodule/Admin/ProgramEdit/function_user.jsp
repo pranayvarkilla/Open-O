@@ -115,7 +115,7 @@
     <tr>
         <td colspan="2">
             <input type="button" value="Save" onclick="add_functional_user(this.form)"/>
-            <html:cancel/>
+            <button type="button" onclick="window.history.back();">Cancel</button>
         </td>
     </tr>
 </table>

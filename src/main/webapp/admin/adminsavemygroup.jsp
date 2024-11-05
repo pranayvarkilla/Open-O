@@ -38,7 +38,7 @@
 %>
 
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
 
         <script>
@@ -107,4 +107,4 @@
     </script>
 
     </body>
-</html:html>
+</html>

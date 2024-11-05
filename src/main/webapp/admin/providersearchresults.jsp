@@ -49,7 +49,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="admin.providersearchresults.title"/></title>
         <link href="${pageContext.request.contextPath}/css/DT_bootstrap.css" rel="stylesheet">
@@ -273,4 +273,4 @@
     <p><bean:message key="admin.providersearchresults.msgClickForEditing"/></p>
     </center>
     </body>
-</html:html>
+</html>

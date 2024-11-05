@@ -41,7 +41,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script src="${pageContext.request.contextPath}/js/global.js"></script>
         <!-- Bootstrap 2.3.1 -->
@@ -174,4 +174,4 @@
     </html:form>
 
     </body>
-</html:html>
+</html>

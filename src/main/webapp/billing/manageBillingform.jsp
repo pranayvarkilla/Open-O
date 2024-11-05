@@ -54,7 +54,7 @@
 %>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="billing.manageBillingform.title"/></title>
@@ -221,4 +221,4 @@
     <%@ include file="../demographic/zfooterbackclose.jsp" %>
 
     </body>
-</html:html>
+</html>

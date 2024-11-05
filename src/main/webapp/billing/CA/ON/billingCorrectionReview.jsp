@@ -24,7 +24,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="billing.billingCorrection.title"/></title>
@@ -285,4 +285,4 @@
             value="<bean:message key="billing.billingCorrection.btnCancel"/>"
             onclick="history.go(-1);return false;"></form>
     </body>
-</html:html>
+</html>

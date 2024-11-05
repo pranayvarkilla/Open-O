@@ -52,7 +52,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
-<html:html>
+<html>
     <head>
         <html:base/>
         <title><bean:message key="provider.btnSetIntegratorPreferences"/></title>
@@ -320,7 +320,7 @@
              --%>
     </form>
     </body>
-</html:html>
+</html>
 <%!
     public String getChecked(UserProperty val, boolean trueBtn) {
         if ((val != null && val.getValue().equalsIgnoreCase("0") && !trueBtn) || (val != null && val.getValue().equalsIgnoreCase("1") && trueBtn) || (val == null && trueBtn))

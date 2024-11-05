@@ -134,7 +134,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
 
     <head>
         <title>OSCAR Prevention Review Screen</title><!--I18n-->
@@ -495,7 +495,7 @@
     </table>
 
     </body>
-</html:html>
+</html>
 
 
 <%!

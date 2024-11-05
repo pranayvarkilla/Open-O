@@ -35,7 +35,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
-<html:html>
+<html>
     <head>
         <jsp:include page="head-includes.jsp"/>
         <script language="javascript">
@@ -98,4 +98,4 @@
             </div>
             </html:form>
     </body>
-</html:html>
+</html>

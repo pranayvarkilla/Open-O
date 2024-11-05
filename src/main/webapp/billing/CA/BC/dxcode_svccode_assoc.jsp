@@ -5,7 +5,7 @@
 <%@page import="oscar.oscarDemographic.data.*" %>
 <%@page
         import="java.text.*, java.util.*, oscar.oscarBilling.ca.bc.data.*,oscar.oscarBilling.ca.bc.pageUtil.*" %>
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message
@@ -131,10 +131,10 @@
             </tr>
             <tr bgcolor="CCCCFF">
                 <td align="center"><html:submit value="Save" property="Submit"/>
-                    <html:button value="Cancel" property="Button"
-                                 onclick="window.close();"/></td>
+                    <button type="button" onclick="window.close();">Cancel</button>
+                </td>
             </tr>
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

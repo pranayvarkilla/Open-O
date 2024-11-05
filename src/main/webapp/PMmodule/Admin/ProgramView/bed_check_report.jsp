@@ -25,7 +25,7 @@
 <%@ include file="/taglibs.jsp" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
@@ -71,4 +71,4 @@
         <display:column title="Notes" style="width: 30%;text-align: center"/>
     </display:table>
     </body>
-</html:html>
+</html>

@@ -32,7 +32,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
-<html:html>
+<html>
     <head>
 
         <title>MyOSCAR Measurement: Blood Pressure</title>
@@ -195,4 +195,4 @@
     <hr>
 
     </body>
-</html:html>
+</html>

@@ -44,7 +44,7 @@
 
     EFormDao eformDao = (EFormDao) SpringUtils.getBean(EFormDao.class);
 %>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="admin.fieldNote.selectEforms"/></title>
         <link rel="stylesheet" href="../../share/css/OscarStandardLayout.css">
@@ -170,4 +170,4 @@
 
     </form>
     </body>
-</html:html>
+</html>

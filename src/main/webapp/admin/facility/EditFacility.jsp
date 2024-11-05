@@ -42,7 +42,7 @@
         return;
     }
 %>
-<html:html lang="en">
+<html>
     <head>
         <title>Edit Facility</title>
         <link rel="stylesheet" type="text/css" href='<html:rewrite page="/css/tigris.css" />'/>
@@ -169,9 +169,9 @@
                 <td colspan="2">* Mandatory fields</td>
             <tr>
                 <td colspan="2"><html:submit property="submit.save" onclick="bCancel=false;">Save</html:submit>
-                    <html:cancel>Cancel</html:cancel></td>
+                    <button type="button" onclick="window.history.back();">Cancel</button></td>
             </tr>
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

@@ -50,7 +50,7 @@
 <%
     BillingreferralDao billingReferralDao = (BillingreferralDao) SpringUtils.getBean(BillingreferralDao.class);
 %>
-<html:html lang="en">
+<html>
 
     <head>
         <title><bean:message key="admin.admin.ManageReferralDoc"/></title>
@@ -215,7 +215,7 @@
         });
     </script>
     </body>
-</html:html>
+</html>
 <%!
     String selected(String var, String constant) {
         if (var != null && var.equals(constant)) {

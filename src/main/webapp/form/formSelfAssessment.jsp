@@ -79,7 +79,7 @@
 
 %>
 
-<html:html lang="en">
+<html>
     <% response.setHeader("Cache-Control", "no-cache");%>
 
     <HEAD>
@@ -459,4 +459,4 @@
 
         </script>
     </html:form>
-</html:html>
+</html>

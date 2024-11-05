@@ -37,7 +37,7 @@ v<%
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <script type="text/javascript" src="../../../share/javascript/Oscar.js"></script>
@@ -58,7 +58,7 @@ v<%
     <body onLoad="billingFormActive()" bgproperties="fixed" topmargin="0" leftmargin="0" rightmargin="0">
     <input type="button" value="Close" onclick="window.close();"/>
     </body>
-</html:html>
+</html>
 
 
 <%!

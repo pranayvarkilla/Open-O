@@ -45,7 +45,7 @@
     oscar.oscarEncounter.pageUtil.EctSessionBean bean = null;
     bean = (oscar.oscarEncounter.pageUtil.EctSessionBean) request.getSession().getAttribute("EctSessionBean");
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><bean:message key="oscarEncounter.concurrencyError.title"/></title>
@@ -54,4 +54,4 @@
     <h1><bean:message key="oscarEncounter.concurrencyError.errorMsg"/></h1>
     <textarea name='encounterTextarea' wrap="hard" cols="99" rows="20"><%=bean.encounter%></textarea>
     </body>
-</html:html>
+</html>

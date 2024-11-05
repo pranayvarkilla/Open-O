@@ -43,7 +43,7 @@
     boolean bView = false;
     if (request.getParameter("view") != null && request.getParameter("view").equals("1")) bView = true;
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Immunizations/Allergies</title>
@@ -452,4 +452,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

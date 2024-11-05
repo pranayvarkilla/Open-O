@@ -46,7 +46,7 @@
 
 
 <%@page import="org.oscarehr.util.WebUtils" %>
-<html:html lang="en">
+<html>
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -150,4 +150,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

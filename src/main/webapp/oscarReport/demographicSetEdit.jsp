@@ -62,7 +62,7 @@
 
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
 
     <head>
         <html:base/>
@@ -297,7 +297,7 @@
 
     </script>
     </body>
-</html:html>
+</html>
 <%!
     String elle(Object s) {
         ResourceBundle prop = ResourceBundle.getBundle("oscarResources");

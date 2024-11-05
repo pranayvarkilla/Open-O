@@ -83,7 +83,7 @@
 
 %>
 
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -222,4 +222,4 @@
         <a href="<%=request.getContextPath() %>/oscarEncounter/oscarConsultationRequest/config/ShowAllServices.jsp">Add/Edit
             Professional Specialist</a></center>
     </body>
-</html:html>
+</html>

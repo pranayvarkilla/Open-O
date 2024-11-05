@@ -160,7 +160,7 @@
 <%@ page import="org.oscarehr.PMmodule.model.ProgramProvider" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="tickler.ticklerAdd.title"/></title>
 
@@ -649,4 +649,4 @@
         </form>
     </div>
     </body>
-</html:html>
+</html>

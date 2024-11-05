@@ -53,7 +53,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
     <head>
 
             <%-- <script type="text/javascript" src="<%= request.getContextPath() %>/share/javascript/prototype.js"></script>
@@ -365,4 +365,4 @@
 
     </body>
 
-</html:html>
+</html>

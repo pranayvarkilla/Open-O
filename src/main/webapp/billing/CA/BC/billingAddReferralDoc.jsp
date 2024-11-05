@@ -52,7 +52,7 @@
 %>
 
 <%@page import="org.oscarehr.util.MiscUtils" %>
-<html:html lang="en">
+<html>
 
     <head>
         <title><bean:message key="admin.admin.ManageReferralDoc"/></title>
@@ -175,4 +175,4 @@
         registerFormSubmit('addReferralDocform', 'dynamic-content');
     </script>
     </body>
-</html:html>
+</html>

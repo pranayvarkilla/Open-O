@@ -19,7 +19,7 @@
 <%@ page import="oscar.form.study.*" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Type 2 Diabetes Record</title>
@@ -855,4 +855,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

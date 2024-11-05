@@ -80,7 +80,7 @@
 
     com.quatro.service.security.SecurityManager securityManager = new com.quatro.service.security.SecurityManager();
 %>
-<html:html lang="en">
+<html>
     <head>
         <title><bean:message key="EditAllergies.title"/></title>
 
@@ -722,4 +722,4 @@
     </table>
 
     </body>
-</html:html>
+</html>

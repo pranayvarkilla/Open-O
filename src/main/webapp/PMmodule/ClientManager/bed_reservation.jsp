@@ -207,6 +207,6 @@
         <td><html:submit
                 onclick="return validateAndSubmit();">Save</html:submit>
         </td>
-        <td><html:reset>Reset</html:reset></td>
+        <td><input type="reset" value="Reset"/></td>
     </tr>
 </table>
