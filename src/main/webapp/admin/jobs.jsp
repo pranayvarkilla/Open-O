@@ -52,7 +52,7 @@
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
     Provider provider = loggedInInfo.getLoggedInProvider();
 %>
-<html:html lang="en">
+<html>
     <head>
         <script src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>OSCAR Jobs</title>
@@ -560,4 +560,4 @@
 
 
     </body>
-</html:html>
+</html>

@@ -46,7 +46,7 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Mental Health Outcome</title>
@@ -603,4 +603,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

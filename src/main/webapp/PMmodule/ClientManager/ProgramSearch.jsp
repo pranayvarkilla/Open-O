@@ -36,7 +36,7 @@
 <%
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Program Search</title>
@@ -217,4 +217,4 @@
     </c:if>
 
     </body>
-</html:html>
+</html>

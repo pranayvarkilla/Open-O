@@ -46,7 +46,7 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <link rel="stylesheet" type="text/css"
       href="../../oscarEncounter/encounterStyles.css">
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgSelectCDMGroup"/></title>
@@ -139,4 +139,4 @@
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

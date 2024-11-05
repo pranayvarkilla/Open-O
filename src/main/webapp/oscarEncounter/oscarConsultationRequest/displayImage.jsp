@@ -29,7 +29,7 @@
 <%@ page import="org.apache.commons.lang.StringUtils" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
 "http://www.w3.org/TR/html4/strict.dtd">
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.AttachDocPopup.title"/></title>
 
@@ -52,4 +52,4 @@
     </a>
     <% } %>
     </body>
-</html:html>
+</html>

@@ -30,7 +30,7 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<html:html lang="en">
+<html>
 
     <head>
         <script src="${pageContext.request.contextPath}/js/global.js"></script>
@@ -135,4 +135,4 @@
 
     </script>
     </body>
-</html:html>
+</html>

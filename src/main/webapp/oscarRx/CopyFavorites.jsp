@@ -33,7 +33,7 @@
     FavoritesPrivilegeDao favoritesPrivilegeDao = SpringUtils.getBean(FavoritesPrivilegeDao.class);
     ProviderDao providerDao = SpringUtils.getBean(ProviderDao.class);
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath()%>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title.CopyFavorites"/></title>
@@ -398,4 +398,4 @@
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

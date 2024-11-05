@@ -78,7 +78,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
     <head>
         <title><%=display %> Import</title>
         <% if (isMobileOptimized) { %>
@@ -113,4 +113,4 @@
     </div>
     </body>
 
-</html:html>
+</html>

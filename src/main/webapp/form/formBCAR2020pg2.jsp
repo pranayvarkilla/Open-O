@@ -65,7 +65,7 @@
     Properties props = rec.getFormRecord(LoggedInInfo.getLoggedInInfoFromSession(request), demoNo, formId, pageNo);
 %>
 <!DOCTYPE HTML>
-<html:html lang="en">
+<html>
     <head>
         <title>BC Antenatal Record 2020 Part 2 Page 1</title>
 
@@ -1431,4 +1431,4 @@
     </body>
 
 
-</html:html>
+</html>

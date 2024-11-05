@@ -59,7 +59,7 @@
         return true;
     }
 </script>
-<html:html>
+<html>
     <body topmargin="0" leftmargin="0" vlink="#0000FF">
     <html:errors/>
 
@@ -181,4 +181,4 @@
     </table>
 
     </body>
-</html:html>
+</html>

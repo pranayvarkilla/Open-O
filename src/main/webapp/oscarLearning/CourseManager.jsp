@@ -52,7 +52,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
 
 
     <head>
@@ -272,4 +272,4 @@ removed for now since "course" provides no usefule results that I can see
     </body>
 
 
-</html:html>
+</html>

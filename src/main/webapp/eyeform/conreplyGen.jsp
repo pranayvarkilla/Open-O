@@ -52,7 +52,7 @@
 <%@page import="java.util.List" %>
 <%@page import="org.oscarehr.common.model.DemographicContact" %>
 
-<html:html>
+<html>
     <head>
         <html:base/>
         <title>generate consultation report</title>
@@ -869,4 +869,4 @@
     </html:form>
 
     </body>
-</html:html>
+</html>

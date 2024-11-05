@@ -29,7 +29,7 @@
 <%@ page import="java.util.List" %>
 
 <%@ include file="/taglibs.jsp" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Referral Details</title>
@@ -126,4 +126,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

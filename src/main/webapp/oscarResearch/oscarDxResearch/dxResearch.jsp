@@ -68,7 +68,7 @@
 %>
 
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxResearch.title"/></title>
 
@@ -379,5 +379,5 @@
         </table>
     </div>
     </body>
-</html:html>
+</html>
 

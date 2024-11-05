@@ -101,7 +101,7 @@
 <%@ page import="org.oscarehr.common.dao.FlowsheetDao" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript"
                 src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -306,7 +306,7 @@
             <td class="MainTableBottomRowRightColumn" colspan="2">&nbsp;</td>
         </tr>
     </table>
-</html:html>
+</html>
 <%!
     String isHighlighted(boolean highlighted) {
         if (highlighted) {

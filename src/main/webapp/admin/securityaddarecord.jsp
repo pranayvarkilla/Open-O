@@ -71,7 +71,7 @@
     OscarProperties op = OscarProperties.getInstance();
 %>
 
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <style type="text/css">
@@ -337,4 +337,4 @@
         });
     </script>
     </body>
-</html:html>
+</html>

@@ -32,7 +32,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgSelectMeasurementGroup"/></title>
@@ -115,4 +115,4 @@
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

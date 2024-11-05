@@ -30,7 +30,7 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@ page import="java.util.*,oscar.oscarBilling.ca.bc.data.BillingCodeData,oscar.oscarBilling.ca.bc.pageUtil.*" %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.ManagePrivFrm"/></title>
         <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
@@ -74,4 +74,4 @@
         <%}%>
     </div>
     </body>
-</html:html>
+</html>

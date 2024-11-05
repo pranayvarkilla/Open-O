@@ -89,7 +89,7 @@
         props.setProperty("ar2_age", props.getProperty("pg1_ageAtEDD", ""));
 %>
 
-<html:html lang="en">
+<html>
     <% response.setHeader("Cache-Control", "no-cache");%>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -3289,4 +3289,4 @@ if (!fedb.equals("") && fedb.length()==10 ) {
     </script>
 
     </body>
-</html:html>
+</html>

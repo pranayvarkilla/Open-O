@@ -91,6 +91,7 @@
         <td><html:text property="team.name" size="50" maxlength="255"/></td>
     </tr>
     <tr>
-        <td colspan="2"><input type="button" value="Save" onclick="add_team(this.form)"/> <html:cancel/></td>
+        <td colspan="2"><input type="button" value="Save" onclick="add_team(this.form)"/> <button type="button" onclick="window.history.back();">Cancel</button>
+        </td>
     </tr>
 </table>

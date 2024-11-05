@@ -116,7 +116,7 @@
     }
 
 %>
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -530,7 +530,7 @@
         </div>
     </div>
     </body>
-</html:html>
+</html>
 <%!
 
     Boolean isLocal(MatchingDemographicTransferScore matchingDemographicTransferScore, List<Demographic> demoList) {

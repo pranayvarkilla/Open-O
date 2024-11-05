@@ -38,7 +38,7 @@
 <%
     MyGroupDao myGroupDao = SpringUtils.getBean(MyGroupDao.class);
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <script LANGUAGE="JavaScript">
@@ -102,4 +102,4 @@
                      onClick="window.close()"></form>
     </center>
     </body>
-</html:html>
+</html>

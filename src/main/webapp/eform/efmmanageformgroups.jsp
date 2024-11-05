@@ -55,7 +55,7 @@
     else if (orderByRequest.equals("file_name")) orderBy = EFormUtil.FILE_NAME;
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
 
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.frmGroups"/></title>
@@ -329,4 +329,4 @@
 
         </script>
     </body>
-</html:html>
+</html>

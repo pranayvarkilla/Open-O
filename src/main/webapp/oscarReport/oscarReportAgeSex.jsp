@@ -88,7 +88,7 @@
     String xml_appointment_date = request.getParameter("xml_appointment_date") == null ? "" : request.getParameter("xml_appointment_date");
 
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportAgeSex.title"/></title>
@@ -587,7 +587,7 @@
 
 
     </body>
-</html:html>
+</html>
 
 <%! public String WriteMaleBar(int x) {
     String content = "";

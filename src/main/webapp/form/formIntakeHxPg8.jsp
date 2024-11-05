@@ -44,7 +44,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
 
-<html:html lang="en">
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.formIntakeHx.title"/></title>
@@ -315,4 +315,4 @@
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

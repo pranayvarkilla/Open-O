@@ -105,7 +105,7 @@
 <jsp:useBean id="ViewMessageForm" scope="session" class="oscar.oscarMessenger.pageUtil.MsgViewMessageForm"/>
 
 
-<html:html lang="en">
+<html>
     <head>
         <html:base/>
         <link rel="stylesheet" type="text/css" href="encounterStyles.css">
@@ -591,4 +591,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

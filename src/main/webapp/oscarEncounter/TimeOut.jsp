@@ -36,7 +36,7 @@
     }
 %>
 <link rel="stylesheet" type="text/css" href="encounterStyles.css">
-<html:html lang="en">
+<html>
     <script type="text/javascript" language=javascript>
         function loadUp() {
             window.resizeTo(900, 50);
@@ -71,4 +71,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

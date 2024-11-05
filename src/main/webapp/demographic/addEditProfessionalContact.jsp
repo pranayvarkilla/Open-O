@@ -32,7 +32,7 @@
 <%@ page import="org.oscarehr.common.dao.ContactSpecialtyDao" %>
 <%@ page import="org.oscarehr.common.model.ContactSpecialty" %>
 
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -377,4 +377,4 @@
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

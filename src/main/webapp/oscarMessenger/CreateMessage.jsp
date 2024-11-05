@@ -108,7 +108,7 @@
 
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.title"/></title>
 
@@ -612,4 +612,4 @@
         </table>
     </div>
     </body>
-</html:html>
+</html>

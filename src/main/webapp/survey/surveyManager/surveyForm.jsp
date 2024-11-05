@@ -160,7 +160,7 @@
                                                onclick="addClosingPage()" style=""/></td>
                                     <td><input type="button" value="Save Survey"
                                                onclick="save()"/></td>
-                                    <td><html:cancel/></td>
+                                    <td><button type="button" onclick="window.history.back();">Cancel</button></td>
                                 </tr>
                             </table>
                         </td>

@@ -82,7 +82,7 @@
     if (request.getParameter("view") != null && request.getParameter("view").equals("1")) bView = true;
 %>
 
-<html:html lang="en">
+<html>
     <% response.setHeader("Cache-Control", "no-cache");%>
 
     <head>
@@ -1333,4 +1333,4 @@
 
     </script>
     </body>
-</html:html>
+</html>

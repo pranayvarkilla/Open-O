@@ -68,7 +68,7 @@
 
 
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
-<html:html lang="en">
+<html>
 
     <head>
         <title>
@@ -209,4 +209,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

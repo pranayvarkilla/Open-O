@@ -75,7 +75,7 @@
 <%@taglib prefix="Encode" uri="https://www.owasp.org/index.php/OWASP_Java_Encoder_Project" %>
 
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
 
@@ -808,4 +808,4 @@
     </script>
 
     </body>
-</html:html>
+</html>

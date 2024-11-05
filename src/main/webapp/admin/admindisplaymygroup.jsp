@@ -50,7 +50,7 @@
 <%@ page import="java.util.*,java.sql.*" errorPage="../provider/errorpage.jsp" %>
 
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
 
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admindisplaymygroup.title"/></title>
@@ -167,4 +167,4 @@
 
     </script>
     </body>
-</html:html>
+</html>

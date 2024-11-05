@@ -89,7 +89,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>OSCAR oscarPathNET - Patient Linking</title>
@@ -199,4 +199,4 @@
         </table>
     </form>
     </body>
-</html:html>
+</html>

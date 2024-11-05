@@ -61,7 +61,7 @@
 
     if (!consultRequestEnabled && !consultResponseEnabled) consultRequestEnabled = true;
 %>
-<html:html lang="en">
+<html>
 
 
     <head>
@@ -151,4 +151,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

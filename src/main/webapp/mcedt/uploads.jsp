@@ -36,7 +36,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
-<html:html>
+<html>
     <head>
         <jsp:include page="head-includes.jsp"/>
         <script language="javascript">
@@ -133,4 +133,4 @@
         </div>
     </div>
     </body>
-</html:html>
+</html>

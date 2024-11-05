@@ -28,7 +28,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="java.lang.*,oscar.oscarEncounter.oscarMeasurements.pageUtil.*" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title></title>
@@ -70,7 +70,7 @@
 
 
     </body>
-</html:html>
+</html>
 
 
 <%-- <%=request.getAttribute("templateValue")%> --%>

@@ -134,7 +134,7 @@
 
 
 <!DOCTYPE HTML>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.addRole"/></title>
         <script src="${pageContext.request.contextPath}/js/global.js"></script>
@@ -272,4 +272,4 @@
     </div>
 
     </body>
-</html:html>
+</html>

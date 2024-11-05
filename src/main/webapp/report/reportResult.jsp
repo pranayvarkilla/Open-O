@@ -46,7 +46,7 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Report List</title>
@@ -138,4 +138,4 @@
     <script language="javascript" src="../commons/scripts/sort_table/common.js">
         <script language="javascript" src="../commons/scripts/sort_table/standardista-table-sorting.js">
         </body>
-</html:html>
+</html>

@@ -143,7 +143,7 @@
 
 
 <%@page import="org.oscarehr.util.MiscUtils" %>
-<html:html lang="en">
+<html>
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -397,4 +397,4 @@
     </table>
     <script type="text/javascript" src="../share/javascript/boxover.js"></script>
     </body>
-</html:html>
+</html>

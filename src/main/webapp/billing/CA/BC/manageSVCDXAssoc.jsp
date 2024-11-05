@@ -17,7 +17,7 @@
 
 <%@page
         import="java.util.*,oscar.oscarBilling.ca.bc.data.BillingCodeData,oscar.oscarBilling.ca.bc.pageUtil.*" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.CA.BC.billingBC.manageSVCDXAssoc.title"/></title>
@@ -90,4 +90,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

@@ -44,7 +44,7 @@
     String type = request.getParameter("type");
 %>
 <!DOCTYPE HTML>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript"
                 src="<%= request.getContextPath() %>/library/jquery/jquery-3.6.4.min.js"></script>
@@ -292,4 +292,4 @@
 
     </body>
 
-</html:html>
+</html>

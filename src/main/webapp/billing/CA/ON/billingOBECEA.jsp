@@ -33,7 +33,7 @@
 
 %>
 <!DOCTYPE html>
-<html:html>
+<html>
     <head>
 
         <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
@@ -62,4 +62,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

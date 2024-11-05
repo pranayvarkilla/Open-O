@@ -42,7 +42,7 @@
     String groupName = (String) request.getAttribute("groupName");
 %>
 
-<html:html lang="en">
+<html>
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -337,4 +337,4 @@
 
 
     </body>
-</html:html>
+</html>

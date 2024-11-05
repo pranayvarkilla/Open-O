@@ -86,7 +86,7 @@
     List<AffinityDomainDataObject> affinityDomains = affDao.getAllAffinityDomains();
 %>
 
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.title"/></title>
@@ -362,4 +362,4 @@
     <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 
     </body>
-</html:html>
+</html>

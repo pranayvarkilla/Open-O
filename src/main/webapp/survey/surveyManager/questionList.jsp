@@ -25,7 +25,7 @@
 
 
 <%@ include file="/survey/taglibs.jsp" %>
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Survey Manager</title>
@@ -44,7 +44,7 @@
             </tr>
         </table>
         <html:submit value="save"/>
-        <html:cancel/>
+        <button type="button" onclick="window.history.back();">Cancel</button>
     </html:form>
     </body>
-</html:html>
+</html>

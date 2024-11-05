@@ -65,7 +65,7 @@
     }
 
 %>
-<html:html lang="en">
+<html>
     <head>
         <script src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Manage Flowsheets</title>
@@ -175,4 +175,4 @@
         <input type="submit" value="Upload" class="btn btn-primary">
     </form>
 
-</html:html>
+</html>

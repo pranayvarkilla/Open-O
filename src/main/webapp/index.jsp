@@ -44,7 +44,7 @@
 <jsp:useBean id="LoginResourceBean" beanName="oscar.login.LoginResourceBean" type="oscar.login.LoginResourceBean"/>
 <c:set var="login_error" value="" scope="page"/>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
 
     <head>
         <title>
@@ -684,4 +684,4 @@
 
     </body>
     <script type="text/javascript" src="${pageContext.request.contextPath}/csrfguard"></script>
-</html:html>
+</html>

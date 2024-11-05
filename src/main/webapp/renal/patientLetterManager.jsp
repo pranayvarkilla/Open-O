@@ -47,7 +47,7 @@
 
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 
-<html:html lang="en">
+<html>
 
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.renal.managePatientLetter"/></title>
@@ -109,5 +109,5 @@
         </form>
     </div>
     </body>
-</html:html>
+</html>
 

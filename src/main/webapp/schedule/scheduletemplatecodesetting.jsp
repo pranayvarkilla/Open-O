@@ -68,7 +68,7 @@
         }
     }
 %>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="schedule.scheduletemplatecodesetting.title"/></title>
 
@@ -246,4 +246,4 @@
         </form>
     </div>
     </body>
-</html:html>
+</html>

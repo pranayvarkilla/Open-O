@@ -34,7 +34,7 @@
 %>
 
 <%@page import="java.text.SimpleDateFormat" %>
-<html:html lang="en">
+<html>
 
     <head>
         <title>
@@ -146,4 +146,4 @@
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

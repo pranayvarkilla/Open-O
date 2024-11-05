@@ -81,7 +81,7 @@
     oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
     com.quatro.service.security.SecurityManager securityManager = new com.quatro.service.security.SecurityManager();
 %>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.title"/></title>
 
@@ -718,4 +718,4 @@
     </table>
 
     </body>
-</html:html>
+</html>

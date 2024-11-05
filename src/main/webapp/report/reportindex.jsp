@@ -86,7 +86,7 @@
     %>
 
 </security:oscarSec>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportindex.title"/></title>
@@ -900,4 +900,4 @@
         </table>
     </body>
     </form>
-</html:html>
+</html>

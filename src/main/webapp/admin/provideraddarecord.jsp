@@ -69,7 +69,7 @@
     ProviderSiteDao providerSiteDao = SpringUtils.getBean(ProviderSiteDao.class);
     boolean alreadyExists = false;
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.provideraddrecord.title"/></title>
@@ -231,4 +231,4 @@
         %>
     </center>
     </body>
-</html:html>
+</html>

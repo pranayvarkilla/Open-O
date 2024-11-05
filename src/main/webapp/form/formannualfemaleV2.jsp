@@ -43,7 +43,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Annual Health Review</title>
@@ -1472,4 +1472,4 @@
                 </html:form>
 
     </body>
-</html:html>
+</html>

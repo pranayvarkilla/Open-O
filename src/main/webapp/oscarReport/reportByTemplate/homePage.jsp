@@ -46,7 +46,7 @@
 </security:oscarSec>
 <!DOCTYPE html>
 
-<html:html lang="en">
+<html>
     <head>
         <title>Report by Template</title>
 
@@ -264,4 +264,4 @@
     </script>
 
     </body>
-</html:html>
+</html>

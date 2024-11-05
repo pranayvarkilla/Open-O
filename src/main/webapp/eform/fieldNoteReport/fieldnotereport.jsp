@@ -83,7 +83,7 @@
         }
     }
 %>
-<html:html lang="en">
+<html>
     <head>
 
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.fieldNote.report"/></title>
@@ -302,4 +302,4 @@
     </script>
 
     </body>
-</html:html>
+</html>

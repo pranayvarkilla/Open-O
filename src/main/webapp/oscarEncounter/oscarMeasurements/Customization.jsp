@@ -34,7 +34,7 @@
 <%@ page import="oscar.oscarEncounter.oscarMeasurements.pageUtil.*" %>
 <%@ page import="java.util.Vector" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgCustomization"/></title>
@@ -171,4 +171,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

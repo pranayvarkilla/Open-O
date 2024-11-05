@@ -49,7 +49,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.providersearchresults.title"/></title>
         <link href="${pageContext.request.contextPath}/css/DT_bootstrap.css" rel="stylesheet">
@@ -270,4 +270,4 @@
     <p><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.providersearchresults.msgClickForEditing"/></p>
     </center>
     </body>
-</html:html>
+</html>

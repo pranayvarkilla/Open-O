@@ -41,7 +41,7 @@
     String providerbtnSubmit = (String) request.getAttribute("providerbtnSubmit");
     String providerbtnClose = (String) request.getAttribute("providerbtnClose");
 %>
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
@@ -183,4 +183,4 @@
     </script>
 
     </body>
-</html:html>
+</html>

@@ -18,7 +18,7 @@
          errorPage="/errorpage.jsp" %>
 <jsp:useBean id="oscarVariables" class="java.util.Properties" scope="session"/>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/global.js"></script>
         <script type="text/javascript"
@@ -138,5 +138,5 @@
     <div id="MOHreport"></div>
 
     </body>
-</html:html>
+</html>
 

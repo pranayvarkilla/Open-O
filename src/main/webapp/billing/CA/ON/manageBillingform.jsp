@@ -51,7 +51,7 @@
     String clinicview = request.getParameter("billingform") == null ? oscarVariables.getProperty("default_view") : request.getParameter("billingform");
     String reportAction = request.getParameter("reportAction") == null ? "" : request.getParameter("reportAction");
 %>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="billing.manageBillingform.title"/></title>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -203,4 +203,4 @@
     </div>
 
     </body>
-</html:html>
+</html>

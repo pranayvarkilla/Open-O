@@ -74,7 +74,7 @@
         email = demo.getEmail();
     }
 %>
-<html:html lang="en">
+<html>
     <head>
         <title>Questimed</title>
     </head>
@@ -128,4 +128,4 @@
         </div>
     </form>
     </body>
-</html:html>
+</html>

@@ -28,7 +28,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.error.title"/></title>
@@ -39,4 +39,4 @@
     <p><input type="button"
               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>" onclick="window.close();">
     </body>
-</html:html>
+</html>

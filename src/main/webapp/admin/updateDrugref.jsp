@@ -47,7 +47,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <html:base/>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.UpdateDrugref"/></title>
@@ -106,4 +106,4 @@
     </div>
     </body>
 
-</html:html>
+</html>

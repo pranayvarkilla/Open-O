@@ -33,7 +33,7 @@
     user_no = (String) session.getAttribute("user");
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxResearchCodeSearch.title"/></title>
@@ -136,4 +136,4 @@
         <h3>&nbsp;</h3>
     </form>
     </body>
-</html:html>
+</html>

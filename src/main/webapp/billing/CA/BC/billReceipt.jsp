@@ -92,7 +92,7 @@
         vecFaxes.add(st.nextToken());
     }
 %>
-<html:html>
+<html>
     <head>
         <title>
             <fmt:setBundle basename="oscarResources"/><fmt:message key="billing.bc.title"/>
@@ -659,16 +659,9 @@
                                                                             onclick="editInvoice('<%=bean.getBillingMasterNo()%>')">
                                                                         Edit Invoice
                                                                     </button>
-                                                                    <html:button styleClass="header" value="Print"
-                                                                                 property="Submit"
-                                                                                 onclick="javascript:printInvoiceWithoutNotes()"/>
-                                                                    <html:button styleClass="header"
-                                                                                 value="Print With Notes"
-                                                                                 property="Submit"
-                                                                                 onclick="javascript:printInvoiceWithNotes()"/>
-                                                                    <html:button styleClass="header" value="Cancel"
-                                                                                 property="Submit2"
-                                                                                 onclick="javascript:window.close()"/>
+                                                                    <button class="header" onclick="printInvoiceWithoutNotes()">Print</button>
+                                                                    <button class="header" onclick="printInvoiceWithNotes()">Print With Notes</button>
+                                                                    <button class="header" onclick="window.close()">Cancel</button>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -688,4 +681,4 @@
         </table>
     </html:form>
     </body>
-</html:html>
+</html>

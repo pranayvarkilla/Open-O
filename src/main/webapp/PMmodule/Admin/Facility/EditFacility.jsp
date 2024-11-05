@@ -23,12 +23,8 @@
 
 --%>
 <%@ include file="/taglibs.jsp" %>
-
 <%@ include file="/common/messages.jsp" %>
-
-<script type="text/javascript"
-        src="<%=request.getContextPath()%>/js/validation.js">
-</script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/validation.js"></script>
 <script type="text/javascript">
 
     //Check if string is a whole number(digits only).
@@ -41,7 +37,6 @@
         }
         return result;
     }
-
 
     function validateForm() {
         if (bCancel == true)
@@ -293,7 +288,7 @@
 
         <tr>
             <td colspan="2"><html:submit property="submit.save" onclick="bCancel=false;">Save</html:submit>
-                <html:cancel>Cancel</html:cancel></td>
+                <button type="button" onclick="window.history.back();">Cancel</button></td>
         </tr>
     </table>
 </html:form>

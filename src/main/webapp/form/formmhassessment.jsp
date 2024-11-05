@@ -48,7 +48,7 @@
 
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Mental Health Assessment and Intervention Plan</title>
@@ -484,4 +484,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

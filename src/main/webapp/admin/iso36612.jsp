@@ -40,7 +40,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
 
     <%
         ISO36612Dao iso = SpringUtils.getBean(ISO36612Dao.class);
@@ -68,4 +68,4 @@
     <% } %>
 
     </body>
-</html:html>
+</html>

@@ -60,7 +60,7 @@
     List<Object[]> dateIdList = scratchData.getAllDates(user_no);
 %>
 
-<html:html lang="en">
+<html>
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -278,4 +278,4 @@
         setClean();
     </script>
     </body>
-</html:html>
+</html>

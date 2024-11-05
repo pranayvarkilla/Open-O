@@ -34,7 +34,7 @@
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <c:set var="ctx" value="${pageContext.request.contextPath}"
@@ -58,4 +58,4 @@
         </tbody>
     </table>
     </body>
-</html:html>
+</html>

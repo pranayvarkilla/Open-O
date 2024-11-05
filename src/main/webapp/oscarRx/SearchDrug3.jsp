@@ -211,7 +211,7 @@
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<html:html lang="en">
+<html>
     <head>
 
 
@@ -2787,4 +2787,4 @@
     <script language="javascript" src="../commons/scripts/sort_table/standardista-table-sorting.js"></script>
 
     </body>
-</html:html>
+</html>

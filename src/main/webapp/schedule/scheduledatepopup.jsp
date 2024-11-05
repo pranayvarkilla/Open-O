@@ -59,7 +59,7 @@
 <%@page import="org.oscarehr.common.dao.SiteDao" %>
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@page import="org.oscarehr.common.model.Site" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="schedule.scheduledatepopup.title"/></title>
@@ -213,4 +213,4 @@
 
     </form>
     </body>
-</html:html>
+</html>

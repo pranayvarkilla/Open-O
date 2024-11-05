@@ -58,7 +58,7 @@
     DepartmentDao departmentDao = SpringUtils.getBean(DepartmentDao.class);
     InstitutitionDepartmentDao institutionDepartmentDao = SpringUtils.getBean(InstitutitionDepartmentDao.class);
 %>
-<html:html lang="en">
+<html>
 
     <%
         String id = (String) request.getAttribute("id");
@@ -157,4 +157,4 @@
     </tr>
     </table>
     </body>
-</html:html>
+</html>

@@ -160,7 +160,7 @@ maybe use jquery/ajax to post this data instead of submitting a form to send ALL
 
 %>
 
-<html:html lang="en">
+<html>
 
     <head>
         <title><oscar:nameage demographicNo="<%=demographic_no%>"/> - <%=flowSheet%> Custom Print</title><!--I18n-->
@@ -1150,7 +1150,7 @@ maybe use jquery/ajax to post this data instead of submitting a form to send ALL
 
 
     </body>
-</html:html>
+</html>
 <%!
     String refused(Object re) {
         String ret = "Given";

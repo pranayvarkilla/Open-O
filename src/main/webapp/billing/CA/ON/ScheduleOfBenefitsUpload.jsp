@@ -39,7 +39,7 @@
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
 
-<html:html lang="en">
+<html>
 
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.scheduleOfBenefits"/></title>
@@ -241,4 +241,4 @@
 
 
     </body>
-</html:html>
+</html>

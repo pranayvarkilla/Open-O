@@ -49,7 +49,7 @@
     OscarProperties op = OscarProperties.getInstance();
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.providerchangepassword.title"/></title>
 
@@ -273,4 +273,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

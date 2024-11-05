@@ -160,7 +160,7 @@
 <%@ page import="org.oscarehr.PMmodule.model.ProgramProvider" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="tickler.ticklerAdd.title"/></title>
 
@@ -646,4 +646,4 @@
         </form>
     </div>
     </body>
-</html:html>
+</html>

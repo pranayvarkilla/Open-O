@@ -41,7 +41,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -199,7 +199,7 @@
     <script language="javascript" src="../commons/scripts/sort_table/common.js">
         <script language="javascript" src="../commons/scripts/sort_table/standardista-table-sorting.js">
         </body>
-</html:html>
+</html>
 <%!
 
     String completed(boolean b) {

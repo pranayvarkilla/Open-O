@@ -132,7 +132,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
 
     <%
 
@@ -631,7 +631,7 @@
     </script>
     </body>
 
-</html:html>
+</html>
 <%!
     /*
     String getNewQueryString(String queryString,Integer offset, Integer limit) {

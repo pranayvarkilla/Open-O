@@ -50,7 +50,7 @@
 <%
     BillingreferralDao billingReferralDao = (BillingreferralDao) SpringUtils.getBean(BillingreferralDAO.class);
 %>
-<html:html lang="en">
+<html>
 
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.ManageReferralDoc"/></title>
@@ -215,7 +215,7 @@
         });
     </script>
     </body>
-</html:html>
+</html>
 <%!
     String selected(String var, String constant) {
         if (var != null && var.equals(constant)) {

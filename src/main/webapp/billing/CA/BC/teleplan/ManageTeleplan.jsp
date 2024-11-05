@@ -34,7 +34,7 @@
     String superUser = (String) session.getAttribute("user");
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
 
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.manageTeleplan"/></title>
@@ -146,4 +146,4 @@
         </form>
     </div>
     </body>
-</html:html>
+</html>

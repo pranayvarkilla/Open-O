@@ -79,7 +79,7 @@
 
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <script type="text/javascript" src="<c:out value="${ctx}"/>/js/jquery.js"></script>
@@ -275,4 +275,4 @@
             <td class="MainTableBottomRowRightColumn">&nbsp;</td>
         </tr>
     </table>
-</html:html>
+</html>

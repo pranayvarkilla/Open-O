@@ -107,7 +107,7 @@
 * Ontario, Canada
 */
 -->
-<html:html lang="en">
+<html>
     <% response.setHeader("Cache-Control", "no-cache");%>
 
     <head>
@@ -1901,4 +1901,4 @@
         });
     </script>
     </body>
-</html:html>
+</html>

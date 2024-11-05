@@ -265,7 +265,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
 
     <head>
         <title>
@@ -1490,7 +1490,7 @@
     </script>
     <% } %>
     </body>
-</html:html>
+</html>
 <%!
 
     String completed(boolean b) {

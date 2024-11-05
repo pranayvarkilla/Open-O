@@ -25,7 +25,7 @@
 
 
 <%@ include file="/survey/taglibs.jsp" %>
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Question Editor</title>
@@ -258,7 +258,7 @@
         <input type="button" value="Cancel" onclick="window.close();"/>
         -->
         <html:submit styleClass="button">Save</html:submit>
-        <html:cancel value="Cancel"/>
+        <button type="button" onclick="window.history.back();">Cancel</button>
     </html:form>
     </body>
-</html:html>
+</html>

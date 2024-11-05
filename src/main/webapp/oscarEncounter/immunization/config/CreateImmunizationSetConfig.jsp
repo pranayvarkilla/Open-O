@@ -62,7 +62,7 @@
 
 
 <%@page import="org.oscarehr.util.MiscUtils" %>
-<html:html lang="en">
+<html>
 
 
     <head>
@@ -203,4 +203,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

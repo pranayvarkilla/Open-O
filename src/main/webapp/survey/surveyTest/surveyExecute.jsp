@@ -25,7 +25,7 @@
 
 
 <%@ include file="/survey/taglibs.jsp" %>
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Test Manager</title>
@@ -128,11 +128,13 @@
         <br/>
         <table width="50%">
             <tr>
-                <td colspan="2"><html:submit value="Save"/> <html:cancel
-                        value="Cancel"/></td>
+                <td colspan="2">
+                    <html:submit value="Save"/> 
+                    <button type="button" onclick="window.history.back();">Cancel</button>
+                </td>
             </tr>
         </table>
 
     </html:form>
     </body>
-</html:html>
+</html>

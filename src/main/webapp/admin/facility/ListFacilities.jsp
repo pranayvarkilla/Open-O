@@ -42,7 +42,7 @@
         return;
     }
 %>
-<html:html lang="en">
+<html>
     <head>
         <title>Facilities</title>
         <link rel="stylesheet" type="text/css" href='<html:rewrite page="/css/tigris.css" />'/>
@@ -89,4 +89,4 @@
             Add new facility </a></p>
     -->
     </body>
-</html:html>
+</html>

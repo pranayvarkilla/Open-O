@@ -26,7 +26,7 @@
 
 <%@ include file="/taglibs.jsp" %>
 
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Oscar Forms</title>
@@ -162,11 +162,12 @@
                     <input type="submit" value="Temporary Save"
                            onclick="this.form.method.value='tmpsave_survey'; return true;"/>
                     <html:submit value="Save"/>
-                    <html:cancel value="Cancel"/>
+                    <button type="button" onclick="window.history.back();">Cancel</button>
+
                 </td>
             </tr>
         </table>
 
     </html:form>
     </body>
-</html:html>
+</html>

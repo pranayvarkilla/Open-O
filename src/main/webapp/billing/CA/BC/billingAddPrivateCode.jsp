@@ -43,7 +43,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
 
 
     <head>
@@ -111,4 +111,4 @@
         </html:form>
     </div>
     </body>
-</html:html>
+</html>

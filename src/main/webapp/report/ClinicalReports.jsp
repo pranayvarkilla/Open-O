@@ -101,7 +101,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
 
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="report.ClinicalReports.title"/></title>
@@ -780,7 +780,7 @@
     <script language="javascript" src="../commons/scripts/sort_table/common.js"></script>
     <script language="javascript" src="../commons/scripts/sort_table/standardista-table-sorting.js"></script>
     </body>
-</html:html>
+</html>
 <%!
     Object display(Object obj) {
         if (obj == null) {

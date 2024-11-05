@@ -147,7 +147,7 @@
 
 
 <%@page import="org.oscarehr.util.SessionConstants" %>
-<html:html>
+<html>
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -1289,7 +1289,7 @@
 
     </script>
     </body>
-</html:html>
+</html>
 <%!
     String refused(Object re) {
         String ret = "Given";

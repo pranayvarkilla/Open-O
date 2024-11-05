@@ -47,7 +47,7 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <fmt:setBundle basename="oscarResources"/>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <jsp:useBean id="displayServiceUtil" scope="request"
                  class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConDisplayServiceUtil"/>
     <%
@@ -179,4 +179,4 @@
         </table>
     </div>
     </body>
-</html:html>
+</html>

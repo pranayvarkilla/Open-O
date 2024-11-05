@@ -73,7 +73,7 @@
         return true;
     }
 </script>
-<html:html>
+<html>
 
     <body topmargin="0" leftmargin="0" vlink="#0000FF"
           onload="window.focus()">
@@ -215,4 +215,4 @@
     </table>
 
     </body>
-</html:html>
+</html>

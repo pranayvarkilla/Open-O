@@ -46,7 +46,7 @@
 
 <%@page import="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConAddDepartmentForm" %>
 
-<html:html lang="en">
+<html>
 
     <%
         ResourceBundle oscarR = ResourceBundle.getBundle("oscarResources", request.getLocale());
@@ -167,4 +167,4 @@
     </tr>
     </table>
     </body>
-</html:html>
+</html>

@@ -102,7 +102,7 @@
              class="oscar.oscarMessenger.pageUtil.MsgViewMessageForm"/>
 
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
@@ -294,4 +294,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

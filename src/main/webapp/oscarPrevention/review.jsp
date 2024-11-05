@@ -325,7 +325,7 @@
 %>
 
 
-<html:html lang="en">
+<html>
 
     <head>
         <title>OSCAR Prevention Review Screen</title><!--I18n-->
@@ -862,7 +862,7 @@
     </table>
 
     </body>
-</html:html>
+</html>
 <%!
     String getPractitionerName(Practitioner p) {
         if (p == null || p.getName() == null || p.getName().size() == 0) {

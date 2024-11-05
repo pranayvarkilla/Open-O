@@ -36,7 +36,7 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
 
-<html:html>
+<html>
     <head>
         <jsp:include page="head-includes.jsp"/>
         <style type="text/css">
@@ -238,4 +238,4 @@
     </div>
     <!-- container -->
     </body>
-</html:html>
+</html>

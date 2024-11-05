@@ -103,7 +103,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <html:base/>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.optChooseSpec"/></title>
@@ -220,4 +220,4 @@
 
     </div>
     </body>
-</html:html>
+</html>

@@ -38,7 +38,7 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<html:html>
+<html>
     <head>
         <html:base/>
         <meta charset="utf-8">
@@ -259,4 +259,4 @@
                onclick="window.location='disable_msg_action.jsp'">
     </div>
     </body>
-</html:html>
+</html>

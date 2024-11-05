@@ -59,7 +59,7 @@
 
 <!DOCTYPE html>
 
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarprevention.index.oscarpreventiontitre"/> - <fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.preventionNotification.title"/></title>
 
@@ -369,4 +369,4 @@
         });
     </script>
     </body>
-</html:html>
+</html>

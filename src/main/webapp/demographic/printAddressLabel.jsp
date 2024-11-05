@@ -61,7 +61,7 @@
         }
     }
 %>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="report.printLabel.title"/></title>
     </head>
@@ -79,5 +79,5 @@
             data="printDemoAddressLabelAction.do?demographic_no=<%=request.getParameter("demographic_no")%>"
             height="80%" width="100%"></object>
     </body>
-</html:html>
+</html>
 

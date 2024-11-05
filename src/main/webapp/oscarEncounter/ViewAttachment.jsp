@@ -65,7 +65,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="encounterStyles.css">
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
@@ -242,7 +242,7 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>
 <%!
     String spanStartRoot = "<span class=\"treeNode\" onclick=\"javascript:showTbl('tblRoot',event);\">"
             + "<img class=\"treeNode\" src=\"graphics/minus.gif\" border=\"0\" />";

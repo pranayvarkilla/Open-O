@@ -42,7 +42,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="billing.billingDigSearch.title"/></title>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/global.js"></script>
@@ -296,4 +296,4 @@
     <p>&nbsp;</p>
     <h3>&nbsp;</h3>
     </body>
-</html:html>
+</html>

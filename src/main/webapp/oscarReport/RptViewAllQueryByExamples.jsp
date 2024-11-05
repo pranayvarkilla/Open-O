@@ -45,7 +45,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css"
       href="../oscarEncounter/encounterStyles.css">
-<html:html lang="en">
+<html>
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -113,4 +113,4 @@
     </table>
 
     </body>
-</html:html>
+</html>

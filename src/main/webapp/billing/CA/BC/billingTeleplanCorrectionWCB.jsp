@@ -75,7 +75,7 @@
     List<BillingFormData.BillingVisit> billvisit = billform.getVisitType(billRegion);
     request.setAttribute("billvisit", billvisit);
 %>
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <html:base/>
@@ -764,7 +764,7 @@
         </script>
     </html:form>
     </body>
-</html:html>
+</html>
 <%!
     String checked(String val, String str, boolean dfault) {
         String retval = "";

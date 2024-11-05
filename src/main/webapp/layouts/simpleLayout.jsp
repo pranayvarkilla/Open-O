@@ -24,7 +24,7 @@
 --%>
 <%@ include file="/taglibs.jsp" %>
 
-<html:html>
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><tiles:getAsString name="title"/></title>
@@ -52,4 +52,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

@@ -47,7 +47,7 @@
     }
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.btnAddBillingLocation"/></title>
         <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
@@ -193,4 +193,4 @@
         </table>
     </div>
     </body>
-</html:html>
+</html>

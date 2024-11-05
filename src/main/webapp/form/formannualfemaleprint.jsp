@@ -43,7 +43,7 @@
 <%@ page import="oscar.form.*" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.formFemaleAnnualPrint.title"/></title>
@@ -593,7 +593,7 @@
 
 
     </body>
-</html:html>
+</html>
 
 <%! String checkMarks(String val) {
     String ret = "<img src='graphics/notChecked.gif'>";

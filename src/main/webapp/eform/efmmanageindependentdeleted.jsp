@@ -44,7 +44,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
-<html:html lang="en">
+<html>
 
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.showmyform.title"/></title>
@@ -160,4 +160,4 @@
         <%@ include file="efmFooter.jspf" %>
     </div>
     </body>
-</html:html>
+</html>

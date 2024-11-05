@@ -171,7 +171,7 @@
     ResultSet rsPatient = null;
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="billing.billingCorrection.title"/></title>
 
@@ -1363,4 +1363,4 @@
         });
     </script>
 
-</html:html>
+</html>

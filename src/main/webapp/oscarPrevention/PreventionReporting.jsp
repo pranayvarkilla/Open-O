@@ -65,7 +65,7 @@
     BillingONCHeader1Dao bCh1Dao = (BillingONCHeader1Dao) SpringUtils.getBean(BillingONCHeader1Dao.class);
 %>
 
-<html:html lang="en">
+<html>
 
     <head>
         <html:base/>
@@ -788,7 +788,7 @@
     </script>
 
     </body>
-</html:html>
+</html>
 
 <%!
     String getUrlParamList(ArrayList list, String paramName) {

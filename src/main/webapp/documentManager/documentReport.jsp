@@ -156,7 +156,7 @@
         DocumentBrowserLink = true;
     }
 %>
-<html:html lang="en">
+<html>
     <head>
 
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="dms.documentReport.msgDocuments"/> Manager</title>
@@ -697,4 +697,4 @@
 
     </div>
     </body>
-</html:html>
+</html>

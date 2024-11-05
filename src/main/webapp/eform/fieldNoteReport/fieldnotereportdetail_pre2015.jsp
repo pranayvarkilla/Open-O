@@ -89,7 +89,7 @@
 
     HashMap<Integer, List<EFormValue>> residentFieldNoteValues = FieldNoteManager.getResidentFieldNoteValues(residentId);
 %>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.fieldNote.report"/></title>
         <link rel="stylesheet" href="../../share/css/OscarStandardLayout.css">
@@ -338,4 +338,4 @@
         });
     </script>
     </body>
-</html:html>
+</html>

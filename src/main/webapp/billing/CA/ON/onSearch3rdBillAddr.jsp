@@ -64,7 +64,7 @@
 <%@ page import="org.apache.commons.lang.WordUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Add/Edit 3rd Bill Address</title>
@@ -247,4 +247,4 @@
         <br>
         <a href="onAddEdit3rdAddr.jsp">Add/Edit Address</a></center>
     </body>
-</html:html>
+</html>

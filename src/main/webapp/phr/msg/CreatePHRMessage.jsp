@@ -61,7 +61,7 @@
         request.setAttribute("subject", request.getParameter("subject"));
     }
 %>
-<html:html lang="en">
+<html>
 
     <head>
         <html:base/>
@@ -447,4 +447,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

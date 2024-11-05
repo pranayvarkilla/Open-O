@@ -47,7 +47,7 @@
 <%
     Episode episode = (Episode) request.getAttribute("episode");
 %>
-<html:html lang="en">
+<html>
     <head>
         <script src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Episode Form</title>
@@ -232,4 +232,4 @@
             <td class="MainTableBottomRowRightColumn">&nbsp;</td>
         </tr>
     </table>
-</html:html>
+</html>

@@ -54,7 +54,7 @@
 %>
 
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.DiseaseRegistry"/></title>
 
@@ -284,4 +284,4 @@
         </nested:form>
     </div>
     </body>
-</html:html>
+</html>

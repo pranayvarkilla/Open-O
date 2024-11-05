@@ -94,7 +94,7 @@
 <jsp:useBean id="displayServiceUtil" scope="request"
              class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConDisplayServiceUtil"/>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
 
     <%! boolean bMultisites = org.oscarehr.common.IsPropertiesOn.isMultisitesEnable(); %>
 
@@ -3075,7 +3075,7 @@ if (userAgent != null) {
 
     </script>
 
-</html:html>
+</html>
 
 <%!
     protected String listNotes(CaseManagementManager cmgmtMgr, String code, String providerNo, String demoNo) {

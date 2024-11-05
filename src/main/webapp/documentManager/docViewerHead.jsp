@@ -27,7 +27,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="dms.docViewerHead.title"/></title>
@@ -37,4 +37,4 @@
     <div align="center"><font face="Arial, Helvetica, sans-serif"
                               size="3"><b><font color="#FFFFFF"><fmt:setBundle basename="oscarResources"/><fmt:message key="dms.docViewerHead.msgDocumentViewer"/></font></b></font></div>
     </body>
-</html:html>
+</html>

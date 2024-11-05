@@ -119,7 +119,7 @@
         }
     }
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="report.reportdaysheet.title"/></title>
@@ -372,4 +372,4 @@
 
     </table>
     </body>
-</html:html>
+</html>

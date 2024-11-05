@@ -156,7 +156,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.managePrivBillingCode"/></title>
 
@@ -373,4 +373,4 @@
             $('#billingservice_date').datepicker();
         });
     </script>
-</html:html>
+</html>

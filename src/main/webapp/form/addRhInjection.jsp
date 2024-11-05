@@ -108,7 +108,7 @@
 * Ontario, Canada
 */
 -->
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Rh Immune Globulin Injection Reporting Form</title>
@@ -335,7 +335,7 @@
 
 
     </body>
-</html:html>
+</html>
 
 
 <%!

@@ -86,7 +86,7 @@
     if (request.getParameter("view") != null && request.getParameter("view").equals("1")) bView = true;
 %>
 
-<html:html lang="en">
+<html>
 
 
     <head>
@@ -3397,4 +3397,4 @@
         });
     </script>
 
-</html:html>
+</html>

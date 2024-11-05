@@ -156,7 +156,7 @@
 
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="tickler.ticklerMain.title"/> Manager</title>
 
@@ -1074,4 +1074,4 @@
 
     </div>
     </body>
-</html:html>
+</html>

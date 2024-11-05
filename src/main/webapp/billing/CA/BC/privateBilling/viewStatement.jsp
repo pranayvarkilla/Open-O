@@ -23,7 +23,7 @@
 
 <%@ page contentType="text/html" %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.PrivateBillingStatement"/></title>
@@ -254,4 +254,4 @@
         });
     </script>
     </body>
-</html:html>
+</html>

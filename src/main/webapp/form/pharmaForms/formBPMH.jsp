@@ -51,7 +51,7 @@
     }
 %>
 
-<html:html>
+<html>
 
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.title"/></title>
@@ -439,4 +439,4 @@
     </footer>
 
     </body>
-</html:html>
+</html>
