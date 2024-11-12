@@ -806,6 +806,13 @@ ADD COLUMN `fullCode` VARCHAR(80) DEFAULT NULL,
 ADD COLUMN `codeCsv` VARCHAR(80) DEFAULT NULL;
 
 --
+-- Alter table structure for table `pharmacyInfo`, added uid
+--
+
+ALTER TABLE `pharmacyInfo`
+ADD COLUMN `uid` int(10) NOT NULL FIRST;
+
+--
 -- Alter table structure for table `program_access_roles`, added constraints
 --
 
