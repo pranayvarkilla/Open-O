@@ -192,22 +192,21 @@
                    class="current"> <bean:message key="eform.showmyform.btnAddEForm"/></a>
                 <a href="efmpatientformlist.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&parentAjaxId=<%=parentAjaxId%>"><bean:message
                         key="eform.calldeletedformdata.btnGoToForm"/></a>
-                <a href="efmpatientformlistdeleted.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&parentAjaxId=<%=parentAjaxId%>"><bean:message
-                        key="eform.showmyform.btnDeleted"/></a>
-
-                <security:oscarSec roleName="<%=roleName$%>" objectName="_admin,_admin.eform" rights="r"
-                                   reverse="<%=false%>">
-                    <a href="#"
-                       onclick="javascript: return popup(600, 1200, '${ pageContext.request.contextPath }/administration/?show=Forms', 'manageeforms');"
-                       style="color: #835921;"><bean:message key="eform.showmyform.msgManageEFrm"/></a>
-                </security:oscarSec>
-
                 <jsp:include page="efmviewgroups.jsp">
                     <jsp:param name="url" value="${ pageContext.request.contextPath }/eform/efmpatientformlist.jsp"/>
                     <jsp:param name="groupView" value="<%=groupView%>"/>
                     <jsp:param name="patientGroups" value="1"/>
                     <jsp:param name="parentAjaxId" value="<%=parentAjaxId%>"/>
                 </jsp:include>
+
+                <a href="efmpatientformlistdeleted.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&parentAjaxId=<%=parentAjaxId%>"><bean:message
+                        key="eform.showmyform.btnDeleted"/></a>
+
+                <security:oscarSec roleName="<%=roleName$%>" objectName="_admin,_admin.eform" rights="r"
+                                   reverse="<%=false%>">
+                    <a href="#" onclick="javascript: return popup(600, 1200, '${ pageContext.request.contextPath }/administration/?show=Forms', 'manageeforms');"
+                       style="color: #835921;"><bean:message key="eform.showmyform.msgManageEFrm"/></a>
+                </security:oscarSec>
 
             </div>
             <div class="right-column">

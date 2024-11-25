@@ -193,6 +193,11 @@
                         key="demographic.demographiceditdemographic.btnMasterFile"/></a>
                 <a href="efmformslistadd.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&parentAjaxId=<%=parentAjaxId%>"
                    class="current"> <bean:message key="eform.showmyform.btnAddEForm"/></a>
+                <jsp:include page="efmviewgroups.jsp">
+                    <jsp:param name="url" value="../eform/efmformslistadd.jsp"/>
+                    <jsp:param name="groupView" value="<%=groupView%>"/>
+                </jsp:include>
+
                 <a href="efmpatientformlist.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&parentAjaxId=<%=parentAjaxId%>"><bean:message
                         key="eform.calldeletedformdata.btnGoToForm"/></a>
                 <a href="efmpatientformlistdeleted.jsp?demographic_no=<%=demographic_no%>&appointment=<%=appointment%>&parentAjaxId=<%=parentAjaxId%>"><bean:message
@@ -204,10 +209,6 @@
                        onclick="return popup(600, 1200, '../administration/?show=Forms', 'manageeforms');"
                        style="color: #835921;"><bean:message key="eform.showmyform.msgManageEFrm"/></a>
                 </security:oscarSec>
-                <jsp:include page="efmviewgroups.jsp">
-                    <jsp:param name="url" value="../eform/efmformslistadd.jsp"/>
-                    <jsp:param name="groupView" value="<%=groupView%>"/>
-                </jsp:include>
 
             </div>
             <div class="right-column">
