@@ -24,15 +24,16 @@
 
 --%>
 <!DOCTYPE html>
-<%@page import="org.oscarehr.sharingcenter.SharingCenterUtil" %>
-<%@page import="org.oscarehr.sharingcenter.dao.AffinityDomainDao" %>
-<%@page import="org.oscarehr.sharingcenter.model.AffinityDomainDataObject" %>
-<%@page import="org.oscarehr.util.SpringUtils" %>
 
 <%@page import="java.util.*,oscar.eform.*" %>
-<%@page import="org.oscarehr.web.eform.EfmPatientFormList" %>
+<%@ page import="org.owasp.encoder.Encode" %>
+<%@ page import="org.oscarehr.managers.DemographicManager" %>
+<%@ page import="org.oscarehr.util.SpringUtils" %>
+<%@ page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
+    LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
     String demographic_no = request.getParameter("demographic_no");
     String deepColor = "#CCCCFF", weakColor = "#EEEEFF";
 
@@ -59,6 +60,12 @@
     String appointment = request.getParameter("appointment");
     String parentAjaxId = request.getParameter("parentAjaxId");
 %>
+<%!
+    DemographicManager demographicManager = SpringUtils.getBean(DemographicManager.class);
+%>
+<%
+    pageContext.setAttribute("demographic", demographicManager.getDemographic(loggedInInfo, demographic_no));
+%>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
@@ -69,17 +76,15 @@
         <title><bean:message key="eform.showmyform.title"/></title>
 
 
-        <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/css/DT_bootstrap.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/css/bootstrap-responsive.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/library/DataTables-1.10.12/media/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/library/bootstrap/3.0.0/css/bootstrap.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/library/DataTables/datatables.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/library/jquery/jquery-ui-1.12.1.min.css" rel="stylesheet">
+
 
         <script src="${pageContext.request.contextPath}/js/global.js"></script>
-
         <script src="${pageContext.request.contextPath}/library/jquery/jquery-3.6.4.min.js"></script>
-        <script src="${ pageContext.request.contextPath }/library/jquery/jquery-ui-1.12.1.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-        <script src="${ pageContext.request.contextPath }/library/DataTables/datatables.min.js"></script><!-- 1.13.4 -->
+        <script src="${pageContext.request.contextPath}/library/bootstrap/3.0.0/js/bootstrap.js"></script>
+        <script src="${pageContext.request.contextPath}/library/DataTables/datatables.min.js"></script>
 
         <script src="${ pageContext.request.contextPath }/js/jquery.fileDownload.js"></script>
         <script src="${ pageContext.request.contextPath }/share/javascript/Oscar.js"></script>
@@ -87,19 +92,7 @@
         <script>
 
 			$(document).ready(function () {
-				// let shareDocumentsTarget = "../sharingcenter/documents/shareDocumentsAction.jsp";
 
-				// Share button click event
-				// $("#SendToAffinityDomain").on("click", function () {
-				// 	// change the form's action (share page) then submit (only if forms are selected)
-				// 	if ($("input:checkbox[name='sendToPhr']:checked").length > 0) {
-				// 		$("#sendToPhrForm").attr('action', shareDocumentsTarget);
-				// 		$("#sendToPhrForm").trigger("submit");
-				// 	} else {
-				// 		alert('No forms selected');
-				// 		return false;
-				// 	}
-				// });
 				let table = jQuery('#efmTable').DataTable({
 					"lengthMenu": [[15, 30, 60, 120, -1], [15, 30, 60, 120, '<bean:message key="demographic.search.All"/>']],
 					"order": [2],
@@ -141,10 +134,25 @@
 			}
         </script>
         <style>
-            :root *:not(h2) {
+            :root *:not(h2, .h2) {
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
                 font-size: 12px;
-                line-height: 1;
+                overscroll-behavior: none;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
 
+            #heading h2 {
+                display: inline-block;
+            }
+
+            #heading span {
+                margin-left:50px;
+            }
+
+
+            :root a {
+                color:blue;
             }
 
             div.menu-columns {
@@ -165,7 +173,15 @@
 
     <body onunload="updateAjax()">
     <div class="container">
-        <h2><bean:message key="eform.showmyform.msgFormLybrary"/></h2>
+        <div id="heading">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-ruled" viewBox="0 0 16 16">
+                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5zM3 12v-2h2v2zm0 1h2v2H4a1 1 0 0 1-1-1zm3 2v-2h7v1a1 1 0 0 1-1 1zm7-3H6v-2h7z"></path>
+                </svg>
+                <bean:message key="eform.showmyform.msgFormLybrary"/>
+            </h2>
+            <span><c:out value="${demographic.displayName}" /></span>
+        </div>
         <div class="menu-columns">
 
             <div class="left-column">
@@ -198,7 +214,7 @@
 
                 <form id="sendToPhrForm" action="efmpatientformlistSendPhrAction.jsp">
                     <input type="hidden" name="clientId" value="<%=demographic_no%>"/>
-                    <table id="efmTable" class="display compact nowrap">
+                    <table id="efmTable" class="table table-striped table-compact dataTable no-footer">
                         <thead>
                         <tr>
                             <th>
@@ -231,14 +247,14 @@
                                    ONCLICK="popupPage('efmshowform_data.jsp?fdid=<%=curform.get("fdid")%>&appointment=<%=appointment%>', '<%="FormP" + i%>'); return false;"
                                    TITLE="<bean:message key="eform.showmyform.msgViewFrm"/>"
                                    onmouseover="window.status='<bean:message
-                                           key="eform.showmyform.msgViewFrm"/>'; return true"><%=curform.get("formName")%>
+                                           key="eform.showmyform.msgViewFrm"/>'; return true"><%=Encode.forHtmlContent((String)curform.get("formName"))%>
                             </a></td>
-                            <td><%=curform.get("formSubject")%>
+                            <td><%=Encode.forHtmlContent((String)curform.get("formSubject"))%>
                             </td>
                             <td><%=curform.get("formDate")%>
                             </td>
-                            <td><a href="${ pageContext.request.contextPath }/eform/removeEForm.do?fdid=<%=curform.get("fdid")%>&group_view=<%=groupView%>&demographic_no=<%=demographic_no%>&parentAjaxId=<%=parentAjaxId%>"
-                                    onClick="javascript: return confirm('Are you sure you want to delete this eform?');"><bean:message
+                            <td><a style="color:red;" href="${ pageContext.request.contextPath }/eform/removeEForm.do?fdid=<%=curform.get("fdid")%>&group_view=<%=groupView%>&demographic_no=<%=demographic_no%>&parentAjaxId=<%=parentAjaxId%>"
+                                    onClick="return confirm('Are you sure you want to delete this eform?');"><bean:message
                                     key="eform.uploadimages.btnDelete"/></a></td>
                         </tr>
                         <%
