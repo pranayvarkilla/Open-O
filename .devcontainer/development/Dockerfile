@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slim
+FROM openjdk:21-jdk-slim
 
 # Set environment variables for Tomcat
 ENV CATALINA_HOME /usr/local/tomcat
