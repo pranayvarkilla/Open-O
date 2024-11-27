@@ -43,7 +43,7 @@ import org.oscarehr.common.dao.DemographicDao;
 import org.oscarehr.common.dao.ProviderDefaultProgramDao;
 import org.oscarehr.common.model.Demographic;
 import org.oscarehr.common.model.ProviderDefaultProgram;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface InfirmBedProgramManager {

@@ -46,7 +46,7 @@ import org.oscarehr.common.model.Admission;
 import org.oscarehr.common.model.Demographic;
 import org.oscarehr.common.model.DemographicExt;
 import org.oscarehr.common.model.JointAdmission;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
@@ -272,37 +272,37 @@ public class ClientManagerImpl implements ClientManager {
         this.jointAdmissionDao = jointAdmissionDao;
     }
 
-    @Required
+    @Autowired
     public void setDemographicDao(DemographicDao dao) {
         this.dao = dao;
     }
 
-    @Required
+    @Autowired
     public void setDemographicExtDao(DemographicExtDao dao) {
         this.demographicExtDao = dao;
     }
 
-    @Required
+    @Autowired
     public void setClientReferralDAO(ClientReferralDAO dao) {
         this.referralDAO = dao;
     }
 
-    @Required
+    @Autowired
     public void setProgramQueueManager(ProgramQueueManager mgr) {
         this.queueManager = mgr;
     }
 
-    @Required
+    @Autowired
     public void setAdmissionManager(AdmissionManager mgr) {
         this.admissionManager = mgr;
     }
 
-    @Required
+    @Autowired
     public void setClientRestrictionManager(ClientRestrictionManager clientRestrictionManager) {
         this.clientRestrictionManager = clientRestrictionManager;
     }
 
-    @Required
+    @Autowired
     public void setOutsideOfDomainEnabled(boolean outsideOfDomainEnabled) {
         this.outsideOfDomainEnabled = outsideOfDomainEnabled;
     }

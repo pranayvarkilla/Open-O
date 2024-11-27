@@ -288,6 +288,46 @@
             <artifactId>spring-aop</artifactId>
             <version>6.2.0</version>
         </dependency>
+        <!-- added for the deprecated required class -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.2.0</version> <!-- Use the appropriate version -->
+        </dependency>
+        <!-- added for spring 6.2.0 Javamail DNE error-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>6.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <!-- Spring Integration -->
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-core</artifactId>
+            <version>6.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-file</artifactId>
+            <version>6.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-sftp</artifactId>
+            <version>6.4.0</version>
+        </dependency>
+        <!-- added for the TransManagerUtils class -->
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.11.1</version> 
+        </dependency>
+
         <dependency>
             <groupId>com.onelogin</groupId>
             <artifactId>java-saml</artifactId>
@@ -420,10 +460,10 @@
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-webmvc</artifactId>
                 </exclusion>
-                <exclusion>
+                <!-- <exclusion>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-web</artifactId>
-                </exclusion>
+                </exclusion> -->
             </exclusions>
         </dependency>
         <dependency>
@@ -1132,10 +1172,10 @@
                     <groupId>org.oscarehr</groupId>
                     <artifactId>util</artifactId>
                 </exclusion>
-                <exclusion>
+                <!-- <exclusion>
                     <groupId>javax.mail</groupId>
                     <artifactId>mail</artifactId>
-                </exclusion>
+                </exclusion> -->
                 <exclusion>
                     <groupId>org.apache.commons</groupId>
                     <artifactId>commons-email</artifactId>
@@ -1209,12 +1249,12 @@
             <groupId>org.marc.shic</groupId>
             <artifactId>shic-pix</artifactId>
             <version>1.0.8</version>
-            <exclusions>
+            <!-- <exclusions>
                 <exclusion>
                     <groupId>javax.mail</groupId>
                     <artifactId>mail</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions> -->
         </dependency>
         <dependency>
             <groupId>org.marc.shic</groupId>

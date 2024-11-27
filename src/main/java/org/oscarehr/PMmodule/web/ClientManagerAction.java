@@ -126,7 +126,7 @@ import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
 import org.oscarehr.util.WebUtils;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import oscar.OscarProperties;
 import oscar.log.LogAction;
@@ -2089,7 +2089,7 @@ public class ClientManagerAction extends DispatchAction {
         return (StringEscapeUtils.escapeHtml(display));
     }
 
-    @Required
+    @Autowired
     public void setClientRestrictionManager(ClientRestrictionManager clientRestrictionManager) {
         this.clientRestrictionManager = clientRestrictionManager;
     }
