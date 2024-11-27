@@ -30,7 +30,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Unmarshaller;

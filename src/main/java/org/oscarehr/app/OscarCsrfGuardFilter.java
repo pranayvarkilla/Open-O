@@ -33,7 +33,8 @@ import org.owasp.csrfguard.http.InterceptRedirectResponse;
 import org.owasp.csrfguard.log.LogLevel;
 import org.owasp.csrfguard.util.RandomGenerator;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+//import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import oscar.OscarProperties;
 
 import javax.servlet.Filter;
@@ -211,7 +212,7 @@ public class OscarCsrfGuardFilter implements Filter {
 
         String tokenFromPages = (pageTokens != null ? pageTokens.get(request.getRequestURI()) : null);
         String tokenFromSession = (String) session.getAttribute(csrfGuard.getSessionKey());
-        MultipartHttpServletRequest multipartRequest = new CommonsMultipartResolver().resolveMultipart(request);
+        MultipartHttpServletRequest multipartRequest = new StandardServletMultipartResolver().resolveMultipart(request);
         String tokenFromRequest = multipartRequest.getParameter(csrfGuard.getTokenName());
 
         if (tokenFromRequest == null) {

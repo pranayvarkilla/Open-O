@@ -23,7 +23,7 @@ package com.quatro.common;
 
 import java.util.Calendar;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 import org.apache.struts.taglib.TagUtils;
 import org.apache.struts.taglib.html.BaseInputTag;
