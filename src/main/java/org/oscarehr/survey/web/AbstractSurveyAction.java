@@ -23,7 +23,7 @@
 
 package org.oscarehr.survey.web;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;

@@ -31,8 +31,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Query;
-import javax.persistence.TemporalType;
+import jakarta.persistence.Query;
+import jakarta.persistence.TemporalType;
 
 import org.oscarehr.common.model.Consent;
 import org.springframework.stereotype.Repository;

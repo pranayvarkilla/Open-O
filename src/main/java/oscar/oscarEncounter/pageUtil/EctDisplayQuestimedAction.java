@@ -28,7 +28,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -38,8 +38,6 @@ import org.apache.logging.log4j.Logger;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.ws.rest.util.QuestimedUtil;
 import oscar.OscarProperties;
-
-import static oscar.oscarEncounter.pageUtil.EctDisplayAction.MAX_LEN_TITLE;
 
 import oscar.util.StringUtils;
 

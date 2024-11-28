@@ -28,7 +28,7 @@
 
 package org.oscarehr.common.dao;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.ProviderStudy;
 import org.oscarehr.common.model.ProviderStudyPK;

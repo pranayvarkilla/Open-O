@@ -35,10 +35,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.PostUpdate;
-import javax.persistence.Transient;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.PostUpdate;
+import jakarta.persistence.Transient;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.Logger;

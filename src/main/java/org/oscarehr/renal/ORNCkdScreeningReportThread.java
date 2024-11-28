@@ -27,9 +27,9 @@ package org.oscarehr.renal;
 import java.io.StringWriter;
 import java.util.List;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 
 import org.oscarehr.common.dao.ORNCkdScreeningReportLogDao;
 import org.oscarehr.common.model.ORNCkdScreeningReportLog;

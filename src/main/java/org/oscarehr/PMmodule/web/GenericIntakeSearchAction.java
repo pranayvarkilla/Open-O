@@ -30,9 +30,9 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.WebServiceException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.xml.ws.WebServiceException;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.Logger;

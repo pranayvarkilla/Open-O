@@ -2,7 +2,7 @@
 
 package oscar.oscarBilling.ca.bc.MSP;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;

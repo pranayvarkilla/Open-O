@@ -30,7 +30,7 @@ package org.oscarehr.common.dao;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.PageMonitor;
 import org.springframework.stereotype.Repository;

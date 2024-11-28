@@ -13,8 +13,8 @@ package oscar.oscarLab.ca.all.pageUtil;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.Action;
@@ -29,8 +29,6 @@ import org.oscarehr.util.SpringUtils;
 
 import oscar.oscarLab.ca.all.parsers.Factory;
 import oscar.oscarLab.ca.all.parsers.MessageHandler;
-
-import com.lowagie.text.DocumentException;
 
 public class PrintOLISLabAction extends Action {
 

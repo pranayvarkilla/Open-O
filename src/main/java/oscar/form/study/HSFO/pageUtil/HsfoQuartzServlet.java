@@ -29,11 +29,11 @@ package oscar.form.study.HSFO.pageUtil;
 import java.io.IOException;
 import java.util.Date;
 
-import javax.servlet.Servlet;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.util.MiscUtils;

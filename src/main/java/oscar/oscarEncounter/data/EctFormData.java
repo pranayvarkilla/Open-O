@@ -39,7 +39,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.PersistenceException;
+import jakarta.persistence.PersistenceException;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.Logger;

@@ -28,7 +28,7 @@ package org.oscarehr.billing.CA.BC.dao;
 
 import java.util.List;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.billing.CA.BC.model.TeleplanS21;
 import org.oscarehr.common.dao.AbstractDaoImpl;

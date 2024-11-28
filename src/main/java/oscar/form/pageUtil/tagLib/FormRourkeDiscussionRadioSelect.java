@@ -28,8 +28,8 @@ package oscar.form.pageUtil.tagLib;
 import org.apache.commons.text.StringSubstitutor;
 import oscar.form.model.FormRourke2017Constants;
 
-import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.TagSupport;
+import jakarta.servlet.jsp.JspWriter;
+import jakarta.servlet.jsp.tagext.TagSupport;
 
 import java.io.IOException;
 import java.util.HashMap;

@@ -28,7 +28,7 @@ package oscar.oscarBilling.ca.bc.pageUtil;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.struts.action.ActionErrors;

@@ -48,8 +48,8 @@ import oscar.OscarProperties;
 import oscar.form.FrmLabReq07Record;
 import oscar.form.FrmLabReq10Record;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;

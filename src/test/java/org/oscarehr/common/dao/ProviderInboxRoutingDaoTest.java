@@ -26,9 +26,8 @@ package org.oscarehr.common.dao;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
-import javax.persistence.PersistenceException;
+import jakarta.persistence.PersistenceException;
 
-import org.hibernate.HibernateException;
 import org.junit.Before;
 import org.junit.Test;
 import org.oscarehr.common.dao.utils.EntityDataGenerator;

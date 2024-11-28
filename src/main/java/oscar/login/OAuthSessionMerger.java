@@ -34,7 +34,7 @@ package oscar.login;
 import org.oscarehr.common.dao.ServiceRequestTokenDao;
 import org.oscarehr.common.model.ServiceRequestToken;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.oscarehr.util.SpringUtils;
 

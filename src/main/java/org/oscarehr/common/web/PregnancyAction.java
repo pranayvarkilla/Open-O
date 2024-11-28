@@ -41,8 +41,8 @@ import java.util.List;
 import java.util.Properties;
 
 import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -62,7 +62,6 @@ import org.oscarehr.common.dao.EFormGroupDao;
 import org.oscarehr.common.dao.EpisodeDao;
 import org.oscarehr.common.dao.MeasurementDao;
 import org.oscarehr.common.dao.PregnancyFormsDao;
-import org.oscarehr.common.dao.PregnancyFormsDaoImpl;
 import org.oscarehr.common.dao.PrintResourceLogDao;
 import org.oscarehr.common.model.AbstractCodeSystemModel;
 import org.oscarehr.common.model.Allergy;

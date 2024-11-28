@@ -36,7 +36,7 @@
 package org.oscarehr.phr.taglib;
 
 
-import javax.servlet.jsp.tagext.TagSupport;
+import jakarta.servlet.jsp.tagext.TagSupport;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.myoscar.commons.MedicalDataType;

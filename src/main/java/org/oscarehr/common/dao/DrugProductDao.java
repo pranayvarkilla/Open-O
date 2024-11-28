@@ -31,11 +31,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Query;
-
 import org.oscarehr.common.model.DrugProduct;
 import org.oscarehr.rx.dispensary.LotBean;
-import org.springframework.stereotype.Repository;
 
 public interface DrugProductDao extends AbstractDao<DrugProduct> {
 

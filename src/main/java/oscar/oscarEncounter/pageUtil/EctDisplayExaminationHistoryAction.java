@@ -27,7 +27,7 @@
 package oscar.oscarEncounter.pageUtil;
 
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.struts.util.MessageResources;
 import org.oscarehr.util.LoggedInInfo;

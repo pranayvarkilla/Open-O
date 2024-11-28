@@ -29,7 +29,7 @@ package oscar.oscarEncounter.pageUtil;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.ProfessionalSpecialistDao;

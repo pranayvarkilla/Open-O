@@ -28,7 +28,7 @@ import org.oscarehr.billing.CA.BC.model.Hl7Pid;
 import org.oscarehr.common.dao.AbstractDaoImpl;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import java.sql.Timestamp;
 import java.util.List;
 

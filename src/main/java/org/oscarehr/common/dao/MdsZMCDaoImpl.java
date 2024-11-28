@@ -28,7 +28,7 @@
 
 package org.oscarehr.common.dao;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.MdsZMC;
 import org.springframework.stereotype.Repository;

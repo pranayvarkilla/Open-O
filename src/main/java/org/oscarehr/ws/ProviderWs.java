@@ -27,7 +27,7 @@ package org.oscarehr.ws;
 
 import java.util.List;
 
-import javax.jws.WebService;
+import jakarta.jws.WebService;
 
 import org.apache.cxf.annotations.GZIP;
 import org.oscarehr.common.model.Property;

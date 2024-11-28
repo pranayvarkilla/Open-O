@@ -14,9 +14,9 @@ package org.oscarehr.common.dao;
 
 import org.oscarehr.caseload.CaseloadCategory;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import java.math.BigInteger;
 import java.util.*;
 

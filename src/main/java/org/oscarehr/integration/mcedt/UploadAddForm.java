@@ -24,7 +24,7 @@
  */
 package org.oscarehr.integration.mcedt;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.ActionErrors;

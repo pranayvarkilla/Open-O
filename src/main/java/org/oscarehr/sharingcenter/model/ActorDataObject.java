@@ -28,7 +28,7 @@ import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import org.marc.shic.core.configuration.IheActorConfiguration;
 import org.marc.shic.core.configuration.IheActorType;

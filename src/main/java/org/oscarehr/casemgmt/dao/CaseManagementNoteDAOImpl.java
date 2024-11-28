@@ -44,8 +44,6 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
 
-import javax.persistence.PersistenceException;
-
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
@@ -58,12 +56,10 @@ import org.oscarehr.casemgmt.model.CaseManagementNote;
 import org.oscarehr.casemgmt.model.CaseManagementSearchBean;
 import org.oscarehr.common.model.Provider;
 import org.oscarehr.util.DbConnectionFilter;
-import org.oscarehr.util.EncounterUtil;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 

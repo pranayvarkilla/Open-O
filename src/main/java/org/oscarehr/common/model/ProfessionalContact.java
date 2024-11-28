@@ -26,7 +26,7 @@
 
 package org.oscarehr.common.model;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 import org.oscarehr.integration.fhir.resources.constants.ContactType;
 

@@ -34,13 +34,12 @@ package oscar.service;
  * @author mweston4
  */
 
+import jakarta.annotation.Resource;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.MailException;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 

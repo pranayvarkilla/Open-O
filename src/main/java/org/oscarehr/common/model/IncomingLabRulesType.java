@@ -26,7 +26,7 @@
 
 package org.oscarehr.common.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "incomingLabRulesType")

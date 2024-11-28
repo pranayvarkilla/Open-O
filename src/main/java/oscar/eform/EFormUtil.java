@@ -63,7 +63,7 @@ import oscar.util.ConversionUtils;
 import oscar.util.OscarRoleObjectPrivilege;
 import oscar.util.UtilDateUtilities;
 
-import javax.persistence.PersistenceException;
+import jakarta.persistence.PersistenceException;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;

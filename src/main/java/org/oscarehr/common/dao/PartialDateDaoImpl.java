@@ -29,8 +29,8 @@ package org.oscarehr.common.dao;
 
 
 import java.util.Date;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.Query;
 
 import org.apache.commons.lang.math.NumberUtils;
 import org.oscarehr.common.model.PartialDate;

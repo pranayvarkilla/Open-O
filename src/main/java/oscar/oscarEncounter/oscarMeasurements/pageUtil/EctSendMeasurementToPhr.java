@@ -34,10 +34,10 @@ package oscar.oscarEncounter.oscarMeasurements.pageUtil;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.JAXBException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.xml.bind.JAXBException;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.Action;

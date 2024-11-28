@@ -23,8 +23,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.util.MiscUtils;

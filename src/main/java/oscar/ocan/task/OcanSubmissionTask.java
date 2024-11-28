@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimerTask;
 
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.PMmodule.service.GenericIntakeManager;

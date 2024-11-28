@@ -36,7 +36,7 @@ import org.oscarehr.util.SpringUtils;
 import oscar.util.DateUtils;
 import oscar.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Date;

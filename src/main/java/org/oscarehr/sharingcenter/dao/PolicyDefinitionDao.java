@@ -28,7 +28,7 @@ import java.util.List;
 
 import org.oscarehr.common.dao.AbstractDaoImpl;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.sharingcenter.model.AffinityDomainDataObject;
 import org.oscarehr.sharingcenter.model.PolicyDefinitionDataObject;

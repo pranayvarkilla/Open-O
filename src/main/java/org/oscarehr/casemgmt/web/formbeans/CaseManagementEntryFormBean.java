@@ -79,7 +79,7 @@ public class CaseManagementEntryFormBean extends ActionForm implements java.io.S
         this.caseNote = new CaseManagementNote();
     }
 
-    public void reset(ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
+    public void reset(ActionMapping mapping, jakarta.servlet.http.HttpServletRequest request) {
         String strDemo;
         if ((strDemo = request.getParameter("demographicNo")) != null) {
             String sessionName = "caseManagementEntryForm" + strDemo;

@@ -28,7 +28,7 @@ package org.oscarehr.common.model;
 
 import org.apache.commons.lang.StringUtils;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
