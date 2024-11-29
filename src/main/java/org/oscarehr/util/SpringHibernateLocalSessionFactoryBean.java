@@ -39,8 +39,6 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.*;
 import org.hibernate.boot.spi.SessionFactoryOptions;
 import org.hibernate.engine.spi.FilterDefinition;
-import org.hibernate.metadata.ClassMetadata;
-import org.hibernate.metadata.CollectionMetadata;
 import org.hibernate.stat.Statistics;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -144,30 +142,6 @@ public class SpringHibernateLocalSessionFactoryBean extends LocalSessionFactoryB
 //	        sessionFactory.evictQueries(arg0);
 //        }
 
-        public Map getAllClassMetadata() throws HibernateException {
-            return sessionFactory.getAllClassMetadata();
-        }
-
-        public Map getAllCollectionMetadata() throws HibernateException {
-            return sessionFactory.getAllCollectionMetadata();
-        }
-
-        public ClassMetadata getClassMetadata(Class arg0) throws HibernateException {
-            return sessionFactory.getClassMetadata(arg0);
-        }
-
-        public ClassMetadata getClassMetadata(String arg0) throws HibernateException {
-            return sessionFactory.getClassMetadata(arg0);
-        }
-
-        public CollectionMetadata getCollectionMetadata(String arg0) throws HibernateException {
-            return sessionFactory.getCollectionMetadata(arg0);
-        }
-
-        // public Session getCurrentSession() throws HibernateException {
-        //     return(trackSession(sessionFactory.getCurrentSession()));
-        // }
-
         public Set getDefinedFilterNames() {
             return sessionFactory.getDefinedFilterNames();
         }
@@ -193,18 +167,6 @@ public class SpringHibernateLocalSessionFactoryBean extends LocalSessionFactoryB
             return (trackSession(sessionFactory.openSession()));
         }
 
-		/*public Session openSession(Connection arg0, Interceptor arg1) {
-	        return(trackSession(sessionFactory.openSession(arg0, arg1)));
-        }
-
-		public Session openSession(Connection arg0) {
-	        return(trackSession(sessionFactory.openSession(arg0)));
-        }
-
-		public Session openSession(Interceptor arg0) throws HibernateException {
-			return(trackSession(sessionFactory.openSession(arg0)));
-        }*/
-
         @Override
         public StatelessSession openStatelessSession() {
             return sessionFactory.openStatelessSession();
@@ -221,101 +183,93 @@ public class SpringHibernateLocalSessionFactoryBean extends LocalSessionFactoryB
         }
 
         @Override
-        public TypeHelper getTypeHelper() {
-            return ((SessionFactoryImplementor) this).getTypeHelper();
+        public SessionFactoryImplementor getSessionFactoryImplementor() {
+            return (SessionFactoryImplementor) sessionFactory;
         }
 
         @Override
         public boolean containsFetchProfileDefinition(String s) {
-            return false;
+            return sessionFactory.containsFetchProfileDefinition(s);
         }
 
         @Override
         public Cache getCache() {
-            return null;
+            return sessionFactory.getCache();
         }
 
         @Override
         public PersistenceUnitUtil getPersistenceUnitUtil() {
-            return null;
+            return sessionFactory.getPersistenceUnitUtil();
         }
 
         @Override
         public void addNamedQuery(String name, jakarta.persistence.Query query) {
-
+            sessionFactory.addNamedQuery(name, query);
         }
 
         @Override
         public <T> T unwrap(Class<T> cls) {
-            return null;
+            return sessionFactory.unwrap(cls);
         }
 
         @Override
         public <T> void addNamedEntityGraph(String graphName, EntityGraph<T> entityGraph) {
-
+            sessionFactory.addNamedEntityGraph(graphName, entityGraph);
         }
-
-//		@Override
-//		public SessionFactoryOptions getSessionFactoryOptions() {
-//			// TODO Auto-generated method stub
-//			return null;
-//		}
 
         @Override
         public SessionFactoryOptions getSessionFactoryOptions() {
-            return null;
+            return sessionFactory.getSessionFactoryOptions();
         }
 
         @Override
         public SessionBuilder withOptions() {
-            // TODO Auto-generated method stub
-            return null;
+            return sessionFactory.withOptions();
         }
 
         @Override
         public StatelessSessionBuilder withStatelessOptions() {
-            // TODO Auto-generated method stub
-            return null;
+            return sessionFactory.withStatelessOptions();
         }
 
         @Override
-        public <T> List<EntityGraph<? super T>> findEntityGraphsByType(Class<T> aClass) {
-            return Collections.emptyList();
+        public <T> List<EntityGraph<? super T>> findEntityGraphsByType(Class<T> entityClass) {
+            return sessionFactory.findEntityGraphsByType(entityClass);
         }
 
         @Override
         public EntityManager createEntityManager() {
-            return null;
+            return sessionFactory.createEntityManager();
         }
 
         @Override
         public EntityManager createEntityManager(Map map) {
-            return null;
+            return sessionFactory.createEntityManager(map);
         }
 
         @Override
         public EntityManager createEntityManager(SynchronizationType synchronizationType) {
-            return null;
+            return sessionFactory.createEntityManager(synchronizationType);
         }
 
         @Override
         public EntityManager createEntityManager(SynchronizationType synchronizationType, Map map) {
-            return null;
+            return sessionFactory.createEntityManager(synchronizationType, map);
         }
 
         @Override
         public CriteriaBuilder getCriteriaBuilder() {
-            return null;
+            return sessionFactory.getCriteriaBuilder();
         }
 
         @Override
         public Metamodel getMetamodel() {
-            return null;
+            return sessionFactory.getMetamodel();
         }
 
         @Override
         public boolean isOpen() {
-            return false;
+            return sessionFactory.isOpen();
         }
     }
 	

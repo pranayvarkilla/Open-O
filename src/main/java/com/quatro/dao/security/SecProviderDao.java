@@ -26,25 +26,14 @@
 package com.quatro.dao.security;
 
 import java.util.List;
-
-import org.apache.logging.log4j.Logger;
-import org.hibernate.LockMode;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.criterion.Example;
-import org.oscarehr.util.MiscUtils;
-import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
-
 import com.quatro.model.security.SecProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.hibernate.SessionFactory;
 
 /**
  * @author JZhang
  */
-
 public interface SecProviderDao {
 
+    // Constants (unchanged)
     public static final String LAST_NAME = "lastName";
     public static final String FIRST_NAME = "firstName";
     public static final String PROVIDER_TYPE = "providerType";
@@ -62,57 +51,36 @@ public interface SecProviderDao {
     public static final String COMMENTS = "comments";
     public static final String PROVIDER_ACTIVITY = "providerActivity";
 
-    public void save(SecProvider transientInstance);
+    // CRUD operations
+    void save(SecProvider transientInstance);
+    void saveOrUpdate(SecProvider transientInstance);
+    void delete(SecProvider persistentInstance);
+    SecProvider findById(String id);
+    SecProvider findById(String id, String status);
+    List<SecProvider> findByExample(SecProvider instance);
+    List<SecProvider> findByProperty(String propertyName, Object value);
+    List<SecProvider> findAll();
+    SecProvider merge(SecProvider detachedInstance);
 
-    public void saveOrUpdate(SecProvider transientInstance);
+    // Specific finder methods
+    List<SecProvider> findByLastName(Object lastName);
+    List<SecProvider> findByFirstName(Object firstName);
+    List<SecProvider> findByProviderType(Object providerType);
+    List<SecProvider> findBySpecialty(Object specialty);
+    List<SecProvider> findByTeam(Object team);
+    List<SecProvider> findBySex(Object sex);
+    List<SecProvider> findByAddress(Object address);
+    List<SecProvider> findByPhone(Object phone);
+    List<SecProvider> findByWorkPhone(Object workPhone);
+    List<SecProvider> findByOhipNo(Object ohipNo);
+    List<SecProvider> findByRmaNo(Object rmaNo);
+    List<SecProvider> findByBillingNo(Object billingNo);
+    List<SecProvider> findByHsoNo(Object hsoNo);
+    List<SecProvider> findByStatus(Object status);
+    List<SecProvider> findByComments(Object comments);
+    List<SecProvider> findByProviderActivity(Object providerActivity);
 
-    public void delete(SecProvider persistentInstance);
-
-    public SecProvider findById(java.lang.String id);
-
-    public SecProvider findById(java.lang.String id, String status);
-
-    public List findByExample(SecProviderDao instance);
-
-    public List findByProperty(String propertyName, Object value);
-
-    public List findByLastName(Object lastName);
-
-    public List findByFirstName(Object firstName);
-
-    public List findByProviderType(Object providerType);
-
-    public List findBySpecialty(Object specialty);
-
-    public List findByTeam(Object team);
-
-    public List findBySex(Object sex);
-
-    public List findByAddress(Object address);
-
-    public List findByPhone(Object phone);
-
-    public List findByWorkPhone(Object workPhone);
-
-    public List findByOhipNo(Object ohipNo);
-
-    public List findByRmaNo(Object rmaNo);
-
-    public List findByBillingNo(Object billingNo);
-
-    public List findByHsoNo(Object hsoNo);
-
-    public List findByStatus(Object status);
-
-    public List findByComments(Object comments);
-
-    public List findByProviderActivity(Object providerActivity);
-
-    public List findAll();
-
-    public SecProviderDao merge(SecProviderDao detachedInstance);
-
-    public void attachDirty(SecProviderDao instance);
-
-    public void attachClean(SecProviderDao instance);
+    // Attachment methods (consider if these are still necessary)
+    void attachDirty(SecProvider instance);
+    void attachClean(SecProvider instance);
 }

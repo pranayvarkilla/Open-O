@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.oscarehr.PMmodule.model.ProgramClientStatus;
 import org.oscarehr.common.model.Admission;
@@ -86,9 +86,9 @@ public class ProgramClientStatusDAOImpl extends HibernateDaoSupport implements P
         Session session = sessionFactory.getCurrentSession();
         List teams = new ArrayList();
         try {
-            Query query = session.createQuery("select pt.id from ProgramClientStatus pt where pt.programId = ?1 and pt.name = ?2");
-            query.setLong(1, programId.longValue());
-            query.setString(2, statusName);
+            Query<Long> query = session.createQuery("select pt.id from ProgramClientStatus pt where pt.programId = :programId and pt.name = :statusName", Long.class);
+            query.setParameter("programId", programId.longValue());
+            query.setParameter("statusName", statusName);
 
             teams = query.list();
 
@@ -97,7 +97,7 @@ public class ProgramClientStatusDAOImpl extends HibernateDaoSupport implements P
             }
         } finally {
             //releaseSession(session);
-            session.close();
+            session.getTransaction().commit();
         }
         return !teams.isEmpty();
     }

@@ -31,11 +31,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 import org.oscarehr.phr.model.PHRAction;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.HibernateCallback;
@@ -48,7 +48,13 @@ public class PHRActionDAO extends HibernateDaoSupport {
     public List<PHRAction> getQueuedActions(String providerNo) {
         String sql = "from PHRAction a where (a.senderOscar = ?0 OR (a.receiverOscar = ?1 AND phr_classification = ?2)) and a.status = ?3";
         Object[] params = new Object[]{providerNo, providerNo, "RELATIONSHIP", PHRAction.STATUS_SEND_PENDING};
-        List<PHRAction> list = (List<PHRAction>) getHibernateTemplate().find(sql, params);
+        List<PHRAction> list = (List<PHRAction>) getHibernateTemplate().execute(session -> {
+            Query<PHRAction> query = session.createQuery(sql, PHRAction.class);
+            for (int i = 0; i < params.length; i++) {
+                query.setParameter(i, params[i]);
+            }
+            return query.getResultList();
+        });
         return list;
     }
 
@@ -191,7 +197,9 @@ public class PHRActionDAO extends HibernateDaoSupport {
     public boolean isIndivoRegistered(final String classification, final String oscarId) {
         Long num = (Long) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-                Query q = session.createQuery("select count(*) from PHRAction a where a.phrClassification = ?1 and a.oscarId = ?2");
+                Query<Long> q = session.createQuery("select count(*) from PHRAction a where a.phrClassification = :classification and a.oscarId = :oscarId", Long.class);
+                q.setParameter("classification", classification);
+                q.setParameter("oscarId", oscarId);
                 q.setParameter(1, classification);
                 q.setParameter(2, oscarId);
                 q.setCacheable(true);
@@ -206,11 +214,15 @@ public class PHRActionDAO extends HibernateDaoSupport {
     public String getPhrIndex(final String classification, final String oscarId) {
         List<PHRAction> list = (List<PHRAction>) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-                Criteria criteria = session.createCriteria(PHRAction.class);
-                criteria.add(Restrictions.eq("phrClassification", classification));
-                criteria.add(Restrictions.eq("oscarId", oscarId));
-                criteria.add(Restrictions.eq("status", PHRAction.STATUS_SENT));
-                criteria.setMaxResults(1);
+                JpaCriteriaQuery<PHRAction> criteria = session.getCriteriaBuilder().createQuery(PHRAction.class);
+                Root<PHRAction> root = criteria.from(PHRAction.class);
+                criteria.select(root).where(
+                    session.getCriteriaBuilder().and(
+                        session.getCriteriaBuilder().equal(root.get("phrClassification"), classification),
+                        session.getCriteriaBuilder().equal(root.get("oscarId"), oscarId),
+                        session.getCriteriaBuilder().equal(root.get("status"), PHRAction.STATUS_SENT)
+                    )
+                ).setMaxResults(1);
                 return criteria.list();
             }
         });

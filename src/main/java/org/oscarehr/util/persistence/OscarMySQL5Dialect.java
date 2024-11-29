@@ -26,19 +26,18 @@ package org.oscarehr.util.persistence;
 
 import java.sql.Types;
 
-import org.hibernate.Hibernate;
-import org.hibernate.dialect.MySQL5Dialect;
+import org.hibernate.dialect.MySQLDialect;
 import org.hibernate.type.StandardBasicTypes;
 
 /**
  * Customized dialect that adds a mapping for {@link Types#LONGVARBINARY} in order to prevent {@link org.hibernate.MappingException}.
  */
-public class OscarMySQL5Dialect extends MySQL5Dialect {
+public class OscarMySQL5Dialect extends MySQLDialect {
 
     public OscarMySQL5Dialect() {
         super();
-        registerHibernateType(Types.LONGVARBINARY, StandardBasicTypes.BINARY.getName());
-        registerHibernateType(Types.LONGVARCHAR, StandardBasicTypes.TEXT.getName());
+        registerHibernateType(Types.LONGVARBINARY, StandardBasicTypes.BINARY.getReturnedClass().getName());
+        registerHibernateType(Types.LONGVARCHAR, StandardBasicTypes.TEXT.getReturnedClass().getName());
     }
 
 }

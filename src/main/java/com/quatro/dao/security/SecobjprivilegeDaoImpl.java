@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
@@ -99,7 +99,7 @@ public class SecobjprivilegeDaoImpl extends HibernateDaoSupport implements Secob
                     + " and model.privilege_code ='" + instance.getPrivilege_code() + "'"
                     + " and model.roleusergroup ='" + instance.getRoleusergroup() + "'";
 
-            Query queryObject = session.createQuery(queryString);
+            Query queryObject = session.createQuery(queryString, Secobjprivilege.class);
 
             return queryObject.executeUpdate();
 
@@ -108,7 +108,7 @@ public class SecobjprivilegeDaoImpl extends HibernateDaoSupport implements Secob
             throw re;
         } finally {
             // this.releaseSession(session);
-            session.close();
+            session.getTransaction().commit();
         }
     }
 
@@ -193,7 +193,7 @@ public class SecobjprivilegeDaoImpl extends HibernateDaoSupport implements Secob
         try {
             String queryString = "from Secobjprivilege as model where model."
                     + propertyName + "= ?1 order by objectname_code";
-            Query queryObject = session.createQuery(queryString);
+            Query queryObject = session.createQuery(queryString, Issue.class);
             queryObject.setParameter(1, value);
             return queryObject.list();
         } catch (RuntimeException re) {
@@ -201,7 +201,7 @@ public class SecobjprivilegeDaoImpl extends HibernateDaoSupport implements Secob
             throw re;
         } finally {
             // this.releaseSession(session);
-            session.close();
+            session.getTransaction().commit();
         }
     }
 

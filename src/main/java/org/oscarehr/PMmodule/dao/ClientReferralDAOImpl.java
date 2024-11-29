@@ -31,9 +31,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
-import org.hibernate.criterion.Expression;
 import org.oscarehr.PMmodule.model.ClientReferral;
 import org.oscarehr.PMmodule.model.Program;
 import org.oscarehr.common.model.Admission;
@@ -282,13 +284,17 @@ public class ClientReferralDAOImpl extends HibernateDaoSupport implements Client
         //Session session = getSession();
         Session session = sessionFactory.getCurrentSession();
         try {
-            Criteria criteria = session.createCriteria(ClientReferral.class);
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<ClientReferral> criteriaQuery = builder.createQuery(ClientReferral.class);
+            Root<ClientReferral> root = criteriaQuery.from(ClientReferral.class);
+            criteriaQuery.select(root);
 
             if (referral != null && referral.getProgramId().longValue() > 0) {
-                criteria.add(Expression.eq("ProgramId", referral.getProgramId()));
+                Predicate programIdPredicate = builder.equal(root.get("ProgramId"), referral.getProgramId());
+                criteriaQuery.where(programIdPredicate);
             }
 
-            return criteria.list();
+            return session.createSelectionQuery(criteriaQuery).getResultList();
         } finally {
             //this.releaseSession(session);
             session.close();
