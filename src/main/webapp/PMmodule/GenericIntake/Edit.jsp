@@ -56,40 +56,6 @@
     boolean readOnlyDates = Boolean.valueOf(OscarProperties.getInstance().getProperty("intake.readonly_dates", "true"));
 %>
 
-<<<<<<< HEAD
-<%@page import="org.apache.commons.lang.StringUtils"%>
-<%@page import="java.util.GregorianCalendar"%>
-<%@page import="java.util.Calendar"%>
-<%@page import="java.util.List"%>
-<%@page import="java.text.DateFormatSymbols"%>
-<%@page import="org.apache.commons.lang.time.DateFormatUtils"%>
-<%@page import="org.oscarehr.common.model.Demographic"%><html>
-<head>
-	<script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-	<script type="text/javascript" src="<%= request.getContextPath() %>/js/check_hin.js"></script>
-	<script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery.js"></script>
-	<script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery.form.js"></script>
-	<script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery.metadata.js"></script>
-	<script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery.validate.min.js"></script>
-	
-	
-    <title>Generic Intake Edit</title>
-    <style type="text/css">
-        @import "<html:rewrite page="/css/genericIntake.css" />";
-    </style>
-	<link rel="stylesheet" type="text/css"	href='<html:rewrite page="/share/calendar/skins/aqua/theme.css" />' />
-	<script type="text/javascript" src="<html:rewrite page="/share/calendar/calendar.js" />" /></script>
-	<script type="text/javascript" src="<html:rewrite page="/share/calendar/lang/calendar-en.js" />"></script>
-	<script type="text/javascript" src="<html:rewrite page="/share/calendar/calendar-setup.js" />"></script>
-	
-    <script type="text/javascript">
-        <!--
-        var djConfig = {
-            isDebug: false,
-            parseWidgets: false,
-            searchIds: ["layoutContainer", "topPane", "clientPane", "bottomPane", "clientTable", "admissionsTable"]
-        };
-=======
 <%@page import="org.apache.commons.lang.StringUtils" %>
 <%@page import="java.util.GregorianCalendar" %>
 <%@page import="java.util.Calendar" %>
@@ -105,7 +71,6 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery.form.js"></script>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery.metadata.js"></script>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery.validate.min.js"></script>
->>>>>>> b78531c7ac (chore: applied reformatting to .java and .jsp files.)
 
 
         <title>Generic Intake Edit</title>
@@ -809,28 +774,6 @@
                         </div>
                     </c:if>
                 </caisi:isModuleLoad>
-<<<<<<< HEAD
-                <html:reset>Reset</html:reset>
-            </td>
-            <td align="right">
-                <c:choose>
-                    <c:when test="${not empty sessionScope.genericIntakeEditForm.client.demographicNo}">
-                        <html:submit onclick="clientEdit()">Close</html:submit>
-                        <input type="button" value="Back to Search" onclick="history.go(-1)"/>
-                    </c:when>
-                    <c:otherwise>
-                        <input type="button" value="Back to Search" onclick="history.go(-1)"/>
-                    </c:otherwise>
-                </c:choose>
-            </td>
-        </tr>
-    </table>
-</div>
-</div>
-</html:form>
-</body>
-</html>
-=======
 
                 <br/>
 
@@ -898,4 +841,3 @@
     </form>
     </body>
 </html:html>
->>>>>>> b78531c7ac (chore: applied reformatting to .java and .jsp files.)
