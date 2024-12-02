@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.mapper.action.prefix.enabled" value="false"/>
+	<constant name="struts.action.extension" value="do" />
+	<!-- Default package extending struts-default -->
+	<package name="default" namespace="/" extends="struts-default">
+    <action name="logout" class="oscar.login.Logout2Action">
+        <result name="success">/index.jsp</result>
+        <result name="logoutsso">/ssoLogin.do?method=ssoLogout</result>
+    </action>
+    <action name="lookupListManagerAction" class="org.oscarehr.admin.lookUpLists.LookupListManager2Action">
+        <result name="success">/admin/lookUpLists/</result>
+    </action>
+    <action name="admin/oncallClinic" class="org.oscarehr.admin.reports.SaveOnCallClinic2Action"/>
+    <action name="web/dashboard/admin/DashboardManager" class="org.oscarehr.dashboard.admin.ManageDashboard2Action">
+        <result name="success">/web/dashboard/admin/DashboardManager.jsp</result>
+        <result name="unauthorized">/securityError.jsp</result>
+        <result name="error">/failure.jsp</result>
+        <result name="ajax">/web/dashboard/admin/DashboardManager.do</result>
+    </action>
+    <action name="web/dashboard/display/DashboardDisplay" class="org.oscarehr.dashboard.display.DisplayDashboard2Action">
+        <result name="success">/web/dashboard/display/DashboardDisplay.jsp</result>
+        <result name="unauthorized">/securityError.jsp</result>
+        <result name="error">/failure.jsp</result>
+    </action>
+    <action name="web/dashboard/display/DrilldownDisplay" class="org.oscarehr.dashboard.display.DisplayDrilldown2Action">
+        <result name="success">/web/dashboard/display/DrilldownDisplay.jsp</result>
+        <result name="unauthorized">/securityError.jsp</result>
+        <result name="error">/failure.jsp</result>
+    </action>
+    <action name="web/dashboard/display/AssignTickler" class="org.oscarehr.dashboard.admin.AssignTickler2Action">
+        <result name="success">/web/dashboard/display/AssignTickler.jsp</result>
+        <result name="unauthorized">/securityError.jsp</result>
+        <result name="error">/failure.jsp</result>
+    </action>
+    <action name="web/dashboard/display/ExportResults" class="org.oscarehr.dashboard.admin.ExportResults2Action">
+        <result name="unauthorized">/securityError.jsp</result>
+        <result name="error">/failure.jsp</result>
+    </action>
+    <action name="web/dashboard/display/DisplayIndicator" class="org.oscarehr.dashboard.display.DisplayIndicator2Action">
+        <result name="success">/web/dashboard/display/IndicatorPanel.jsp</result>
+        <result name="unauthorized">/securityError.jsp</result>
+        <result name="error">/failure.jsp</result>
+    </action>
+    <action name="web/dashboard/OutcomesDashboard" class="org.oscarehr.integration.dashboard.OutcomesDashboard2Action"/>
+    <action name="web/dashboard/display/BulkPatientAction" class="org.oscarehr.dashboard.admin.BulkPatientDashboard2Action">
+        <result name="unauthorized">/securityError.jsp</result>
+        <result name="error">/failure.jsp</result>
+    </action>
+    <action name="formBPMH" class="oscar.form.pharmaForms.formBPMH.web.BpmhFormRetrieve2Action">
+        <result name="saved">/formBPMH.do?method=fetch</result>
+        <result name="success">/form/pharmaForms/formBPMH.jsp</result>
+    </action>
+    <action name="formeCARES" class="oscar.form.eCARES.EcaresForm2Action">
+        <result name="success">/form/eCARES/formeCARES.jsp</result>
+        <result name="tickler">/tickler/ticklerAddWidget.jsp</result>
+    </action>
+    <action name="notification/create" class="org.oscarehr.common.web.ProviderNotification2Action"/>
+    <action name="study/ManageStudy" class="org.oscarehr.study.ManageStudy2Action">
+        <result name="AddedToStudy">/admin/addStudy.jsp</result>
+        <result name="closeWindow">/study/closeWindow.html</result>
+        <result name="create">/study/closeWindow.html</result>
+        <result name="update">/study/closeWindow.html</result>
+    </action>
+    <action name="quickBillingBC" class="oscar.oscarBilling.ca.bc.quickbilling.QuickBillingBC2Action">
+        <result name="success">/billing/CA/BC/quickBillingBC.jsp</result>
+        <result name="searchdx">billing/CA/BC/billingDigNewSearch.jsp</result>
+        <result name="error">/billing/CA/BC/quickBillingBC.jsp</result>
+    </action>
+    <action name="saveQuickBillingBC" class="oscar.oscarBilling.ca.bc.quickbilling.QuickBillingBCSave2Action">
+        <result name="saved">/quickBillingBC.do</result>
+        <result name="error">/billing/CA/BC/quickBillingBC.jsp?saved=false</result>
+    </action>
+    <action name="documentManager/addDocumentType" class="org.oscarehr.documentManager.actions.AddDocumentType2Action">
+        <result name="failed">/documentManager/addNewDocumentCategories.jsp</result>
+        <result name="success">/documentManager/closeWindow.html</result>
+    </action>
+    <action name="documentManager/changeDocStatus" class="org.oscarehr.documentManager.actions.ChangeDocStatus2Action">
+        <result name="success">/documentManager/closeWindow.html</result>
+    </action>
+    <action name="lab/CA/ALL/createLabelTDIS" class="oscar.oscarLab.ca.all.pageUtil.CreateLabelTDIS2Action">
+        <result name="complete">/lab/CA/ALL/labDisplay.jsp</result>
+    </action>
+    <action name="MeasurementHL7Uploader" class="oscar.oscarEncounter.oscarMeasurements.hl7.MeasurementHL7Uploader2Action"/>
+    <action name="Home" class="org.oscarehr.PMmodule.web.Home2Action">
+        <result name="home">/PMmodule/layout_quatro.jsp</result>
+    </action>
+    <action name="issueAdmin" class="org.caisi.core.web.IssueAdmin2Action">
+        <result name="list">/caisicore/issueAdminList.jsp</result>
+        <result name="edit">/caisicore/issueAdminForm.jsp</result>
+    </action>
+    <action name="infirm" class="org.caisi.core.web.Infirm2Action"/>
+    <action name="login" class="oscar.login.Login2Action">
+        <result name="provider" type="redirect">/provider/providercontrol.jsp</result>
+        <result name="failure">/logout.jsp</result>
+        <result name="error">/loginfailed.jsp</result>
+        <result name="caisiPMM">/PMmodule/ProviderInfo.do</result>
+        <result name="shelterSelection">/shelterSelection.do</result>
+        <result name="forcepasswordreset">/forcepasswordreset.jsp</result>
+        <result name="programLocation">/location.jsp</result>
+        <result name="ssoLogin">/ssoLogin.do</result>
+    </action>
+    <action name="ssoLogin" class="oscar.login.SSOLogin2Action">
+        <result name="provider">/provider/providercontrol.jsp</result>
+        <result name="failure">/logout.jsp?login=failed</result>
+        <result name="ssoLoginError">/index.jsp</result>
+        <result name="error">/loginfailed.jsp</result>
+        <result name="caisiPMM">/PMmodule/ProviderInfo.do</result>
+        <result name="shelterSelection">/shelterSelection.do</result>
+        <result name="LoginTest">/login/LoginTest.jsp</result>
+        <result name="programLocation">/location.jsp</result>
+        <result name="cobalt">/web/</result>
+        <result name="logout">/logout.jsp</result>
+    </action>
+    <action name="econsultSSOLogin" class="oscar.login.SSOLogin2Action">
+        <result name="success">/oscarEncounter/econsult.do</result>
+        <result name="error">/logout.jsp</result>
+        <result name="ssoLoginError">/index.jsp</result>
+    </action>
+    <action name="login/recordLogin" class="oscar.login.LoginAgreement2Action"/>
+    <action name="shelterSelection" class="oscar.login.ShelterSelection2Action">
+        <result name="shelterSelection">page.pmm.shelterSelection</result>
+        <result name="home">/Home.do</result>
+        <result name="login">/index.jsp</result>
+    </action>
+    <action name="oscarMessenger/ImportDemographic" class="oscar.oscarMessenger.pageUtil.ImportDemographic2Action">
+        <result name="success">/oscarMessenger/ViewMessage.do</result>
+    </action>
+    <action name="oscarMessenger/SendMessage" class="oscar.oscarMessenger.pageUtil.MsgSendMessage2Action">
+        <result name="success">/oscarMessenger/SentMessage.jsp</result>
+    </action>
+    <action name="oscarMessenger/CreateMessage" class="oscar.oscarMessenger.pageUtil.MsgCreateMessage2Action">
+        <result name="success">/oscarMessenger/SentMessage.jsp</result>
+        <result name="error">/oscarMessenger/CreateMessage.jsp</result>
+    </action>
+    <action name="oscarMessenger/DisplayMessages" class="oscar.oscarMessenger.pageUtil.MsgDisplayMessages2Action">
+        <result name="success">/oscarMessenger/DisplayMessages.jsp</result>
+        <result name="demoMsg">/oscarMessenger/DisplayDemographicMessages.jsp</result>
+    </action>
+    <action name="oscarMessenger/SendDemoMessage" class="oscar.oscarMessenger.pageUtil.MsgSendDemographicMessage2Action">
+        <result name="success">/oscarMessenger/CreateMessage.jsp</result>
+    </action>
+    <action name="oscarMessenger/DisplayDemographicMessages" class="oscar.oscarMessenger.pageUtil.MsgDisplayDemographicMessages2Action">
+        <result name="demoMsg">/oscarMessenger/DisplayDemographicMessages.jsp</result>
+    </action>
+    <action name="oscarMessenger/ReDisplayMessages" class="oscar.oscarMessenger.pageUtil.MsgReDisplayMessages2Action">
+        <result name="success">/oscarMessenger/DisplayMessages.jsp</result>
+    </action>
+    <action name="oscarMessenger/ViewMessage" class="oscar.oscarMessenger.pageUtil.MsgViewMessage2Action">
+        <result name="noRights">/oscarMessenger/DisplayMessages.jsp</result>
+        <result name="success">/oscarMessenger/ViewMessage.jsp</result>
+        <result name="viewFromEncounter">/oscarMessenger/ViewMessageFromEncounter.jsp</result>
+    </action>
+    <action name="oscarMessenger/Doc2PDF" class="oscar.oscarMessenger.pageUtil.MsgAttachPDF2Action">
+        <result name="success">/oscarMessenger/selfCloseAndRefreshOpener.jsp</result>
+        <result name="attaching">/oscarMessenger/generatePreviewPDF.jsp</result>
+    </action>
+    <action name="oscarMessenger/ProcessDoc2PDF" class="oscar.oscarMessenger.pageUtil.MsgDoc2PDF2Action">
+        <result name="success">/oscarMessenger/selfClose.jsp</result>
+    </action>
+    <action name="oscarMessenger/HandleMessages" class="oscar.oscarMessenger.pageUtil.MsgHandleMessages2Action">
+        <result name="success">/oscarMessenger/DisplayMessages.jsp</result>
+        <result name="reply">/oscarMessenger/CreateMessage.jsp</result>
+    </action>
+    <action name="oscarMessenger" class="oscar.oscarMessenger.config.pageUtil.MsgMessengerAdmin2Action">
+        <result name="success">/oscarMessenger/config/MessengerAdmin.jsp</result>
+        <result name="failure">/oscarMessenger/config/MessengerAdmin.jsp</result>
+    </action>
+    <action name="oscarMessenger/AddGroup" class="oscar.oscarMessenger.config.pageUtil.MsgMessengerCreateGroup2Action">
+        <result name="success">/oscarMessenger/config/MessengerAdmin.jsp</result>
+    </action>
+    <action name="oscarMessenger/ViewAttach" class="oscar.oscarMessenger.pageUtil.MsgViewAttachment2Action">
+        <result name="success">/oscarMessenger/ViewAttachment.jsp</result>
+    </action>
+    <action name="oscarMessenger/ViewPDFAttach" class="oscar.oscarMessenger.pageUtil.MsgViewPDFAttachment2Action">
+        <result name="success">/oscarMessenger/ViewPDFAttachment.jsp</result>
+    </action>
+    <action name="oscarMessenger/ViewPDFFile" class="oscar.oscarMessenger.pageUtil.MsgViewPDF2Action">
+        <result name="success">/oscarMessenger/ViewPDFFile.jsp</result>
+    </action>
+    <action name="oscarMessenger/Transfer/Proceed" class="oscar.oscarMessenger.pageUtil.MsgProceed2Action">
+        <result name="success">/oscarMessenger/Transfer/SearchComplete.jsp</result>
+    </action>
+    <action name="oscarMessenger/ClearMessage" class="oscar.oscarMessenger.pageUtil.MsgClearMessage2Action">
+        <result name="success">/oscarMessenger/CreateMessage.jsp</result>
+    </action>
+    <action name="oscarMessenger/WriteToEncounter" class="oscar.oscarMessenger.pageUtil.MsgWriteToEncounter2Action">
+        <result name="success">/oscarEncounter/IncomingEncounter.do</result>
+    </action>
+    <action name="oscarRx/choosePatient" class="oscar.oscarRx.pageUtil.RxChoosePatient2Action">
+        <result name="success">/oscarRx/SearchDrug.jsp</result>
+        <result name="successRX3">/oscarRx/SearchDrug3.jsp</result>
+    </action>
+    <action name="oscarRx/searchDrug" class="oscar.oscarRx.pageUtil.RxSearchDrug2Action">
+        <result name="success">/oscarRx/ChooseDrug.jsp</result>
+        <result name="error">/500.jsp</result>
+    </action>
+    <action name="oscarRx/WriteScript" class="oscar.oscarRx.pageUtil.RxWriteScript2Action">
+        <result name="newRx">/oscarRx/prescribe.jsp</result>
+    </action>
+    <action name="oscarEncounter/IncomingEncounter" class="oscar.oscarEncounter.pageUtil.EctIncomingEncounter2Action">
+        <result name="failure">/oscarEncounter/error.jsp</result>
+        <result name="success">/oscarEncounter/Index.jsp</result>
+        <result name="success2">/oscarEncounter/Index2.jsp</result>
+        <result name="domain-error">/casemgmt/domain-error.jsp</result>
+    </action>
+    <action name="oscarRx/chooseDrug" class="oscar.oscarRx.pageUtil.RxChooseDrug2Action">
+        <result name="success">/oscarRx/WriteScript.jsp</result>
+    </action>
+    <action name="oscarRx/viewScript" class="oscar.oscarRx.pageUtil.RxViewScript2Action">
+        <result name="viewScript">/oscarRx/ViewScript.jsp</result>
+    </action>
+    <action name="oscarRx/writeScript" class="oscar.oscarRx.pageUtil.RxWriteScript2Action">
+        <result name="refresh">/oscarRx/WriteScript.jsp</result>
+        <result name="addAnother">/oscarRx/SearchDrug.jsp</result>
+        <result name="viewScript">/oscarRx/ViewScript.jsp</result>
+    </action>
+    <action name="oscarRx/stash" class="oscar.oscarRx.pageUtil.RxStash2Action">
+        <result name="success">/oscarRx/WriteScript.jsp</result>
+    </action>
+    <action name="oscarRx/rxStashDelete" class="oscar.oscarRx.pageUtil.RxStash2Action">
+        <result name="success">/oscarRx/SearchDrug3.jsp</result>
+    </action>
+    <action name="oscarRx/UpdateScript" class="oscar.oscarRx.pageUtil.RxWriteScript2Action"/>
+    <action name="oscarRx/useFavorite" class="oscar.oscarRx.pageUtil.RxUseFavorite2Action">
+        <result name="success">/oscarRx/WriteScript.jsp</result>
+        <result name="useFav2">/oscarRx/prescribe.jsp</result>
+    </action>
+    <action name="oscarRx/addFavoriteStaticScript" class="oscar.oscarRx.pageUtil.RxAddFavorite2Action">
+        <result name="success">/oscarRx/StaticScript.jsp</result>
+    </action>
+    <action name="oscarRx/addFavoriteViewScript" class="oscar.oscarRx.pageUtil.RxAddFavorite2Action">
+        <result name="success">/oscarRx/ViewScript.jsp</result>
+    </action>
+    <action name="oscarRx/addFavoriteWriteScript" class="oscar.oscarRx.pageUtil.RxAddFavorite2Action">
+        <result name="success">/oscarRx/WriteScript.jsp</result>
+    </action>
+    <action name="oscarRx/addFavorite2" class="oscar.oscarRx.pageUtil.RxAddFavorite2Action"/>
+    <action name="oscarRx/updateFavorite" class="oscar.oscarRx.pageUtil.RxUpdateFavorite2Action">
+        <result name="success">/oscarRx/EditFavorites.jsp</result>
+    </action>
+    <action name="oscarRx/updateFavorite2" class="oscar.oscarRx.pageUtil.RxUpdateFavorite2Action">
+        <result name="success">/oscarRx/EditFavorites2.jsp</result>
+    </action>
+    <action name="oscarRx/deleteFavorite2" class="oscar.oscarRx.pageUtil.RxDeleteFavorite2Action">
+        <result name="success">/oscarRx/EditFavorites2.jsp</result>
+    </action>
+    <action name="oscarRx/deleteFavorite" class="oscar.oscarRx.pageUtil.RxDeleteFavorite2Action">
+        <result name="success">/oscarRx/EditFavorites.jsp</result>
+    </action>
+    <action name="oscarRx/rePrescribe" class="oscar.oscarRx.pageUtil.RxRePrescribe2Action">
+        <result name="success">/oscarRx/WriteScript.jsp</result>
+        <result name="reprint">/oscarRx/ViewScript.jsp</result>
+    </action>
+    <action name="oscarRx/rePrescribe2" class="oscar.oscarRx.pageUtil.RxRePrescribe2Action">
+        <result name="success">/oscarRx/SearchDrug3.jsp</result>
+        <result name="repcbLongTerm">/oscarRx/prescribe.jsp</result>
+        <result name="represcribe">/oscarRx/prescribe.jsp</result>
+    </action>
+    <action name="oscarRx/deleteRx" class="oscar.oscarRx.pageUtil.RxDeleteRx2Action">
+        <result name="success">/oscarRx/SearchDrug.jsp</result>
+        <result name="successClearStash">/oscarRx/SearchDrug3.jsp</result>
+    </action>
+    <action name="oscarRx/clearPending" class="oscar.oscarRx.pageUtil.RxClearPending2Action">
+        <result name="success">/oscarRx/SearchDrug.jsp</result>
+        <result name="close">/oscarRx/close.html</result>
+    </action>
+    <action name="oscarRx/searchAllergy" class="oscar.oscarRx.pageUtil.RxSearchAllergy2Action">
+        <result name="success">/oscarRx/ChooseAllergy.jsp</result>
+    </action>
+    <action name="oscarRx/searchAllergy2" class="oscar.oscarRx.pageUtil.RxSearchAllergy2Action">
+        <result name="success">/oscarRx/ChooseAllergy2.jsp</result>
+    </action>
+    <action name="oscarRx/addAllergy" class="oscar.oscarRx.pageUtil.RxAddAllergy2Action">
+        <result name="success">/oscarRx/ShowAllergies.jsp</result>
+    </action>
+    <action name="oscarRx/addAllergy2" class="oscar.oscarRx.pageUtil.RxAddAllergy2Action">
+        <result name="success">/oscarRx/ShowAllergies2.jsp</result>
+    </action>
+    <action name="oscarRx/addReaction" class="oscar.oscarRx.pageUtil.RxAddReaction2Action">
+        <result name="success">/oscarRx/AddReaction.jsp</result>
+    </action>
+    <action name="oscarRx/addReaction2" class="oscar.oscarRx.pageUtil.RxAddReaction2Action">
+        <result name="success">/oscarRx/AddReaction2.jsp</result>
+    </action>
+    <action name="oscarRx/deleteAllergy" class="oscar.oscarRx.pageUtil.RxDeleteAllergy2Action">
+        <result name="success">/oscarRx/ShowAllergies.jsp</result>
+        <result name="successRx3">/oscarRx/ShowAllergies2.jsp</result>
+    </action>
+    <action name="oscarRx/deleteAllergy2" class="oscar.oscarRx.pageUtil.RxDeleteAllergy2Action">
+        <result name="success">/oscarRx/ShowAllergies2.jsp</result>
+    </action>
+    <action name="oscarRx/showAllergy" class="oscar.oscarRx.pageUtil.RxShowAllergy2Action">
+        <result name="success">/oscarRx/ShowAllergies.jsp</result>
+        <result name="success-redirect">/oscarRx/ShowAllergies.jsp</result>
+        <result name="successRX3">/oscarRx/ShowAllergies2.jsp</result>
+    </action>
+    <action name="oscarRx/drugInfo" class="oscar.oscarRx.pageUtil.RxDrugInfo2Action">
+        <result name="success">/oscarRx/SearchDrug.jsp</result>
+    </action>
+    <action name="oscarRx/managePharmacy2" class="oscar.oscarRx.pageUtil.RxManagePharmacy2Action">
+        <result name="success">/oscarRx/SelectPharmacy2.jsp</result>
+    </action>
+    <action name="oscarRx/managePharmacy" class="oscar.oscarRx.pageUtil.RxManagePharmacy2Action"/>
+    <action name="oscarRx/RxReason" class="oscar.oscarRx.pageUtil.RxReason2Action">
+        <result name="close">/oscarRx/close.html</result>
+        <result name="success">/oscarRx/SelectReason.jsp</result>
+    </action>
+    <action name="oscarRx/GetRxPageSizeInfo" class="oscar.oscarRx.pageUtil.RxRxPageSizeInfo2Action">
+        <result name="success">/oscarRx/ViewScript2.jsp</result>
+    </action>
+    <action name="oscarRx/WriteToEncounter" class="oscar.oscarRx.pageUtil.RxWriteToEncounter2Action">
+        <result name="success">/oscarRx/ViewScript2.jsp</result>
+    </action>
+    <action name="oscarMDS/SendMRP" class="oscar.oscarMDS.pageUtil.SendMostResponProv2Action">
+        <result name="failure">/errorpage.jsp</result>
+    </action>
+    <action name="oscarMDS/UpdateStatus" class="oscar.oscarMDS.pageUtil.ReportStatusUpdate2Action">
+        <result name="failure">/errorpage.jsp</result>
+        <result name="success">/oscarMDS/Close.jsp</result>
+    </action>
+    <action name="oscarMDS/RunMacro" class="oscar.oscarMDS.pageUtil.ReportMacro2Action"/>
+    <action name="oscarMDS/ReportReassign" class="oscar.oscarMDS.pageUtil.ReportReassign2Action">
+        <result name="failure">/errorpage.jsp</result>
+        <result name="success">/documentManager/inboxManage.do?method=prepareForIndexPage</result>
+    </action>
+    <action name="lab/CA/ALL/Forward" class="oscar.oscarMDS.pageUtil.ReportReassign2Action">
+        <result name="failure">/errorpage.jsp</result>
+        <result name="success">/lab/CA/ALL/labDisplay.jsp</result>
+    </action>
+    <action name="lab/CA/ALL/PrintPDF" class="oscar.oscarLab.ca.all.pageUtil.PrintLabs2Action">
+        <result name="error">/lab/CA/ALL/labDisplay.jsp</result>
+    </action>
+    <action name="lab/CA/BC/Forward" class="oscar.oscarMDS.pageUtil.ReportReassign2Action">
+        <result name="failure">/errorpage.jsp</result>
+        <result name="success">/lab/CA/BC/labDisplay.jsp</result>
+    </action>
+    <action name="lab/CA/ALL/UnlinkDemographic" class="oscar.oscarLab.ca.all.pageUtil.UnlinkDemographic2Action">
+        <result name="success">/oscarMDS/Close.jsp</result>
+    </action>
+    <action name="lab/CA/ALL/PrintOLIS" class="oscar.oscarLab.ca.all.pageUtil.PrintOLISLabs2Action">
+        <result name="error">/lab/CA/ALL/labDisplay.jsp</result>
+    </action>
+    <action name="lab/CA/ALL/PrintOLISLab" class="oscar.oscarLab.ca.all.pageUtil.PrintOLISLab2Action">
+        <result name="error">/lab/CA/ALL/labDisplay.jsp</result>
+    </action>
+    <action name="olis/Search" class="org.oscarehr.olis.OLISSearch2Action">
+        <result name="results">/olis/Results.do</result>
+    </action>
+    <action name="olis/Results" class="org.oscarehr.olis.OLISResults2Action">
+        <result name="results">/olis/Results.jsp</result>
+    </action>
+    <action name="olis/AddToInbox" class="org.oscarehr.olis.OLISAddToInbox2Action">
+        <result name="ajax">/olis/ajaxResponse.jsp</result>
+    </action>
+    <action name="olis/UploadSimulationData" class="org.oscarehr.olis.OLISUploadSimulationData2Action">
+        <result name="success">/olis/Simulate.jsp</result>
+    </action>
+    <action name="lab/CA/ON/Forward" class="oscar.oscarMDS.pageUtil.ReportReassign2Action">
+        <result name="failure">/errorpage.jsp</result>
+        <result name="success">/lab/CA/ON/CMLDisplay.jsp</result>
+    </action>
+    <action name="oscarMDS/Forward" class="oscar.oscarMDS.pageUtil.ReportReassign2Action">
+        <result name="failure">/errorpage.jsp</result>
+        <result name="success">/oscarMDS/SegmentDisplay.jsp</result>
+    </action>
+    <action name="oscarMDS/FileLabs" class="oscar.oscarLab.pageUtil.FileLabs2Action">
+        <result name="failure">/errorpage.jsp</result>
+        <result name="success">/documentManager/inboxManage.do?method=prepareForIndexPage</result>
+    </action>
+    <action name="oscarMDS/SearchPatient" class="oscar.oscarMDS.pageUtil.SearchPatient2Action">
+        <result name="failure">/oscarMDS/PatientSearch.jsp?search_mode=search_name&amp;limit1=0&amp;limit2=10</result>
+        <result name="success">/oscarMDS/OpenEChart.jsp</result>
+    </action>
+    <action name="oscarMDS/PatientMatch" class="oscar.oscarMDS.pageUtil.PatientMatch2Action">
+        <result name="failure">/errorpage.jsp</result>
+        <result name="success">/oscarMDS/OpenEChart.jsp</result>
+    </action>
+    <action name="oscarMDS/ForwardingRules" class="oscar.oscarLab.pageUtil.ForwardingRules2Action">
+        <result name="failure">/errorpage.jsp</result>
+        <result name="success">/oscarMDS/ForwardingRules.jsp</result>
+    </action>
+    <action name="admin/ForwardingRules" class="oscar.oscarLab.pageUtil.ForwardingRules2Action">
+        <result name="failure">/errorpage.jsp</result>
+        <result name="success">/admin/labforwardingrules.jsp</result>
+    </action>
+    <action name="form/study/studyname" class="oscar.form.study.FrmStudy2Action">
+        <result name="exit">/oscarEncounter/close.jsp</result>
+        <result name="print">/oscarEncounter/formType2DiabetesPrint.jsp</result>
+        <result name="save">/form/study/forwardstudyname.jsp</result>
+        <result name="failure">/oscarEncounter/error.jsp</result>
+    </action>
+    <action name="form/setupSelect" class="oscar.form.pageUtil.FrmSetupSelect2Action">
+        <result name="continue">/form/formselect.jsp</result>
+    </action>
+    <action name="form/select" class="oscar.form.pageUtil.FrmSelect2Action">
+        <result name="success">/form/setupSelect.do</result>
+    </action>
+    <action name="form/xmlUpload" class="oscar.form.pageUtil.FrmXmlUpload2Action">
+        <result name="success">/form/formXmlUpload.jsp</result>
+    </action>
+    <action name="form/formname" class="oscar.form.Frm2Action">
+        <result name="exit">/oscarEncounter/close.jsp</result>
+        <result name="print">/form/forwardprint.jsp</result>
+        <result name="printAll">/form/createpdf</result>
+        <result name="printAllJasperReport">/form/formPdfJasperReport.do</result>
+        <result name="printLabReq">/form/formlabreqprint.jsp</result>
+        <result name="save">/form/forwardname.jsp</result>
+        <result name="graph">/form/createpdf</result>
+        <result name="failure">/oscarEncounter/error.jsp</result>
+    </action>
+    <action name="form/forwardshortcutname" class="oscar.form.pageUtil.FormForward2Action"/>
+    <action name="admin/RecommitHSFO" class="oscar.form.study.HSFO.pageUtil.RecommitHSFO2Action">
+        <result name="schedulePage">/admin/recommitschedule.jsp</result>
+    </action>
+    <action name="form/HSFOform" class="oscar.form.study.HSFO.pageUtil.ManageHSFO2Action">
+        <result name="registration">/form/HSFORegistrationFrm.jsp</result>
+        <result name="flowsheet">/form/HSFOFlowsheet.jsp</result>
+    </action>
+    <action name="form/HSFOsaveform" class="oscar.form.study.HSFO.pageUtil.SaveRegistration2Action">
+        <result name="success">/form/HSFOform.do</result>
+        <result name="exit">/oscarEncounter/close.jsp</result>
+    </action>
+    <action name="admin/RecommitHSFO2" class="oscar.form.study.hsfo2.pageUtil.RecommitHSFO2Action">
+        <result name="schedulePage">/admin/recommitschedule.jsp</result>
+    </action>
+    <action name="form/HSFOForm2" class="oscar.form.study.hsfo2.pageUtil.ManageHSFO2Action">
+        <result name="registration">/form/hsfo2/HSFORegistrationForm.jsp</result>
+        <result name="flowsheet">/form/hsfo2/HSFOFlowsheet.jsp</result>
+        <result name="graphs">/form/hsfo2/displayGraphs.jsp</result>
+    </action>
+    <action name="form/SaveHSFORegistrationForm2" class="oscar.form.study.hsfo2.pageUtil.SaveRegistration2Action">
+        <result name="success">/form/HSFOForm2.do</result>
+        <result name="exit">/oscarEncounter/close.jsp</result>
+    </action>
+    <action name="form/HSFOXmlTransfer2" class="oscar.form.study.hsfo2.pageUtil.TransferHSFOXml2Action">
+        <result name="HSFORE">/form/hsfo2/HSFOXmlResult.jsp</result>
+    </action>
+    <action name="form/HSFOXmlTransfer" class="oscar.form.study.HSFO.pageUtil.TransferHSFOXml2Action">
+        <result name="HSFORE">/form/hsfoxmlresult.jsp</result>
+    </action>
+    <action name="form/SetupForm" class="oscar.form.pageUtil.FrmSetupForm2Action"/>
+    <action name="form/SubmitForm" class="oscar.form.pageUtil.FrmForm2Action"/>
+    <action name="oscarEncounter/displayLabs" class="oscar.oscarEncounter.pageUtil.EctDisplayLabAction22Action"/>
+    <action name="oscarEncounter/displayForms" class="oscar.oscarEncounter.pageUtil.EctDisplayForm2Action"/>
+    <action name="oscarEncounter/displayEForms" class="oscar.oscarEncounter.pageUtil.EctDisplayEForm2Action"/>
+    <action name="oscarEncounter/displayMessages" class="oscar.oscarEncounter.pageUtil.EctDisplayMsg2Action"/>
+    <action name="oscarEncounter/displayBilling" class="oscar.oscarEncounter.pageUtil.EctDisplayBilling2Action"/>
+    <action name="oscarEncounter/displayDocuments" class="oscar.oscarEncounter.pageUtil.EctDisplayDocs2Action"/>
+    <action name="oscarEncounter/displayQuestimed" class="oscar.oscarEncounter.pageUtil.EctDisplayQuestimed2Action"/>
+    <action name="oscarEncounter/displayPhotos" class="oscar.oscarEncounter.pageUtil.EctDisplayPhotos2Action"/>
+    <action name="oscarEncounter/displayMeasurements" class="oscar.oscarEncounter.pageUtil.EctDisplayMeasurements2Action"/>
+    <action name="oscarEncounter/displayTickler" class="oscar.oscarEncounter.pageUtil.EctDisplayTickler2Action"/>
+    <action name="oscarEncounter/displayDisease" class="oscar.oscarEncounter.pageUtil.EctDisplayDx2Action"/>
+    <action name="oscarEncounter/displayPrevention" class="oscar.oscarEncounter.pageUtil.EctDisplayPrevention2Action"/>
+    <action name="oscarEncounter/displayOcularProcedure" class="oscar.oscarEncounter.pageUtil.EctDisplayOcularProcedure2Action"/>
+    <action name="oscarEncounter/displaySpecsHistory" class="oscar.oscarEncounter.pageUtil.EctDisplaySpecsHistory2Action"/>
+    <action name="oscarEncounter/displayMacro" class="oscar.oscarEncounter.pageUtil.EctDisplayMacro2Action"/>
+    <action name="oscarEncounter/displayAppointmentHistory" class="oscar.oscarEncounter.pageUtil.EctDisplayAppointmentHistory2Action"/>
+    <action name="oscarEncounter/displayConReport" class="oscar.oscarEncounter.pageUtil.EctDisplayConReport2Action"/>
+    <action name="oscarEncounter/displayConsultation" class="oscar.oscarEncounter.pageUtil.EctDisplayConsult2Action"/>
+    <action name="oscarEncounter/displayEconsultation" class="oscar.oscarEncounter.pageUtil.EctDisplayEconsult2Action"/>
+    <action name="oscarEncounter/displayEHR" class="oscar.oscarEncounter.pageUtil.EctDisplayEHR2Action"/>
+    <action name="oscarEncounter/displayAllergy" class="oscar.oscarEncounter.pageUtil.EctDisplayAllergy2Action"/>
+    <action name="oscarEncounter/displayRx" class="oscar.oscarEncounter.pageUtil.EctDisplayRx2Action"/>
+    <action name="oscarEncounter/displayDecisionSupportAlerts" class="oscar.oscarEncounter.pageUtil.EctDisplayDecisionSupportAlerts2Action"/>
+    <action name="report/printLabDaySheetAction" class="oscar.oscarReport.pageUtil.printLabDaySheet2Action"/>
+    <action name="oscarEncounter/displayDiagrams" class="oscar.oscarEncounter.pageUtil.EctDisplayDiagram2Action"/>
+    <action name="oscarEncounter/displayExaminationHistory" class="oscar.oscarEncounter.pageUtil.EctDisplayExaminationHistory2Action"/>
+    <action name="oscarEncounter/displayHRM" class="oscar.oscarEncounter.pageUtil.EctDisplayHRM2Action"/>
+    <action name="oscarEncounter/displayMyOscar" class="oscar.oscarEncounter.pageUtil.EctDisplayMyOscar2Action"/>
+    <action name="oscarEncounter/SaveEncounter" class="oscar.oscarEncounter.pageUtil.EctSaveEncounter2Action">
+        <result name="saveAndStay">/oscarEncounter/Index.jsp?saved=true</result>
+        <result name="failure">/oscarEncounter/error.jsp</result>
+        <result name="success">/oscarEncounter/TimeOut.jsp</result>
+        <result name="bill">/billing.do</result>
+        <result name="splitchart">/oscarEncounter/Index.jsp?saved=true&amp;splitchart=true</result>
+        <result name="close">/oscarEncounter/close.jsp</result>
+        <result name="concurrencyError">/oscarEncounter/concurrencyError.jsp</result>
+    </action>
+    <action name="oscarEncounter/SaveEncounter2" class="oscar.oscarEncounter.pageUtil.EctSaveEncounter2Action">
+        <result name="saveAndStay">/oscarEncounter/Index2.jsp?saved=true</result>
+        <result name="failure">/oscarEncounter/error.jsp</result>
+        <result name="success">/oscarEncounter/TimeOut.jsp</result>
+        <result name="bill">/billing.do</result>
+        <result name="splitchart">/oscarEncounter/Index2.jsp?saved=true&amp;splitchart=true</result>
+        <result name="surveillance">/oscarSurveillance/CheckSurveillance.do</result>
+        <result name="close">/oscarEncounter/close.jsp</result>
+        <result name="concurrencyError">/oscarEncounter/concurrencyError.jsp</result>
+    </action>
+    <action name="oscarConsultationRequest/consultationClinicalData" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.ConsultationClinicalData2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/ConsultationFormRequest.jsp</result>
+    </action>
+    <action name="econsult" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EConsult2Action"/>
+    <action name="previewDocs" class="org.oscarehr.documentManager.actions.DocumentPreview2Action">
+        <result name="fetchDocuments">/documentManager/attachDocument.jsp</result>
+    </action>
+    <action name="attachDocs" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.ConsultationAttachDocs2Action">
+        <result name="fetchAll">/oscarEncounter/oscarConsultationRequest/attachConsultation.jsp</result>
+    </action>
+    <action name="eform/attachDoc" class="oscar.eform.EFormAttachDocs2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/attachSuccessfull.jsp</result>
+    </action>
+    <action name="eform/logEformError" class="oscar.eform.EformLogError2Action"/>
+    <action name="eform/logEformError" class="oscar.eform.EformLogError2Action"/>
+    <action name="oscarEncounter/ViewConsultation" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctViewConsultationRequests2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/ViewConsultationRequests.jsp</result>
+    </action>
+    <action name="oscarEncounter/ViewRequest" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctViewRequest2Action">
+        <result name="failESend">/oscarEncounter/ViewRequest.do</result>
+        <result name="success">/oscarEncounter/oscarConsultationRequest/ConsultationFormRequest.jsp</result>
+    </action>
+    <action name="oscarEncounter/myoscar/measurements_*" class="oscar.oscarEncounter.data.myoscar.EctMyOscarFilter2Action">
+        <result name="success">/oscarEncounter/myoscar/{1}.jsp</result>
+    </action>
+    <action name="oscarEncounter/eRefer" class="oscar.oscarEncounter.oceanEReferal.pageUtil.ERefer2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/ConsultationFormRequest.jsp</result>
+    </action>
+    <action name="oscarEncounter/RequestConsultation" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctConsultationFormRequest2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/ConfirmConsultationRequest.jsp</result>
+        <result name="error">/oscarEncounter/ViewRequest.do?error=true</result>
+        <result name="failESend">/oscarEncounter/ViewRequest.do</result>
+        <result name="print">/oscarEncounter/oscarConsultationRequest/ConsultationFormPrint.jsp</result>
+        <result name="printalt">/oscarEncounter/oscarConsultationRequest/ConsultationFormPrint2.jsp</result>
+        <result name="printpdf">/oscarEncounter/oscarConsultationRequest/printPdf.do</result>
+        <result name="printIndivica">/oscarEncounter/oscarConsultationRequest/printPdf2.do</result>
+        <result name="fax">/fax/CoverPage.jsp</result>
+    </action>
+    <action name="oscarEncounter/oscarConsultationRequest/printPdf2" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctConsultationFormRequestPrintAction22Action">
+        <result name="error">/oscarEncounter/ViewRequest.do?error=true</result>
+        <result name="attachform">/form/forwardshortcutname.jsp</result>
+    </action>
+    <action name="oscarEncounter/oscarConsultationRequest/ConsultationFormFax" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctConsultationFormFax2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/ConfirmConsultationRequest.jsp</result>
+        <result name="error">/oscarEncounter/ViewRequest.do?error=true</result>
+        <result name="attachform">/form/forwardshortcutname.jsp</result>
+        <result name="cancel">/oscarEncounter/ViewRequest.do</result>
+    </action>
+    <action name="oscarEncounter/oscarConsultation/printAttached" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.ConsultationPrintDocs2Action">
+        <result name="noprint">/oscarEncounter/oscarConsultationRequest/nothingtoPrint.jsp</result>
+    </action>
+    <action name="oscarEncounter/EnableConRequestResponse" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConEnableReqResp2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/EnableRequestResponse.jsp</result>
+    </action>
+    <action name="oscarEncounter/AddService" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConAddService2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/AddService.jsp</result>
+    </action>
+    <action name="oscarEncounter/ShowAllServices" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConShowAllServices2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/DisplayService.jsp</result>
+    </action>
+    <action name="oscarEncounter/ShowAllInstitutions" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConShowAllInstitutions2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/DisplayInstitution.jsp</result>
+    </action>
+    <action name="oscarEncounter/AddSpecialist" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConAddSpecialist2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/AddSpecialist.jsp</result>
+        <result name="edited">/oscarEncounter/oscarConsultationRequest/config/EditSpecialists.jsp</result>
+    </action>
+    <action name="oscarEncounter/AddInstitution" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConAddInstitution2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/AddInstitution.jsp</result>
+        <result name="edited">/oscarEncounter/oscarConsultationRequest/config/EditInstitutions.jsp</result>
+    </action>
+    <action name="oscarEncounter/AddDepartment" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConAddDepartment2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/AddDepartment.jsp</result>
+        <result name="edited">/oscarEncounter/oscarConsultationRequest/config/EditDepartments.jsp</result>
+    </action>
+    <action name="oscarEncounter/UpdateServiceSpecialists" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConDisplayService2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/ShowAllServices.jsp</result>
+    </action>
+    <action name="oscarEncounter/UpdateInstitutionDepartment" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConDisplayInstitution2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/ShowAllInstitutions.jsp</result>
+    </action>
+    <action name="oscarEncounter/EditSpecialists" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConEditSpecialists2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/AddSpecialist.jsp</result>
+        <result name="delete">/oscarEncounter/oscarConsultationRequest/config/EditSpecialists.jsp</result>
+    </action>
+    <action name="oscarEncounter/EditInstitutions" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConEditInstitutions2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/AddInstitution.jsp</result>
+        <result name="delete">/oscarEncounter/oscarConsultationRequest/config/EditInstitutions.jsp</result>
+    </action>
+    <action name="oscarEncounter/EditDepartments" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConEditDepartments2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/AddDepartment.jsp</result>
+        <result name="delete">/oscarEncounter/oscarConsultationRequest/config/EditDepartments.jsp</result>
+    </action>
+    <action name="oscarEncounter/DelService" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConDeleteServices2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/config/DeleteServices.jsp</result>
+    </action>
+    <action name="oscarEncounter/InsertTemplate" class="oscar.oscarEncounter.pageUtil.EctInsertTemplate2Action">
+        <result name="success">/oscarEncounter/InsertTemplate.jsp</result>
+        <result name="success2">/oscarEncounter/InsertTemplate2.jsp</result>
+    </action>
+    <action name="oscarEncounter/oscarMeasurements/AddMeasurementStyleSheet" class="oscar.oscarEncounter.oscarMeasurements.pageUtil.EctAddMeasurementStyleSheet2Action">
+        <result name="success">/oscarEncounter/oscarMeasurements/AddMeasurementStyleSheet.jsp</result>
+    </action>
+    <action name="oscarEncounter/oscarMeasurements/AddMeasurementMap" class="oscar.oscarEncounter.oscarMeasurements.pageUtil.EctAddMeasurementMap2Action">
+        <result name="continue">/oscarEncounter/oscarMeasurements/addMeasurementMap.jsp</result>
+        <result name="success">/oscarEncounter/oscarMeasurements/addMeasurementMap.jsp?outcome=success</result>
+        <result name="failure">/oscarEncounter/oscarMeasurements/addMeasurementMap.jsp?outcome=failure</result>
+        <result name="failedcheck">/oscarEncounter/oscarMeasurements/addMeasurementMap.jsp?outcome=failedcheck</result>
+    </action>
+    <action name="oscarEncounter/oscarMeasurements/NewMeasurementMap" class="oscar.oscarEncounter.oscarMeasurements.pageUtil.EctAddMeasurementMap2Action">
+        <result name="success">/oscarEncounter/oscarMeasurements/newMeasurementMap.jsp?outcome=success</result>
+        <result name="failure">/oscarEncounter/oscarMeasurements/newMeasurementMap.jsp?outcome=failure</result>
+        <result name="failedcheck">/oscarEncounter/oscarMeasurements/newMeasurementMap.jsp?outcome=failedcheck</result>
+    </action>
+    <action name="oscarEncounter/oscarMeasurements/RemoveMeasurementMap" class="oscar.oscarEncounter.oscarMeasurements.pageUtil.EctRemoveMeasurementMap2Action">
+        <result name="continue">/oscarEncounter/oscarMeasurements/removeMeasurementMap.jsp</result>
+        <result name="success">/oscarEncounter/oscarMeasurements/removeMeasurementMap.jsp?outcome=success</result>
+        <result name="failure">/oscarEncounter/oscarMeasurements/removeMeasurementMap.jsp?outcome=failure</result>
+    </action>
+    <action name="oscarEncounter/oscarMeasurements/RemapMeasurementMap" class="oscar.oscarEncounter.oscarMeasurements.pageUtil.EctRemoveMeasurementMap2Action">
+        <result name="continue">/oscarEncounter/oscarMeasurements/remapMeasurementMap.jsp</result>
+        <result name="success">/oscarEncounter/oscarMeasurements/remapMeasurementMap.jsp?outcome=success</result>
+        <result name="failure">/oscarEncounter/oscarMeasurements/remapMeasurementMap.jsp?outcome=failure</result>
+        <result name="failedcheck">/oscarEncounter/oscarMeasurements/remapMeasurementMap.jsp?outcome=failedcheck</result>
+    </action>
+    <action name="oscarEncounter/ViewAttachment" class="oscar.oscarEncounter.pageUtil.EctViewAttachment2Action">
+        <result name="success">/oscarEncounter/ViewAttachment.jsp</result>
+    </action>
+    <action name="oscarReport/ShowConsult" class="oscar.oscarReport.pageUtil.RptShowConsult2Action">
+        <result name="success">/oscarEncounter/oscarConsultationRequest/ConsultationFormPrint.jsp</result>
+    </action>
+    <action name="oscarReport/FluBilling" class="oscar.oscarReport.pageUtil.RptFluBilling2Action">
+        <result name="success">/oscarReport/oscarReportFluBilling.jsp</result>
+    </action>
+    <action name="oscarReport/RptByExample" class="oscar.oscarReport.pageUtil.RptByExample2Action">
+        <result name="success">/oscarReport/RptByExample.jsp</result>
+    </action>
+    <action name="admin/GstControl" class="oscar.oscarBilling.ca.on.administration.GstControl2Action">
+        <result name="success">/admin/gstControl.jsp</result>
+    </action>
+    <action name="admin/manageCSSStyles" class="org.oscarehr.billing.CA.ON.web.ManageCSS2Action">
+        <result name="init">/admin/manageCSSStyles.jsp</result>
+    </action>
+    <action name="admin/MergeRecords" class="oscar.oscarDemographic.pageUtil.DemographicMergeRecord2Action">
+        <result name="success">/admin/demographicmergerecord.jsp?outcome=success</result>
+        <result name="failure">/admin/demographicmergerecord.jsp?outcome=failure</result>
+        <result name="successUnMerge">/admin/demographicmergerecord.jsp?outcome=successUnMerge</result>
+        <result name="failureUnMerge">/admin/demographicmergerecord.jsp?outcome=failureUnMerge</result>
+        <result name="caisiSearch">/PMmodule/ClientSearch2.do</result>
+    </action>
+    <action name="oscarReport/RptViewAllQueryByExamples" class="oscar.oscarReport.pageUtil.RptViewAllQueryByExamples2Action">
+        <result name="success">/oscarReport/RptViewAllQueryByExamples.jsp</result>
+    </action>
+    <action name="oscarReport/RptByExamplesFavorite" class="oscar.oscarReport.pageUtil.RptByExamplesFavorite2Action">
+        <result name="edit">/oscarReport/RptByExamplesFavorite.jsp</result>
+        <result name="success">/oscarReport/RptByExamplesAllFavorites.jsp</result>
+    </action>
+    <action name="oscarReport/RptByExamplesAllFavorites" class="oscar.oscarReport.pageUtil.RptByExamplesAllFavorites2Action">
+        <result name="success">/oscarReport/RptByExamplesAllFavorites.jsp</result>
+    </action>
+    <action name="report/DemographicReport" class="oscar.oscarReport.pageUtil.RptDemographicReport2Action">
+        <result name="success">/oscarReport/ReportDemographicReport.jsp</result>
+        <result name="failure">/oscar_sfhc/JAYREPORTS/DemographicReport.jsp</result>
+        <result name="addToStudy">/study/ManageStudy.do?method=AddToStudy</result>
+    </action>
+    <action name="report/CreateDemographicSet" class="oscar.oscarReport.pageUtil.RptCreateDemographicSet2Action">
+        <result name="success">/oscarReport/ReportDemographicReport.jsp</result>
+    </action>
+    <action name="oscarReport/obec" class="oscar.oscarReport.pageUtil.Obec2Action">
+        <result name="success">/oscarReport/obec.jsp</result>
+    </action>
+    <action name="oscarReport/oscarMeasurements/SetupSelectCDMReport" class="oscar.oscarReport.oscarMeasurements.pageUtil.RptSetupSelectCDMReport2Action">
+        <result name="continue">/oscarReport/oscarMeasurements/SelectCDMReport.jsp</result>
+    </action>
+    <action name="oscarReport/oscarMeasurements/SelectCDMReport" class="oscar.oscarReport.oscarMeasurements.pageUtil.RptSelectCDMReport2Action">
+        <result name="patientWhoMetGuideline">/oscarReport/oscarMeasurements/InitializePatientsMetGuidelineCDMReport.jsp</result>
+        <result name="patientInAbnormalRange">/oscarReport/oscarMeasurements/InitializePatientsInAbnormalRangeCDMReport.jsp</result>
+        <result name="freqencyOfReleventTests">/oscarReport/oscarMeasurements/InitializeFrequencyOfRelevantTestsCDMReport.jsp</result>
+    </action>
+    <action name="oscarReport/oscarMeasurements/InitializePatientsMetGuidelineCDMReport" class="oscar.oscarReport.oscarMeasurements.pageUtil.RptInitializePatientsMetGuidelineCDMReport2Action">
+        <result name="success">/oscarReport/oscarMeasurements/CDMReport.jsp</result>
+    </action>
+    <action name="oscarReport/oscarMeasurements/InitializePatientsInAbnormalRangeCDMReport" class="oscar.oscarReport.oscarMeasurements.pageUtil.RptInitializePatientsInAbnormalRangeCDMReport2Action">
+        <result name="success">/oscarReport/oscarMeasurements/CDMReport.jsp</result>
+    </action>
+    <action name="oscarReport/oscarMeasurements/InitializeFrequencyOfRelevantTestsCDMReport" class="oscar.oscarReport.oscarMeasurements.pageUtil.RptInitializeFrequencyOfRelevantTestsCDMReport2Action">
+        <result name="success">/oscarReport/oscarMeasurements/CDMReport.jsp</result>
+    </action>
+    <action name="oscarReport/RptRehabStudy" class="oscar.oscarReport.pageUtil.RptRehabStudy2Action">
+        <result name="success">/oscarReport/oscarReportRehabStudy.jsp</result>
+    </action>
+    </package>
+</struts>
