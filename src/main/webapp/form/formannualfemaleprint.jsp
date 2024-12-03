@@ -39,7 +39,6 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ page import="oscar.form.*" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
@@ -50,7 +49,7 @@
 
         <link rel="stylesheet" type="text/css" href="annualStyle.css">
         <link rel="stylesheet" type="text/css" media="print" href="print.css">
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <%

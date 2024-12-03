@@ -25,7 +25,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <hr width="100%">
 <table border="0" cellspacing="0" cellpadding="0" width="100%" class="noprint">

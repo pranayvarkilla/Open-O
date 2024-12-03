@@ -39,8 +39,8 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
 <%
     if (session.getValue("user") == null)
@@ -74,9 +74,20 @@
 
         <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.btnImportFormData"/></h3>
 
-        <html:form action="/form/xmlUpload.do" method="POST" enctype="multipart/form-data">
+        <form action="${pageContext.request.contextPath}/form/xmlUpload.do" method="POST" enctype="multipart/form-data">
 
-            <html:errors/>
+            <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
 
 
             Select data in zip format:<br />
@@ -91,7 +102,7 @@
             <p><i class="icon-info-sign"></i> Use this function to import data for a specific form into the OSCAR
                 database</p>
 
-        </html:form>
+        </form>
 
     </div>
     </body>

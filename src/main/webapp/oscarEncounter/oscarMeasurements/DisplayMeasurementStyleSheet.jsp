@@ -29,7 +29,7 @@
 %>
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
 <html>
@@ -41,9 +41,19 @@
 
     <body class="BodyStyle" vlink="#0000FF">
     <!--  -->
-    <html:errors/>
-    <html:form
-            action="/oscarEncounter/oscarMeasurements/DeleteMeasurementStyleSheet">
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
+    <form action="${pageContext.request.contextPath}/oscarEncounter/oscarMeasurements/DeleteMeasurementStyleSheet.do" method="post">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
                 <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgMeasurements"/></td>
@@ -109,6 +119,6 @@
             <td class="MainTableBottomRowRightColumn"></td>
         </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

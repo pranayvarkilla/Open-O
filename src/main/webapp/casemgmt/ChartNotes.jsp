@@ -187,13 +187,13 @@
 
 </script>
 <div id="topContent">
-    <html:form action="/CaseManagementView" method="post">
-        <html:hidden property="demographicNo" value="<%=demographicNo%>"/>
-        <html:hidden property="providerNo" value="<%=provNo%>"/>
-        <html:hidden property="tab" value="Current Issues"/>
-        <html:hidden property="hideActiveIssue"/>
-        <html:hidden property="ectWin.rowOneSize" styleId="rowOneSize"/>
-        <html:hidden property="ectWin.rowTwoSize" styleId="rowTwoSize"/>
+    <form action="${pageContext.request.contextPath}/CaseManagementView.do" method="post">
+        <input type="hidden" name="demographicNo" value="<%=demographicNo%>"/>
+        <input type="hidden" name="providerNo" value="<%=provNo%>"/>
+        <input type="hidden" name="tab" value="Current Issues"/>
+        <input type="hidden" name="hideActiveIssue" id="hideActiveIssue"/>
+        <input type="hidden" name="ectWin.rowOneSize" styleId="rowOneSize"/>
+        <input type="hidden" name="ectWin.rowTwoSize" styleId="rowTwoSize"/>
         <input type="hidden" name="chain" value="list">
         <input type="hidden" name="method" value="view">
         <input type="hidden" id="check_issue" name="check_issue">
@@ -291,8 +291,10 @@
                     <td style="border-left:solid #ddddff 3px">
                         <div style="height:150px;overflow:auto">
                             <ul style="padding:0;margin:0;list-style:none inside none">
-                                <li><html:multibox property="filter_providers" value="a"
-                                                   onclick="filterCheckBox(this)"></html:multibox><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/></li>
+                                <li>
+                                    <input type="checkbox" name="filter_providers" value="a" onclick="filterCheckBox(this)" />
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/>
+                                </li>
                                 <%
                                     @SuppressWarnings("unchecked")
                                     Set<Provider> providers = (Set<Provider>) request.getAttribute("providers");
@@ -304,8 +306,8 @@
                                         prov = iter.next();
                                         providerNo = prov.getProviderNo();
                                 %>
-                                <li><html:multibox property="filter_providers" value="<%=providerNo%>"
-                                                   onclick="filterCheckBox(this)"></html:multibox><%=prov.getFormattedName()%>
+                                <li>
+                                    <input type="checkbox" name="filter_providers" value="<%= providerNo %>" onclick="filterCheckBox(this)" /><%=prov.getFormattedName()%>
                                 </li>
                                 <%
                                     }
@@ -316,16 +318,19 @@
                     <td style="border-left:solid #ddddff 3px">
                         <div style="height:150px;overflow:auto">
                             <ul style="padding:0;margin:0;list-style:none inside none">
-                                <li><html:multibox property="filter_roles" value="a"
-                                                   onclick="filterCheckBox(this)"></html:multibox><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/></li>
+                                <li>
+                                    <input type="checkbox" name="filter_roles" value="a" onclick="filterCheckBox(this)" />
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/>
+                                </li>
                                 <%
                                     @SuppressWarnings("unchecked")
                                     List roles = (List) request.getAttribute("roles");
                                     for (int num = 0; num < roles.size(); ++num) {
                                         Secrole role = (Secrole) roles.get(num);
                                 %>
-                                <li><html:multibox property="filter_roles" value="<%=String.valueOf(role.getId())%>"
-                                                   onclick="filterCheckBox(this)"></html:multibox><%=role.getName()%>
+                                <li>
+                                    <input type="checkbox" name="filter_roles" value="<%=String.valueOf(role.getId())%>" onclick="filterCheckBox(this)" />
+                                    <%=role.getName()%>
                                 </li>
                                 <%
                                     }
@@ -336,31 +341,33 @@
                     <td style="border-left:solid #ddddff 3px">
                         <div style="height:150px;overflow:auto">
                             <ul style="padding:0;margin:0;list-style:none inside none">
-                                <li><html:radio property="note_sort" value="observation_date_asc">
+                                <li><input type="radio" name="note_sort" value="observation_date_asc"/>
                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortDateAsc.title"/>
-                                </html:radio></li>
-                                <li><html:radio property="note_sort" value="observation_date_desc">
+                                </li>
+                                <li><input type="radio" name="note_sort" value="observation_date_desc"/>
                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortDateDesc.title"/>
-                                </html:radio></li>
-                                <li><html:radio property="note_sort" value="providerName">
+                                </li>
+                                <li><input type="radio" name="note_sort" value="providerName"/>
                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.provider.title"/>
-                                </html:radio></li>
-                                <li><html:radio property="note_sort" value="programName">
+                                </li>
+                                <li><input type="radio" name="note_sort" value="programName"/>
                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.program.title"/>
-                                </html:radio></li>
-                                <li><html:radio property="note_sort" value="roleName">
+                                </li>
+                                <li><input type="radio" name="note_sort" value="roleName"/>
                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.role.title"/>
-                                </html:radio></li>
+                                </li>
                             </ul>
                         </div>
                     </td>
                     <td style="border-left:solid #ddddff 3px;">
                         <div style="height:150px;overflow:auto">
                             <ul style="padding:0;margin:0;list-style:none inside none">
-                                <li><html:multibox property="issues" value="a"
-                                                   onclick="filterCheckBox(this)"></html:multibox><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/></li>
-                                <li><html:multibox property="issues" value="n"
-                                                   onclick="filterCheckBox(this)"></html:multibox>None
+                                <li>
+                                    <input type="checkbox" name="issues" value="a" onclick="filterCheckBox(this)" />
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/>
+                                </li>
+                                <li>
+                                    <input type="checkbox" name="issues" value="n" onclick="filterCheckBox(this)" />None
                                 </li>
 
                                 <%
@@ -369,9 +376,10 @@
                                     for (int num = 0; num < issues.size(); ++num) {
                                         CheckBoxBean issue_checkBoxBean = (CheckBoxBean) issues.get(num);
                                 %>
-                                <li><html:multibox property="issues"
-                                                   value="<%=String.valueOf(issue_checkBoxBean.getIssue().getId())%>"
-                                                   onclick="filterCheckBox(this)"></html:multibox><%=issue_checkBoxBean.getIssueDisplay().getResolved().equals("resolved") ? "* " : ""%> <%=issue_checkBoxBean.getIssueDisplay().getDescription()%>
+                                <li>
+                                    <input type="checkbox" name="issues" value="<%=String.valueOf(issue_checkBoxBean.getIssue().getId())%>"
+                                                   onclick="filterCheckBox(this)" />
+                                    <%=issue_checkBoxBean.getIssueDisplay().getResolved().equals("resolved") ? "* " : ""%> <%=issue_checkBoxBean.getIssueDisplay().getDescription()%>
                                 </li>
                                 <%
                                     }
@@ -496,7 +504,7 @@
                 </security:oscarSec>
 
         </div>
-    </html:form>
+    </form>
 </div>
 
 
@@ -512,8 +520,8 @@
     String OscarMsgTypeLink = (String) request.getParameter("OscarMsgTypeLink");
 %>
 <nested:form action="/CaseManagementEntry">
-    <html:hidden property="demographicNo" value="<%=demographicNo%>"/>
-    <html:hidden property="includeIssue" value="off"/>
+    <input type="hidden" name="demographicNo" value="<%=demographicNo%>"/>
+    <input type="hidden" name="includeIssue" value="off"/>
     <input type="hidden" name="OscarMsgType" value="<%=oscarMsgType%>"/>
     <input type="hidden" name="OscarMsgTypeLink" value="<%=OscarMsgTypeLink%>"/>
     <%
@@ -543,13 +551,13 @@
         }
     %>
 
-    <html:hidden property="appointmentNo" value="<%=apptNo%>"/>
-    <html:hidden property="appointmentDate" value="<%=apptDate%>"/>
-    <html:hidden property="start_time" value="<%=startTime%>"/>
-    <html:hidden property="billRegion"
+    <input type="hidden" name="appointmentNo" value="<%=apptNo%>"/>
+    <input type="hidden" name="appointmentDate" value="<%=apptDate%>"/>
+    <input type="hidden" name="start_time" value="<%=startTime%>"/>
+    <input type="hidden" name="billRegion"
                  value="<%=(OscarProperties.getInstance().getProperty(\"billregion\",\"\")).trim().toUpperCase()%>"/>
-    <html:hidden property="apptProvider" value="<%=apptProv%>"/>
-    <html:hidden property="providerview" value="<%=provView%>"/>
+    <input type="hidden" name="apptProvider" value="<%=apptProv%>"/>
+    <input type="hidden" name="providerview" value="<%=provView%>"/>
     <input type="hidden" name="toBill" id="toBill" value="false">
     <input type="hidden" name="deleteId" value="0">
     <input type="hidden" name="lineId" value="0">

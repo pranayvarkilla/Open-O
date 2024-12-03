@@ -23,42 +23,32 @@
     Ontario, Canada
 
 --%>
-<%@page import="org.oscarehr.common.model.LookupListItem" %>
-<%@page import="org.oscarehr.common.model.LookupList" %>
-<%@page import="org.oscarehr.util.LoggedInInfo" %>
-<%@page import="org.oscarehr.managers.LookupListManager" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-
-<%@ page import="org.oscarehr.common.model.ClinicNbr" %>
-<%@ page import="org.oscarehr.common.dao.ClinicNbrDao" %>
-<%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import="java.util.*,oscar.oscarProvider.data.*" %>
 <%@ page import="oscar.OscarProperties" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
+<%@ page import="org.oscarehr.common.model.LookupListItem" %>
+<%@ page import="org.oscarehr.common.model.LookupList" %>
+<%@ page import="org.oscarehr.util.LoggedInInfo" %>
+<%@ page import="org.oscarehr.managers.LookupListManager" %>
+<%@ page import="org.oscarehr.common.model.ClinicNbr" %>
+<%@ page import="org.oscarehr.common.dao.ClinicNbrDao" %>
+<%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import="org.oscarehr.common.dao.SiteDao" %>
 <%@ page import="org.oscarehr.common.model.Site" %>
 <%@ page import="org.oscarehr.common.dao.ProviderDataDao" %>
-<%@page import="org.oscarehr.common.model.ProviderData" %>
-
-
-<%@page import="org.oscarehr.common.Gender" %>
+<%@ page import="org.oscarehr.common.model.ProviderData" %>
+<%@ page import="org.oscarehr.common.Gender" %>
 <%
-
-    String curProvider_no, userfirstname, userlastname;
-    curProvider_no = (String) session.getAttribute("user");
-    userfirstname = (String) session.getAttribute("userfirstname");
-    userlastname = (String) session.getAttribute("userlastname");
+    String curProvider_no = (String) session.getAttribute("user");
     //display the main provider page
     //includeing the provider name and a month calendar
 
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
-
     ProviderDataDao providerDataDao = SpringUtils.getBean(ProviderDataDao.class);
     List<ProviderData> list = providerDataDao.findAll();
-    List<Integer> providerList = new ArrayList<Integer>();
+    List<Integer> providerList = new ArrayList<>();
     for (ProviderData h : list) {
         try {
             String pn = h.getId();
@@ -75,14 +65,11 @@
         }
     }
 %>
-
 <%
-    String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
-
+    String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean isSiteAccessPrivacy = false;
     boolean authed = true;
 %>
-
 <security:oscarSec roleName="<%=roleName$%>" objectName="_admin,_admin.userAdmin" rights="r" reverse="<%=true%>">
     <%authed = false; %>
     <%response.sendRedirect("../securityError.jsp?type=_admin&type=_admin.userAdmin");%>
@@ -92,12 +79,10 @@
         return;
     }
 %>
-
-
 <security:oscarSec objectName="_site_access_privacy" roleName="<%=roleName$%>" rights="r" reverse="false">
-    <%
-        isSiteAccessPrivacy = true;
-    %>
+<%
+    isSiteAccessPrivacy = true;
+%>
 </security:oscarSec>
 <html>
     <head>

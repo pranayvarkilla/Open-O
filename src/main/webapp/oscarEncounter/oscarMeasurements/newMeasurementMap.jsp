@@ -25,8 +25,8 @@
 --%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page
         import="java.util.*, oscar.oscarEncounter.oscarMeasurements.data.MeasurementMapConfig, oscar.OscarProperties, oscar.util.StringUtils" %>
 
@@ -36,7 +36,7 @@
 
 <html>
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title>Measurement Mapping Configuration</title>
         <!-- css -->
         <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet"> <!-- Bootstrap 2.3.1 -->
@@ -124,7 +124,7 @@
                             <td><input type="button" class="btn"
                                        value=" <fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/> "
                                        onClick="window.close()"></td>
-                            <td style="text-align:right"><oscar:help keywords="measurement" key="app.top1"/> | <a
+                            <td style="text-align:right"><a
                                     href="javascript:popupStart(300,400,'../About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                     href="javascript:popupStart(300,400,'../License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                         </tr>

@@ -95,7 +95,7 @@
         </tr>
         <tr>
             <td class="filedValue" colspan="3"><input id="issuesNames" type="text" name="issueNames"/></td>
-            <td class="fieldValue" width="80%"><html:submit>Save</html:submit>
+            <td class="fieldValue" width="80%"><input type="submit" name="submit" value="Save" />
                 <input type="button" value="Cancel"
                        onclick="location.href='DefaultEncounterIssue.do'"/></td>
         </tr>

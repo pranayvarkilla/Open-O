@@ -96,7 +96,7 @@
              scope="page"/>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <%@page import="oscar.appt.JdbcApptImpl" %>
 <%@page import="org.oscarehr.common.model.Site" %>

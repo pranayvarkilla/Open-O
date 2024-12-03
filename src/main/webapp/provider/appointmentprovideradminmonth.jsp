@@ -77,7 +77,7 @@
 <!--/oscarMessenger Code block -->
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
@@ -307,15 +307,11 @@
         }
 
     }
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
 %>
-
-
 <%@page import="org.oscarehr.common.dao.SiteDao" %>
 <%@page import="org.oscarehr.common.model.Site" %>
-<%@page import="oscar.appt.JdbcApptImpl" %>
 <%@page import="oscar.appt.ApptUtil" %>
-<html>
+
     <body bgcolor="#EEEEFF" onLoad="refreshAllTabAlerts();">
 
     <head>

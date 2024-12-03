@@ -45,8 +45,8 @@
         response.sendRedirect("../logout.jsp");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 <%@ page import="java.util.*" %>
 <%@ page
@@ -204,7 +204,7 @@
 </head>
 
 
-<html:base/>
+<base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
 <body bgcolor="#FFFFFF" text="#000000" rightmargin="0" leftmargin="0"
       topmargin="10" marginwidth="0" marginheight="0"
@@ -417,15 +417,14 @@
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
-                                <td align="right"><html:form
-                                        action="/billing/CA/BC/SaveBilling">
+                                <td align="right"><form action="${pageContext.request.contextPath}/billing/CA/BC/SaveBilling.do" method="post">
                                     <input type="button" name="Submit3" value="Print Receipt"
                                            onclick="javascript:gotoPrintReceipt();"/>
                                     <input type="button" name="Submit" value="Print Bill"
                                            onClick="javascript:window.print()">
                                     <input type="button" name="Submit2" value="Cancel"
                                            onClick="javascript:window.close()">
-                                </html:form></td>
+                                </form></td>
                             </tr>
                         </table>
 

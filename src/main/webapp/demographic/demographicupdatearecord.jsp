@@ -73,8 +73,8 @@
 <%@page import="oscar.OscarProperties" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 
 <%
@@ -111,7 +111,7 @@
         <%
 
             ResultSet rs = null;
-            java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
+            java.util.Locale vLocale = request.getLocale();
 
             Demographic demographic = demographicDao.getDemographic(request.getParameter("demographic_no"));
             if (demographic == null) {

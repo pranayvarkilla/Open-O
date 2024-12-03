@@ -29,8 +29,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- add by caisi end<style>* {border:1px solid black;}</style> -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="oscar.oscarProvider.data.*" %>
 <%@ page import="oscar.oscarProvider.pageUtil.*" %>
 
@@ -47,7 +47,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css"
               href="../oscarEncounter/encounterStyles.css">
 
@@ -78,7 +78,7 @@
                     <tr>
                         <td><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editSignature.msgProviderSignature"/></td>
                         <td>&nbsp;</td>
-                        <td style="text-align: right"><oscar:help keywords="signature" key="app.top1"/> | <a
+                        <td style="text-align: right"><a
                                 href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                 href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                     </tr>
@@ -87,14 +87,13 @@
         </tr>
         <tr>
             <td class="MainTableLeftColumn">&nbsp;</td>
-            <td class="MainTableRightColumn"><html:form
-                    action="/EnterSignature.do">
+            <td class="MainTableRightColumn"><form action="${pageContext.request.contextPath}/EnterSignature.do" method="post">
                 <%
                     if (sig.hasSignature(curUser_no)) {
                 %>
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editSignature.msgEdit"/>
                 <br>
-                <html:text property="signature" size="40"/>
+                <input type="checkbox" name="signature" size="40" />
                 <br>
 
                 <!-- add by caisi -->
@@ -112,7 +111,7 @@
                 <% } else {%>
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editSignature.msgNew"/>
                 <br>
-                <html:text property="signature" size="40"/>
+                <input type="checkbox" name="signature" size="40" />
                 <br>
                 <!-- add by caisi -->
                 <caisi:isModuleLoad moduleName="caisi">
@@ -125,7 +124,7 @@
                 <input type="submit"
                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editSignature.btnSubmit"/>"/>
                 <%}%>
-            </html:form></td>
+            </form></td>
         </tr>
         <tr>
             <td class="MainTableBottomRowLeftColumn"></td>

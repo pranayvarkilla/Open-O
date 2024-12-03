@@ -27,14 +27,14 @@
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="java.lang.*,oscar.oscarEncounter.oscarMeasurements.pageUtil.*" %>
 
 <html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgProcessMeasurementsSubmission"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <script language="javascript">
@@ -45,7 +45,18 @@
     </script>
 
     <body onload="closeWin();">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     Processing...
 
     <%

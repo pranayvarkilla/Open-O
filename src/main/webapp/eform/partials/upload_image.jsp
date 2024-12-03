@@ -26,8 +26,8 @@
 <!DOCTYPE html>
 <%@ page import="oscar.eform.data.*, oscar.OscarProperties, oscar.eform.*, java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -90,9 +90,20 @@
 
     <div class="row-fluid">
         <div class="well">
-            <html:form action="/eform/imageUpload" enctype="multipart/form-data" method="post">
+            <form action="${pageContext.request.contextPath}/eform/imageUpload.do" enctype="multipart/form-data" method="post">
 
-                <div class="text-error message row-fluid"><html:errors/></div>
+                <div class="text-error message row-fluid"><% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %></div>
                 <div class="control-group">
                     <div class="controls">
                         <label class="control-label" for="zippedForm"><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.uploadimages.msgFileName"/></label>
@@ -104,7 +115,7 @@
                                value="<fmt:setBundle basename="oscarResources"/><fmt:message key="eform.uploadimages.btnUpload"/>" disabled>
                     </div>
                 </div>
-            </html:form>
+            </form>
         </div>
     </div>
 

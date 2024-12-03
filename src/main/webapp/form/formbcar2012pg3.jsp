@@ -41,8 +41,8 @@
 <%@ page language="java" %>
 <%@ page import="oscar.form.graphic.*, oscar.util.*, oscar.form.*, oscar.form.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <jsp:useBean id="oscarVariables" class="java.util.Properties" scope="session"/>
 
@@ -94,7 +94,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Antenatal Record 2</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery.are-you-sure.js"></script>
@@ -967,7 +967,7 @@ if (!fedb.equals("") && fedb.length()==10 ) {
         <center><i>At 36 weeks copy to patient / to hospital</i></center>
     </div>
 
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
 
         <input type="hidden" name="commonField" value="ar2_"/>
         <input type="hidden" name="c_lastVisited" value="pg3"/>
@@ -3151,7 +3151,7 @@ if (!fedb.equals("") && fedb.length()==10 ) {
             </tr>
         </table>
 
-    </html:form>
+    </form>
     <script type="text/javascript">
         Calendar.setup({
             onUpdate: function () {

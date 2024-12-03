@@ -195,7 +195,7 @@
         </tr>
     </table>
 
-    <html:form action="/demographic/Contact" styleId="addEditProfessionalForm">
+    <form action="/demographic/Contact" styleId="addEditProfessionalForm">
 
         <c:if test="${ pcontact.id gt 0 }">
             <input type="hidden" name="pcontact.id" value="${ pcontact.id }"/>
@@ -375,6 +375,6 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

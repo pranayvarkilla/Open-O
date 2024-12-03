@@ -37,7 +37,7 @@
         </tr>
     </table>
 </div>
-<html:form action="/PMmodule/FacilityManager.do">
+<form action="${pageContext.request.contextPath}/PMmodule/FacilityManager.do" method="post">
     <input type="hidden" name="method" value="save"/>
     <table width="100%" border="1" cellspacing="2" cellpadding="3">
         <tr class="b">
@@ -178,4 +178,4 @@
 
     <br>
     Automatic discharges in the past 24 hours appear red.
-</html:form>
+</form>

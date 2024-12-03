@@ -25,7 +25,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 
 <%@ page import="java.util.List" %>
@@ -74,7 +74,7 @@
 
     <body topmargin="0" leftmargin="0" rightmargin="0">
 
-    <html:form method="post" action="/admin/GroupPreference">
+    <form method="post" action="${pageContext.request.contextPath}/admin/GroupPreference.do">
 
         <input type="hidden" id="method" name="method"/>
 
@@ -159,7 +159,7 @@
             </tr>
         </table>
 
-    </html:form>
+    </form>
 
     <br>
 

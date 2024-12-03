@@ -26,7 +26,7 @@
 <%@ page
         import="oscar.eform.data.*, oscar.eform.*, java.util.*, oscar.util.*, org.apache.commons.lang.StringEscapeUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%
     HashMap<String, Object> curform = new HashMap<String, Object>();
     HashMap<String, String> errors = new HashMap<String, String>();

@@ -168,7 +168,7 @@
     }
 </script>
 <% String a = "1"; %>
-<html:form action="/PMmodule/MergeClient.do">
+<form action="${pageContext.request.contextPath}/PMmodule/MergeClient.do" method="post">
     <input type="hidden" name="method"/>
     <input type="hidden" name="mergeAction"/>
     <table width="100%" height="100%" cellpadding="1px" cellspacing="1px">
@@ -179,15 +179,15 @@
         <td class="buttonBar2" align="left" height="18px">
             <a href="javascript:submitForm('search')" style="color:Navy;text-decoration:none;">
                 <img border=0 src=
-                    <html:rewrite page="/images/search16.gif"/> height="16px"
+                    ${request.contextPath}/images/search16.gif height="16px"
                      width="16px"/>&nbsp;Search&nbsp;&nbsp;|</a>
             <a style="color:Navy;text-decoration:none;" href="javascript:void1();"
                onclick="return deferedSubmit('mergedSearch');">
                 <img border=0 src=
-                    <html:rewrite page="/images/search16.gif"/> height="16px" width="16px"/>&nbsp;Search Merged Records&nbsp;&nbsp;</a>
+                    ${request.contextPath}/images/search16.gif height="16px" width="16px"/>&nbsp;Search Merged Records&nbsp;&nbsp;</a>
             <a style="color:Navy;text-decoration:none;" href="javascript:resetClientFields();">
                 <img border=0 src=
-                    <html:rewrite page="/images/searchreset.gif"/> height="16px" width="16px"/>&nbsp;Reset&nbsp;&nbsp;|</a>
+                    ${request.contextPath}/images/searchreset.gif height="16px" width="16px"/>&nbsp;Reset&nbsp;&nbsp;|</a>
             <%
                 String securityRole = "" + session.getAttribute("userrole") + "," + session.getAttribute("user");
             %>
@@ -198,7 +198,7 @@
                         <a href="javascript:void1();" onclick="this.disabled=true;return deferedSubmit('unmerge')"
                            style="color:Navy;text-decoration:none;">
                             <img border=0 src=
-                                <html:rewrite page="/images/search16.gif"/> height="16px" width="16px"/>&nbsp;Unmerge&nbsp;&nbsp;|</a>
+                                ${request.contextPath}/images/search16.gif height="16px" width="16px"/>&nbsp;Unmerge&nbsp;&nbsp;|</a>
                     </c:when>
                     <c:otherwise>
                         <a href="javascript:void1();" onclick="this.disabled=true;return deferedSubmit('merge')"
@@ -207,9 +207,9 @@
                     </c:otherwise>
                 </c:choose>
             </security:oscarSec>
-            <html:link action="/PMmodule/Admin/SysAdmin.do" style="color:Navy;text-decoration:none;">
+            <a href="${pageContext.request.contextPath}/PMmodule/Admin/SysAdmin.do" style="color:Navy;text-decoration:none;">
                 <img border=0 src=
-                        <html:rewrite page="/images/close16.png"/>/>&nbsp;Close&nbsp;&nbsp;</html:link>
+                        ${request.contextPath}/images/close16.png/>&nbsp;Close&nbsp;&nbsp;</a>
         </td>
     </tr>
     <tr height="18px">
@@ -230,16 +230,16 @@
                     <table border="0" cellspacing="1" cellpadding="1" width="100%">
                         <tr>
                             <th align="right" width="20%"><fmt:message key="ClientSearch.clientNo" bundle="${pmm}"/></th>
-                            <td align="left" width="80%"><html:text property="criteria.demographicNo" size="15"/></td>
+                            <td align="left" width="80%"><input type="checkbox" name="criteria.demographicNo" size="15" /></td>
                         </tr>
                         <tr>
                             <th align="right" width="20%"><fmt:message key="ClientSearch.firstName" bundle="${pmm}"/></th>
-                            <td align="left" width="80%"><html:text property="criteria.firstName" size="15"/></td>
+                            <td align="left" width="80%"><input type="checkbox" name="criteria.firstName" size="15" /></td>
                         </tr>
                         <tr>
                             <th align="right" width="20%"><fmt:message key="ClientSearch.lastName" bundle="${pmm}"/>
                             </th>
-                            <td align="left" width="80%"><html:text property="criteria.lastName" size="15"/></td>
+                            <td align="left" width="80%"><input type="checkbox" name="criteria.lastName" size="15" /></td>
                         </tr>
 
                         <tr>
@@ -254,11 +254,11 @@
                         </tr>
                         <tr>
                             <th align="right" width="20%"><fmt:message key="ClientSearch.active" bundle="${pmm}"/></th>
-                            <td align="left" width="80%"><html:select property="criteria.active">
-                                <html:option value="">Any</html:option>
-                                <html:option value="1">Yes</html:option>
-                                <html:option value="0">No</html:option>
-                            </html:select></td>
+                            <td align="left" width="80%"><select name="criteria.active" id="criteria.active">
+                                <option value="">Any</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select></td>
                         </tr>
                         <tr>
                             <th align="right" width="20%"><fmt:message key="ClientSearch.gender" bundle="${pmm}"/></th>
@@ -274,24 +274,30 @@
                         <tr>
                             <th align="right" width="20%"><fmt:message key="ClientSearch.assignedTo" bundle="${pmm}"/></th>
                             <th align="left" width="80%">
-                                <html:select property="criteria.assignedToProviderNo">
-                                    <html:option value="">
-                                    </html:option>
-                                    <html:options collection="allProviders" property="providerNo"
-                                                  labelProperty="fullName"/>
-                                </html:select>
+                                <select name="criteria.assignedToProviderNo" id="criteria.assignedToProviderNo">
+                                    <option value=""></option>
+                                    <c:forEach var="provider" items="${allProviders}">
+                                        <option value="${provider.providerNo}">
+                                                ${provider.fullName}
+                                        </option>
+                                    </c:forEach>
+                                </select>
                             </th>
                         </tr>
                         <tr>
                             <th align="right" width="20%"><fmt:message key="ClientSearch.program" bundle="${pmm}"/></th>
                             <th align="left" width="80%">
-                                <html:select property="criteria.bedProgramId">
-                                    <html:option value="">
-                                    </html:option>
-                                    <html:option value="MyP">My Programs
-                                    </html:option>
-                                    <html:options collection="allBedPrograms" property="id" labelProperty="name"/>
-                                </html:select>
+                                <select name="criteria.bedProgramId" id="criteria.bedProgramId">
+                                    <option value="">
+                                    </option>
+                                    <option value="MyP">My Programs
+                                    </option>
+                                    <c:forEach var="allBedProgram" items="${allBedPrograms}">
+                                        <option value="${allBedProgram.id}">
+                                                ${allBedProgram.name}
+                                        </option>
+                                    </c:forEach>
+                                </select>
                             </th>
                         </tr>
                     </table>
@@ -396,4 +402,4 @@
         </tr>
         </table>
     </c:if>
-</html:form>
+</form>

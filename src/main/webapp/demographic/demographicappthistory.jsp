@@ -73,10 +73,10 @@
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ taglib uri="/WEB-INF/special_tag.tld" prefix="special" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
@@ -236,7 +236,7 @@
                             ,<%=demofirstname%>(<%=request.getParameter("demographic_no")%>)
                         </td>
                         <td>&nbsp;</td>
-                        <td style="text-align: right"><oscar:help keywords="appointment history" key="app.top1"/> | <a
+                        <td style="text-align: right"><a
                                 href="javascript:popupStart(300,400,'About.jsp')">
                             <fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                 href="javascript:popupStart(300,400,'License.jsp')">

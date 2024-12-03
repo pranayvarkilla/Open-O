@@ -44,8 +44,8 @@
 <%@ page import="oscar.oscarEncounter.immunization.data.*, oscar.util.*, oscar.oscarDemographic.data.*" %>
 <%@ page import="oscar.oscarEncounter.immunization.pageUtil.*, java.util.*, org.w3c.dom.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
 <html>
 <head>
@@ -117,7 +117,7 @@
             Vector cfgSet = new EctImmConfigData().getImmunizationConfigName();
             Vector cfgId = new EctImmConfigData().getImmunizationConfigId();
         %>
-            <html:form action="/oscarEncounter/immunization/saveConfig">
+            <form action="${pageContext.request.contextPath}/oscarEncounter/immunization/saveConfig.do" method="post">
                 <input type="hidden" name="demographic_no" value="<%=demoNo%>">
                 <input type="hidden" name="xmlDoc" value="<%--= UtilMisc.encode64(UtilXML.toXML(cfgDoc)) --%>"/>
 
@@ -137,9 +137,8 @@
                 <table width="80%">
                     <tr>
                         <td>
-                            <html:submit>
-                                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.ScheduleConfig.addTemplate"/>
-                            </html:submit>
+                            <<input type="submit" name="submit"
+                                    value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.ScheduleConfig.addTemplate"/>" />
                             <input type="button" value='<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnCancel"/>'
                                    onclick="javascript:location.href='loadSchedule.do?demographic_no=<%=demoNo%>';"/>
                         </td>
@@ -150,7 +149,7 @@
                         </td>
                     </tr>
                 </table>
-            </html:form></td>
+            </form></td>
     </tr>
     <tr>
         <td class="MainTableBottomRowLeftColumn"></td>

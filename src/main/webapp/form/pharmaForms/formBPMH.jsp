@@ -34,7 +34,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
@@ -51,7 +51,7 @@
     }
 %>
 
-<html:html>
+<html>
 
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.title"/></title>
@@ -89,9 +89,9 @@
 
     <!--  HEADING  -->
     <!-- FORM BEGIN -->
-    <html:form action="/formBPMH.do">
-        <html:hidden property="demographicNo"/>
-        <html:hidden property="formId"/>
+    <form action="${pageContext.request.contextPath}/formBPMH.do" method="post">
+        <input type="hidden" name="demographicNo" id="demographicNo"/>
+        <input type="hidden" name="formId" id="formId"/>
         <header>
 
             <h1><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.title"/></h1>
@@ -196,7 +196,7 @@
 
         <!-- FAMILY PHYSICIAN -->
         <section id="familyPhysician">
-            <html:hidden name="bpmh" property="familyDrContactId" styleId="familyDrContactId"/>
+            <input type="hidden" name="bpmh" property="familyDrContactId" id="familyDrContactId"/>
             <table id="providerId">
                 <tr>
                     <th colspan="7"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.familyDr"/></th>
@@ -352,7 +352,7 @@
             <table>
                 <tr>
                     <td>
-                        <html:checkbox name="bpmh" property="confirm" value="checked"/>
+                        <input type="checkbox" name="confirm" id="confirm" value="checked"/>
                         <label for="confirm"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.confirm"/></label>
                     </td>
                 </tr>
@@ -406,32 +406,24 @@
 
                         <c:if test="${ controls eq 'on' }">
 
-                            <html:submit property="method">
-                                <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.print"/>
-                            </html:submit>
+                            <input type="submit" name="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.print"/>" />
 
                             <c:if test="${bpmh.formId == 0}">
-                                <html:submit property="method">
-                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.save"/>
-                                </html:submit>
+                            <input type="submit" name="submit" value=“<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.save"/>" />
                             </c:if>
 
                         </c:if>
 
-                        <logic:messagesPresent message="true">
-                            <html:messages id="saved" message="true">
-                                <logic:present name="saved">
-                                    <div class="messages">
-                                        <c:out value="${saved}" escapeXml="true" />
-                                    </div>
-                                </logic:present>
-                            </html:messages>
-                        </logic:messagesPresent>
+                        <c:if test="${not empty savedMessage}">
+                            <div class="messages">
+                                    ${savedMessage}
+                            </div>
+                        </c:if>
                     </td>
                 </tr>
             </table>
         </section>
-    </html:form>
+    </form>
 
     <!-- FOOTER -->
     <footer>
@@ -439,4 +431,4 @@
     </footer>
 
     </body>
-</html:html>
+</html>

@@ -45,7 +45,7 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib prefix="csrf" uri="http://www.owasp.org/index.php/Category:OWASP_CSRFGuard_Project/Owasp.CsrfGuard.tld" %>
 
 <%@ page
@@ -271,8 +271,8 @@
     <div class="maindivheading">&nbsp;&nbsp;&nbsp; Edit Document</div>
     <%-- Lists linkhtmlerrors --%> <% for (Enumeration errorkeys = linkhtmlerrors.keys(); errorkeys.hasMoreElements(); ) {%>
     <font class="warning">Error: <fmt:setBundle basename="oscarResources"/><fmt:message key="<%=(String) linkhtmlerrors.get(errorkeys.nextElement())%>"/></font><br/>
-    <% } %> <html:form action="/documentManager/addEditHtml" method="POST"
-                       enctype="multipart/form-data" styleClass="form"
+    <% } %> <form action="${pageContext.request.contextPath}/documentManager/addEditHtml.do" method="POST"
+                       enctype="multipart/form-data" class="form"
                        onsubmit="return submitUpload(this);">
     <input type="hidden" name="<csrf:tokenname/>" value="<csrf:tokenvalue/>"/>
     <input type="hidden" name="function"
@@ -421,7 +421,7 @@
         <div><input type="submit" name="Submit" value="Submit"><input
                 type="button" value="Cancel" onclick="window.close();"></div>
     </center>
-</html:form>
+</form>
     <script type="text/javascript">
         Calendar.setup({
             inputField: "observationDate",

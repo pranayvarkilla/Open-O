@@ -1,15 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
-<%@page import="oscar.oscarDemographic.data.*" %>
-<%@page
-        import="java.text.*, java.util.*, oscar.oscarBilling.ca.bc.data.*,oscar.oscarBilling.ca.bc.pageUtil.*" %>
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.CA.BC.billingBC.dxcode_svccode_assoc.title"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
         <script language="JavaScript">
             <!--
@@ -63,10 +58,20 @@
     %>
     <body bgcolor="#FFFFFF" text="#000000" rightmargin="0" leftmargin="0"
           topmargin="10" marginwidth="0" marginheight="0">
-    <h2><html:errors/></h2>
-    <html:form action="/billing/CA/BC/saveAssocAction"
-               target="oscar.oscarBilling.ca.bc.pageUtil.BillingCreateBillingForm">
-        <html:hidden property="mode"/>
+    <h2><% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %></h2>
+    <form action="${pageContext.request.contextPath}/billing/CA/BC/saveAssocAction.do" method="post">
+        <input type="hidden" name="mode" id="mode"/>
         <table width="75%" border="1" align="center" cellpadding="3"
                cellspacing="3" bgcolor="EEEEFF">
             <tr bgcolor="#000000">
@@ -84,8 +89,7 @@
                 <td width="78%"><font
                         face="Verdana, Arial, Helvetica, sans-serif" size="1"><%
                     boolean state = mode.equals("edit") ? true : false;
-                %> <html:text property="xml_other1" size="40"
-                              readonly="<%=state%>"/> <a href="javascript:OtherScriptAttach()">
+                %> <input type="text" name="xml_other1" size="40" readonly="<%=state%>"/> <a href="javascript:OtherScriptAttach()">
                     <img src="../../../images/search_code.jpg" border="0"> </a> </font></td>
             </tr>
             <tr bgcolor="CCCCFF">
@@ -93,8 +97,8 @@
             </tr>
             <tr>
                 <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">
-                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.CA.BC.billingBC.dxcode_svccode_assoc.dxcode"/> <html:text
-                        property="xml_diagnostic_detail1" size="25"/> </font> <font
+                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.CA.BC.billingBC.dxcode_svccode_assoc.dxcode"/>
+                    <input type="text" name="xml_diagnostic_detail1" size="25"/> </font> <font
                         face="Verdana, Arial, Helvetica, sans-serif" size="1"> <a
                         href="javascript:ScriptAttach()"> <img
                         src="../../../images/search_dx_code.jpg" border="0"> </a> </font> <font
@@ -103,20 +107,20 @@
             </tr>
             <!--This is really quite redundant but its code copied from bcBilling.jsp
           using the same search screens, therefore the hidden fields need to be here so that the javascript doesn't break -->
-            <html:hidden property="xml_diagnostic_detail2"/>
-            <html:hidden property="xml_diagnostic_detail3"/>
+            <input type="hidden" name="xml_diagnostic_detail2" id="xml_diagnostic_detail2"/>
+            <input type="hidden" name="xml_diagnostic_detail3" id="xml_diagnostic_detail3"/>
             <!--Technically don't need three but just in case
       <tr>
         <td>
           <font face="Verdana, Arial, Helvetica, sans-serif" size="1">            DX Code #2:
-            <html:text property="xml_diagnostic_detail2" size="25"/>
+            <input type="checkbox" name="xml_diagnostic_detail2" size="25" />
           </font>
         </td>
       </tr>
       <tr>
         <td>
           <font face="Verdana, Arial, Helvetica, sans-serif" size="1">            DX Code #3:
-            <html:text property="xml_diagnostic_detail3" size="25"/>
+            <input type="checkbox" name="xml_diagnostic_detail3" size="25" />
           </font>
         </td>
       </tr>
@@ -125,11 +129,12 @@
             <td></td>
             </tr>
             <tr bgcolor="CCCCFF">
-                <td align="center"><html:submit value="Save" property="Submit"/>
+                <td align="center">
+                    <input type="submit" name="submit" value="Save" />
                     <button type="button" onclick="window.close();">Cancel</button>
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

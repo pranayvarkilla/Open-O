@@ -32,7 +32,7 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <jsp:useBean id="oscarVariables" class="java.util.Properties"
              scope="page"/>
 <%@ page
@@ -255,10 +255,10 @@
     <h3 style="text-align: left"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.AttachDocPopup.header"/>
         <%=patientName%>
     </h3>
-    <html:form action="/oscarConsultationRequest/attachDoc">
-        <html:hidden property="requestId" value="<%=requestId%>"/>
-        <html:hidden property="demoNo" value="<%=demoNo%>"/>
-        <html:hidden property="providerNo" value="<%=providerNo%>"/>
+    <form action="${pageContext.request.contextPath}/oscarConsultationRequest/attachDoc.do">
+        <input type="hidden" name="requestId" id="requestId" value="<%=requestId%>"/>
+        <input type="hidden" name="demoNo" id="demoNo" value="<%=demoNo%>"/>
+        <input type="hidden" name="providerNo" id="providerNo" value="<%=providerNo%>"/>
         <table style="width:1080px; border: solid 1px blue; font-size: x-small; background-color:white;">
             <tr>
                 <th style="text-align: center"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.AttachDocPopup.available"/></th>
@@ -582,6 +582,6 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

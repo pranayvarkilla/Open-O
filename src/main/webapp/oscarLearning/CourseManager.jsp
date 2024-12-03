@@ -31,7 +31,7 @@
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
 <%@ page import="java.util.*,org.oscarehr.learning.web.CourseManager2Action,org.oscarehr.common.model.SecRole" %>
@@ -237,7 +237,6 @@
 
     <!--
 removed for now since "course" provides no usefule results that I can see
-<small><oscar:help keywords="course" key="app.top1"/></small>
 -->
 
     <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.learning.manageCourses"/></h3>

@@ -16,8 +16,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <%@ page import="oscar.form.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
 <%
@@ -49,7 +49,7 @@
         </style>
 
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
 
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
@@ -637,7 +637,7 @@
     </head>
 
     <body>
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
 
     <input type="hidden" name="demographic_no"
            value="<%= props.getProperty("demographic_no", "0") %>"/>
@@ -4650,12 +4650,9 @@
                             <tr>
                                 <td align="center" class="style76"><input type="submit"
                                                                           value="Save"
-                                                                          onclick="javascript:return onSave('
-                                                                              <html:rewrite
-                                                                                      page="/form/formname.do"/>');"/>
+                                                                          onclick="javascript:return onSave('<%=request.getContextPath() %>/form/formname.do');"/>
                                     <input type="submit" value="Save and Exit"
-                                           onclick="javascript:return onSaveExit('<html:rewrite
-                                                   page="/form/formname.do"/>');"/>
+                                           onclick="javascript:return onSaveExit('<%=request.getContextPath() %>/form/formname.do"/>');"/>
                                     <input type="submit" value="Exit"
                                            onclick="javascript:return onExit();"/> <input type="submit"
                                                                                           value="Print"
@@ -4664,6 +4661,6 @@
                             </tr>
                         </table>
 
-                        </html:form>
+                        </form>
     </body>
 </html>

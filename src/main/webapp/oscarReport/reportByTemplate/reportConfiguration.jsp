@@ -31,7 +31,7 @@
 
 <%@ page import="java.util.*,oscar.oscarReport.reportByTemplate.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -113,8 +113,8 @@
     </c:if>
 
     <div class="well configDiv" id=manageGroups>
-        <html:form styleClass="form" action="/oscarReport/reportByTemplate/GenerateReportAction"
-                   onsubmit="return checkform(this);">
+        <form class="form" action="${pageContext.request.contextPath}/oscarReport/reportByTemplate/GenerateReportAction.do"
+                   method="post" onsubmit="return checkform(this);">
             <input type="hidden" name="templateId" value="${ curreport.templateId }">
             <input type="hidden" name="type" value="${ curreport.type }">
 
@@ -210,7 +210,7 @@
                     <input type="submit" class="btn btn-primary" name="submitButton" value="Run Query"/>
                 </div>
             </div>
-        </html:form>
+        </form>
     </div>
 
     <div id="optionsDiv" class="form-actions">

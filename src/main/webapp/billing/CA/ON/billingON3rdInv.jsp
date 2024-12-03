@@ -42,7 +42,7 @@
 <%@ page import="org.oscarehr.billing.CA.ON.util.DisplayInvoiceLogo2Action" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <%
     String invoiceNoStr = request.getParameter("billingNo");

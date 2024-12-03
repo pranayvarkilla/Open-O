@@ -41,7 +41,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%
     DBPreparedHandler dbObj = new DBPreparedHandler();
     // select provider list

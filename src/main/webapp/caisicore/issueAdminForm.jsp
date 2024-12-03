@@ -38,11 +38,11 @@
 
 <title>MyIssues ~ Issue Details</title>
 <p>Please fill in issue's information below:</p>
-<!-- html:form action="/issueAdmin" focus="issueAdmin.code" onsubmit="return validateIssueAdminForm(this)" -->
-<html:form action="/issueAdmin" focus="issueAdmin.code">
+<!-- form action="/issueAdmin" focus="issueAdmin.code" onsubmit="return validateIssueAdminForm(this)" -->
+<form action="${pageContext.request.contextPath}/issueAdmin.do" method="post" focus="issueAdmin.code">
     <input type="hidden" name="method" value="save"/>
-    <html:hidden property="issueAdmin.id"/>
-    <html:hidden property="issueAdmin.update_date_web"/>
+    <input type="hidden" name="id" id="id"/>
+    <input type="hidden" name="update_date_web" id="update_date_web"/>
 
     <div style="color: red">
     <%@ include file="messages.jsp" %>
@@ -50,11 +50,11 @@
     <table>
         <tr>
             <th><fmt:setBundle basename="oscarResources"/><fmt:message key="issueAdmin.code"/>:</th>
-            <td><html:text property="issueAdmin.code"/></td>
+            <td><input type="text" name="issueAdmin.code" id="issueAdmin.code" /></td>
         </tr>
         <tr>
             <th><fmt:setBundle basename="oscarResources"/><fmt:message key="issueAdmin.description"/>:</th>
-            <td><html:text property="issueAdmin.description"/></td>
+            <td><input type="text" name="issueAdmin.description" id="issueAdmin.description" /></td>
         </tr>
         <tr>
             <th><fmt:setBundle basename="oscarResources"/><fmt:message key="issueAdmin.role"/>:</th>
@@ -82,19 +82,18 @@
         <!--
 <tr>
      <th><fmt:setBundle basename="oscarResources"/><fmt:message key="issueAdmin.update_date"/>: </th>
-     <td><html:text property="issueAdmin.update_date"/></td>
+     <td><input type="text" name="issueAdmin.update_date" id="issueAdmin.update_date" /></td>
 </tr>
 -->
         <tr>
             <td></td>
-            <td><html:submit styleClass="button">Save</html:submit> <!--
+            <td><input type="submit" name="submit" value="Save" class="button" />
+                <!--
        <c:if test="${not empty param.id}">
-          <html:submit styleClass="button"   
-              onclick="this.form.method.value='delete'">
-              Delete</html:submit>
+          <input type="submit" name="submit" value="Delete“ class="button"          onclick="this.form.method.value='delete'"/>
        </c:if>
-       	--> <html:submit styleClass="button"
-                            onclick="this.form.method.value='cancel'">Cancel</html:submit></td>
+       	--> <input type="submit" name="submit" value="Cancel" class="button" onclick="this.form.method.value='cancel'"/>
+            </td>
     </table>
-</html:form>
+</form>
 <!-- html:javascript formName="issueAdminForm"/ -->

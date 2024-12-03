@@ -39,7 +39,7 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="java.util.*" %>
 <html>
@@ -52,7 +52,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/share/javascript/effects.js"></script>
 
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="ChooseAllergy.title"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:if test="${empty sessionScope.RxSessionBean}">
             <c:redirect url="error.html"/>
@@ -149,17 +149,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><html:form action="/oscarRx/searchAllergy2"
+                        <td><form action="${pageContext.request.contextPath}/oscarRx/searchAllergy2.do" method="post"
                                        focus="searchString" onsubmit="return isEmpty()">
                             <table>
                                 <tr valign="center">
                                     <td>Search:</td>
-                                    <td><html:text property="searchString" size="16" styleId="searchString"
+                                    <td><input type="text" name="searchString" size="16" id="searchString"
                                                    maxlength="16"/></td>
                                 </tr>
                                 <tr>
-                                    <td><html:submit property="submit" value="Search"
-                                                     styleClass="ControlPushButton"/></td>
+                                    <td><input type="submit" name="submit" value="Search" class="ControlPushButton"/></td>
                                     <td><input type=button class="ControlPushButton"
                                                onclick="javascript:document.forms.RxSearchAllergyForm.searchString.value='';document.forms.RxSearchAllergyForm.searchString.focus();"
                                                value="Reset"/>
@@ -182,10 +181,10 @@
                                         general to specific)</i></td>
                                 </tr>
                                 <tr>
-                                    <td><html:checkbox property="type4"/> Drug Classes</td>
-                                    <td><html:checkbox property="type3"/> Ingredients</td>
-                                    <td><html:checkbox property="type2"/> Generic Names</td>
-                                    <td><html:checkbox property="type1"/> Brand Names</td>
+                                    <td><input type="checkbox" name="type4"/> Drug Classes</td>
+                                    <td><input type="checkbox" name="type3"/> Ingredients</td>
+                                    <td><input type="checkbox" name="type2"/> Generic Names</td>
+                                    <td><input type="checkbox" name="type1"/> Brand Names</td>
                                 </tr>
                                 <tr>
                                     <td colspan=4>
@@ -218,7 +217,7 @@
                                                                            value="Clear All"/></td>
                                 </tr>
                             </table>
-                        </html:form></td>
+                        </form></td>
                     </tr>
                     <tr>
                         <td id="searchResultsContainer">

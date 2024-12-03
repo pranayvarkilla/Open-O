@@ -39,8 +39,6 @@
     }
 %>
 
-<%@taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@page
         import="java.math.*, java.util.*, java.io.*, java.sql.*, oscar.*, java.net.*,oscar.MyDateFormat" %>
 

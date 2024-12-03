@@ -58,7 +58,7 @@
             }
 
         </script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <meta http-equiv="Content-Type" content="text/html;">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.oscarStatus.oscarStatus"/></title>
 

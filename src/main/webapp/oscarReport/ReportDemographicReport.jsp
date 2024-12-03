@@ -40,8 +40,8 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="oscar.oscarReport.data.RptSearchData,java.util.*" %>
 
 
@@ -87,7 +87,7 @@
         <title>
             Demographic Report tool
         </title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" media="all" href="../share/calendar/calendar.css" title="win2k-cold-1"/>
 
         <script type="text/javascript" src="../share/calendar/calendar.js"></script>
@@ -176,30 +176,30 @@
                 oscarReport
             </td>
             <td class="MainTableTopRowRightColumn">
-                <html:form action="/report/DemographicReport" onsubmit="return checkQuery();">
-                <html:hidden property="studyId" value='<%=studyId == null ? "" : studyId%>'/>
+                <form action="${pageContext.request.contextPath}/report/DemographicReport.do" method="post" onsubmit="return checkQuery();">
+                <input type="hidden" name="studyId" id="studyId" value='<%=studyId == null ? "" : studyId%>'/>
                 <table class="TopStatusBar">
                     <tr>
                         <td>
                             Demographic Search
                         </td>
                         <td>
-                            <html:select property="savedQuery">
+                            <select name="savedQuery" id="savedQuery">
                                 <%
                                     for (int i = 0; i < queryArray.size(); i++) {
                                         RptSearchData.SearchCriteria sc = (RptSearchData.SearchCriteria) queryArray.get(i);
                                         String qId = sc.id;
                                         String qName = sc.queryName;%>
-                                <html:option value="<%=qId%>"><%=qName%>
-                                </html:option>
+                                <option value="<%=qId%>"><%=qName%>
+                                </option>
 
                                 <%}%>
-                            </html:select>
+                            </select>
                             <input type="submit" value="Load Query" name="query"/>
                             <a href="ManageDemographicQueryFavourites.jsp">manage</a>
                         </td>
                         <td style="text-align:right">
-                            <oscar:help keywords="report" key="app.top1"/> | <a
+                            <a
                                 href="javascript:popupStart(300,400,'About.jsp')">About</a> | <a
                                 href="javascript:popupStart(300,400,'License.jsp')">License</a>
                         </td>
@@ -241,7 +241,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="demographic_no" styleId="demographicNoCheckbox"/>
+                                        <input type="checkbox" name="select" id="select" value=""/>
                                     </td>
                                     <td>
                                         Demographic #
@@ -249,7 +249,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="last_name"/>
+                                        <input type="checkbox" name="select" id="select" value="last_name"/>
                                     </td>
                                     <td>
                                         Last Name
@@ -257,7 +257,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="first_name"/>
+                                        <input type="checkbox" name="select" id="select" value="first_name"/>
                                     </td>
                                     <td>
                                         First Name
@@ -265,7 +265,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="address"/>
+                                        <input type="checkbox" name="select" id="select" value="address"/>
                                     </td>
                                     <td>
                                         Address
@@ -273,7 +273,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="city"/>
+                                        <input type="checkbox" name="select" id="select" value="city"/>
                                     </td>
                                     <td>
                                         City
@@ -281,7 +281,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="province"/>
+                                        <input type="checkbox" name="select" id="select" value="province"/>
                                     </td>
                                     <td>
                                         Province
@@ -289,7 +289,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="postal"/>
+                                        <input type="checkbox" name="select" id="select" value="postal"/>
                                     </td>
                                     <td>
                                         Postal Code
@@ -297,7 +297,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="phone"/>
+                                        <input type="checkbox" name="select" id="select" value="phone"/>
                                     </td>
                                     <td>
                                         Phone
@@ -305,7 +305,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="phone2"/>
+                                        <input type="checkbox" name="select" id="select" value="phone2"/>
                                     </td>
                                     <td>
                                         Phone 2
@@ -313,7 +313,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="email"/>
+                                        <input type="checkbox" name="select" id="select" value="email"/>
                                     </td>
                                     <td>
                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportscpbDemo.msgEmail"/>
@@ -321,7 +321,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="year_of_birth"/>
+                                        <input type="checkbox" name="select" id="select" value="year_of_birth"/>
                                     </td>
                                     <td>
                                         Year of Birth
@@ -329,7 +329,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="month_of_birth"/>
+                                        <input type="checkbox" name="select" id="select" value="month_of_birth"/>
                                     </td>
                                     <td>
                                         Month of Birth
@@ -337,7 +337,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="date_of_birth"/>
+                                        <input type="checkbox" name="select" id="select" value="date_of_birth"/>
                                     </td>
                                     <td>
                                         Date of Birth
@@ -345,7 +345,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="hin"/>
+                                        <input type="checkbox" name="select" id="select" value="hin"/>
                                     </td>
                                     <td>
                                         HIN
@@ -353,7 +353,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="ver"/>
+                                        <input type="checkbox" name="select" id="select" value="ver"/>
                                     </td>
                                     <td>
                                         Version Code
@@ -361,7 +361,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="roster_status"/>
+                                        <input type="checkbox" name="select" id="select" value="roster_status"/>
                                     </td>
                                     <td>
                                         Roster Status
@@ -369,7 +369,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="patient_status"/>
+                                        <input type="checkbox" name="select" id="select" value="patient_status"/>
                                     </td>
                                     <td>
                                         Patient Status
@@ -377,7 +377,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="date_joined"/>
+                                        <input type="checkbox" name="select" id="select" value="date_joined"/>
                                     </td>
                                     <td>
                                         Date Joined
@@ -385,7 +385,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="chart_no"/>
+                                        <input type="checkbox" name="select" id="select" value="chart_no"/>
                                     </td>
                                     <td>
                                         Chart #
@@ -393,7 +393,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="provider_no"/>
+                                        <input type="checkbox" name="select" id="select" value="provider_no"/>
                                     </td>
                                     <td>
                                         Provider #
@@ -401,7 +401,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="provider_name"/>
+                                        <input type="checkbox" name="select" id="select" value="provider_name"/>
                                     </td>
                                     <td>
                                         Provider Name
@@ -409,7 +409,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="sex"/>
+                                        <input type="checkbox" name="select" id="select" value="sex"/>
                                     </td>
                                     <td>
                                         Sex
@@ -417,7 +417,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="end_date"/>
+                                        <input type="checkbox" name="select" id="select" value="end_date"/>
                                     </td>
                                     <td>
                                         End Date
@@ -425,7 +425,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="eff_date"/>
+                                        <input type="checkbox" name="select" id="select" value="eff_date"/>
                                     </td>
                                     <td>
                                         Eff. Date
@@ -433,7 +433,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="pcn_indicator"/>
+                                        <input type="checkbox" name="select" id="select" value="pcn_indicator"/>
                                     </td>
                                     <td>
                                         Pcn indicator
@@ -441,7 +441,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="hc_type"/>
+                                        <input type="checkbox" name="select" id="select" value="hc_type"/>
                                     </td>
                                     <td>
                                         Health Card Type
@@ -449,7 +449,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="hc_renew_date"/>
+                                        <input type="checkbox" name="select" id="select" value="hc_renew_date"/>
                                     </td>
                                     <td>
                                         HC Renew Date
@@ -457,8 +457,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="family_doctor"/>
-
+                                        <input type="checkbox" name="select" id="select" value="family_doctor"/>
                                     </td>
                                     <td>
                                         Family Doctor
@@ -466,15 +465,14 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:multibox property="select" value="newsletter"/>
-
+                                        <input type="checkbox" name="select" id="select" value="newsletter"/>
                                     </td>
                                     <td>
                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.oscarReportDemoReport.frmNewsletter"/>
                                     </td>
                                 </tr>
                             </table>
-                            <html:text property="queryName"/><br>
+                            <input type="text" name="queryName" id="queryName" /><br>
                             <input type="submit" value="Save Query" name="query"/>
                             <input type="submit" value="Run Query" name="query"/><br/>
                             <span id="submitPatientSet">
@@ -499,26 +497,26 @@
                                         AGE
                                     </td>
                                     <td>
-                                        <html:select property="age">
-                                            <html:option value="0">---NO AGE SPECIFIED---</html:option>
-                                            <html:option value="1">younger than</html:option>
-                                            <html:option value="2">older than</html:option>
-                                            <html:option value="3">equal too</html:option>
-                                            <html:option value="4">ages between</html:option>
-                                        </html:select>
+                                        <select name="age" id="age">
+                                            <option value="0">---NO AGE SPECIFIED---</option>
+                                            <option value="1">younger than</option>
+                                            <option value="2">older than</option>
+                                            <option value="3">equal too</option>
+                                            <option value="4">ages between</option>
+                                        </select>
                                     </td>
                                     <td>
-                                        <html:text property="startYear" size="4"/>
-                                        <html:text property="endYear" size="4"/>
+                                        <input type="checkbox" name="startYear" size="4" />
+                                        <input type="checkbox" name="endYear" size="4" />
                                     </td>
                                     <td>
 
                                         Age Style:
                                         Exact:
-                                        <html:radio property="ageStyle" value="1"/>
+                                        <input type="radio" name="ageStyle" value="1"/>
                                         In the year
-                                        <html:radio property="ageStyle" value="2"/>
-                                        As of : <html:text property="asofDate" size="9" styleId="asofDate"/> <a
+                                        <input type="radio" name="ageStyle" value="2"/>
+                                        As of : <input type="text" name="asofDate" size="9" id="asofDate"/> <a
                                             id="date"><img title="Calendar" src="../images/cal.gif" alt="Calendar"
                                                            border="0"/></a> <br>
                                     </td>
@@ -529,13 +527,13 @@
                                         First Name
                                     </td>
                                     <td>
-                                        <html:text property="firstName"/>
+                                        <input type="text" name="firstName" id="firstName" />
                                     </td>
                                     <td>
                                         Last Name
                                     </td>
                                     <td>
-                                        <html:text property="lastName"/>
+                                        <input type="text" name="lastName" id="lastName" />
                                     </td>
                                 </tr>
 
@@ -552,7 +550,7 @@
                                                     for (int i = 0; i < rosterArray.size(); i++) {
                                                         String ros = (String) rosterArray.get(i);%>
                                                 <td><%=ros%><br>
-                                                    <html:multibox property="rosterStatus" value="<%=ros%>"/>
+                                                    <input type="checkbox" name="rosterStatus" value="<%=ros%>" />
                                                 </td>
                                                 <%
                                                     }
@@ -572,11 +570,11 @@
                                         Sex
                                     </td>
                                     <td>
-                                        <html:select property="sex">
-                                            <html:option value="0">---NO SEX SPECIFIED---</html:option>
-                                            <html:option value="1">Female</html:option>
-                                            <html:option value="2">Male</html:option>
-                                        </html:select>
+                                        <select name="sex" id="sex">
+                                            <option value="0">---NO SEX SPECIFIED---</option>
+                                            <option value="1">Female</option>
+                                            <option value="2">Male</option>
+                                        </select>
                                     </td>
                                     <td colspan='2'>
                                         &nbsp;
@@ -595,7 +593,7 @@
                                                     if (pro != null && !"".equals(pro)) {
                                             %>
                                             <li><%=providerBean.getProperty(pro, pro)%>
-                                                <html:multibox property="providerNo" value="<%=pro%>"/>
+                                                <input type="checkbox" name="providerNo" value="<%=pro%>"/>
                                             </li>
                                             <%
                                                     }
@@ -617,7 +615,7 @@
                                                     for (int i = 0; i < patientArray.size(); i++) {
                                                         String pat = (String) patientArray.get(i);%>
                                                 <td><%=pat%><br>
-                                                    <html:multibox property="patientStatus" value="<%=pat%>"/>
+                                                    <input type="submit" name="patientStatus" value="<%=pat%>"/>
                                                 </td>
                                                 <%
                                                     }
@@ -633,7 +631,7 @@
                                         Demographic ID(s):
                                     </td>
                                     <td colspan="3">
-                                        <html:textarea property="demoIds" cols="60" rows="5"> </html:textarea>
+                                        <textarea name="demoIds" cols="60" rows="5"> </textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -641,36 +639,36 @@
                                         Order By
                                     </td>
                                     <td>
-                                        <html:select property="orderBy">
-                                            <html:option value="0">---NO ORDER---</html:option>
-                                            <html:option value="Demographic #">Demographic #</html:option>
-                                            <html:option value="Last Name">Last Name</html:option>
-                                            <html:option value="First Name">First Name</html:option>
-                                            <html:option value="Address">Address</html:option>
-                                            <html:option value="City">City</html:option>
-                                            <html:option value="Province">Province</html:option>
-                                            <html:option value="Postal Code">Postal Code</html:option>
-                                            <html:option value="Phone">Phone</html:option>
-                                            <html:option value="Phone 2">Phone 2</html:option>
-                                            <html:option value="Year of Birth">Year of Birth</html:option>
-                                            <html:option value="Month of Birth">Month of Birth</html:option>
-                                            <html:option value="Date of Birth">Date of Birth</html:option>
-                                            <html:option value="HIN">HIN</html:option>
-                                            <html:option value="Version Code">Version Code</html:option>
-                                            <html:option value="Roster Status">Roster Status</html:option>
-                                            <html:option value="Patient Status">Patient Status</html:option>
-                                            <html:option value="Date Joined">Date Joined</html:option>
-                                            <html:option value="Chart #">Chart #</html:option>
-                                            <html:option value="Provider #">Provider #</html:option>
-                                            <html:option value="Sex">Sex</html:option>
-                                            <html:option value="End Date">End Date</html:option>
-                                            <html:option value="Eff. Date">Eff. Date</html:option>
-                                            <html:option value="Pcn indicator">Pcn indicator</html:option>
-                                            <html:option value="HC Type">HC Type</html:option>
-                                            <html:option value="HC Renew Date">HC Renew Date</html:option>
-                                            <html:option value="Family Doctor">Family Doctor</html:option>
-                                            <html:option value="Random">Random</html:option>
-                                        </html:select>
+                                        <select name="orderBy" id="orderBy">
+                                            <option value="0">---NO ORDER---</option>
+                                            <option value="Demographic #">Demographic #</option>
+                                            <option value="Last Name">Last Name</option>
+                                            <option value="First Name">First Name</option>
+                                            <option value="Address">Address</option>
+                                            <option value="City">City</option>
+                                            <option value="Province">Province</option>
+                                            <option value="Postal Code">Postal Code</option>
+                                            <option value="Phone">Phone</option>
+                                            <option value="Phone 2">Phone 2</option>
+                                            <option value="Year of Birth">Year of Birth</option>
+                                            <option value="Month of Birth">Month of Birth</option>
+                                            <option value="Date of Birth">Date of Birth</option>
+                                            <option value="HIN">HIN</option>
+                                            <option value="Version Code">Version Code</option>
+                                            <option value="Roster Status">Roster Status</option>
+                                            <option value="Patient Status">Patient Status</option>
+                                            <option value="Date Joined">Date Joined</option>
+                                            <option value="Chart #">Chart #</option>
+                                            <option value="Provider #">Provider #</option>
+                                            <option value="Sex">Sex</option>
+                                            <option value="End Date">End Date</option>
+                                            <option value="Eff. Date">Eff. Date</option>
+                                            <option value="Pcn indicator">Pcn indicator</option>
+                                            <option value="HC Type">HC Type</option>
+                                            <option value="HC Renew Date">HC Renew Date</option>
+                                            <option value="Family Doctor">Family Doctor</option>
+                                            <option value="Random">Random</option>
+                                        </select>
                                     </td>
                                     <td colspan='2'>
                                         &nbsp;
@@ -681,17 +679,17 @@
                                         Limit Results to:
                                     </td>
                                     <td>
-                                        <html:select property="resultNum">
-                                            <html:option value="0">---NO LIMIT---</html:option>
-                                            <html:option value="10">10</html:option>
-                                            <html:option value="50">50</html:option>
-                                            <html:option value="100">100</html:option>
-                                            <html:option value="150">150</html:option>
-                                            <html:option value="200">200</html:option>
-                                            <html:option value="250">250</html:option>
-                                            <html:option value="300">300</html:option>
+                                        <select name="resultNum" id="resultNum">
+                                            <option value="0">---NO LIMIT---</option>
+                                            <option value="10">10</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                            <option value="150">150</option>
+                                            <option value="200">200</option>
+                                            <option value="250">250</option>
+                                            <option value="300">300</option>
 
-                                        </html:select>
+                                        </select>
                                     </td>
                                     <td colspan='2'>
 
@@ -699,7 +697,7 @@
                                 </tr>
 
                             </table>
-                            </html:form>
+                            </form>
                         </td>
                     </tr>
                 </table>

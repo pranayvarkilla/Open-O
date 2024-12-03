@@ -59,7 +59,7 @@
 <% } %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
@@ -267,8 +267,7 @@
                 </td>
                 <td align=RIGHT>
 		<span class="HelpAboutLogout">
-			<oscar:help keywords="&Title=Report+Tab&portal_type%3Alist=Document" key="app.top1"
-                        style="color:white; font-size:10px;font-style:normal;"/>&nbsp;
+
         		<a style="color:white; font-size:10px;font-style:normal;"
                    href="<%=request.getContextPath()%>/oscarEncounter/About.jsp" target="_new"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
 		</span> </font>
@@ -859,12 +858,12 @@
                                 <div><a href="javascript:void(0);"
                                         onclick="javascript:getIntakeReport('indepth');return false;">Follow-up Intake
                                     Report</a></div>
-                                <div><html:link
-                                        action="/PMmodule/Reports/ProgramActivityReport.do">Activity Report</html:link></div>
-                                <div><html:link
-                                        action="/SurveyManager.do?method=reportForm">User Created Form Report</html:link></div>
-                                <div><html:link
-                                        action="QuatroReport/ReportList.do">Quatro Report Runner</html:link></div>
+                                <div><a
+                                        href="${pageContext.request.contextPath}/PMmodule/Reports/ProgramActivityReport.do">Activity Report</a></div>
+                                <div><a
+                                        href="${pageContext.request.contextPath}/SurveyManager.do?method=reportForm">User Created Form Report</a></div>
+                                <div><a
+                                        href="${pageContext.request.contextPath}/QuatroReport/ReportList.do">Quatro Report Runner</a></div>
                                 <div><a href="javascript:void(0);"
                                         onclick="javascript:createStreetHealthReport();return false;">Street Health
                                     Mental Health Report</a></div>

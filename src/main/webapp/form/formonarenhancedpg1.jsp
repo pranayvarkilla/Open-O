@@ -23,10 +23,10 @@
     Ontario, Canada
 
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
-    String roleName2$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName2$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName2$%>" objectName="_form" rights="r" reverse="<%=true%>">
@@ -38,18 +38,11 @@
         return;
     }
 %>
-
 <%@ page import="oscar.util.*, oscar.form.*, oscar.form.data.*" %>
 <%@ page import="org.oscarehr.common.web.Pregnancy2Action" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.apache.struts.util.LabelValueBean" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
-
-
 <%
     String formClass = "ONAREnhanced";
     String formLink = "formonarenhancedpg1.jsp";
@@ -1098,7 +1091,7 @@
                 $("input[name='pg1_geneticD']").val($("input[name='pg1_geneticD1']").attr('checked') + "/" + $("input[name='pg1_geneticD2']").attr('checked'));
             }
         </script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <script type="text/javascript" language="Javascript">
             function reset() {
@@ -2213,7 +2206,7 @@
 
     <div id="maincontent">
         <div id="content_bar" class="innertube">
-            <html:form action="/form/formname">
+            <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
                 <input type="hidden" name="c_lastVisited"
                        value=<%=props.getProperty("c_lastVisited", "pg1")%>/>
                 <input type="hidden" name="demographic_no"
@@ -3873,7 +3866,7 @@
                     </tr>
                 </table>
 
-            </html:form>
+            </form>
         </div>
     </div>
 

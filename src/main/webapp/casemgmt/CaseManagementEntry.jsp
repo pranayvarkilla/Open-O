@@ -186,7 +186,7 @@
         function autoSave() {
             if (XMLHttpRequestObject) {
                 var obj = document.getElementById('caseNote_note');
-                XMLHttpRequestObject.open("POST", '<html:rewrite action="/CaseManagementEntry"/>', true);
+                XMLHttpRequestObject.open("POST", '<%=request.getContextPath() %>/CaseManagementEntry.do', true);
                 XMLHttpRequestObject.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 var demographicNo = '<c:out value="${param.demographicNo}"/>';
@@ -224,13 +224,13 @@
         if (pId == null) pId = "";
     %>
     <nested:form action="/CaseManagementEntry">
-        <html:hidden property="chain"/>
-        <html:hidden property="demographicNo"/>
+        <input type="hidden" name="chain" id="chain"/>
+        <input type="hidden" name="demographicNo" id="demographicNo"/>
         <c:if test="${param.providerNo==null}">
             <input type="hidden" name="providerNo" value="<%=session.getAttribute("user")%>">
         </c:if>
         <c:if test="${param.providerNo!=null}">
-            <html:hidden property="providerNo"/>
+            <input type="hidden" name="providerNo" id="providerNo"/>
         </c:if>
         <input type="hidden" name="caseNote.program_no" value="<%=pId%>"/>
         <input type="hidden" name="method" value="save"/>
@@ -319,30 +319,30 @@
                     <td>
                         <nested:select indexed="true" name="issueCheckList" property="issueDisplay.acute"
                                        disabled="<%=disabled%>">
-                            <html:option value="acute">acute</html:option>
-                            <html:option value="chronic">chronic</html:option>
+                            <option value="acute">acute</option>
+                            <option value="chronic">chronic</option>
                         </nested:select>
                     </td>
                     <td>
                         <nested:select indexed="true" name="issueCheckList" property="issueDisplay.certain"
                                        disabled="<%=disabled%>">
-                            <html:option value="certain">certain</html:option>
-                            <html:option value="uncertain">uncertain</html:option>
+                            <option value="certain">certain</option>
+                            <option value="uncertain">uncertain</option>
                         </nested:select>
                     </td>
                     <td>
                         <nested:select indexed="true" name="issueCheckList" property="issueDisplay.major"
                                        disabled="<%=disabled%>">
-                            <html:option value="major">major</html:option>
-                            <html:option value="not major">not major</html:option>
+                            <option value="major">major</option>
+                            <option value="not major">not major</option>
                         </nested:select>
                     </td>
                     <td>
                         <!-- removed onchange="<%=submitString%>" before disabled="<%=disabled %>" FOR THE ABOVE LINEs in this table -->
                         <nested:select indexed="true" name="issueCheckList" property="issueDisplay.resolved"
                                        disabled="<%=disabled%>">
-                            <html:option value="resolved">resolved</html:option>
-                            <html:option value="unresolved">unresolved</html:option>
+                            <option value="resolved">resolved</option>
+                            <option value="unresolved">unresolved</option>
                         </nested:select>
                     </td>
                     <td>
@@ -427,29 +427,29 @@
 
             <tr>
                 <td class="fieldTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.encountertype"/></td>
-                <td class="fieldValue"><html:select
-                        property="caseNote.encounter_type" onchange="setChangeFlag(true);">
-                    <html:option value="">&nbsp;</html:option>>
-                    <html:option value="face to face encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.facetofaceencounterwithclient"/></html:option>>
+                <td class="fieldValue"><select
+                        name="encounter_type" onchange="setChangeFlag(true);">
+                    <option value="">&nbsp;</option>>
+                    <option value="face to face encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.facetofaceencounterwithclient"/></option>>
                     <oscarProp:oscarPropertiesCheck property="oncall" value="yes" reverse="true">
-                        <html:option value="telephone encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.telephoneencounterwithclient"/></html:option>
+                        <option value="telephone encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.telephoneencounterwithclient"/></option>
                     </oscarProp:oscarPropertiesCheck>
                     <oscarProp:oscarPropertiesCheck property="oncall" value="yes">
-                        <html:option value="telephone encounter weekdays 8am-6pm"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.telephoneencounterweekdays"/></html:option>
-                        <html:option value="telephone encounter weekends or 6pm-8am"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.telephoneencounterweekends"/></html:option>
+                        <option value="telephone encounter weekdays 8am-6pm"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.telephoneencounterweekdays"/></option>
+                        <option value="telephone encounter weekends or 6pm-8am"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.telephoneencounterweekends"/></option>
                     </oscarProp:oscarPropertiesCheck>
-                    <html:option value="encounter without client"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.encounterwithoutclient"/></html:option>
-                </html:select></td>
+                    <option value="encounter without client"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.encounterwithoutclient"/></option>
+                </select></td>
             </tr>
 
             <tr>
                 <td class="fieldTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.Sign"/></td>
-                <td class="fieldValue"><html:checkbox property="sign" onchange="setChangeFlag(true);"/></td>
+                <td class="fieldValue"><input type="checkbox" name="sign" onchange="setChangeFlag(true);"/></td>
             </tr>
 
             <tr>
                 <td class="fieldTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.includecheckedissuesinnote"/></td>
-                <td class="fieldValue"><html:checkbox property="includeIssue" onchange="setChangeFlag(true);"/></td>
+                <td class="fieldValue"><input type="checkbox" name="includeIssue" onchange="setChangeFlag(true);"/></td>
             </tr>
 
             <caisi:isModuleLoad moduleName="TORONTO_RFQ" reverse="true">
@@ -473,7 +473,7 @@
             <caisi:isModuleLoad moduleName="casemgmt.note.password.enabled">
                 <tr>
                     <td class="fieldTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.password"/></td>
-                    <td class="fieldValue"><html:password property="caseNote.password"/></td>
+                    <td class="fieldValue"><input type="password" name="password" id="password"/></td>
                 </tr>
             </caisi:isModuleLoad>
             <tr>

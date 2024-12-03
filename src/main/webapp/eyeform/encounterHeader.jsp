@@ -87,8 +87,6 @@
     String patientSex = pd.getSex();
     String pAge = Integer.toString(UtilDateUtilities.calcAge(bean.yearOfBirth, bean.monthOfBirth, bean.dateOfBirth));
 
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
-
     //referring doctor
     org.oscarehr.common.dao.DemographicDao dao = (org.oscarehr.common.dao.DemographicDao) org.oscarehr.util.SpringUtils.getBean(DemographicDao.class);
     org.oscarehr.common.model.Demographic d = dao.getDemographic(demoNo);

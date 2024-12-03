@@ -51,8 +51,6 @@
 <%@page import="org.apache.commons.lang.StringUtils" %>
 
 <%@taglib uri="/WEB-INF/security.tld" prefix="security" %>
-<%@taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
 <% if (session.getAttribute("user") == null)
@@ -730,7 +728,7 @@
         %>
 
 
-        <html:form action="/billing/CA/ON/BillingONCorrection">
+        <form action="/billing/CA/ON/BillingONCorrection">
 
             <input type="hidden" name="method" value="updateInvoice"/>
             <input type="hidden" name="xml_billing_no" value="<%=billNo%>"/>
@@ -1318,7 +1316,7 @@
                 <%=htmlPaid %>
             </div>
 
-        </html:form>
+        </form>
     </div>
     <div>
 

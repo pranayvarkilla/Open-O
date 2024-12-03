@@ -13,7 +13,7 @@
         import="java.util.*, org.oscarehr.documentManager.EDocUtil" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
@@ -142,10 +142,9 @@
         </tr>
     </table>
 
-    <input type="button" class="btn" value="Add New" onclick='popupPage(550,800,&quot;<html:rewrite
-            page="/documentManager/addNewDocumentCategories.jsp"/>&quot;);return false;'/>
-    <input type="button" class="btn" value="Update Status" onclick='popupPage(550,800,&quot;<html:rewrite
-            page="/documentManager/changeStatus.jsp"/>&quot;);return false;'/>
+    <input type="button" class="btn" value="Add New" onclick='popupPage(550,800,"<%=request.getContextPath() %>/documentManager/addNewDocumentCategories.jsp");return false;'/>
+    <input type="button" class="btn" value="Update Status" onclick='popupPage(550,800,"<%=request.getContextPath() %>/documentManager/changeStatus.jsp");return false;'/>
+
 
 
 </div> <!-- well -->

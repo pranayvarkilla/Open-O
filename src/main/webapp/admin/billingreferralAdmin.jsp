@@ -120,7 +120,7 @@
                 $("#addressQuery").val('');
             }
         </script>
-        <link href="<html:rewrite page='/css/displaytag.css'/>" rel="stylesheet"></link>
+        <link href="${request.contextPath}/css/displaytag.css" rel="stylesheet"></link>
     </head>
 
     <body vlink="#0000FF" class="BodyStyle">

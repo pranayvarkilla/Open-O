@@ -359,7 +359,7 @@
                             <c:out value="${ demographic.age }"/>&nbsp;years
                         </td>
                         <td style="text-align: right">
-                            <oscar:help keywords="contact" key="app.top1"/> |
+
                             <a href="javascript:popupStart(300,400,'About.jsp')">
                                 <fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                 href="javascript:popupStart(300,400,'License.jsp')">

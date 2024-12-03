@@ -27,8 +27,8 @@
 
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <link rel="stylesheet" type="text/css" href="dxResearch.css">
 <html>
     <head>
@@ -49,8 +49,7 @@
     <body class="BodyStyle" vlink="#0000FF" rightmargin="0" leftmargin="0"
           topmargin="0" marginwidth="0" marginheight="0" onload="setfocus()">
     <!--  -->
-    <html:form
-            action="/oscarResearch/oscarDxResearch/dxResearchLoadQuickListItems.do">
+    <form action="${pageContext.request.contextPath}/oscarResearch/oscarDxResearch/dxResearchLoadQuickListItems.do" method="post">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td>
@@ -87,6 +86,6 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

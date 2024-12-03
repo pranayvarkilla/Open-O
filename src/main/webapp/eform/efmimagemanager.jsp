@@ -26,8 +26,8 @@
 <%@page import="java.net.URLEncoder" %>
 <%@ page import="oscar.eform.data.*, oscar.OscarProperties, oscar.eform.*, java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <!DOCTYPE html>
 <html>
     <head>

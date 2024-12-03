@@ -32,7 +32,7 @@
 </style>
 <script>
     function search_provider(name) {
-        var url = '<html:rewrite action="/PMmodule/ProviderSearch.do"/>';
+        var url = '<%=request.getContextPath() %>/PMmodule/ProviderSearch.do';
         url += '?q=' + name;
         url += '&formName=programManagerForm';
         url += '&formElementId=provider.providerNo';
@@ -154,8 +154,8 @@
     <tr class="b">
         <td width="20%">Provider:</td>
         <td>
-            <html:hidden property="provider.id"/>
-            <html:hidden property="provider.providerNo"/>
+            <input type="hidden" name="id" id="id"/>
+            <input type="hidden" name="providerNo" id="providerNo"/>
             <%
                 String providerName = (String) request.getAttribute("providerName");
                 if (providerName == null) {
@@ -169,9 +169,13 @@
     <tr class="b">
         <td width="20%">Role:</td>
         <td>
-            <html:select property="provider.roleId">
-                <html:options collection="roles" property="id" labelProperty="name"/>
-            </html:select>
+            <select name="provider.roleId" id="provider.roleId">
+                <c:forEach var="role" items="${roles}">
+                    <option value="${role.id}">
+                            ${role.name}
+                    </option>
+                </c:forEach>
+            </select>
         </td>
     </tr>
     <tr>

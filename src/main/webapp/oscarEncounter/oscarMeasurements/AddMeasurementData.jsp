@@ -32,7 +32,7 @@
 <%@page import="org.oscarehr.common.dao.*,org.oscarehr.common.model.FlowSheetCustomization,org.oscarehr.common.model.Validations" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib prefix="csrf" uri="http://www.owasp.org/index.php/Category:OWASP_CSRFGuard_Project/Owasp.CsrfGuard.tld" %>
 
@@ -74,7 +74,7 @@
         <title>
             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.measurements"/>
         </title><!--I18n-->
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" href="../../share/css/OscarStandardLayout.css">
         <link rel="stylesheet" type="text/css" media="all" href="../../share/calendar/calendar.css"
               title="win2k-cold-1"/>
@@ -329,7 +329,7 @@
 
                         </td>
                         <td style="text-align:right">
-                            <oscar:help keywords="measurement" key="app.top1"/> | <a
+                            <a
                                 href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
                             | <a href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a>
                         </td>
@@ -343,7 +343,18 @@
 
             </td>
             <td valign="top" class="MainTableRightColumn">
-                <html:errors/>
+                <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
                 <% String val = "";
                     String saveAction = "/oscarEncounter/Measurements2";
                     String comment = "";
@@ -388,7 +399,7 @@
                 %>
                 <!-- END of Master Calendar Input -->
 
-                <html:form action="<%=saveAction%>" styleId="measurementForm">
+                <form action="${pageContext.request.contextPath}/<%=saveAction%>" styleId="measurementForm">
                     <input type="hidden" name="<csrf:tokenname/>" value="<csrf:tokenvalue/>"/>
 
                     <input type="hidden" name="value(numType)" value="<%=measurements.length%>"/>
@@ -514,7 +525,7 @@
                     <% } else { %>
                     <input type="button" value="Save" onClick="doSubmit();">
                     <%}%>
-                </html:form>
+                </form>
             </td>
         </tr>
         <tr>

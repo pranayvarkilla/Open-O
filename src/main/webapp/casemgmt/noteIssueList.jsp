@@ -212,27 +212,27 @@
     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.encType.title"/>:&nbsp;
     <span id="encType<%=noteIndex%>">
 	<nested:empty name="ajaxsave">
-        <html:select styleId="<%=encSelect%>" styleClass="encTypeCombo"
-                     name="caseManagementEntryForm" property="caseNote.encounter_type">
-            <html:option value=""></html:option>
-            <html:option value="face to face encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.faceToFaceEnc.title"/></html:option>
-            <html:option value="telephone encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.telephoneEnc.title"/></html:option>
-            <html:option value="email encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.emailEnc.title"/></html:option>
-            <html:option value="encounter without client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.noClientEnc.title"/></html:option>
+        <select id="<%=encSelect%>" class="encTypeCombo"
+                     name="encounter_type">
+            <option value=""></option>
+            <option value="face to face encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.faceToFaceEnc.title"/></option>
+            <option value="telephone encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.telephoneEnc.title"/></option>
+            <option value="email encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.emailEnc.title"/></option>
+            <option value="encounter without client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.noClientEnc.title"/></option>
 
             <%
                 if (loggedInInfo73557.getCurrentFacility().isEnableGroupNotes()) {
             %>
 
-            <html:option value="group face to face encounter"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.groupFaceEnc.title"/></html:option>
-            <html:option value="group telephone encounter"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.groupTelephoneEnc.title"/></html:option>
-            <html:option value="group encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.emailEnc.title"/></html:option>
-            <html:option value="group encounter without group"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.groupNoClientEnc.title"/></html:option>
+            <option value="group face to face encounter"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.groupFaceEnc.title"/></option>
+            <option value="group telephone encounter"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.groupTelephoneEnc.title"/></option>
+            <option value="group encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.emailEnc.title"/></option>
+            <option value="group encounter without group"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.groupNoClientEnc.title"/></option>
 
             <%
                 }
             %>
-        </html:select>
+        </select>
     </nested:empty> <nested:notEmpty name="ajaxsave">
         &quot;<nested:write name="caseManagementEntryForm"
                             property="caseNote.encounter_type"/>&quot;

@@ -40,7 +40,7 @@
     else orderBy = orderByRequest;
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
 <html>
@@ -82,7 +82,7 @@
 
     <div class="well">
         <h3 style="display:inline"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.frmIndependent"/>s</h3> <i
-            class="icon-question-sign"></i> <oscar:help keywords="patient independent" key="app.top1"/>
+            class="icon-question-sign"></i>
 
 
         <p>View: <fmt:setBundle basename="oscarResources"/><fmt:message key="eform.independent.btnCurrent"/> | <a

@@ -43,8 +43,8 @@
 <%@ page import="org.owasp.encoder.Encode" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <fmt:setBundle basename="oscarResources"/>
 <!DOCTYPE html>
 <html>
@@ -59,7 +59,7 @@
 
         <title><fmt:message key="oscarEncounter.oscarConsultationRequest.config.DisplayService.title"/>
         </title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <script>
             function BackToOscar() {
@@ -80,7 +80,18 @@
             }
         }
     </script>
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <div id="service-providers-wrapper" style="margin:auto 10px;">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
@@ -114,8 +125,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><html:form
-                                    action="/oscarEncounter/UpdateServiceSpecialists">
+                            <td><form action="${pageContext.request.contextPath}/oscarEncounter/UpdateServiceSpecialists.do" method="post">
                                 <input type="hidden" name="serviceId" value="<%=serviceId %>">
                                 <input type="submit"
                                        value="<fmt:message key="oscarEncounter.oscarConsultationRequest.config.DisplayService.btnUpdateServices"/>">
@@ -167,7 +177,7 @@
 
                                 </table>
 
-                            </html:form></td>
+                            </form></td>
                         </tr>
                     </table>
                 </td>

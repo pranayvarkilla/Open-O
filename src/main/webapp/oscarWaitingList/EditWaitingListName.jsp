@@ -23,24 +23,15 @@
     Ontario, Canada
 
 --%>
-
 <!DOCTYPE html>
-
 <%
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
 <%@page import="java.util.*" %>
-<%@page import="org.apache.struts.action.*" %>
 <%@page import="org.oscarehr.common.model.ProviderPreference" %>
 <%@page import="org.oscarehr.util.SessionConstants" %>
-<%@page import="org.owasp.encoder.Encode" %>
 <%@page import="oscar.oscarWaitingList.bean.*" %>
-<%@page import="oscar.util.*" %>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-
 <html>
     <head>
         <script src="${pageContext.request.contextPath}/js/global.js"></script>
@@ -87,9 +78,8 @@
     %>
 
 
-    <html:form
-            action="/oscarWaitingList/WLEditWaitingListNameAction.do?edit=Y">
-        <html:hidden property="actionChosen"/>
+    <form action="${pageContext.request.contextPath}/oscarWaitingList/WLEditWaitingListNameAction.do?edit=Y.do" method="post">
+        <input type="hidden" name="actionChosen" id="actionChosen"/>
 
         <h3>&nbsp;&nbsp;<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarwaitinglist.displayPatientWaitingList.waitinglist"/></h3>
         <%
@@ -130,7 +120,7 @@
                         <legend><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.search.formReportStatusNew"/></legend>
                         <label class="control-label" for="wlNewName"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.config.MessengerAdmin.newGroup"/></label>
                         <div class="controls">
-                            <input type="text" class="input-medium" name="wlNewName" placeholder="" value="">
+                            <input type="text" class="input-medium" name="wlNewName" id="wlNewName" placeholder="" value="">
                             <input type="submit" class="btn" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnSave"/>"
                                    onclick="resetFields('create');document.forms[0].actionChosen.value='create'">
                         </div> <!-- class="controls" -->
@@ -141,7 +131,7 @@
                         <legend><fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnDelete"/></legend>
                         <label class="control-label" for="selectedWL2"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnDeleteList"/></label>
                         <div class="controls">
-                            <select name="selectedWL2" id="selectedWL">
+                            <select name="selectedWL2" id="selectedWL2">
                                 <option value=""><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicaddrecordhtm.cbselectwaitinglist"/></option>
                                 <%
                                     for (int i = 0; i < allWaitingListName.size(); i++) {
@@ -166,7 +156,7 @@
             <input type="reset" class="btn btn-link" value='<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>'
                    onClick="window.close();">
         </div>
-    </html:form>
+    </form>
 
     </body>
 </html>

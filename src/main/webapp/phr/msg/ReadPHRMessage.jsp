@@ -43,6 +43,8 @@
         return;
     }
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page import="org.oscarehr.myoscar.utils.MyOscarLoggedInInfo" %>
 <%@page import="org.oscarehr.myoscar.client.ws_manager.MessageManager" %>
@@ -52,14 +54,8 @@
 <%@page import="oscar.util.DateUtils" %>
 <%@page import="org.apache.commons.lang.StringEscapeUtils,java.net.URLEncoder" %>
 <%@page import="org.oscarehr.phr.web.MyOscarMessagesHelper" %>
-<%@page import="oscar.oscarDemographic.data.*, java.util.Enumeration" %>
 <%@page import="oscar.util.UtilDateUtilities,java.util.*" %>
 <%@page import="org.oscarehr.phr.util.MyOscarUtils,org.oscarehr.common.model.Demographic" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 
 <%
     Long messageId = new Long(request.getParameter("messageId"));
@@ -138,7 +134,7 @@
                         <td>
                         </td>
                         <td style="text-align:right">
-                            <oscar:help keywords="myoscar message" key="app.top1"/> | <a
+                            <a
                                 href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
                             | <a href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a>
                         </td>

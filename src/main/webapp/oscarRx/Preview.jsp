@@ -25,8 +25,8 @@
 --%>
 <%@page import="oscar.oscarRx.data.RxPatientData" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="oscar.oscarProvider.data.*, oscar.log.*" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
@@ -53,7 +53,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="RxPreview.title"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:if test="${empty RxSessionBean}">
             <% response.sendRedirect("error.html"); %>
@@ -135,7 +135,7 @@
         String strUser = (String) session.getAttribute("user");
         ProviderData user = new ProviderData(strUser);
     %>
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
 
         <table width="400px" height="500px" cellspacing=0 cellpadding=10
                border=2>
@@ -304,6 +304,6 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

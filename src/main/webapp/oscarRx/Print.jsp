@@ -24,8 +24,8 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -41,11 +41,11 @@
     }
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Print Preview</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:if test="${empty RxSessionBean}">
             <c:redirect url="error.html"/>
@@ -92,17 +92,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><html:form action="/oscarRx/searchPatient" focus="surname">
+                        <td><form action="${pageContext.request.contextPath}/oscarRx/searchPatient.do" method="post" focus="surname">
                             <table>
                                 <tr>
                                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ChoosePatient.textBox"/></td>
-                                    <td><html:text property="surname" size="16" maxlength="16"/>
+                                    <td><input type="checkbox" name="surname" size="16" maxlength="16" />
                                     </td>
-                                    <td><html:submit property="submit" value="Search"
-                                                     styleClass="ControlPushButton"/></td>
+                                    <td><input type="submit" name="submit" value="Search" class="ControlPushButton"/></td>
                                 </tr>
                             </table>
-                        </html:form></td>
+                        </form></td>
                     </tr>
                     <tr>
                         <td>
@@ -137,4 +136,4 @@
 
     </body>
 
-</html:html>
+</html>

@@ -44,7 +44,7 @@
 <%@ page
         import="oscar.oscarDemographic.data.*, org.oscarehr.common.model.Demographic" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <%
     String sex = request.getParameter("sex");
@@ -65,7 +65,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <link rel="stylesheet" type="text/css" href="encounterStyles.css">
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script type="text/javascript" language=javascript>
             function popperup(vheight, vwidth, varpage, pageName) { //open a new popup window
                 var page = varpage;

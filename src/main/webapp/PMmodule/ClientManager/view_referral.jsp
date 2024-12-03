@@ -21,13 +21,9 @@
     Centre for Research on Inner City Health, St. Michael's Hospital,
     Toronto, Ontario, Canada
 
---%>
-
-<%@ page import="org.apache.struts.validator.DynaValidatorForm" %>
-<%@ page import="org.oscarehr.PMmodule.model.ClientReferral" %>
+--%><%@ page import="org.oscarehr.PMmodule.model.ClientReferral" %>
 <%@ page import="org.oscarehr.common.model.OscarLog" %>
 <%@ page import="java.util.List" %>
-
 <%@ include file="/taglibs.jsp" %>
 <html>
     <head>
@@ -49,12 +45,11 @@
         </script>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
     <body>
-    <html:form action="/PMmodule/ClientManager.do">
+    <form action="${pageContext.request.contextPath}/PMmodule/ClientManager.do" method="post">`
         <%
-            DynaValidatorForm form = (DynaValidatorForm) session.getAttribute("clientManagerForm");
-            ClientReferral referral = (ClientReferral) form.get("referral");
+            String id = (String) request.getAttribute("id");
         %>
-        <html:hidden property="referral.id"/>
+        <input type="hidden" name="id" id="id"/>
 
         <table width="100%" border="1" cellspacing="2" cellpadding="3">
             <tr class="b">
@@ -81,7 +76,7 @@
                     <c:out value="${clientManagerForm.referral.completionDate}"/>
                     <%if (request.getAttribute("completion_date_updates") != null) { %>
                     <sup><a href="javascript:void(0)"
-                            onclick="popupPage(600,400,'<%=request.getContextPath()%>/PMmodule/ClientManager/showHistory.jsp?type=update_completion_date&title=Completion Date Updates&id=<%=referral.getId()%>');return false;"><%=((List<OscarLog>) request.getAttribute("completion_date_updates")).size() %>
+                            onclick="popupPage(600,400,'<%=request.getContextPath()%>/PMmodule/ClientManager/showHistory.jsp?type=update_completion_date&title=Completion Date Updates&id=<%=id%>');return false;"><%=((List<OscarLog>) request.getAttribute("completion_date_updates")).size() %>
                     </a></sup>
                     <%} %>
                 </td>
@@ -101,7 +96,7 @@
                     <c:out value="${clientManagerForm.referral.referralDate}"/>
                     <%if (request.getAttribute("referral_date_updates") != null) { %>
                     <sup><a href="javascript:void(0)"
-                            onclick="popupPage(600,400,'<%=request.getContextPath()%>/PMmodule/ClientManager/showHistory.jsp?type=update_referral_date&title=Referral Date Updates&id=<%=referral.getId()%>');return false;"><%=((List<OscarLog>) request.getAttribute("referral_date_updates")).size() %>
+                            onclick="popupPage(600,400,'<%=request.getContextPath()%>/PMmodule/ClientManager/showHistory.jsp?type=update_referral_date&title=Referral Date Updates&id=<%=id%>');return false;"><%=((List<OscarLog>) request.getAttribute("referral_date_updates")).size() %>
                     </a></sup>
                     <%} %>
                 </td>
@@ -124,6 +119,6 @@
 
         </table>
 
-    </html:form>
+    </form>
     </body>
 </html>

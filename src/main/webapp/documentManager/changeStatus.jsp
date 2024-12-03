@@ -26,7 +26,7 @@
 
 <%@ page
         import="java.util.*, org.oscarehr.documentManager.EDocUtil" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%
     ArrayList<String> doctypesD = EDocUtil.getDoctypes("demographic");
     ArrayList<String> doctypesP = EDocUtil.getDoctypes("provider");
@@ -76,7 +76,7 @@
         </td>
     </tr>
 
-    <html:form action="/documentManager/changeDocStatus" method="POST"
+    <form action="${pageContext.request.contextPath}/documentManager/changeDocStatus.do" method="POST"
                enctype="multipart/form-data" styleClass="forms"
                onsubmit="return submitUpload(this)">
 
@@ -144,7 +144,7 @@
                            onclick=self.close()></td>
             </tr>
         </table>
-    </html:form>
+    </form>
 </table>
 </body>
 </html>

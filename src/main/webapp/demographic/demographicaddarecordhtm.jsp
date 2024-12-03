@@ -49,7 +49,7 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -101,7 +101,7 @@
 
 <%@ include file="../admin/dbconnection.jsp" %>
 <%
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
+    java.util.Locale vLocale = request.getLocale();
 
     OscarProperties props = OscarProperties.getInstance();
 
@@ -156,7 +156,7 @@
     String today = fmt.format(new Date());
 %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
     <script src="${pageContext.request.contextPath}/csrfguard"></script>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -2537,4 +2537,4 @@ if (privateConsentEnabled) {
     <!--<iframe src="../eform/efmshowform_data.jsp?fid=<%=fid%>" width="100%" height="100%"></iframe>-->
     <%//}%>
     </body>
-</html:html>
+</html>

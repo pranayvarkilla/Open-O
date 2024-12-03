@@ -43,7 +43,7 @@
 
 <%@page import="oscar.*,oscar.oscarDemographic.data.*,java.util.*,oscar.oscarBilling.ca.bc.Teleplan.*,java.math.BigDecimal,oscar.oscarBilling.ca.bc.data.*,org.oscarehr.common.model.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@ page import="org.oscarehr.common.dao.BillingServiceDao,org.oscarehr.util.SpringUtils,org.oscarehr.common.model.*" %>
@@ -56,7 +56,7 @@
         <title>
             Manage Billing Codes
         </title><!--I18n-->
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" href="../../../../share/css/OscarStandardLayout.css"/>
         <script type="text/javascript" src="../../../../share/javascript/Oscar.js"></script>
         <script type="text/javascript" src="../../../../share/javascript/prototype.js"></script>
@@ -366,7 +366,7 @@
 
             <td valign="top" class="MainTableRightColumn">
 
-                <html:form action="/billing/CA/BC/ManageTeleplan">
+                <form action="${pageContext.request.contextPath}/billing/CA/BC/ManageTeleplan.do" method="post">
                     <input type="hidden" name="method" value="commitUpdateBillingCodes"/>
                     <input type="submit" value="Update Codes"/>
                     <table border="1">
@@ -424,7 +424,7 @@
                         </tr>
                         <%}%>
                     </table>
-                </html:form>
+                </form>
             </td>
         </tr>
         <tr>

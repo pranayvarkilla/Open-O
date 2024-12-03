@@ -26,7 +26,7 @@
 
 <%@page import="org.oscarehr.util.SessionConstants" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ page import="java.sql.*, java.util.*, oscar.*" errorPage="/errorpage.jsp" %>
 <%@page import="org.oscarehr.common.model.ProviderPreference" %>

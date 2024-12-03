@@ -26,7 +26,7 @@
 
 <%@ page language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ page import="oscar.oscarProvider.data.*" %>
 <%@ page import="org.oscarehr.common.dao.UserPropertyDAO" %>
 <%@ page import="org.oscarehr.common.model.UserProperty" %>
@@ -43,7 +43,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css"
               href="../oscarEncounter/encounterStyles.css">
 
@@ -171,7 +171,7 @@
 
                 %>
 
-                <html:form action="/EditAddress.do">
+                <form action="${pageContext.request.contextPath}/EditAddress.do" method="post">
 
 			<span style="color:blue">By entering in values, you will 
 			<ul>
@@ -184,21 +184,21 @@
 
 
                     <label for="address">Address</label>
-                    <html:text property="address" value="<%=address %>"/>
+                    <input type="checkbox" name="address" value="<%=address %>" />
                     <br/>
                     <label for="city">City</label>
-                    <html:text property="city" value="<%=city %>"/>
+                    <input type="checkbox" name="city" value="<%=city %>" />
                     <br/>
                     <label for="province">Province</label>
-                    <html:text property="province" value="<%=province %>"/>
+                    <input type="checkbox" name="province" value="<%=province %>" />
                     <br/>
                     <label for="postal">Postal</label>
-                    <html:text property="postal" value="<%=postal %>"/>
+                    <input type="checkbox" name="postal" value="<%=postal %>" />
                     <br/>
 
                     <input type="submit" onclick="return validate();"
                            value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editRxFax.btnSubmit"/>"/>
-                </html:form> <%
+                </form> <%
             } else if (((String) request.getAttribute("status")).equals("complete")) {
             %> <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editRxAddress.msgSuccess"/> <br>
                 <%=address%>, <%=city%>, <%=province%>, <%=postal%>  <%

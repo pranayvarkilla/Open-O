@@ -15,8 +15,6 @@
 
 <%@ page import="oscar.form.*, oscar.form.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%
     String formClass = "BCNewBorn";
@@ -71,7 +69,7 @@
         <!-- the following script defines the Calendar.setup helper function, which makes
                adding a calendar a matter of 1 or 2 lines of code. -->
         <script type="text/javascript" src="../share/calendar/calendar-setup.js"></script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <script type="text/javascript" language="Javascript">
@@ -433,8 +431,9 @@
     <body bgproperties="fixed" topmargin="0" leftmargin="1" rightmargin="1"
           onLoad="setfocus();">
 
-    <html:form action="/form/formname">
-        <input type="hidden" name="commonField" value="ar2_"/>
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
+
+    <input type="hidden" name="commonField" value="ar2_"/>
         <input type="hidden" name="c_lastVisited" value="pg2"/>
         <input type="hidden" name="demographic_no"
                value="<%= props.getProperty("demographic_no", "0") %>"/>
@@ -1241,7 +1240,7 @@
         </table>
 
 
-    </html:form>
+    </form>
     <script type="text/javascript">
         Calendar.setup({
             inputField: "pg2_formDate",

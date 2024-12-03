@@ -42,8 +42,8 @@
 <%@ page
         import="oscar.oscarEncounter.immunization.data.EctImmImmunizationData" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
 <html>
 <head>
@@ -282,7 +282,7 @@
                         <%=bean.patientSex%> <%=bean.patientAge%>
                     </td>
                     <td></td>
-                    <td style="text-align: right" NOWRAP><oscar:help keywords="schedule" key="app.top1"/>> |</td>
+                    <td style="text-align: right" NOWRAP> |</td>
                 </tr>
             </table>
         </td>

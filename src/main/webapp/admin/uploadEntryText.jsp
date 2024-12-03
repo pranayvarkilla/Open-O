@@ -62,7 +62,7 @@
     }
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -100,7 +100,7 @@
                 <tr>
                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.uploadEntryTxt"/></td>
                     <td>&nbsp;</td>
-                    <td style="text-align: right"><oscar:help keywords="1.6.11" key="app.top1"/> | <a
+                    <td style="text-align: right"><a
                             href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                             href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                 </tr>
@@ -110,7 +110,7 @@
     <tr>
         <td class="MainTableLeftColumn" valign="top">&nbsp;</td>
         <td class="MainTableRightColumn">
-            <html:form action="/admin/uploadEntryText" method="POST" enctype="multipart/form-data">
+            <form action="${pageContext.request.contextPath}/admin/uploadEntryText.do" method="POST" enctype="multipart/form-data">
 
                 How long is agreement valid?<br>
 
@@ -157,7 +157,7 @@
 
                 <br>
                 <input type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.uploadEntryTxt"/>">
-            </html:form>
+            </form>
         </td>
     </tr>
     <%

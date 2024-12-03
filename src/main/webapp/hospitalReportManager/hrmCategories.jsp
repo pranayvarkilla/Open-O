@@ -29,7 +29,7 @@
 <%@page import="org.oscarehr.util.SpringUtils" %>
 <%@page import="org.oscarehr.hospitalReportManager.dao.HRMCategoryDao" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%
     HRMCategoryDao hrmCategoryDao = SpringUtils.getBean(HRMCategoryDao.class);
     String id = request.getParameter("id");
@@ -41,7 +41,7 @@
 <!DOCTYPE html >
 <html>
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>HRM Categories</title>

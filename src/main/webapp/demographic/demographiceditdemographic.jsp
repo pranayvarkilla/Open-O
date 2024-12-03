@@ -142,10 +142,10 @@
 
 <jsp:useBean id="providerBean" class="java.util.Properties" scope="session"/>
 
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+
 <%@ taglib uri="/WEB-INF/special_tag.tld" prefix="special" %>
 
 <c:set var="ctx" value="${ pageContext.request.contextPath }"/>
@@ -249,12 +249,12 @@
 <%@page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
 
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographiceditdemographic.title"/></title>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <oscar:oscarPropertiesCheck property="DEMOGRAPHIC_PATIENT_HEALTH_CARE_TEAM" value="true">
             <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/css/healthCareTeam.css"/>
@@ -5230,7 +5230,7 @@ if (privateConsentEnabled) {
 
     </script>
     </body>
-</html:html>
+</html>
 
 
 <%!

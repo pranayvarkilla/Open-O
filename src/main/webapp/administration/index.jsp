@@ -33,7 +33,7 @@
 <%@ page import="java.util.*" %>
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
@@ -308,9 +308,6 @@
 </head>
 
 <body>
-
-<!--<oscar:help keywords="admin" key="app.top1"/> -->
-
 <div class="container-fluid">
     <div class="row-fluid hidden-print" style="text-align:right">
         <i class=" icon-question-sign"></i>

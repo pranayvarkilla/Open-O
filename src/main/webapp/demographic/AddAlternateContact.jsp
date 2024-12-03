@@ -63,7 +63,7 @@
 <%@page import="org.oscarehr.util.SpringUtils" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
 <%
@@ -105,7 +105,7 @@
                     <tr>
                         <td><oscar:nameage demographicNo="<%=creatorDemo%>"/></td>
                         <td>&nbsp;</td>
-                        <td style="text-align: right"><oscar:help keywords="contact" key="app.top1"/> | <a
+                        <td style="text-align: right"><a
                                 href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                 href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                     </tr>
@@ -174,8 +174,7 @@
                     String name = request.getParameter("name");
                     String origDemo = request.getParameter("remarks");
                     if (demoNo != null) {
-                %> <html:form
-                    action="/demographic/AddRelation">
+                %> <form action="${pageContext.request.contextPath}/demographic/AddRelation.do" method="post">
                 <input type="hidden" name="origDemo" value="<%=origDemo%>"/>
                 <input type="hidden" name="linkingDemo" value="<%=demoNo%>"/>
 
@@ -229,7 +228,7 @@
                             <textarea cols="20" rows="3" name="notes"></textarea> <input
                                     type="submit" value="Add Relationship"/></fieldset>
                 </div>
-            </html:form> <%}%>
+            </form> <%}%>
 
                 <div class="tablelisting">
                     <table>
@@ -271,10 +270,10 @@
 
                 <oscar:oscarPropertiesCheck property="TORONTO_RFQ" value="yes">
                     <br/>
-                    <html:form action="/demographic/AddRelation">
+                    <form action="/demographic/AddRelation">
                         <input type="hidden" name="origDemo" value="<%=creatorDemo%>"/>
                         <input type="submit" name="pmmClient" value="Finished"/>
-                    </html:form>
+                    </form>
                 </oscar:oscarPropertiesCheck></td>
         </tr>
         <tr>

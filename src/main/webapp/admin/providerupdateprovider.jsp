@@ -23,16 +23,15 @@
     Ontario, Canada
 
 --%>
-<%@page import="org.oscarehr.common.model.LookupListItem" %>
-<%@page import="org.oscarehr.util.LoggedInInfo" %>
-<%@page import="org.oscarehr.common.model.LookupList" %>
-<%@page import="org.oscarehr.managers.LookupListManager" %>
+<%@ page import="org.oscarehr.common.model.LookupListItem" %>
+<%@ page import="org.oscarehr.util.LoggedInInfo" %>
+<%@ page import="org.oscarehr.common.model.LookupList" %>
+<%@ page import="org.oscarehr.managers.LookupListManager" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
-    String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName$%>" objectName="_admin,_admin.userAdmin" rights="r" reverse="<%=true%>">
@@ -44,11 +43,7 @@
         return;
     }
 %>
-
-
-<%@ page
-        import="java.sql.*, java.util.*, oscar.SxmlMisc, oscar.oscarProvider.data.ProviderBillCenter"
-        errorPage="/errorpage.jsp" %>
+<%@ page import="java.util.*, oscar.SxmlMisc, oscar.oscarProvider.data.ProviderBillCenter" errorPage="/errorpage.jsp" %>
 <%@ page import="oscar.log.LogAction,oscar.log.LogConst" %>
 <%@ page import="org.oscarehr.common.model.ClinicNbr" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
@@ -57,28 +52,20 @@
 <%@ page import="org.oscarehr.common.dao.ProviderDataDao" %>
 <%@ page import="org.oscarehr.common.dao.SecurityDao" %>
 <%@ page import="org.oscarehr.common.model.Security" %>
-<%@page import="org.oscarehr.common.dao.UserPropertyDAO" %>
-<%@page import="org.oscarehr.common.model.UserProperty" %>
+<%@ page import="org.oscarehr.common.dao.UserPropertyDAO" %>
+<%@ page import="org.oscarehr.common.model.UserProperty" %>
+<%@ page import="org.oscarehr.common.model.ProviderSite" %>
+<%@ page import="org.oscarehr.common.dao.ProviderSiteDao" %>
+<%@ page import="org.oscarehr.common.dao.SiteDao" %>
+<%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
+<%@ page import="org.oscarehr.common.model.Site" %>
+<%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="oscar.OscarProperties" %>
-<%@page import="org.oscarehr.common.Gender" %>
-
+<%@ page import="org.oscarehr.common.Gender" %>
 <%
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
     ProviderDataDao providerDao = SpringUtils.getBean(ProviderDataDao.class);
 %>
-<%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-
-<%@page import="org.oscarehr.common.dao.SiteDao" %>
-<%@page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
-<%@page import="org.oscarehr.common.model.Site" %>
-<%@page import="oscar.login.*,org.apache.commons.lang.StringUtils" %>
-<%@page import="org.oscarehr.PMmodule.dao.ProviderDao" %>
 <html>
-    <%@page import="org.oscarehr.common.model.ProviderSite" %>
-    <%@page import="org.oscarehr.common.model.ProviderSitePK" %>
-    <%@page import="org.oscarehr.common.dao.ProviderSiteDao" %>
-
-
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-1.9.1.js"></script>

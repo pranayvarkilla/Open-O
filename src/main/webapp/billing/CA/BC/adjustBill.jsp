@@ -40,8 +40,8 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="oscar.oscarBilling.ca.bc.data.*,oscar.*,org.oscarehr.common.model.*" %>
@@ -516,7 +516,7 @@
     }
 
 %>
-<html:form styleId="reprocessBilling" action="/billing/CA/BC/reprocessBill" onsubmit="return checkSubmitType()">
+<form style="reprocessBilling" action="${pageContext.request.contextPath}/billing/CA/BC/reprocessBill.do" method="post" onsubmit="return checkSubmitType()">
     <input type="hidden" name="update_date" value="<%=UpdateDate%>"/>
     <input type="hidden" name="demoNo" value="<%=DemoNo%>"/>
     <input type="hidden" name="billNumber" value="<%=allFields.getProperty("billingNo")%>"/>
@@ -1194,7 +1194,7 @@
 
 
     </table>
-</html:form>
+</form>
 <a href="javascript: function myFunction() {return false; }" onClick="javascript: showRecord();">View Full Record</a>
 <div style="display: none;" id="SENDRECORD">
     <table border=1>

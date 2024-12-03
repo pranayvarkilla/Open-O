@@ -31,7 +31,7 @@
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <html>
 
     <head>
@@ -65,12 +65,12 @@
                 <p>lastname,firstname,username,password,pin,student#</p>
                 <h4>Upload CSV file:</h4>
 
-                <html:form action="/oscarLearning/StudentImport.do?method=uploadFile" method="post"
+                <form action="${pageContext.request.contextPath}/oscarLearning/StudentImport.do?method=uploadFile.do" method="post"
                            enctype="multipart/form-data">
-                    <html:file property="file"></html:file>
+                    <input type="file" name="file" id="file" size="35"/>
                     <br/>
-                    <html:submit/>
-                </html:form>
+                    <input type="submit" name="submit" value="Submit" />
+                </form>
             </div>
         </div>
     </div>

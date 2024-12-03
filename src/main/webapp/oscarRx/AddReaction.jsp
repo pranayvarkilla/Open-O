@@ -24,8 +24,8 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
@@ -42,11 +42,11 @@
     }
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="AddReaction.title"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:if test="${empty RxSessionBean}">
             <c:redirect url="error.html"/>
@@ -94,60 +94,60 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><html:form action="/oscarRx/addAllergy"
+                        <td><form action="/oscarRx/addAllergy.do"
                                        focus="reactionDescription">
                             <table>
                                 <tr valign="center">
 
-                                    <td colspan="2"><html:textarea
-                                            property="reactionDescription" cols="40" rows="3"/> <html:hidden
-                                            property="ID" value="<%=allergyId%>"/> <html:hidden
-                                            property="name" value="<%=name%>"/> <html:hidden
-                                            property="type" value="<%=type%>"/></td>
+                                    <td colspan="2">
+                                        <textarea name="reactionDescription" cols="40" rows="3"></textarea>
+                                        <input type="hidden" name="ID" id="ID" value="<%=allergyId%>"/>
+                                        <input type="hidden" name="name" id="name" value="<%=name%>"/>
+                                        <input type="hidden" name="type" id="type" value="<%=type%>"/></td>
                                 </tr>
 
                                 <tr valign="center">
-                                    <td colspan="2">Start Date: <html:text
-                                            property="startDate" size="10" maxlength="10"/>
+                                    <td colspan="2">Start Date: <input type="text"
+                                            name="startDate" size="10" maxlength="10"/>
                                         (yyyy-mm-dd OR yyyy-mm OR yyyy)
                                     </td>
 
                                 </tr>
 
                                 <tr valign="center">
-                                    <td colspan="2">Age Of Onset: <html:text
-                                            property="ageOfOnset" size="4" maxlength="4"/></td>
+                                    <td colspan="2">Age Of Onset: <input type="text"
+                                            name="ageOfOnset" size="4" maxlength="4"/></td>
 
                                 </tr>
 
                                 <tr valign="center">
 
-                                    <td colspan="2">Severity Of Reaction : <html:select
-                                            property="severityOfReaction">
-                                        <html:option value="1">Mild</html:option>
-                                        <html:option value="2">Moderate</html:option>
-                                        <html:option value="3">Severe</html:option>
-                                        <html:option value="4">Unknown</html:option>
-                                    </html:select></td>
+                                    <td colspan="2">Severity Of Reaction : <select
+                                            name="severityOfReaction">
+                                        <option value="1">Mild</option>
+                                        <option value="2">Moderate</option>
+                                        <option value="3">Severe</option>
+                                        <option value="4">Unknown</option>
+                                    </select></td>
 
                                 </tr>
 
                                 <tr valign="center">
 
-                                    <td colspan="2">Onset Of Reaction: <html:select
-                                            property="onSetOfReaction">
-                                        <html:option value="1">Immediate</html:option>
-                                        <html:option value="2">Gradual</html:option>
-                                        <html:option value="3">Slow</html:option>
-                                        <html:option value="4">Unknown</html:option>
-                                    </html:select></td>
+                                    <td colspan="2">Onset Of Reaction: <select
+                                            name="onSetOfReaction">
+                                        <option value="1">Immediate</option>
+                                        <option value="2">Gradual</option>
+                                        <option value="3">Slow</option>
+                                        <option value="4">Unknown</option>
+                                    </select></td>
 
                                 </tr>
 
 
                                 <tr>
-                                    <td colspan="2"><html:submit property="submit"
-                                                                 value="Add Allergy" styleClass="ControlPushButton"/>
+                                    <td colspan="2">
+                                        <input type="submit" name="submit" value="Add Allergy" class="ControlPushButton"/>
                                         <input
                                                 type=button class="ControlPushButton"
                                                 onclick="javascript:document.forms.RxAddAllergyForm.reactionDescription.value='';document.forms.RxAddAllergyForm.startDate.value='';document.forms.RxAddAllergyForm.ageOfOnset.value='';document.forms.RxAddAllergyForm.reactionDescription.focus();"
@@ -156,7 +156,7 @@
                             </table>
                             &nbsp;
 
-                        </html:form></td>
+                        </form></td>
                     </tr>
 
                     <tr>
@@ -191,4 +191,4 @@
 
     </body>
 
-</html:html>
+</html>

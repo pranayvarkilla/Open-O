@@ -40,7 +40,7 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ page import="java.util.*,oscar.oscarBilling.ca.bc.data.BillingCodeData,oscar.oscarBilling.ca.bc.pageUtil.*" %>
 
 <html>
@@ -140,11 +140,11 @@
                 </table>
 
 
-                <html:form action="/billing/CA/BC/billingEditCode">
+                <form action="${pageContext.request.contextPath}/billing/CA/BC/billingEditCode.do" method="post">
                     <input type="hidden" name="whereTo" value="<%=request.getParameter("whereTo")%>"/>
                     <input type="hidden" name="method" value="returnToSearch"/>
-                    <html:submit property="submitButton" value="Back"/>
-                </html:form>
+                    <input type="submit" name="submit" value="Back"/>
+                </form>
 
 
                 <script type="text/javascript">

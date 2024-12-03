@@ -24,7 +24,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ page import="oscar.oscarProvider.data.*" %>
 <%@ page import="org.oscarehr.common.dao.UserPropertyDAO" %>
 <%@ page import="org.oscarehr.common.model.UserProperty" %>
@@ -45,7 +45,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath()%>/js/global.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.7.1.min.js"></script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" href="../oscarEncounter/encounterStyles.css">
 
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setDefaultPrinter.title"/></title>
@@ -189,7 +189,7 @@
                     if (request.getAttribute("status") == null) {
                 %>
 
-                <html:form action="/EditPrinter.do">
+                <form action="${pageContext.request.contextPath}/EditPrinter.do" method="post">
                     <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setDefaultPrinter.setDefaultPrinterFor"/>:<br>
                     <table>
                         <tr>
@@ -266,7 +266,7 @@
                             </td>
                         </tr>
                     </table>
-                </html:form> <%
+                </form> <%
             } else if (((String) request.getAttribute("status")).equals("complete")) {%>
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setDefaultPrinter.msgSuccess"/> <br>
             </td>

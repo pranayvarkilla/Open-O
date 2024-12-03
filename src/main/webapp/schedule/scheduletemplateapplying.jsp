@@ -24,13 +24,9 @@
 
 --%>
 <!DOCTYPE html>
-<%@ page
-        import="java.util.*, java.net.*, java.sql.*, oscar.*, oscar.util.*, java.text.*, java.lang.*, org.apache.struts.util.*"
-        errorPage="../appointment/errorpage.jsp" %>
-
+<%@ page import="java.util.*, java.net.*, oscar.*, oscar.util.*, java.lang.*" %>
 <jsp:useBean id="scheduleRscheduleBean" class="oscar.RscheduleBean" scope="session"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
@@ -42,7 +38,7 @@
 <%@ page import="org.oscarehr.common.dao.ScheduleTemplateDao" %>
 <%
     ScheduleDateDao scheduleDateDao = SpringUtils.getBean(ScheduleDateDao.class);
-    RScheduleDao rScheduleDao = (RScheduleDao) SpringUtils.getBean(RScheduleDao.class);
+    RScheduleDao rScheduleDao = SpringUtils.getBean(RScheduleDao.class);
     ScheduleTemplateDao scheduleTemplateDao = SpringUtils.getBean(ScheduleTemplateDao.class);
 %>
 <%@ page import="org.oscarehr.common.dao.SiteDao" %>
@@ -56,7 +52,7 @@
         String CurProviderNo = (String) session.getAttribute("user");
 
         if (session.getAttribute("userrole") == null) response.sendRedirect("../logout.jsp");
-        String CurRoleName = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+        String CurRoleName = session.getAttribute("userrole") + "," + session.getAttribute("user");
 
         boolean isSiteAccessPrivacy = false;
     %>
@@ -69,7 +65,7 @@
 
     <%! boolean bMultisites = org.oscarehr.common.IsPropertiesOn.isMultisitesEnable(); %>
     <%! String[] bgColors; %>
-    <%! List<String> excludedSites = new ArrayList<String>(); %>
+    <%! List<String> excludedSites = new ArrayList<>(); %>
     <%
 
         String weekdaytag[] = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
@@ -539,7 +535,6 @@
                                     </option>
                                     <%
                                         }
-                                        MessageResources msg = MessageResourcesFactory.createFactory().createResources("oscarResources");
                                     %>
                                 </select> <input type="button" name="command" class="btn"
                                                  value="<fmt:setBundle basename="oscarResources"/><fmt:message key="schedule.scheduletemplateapplying.btnDelete"/>"
@@ -547,8 +542,16 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="color: red"
-                                    colspan="2"><%=request.getParameter("overlap") != null ? msg.getMessage("schedule.scheduletemplateapplying.msgScheduleConflict") : "&nbsp;"%>
+                                <td style="color: red" colspan="2">
+                                    <%
+                                        if(request.getParameter("overlap") != null) {
+                                    %>
+                                    <fmt:message key="schedule.scheduletemplateapplying.btnDelete"/>
+                                    <%
+                                        } else {
+                                            out.print("&nbsp;");
+                                        }
+                                    %>
                                 </td>
                             </tr>
                             <tr>

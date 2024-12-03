@@ -33,8 +33,8 @@
 <%@page import="java.util.List" %>
 <%@page import="oscar.OscarProperties" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName2$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -74,7 +74,7 @@
 
     com.quatro.service.security.SecurityManager securityManager = new com.quatro.service.security.SecurityManager();
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.title"/></title>
@@ -437,19 +437,19 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><html:form action="/oscarRx/searchAllergy"
+                        <td><form action="${pageContext.request.contextPath}/oscarRx/searchAllergy.do" method="post"
                                        focus="searchString" onsubmit="return isEmpty()">
                             <table>
                                 <tr valign="center">
                                     <td>Search:</td>
                                 </tr>
                                 <tr>
-                                    <td><html:text property="searchString" size="50" styleId="searchString"
+                                    <td><input type="text" name="searchString" size="50" id="searchString"
                                                    maxlength="50"/></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:submit property="submit" value="Search" styleClass="ControlPushButton"/>
+                                        <input type="submit" name="submit" value="Search" class="ControlPushButton"/>
                                         <input type=button class="ControlPushButton"
                                                onclick="javascript:document.forms.RxSearchAllergyForm.searchString.value='';document.forms.RxSearchAllergyForm.searchString.focus();"
                                                value="Reset"/>
@@ -484,10 +484,10 @@
                                 </tr>
 
                                 <tr>
-                                    <td><html:checkbox property="type4"/> Drug Classes</td>
-                                    <td><html:checkbox property="type3"/> Ingredients</td>
-                                    <td><html:checkbox property="type2"/> Generic Names</td>
-                                    <td><html:checkbox property="type1"/> Brand Names</td>
+                                    <td><input type="checkbox" name="type4"/> Drug Classes</td>
+                                    <td><input type="checkbox" name="type3"/> Ingredients</td>
+                                    <td><input type="checkbox" name="type2"/> Generic Names</td>
+                                    <td><input type="checkbox" name="type1"/> Brand Names</td>
                                 </tr>
                                 <tr>
                                     <td colspan=4>
@@ -532,7 +532,7 @@
                                                                            value="Clear All"/></td>
                                 </tr>
                             </table>
-                        </html:form> <br>
+                        </form> <br>
                             <br>
                             <%
                                 String sBack = "SearchDrug.jsp";
@@ -570,4 +570,4 @@
         <% } %>
     </table>
     </body>
-</html:html>
+</html>

@@ -25,8 +25,8 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -48,7 +48,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.title"/>
         </title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
 
     </head>
@@ -64,7 +64,18 @@
     <link rel="stylesheet" type="text/css" href="../../encounterStyles.css">
     <body topmargin="0" leftmargin="0" vlink="#0000FF"
           onload="window.focus();">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <table border="0" cellpadding="0" cellspacing="0"
            style="border-collapse: collapse" bordercolor="#111111" width="100%"
            id="AutoNumber1" height="100%">
@@ -112,23 +123,22 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><html:form
-                                action="/oscarEncounter/immunization/config/CreateInitImmunization">
+                        <td><form action="${pageContext.request.contextPath}/oscarEncounter/immunization/config/CreateInitImmunization.do" method="post">
                             <table cellspacing="1">
                                 <tr>
                                     <td class="cells"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.formSetName"/>:
                                     </td>
-                                    <td class="cells"><html:text property="setName"/></td>
+                                    <td class="cells"><input type="text" name="setName" id="setName" /></td>
                                 </tr>
                                 <tr>
                                     <td class="cells"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.formNRows"/>:
                                     </td>
-                                    <td class="cells"><html:text property="numRows"/></td>
+                                    <td class="cells"><input type="text" name="numRows" id="numRows" /></td>
                                 </tr>
                                 <tr>
                                     <td class="cells"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.formNCol"/>:
                                     </td>
-                                    <td class="cells"><html:text property="numCols"/></td>
+                                    <td class="cells"><input type="text" name="numCols" id="numCols" /></td>
                                 </tr>
 
                                 <tr>
@@ -137,7 +147,7 @@
                                     </td>
                                 </tr>
                             </table>
-                        </html:form></td>
+                        </form></td>
 
                     </tr>
 

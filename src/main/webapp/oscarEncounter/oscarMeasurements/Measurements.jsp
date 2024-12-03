@@ -28,7 +28,7 @@
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -51,7 +51,7 @@
             <c:out value="${groupName}"/>
         </c:if> <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.measurements"/></title>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
 
         <link href="/oscar/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -143,7 +143,7 @@
         </script>
     </head>
     <body class="BodyStyle" onload="window.focus();">
-    <html:form action="/oscarEncounter/Measurements" styleId="theForm">
+    <form action="${pageContext.request.contextPath}/oscarEncounter/Measurements.do" method="post" styleId="theForm">
         <c:if test="${not empty css}">
             <link rel="stylesheet" type="text/css" href="${css}">
         </c:if>
@@ -190,7 +190,18 @@
                                         <td>
                                             <div class="well">
                                                 <table class="table table-striped">
-                                                    <html:errors/>
+                                                    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
                                                     <tr class="Header">
                                                         <th style="width:120px"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingType"/>
                                                         </th>
@@ -301,7 +312,7 @@
                 <td class="MainTableBottomRowRightColumn"></td>
             </tr>
         </table>
-    </html:form>
+    </form>
 
     <script>
         $(document).ready(function () {
