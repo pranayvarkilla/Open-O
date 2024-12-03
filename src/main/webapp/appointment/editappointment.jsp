@@ -227,7 +227,7 @@
     boolean bMultipleSameDayGroupAppt = false;
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="appointment.editappointment.title"/></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1568,4 +1568,4 @@
 
     </body>
 
-</html:html>
+</html>

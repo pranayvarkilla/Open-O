@@ -47,7 +47,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <html>
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><%=bundle.getString(providertitle)%></title>
 
         <script src="<c:out value="${ctx}"/>/js/global.js"></script>

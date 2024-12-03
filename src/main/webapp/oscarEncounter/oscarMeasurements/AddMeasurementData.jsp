@@ -74,7 +74,7 @@
         <title>
             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.measurements"/>
         </title><!--I18n-->
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" href="../../share/css/OscarStandardLayout.css">
         <link rel="stylesheet" type="text/css" media="all" href="../../share/calendar/calendar.css"
               title="win2k-cold-1"/>

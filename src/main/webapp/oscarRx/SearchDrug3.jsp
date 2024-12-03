@@ -218,7 +218,7 @@
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.title"/></title>
         <link rel="stylesheet" type="text/css" href="styles.css">
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <script type="text/javascript">
             var ctx = '${ ctx }';

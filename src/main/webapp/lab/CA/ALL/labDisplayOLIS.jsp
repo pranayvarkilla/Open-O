@@ -143,7 +143,7 @@
 <html>
 <!--  This is an OLIS lab display -->
 <head>
-    <html:base/>
+    <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     <title><%=handler.getPatientName() + " Lab Results"%>
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

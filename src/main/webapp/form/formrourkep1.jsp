@@ -49,7 +49,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.formRourke1.title"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" media="screen"
               href="rourkeStyle.css">
         <link rel="stylesheet" type="text/css" media="print"

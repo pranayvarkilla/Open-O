@@ -59,7 +59,7 @@
 
         <script type="text/javascript">var ctx = '${ oscar_context_path }';</script>
         <title>Drug Reason</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <%
             String id = request.getParameter("id");

@@ -71,7 +71,7 @@
         <!-- the following script defines the Calendar.setup helper function, which makes
                adding a calendar a matter of 1 or 2 lines of code. -->
         <script type="text/javascript" src="../share/calendar/calendar-setup.js"></script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <script type="text/javascript" language="Javascript">

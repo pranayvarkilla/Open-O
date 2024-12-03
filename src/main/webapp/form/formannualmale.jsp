@@ -48,7 +48,7 @@
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.formMaleAnnual.title"/></title>
         <link rel="stylesheet" type="text/css" href="annualStyle.css">
         <link rel="stylesheet" type="text/css" media="print" href="print.css">
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         </style>
     </head>
 

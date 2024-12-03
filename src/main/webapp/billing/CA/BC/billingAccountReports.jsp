@@ -58,7 +58,7 @@
 <html>
 <head>
     <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-    <html:base/>
+    <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     <title>Billing Report</title>
     <link rel="stylesheet" type="text/css" media="all"
           href="../../../share/calendar/calendar.css" title="win2k-cold-1"/>

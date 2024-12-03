@@ -59,7 +59,7 @@
                 font-size: 85%;
             }
         </style>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <%

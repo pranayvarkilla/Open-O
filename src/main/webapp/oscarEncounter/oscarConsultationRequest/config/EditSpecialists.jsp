@@ -55,7 +55,7 @@
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.title"/>
         </title>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script language="javascript">
             function BackToOscar() {
                 window.close();

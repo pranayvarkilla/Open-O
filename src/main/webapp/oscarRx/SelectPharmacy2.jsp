@@ -49,7 +49,7 @@
 <html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="SelectPharmacy.title"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <jsp:include page="../images/spinner.jsp" flush="true"/>
 
         <script src="${pageContext.request.contextPath}/library/jquery/jquery-3.6.4.min.js"

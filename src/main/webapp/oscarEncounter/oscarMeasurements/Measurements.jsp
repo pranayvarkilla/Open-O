@@ -51,7 +51,7 @@
             <c:out value="${groupName}"/>
         </c:if> <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.measurements"/></title>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
 
         <link href="/oscar/css/bootstrap.css" rel="stylesheet" type="text/css">

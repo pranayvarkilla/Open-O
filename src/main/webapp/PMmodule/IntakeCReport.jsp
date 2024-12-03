@@ -46,7 +46,7 @@
               href="<html:rewrite page="/css/intakeC.css" />"/>
         <script language="JavaScript"
                 src="<html:rewrite page="/js/ClientSearch.js" />"></script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
     <body>
     <script type="text/javascript">

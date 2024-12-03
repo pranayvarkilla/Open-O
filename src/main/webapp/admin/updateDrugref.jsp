@@ -49,7 +49,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.UpdateDrugref"/></title>
         <link href="<c:out value="${ctx}/css/bootstrap.css"/>" rel="stylesheet" type="text/css">
         <script src="<c:out value="${ctx}/share/javascript/Oscar.js"/>"></script>

@@ -31,7 +31,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" href="../oscarEncounter/encounterStyles.css">
 
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editRxFax.title"/></title>

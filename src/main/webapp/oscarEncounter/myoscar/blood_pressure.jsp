@@ -47,7 +47,7 @@
             <c:param name="yaxisLabel" value="mm[Hg]"/>
         </c:import>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <body>

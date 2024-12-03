@@ -64,7 +64,7 @@
 <html>
     <head>
         <title>Antenatal Record 2</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" href="<%=bView?"bcArStyleView.css" : "bcArStyle.css"%>">
         <!-- calendar stylesheet -->
         <link rel="stylesheet" type="text/css" media="all" href="../share/calendar/calendar.css" title="win2k-cold-1"/>

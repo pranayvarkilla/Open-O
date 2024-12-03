@@ -50,7 +50,7 @@
 
         <link rel="stylesheet" type="text/css" href="annualStyle.css">
         <link rel="stylesheet" type="text/css" media="print" href="print.css">
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <%

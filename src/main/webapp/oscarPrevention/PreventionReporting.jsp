@@ -68,7 +68,7 @@
 <html>
 
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarprevention.index.oscarpreventiontitre"/></title><!-- i18n -->
 
         <script type="text/javascript" src="../share/javascript/Oscar.js"></script>

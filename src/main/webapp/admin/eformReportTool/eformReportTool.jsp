@@ -55,7 +55,7 @@
 %>
 <html>
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script src="<%=request.getContextPath()%>/js/global.js"></script>
         <title>OSCAR Products</title>
         <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css">

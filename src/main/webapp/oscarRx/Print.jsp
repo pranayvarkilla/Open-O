@@ -41,11 +41,11 @@
     }
 %>
 
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Print Preview</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:if test="${empty RxSessionBean}">
             <c:redirect url="error.html"/>
@@ -137,4 +137,4 @@
 
     </body>
 
-</html:html>
+</html>

@@ -1098,7 +1098,7 @@
                 $("input[name='pg1_geneticD']").val($("input[name='pg1_geneticD1']").attr('checked') + "/" + $("input[name='pg1_geneticD2']").attr('checked'));
             }
         </script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <script type="text/javascript" language="Javascript">
             function reset() {

@@ -204,7 +204,7 @@
 </head>
 
 
-<html:base/>
+<base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
 <body bgcolor="#FFFFFF" text="#000000" rightmargin="0" leftmargin="0"
       topmargin="10" marginwidth="0" marginheight="0"

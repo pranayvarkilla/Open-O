@@ -370,7 +370,7 @@
                 ocean-host=<%=Encode.forUriComponent(OscarProperties.getInstance().getProperty("ocean_host"))%>></script>
         <% } %>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.title"/></title>
         <script type="text/javascript">
             ctx = "<c:out value="${ctx}"/>";

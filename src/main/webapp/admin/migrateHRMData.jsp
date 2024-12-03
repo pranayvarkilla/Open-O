@@ -91,7 +91,7 @@
                 }
             }
         </script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <title>Migrate HRM Data to new Schema</title>
 

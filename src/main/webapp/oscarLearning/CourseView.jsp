@@ -131,7 +131,7 @@
             }
 
         </script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarLearning.courseView.title"/>
         </title>
         <link rel="stylesheet" type="text/css"

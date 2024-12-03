@@ -66,7 +66,7 @@
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.7.1.min.js"></script>
         <title>Dispensary</title>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:set var="ctx" value="${pageContext.request.contextPath}"/>
         <link rel="stylesheet" type="text/css" href="../styles.css">

@@ -65,7 +65,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <link rel="stylesheet" type="text/css" href="encounterStyles.css">
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script type="text/javascript" language=javascript>
             function popperup(vheight, vwidth, varpage, pageName) { //open a new popup window
                 var page = varpage;

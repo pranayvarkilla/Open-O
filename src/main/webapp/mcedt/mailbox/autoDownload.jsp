@@ -120,7 +120,7 @@
 
         <title>Downloading Claims from MCEDT to Oscar</title>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
     </head>
 

@@ -48,7 +48,7 @@
 
 <html>
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title>Generate Consultation Report</title>
         <link rel="stylesheet" href="css/displaytag.css" type="text/css">
         <style type="text/css">

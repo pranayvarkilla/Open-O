@@ -62,7 +62,7 @@
 <html>
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="ChooseDrug.title.DrugSearchResults"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script type="text/javascript" src="<c:out value="../share/javascript/Oscar.js"/>"></script>
         <script type="text/javascript" src="<c:out value="../share/javascript/prototype.js"/>"></script>
 

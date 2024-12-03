@@ -257,7 +257,7 @@
 
 <html>
 <head>
-    <html:base/>
+    <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     <title><%=handler.getPatientName() + " Lab Results"%>
     </title>
 

@@ -61,7 +61,7 @@
         <title><c:if test="${not empty title}">
             <c:out value="${title}"/>
         </c:if></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
     </head>
     <link rel="stylesheet" type="text/css"

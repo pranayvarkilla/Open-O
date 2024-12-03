@@ -74,7 +74,7 @@
         <title>Antenatal Record 1</title>
         <link rel="stylesheet" type="text/css"
               href="<%=bView?"arStyleView.css" : "arStyle.css"%>">
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <script type="text/javascript" language="Javascript">

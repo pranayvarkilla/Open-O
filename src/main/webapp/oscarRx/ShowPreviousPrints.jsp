@@ -65,7 +65,7 @@
         <title>Prescription Print History</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
 

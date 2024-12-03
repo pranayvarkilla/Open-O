@@ -116,7 +116,7 @@
                 src="../share/javascript/txtCounter/y_util.js"></script>
 
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <script type="text/javascript" language="Javascript">

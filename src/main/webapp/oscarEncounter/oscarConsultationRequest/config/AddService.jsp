@@ -44,14 +44,14 @@
     }
 %>
 <fmt:setBundle basename="oscarResources"/>
-<html:html lang="en">
+<html>
 
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddService.title"/>
         </title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
     </head>
     <script language="javascript">
@@ -146,4 +146,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

@@ -132,7 +132,7 @@
 
 
             </script>
-            <html:base/>
+            <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
             <meta http-equiv="Content-Type" content="text/html;">
             <title>Integrator Push Manager</title>
 

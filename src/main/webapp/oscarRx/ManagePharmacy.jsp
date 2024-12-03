@@ -49,7 +49,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.title"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <%
             // Check if RxSessionBean is missing in the session
             if (session.getAttribute("RxSessionBean") == null) {

@@ -74,7 +74,7 @@
 
     com.quatro.service.security.SecurityManager securityManager = new com.quatro.service.security.SecurityManager();
 %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="EditAllergies.title"/></title>
@@ -570,4 +570,4 @@
         <% } %>
     </table>
     </body>
-</html:html>
+</html>

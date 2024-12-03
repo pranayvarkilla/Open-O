@@ -52,7 +52,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Mental Health Assessment and Intervention Plan</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" media="screen"
               href="mhStyles.css">
         <link rel="stylesheet" type="text/css" media="print" href="print.css">

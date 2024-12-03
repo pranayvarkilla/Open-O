@@ -102,7 +102,7 @@
                 text-align: left;
             }
         </style>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:if test="${empty RxSessionBean}">
             <% response.sendRedirect("error.html"); %>

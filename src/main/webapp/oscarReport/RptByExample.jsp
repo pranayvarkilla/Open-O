@@ -44,7 +44,7 @@
 
 <link rel="stylesheet" type="text/css"
       href="../oscarEncounter/encounterStyles.css">
-<html:html lang="en">
+<html>
     <script language="JavaScript" type="text/JavaScript">
         <!--
         function reloadPage(init) {  //reloads the window if Nav4 resized
@@ -231,4 +231,4 @@
 
     </html:form>
     </body>
-</html:html>
+</html>

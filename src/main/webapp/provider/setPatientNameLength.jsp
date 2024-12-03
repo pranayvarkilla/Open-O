@@ -45,7 +45,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <html>
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><%=bundle.getString(providertitle)%></title>
         <script src="<c:out value="${ctx}"/>/share/javascript/provider_form_validations.js"></script>

@@ -220,7 +220,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.title"/> - <oscar:nameage
                 demographicNo="<%=demoNo%>"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script language="javascript" type="text/javascript"
                 src="../share/javascript/Oscar.js"></script>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>

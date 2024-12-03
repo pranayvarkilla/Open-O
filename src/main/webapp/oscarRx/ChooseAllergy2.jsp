@@ -52,7 +52,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/share/javascript/effects.js"></script>
 
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="ChooseAllergy.title"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:if test="${empty sessionScope.RxSessionBean}">
             <c:redirect url="error.html"/>

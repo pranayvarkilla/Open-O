@@ -76,7 +76,7 @@
 
 %>
 <fmt:setBundle basename="oscarResources"/>
-<html:html lang="en">
+<html>
 
     <%
         ResourceBundle oscarR = ResourceBundle.getBundle("oscarResources", request.getLocale());
@@ -94,7 +94,7 @@
         <script src="<%= request.getContextPath() %>/js/jquery-1.7.1.min.js"></script>
         <title><%=transactionType%>
         </title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
 
         <script>
@@ -416,4 +416,4 @@
         </tr>
     </table>
     </body>
-</html:html>
+</html>

@@ -100,7 +100,7 @@
         }
 
     </style>
-    <html:base/>
+    <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
 
     <link rel="stylesheet" type="text/css" href="styles.css">

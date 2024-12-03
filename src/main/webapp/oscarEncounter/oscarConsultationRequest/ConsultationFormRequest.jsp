@@ -94,7 +94,7 @@
 <jsp:useBean id="displayServiceUtil" scope="request"
              class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConDisplayServiceUtil"/>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
 
     <%! boolean bMultisites = org.oscarehr.common.IsPropertiesOn.isMultisitesEnable(); %>
 
@@ -491,7 +491,7 @@
         <title>
             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.title"/>
         </title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
         <script>
             var ctx = '<%=request.getContextPath()%>';
@@ -3075,7 +3075,7 @@ if (userAgent != null) {
 
     </script>
 
-</html:html>
+</html>
 
 <%!
     protected String listNotes(CaseManagementManager cmgmtMgr, String code, String providerNo, String demoNo) {

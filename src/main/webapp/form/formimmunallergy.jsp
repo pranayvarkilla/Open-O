@@ -48,7 +48,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Immunizations/Allergies</title>
         <link rel="stylesheet" type="text/css" href="arStyle.css">
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <script type="text/javascript" language="Javascript">

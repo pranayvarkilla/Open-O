@@ -43,7 +43,7 @@
               type="text/css">
         <link rel="stylesheet" type="text/css"
               href="<c:out value="${ctx}"/>/css/print.css" media="print"/>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title>Case Management</title>
         <%! String refresh = oscar.OscarProperties.getInstance().getProperty("refresh.encounterLayout.jsp", "-1"); %>
         <%="-1".equals(refresh) ? "" : "<meta http-equiv=\"refresh\" content=\"" + refresh + ";\">"%>

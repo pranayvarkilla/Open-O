@@ -49,7 +49,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Mini Mental State Exam</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" href="mmseStyle.css"/>
         <link rel="stylesheet" type="text/css" media="print" href="print.css"/>
     </head>

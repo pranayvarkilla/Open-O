@@ -64,7 +64,7 @@
         <script type="text/javascript" src="${ oscar_context_path }/js/jquery-ui-1.8.18.custom.min.js"></script>
         <script type="text/javascript">var ctx = '${ oscar_context_path }';</script>
         <title>Drug Reason</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
 
         <%

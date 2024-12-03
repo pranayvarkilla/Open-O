@@ -36,7 +36,7 @@
 
 <html>
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title>Measurement Mapping Configuration</title>
         <!-- css -->
         <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet"> <!-- Bootstrap 2.3.1 -->

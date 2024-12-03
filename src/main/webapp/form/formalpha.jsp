@@ -49,7 +49,7 @@
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.formAlpha.title"/></title>
         <link rel="stylesheet" type="text/css" href="alphaStyle.css">
         <link rel="stylesheet" type="text/css" media="print" href="print.css">
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <%
             String formClass = "Alpha";

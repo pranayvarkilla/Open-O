@@ -53,7 +53,7 @@
               href="../../oscarEncounter/styles.css"/>
         <link rel="stylesheet" type="text/css" media="print"
               href="../../oscarEncounter/print.css"/>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <%

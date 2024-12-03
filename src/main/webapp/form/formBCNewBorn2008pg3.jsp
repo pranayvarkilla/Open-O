@@ -106,7 +106,7 @@
         <script type="text/javascript" src="../share/calendar/calendar-setup.js"></script>
 
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <script type="text/javascript" language="Javascript">

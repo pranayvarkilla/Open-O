@@ -105,7 +105,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.optChooseSpec"/></title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet"> <!-- Bootstrap 2.3.1 -->
         <link href="${pageContext.request.contextPath}/css/DT_bootstrap.css" rel="stylesheet">

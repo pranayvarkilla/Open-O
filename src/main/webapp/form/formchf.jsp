@@ -469,7 +469,7 @@
             }
         </script>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <body bgproperties="fixed" class="chfform" bgcolor="#EEEEFF"

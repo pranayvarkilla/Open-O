@@ -91,7 +91,7 @@
                 if (win != null) win.close();
             }
         </script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
     <body onload="initPage()" onunload="unloadMe()">
     <table border="0" cellspacing="0" cellpadding="0" width="100%"

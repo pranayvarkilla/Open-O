@@ -79,7 +79,7 @@
 <html>
 <head>
     <script type="text/javascript" src="<%= request.getContextPath()%>/js/global.js"></script>
-    <html:base/>
+    <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     <title><%=""/*lab.pLastName*/%>, <%=""/*lab.pFirstName*/%> <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.segmentDisplay.title"/></title>
     <link rel="stylesheet" type="text/css"
           href="../../../share/css/OscarStandardLayout.css">

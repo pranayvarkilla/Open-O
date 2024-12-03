@@ -44,7 +44,7 @@
      --%>
 
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.surveillanceConfig"/></title>
         <link href="<%=request.getContextPath() %>/library/bootstrap/3.0.0/css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="<%=request.getContextPath() %>/css/font-awesome.min.css">

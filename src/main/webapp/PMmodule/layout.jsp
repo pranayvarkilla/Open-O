@@ -78,7 +78,7 @@
         <script type="text/javascript" src="<html:rewrite page="/js/jquery.js" />"></script>
         <script type="text/javascript" src="<html:rewrite page="/js/topnav.js" />"></script>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
     <body style="margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;">
 

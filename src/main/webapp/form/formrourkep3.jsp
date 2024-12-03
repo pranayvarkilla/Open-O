@@ -55,7 +55,7 @@
 
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.formRourke3.title"/></title>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <link rel="stylesheet" type="text/css" media="screen"
               href="rourkeStyle.css">

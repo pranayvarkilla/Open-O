@@ -65,7 +65,7 @@
 <html>
 
     <head>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Demographic Set Edit I18n</title>
         <script src="../share/javascript/Oscar.js"></script>

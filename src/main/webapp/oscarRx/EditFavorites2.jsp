@@ -35,7 +35,7 @@
         <script type="text/javascript" src="<c:out value="${ctx}/share/javascript/screen.js"/>"></script>
         <script type="text/javascript" src="<c:out value="${ctx}/share/javascript/rx.js"/>"></script>
         <title>Edit Favorites</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:if test="${empty RxSessionBean}">
             <c:redirect url="error.html"/>

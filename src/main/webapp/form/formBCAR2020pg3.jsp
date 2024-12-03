@@ -147,7 +147,7 @@
                 $('form').trigger('checkform.areYouSure');
             }
         </script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
     </head>
 
