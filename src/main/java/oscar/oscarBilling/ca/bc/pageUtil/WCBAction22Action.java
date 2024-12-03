@@ -67,7 +67,7 @@ public class WCBAction22Action extends ActionSupport {
         if (request.getSession().getAttribute("user") == null) {
             return "Logout";
         }
-        MiscUtils.getLogger().debug("In WCBAction2 Jackson");
+        MiscUtils.getLogger().debug("In WCBAction22Action Jackson");
 
         //Get rid of this
         WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getSession().getServletContext());

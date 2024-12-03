@@ -1,21 +1,19 @@
 //CHECKSTYLE:OFF
 package org.oscarehr.contactRegistry;
 
+import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.model.ProfessionalSpecialist;
 import org.oscarehr.managers.ProfessionalSpecialistsManager;
 import org.oscarehr.util.JsonUtil;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
-import oscar.form.JSONAction;
+import oscar.form.JSONUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-import oscar.form.JSONUtil;
 
 public class ProfessionalSpecialist2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

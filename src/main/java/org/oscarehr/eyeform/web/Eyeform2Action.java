@@ -41,8 +41,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.LabelValueBean;
-import org.apache.struts.validator.DynaValidatorForm;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.casemgmt.dao.CaseManagementNoteDAO;
 import org.oscarehr.casemgmt.dao.IssueDAO;
@@ -82,7 +80,7 @@ import org.oscarehr.common.model.Provider;
 import org.oscarehr.common.model.Site;
 import org.oscarehr.common.model.Tickler;
 import org.oscarehr.common.service.PdfRecordPrinter;
-import org.oscarehr.common.web.ContactAction;
+import org.oscarehr.common.web.Contact2Action;
 import org.oscarehr.eyeform.MeasurementFormatter;
 import org.oscarehr.eyeform.dao.EyeFormDao;
 import org.oscarehr.eyeform.dao.EyeformConsultationReportDao;
@@ -107,6 +105,7 @@ import org.springframework.beans.BeanUtils;
 
 import oscar.OscarProperties;
 import oscar.SxmlMisc;
+import oscar.util.LabelValueBean;
 import oscar.util.UtilDateUtilities;
 
 import com.itextpdf.text.DocumentException;
@@ -796,7 +795,7 @@ public class Eyeform2Action extends ActionSupport {
 
         DemographicContactDao demographicContactDao = (DemographicContactDao) SpringUtils.getBean(DemographicContactDao.class);
         List<DemographicContact> contacts = demographicContactDao.findByDemographicNoAndCategory(demographicNo, "professional");
-        contacts = ContactAction.fillContactNames(contacts);
+        contacts = Contact2Action.fillContactNames(contacts);
         request.setAttribute("contacts", contacts);
 
 

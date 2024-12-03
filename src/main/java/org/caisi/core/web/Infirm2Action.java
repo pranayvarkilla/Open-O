@@ -22,19 +22,9 @@
  */
 package org.caisi.core.web;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.LabelValueBean;
+import org.apache.struts2.ServletActionContext;
 import org.caisi.service.InfirmBedProgramManager;
 import org.oscarehr.PMmodule.service.AdmissionManager;
 import org.oscarehr.PMmodule.service.ProgramManager;
@@ -43,11 +33,18 @@ import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SessionConstants;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.OscarProperties;
+import oscar.util.LabelValueBean;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class Infirm2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -133,7 +130,7 @@ public class Infirm2Action extends ActionSupport {
 
         se.setAttribute(SessionConstants.CURRENT_PROGRAM_ID, String.valueOf(programId));
 
-        org.caisi.core.web.InfirmAction.updateCurrentProgram(String.valueOf(programId), loggedInInfo.getLoggedInProviderNo());
+        org.caisi.core.web.Infirm2Action.updateCurrentProgram(String.valueOf(programId), loggedInInfo.getLoggedInProviderNo());
 
         if (programId != 0) {
             se.setAttribute("case_program_id", String.valueOf(programId));

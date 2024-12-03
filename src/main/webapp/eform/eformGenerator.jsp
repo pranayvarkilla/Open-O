@@ -44,7 +44,6 @@
 <%@ page import="java.util.*" %>
 <%@ page import="oscar.eform.*" %>
 <%@ page import="oscar.eform.data.*" %>
-<%@ page import="oscar.eform.actions.DisplayImageAction" %>
 <%@ page import="oscar.OscarProperties" %>
 <%@ page import="org.apache.logging.log4j.Logger" %>
 <!--

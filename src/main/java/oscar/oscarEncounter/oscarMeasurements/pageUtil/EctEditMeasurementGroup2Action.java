@@ -55,14 +55,7 @@ public class EctEditMeasurementGroup2Action extends ActionSupport {
     public String execute()
             throws ServletException, IOException {
         if (securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin", "w", null) || securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin.measurements", "w", null)) {
-
-            //EctEditMeasurementGroupForm frm = (EctEditMeasurementGroupForm) form;
-            //request.getSession().setAttribute("EctEditMeasurementGroupForm", frm);
-            //String groupName = this.getGroupName();
-
             if (this.getForward() != null) {
-
-
                 if (this.getForward().compareTo("add") == 0) {
                     MiscUtils.getLogger().debug("the add button is pressed");
                     String[] selectedAddTypes = this.getSelectedAddTypes();

@@ -33,7 +33,6 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.UserPropertyDAO;
 import org.oscarehr.common.model.UserProperty;
 import org.oscarehr.util.LoggedInInfo;
@@ -53,7 +52,7 @@ import org.apache.struts2.ServletActionContext;
 public class EctDisplayConsult2Action extends EctDisplayAction {
     private String cmd = "consultation";
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
         String appointmentNo = bean.appointmentNo;
@@ -64,7 +63,7 @@ public class EctDisplayConsult2Action extends EctDisplayAction {
             //set lefthand module heading and link
             String winName = "Consultation" + bean.demographicNo;
             String url = "popupPage(700,960,'" + winName + "','" + request.getContextPath() + "/oscarEncounter/oscarConsultationRequest/DisplayDemographicConsultationRequests.jsp?de=" + bean.demographicNo + "')";
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "oscarEncounter.LeftNavBar.Consult"));
+            Dao.setLeftHeading(getText("oscarEncounter.LeftNavBar.Consult"));
             Dao.setLeftURL(url);
 
             //set the right hand heading link\

@@ -23,13 +23,8 @@
 
 package org.caisi.tickler.web;
 
-import java.util.Collection;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.struts.validator.LazyValidatorForm;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.common.dao.UserPropertyDAO;
 import org.oscarehr.common.model.CustomFilter;
@@ -40,11 +35,12 @@ import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.managers.TicklerManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.login.LoginCheckLogin;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.Collection;
 
 public class UnreadTickler2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

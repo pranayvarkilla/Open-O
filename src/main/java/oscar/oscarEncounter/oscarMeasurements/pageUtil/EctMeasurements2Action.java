@@ -25,19 +25,13 @@
 
 package oscar.oscarEncounter.oscarMeasurements.pageUtil;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.opensymphony.xwork2.ActionSupport;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.GenericValidator;
-import org.apache.struts.util.MessageResources;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.casemgmt.model.CaseManagementNote;
 import org.oscarehr.casemgmt.service.CaseManagementManager;
 import org.oscarehr.common.dao.FlowSheetCustomizationDao;
@@ -53,16 +47,21 @@ import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import oscar.oscarEncounter.data.EctProgram;
 import oscar.oscarEncounter.oscarMeasurements.MeasurementFlowSheet;
 import oscar.oscarEncounter.oscarMeasurements.MeasurementTemplateFlowSheetConfig;
 import oscar.util.ConversionUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class EctMeasurements2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

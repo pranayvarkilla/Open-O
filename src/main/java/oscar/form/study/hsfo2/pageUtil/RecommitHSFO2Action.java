@@ -26,17 +26,9 @@
 package oscar.form.study.hsfo2.pageUtil;
 
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.validator.LazyValidatorForm;
+import org.apache.struts2.ServletActionContext;
 import org.caisi.dao.ProviderDAO;
 import org.hsfo.v2.HsfHmpDataDocument;
 import org.oscarehr.PMmodule.dao.ProviderDao;
@@ -52,13 +44,16 @@ import org.oscarehr.util.SpringUtils;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import org.springframework.web.struts.DispatchActionSupport;
-
 import oscar.OscarProperties;
 import oscar.form.study.hsfo2.pageUtil.XMLTransferUtil.SoapElementKey;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 public class RecommitHSFO2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

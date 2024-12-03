@@ -94,8 +94,6 @@
             <td class="MainTableRightColumn"><html:form
                     action="/EnterSignature.do">
                 <%
-                    ProEditSignatureForm thisForm = (ProEditSignatureForm) request.getAttribute("ProEditSignatureForm");
-                    thisForm.setSignature(sig.getSignature(curUser_no));
                     if (sig.hasSignature(curUser_no)) {
                 %>
                 <bean:message key="provider.editSignature.msgEdit"/>

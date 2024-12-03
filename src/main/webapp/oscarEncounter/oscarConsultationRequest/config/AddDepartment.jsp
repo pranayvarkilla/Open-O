@@ -43,9 +43,6 @@
         return;
     }
 %>
-
-<%@page import="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConAddDepartmentForm" %>
-
 <html>
 
     <%
@@ -116,16 +113,6 @@
 
                             <html:form action="/oscarEncounter/AddDepartment">
                             <table>
-                                        <%
-                           if (request.getAttribute("id") != null ){
-                           EctConAddDepartmentForm thisForm;
-                           thisForm = (EctConAddDepartmentForm) request.getAttribute("EctConAddDepartmentForm");
-                           thisForm.setId((String) request.getAttribute("id"));
-                           thisForm.setName( (String) request.getAttribute("name"));
-                     
-                           thisForm.setAnnotation( (String) request.getAttribute("annotation"));
-                           }
-                        %>
                                     <html:hidden name="EctConAddDepartmentForm" property="id"/>
                                 <tr>
                                     <td>Name</td>

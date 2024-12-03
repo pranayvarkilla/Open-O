@@ -42,7 +42,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.struts.upload.FormFile;
 import org.oscarehr.PMmodule.caisi_integrator.ConformanceTestHelper;
 import org.oscarehr.PMmodule.model.ProgramProvider;
 import org.oscarehr.casemgmt.model.CaseManagementNote;
@@ -70,7 +69,6 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import oscar.MyDateFormat;
-import org.oscarehr.documentManager.data.AddEditDocumentForm;
 import oscar.log.LogAction;
 import oscar.log.LogConst;
 import oscar.oscarEncounter.data.EctProgram;
@@ -465,12 +463,11 @@ public class AddEditDocument2Action extends ActionSupport {
         return "successEdit";
     }
 
-    private File writeLocalFile(FormFile docFile, String fileName) throws Exception {
+    private File writeLocalFile(File docFile, String fileName) throws Exception {
         InputStream fis = null;
         File file = null;
         try {
-            fis = docFile.getInputStream();
-            file = writeLocalFile(fis, fileName);
+            file = writeLocalFile(Files.newInputStream(docFile.toPath()), fileName);
         } finally {
             if (fis != null) fis.close();
         }

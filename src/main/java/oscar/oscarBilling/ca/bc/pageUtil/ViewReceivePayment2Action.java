@@ -42,7 +42,6 @@ public class ViewReceivePayment2Action
     HttpServletResponse response = ServletActionContext.getResponse();
 
     public String execute() {
-        //ReceivePaymentActionForm frm = (ReceivePaymentActionForm) actionForm;
         BillingViewBean bean = new BillingViewBean();
         String billingMasterNo = request.getParameter("lineNo");
         String billNo = request.getParameter("billNo");

@@ -35,9 +35,6 @@ import org.oscarehr.util.SpringUtils;
 import org.quartz.CronTrigger;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
-import oscar.OscarProperties;
-
-import oscar.form.study.hsfo2.pageUtil.RecommitHSFOAction.ResubmitJob;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
@@ -85,7 +82,7 @@ public class HsfoQuartzServlet implements Servlet {
 
         //trigger.setCronExpression("0 42 10 * * ?"); //Build a trigger that will fire daily at 10:42 am
 
-        JobDetail jobDetail = new JobDetail(RESUBMIT_JOB, Scheduler.DEFAULT_GROUP, ResubmitJob.class);
+        JobDetail jobDetail = new JobDetail(RESUBMIT_JOB, Scheduler.DEFAULT_GROUP, RecommitHSFO2Action.ResubmitJob.class);
 
         //Delete old job.
         JobDetail job = scheduler.getJobDetail(RESUBMIT_JOB, Scheduler.DEFAULT_GROUP);

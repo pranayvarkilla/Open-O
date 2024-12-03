@@ -26,31 +26,25 @@
 
 package oscar.oscarResearch.oscarDxResearch.pageUtil;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.AbstractCodeSystemDao;
-import org.oscarehr.common.dao.AbstractCodeSystemDaoImpl;
 import org.oscarehr.common.dao.DxresearchDAO;
 import org.oscarehr.common.model.AbstractCodeSystemModel;
 import org.oscarehr.common.model.Dxresearch;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.log.LogAction;
 import oscar.log.LogConst;
 import oscar.util.ConversionUtils;
-import oscar.util.ParameterActionForward;
 
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
 public class dxResearch2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

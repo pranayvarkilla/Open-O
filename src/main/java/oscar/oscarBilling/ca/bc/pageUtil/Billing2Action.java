@@ -63,7 +63,6 @@ public final class Billing2Action extends ActionSupport {
             response.sendRedirect(newURL);
             return NONE;
         } else {
-            //BillingCreateBillingForm frm = (BillingCreateBillingForm) form;
             if (request.getParameter("demographic_no") != null &
                     request.getParameter("appointment_no") != null) {
                 String newWCBClaim = request.getParameter("newWCBClaim");

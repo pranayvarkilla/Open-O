@@ -26,35 +26,25 @@
 
 package oscar.oscarEncounter.pageUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Properties;
-import java.util.Vector;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.model.EFormData;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
-
 import oscar.eform.EFormUtil;
 import oscar.util.DateUtils;
 import oscar.util.OscarRoleObjectPrivilege;
 import oscar.util.StringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 public class EctDisplayEForm2Action extends EctDisplayAction {
     private static Logger logger = MiscUtils.getLogger();
     //private final static String BGCOLOUR = "11CC00";
     private String cmd = "eforms";
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         try {
             String roleName = (String) request.getSession().getAttribute("userrole") + "," + (String) request.getSession().getAttribute("user");
 
@@ -71,7 +61,7 @@ public class EctDisplayEForm2Action extends EctDisplayAction {
                 //set lefthand module heading and link
                 String winName = "eForm" + bean.demographicNo;
                 String url = "popupPage(500,950,'" + winName + "', '" + request.getContextPath() + "/eform/efmpatientformlist.jsp?demographic_no=" + bean.demographicNo + "&apptProvider=" + bean.getCurProviderNo() + "&appointment=" + bean.appointmentNo + "&parentAjaxId=" + cmd + "')";
-                Dao.setLeftHeading(messages.getMessage(request.getLocale(), "global.eForms"));
+                Dao.setLeftHeading(getText("global.eForms"));
                 Dao.setLeftURL(url);
 
                 //set the right hand heading link

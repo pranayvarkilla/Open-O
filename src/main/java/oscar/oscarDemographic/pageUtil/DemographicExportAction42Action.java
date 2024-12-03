@@ -174,7 +174,7 @@ import oscar.oscarProvider.data.ProviderData;
 import oscar.oscarReport.data.DemographicSets;
 import oscar.oscarReport.data.RptDemographicQueryBuilder;
 import oscar.oscarReport.data.RptDemographicQueryLoader;
-import oscar.oscarReport.pageUtil.RptDemographicReportForm;
+import oscar.oscarReport.pageUtil.RptDemographicReport2Form;
 import oscar.oscarRx.data.RxPatientData;
 import oscar.oscarRx.data.RxPrescriptionData;
 import oscar.util.ConversionUtils;
@@ -244,9 +244,6 @@ public class DemographicExportAction42Action extends ActionSupport {
             throw new SecurityException("missing required security object (_demographicExport)");
         }
 
-
-        //DemographicExportForm defrm = (DemographicExportForm) form;
-        //String demographicNo = defrm.getDemographicNo();
         String setName = this.getPatientSet();
         //String pgpReady = defrm.getPgpReady();
         String templateOption = this.getTemplate();
@@ -273,7 +270,7 @@ public class DemographicExportAction42Action extends ActionSupport {
             list = new DemographicSets().getDemographicSet(setName);
             if (list.isEmpty() && !setName.isEmpty() && !"-1".equals(setName)) {
                 Date asofDate = new Date();
-                RptDemographicReportForm frm = new RptDemographicReportForm();
+                RptDemographicReport2Form frm = new RptDemographicReport2Form();
                 frm.setSavedQuery(setName);
                 RptDemographicQueryLoader demoL = new RptDemographicQueryLoader();
                 frm = demoL.queryLoader(frm);
@@ -3720,3 +3717,14 @@ public class DemographicExportAction42Action extends ActionSupport {
     }
 }
 
+class Enrolment {
+    public String status;
+    public Date date;
+    public String enrolledTo;
+    public Date terminationDate;
+    public String terminationReason;
+
+    public String toString() {
+        return "Enrolment: status=" + status + ",date=" + date + ",enroledTo=" + enrolledTo + ",terminationDate=" + terminationDate + ",terminationReason=" + terminationReason;
+    }
+}

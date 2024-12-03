@@ -26,33 +26,25 @@
 
 package oscar.oscarLab.ca.bc.PathNet.pageUtil;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.upload.FormFile;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.OscarProperties;
 import oscar.oscarLab.FileUploadCheck;
 import oscar.oscarLab.ca.bc.PathNet.Connection;
 import oscar.oscarLab.ca.bc.PathNet.HL7.Message;
 
-
-/**
- * @author Jay Gallagher
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class LabUpload2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

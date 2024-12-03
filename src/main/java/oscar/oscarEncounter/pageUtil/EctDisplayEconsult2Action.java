@@ -26,26 +26,17 @@
 
 package oscar.oscarEncounter.pageUtil;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.model.Document;
 import org.oscarehr.managers.ConsultationManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.OscarProperties;
 
-
-/**
- * Retrieves the eConsults for the demographic and displays them in the eChart
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 public class EctDisplayEconsult2Action extends EctDisplayAction {
 
@@ -63,7 +54,7 @@ public class EctDisplayEconsult2Action extends EctDisplayAction {
      * @param messages i18n message bundle
      * @return Always returns a true boolean
      */
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
 
         // hide the econsult option if it is not available.
         if (backendEconsultUrl == null || backendEconsultUrl.equals("")) {

@@ -222,7 +222,7 @@ public class SplitDocument2Action extends ActionSupport {
             int r = pg.getRotation();
             pg.setRotation((r + 180) % 360);
 
-            ManageDocumentAction.deleteCacheVersion(doc, x);
+            ManageDocument2Action.deleteCacheVersion(doc, x);
             x++;
         }
 
@@ -247,7 +247,7 @@ public class SplitDocument2Action extends ActionSupport {
             int r = pg.getRotation();
             pg.setRotation((r + 90) % 360);
 
-            ManageDocumentAction.deleteCacheVersion(doc, x);
+            ManageDocument2Action.deleteCacheVersion(doc, x);
             x++;
         }
 
@@ -276,7 +276,7 @@ public class SplitDocument2Action extends ActionSupport {
 
         int x = 1;
         for (Object p : pdf.getDocumentCatalog().getPages()) {
-            ManageDocumentAction.deleteCacheVersion(doc, x);
+            ManageDocument2Action.deleteCacheVersion(doc, x);
             x++;
         }
 

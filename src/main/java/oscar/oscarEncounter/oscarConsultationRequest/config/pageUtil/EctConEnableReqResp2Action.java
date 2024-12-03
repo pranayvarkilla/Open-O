@@ -62,7 +62,6 @@ public class EctConEnableReqResp2Action extends ActionSupport {
         ConsultationServiceDao serviceDao = (ConsultationServiceDao) SpringUtils.getBean(ConsultationServiceDao.class);
 
         ConsultationManager manager = new ConsultationManagerImpl();
-        //EctConEnableReqRespForm eRRForm = (EctConEnableReqRespForm) form;
 
         Property consultRequestEnabled = new Property(manager.CON_REQUEST_ENABLED);
         Property consultResponseEnabled = new Property(manager.CON_RESPONSE_ENABLED);

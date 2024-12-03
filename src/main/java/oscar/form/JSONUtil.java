@@ -26,7 +26,6 @@ package oscar.form;
 
 import net.sf.json.JSONObject;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.actions.DispatchAction;
 import org.oscarehr.util.MiscUtils;
 
 import javax.servlet.http.HttpServletResponse;

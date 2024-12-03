@@ -26,17 +26,7 @@
 
 package oscar.oscarEncounter.immunization.config.pageUtil;
 
-import java.io.IOException;
-import java.util.Locale;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.util.MessageResources;
-
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public final class EctImmInitConfig2Action extends ActionSupport {
     public String execute() {

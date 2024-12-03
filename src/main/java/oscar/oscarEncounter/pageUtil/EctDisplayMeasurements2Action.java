@@ -26,7 +26,6 @@
 package oscar.oscarEncounter.pageUtil;
 
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.AdmissionDao;
 import org.oscarehr.common.dao.FlowsheetDao;
 import org.oscarehr.common.dao.MeasurementGroupStyleDao;
@@ -49,16 +48,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-
 public class EctDisplayMeasurements2Action extends EctDisplayAction {
     private static final String cmd = "measurements";
     FlowsheetDao flowsheetDao = (FlowsheetDao) SpringUtils.getBean(FlowsheetDao.class);
     Logger logger = MiscUtils.getLogger();
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
 
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
@@ -70,7 +65,7 @@ public class EctDisplayMeasurements2Action extends EctDisplayAction {
             String roleName$ = request.getSession().getAttribute("userrole") + "," + request.getSession().getAttribute("user");
 
             //set text for lefthand module title
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "oscarEncounter.Index.measurements"));
+            Dao.setLeftHeading(getText("oscarEncounter.Index.measurements"));
 
             //set link for lefthand module title
             String winName = "measurements" + bean.demographicNo;
@@ -79,7 +74,7 @@ public class EctDisplayMeasurements2Action extends EctDisplayAction {
 
             //we're going to display a pop up menu of measurement groups
             Dao.setRightHeadingID(menuId);
-            Dao.setMenuHeader(messages.getMessage("oscarEncounter.LeftNavBar.InputGrps"));
+            Dao.setMenuHeader(getText("oscarEncounter.LeftNavBar.InputGrps"));
             Dao.setRightURL("return !showMenu('" + menuId + "', event);");
 
             com.quatro.service.security.SecurityManager securityMgr = new com.quatro.service.security.SecurityManager();

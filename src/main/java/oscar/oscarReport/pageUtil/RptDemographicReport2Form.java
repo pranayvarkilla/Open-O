@@ -25,9 +25,6 @@
 
 package oscar.oscarReport.pageUtil;
 
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionMapping;
 import org.oscarehr.util.MiscUtils;
 import oscar.util.ConversionUtils;
 
@@ -36,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public final class RptDemographicReport2Form extends ActionForm {
+public final class RptDemographicReport2Form {
 
     public String[] select;
     public String age;
@@ -276,64 +273,6 @@ public final class RptDemographicReport2Form extends ActionForm {
     }
 
     //=---------------------------------------------------------------------
-
-    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-
-        ActionErrors errors = new ActionErrors();
-
-        MiscUtils.getLogger().debug("step1");
-        //
-        //
-        //     if ((select == null || select.length == 0) ){
-        //        if (!query.equals("Load Query")){
-        //            errors.add("select", new ActionError("error.select.zeroEntries"));
-        //        }
-        //     }
-        //
-        //     if ( !age.equals("0")){
-        //        int ageStyle = 0;
-        //        try{
-        //            ageStyle = Integer.parseInt(age);
-        //        }catch(Exception q){ errors.add("ageStyle", new ActionError("error.RPTageStyle.notNumeric")); }
-        //
-        //        switch (ageStyle){
-        //                case 1:
-        //                    if (!validateYear(startYear)){
-        //                       errors.add("startYear", new ActionError("error.startYear.notNumeric"));
-        //                    }
-        //                    break;
-        //                case 2:
-        //                    if (!validateYear(startYear)){
-        //                       errors.add("startYear", new ActionError("error.startYear.notNumeric"));
-        //                    }
-        //                    break;
-        //                case 3:
-        //                    if (!validateYear(startYear)){
-        //                       errors.add("startYear", new ActionError("error.startYear.notNumeric"));
-        //                    }
-        //                    break;
-        //                case 4:
-        //                    if (!validateYear(startYear)){
-        //                       errors.add("startYear", new ActionError("error.startYear.notNumeric"));
-        //                    }
-        //                    if (!validateYear(endYear)){
-        //                       errors.add("endYear", new ActionError("error.endYear.notNumeric"));
-        //                    }
-        //                    break;
-        //            }
-        //
-        //
-        //    }
-        //
-        //    if (query != null && query.equals("Save Query")){
-        //        if (queryName == null || queryName.trim().length() == 0){
-        //            errors.add("queryName", new ActionError("error.savedQuery.notFilledIn"));
-        //         }
-        //    }
-
-        MiscUtils.getLogger().debug("step2 " + errors.size());
-        return errors;
-    }
 
     public boolean validateYear(String str) {
         boolean retval = false;

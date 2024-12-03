@@ -58,8 +58,6 @@ public class EctAddMeasurementGroup2Action extends ActionSupport {
 
         if (securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin", "w", null) || securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin.measurements", "w", null)) {
 
-            //EctAddMeasurementGroupForm frm = (EctAddMeasurementGroupForm) form;
-            //request.getSession().setAttribute("EctAddMeasurementGroupForm", frm);
             String groupName = this.getGroupName();
             request.getSession().setAttribute("groupName", groupName);
 

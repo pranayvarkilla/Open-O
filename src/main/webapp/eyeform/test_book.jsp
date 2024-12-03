@@ -23,15 +23,10 @@
     Ontario, Canada
 
 --%>
-
-<%@page import="org.oscarehr.eyeform.model.EyeformTestBook" %>
-<%@page import="org.oscarehr.eyeform.web.TestBookAction" %>
-
-
 <%@ include file="/taglibs.jsp" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
-    String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName$%>" objectName="_eChart" rights="w" reverse="<%=true%>">

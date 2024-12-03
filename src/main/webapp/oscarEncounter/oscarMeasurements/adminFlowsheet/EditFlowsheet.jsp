@@ -371,7 +371,6 @@
 		                    and seems to be incorrectly removing measurements. This code is commented
 		                    out until a correct solution is found.
 		                --%>
-		                <%-- <a href="FlowSheetCustomAction.do?method=delete&flowsheet=<%=temp%>&measurement=<%=mstring%><%=demographicStr%><%=htQueryString%><%=scope==null?"":"&scope="+scope%>" title="Delete" class="action-icon"><i class="icon-trash"></i></a> --%>
 		               <%
 		                if(mFlowsheet.getFlowSheetItem(mstring).isHide()){
 		               %>

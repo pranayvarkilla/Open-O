@@ -36,7 +36,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.validator.DynaValidatorForm;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.common.dao.DemographicDao;
 import org.oscarehr.common.model.Provider;

@@ -29,8 +29,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionMapping;
 import org.oscarehr.common.dao.PropertyDao;
 import org.oscarehr.common.model.Property;
 import org.oscarehr.util.SpringUtils;
@@ -54,7 +52,6 @@ public class SaveBillingPreferences2Action
     HttpServletResponse response = ServletActionContext.getResponse();
 
     public String execute() {
-        //BillingPreferencesActionForm frm = (BillingPreferencesActionForm) actionForm;
         BillingPreferencesDAO dao = SpringUtils.getBean(BillingPreferencesDAO.class);
         PropertyDao propertyDao = SpringUtils.getBean(PropertyDao.class);
 
@@ -241,12 +238,6 @@ public class SaveBillingPreferences2Action
 
     public void setInvoicePayeeDisplayClinicInfo(boolean invoicePayeeDisplayClinicInfo) {
         this.invoicePayeeDisplayClinicInfo = invoicePayeeDisplayClinicInfo;
-    }
-
-    public ActionErrors validate(ActionMapping actionMapping,
-                                 HttpServletRequest httpServletRequest) {
-        /** @todo: finish this method, this is just the skeleton.*/
-        return null;
     }
 
     public String getDefaultBillingForm() {

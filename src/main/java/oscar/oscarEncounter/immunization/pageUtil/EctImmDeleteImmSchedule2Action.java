@@ -56,7 +56,7 @@ public class EctImmDeleteImmSchedule2Action extends ActionSupport {
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
     /**
-     * Creates a new instance of EctImmDeleteImmScheduleAction
+     * Creates a new instance of EctImmDeleteImmSchedule2Action
      */
     public EctImmDeleteImmSchedule2Action() {
     }
@@ -97,7 +97,7 @@ public class EctImmDeleteImmSchedule2Action extends ActionSupport {
             //EctImmImmunizationData imm = new EctImmImmunizationData();
             immData.saveImmunizations(demographicNo, providerNo, sXML);
         } catch (Exception ex) {
-            throw new ServletException("Exception occurred in EctImmDeleteImmScheduleAction", ex);
+            throw new ServletException("Exception occurred in EctImmDeleteImmSchedule2Action", ex);
         }
 
         return SUCCESS;

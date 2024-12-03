@@ -26,24 +26,11 @@
 
 package org.oscarehr.web;
 
-import java.awt.Color;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONArray;
-
 import org.apache.commons.lang.WordUtils;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.LabelValueBean;
+import org.apache.struts2.ServletActionContext;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
@@ -63,18 +50,16 @@ import org.oscarehr.util.SpringUtils;
 import org.oscarehr.web.reports.ocan.IndividualNeedRatingOverTimeReportGenerator;
 import org.oscarehr.web.reports.ocan.NeedRatingOverTimeReportGenerator;
 import org.oscarehr.web.reports.ocan.SummaryOfActionsAndCommentsReportGenerator;
-import org.oscarehr.web.reports.ocan.beans.CachedOcanFormAndData;
-import org.oscarehr.web.reports.ocan.beans.OcanConsumerStaffNeedBean;
-import org.oscarehr.web.reports.ocan.beans.OcanDomainConsumerStaffBean;
-import org.oscarehr.web.reports.ocan.beans.OcanIndividualNeedsOverTimeBean;
-import org.oscarehr.web.reports.ocan.beans.OcanNeedRatingOverTimeNeedBreakdownBean;
-import org.oscarehr.web.reports.ocan.beans.OcanNeedRatingOverTimeSummaryOfNeedsBean;
-import org.oscarehr.web.reports.ocan.beans.SummaryOfActionsAndCommentsDomainBean;
-import org.oscarehr.web.reports.ocan.beans.SummaryOfActionsAndCommentsOCANBean;
-import org.oscarehr.web.reports.ocan.beans.SummaryOfActionsAndCommentsReportBean;
+import org.oscarehr.web.reports.ocan.beans.*;
+import oscar.util.LabelValueBean;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.*;
 
 public class OcanReporting2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

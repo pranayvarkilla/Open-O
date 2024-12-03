@@ -23,17 +23,14 @@
 
 package org.oscarehr.casemgmt.web;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.oscarehr.casemgmt.web.formbeans.OnCallQuestionnaireFormBean;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.OnCallQuestionnaireDao;
 import org.oscarehr.common.model.OnCallQuestionnaire;
 import org.oscarehr.util.SpringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -56,8 +53,6 @@ public class OnCallQuestionnaire2Action extends ActionSupport {
     public String save() throws Exception {
         String providerNo = request.getParameter("providerNo");
         String type = request.getParameter("type");
-
-        //OnCallQuestionnaireFormBean f = (OnCallQuestionnaireFormBean) form;
 
         OnCallQuestionnaire bean = new OnCallQuestionnaire();
         bean.setProviderNo(providerNo);

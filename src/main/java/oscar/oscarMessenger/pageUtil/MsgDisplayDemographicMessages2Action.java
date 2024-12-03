@@ -25,7 +25,7 @@
 
 
 /*
- * MsgDisplayDemographicMessagesAction.java
+ * MsgDisplayDemographicMessages2Action.java
  *
  * Created on May 8, 2005, 12:20 AM
  */
@@ -72,8 +72,6 @@ public class MsgDisplayDemographicMessages2Action extends ActionSupport {
 
         // Setup variables
         oscar.oscarMessenger.pageUtil.MsgSessionBean bean = null;
-        //String[] messageNo = ((MsgDisplayDemographicMessagesForm) form).getMessageNo();
-        //String unlinkMsg = ((MsgDisplayDemographicMessagesForm)form).getUnlinkMsg();
 
         //Initialize forward location
         String findForward = "success";

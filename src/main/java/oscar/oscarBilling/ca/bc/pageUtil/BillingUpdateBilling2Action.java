@@ -25,7 +25,7 @@
 
 
 /*
- * BillingUpdateBillingAction.java
+ * BillingUpdateBilling2Action.java
  *
  * Created on August 30, 2004, 1:52 PM
  */
@@ -39,7 +39,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.action.ActionMapping;
 import org.oscarehr.util.MiscUtils;
 
 import oscar.oscarBilling.ca.bc.MSP.MSPReconcile;
@@ -87,7 +86,7 @@ public final class BillingUpdateBilling2Action
     }
 
     /**
-     * Creates a new instance of BillingUpdateBillingAction
+     * Creates a new instance of BillingUpdateBilling2Action
      */
     public BillingUpdateBilling2Action() {
     }
@@ -198,9 +197,5 @@ public final class BillingUpdateBilling2Action
 
     public void setBillPatient(String billPatient) {
         this.billPatient = billPatient;
-    }
-
-    public void reset(ActionMapping mapping, HttpServletRequest request) {
-        this.amountReceived = "";
     }
 }

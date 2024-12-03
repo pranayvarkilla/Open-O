@@ -25,7 +25,7 @@
 
 
 /*
- * PrintLabsAction.java
+ * PrintLabs2Action.java
  *
  * Created on November 27, 2007, 9:42 AM
  *
@@ -64,12 +64,6 @@ public class PrintLabs2Action extends ActionSupport {
     Logger logger = org.oscarehr.util.MiscUtils.getLogger();
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
-    /**
-     * Creates a new instance of PrintLabsAction
-     */
-    public PrintLabs2Action() {
-    }
-
     public String execute() {
 
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_lab", "r", null)) {
@@ -99,11 +93,11 @@ public class PrintLabs2Action extends ActionSupport {
                 f.delete();
             }
         } catch (IOException ioe) {
-            logger.error("IOException occurred inside PrintLabsAction", ioe);
+            logger.error("IOException occurred inside PrintLabs2Action", ioe);
             request.setAttribute("printError", new Boolean(true));
             return "error";
         } catch (Exception e) {
-            logger.error("Unknown Exception occurred inside PrintLabsAction", e);
+            logger.error("Unknown Exception occurred inside PrintLabs2Action", e);
             request.setAttribute("printError", new Boolean(true));
             return "error";
         }

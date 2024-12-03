@@ -31,7 +31,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.action.ActionMapping;
 import org.oscarehr.common.dao.InstitutionDao;
 import org.oscarehr.common.model.Institution;
 import org.oscarehr.managers.SecurityInfoManager;
@@ -224,10 +223,6 @@ public class EctConAddInstitution2Action extends ActionSupport {
         this.annotation = annotation;
     }
 
-    public void reset(ActionMapping mapping, HttpServletRequest request) {
-        resetForm();
-    }
-    
     public void resetForm() {
         name = null;
 

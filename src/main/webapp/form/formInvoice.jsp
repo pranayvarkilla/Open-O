@@ -82,7 +82,6 @@
                 if (document.all) {
                     document.all.FrmForm.action = "../form/createpdf?__title=Invoice&__cfgfile=invoice&__template=invoice";
                 } else {
-                    //document.getElementById('FrmForm').action="../form/createpdf?__title=Invoice&__cfgfile=invoice&__template=invoice";
                     document.forms[0].action = "../form/createpdf?__title=Invoice&__cfgfile=invoice&__template=invoice";
                 }
                 document.forms[0].target = "_blank";

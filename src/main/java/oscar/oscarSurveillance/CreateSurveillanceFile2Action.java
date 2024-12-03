@@ -52,7 +52,6 @@ public class CreateSurveillanceFile2Action extends ActionSupport {
 
     public String execute() throws IOException, ServletException {
 
-        //CreateSurveillanceFileForm frm = (CreateSurveillanceFileForm) form;
         String id = this.getSurveyId();
 
 

@@ -54,14 +54,7 @@ public class RunClinicalReport2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
     HttpServletResponse response = ServletActionContext.getResponse();
 
-
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
-
-    /**
-     * Creates a new instance of RunClinicalReportAction
-     */
-    public RunClinicalReport2Action() {
-    }
 
     public String execute()
             throws IOException, ServletException {

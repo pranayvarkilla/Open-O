@@ -108,7 +108,6 @@ public class FrmFormRHPrevention2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_form)");
         }
 
-        // <action path="/form/AddRHWorkFlow" scope="request" name="FrmForm" type="oscar.form.pageUtil.FrmFormAddRHWorkFlowAction">
         String demographicNo = request.getParameter("demographic_no");
         if (demographicNo == null) {
             demographicNo = (String) request.getAttribute("demographic_no");
@@ -118,7 +117,7 @@ public class FrmFormRHPrevention2Action extends ActionSupport {
         String workflowId = request.getParameter("workflowId");
         String state = request.getParameter("state");
 
-        MiscUtils.getLogger().debug("FrmFormRHPreventionAction demographic " + demographicNo);
+        MiscUtils.getLogger().debug("FrmFormRHPrevention2Action demographic " + demographicNo);
         String af = SUCCESS;
 
         int workId = -1;
@@ -190,11 +189,4 @@ public class FrmFormRHPrevention2Action extends ActionSupport {
 
         return where;
     }
-
-    /**
-     * Creates a new instance of FrmFormRHPreventionAction
-     */
-    public FrmFormRHPrevention2Action() {
-    }
-
 }

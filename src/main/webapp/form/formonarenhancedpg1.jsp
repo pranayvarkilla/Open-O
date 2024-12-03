@@ -40,7 +40,7 @@
 %>
 
 <%@ page import="oscar.util.*, oscar.form.*, oscar.form.data.*" %>
-<%@ page import="org.oscarehr.common.web.PregnancyAction" %>
+<%@ page import="org.oscarehr.common.web.Pregnancy2Action" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.apache.struts.util.LabelValueBean" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
@@ -69,14 +69,14 @@
     String project_home = request.getContextPath().substring(1);
 
     //load eform groups
-    List<LabelValueBean> cytologyForms = PregnancyAction.getEformsByGroup("Cytology");
-    List<LabelValueBean> ultrasoundForms = PregnancyAction.getEformsByGroup("Ultrasound");
+    List<LabelValueBean> cytologyForms = Pregnancy2Action.getEformsByGroup("Cytology");
+    List<LabelValueBean> ultrasoundForms = Pregnancy2Action.getEformsByGroup("Ultrasound");
 
     String customEformGroup = oscar.OscarProperties.getInstance().getProperty("prenatal_screening_eform_group");
     String prenatalScreenName = oscar.OscarProperties.getInstance().getProperty("prenatal_screening_name");
     String prenatalScreen = oscar.OscarProperties.getInstance().getProperty("prenatal_screening_abbrv");
 
-    List<LabelValueBean> customForms = PregnancyAction.getEformsByGroup(customEformGroup);
+    List<LabelValueBean> customForms = Pregnancy2Action.getEformsByGroup(customEformGroup);
 
     if (props.getProperty("obxhx_num", "0").equals("")) {
         props.setProperty("obxhx_num", "0");

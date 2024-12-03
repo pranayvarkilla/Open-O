@@ -23,6 +23,18 @@
  */
 package org.oscarehr.integration.mcedt.mailbox;
 
+import ca.ontario.health.edt.*;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.cxf.helpers.FileUtils;
+import org.apache.logging.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
+import org.oscarehr.integration.mcedt.DelegateFactory;
+import org.oscarehr.integration.mcedt.McedtMessageCreator;
+import org.oscarehr.util.MiscUtils;
+import oscar.OscarProperties;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -33,26 +45,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.cxf.helpers.FileUtils;
-import org.apache.logging.log4j.Logger;
-import org.apache.struts.upload.FormFile;
-import org.oscarehr.integration.mcedt.DelegateFactory;
-import org.oscarehr.integration.mcedt.McedtMessageCreator;
-import org.oscarehr.util.MiscUtils;
-
-import ca.ontario.health.edt.EDTDelegate;
-import ca.ontario.health.edt.Faultexception;
-import ca.ontario.health.edt.ResourceResult;
-import ca.ontario.health.edt.ResponseResult;
-import ca.ontario.health.edt.UploadData;
-import oscar.OscarProperties;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public class Upload2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -116,8 +108,6 @@ public class Upload2Action extends ActionSupport {
     }
 
     public String uploadToMcedt() {
-        //UploadForm uploadForm = (UploadForm) form;
-
         if (this.getResourceId().equals(new BigInteger("-1"))) {
             List<UploadData> uploads = new ArrayList<UploadData>();
             uploads.add(toUpload());
@@ -165,8 +155,6 @@ public class Upload2Action extends ActionSupport {
     }
 
     public String submitToMcedt() {
-        //UploadForm submitForm = (UploadForm) form;
-
         if (!this.getResourceId().equals(new BigInteger("-2"))) {
             List<BigInteger> ids = new ArrayList<BigInteger>();
             ids.add(this.getResourceId());
@@ -295,7 +283,6 @@ public class Upload2Action extends ActionSupport {
 
     public String deleteUpload() {
         try {
-            //UploadForm uploadForm = (UploadForm) form;
             List<String> fileNames = Arrays.asList(this.getFileName().trim().split(","));
             OscarProperties props = OscarProperties.getInstance();
             for (String fileName : fileNames) {
@@ -313,8 +300,6 @@ public class Upload2Action extends ActionSupport {
     }
 
     public String addUpload() {
-
-        //FormFile formFile = ((UploadForm) form).getAddUploadFile();
         if (!ActionUtils.isOBECFile(this.getFileName()) && !ActionUtils.isOHIPFile(this.getFileName())) {
             addActionError(getText("uploadAction.upload.add.failure", new String[]{this.getFileName() + " is not a supported file Name. Please upload only claim/OBEC files"}));
             return "failure";

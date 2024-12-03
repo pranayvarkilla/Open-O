@@ -49,7 +49,6 @@ import org.oscarehr.util.SpringUtils;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import org.oscarehr.documentManager.data.AddEditDocumentForm;
 import oscar.util.UtilDateUtilities;
 
 import com.opensymphony.xwork2.ActionSupport;

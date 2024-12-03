@@ -26,21 +26,16 @@
 
 package oscar.eform.upload;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.upload.FormFile;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.eform.EFormUtil;
-import oscar.util.StringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.nio.file.Files;
 

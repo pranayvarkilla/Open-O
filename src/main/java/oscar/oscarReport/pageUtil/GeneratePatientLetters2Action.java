@@ -73,14 +73,6 @@ public class GeneratePatientLetters2Action extends ActionSupport {
     private static Logger log = MiscUtils.getLogger();
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
-
-    /**
-     * Creates a new instance of GeneratePatientLettersAction
-     */
-    public GeneratePatientLetters2Action() {
-
-    }
-
     public String execute() {
 
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_report", "r", null)) {

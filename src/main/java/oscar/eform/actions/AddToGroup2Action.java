@@ -26,18 +26,15 @@
 
 package oscar.eform.actions;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.eform.EFormUtil;
-import oscar.eform.data.AddToGroupForm;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class AddToGroup2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -47,8 +44,6 @@ public class AddToGroup2Action extends ActionSupport {
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
     public String execute() {
-        //AddToGroupForm fm = (AddToGroupForm) form;
-
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_eform", "w", null)) {
             throw new SecurityException("missing required security object (_eform)");
         }

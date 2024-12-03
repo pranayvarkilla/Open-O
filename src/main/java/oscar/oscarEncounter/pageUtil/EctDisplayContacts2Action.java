@@ -28,7 +28,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.common.dao.ContactDao;
 import org.oscarehr.common.dao.DemographicContactDao;
@@ -56,7 +55,7 @@ public class EctDisplayContacts2Action extends EctDisplayAction {
     ProfessionalSpecialistDao professionalSpecialistDao = SpringUtils.getBean(ProfessionalSpecialistDao.class);
 
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         try {
 
             String healthCareTeamEnabled = OscarProperties.getInstance().getProperty("DEMOGRAPHIC_PATIENT_HEALTH_CARE_TEAM", "true").toString();
@@ -89,7 +88,7 @@ public class EctDisplayContacts2Action extends EctDisplayAction {
                 width = 700;
                 height = 500;
             } else {
-                Dao.setLeftHeading(messages.getMessage(request.getLocale(), "global.contacts"));
+                Dao.setLeftHeading(getText("global.contacts"));
                 width = 800;
                 height = 1000;
             }

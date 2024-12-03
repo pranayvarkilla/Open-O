@@ -27,14 +27,12 @@
 package oscar.eform.actions;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
 
 import oscar.eform.EFormUtil;
-import oscar.eform.data.AddGroupForm;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;

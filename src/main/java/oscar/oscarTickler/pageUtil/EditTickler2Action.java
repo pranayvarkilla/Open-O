@@ -25,15 +25,9 @@
 
 package oscar.oscarTickler.pageUtil;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.ResourceBundle;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.validator.DynaValidatorForm;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.TicklerTextSuggestDao;
 import org.oscarehr.common.model.Tickler;
 import org.oscarehr.common.model.TicklerComment;
@@ -44,12 +38,11 @@ import org.oscarehr.managers.TicklerManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
-import oscar.OscarProperties;
 import oscar.util.DateUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 public class EditTickler2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

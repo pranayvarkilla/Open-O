@@ -104,7 +104,7 @@ public class ReportStatusUpdate2Action extends ActionSupport {
             else
                 return SUCCESS;
         } catch (Exception e) {
-            logger.error("exception in ReportStatusUpdateAction", e);
+            logger.error("exception in ReportStatusUpdate2Action", e);
             return "failure";
         }
     }

@@ -26,16 +26,11 @@
 package oscar.oscarBilling.ca.bc.pageUtil;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-
-import oscar.OscarAction;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
-public class DeleteServiceCodeAssoc2Action
-        extends ActionSupport {
+public class DeleteServiceCodeAssoc2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
     public String execute() {
         String svcCode = request.getParameter("svcCode");

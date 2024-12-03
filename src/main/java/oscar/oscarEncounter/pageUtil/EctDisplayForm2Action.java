@@ -26,6 +26,19 @@
 
 package oscar.oscarEncounter.pageUtil;
 
+import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.logging.log4j.Logger;
+import org.oscarehr.common.dao.EncounterFormDao;
+import org.oscarehr.common.model.EncounterForm;
+import org.oscarehr.util.LoggedInInfo;
+import org.oscarehr.util.MiscUtils;
+import org.oscarehr.util.SpringUtils;
+import oscar.OscarProperties;
+import oscar.oscarEncounter.data.EctFormData;
+import oscar.oscarLab.LabRequestReportLink;
+import oscar.util.StringUtils;
+
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,24 +46,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.MessageResources;
-import org.oscarehr.common.dao.EncounterFormDao;
-import org.oscarehr.common.model.EncounterForm;
-import org.oscarehr.util.LoggedInInfo;
-import org.oscarehr.util.MiscUtils;
-import org.oscarehr.util.SpringUtils;
-
-import oscar.OscarProperties;
-import oscar.oscarEncounter.data.EctFormData;
-import oscar.oscarLab.LabRequestReportLink;
-import oscar.util.StringUtils;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public class EctDisplayForm2Action extends EctDisplayAction {
 
@@ -59,8 +54,7 @@ public class EctDisplayForm2Action extends EctDisplayAction {
     private String cmd = "forms";
     private String menuId = "1";
 
-    @Override
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
         String appointmentNo = bean.appointmentNo;
@@ -79,13 +73,13 @@ public class EctDisplayForm2Action extends EctDisplayAction {
                 StringBuilder url = new StringBuilder("popupPage(600, 700, '" + winName + "', '" + request.getContextPath() + "/oscarEncounter/formlist.jsp?demographic_no=" + bean.demographicNo + "')");
 
                 // set text for lefthand module title
-                Dao.setLeftHeading(messages.getMessage(request.getLocale(), "oscarEncounter.Index.msgForms"));
+                Dao.setLeftHeading(getText("oscarEncounter.Index.msgForms"));
                 // set link for lefthand module title
                 Dao.setLeftURL(url.toString());
 
                 // we're going to display a pop up menu of forms so we set the menu title and id num of menu
                 Dao.setRightHeadingID(menuId);
-                Dao.setMenuHeader(messages.getMessage("oscarEncounter.LeftNavBar.AddFrm"));
+                Dao.setMenuHeader(getText("oscarEncounter.LeftNavBar.AddFrm"));
                 StringBuilder javascript = new StringBuilder("<script type=\"text/javascript\">");
                 String js = "";
                 String serviceDateStr;
@@ -130,7 +124,7 @@ public class EctDisplayForm2Action extends EctDisplayAction {
                             try {
                                 date = formatter.parse(serviceDateStr);
                             } catch (ParseException ex) {
-                                logger.debug("EctDisplayFormAction: Error creating date " + ex.getMessage());
+                                logger.debug("EctDisplayForm2Action: Error creating date " + ex.getMessage());
                             }
 
                             item.setDate(date);
@@ -217,7 +211,7 @@ public class EctDisplayForm2Action extends EctDisplayAction {
                 // sort module items, i.e. forms, from most recently started to more distant
                 Dao.sortItems(NavBarDisplayDAO.DATESORT_ASC);
             } catch (Exception e) {
-                logger.error("EctDisplayFormAction SQL ERROR:", e);
+                logger.error("EctDisplayForm2Action SQL ERROR:", e);
                 return false;
             }
 

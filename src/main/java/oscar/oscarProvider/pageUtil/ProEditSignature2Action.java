@@ -51,8 +51,6 @@ public class ProEditSignature2Action extends ActionSupport {
         if (providerNo == null)
             return "eject";
 
-        //ProEditSignatureForm frm = (ProEditSignatureForm) form;
-
         ProSignatureData sigData = new ProSignatureData();
         //String sig = frm.getSignature();
         sigData.enterSignature(providerNo, this.signature);

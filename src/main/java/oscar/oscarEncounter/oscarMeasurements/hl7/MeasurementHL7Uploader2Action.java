@@ -37,7 +37,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.upload.FormFile;
 import org.oscarehr.common.dao.MeasurementDao;
 import org.oscarehr.common.model.Demographic;
 import org.oscarehr.common.model.Measurement;
@@ -45,11 +44,9 @@ import org.oscarehr.managers.DemographicManager;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
-import org.springframework.web.struts.DispatchActionSupport;
 
 import oscar.OscarProperties;
-import oscar.oscarLab.ca.all.pageUtil.LabUploadAction;
-import oscar.oscarLab.ca.all.pageUtil.LabUploadForm;
+import oscar.oscarLab.ca.all.pageUtil.LabUpload2Action;
 import oscar.oscarLab.ca.all.util.Utilities;
 import ca.uhn.hl7v2.model.v23.datatype.CE;
 import ca.uhn.hl7v2.model.v23.group.ORU_R01_ORDER_OBSERVATION;
@@ -218,19 +215,19 @@ public class MeasurementHL7Uploader2Action extends ActionSupport {
         String key = request.getParameter("key");
         String service = request.getParameter("service");
 
-        ArrayList<Object> clientInfo = LabUploadAction.getClientInfo(service);
+        ArrayList<Object> clientInfo = LabUpload2Action.getClientInfo(service);
         PublicKey clientKey = (PublicKey) clientInfo.get(0);
         String type = (String) clientInfo.get(1);
 
         try {
 
-            InputStream is = LabUploadAction.decryptMessage(Files.newInputStream(importFile.toPath()), key, clientKey);
+            InputStream is = LabUpload2Action.decryptMessage(Files.newInputStream(importFile.toPath()), key, clientKey);
             String fileName = importFile.getName();
             String filePath = Utilities.saveFile(is, fileName);
 
             File file = new File(filePath);
 
-            if (LabUploadAction.validateSignature(clientKey, signature, file)) {
+            if (LabUpload2Action.validateSignature(clientKey, signature, file)) {
                 return FileUtils.readFileToString(file);
             } else throw new RuntimeException("Invalid signature, upload rejected.");
 

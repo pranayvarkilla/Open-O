@@ -56,8 +56,6 @@ public class UploadEFormAttachment2Action extends ActionSupport {
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_edoc", "w", null)) {
             throw new SecurityException("missing required security object (_edoc)");
         }
-
-        //EFormAttachmentForm fm = (EFormAttachmentForm) form;
         String docFileName = this.getUploadFileName();
         try {
             Date eformUploadDate = new Date();

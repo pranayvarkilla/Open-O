@@ -52,6 +52,7 @@ import org.apache.struts2.ServletActionContext;
 public class GenerateTraceabilityReport2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
     HttpServletResponse response = ServletActionContext.getResponse();
+    public static int BUFFER_SIZE = 8192;
 
     @Override
     public String execute() throws Exception {
@@ -67,7 +68,7 @@ public class GenerateTraceabilityReport2Action extends ActionSupport {
         Future<String> futureTRP = null;
         Future<String> futureTRC = null;
         try {
-            pipedInputStream = new PipedInputStream(GenerateTraceAction.BUFFER_SIZE);
+            pipedInputStream = new PipedInputStream(BUFFER_SIZE);
             pipedOutputStream = new PipedOutputStream(pipedInputStream);
 
             executor = Executors.newFixedThreadPool(2);

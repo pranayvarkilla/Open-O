@@ -25,24 +25,10 @@
 
 package org.oscarehr.fax.action;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
-
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.model.FaxConfig;
 import org.oscarehr.common.model.FaxJob;
 import org.oscarehr.common.model.FaxJob.STATUS;
@@ -53,12 +39,20 @@ import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.PDFGenerationException;
 import org.oscarehr.util.SpringUtils;
-import oscar.form.JSONAction;
-
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 import oscar.form.JSONUtil;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Fax2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

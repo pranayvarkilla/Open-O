@@ -24,11 +24,10 @@
  */
 package oscar.oscarLab.ca.all.pageUtil;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.PatientLabRoutingDao;
 import org.oscarehr.common.dao.ProviderLabRoutingDao;
 import org.oscarehr.common.model.PatientLabRouting;
@@ -38,19 +37,13 @@ import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.OscarAuditLogger;
 import org.oscarehr.util.SpringUtils;
-
-import oscar.form.JSONAction;
 import oscar.form.JSONUtil;
 import oscar.log.LogConst;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
-
-/**
- * @author mweston4
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public class UnlinkDemographic2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

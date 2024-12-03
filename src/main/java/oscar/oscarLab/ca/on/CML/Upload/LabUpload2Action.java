@@ -26,30 +26,23 @@
 
 package oscar.oscarLab.ca.on.CML.Upload;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.upload.FormFile;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.DbConnectionFilter;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.OscarProperties;
 import oscar.oscarLab.FileUploadCheck;
 import oscar.oscarLab.ca.on.CML.ABCDParser;
 
-/**
- * @author Jay Gallagher
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.nio.file.Files;
+import java.util.Date;
 
 public class LabUpload2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -63,8 +56,6 @@ public class LabUpload2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_lab)");
         }
 
-//        LabUploadForm frm = (LabUploadForm) form;
-//        FormFile importFile = frm.getImportFile();
         String filename = "";
         String proNo = (String) request.getSession().getAttribute("user");
         if (proNo == null) {

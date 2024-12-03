@@ -59,7 +59,6 @@ public final class RxUpdateFavorite2Action extends ActionSupport {
 
 
         // Setup variables
-        //RxUpdateFavoriteForm frm = (RxUpdateFavoriteForm) form;
         int favId = Integer.parseInt(this.getFavoriteId());
 
         RxPrescriptionData.Favorite fav = new RxPrescriptionData().getFavorite(favId);

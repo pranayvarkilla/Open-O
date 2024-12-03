@@ -41,7 +41,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.validator.DynaValidatorForm;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.common.dao.ContactDao;

@@ -11,15 +11,8 @@
 
 package oscar.oscarEncounter.pageUtil;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.OscarLogDao;
 import org.oscarehr.hospitalReportManager.HRMUtil;
 import org.oscarehr.util.LoggedInInfo;
@@ -28,8 +21,13 @@ import org.oscarehr.util.SpringUtils;
 import oscar.util.DateUtils;
 import oscar.util.StringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 
 public class EctDisplayHRM2Action extends EctDisplayAction {
 
@@ -37,7 +35,7 @@ public class EctDisplayHRM2Action extends EctDisplayAction {
     private static final String cmd = "HRM";
     private OscarLogDao oscarLogDao = (OscarLogDao) SpringUtils.getBean(OscarLogDao.class);
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
         if (!securityInfoManager.hasPrivilege(loggedInInfo, "_hrm", "r", null)) {
@@ -47,7 +45,7 @@ public class EctDisplayHRM2Action extends EctDisplayAction {
             String winName = "docs" + bean.demographicNo;
             String url = "popupPage(500,1115,'" + winName + "', '" + request.getContextPath() + "/hospitalReportManager/displayHRMDocList.jsp?demographic_no=" + bean.demographicNo + "')";
             Dao.setLeftURL(url);
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "oscarEncounter.Index.msgHRMDocuments"));
+            Dao.setLeftHeading(getText("oscarEncounter.Index.msgHRMDocuments"));
 
             Dao.setRightHeadingID(cmd); //no menu so set div id to unique id for this action
 
@@ -74,7 +72,7 @@ public class EctDisplayHRM2Action extends EctDisplayAction {
                     date = formatter.parse(dateStr);
                     serviceDateStr = DateUtils.formatDate(date, request.getLocale());
                 } catch (ParseException ex) {
-                    logger.debug("EctDisplayHRMAction: Error creating date " + ex.getMessage());
+                    logger.debug("EctDisplayHRM2Action: Error creating date " + ex.getMessage());
                     serviceDateStr = "Error";
                     date = null;
                 }

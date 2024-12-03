@@ -494,7 +494,7 @@ public class BillingReProcessBill2Action extends ActionSupport {
         return (str == null || str.length() < 12) ? "" : str.substring(13);
     }
 
-    public BillingReProcessBillForm createBillingReProcessBillForm(String billingMasterNo, BillingmasterDAO billingmasterDAO, HttpServletRequest request) {
+    public BillingReProcessBill2Form createBillingReProcessBillForm(String billingMasterNo, BillingmasterDAO billingmasterDAO, HttpServletRequest request) {
         MSPReconcile msp = new MSPReconcile();
         Properties allFields = msp.getBillingMasterRecord(billingMasterNo);
 
@@ -503,7 +503,7 @@ public class BillingReProcessBill2Action extends ActionSupport {
 
 //        boolean reProcessBCP = request.getParameter("hiddenFilterType") != null && request.getParameter("hiddenFilterType").equals("BCP");
 
-        BillingReProcessBillForm billingReProcessBillForm = new BillingReProcessBillForm();
+        BillingReProcessBill2Form billingReProcessBillForm = new BillingReProcessBill2Form();
         billingReProcessBillForm.setBillingmasterNo(String.valueOf(billingMasterNo));
         billingReProcessBillForm.setInsurerCode(allFields.getProperty("oinInsurerCode"));
         billingReProcessBillForm.setProviderNo(bill.getProviderNo());
@@ -567,9 +567,6 @@ public class BillingReProcessBill2Action extends ActionSupport {
 
         billingReProcessBillForm.setAdjAmount("");
         billingReProcessBillForm.setAdjType(null);
-
-        billingReProcessBillForm.setServlet(null);
-        billingReProcessBillForm.setMultipartRequestHandler(null);
 
         return billingReProcessBillForm;
     }
@@ -647,9 +644,6 @@ public class BillingReProcessBill2Action extends ActionSupport {
 
         billingReProcessBillForm.setAdjAmount("");
         billingReProcessBillForm.setAdjType(null);
-
-        billingReProcessBillForm.setServlet(null);
-        billingReProcessBillForm.setMultipartRequestHandler(null);
 
         return billingReProcessBillForm;
     }

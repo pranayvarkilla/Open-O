@@ -55,8 +55,6 @@ public class EctImmInitConfigDeleteImmuSet2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_demographic)");
         }
 
-        //EctImmInitConfigDeleteImmuSetForm frm = (EctImmInitConfigDeleteImmuSetForm) form;
-
         EctImmImmunizationSetData aSet = new EctImmImmunizationSetData();
 
         String[] strId = this.getChkSetId();

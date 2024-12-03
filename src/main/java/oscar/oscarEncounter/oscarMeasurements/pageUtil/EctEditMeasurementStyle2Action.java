@@ -57,9 +57,6 @@ public class EctEditMeasurementStyle2Action extends ActionSupport {
 
         if (securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin", "w", null) || securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin.measurements", "w", null)) {
 
-            //EctEditMeasurementStyleForm frm = (EctEditMeasurementStyleForm) form;
-            //request.getSession().setAttribute("EctEditMeasurementStyleForm", frm);
-
             changeCSS(groupName, styleSheet);
 
             MiscUtils.getLogger().debug("The selected style sheet is: " + styleSheet);

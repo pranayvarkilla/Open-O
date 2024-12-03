@@ -76,9 +76,6 @@ public class MsgSendMessage2Action extends ActionSupport {
             sentToWho.append(" " + p.getFirstName() + " " + p.getLastName() + ". ");
         }
 
-        MsgSentMessageForm trial = new MsgSentMessageForm();
-        trial.setSample(sentToWho.toString());
-
         MessageTbl mt = new MessageTbl();
         mt.setDate(new Date());
         mt.setTime(new Date());

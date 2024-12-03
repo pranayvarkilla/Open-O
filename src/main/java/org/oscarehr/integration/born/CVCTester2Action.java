@@ -282,3 +282,20 @@ public class CVCTester2Action extends ActionSupport {
 	}
 	*/
 }
+
+class PrevalenceComparator implements Comparator<CVCImmunization> {
+    public int compare(CVCImmunization i1, CVCImmunization i2) {
+
+        Integer d1 = i1.getPrevalence();
+        Integer d2 = i2.getPrevalence();
+
+        if (d1 == null && d2 != null)
+            return 1;
+        else if (d1 != null && d2 == null)
+            return -1;
+        else if (d1 == null && d2 == null)
+            return 0;
+        else
+            return d1.compareTo(d2) * -1;
+    }
+}

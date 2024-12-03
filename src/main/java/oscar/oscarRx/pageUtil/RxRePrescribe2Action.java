@@ -77,7 +77,6 @@ public final class RxRePrescribe2Action extends ActionSupport {
         beanRX.setDemographicNo(sessionBeanRX.getDemographicNo());
         beanRX.setProviderNo(sessionBeanRX.getProviderNo());
 
-        //RxDrugListForm frm = (RxDrugListForm) form;
         String script_no = this.getDrugList();
 
         String ip = request.getRemoteAddr();
@@ -123,7 +122,6 @@ public final class RxRePrescribe2Action extends ActionSupport {
         beanRX.setDemographicNo(sessionBeanRX.getDemographicNo());
         beanRX.setProviderNo(sessionBeanRX.getProviderNo());
 
-        // RxDrugListForm frm = (RxDrugListForm) form;
         String script_no = request.getParameter("scriptNo");
         String ip = request.getRemoteAddr();
         RxPrescriptionData rxData = new RxPrescriptionData();
@@ -159,7 +157,6 @@ public final class RxRePrescribe2Action extends ActionSupport {
             response.sendRedirect("error.html");
             return null;
         }
-        //RxDrugListForm frm = (RxDrugListForm) form;
         StringBuilder auditStr = new StringBuilder();
         try {
             RxPrescriptionData rxData = new RxPrescriptionData();
@@ -201,7 +198,7 @@ public final class RxRePrescribe2Action extends ActionSupport {
     }
 
     public String saveReRxDrugIdToStash() throws IOException {
-        MiscUtils.getLogger().debug("================in saveReRxDrugIdToStash  of RxRePrescribeAction.java=================");
+        MiscUtils.getLogger().debug("================in saveReRxDrugIdToStash  of RxRePrescribe2Action.java=================");
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
         oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) request.getSession().getAttribute("RxSessionBean");
@@ -256,12 +253,12 @@ public final class RxRePrescribe2Action extends ActionSupport {
         } catch (Exception e) {
             MiscUtils.getLogger().error("Error", e);
         }
-        MiscUtils.getLogger().debug("================end saveReRxDrugIdToStash of RxRePrescribeAction.java=================");
+        MiscUtils.getLogger().debug("================end saveReRxDrugIdToStash of RxRePrescribe2Action.java=================");
         return null;
     }
 
     public String represcribe2() throws IOException {
-        MiscUtils.getLogger().debug("================in represcribe2 of RxRePrescribeAction.java=================");
+        MiscUtils.getLogger().debug("================in represcribe2 of RxRePrescribe2Action.java=================");
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
         checkPrivilege(loggedInInfo, PRIVILEGE_WRITE);
 
@@ -413,7 +410,7 @@ public final class RxRePrescribe2Action extends ActionSupport {
     }
 
     public String represcribeMultiple() throws IOException {
-        MiscUtils.getLogger().debug("================in represcribeMultiple of RxRePrescribeAction.java=================");
+        MiscUtils.getLogger().debug("================in represcribeMultiple of RxRePrescribe2Action.java=================");
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
         checkPrivilege(loggedInInfo, PRIVILEGE_WRITE);
 
@@ -450,7 +447,7 @@ public final class RxRePrescribe2Action extends ActionSupport {
         }
         MiscUtils.getLogger().debug(listReRxDrug);
         request.setAttribute("listRxDrugs", listReRxDrug);
-        MiscUtils.getLogger().debug("================END represcribeMultiple of RxRePrescribeAction.java=================");
+        MiscUtils.getLogger().debug("================END represcribeMultiple of RxRePrescribe2Action.java=================");
         return "represcribe";
     }
 

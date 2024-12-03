@@ -86,9 +86,6 @@ public final class RxDeleteRx2Action extends ActionSupport {
         String ip = request.getRemoteAddr();
         try {
 
-
-            //String drugList = ((RxDrugListForm) form).getDrugList();
-
             String[] drugArr = drugList.split(",");
             int drugId;
             int i;
@@ -122,7 +119,7 @@ public final class RxDeleteRx2Action extends ActionSupport {
     public String Delete2()
             throws IOException {
 
-        MiscUtils.getLogger().debug("===========================Delete2 RxDeleteRxAction========================");
+        MiscUtils.getLogger().debug("===========================Delete2 RxDeleteRx2Action========================");
         checkPrivilege(request, PRIVILEGE_UPDATE);
 
         // Setup variables
@@ -142,14 +139,14 @@ public final class RxDeleteRx2Action extends ActionSupport {
         } catch (Exception e) {
             MiscUtils.getLogger().error("Error", e);
         }
-        MiscUtils.getLogger().debug("===========================END Delete2 RxDeleteRxAction========================");
+        MiscUtils.getLogger().debug("===========================END Delete2 RxDeleteRx2Action========================");
         return null;
     }
 
     public String DeleteRxOnCloseRxBox()
             throws IOException {
 
-        MiscUtils.getLogger().debug("===========================DeleteRxOnCloseRxBox RxDeleteRxAction========================");
+        MiscUtils.getLogger().debug("===========================DeleteRxOnCloseRxBox RxDeleteRx2Action========================");
         checkPrivilege(request, PRIVILEGE_UPDATE);
 
         String randomId = request.getParameter("randomId");
@@ -182,7 +179,7 @@ public final class RxDeleteRx2Action extends ActionSupport {
             MiscUtils.getLogger().debug("jsonObject=" + jsonObject.toString());
             response.getOutputStream().write(jsonObject.toString().getBytes());
         }
-        MiscUtils.getLogger().debug("===========================END DeleteRxOnCloseRxBox RxDeleteRxAction========================");
+        MiscUtils.getLogger().debug("===========================END DeleteRxOnCloseRxBox RxDeleteRx2Action========================");
         return null;
     }
 

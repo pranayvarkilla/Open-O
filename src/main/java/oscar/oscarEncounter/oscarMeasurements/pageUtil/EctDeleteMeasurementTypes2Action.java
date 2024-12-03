@@ -64,13 +64,6 @@ public class EctDeleteMeasurementTypes2Action extends ActionSupport {
     public String execute()
             throws ServletException, IOException {
         if (securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin", "w", null) || securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin.measurements", "w", null)) {
-
-            //EctDeleteMeasurementTypesForm frm = (EctDeleteMeasurementTypesForm) form;
-            //request.getSession().setAttribute("EctDeleteMeasurementTypesForm", frm);
-            //String[] deleteCheckbox = frm.getDeleteCheckbox();
-            GregorianCalendar now = new GregorianCalendar();
-
-
             if (deleteCheckbox != null) {
                 for (int i = 0; i < deleteCheckbox.length; i++) {
                     MiscUtils.getLogger().debug(deleteCheckbox[i]);

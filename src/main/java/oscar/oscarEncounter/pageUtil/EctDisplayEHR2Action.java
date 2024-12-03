@@ -24,15 +24,6 @@
  */
 package oscar.oscarEncounter.pageUtil;
 
-import java.io.FileInputStream;
-import java.net.URLEncoder;
-import java.security.KeyStore;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.net.ssl.SSLContext;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
@@ -42,21 +33,24 @@ import org.apache.http.conn.ssl.SSLContexts;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.apache.struts.util.MessageResources;
 import org.codehaus.jettison.json.JSONObject;
-import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.LoggedInInfo;
-
+import org.oscarehr.util.MiscUtils;
 import oscar.OscarProperties;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.net.ssl.SSLContext;
+import javax.servlet.http.HttpServletRequest;
+import java.io.FileInputStream;
+import java.net.URLEncoder;
+import java.security.KeyStore;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class EctDisplayEHR2Action extends EctDisplayAction {
 
     private static final String cmd = "ehr";
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
         if (!securityInfoManager.hasPrivilege(loggedInInfo, "_ehr", "r", null)) {

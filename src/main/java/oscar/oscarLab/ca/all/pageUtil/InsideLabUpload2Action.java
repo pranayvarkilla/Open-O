@@ -25,7 +25,7 @@
 
 
 /*
- * InsideLabUploadAction.java
+ * InsideLabUpload2Action.java
  *
  * Created on June 28, 2007, 1:11 PM
  *

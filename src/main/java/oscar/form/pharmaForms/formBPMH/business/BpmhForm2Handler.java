@@ -33,7 +33,6 @@ import org.oscarehr.common.model.*;
 import org.oscarehr.util.SpringUtils;
 import oscar.form.pharmaForms.formBPMH.bean.BpmhDrug;
 import oscar.form.pharmaForms.formBPMH.bean.BpmhForm2Bean;
-import oscar.form.pharmaForms.formBPMH.bean.BpmhFormBean;
 import oscar.form.pharmaForms.formBPMH.util.CaseNoteParser;
 import oscar.form.pharmaForms.formBPMH.util.JsonUtil;
 import oscar.form.pharmaForms.formBPMH.util.SortDrugList;
@@ -90,7 +89,7 @@ public class BpmhForm2Handler {
             "seconds"};
     private static final String PRIMARY_DR_TITLE = "family physician";
 
-    private BpmhFormBean bpmhFormBean;
+    private BpmhForm2Bean bpmhFormBean;
     private FormBPMH formBPMH;
     private int demographicNo;
     private AllergyDao allergyDao;
@@ -110,7 +109,7 @@ public class BpmhForm2Handler {
 
     /**
      * Depends on:
-     * (Set these after instantiation or auto-init with BpmhFormHandler(BpmhFormBean bpmhFormBean)):
+     * (Set these after instantiation or auto-init with BpmhForm2Handler(BpmhForm2Bean bpmhForm2Bean)):
      * AllergyDao allergyDao;
      * DemographicCustDao demographicCustDao;
      * DemographicDao demographicDao;
@@ -128,11 +127,6 @@ public class BpmhForm2Handler {
      */
     public BpmhForm2Handler() {
         // default constructor
-    }
-
-    public BpmhForm2Handler(BpmhFormBean bpmhFormBean) {
-        setBpmhFormBean(bpmhFormBean);
-        _init();
     }
 
     public BpmhForm2Handler(BpmhForm2Bean bpmhFormBean) {
@@ -168,7 +162,7 @@ public class BpmhForm2Handler {
      * - retrieve form history
      */
     @SuppressWarnings("unchecked") // json conversion is unchecked.
-    public void populateFormBean(BpmhFormBean bpmhFormBean) {
+    public void populateFormBean(BpmhForm2Bean bpmhFormBean) {
         if (bpmhFormBean != null) {
             setBpmhFormBean(bpmhFormBean);
         }
@@ -237,7 +231,7 @@ public class BpmhForm2Handler {
         return saveFormHistory(getBpmhFormBean());
     }
 
-    public Integer saveFormHistory(BpmhFormBean bpmhFormBean) {
+    public Integer saveFormHistory(BpmhForm2Bean bpmhFormBean) {
 
         FormBPMH formBpmh = new FormBPMH(); // BPMH form JPA model bean
 
@@ -419,14 +413,14 @@ public class BpmhForm2Handler {
     }
 
     /**
-     * Set the BpmhFormBean with a list of BpmhDrug beans.
+     * Set the BpmhForm2Bean with a list of BpmhDrug beans.
      * <p>
      * If sent a null parameter a new list will be built.
      * <p>
      * BpmhDrug beans contain data from the database Drugs JPA along
      * with additional transient data.
      * <p>
-     * Depends on DrugDao, BpmhFormBean, BpmhDrug
+     * Depends on DrugDao, BpmhForm2Bean, BpmhDrug
      *
      * @param bpmhDrugBeans
      */
@@ -619,19 +613,15 @@ public class BpmhForm2Handler {
 
     }
 
-    public BpmhFormBean getBpmhFormBean() {
+    public BpmhForm2Bean getBpmhFormBean() {
         if (bpmhFormBean == null) {
             throw new RuntimeException("BPMH Bean Not Set");
         }
         return bpmhFormBean;
     }
 
-    public void setBpmhFormBean(BpmhFormBean bpmhFormBean) {
-        this.bpmhFormBean = bpmhFormBean;
-    }
-
     public void setBpmhFormBean(BpmhForm2Bean bpmhFormBean) {
-        this.bpmhFormBean = new BpmhFormBean();
+        this.bpmhFormBean = new BpmhForm2Bean();
         this.bpmhFormBean.setFormDate(bpmhFormBean.getFormDate());
         this.bpmhFormBean.setEditDate(bpmhFormBean.getEditDate());
         this.bpmhFormBean.setFormId(bpmhFormBean.getFormId());

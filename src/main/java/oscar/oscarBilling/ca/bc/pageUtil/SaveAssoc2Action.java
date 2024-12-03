@@ -25,31 +25,13 @@
 
 package oscar.oscarBilling.ca.bc.pageUtil;
 
-import java.util.Iterator;
-import java.util.List;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-/**
- * <p>Title: SaveAssocAction</p>
- *
- * <p>Description: This Action is responsible for saving a ServiceCode Association</p>
- * <p>The ActionForms mode property specifies the type of save</p>
- * <p>If the mode is edit, the ServiceCode is updated,else a new ServiceCode association is saved</p>
- * <p>Copyright: Copyright (c) 2005</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
- * @version 1.0
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts2.ServletActionContext;
+import java.util.Iterator;
+import java.util.List;
 
 public class SaveAssoc2Action
         extends ActionSupport {

@@ -36,7 +36,6 @@ public class CreateLabelTDIS2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_lab)");
         }
 
-        //CreateLabelTDISForm frm = (CreateLabelTDISForm) form;
         String label = this.getLabel();//request.getParameter("label");
         logger.info("Label before db insert =" + label);
         String lab_no = this.getLab_no();//request.getParameter("lab_no");

@@ -47,8 +47,6 @@ public class ValidateSwipeCard2Action extends ActionSupport {
      */
     @Override
     public String execute() throws Exception {
-        //ValidateSwipeCard formBean = (ValidateSwipeCard) form;
-
         String magneticStripe = this.getMagneticStripe();
         HCMagneticStripe hcMagneticStripe = new HCMagneticStripe(magneticStripe);
 

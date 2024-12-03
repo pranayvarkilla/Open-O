@@ -60,7 +60,7 @@ public class ManageHSFO2Action extends ActionSupport {
 
 
     /**
-     * Creates a new instance of ManageHSFOAction
+     * Creates a new instance of ManageHSFO2Action
      */
     public ManageHSFO2Action() {
     }

@@ -25,6 +25,27 @@
 
 package org.oscarehr.dashboard.admin;
 
+import com.opensymphony.xwork2.ActionSupport;
+import net.sf.json.JSONObject;
+import org.apache.logging.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
+import org.dom4j.Document;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.SAXValidator;
+import org.dom4j.util.XMLErrorHandler;
+import org.oscarehr.common.model.Dashboard;
+import org.oscarehr.common.model.IndicatorTemplate;
+import org.oscarehr.managers.DashboardManager;
+import org.oscarehr.managers.DashboardManager.ObjectName;
+import org.oscarehr.managers.SecurityInfoManager;
+import org.oscarehr.util.LoggedInInfo;
+import org.oscarehr.util.MiscUtils;
+import org.oscarehr.util.SpringUtils;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -34,33 +55,6 @@ import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-
-import org.apache.logging.log4j.Logger;
-import org.apache.struts.upload.FormFile;
-import org.dom4j.Document;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.SAXValidator;
-import org.dom4j.util.XMLErrorHandler;
-import org.oscarehr.common.model.Dashboard;
-import org.oscarehr.common.model.IndicatorTemplate;
-import org.oscarehr.managers.DashboardManager;
-import org.oscarehr.managers.DashboardManagerImpl;
-import org.oscarehr.managers.DashboardManager.ObjectName;
-import org.oscarehr.managers.SecurityInfoManager;
-import org.oscarehr.util.LoggedInInfo;
-import org.oscarehr.util.MiscUtils;
-import org.oscarehr.util.SpringUtils;
-
-import net.sf.json.JSONObject;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public class ManageDashboard2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

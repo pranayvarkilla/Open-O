@@ -27,19 +27,15 @@
 package oscar.oscarEncounter.pageUtil;
 
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
 
 public class EctDisplayExaminationHistory2Action extends EctDisplayAction {
     private static final String cmd = "examhistory";
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_eyeform", "r", null)) {
             throw new SecurityException("missing required security object (_eyeform)");
         }
@@ -63,7 +59,7 @@ public class EctDisplayExaminationHistory2Action extends EctDisplayAction {
 
 
             String url = "popupPage(500,900,'" + winName + "','" + pathview + "')";
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "global.examinationHistory"));
+            Dao.setLeftHeading(getText("global.examinationHistory"));
             Dao.setLeftURL(url);
 
             //set right hand heading link

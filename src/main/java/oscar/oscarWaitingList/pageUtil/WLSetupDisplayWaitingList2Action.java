@@ -26,20 +26,13 @@
 
 package oscar.oscarWaitingList.pageUtil;
 
-import java.util.Collection;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.validator.LazyValidatorForm;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.model.Provider;
 import org.oscarehr.common.model.ProviderPreference;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SessionConstants;
-
 import oscar.oscarProvider.bean.ProviderNameBean;
 import oscar.oscarProvider.bean.ProviderNameBeanHandler;
 import oscar.oscarProvider.data.ProviderData;
@@ -48,8 +41,11 @@ import oscar.oscarWaitingList.bean.WLWaitingListNameBeanHandler;
 import oscar.oscarWaitingList.util.WLWaitingListUtil;
 import oscar.util.UtilDateUtilities;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.Collection;
+import java.util.Date;
 
 public final class WLSetupDisplayWaitingList2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -62,7 +58,7 @@ public final class WLSetupDisplayWaitingList2Action extends ActionSupport {
             throws Exception {
 
 
-        log.debug("\n\nWLSetupDisplayWaitingListAction/execute(): just entering.");
+        log.debug("\n\nWLSetupDisplayWaitingList2Action/execute(): just entering.");
 
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
@@ -76,27 +72,27 @@ public final class WLSetupDisplayWaitingList2Action extends ActionSupport {
         String groupNo = "";
         String providerNo = "";
 
-        log.debug("\n\nWLSetupDisplayWaitingListAction/execute(): update = " + update);
-        log.debug("\n\nWLSetupDisplayWaitingListAction/execute(): remove = " + remove);
+        log.debug("\n\nWLSetupDisplayWaitingList2Action/execute(): update = " + update);
+        log.debug("\n\nWLSetupDisplayWaitingList2Action/execute(): remove = " + remove);
 
         //LazyValidatorForm wlForm = (LazyValidatorForm) form;
-        log.debug("WLSetupDisplayWaitingListAction/execute(): after  (LazyValidatorForm)form ");
+        log.debug("WLSetupDisplayWaitingList2Action/execute(): after  (LazyValidatorForm)form ");
 
 
         String demographicNumSelected = request.getParameter("demographicNumSelected");
         String wlNoteSelected = request.getParameter("wlNoteSelected");
         String onListSinceSelected = request.getParameter("onListSinceSelected");
 
-        log.debug("WLSetupDisplayWaitingListAction/execute(): demographicNumSelected = " + demographicNumSelected);
-        log.debug("WLSetupDisplayWaitingListAction/execute(): wlNoteSelected = " + wlNoteSelected);
-        log.debug("WLSetupDisplayWaitingListAction/execute(): onListSinceSelected = " + onListSinceSelected);
+        log.debug("WLSetupDisplayWaitingList2Action/execute(): demographicNumSelected = " + demographicNumSelected);
+        log.debug("WLSetupDisplayWaitingList2Action/execute(): wlNoteSelected = " + wlNoteSelected);
+        log.debug("WLSetupDisplayWaitingList2Action/execute(): onListSinceSelected = " + onListSinceSelected);
 
 
         if (request.getParameter("waitingListId") != null) {
             waitingListId = request.getParameter("waitingListId");
         }
 
-        log.debug("WLSetupDisplayWaitingListAction/execute(): waitingListId = " + waitingListId);
+        log.debug("WLSetupDisplayWaitingList2Action/execute(): waitingListId = " + waitingListId);
         if (update != null && update.equalsIgnoreCase("Y")) {
 
             demographicNo = request.getParameter(demographicNumSelected);
@@ -140,13 +136,13 @@ public final class WLSetupDisplayWaitingList2Action extends ActionSupport {
         }
         providerNo = (String) session.getAttribute("user");
 
-        log.debug("WLSetupDisplayWaitingListAction/execute(): providerNo = " + providerNo);
-        log.debug("WLSetupDisplayWaitingListAction/execute(): groupno = " + groupNo);
+        log.debug("WLSetupDisplayWaitingList2Action/execute(): providerNo = " + providerNo);
+        log.debug("WLSetupDisplayWaitingList2Action/execute(): groupno = " + groupNo);
 
-        log.debug("WLSetupDisplayWaitingListAction/execute(): waitingListId = " + waitingListId);
-        log.debug("WLSetupDisplayWaitingListAction/execute(): demographicNo = " + demographicNo);
-        log.debug("WLSetupDisplayWaitingListAction/execute(): waitingListNote = " + waitingListNote);
-        log.debug("WLSetupDisplayWaitingListAction/execute(): onListSince = " + onListSince);
+        log.debug("WLSetupDisplayWaitingList2Action/execute(): waitingListId = " + waitingListId);
+        log.debug("WLSetupDisplayWaitingList2Action/execute(): demographicNo = " + demographicNo);
+        log.debug("WLSetupDisplayWaitingList2Action/execute(): waitingListNote = " + waitingListNote);
+        log.debug("WLSetupDisplayWaitingList2Action/execute(): onListSince = " + onListSince);
 
         WLWaitingListBeanHandler hd = null;
         WLWaitingListNameBeanHandler wlNameHd = null;
@@ -176,7 +172,7 @@ public final class WLSetupDisplayWaitingList2Action extends ActionSupport {
                 ProviderNameBean pNameBean = new ProviderNameBean(p.getFormattedName(), p.getProviderNo());
                 allProviders.add(pNameBean);
             }
-            log.debug("WLSetupDisplayWaitingListAction/execute(): allProviders.size() = " + allProviders.size());
+            log.debug("WLSetupDisplayWaitingList2Action/execute(): allProviders.size() = " + allProviders.size());
             if (allProviders.size() <= 0) {
                 ProviderData proData = new ProviderData();
                 proData.getProvider(groupNo);

@@ -24,16 +24,11 @@
  */
 package org.oscarehr.common.web;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.commons.io.IOUtils;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.DemographicArchiveDao;
 import org.oscarehr.common.dao.DemographicDao;
 import org.oscarehr.common.dao.DemographicExtArchiveDao;
@@ -44,19 +39,14 @@ import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import oscar.form.JSONAction;
-
-/*
- * This class is to support the address/phone history popup in the master demographic screen.
- *
- * returns JSON array of DemographicHistoryItems based on changed address, home phone+ext, work phone+ext, cell phone.
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 import oscar.form.JSONUtil;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Demographic2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

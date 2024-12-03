@@ -25,7 +25,6 @@
 --%>
 
 <%@ include file="/taglibs.jsp" %>
-<%@page import="org.oscarehr.eyeform.web.EyeformAction" %>
 <%@page import="org.oscarehr.common.model.Appointment" %>
 <%@page import="org.oscarehr.common.model.Measurement" %>
 <%@page import="java.util.List" %>

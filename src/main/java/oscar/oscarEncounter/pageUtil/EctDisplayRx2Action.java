@@ -27,7 +27,6 @@
 package oscar.oscarEncounter.pageUtil;
 
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.PMmodule.caisi_integrator.CaisiIntegratorManager;
 import org.oscarehr.PMmodule.caisi_integrator.IntegratorFallBackManager;
 import org.oscarehr.caisi_integrator.ws.CachedDemographicDrug;
@@ -45,17 +44,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * retrieves info to display Disease entries for demographic
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-
 public class EctDisplayRx2Action extends EctDisplayAction {
     private String cmd = "Rx";
     private static final Logger logger = MiscUtils.getLogger();
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
 
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
@@ -67,7 +60,7 @@ public class EctDisplayRx2Action extends EctDisplayAction {
             String winName = "Rx" + bean.demographicNo;
             String leftUrl = "popupPage(580,1027,'" + winName + "','" + request.getContextPath() + "/oscarRx/choosePatient.do?providerNo=" + bean.providerNo + "&demographicNo=" + bean.demographicNo + "')";
             String url = leftUrl;
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "oscarEncounter.NavBar.Medications"));
+            Dao.setLeftHeading(getText("oscarEncounter.NavBar.Medications"));
             Dao.setLeftURL(leftUrl);
 
             //set righthand link to same as left so we have visual consistency with other modules

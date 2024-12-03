@@ -18,7 +18,7 @@
  */
 
 /*
- * GstControlAction.java
+ * GstControl2Action.java
  *
  * Created on July 18, 2007, 12:08 PM
  *

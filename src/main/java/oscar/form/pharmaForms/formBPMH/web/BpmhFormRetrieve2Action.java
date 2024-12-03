@@ -24,41 +24,19 @@
  */
 package oscar.form.pharmaForms.formBPMH.web;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+import oscar.OscarProperties;
+import oscar.form.pharmaForms.formBPMH.bean.BpmhForm2Bean;
+import oscar.form.pharmaForms.formBPMH.business.BpmhForm2Handler;
+import oscar.form.pharmaForms.formBPMH.pdf.PDFController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-import org.apache.commons.collections.Factory;
-import org.apache.commons.collections.ListUtils;
-import org.apache.struts.action.ActionMapping;
-import org.oscarehr.common.model.Allergy;
-import org.oscarehr.common.model.Demographic;
-import org.oscarehr.common.model.DemographicCust;
-import org.oscarehr.common.model.Provider;
-import oscar.OscarProperties;
-import oscar.form.pharmaForms.formBPMH.bean.BpmhDrug;
-import oscar.form.pharmaForms.formBPMH.bean.BpmhForm2Bean;
-import oscar.form.pharmaForms.formBPMH.bean.BpmhFormBean;
-import oscar.form.pharmaForms.formBPMH.business.BpmhForm2Handler;
-import oscar.form.pharmaForms.formBPMH.business.BpmhFormHandler;
-import oscar.form.pharmaForms.formBPMH.pdf.PDFController;
-
-/*
- * Author: Dennis Warren
- * Company: Colcamex Resources
- * Date: November 2014
- * For: UBC Pharmacy Clinic and McMaster Department of Family Medicine
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Date;
 
 public class BpmhFormRetrieve2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -73,10 +51,6 @@ public class BpmhFormRetrieve2Action extends ActionSupport {
     }
 
     public String fetch() {
-
-        //BpmhFormBean bpmh = (BpmhFormBean) form;
-        //bpmhFormHandler = new BpmhFormHandler(bpmh);
-
         Integer demographicNo = Integer.parseInt(request.getParameter("demographic_no"));
         Integer formHistoryNumber = Integer.parseInt(request.getParameter("formId"));
 

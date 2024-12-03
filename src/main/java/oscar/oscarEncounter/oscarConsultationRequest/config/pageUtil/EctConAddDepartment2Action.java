@@ -31,7 +31,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.action.ActionMapping;
 import org.oscarehr.common.dao.DepartmentDao;
 import org.oscarehr.common.model.Department;
 import org.oscarehr.managers.SecurityInfoManager;
@@ -61,7 +60,6 @@ public class EctConAddDepartment2Action extends ActionSupport {
         }
 
         Department Department = null;
-        //EctConAddDepartmentForm addDepartmentForm = (EctConAddDepartmentForm) form;
 
         int whichType = this.getWhichType();
         if (whichType == 1) //create
@@ -212,11 +210,6 @@ public class EctConAddDepartment2Action extends ActionSupport {
     public void setAnnotation(String annotation) {
         this.annotation = annotation;
     }
-
-    public void reset(ActionMapping mapping, HttpServletRequest request) {
-        resetForm();
-    }
-
 
     public void resetForm() {
         name = null;

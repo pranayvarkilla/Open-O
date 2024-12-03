@@ -19,10 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.upload.FormFile;
 
 import oscar.oscarLab.FileUploadCheck;
-import oscar.oscarLab.ca.all.pageUtil.LabUploadForm;
 import oscar.oscarLab.ca.all.upload.HandlerClassFactory;
 import oscar.oscarLab.ca.all.upload.handlers.DefaultHandler;
 import oscar.oscarLab.ca.all.util.Utilities;

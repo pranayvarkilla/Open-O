@@ -36,8 +36,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts.upload.FormFile;
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.MeasurementCSSLocationDao;
 import org.oscarehr.common.model.MeasurementCSSLocation;
 import org.oscarehr.managers.SecurityInfoManager;

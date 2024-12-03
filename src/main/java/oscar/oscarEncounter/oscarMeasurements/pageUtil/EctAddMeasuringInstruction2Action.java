@@ -36,7 +36,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.MeasurementTypeDao;
 import org.oscarehr.common.model.MeasurementType;
 import org.oscarehr.managers.SecurityInfoManager;

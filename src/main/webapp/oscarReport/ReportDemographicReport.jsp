@@ -216,13 +216,13 @@
 
                 <%
                     if (request.getAttribute("formBean") != null) {
-                        oscar.oscarReport.pageUtil.RptDemographicReportForm thisForm;
-                        thisForm = (oscar.oscarReport.pageUtil.RptDemographicReportForm) request.getAttribute("RptDemographicReportForm");
-                        thisForm.copyConstructor((oscar.oscarReport.pageUtil.RptDemographicReportForm) request.getAttribute("formBean"));
+                        oscar.oscarReport.pageUtil.RptDemographicReport2Form thisForm;
+                        thisForm = (oscar.oscarReport.pageUtil.RptDemographicReport2Form) request.getAttribute("RptDemographicReport2Form");
+                        thisForm.copyConstructor((oscar.oscarReport.pageUtil.RptDemographicReport2Form) request.getAttribute("formBean"));
 
                     }
-                    oscar.oscarReport.pageUtil.RptDemographicReportForm thisForm;
-                    thisForm = (oscar.oscarReport.pageUtil.RptDemographicReportForm) request.getAttribute("RptDemographicReportForm");
+                    oscar.oscarReport.pageUtil.RptDemographicReport2Form thisForm;
+                    thisForm = (oscar.oscarReport.pageUtil.RptDemographicReport2Form) request.getAttribute("RptDemographicReport2Form");
 
 
                     if (thisForm != null || thisForm.getAgeStyle() == null || thisForm.getAgeStyle().equals("2")) {

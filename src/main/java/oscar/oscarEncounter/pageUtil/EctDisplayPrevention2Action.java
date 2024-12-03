@@ -26,36 +26,22 @@
 
 package oscar.oscarEncounter.pageUtil;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.caisi_integrator.ws.CachedDemographicPrevention;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.oscarPrevention.Prevention;
 import oscar.oscarPrevention.PreventionDS;
 import oscar.oscarPrevention.PreventionData;
 import oscar.oscarPrevention.PreventionDisplayConfig;
 import oscar.util.StringUtils;
 
-/**
- * Creates DAO for left navbar of encounter form
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 public class EctDisplayPrevention2Action extends EctDisplayAction {
     private static final String cmd = "preventions";
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
         if (!securityInfoManager.hasPrivilege(loggedInInfo, "_prevention", "r", null)) {
@@ -66,7 +52,7 @@ public class EctDisplayPrevention2Action extends EctDisplayAction {
             String winName = "prevention" + bean.demographicNo;
             int demographicNumber = Integer.valueOf(bean.demographicNo);
             String url = "popupPage(700,960,'" + winName + "', '" + request.getContextPath() + "/oscarPrevention/index.jsp?demographic_no=" + bean.demographicNo + "')";
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "oscarEncounter.LeftNavBar.Prevent"));
+            Dao.setLeftHeading(getText("oscarEncounter.LeftNavBar.Prevent"));
             Dao.setLeftURL(url);
 
             //set righthand link to same as left so we have visual consistency with other modules

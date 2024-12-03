@@ -52,7 +52,7 @@ public class MsgSendDemographicMessage2Action extends ActionSupport {
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
     /**
-     * Creates a new instance of MsgSendDemographicMessageAction
+     * Creates a new instance of MsgSendDemographicMessage2Action
      */
     public MsgSendDemographicMessage2Action() {
     }

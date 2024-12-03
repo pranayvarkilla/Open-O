@@ -25,15 +25,12 @@
 %>
 
 <%@ page
-        import="java.util.*, org.oscarehr.documentManager.EDocUtil, org.oscarehr.documentManager.data.ChangeDocStatusForm" %>
+        import="java.util.*, org.oscarehr.documentManager.EDocUtil" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%
     ArrayList<String> doctypesD = EDocUtil.getDoctypes("demographic");
     ArrayList<String> doctypesP = EDocUtil.getDoctypes("provider");
 
-    ArrayList<String> doctypes;
-
-    ChangeDocStatusForm formdata = new ChangeDocStatusForm();
     HashMap<String, String> doctypeerrors = new HashMap<String, String>();
     if (request.getAttribute("doctypeerrors") != null) {
         doctypeerrors = (HashMap<String, String>) request.getAttribute("doctypeerrors");
@@ -94,7 +91,7 @@
                             <option value="">Demographic Document Types</option>
                             <% for (String doctypeD : doctypesD) { %>
                             <option value="<%= doctypeD%>"
-                                    <%=(formdata.getDocTypeD().equals(doctypeD)) ? " selected" : ""%>><%= doctypeD%>
+                                    <%= doctypeD%>
                             </option>
                             <%}%>
                         </select>
@@ -122,8 +119,8 @@
                             <option value="">Provider Document Types</option>
                             <%
                                 for (String doctypeP : doctypesP) { %>
-                            <option value="<%= doctypeP%>"
-                                    <%=(formdata.getDocTypeP().equals(doctypeP)) ? " selected" : ""%>><%= doctypeP%>
+                            <option value="<%= doctypeP%>">
+                                    <%= doctypeP%>
                             </option>
                             <%}%>
                         </select>

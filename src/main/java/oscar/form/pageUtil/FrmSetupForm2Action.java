@@ -95,7 +95,6 @@ public final class FrmSetupForm2Action extends ActionSupport {
         MiscUtils.getLogger().debug("SetupFormAction is called");
         HttpSession session = request.getSession(true);
 
-        //FrmFormForm frm = (FrmFormForm) form;
         EctSessionBean bean = (EctSessionBean) request.getSession().getAttribute("EctSessionBean");
         EctEChartBean chartBean = new EctEChartBean();
         String formId = request.getParameter("formId");
@@ -398,7 +397,6 @@ public final class FrmSetupForm2Action extends ActionSupport {
     private Map values = new HashMap();
 
     public void setValue(String key, Object value) {
-        MiscUtils.getLogger().debug("adding key " + key + " value " + value + " Size of FrmFormForm " + values.size());
         values.put(key, value);
     }
 

@@ -71,9 +71,6 @@ public class Download2Action extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-
-        //DownloadForm resourceForm = (DownloadForm) form;
-
         try {
             if (request.getSession().getAttribute("resourceTypeList") == null) {
                 EDTDelegate delegate = DelegateFactory.getEDTDelegateInstance();
@@ -345,7 +342,7 @@ public class Download2Action extends ActionSupport {
         List<BigInteger> ids = getResourceIds(request);
         Collections.sort(ids);
         DownloadResult downloadResult = null;
-        //DownloadForm downloadForm = (DownloadForm) form;
+
         try {
             EDTDelegate delegate = DelegateFactory.getEDTDelegateInstance(this.getServiceId() == null ? ActionUtils.getDefaultServiceId() : this.getServiceId());
 
@@ -385,7 +382,6 @@ public class Download2Action extends ActionSupport {
     private List<DetailDataCustom> getResourceList() {
         Detail result = ActionUtils.getDetails(request);
         List<DetailDataCustom> resourceList = new ArrayList<DetailDataCustom>();
-        //DownloadForm resourceForm = (DownloadForm) form;
 
         if (result == null) {
             try {

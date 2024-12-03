@@ -26,13 +26,8 @@
 
 package oscar.oscarRx.pageUtil;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.util.MessageResources;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.DrugReasonDao;
 import org.oscarehr.common.dao.Icd9Dao;
 import org.oscarehr.common.model.DrugReason;
@@ -41,13 +36,13 @@ import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.log.LogAction;
 import oscar.log.LogConst;
 
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
+import java.util.List;
 
 public final class RxReason2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -73,7 +68,6 @@ public final class RxReason2Action extends ActionSupport {
             throw new RuntimeException("missing required security object (_rx)");
         }
 
-        MessageResources mResources = MessageResources.getMessageResources("oscarResources");
         DrugReasonDao drugReasonDao = (DrugReasonDao) SpringUtils.getBean(DrugReasonDao.class);
         Icd9Dao icd9Dao = (Icd9Dao) SpringUtils.getBean(Icd9Dao.class);
 
@@ -90,18 +84,18 @@ public final class RxReason2Action extends ActionSupport {
         request.setAttribute("demoNo", Integer.parseInt(demographicNo));
 
         if (code != null && code.trim().equals("")) {
-            request.setAttribute("message", mResources.getMessage("SelectReason.error.codeEmpty"));
+            request.setAttribute("message", getText("SelectReason.error.codeEmpty"));
             return SUCCESS;
         }
 
         List<Icd9> list = icd9Dao.getIcd9Code(code);
         if (list.size() == 0) {
-            request.setAttribute("message", mResources.getMessage("SelectReason.error.codeValid"));
+            request.setAttribute("message", getText("SelectReason.error.codeValid"));
             return SUCCESS;
         }
 
         if (drugReasonDao.hasReason(Integer.parseInt(drugIdStr), codingSystem, code, true)) {
-            request.setAttribute("message", mResources.getMessage("SelectReason.error.duplicateCode"));
+            request.setAttribute("message", getText("SelectReason.error.duplicateCode"));
             return SUCCESS;
         }
 
@@ -141,7 +135,6 @@ public final class RxReason2Action extends ActionSupport {
             throw new RuntimeException("missing required security object (_rx)");
         }
 
-        MessageResources mResources = MessageResources.getMessageResources("ApplicationResources");
         DrugReasonDao drugReasonDao = (DrugReasonDao) SpringUtils.getBean(DrugReasonDao.class);
         String reasonId = request.getParameter("reasonId");
         String archiveReason = request.getParameter("archiveReason");
@@ -159,7 +152,7 @@ public final class RxReason2Action extends ActionSupport {
         String ip = request.getRemoteAddr();
         LogAction.addLog((String) request.getSession().getAttribute("user"), LogConst.ARCHIVE, LogConst.CON_DRUGREASON, "" + drugReason.getId(), ip, "" + drugReason.getDemographicNo(), drugReason.getAuditString());
 
-        request.setAttribute("message", mResources.getMessage("SelectReason.msg.archived"));
+        request.setAttribute("message", getText("SelectReason.msg.archived"));
         return SUCCESS;
     }
 }

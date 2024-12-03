@@ -25,9 +25,11 @@
 
 package oscar.login;
 
+import com.opensymphony.xwork2.ActionSupport;
 import com.quatro.model.security.LdapSecurity;
 import net.sf.json.JSONObject;
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.PMmodule.service.ProviderManager;
 import org.oscarehr.PMmodule.web.OcanForm;
@@ -45,7 +47,6 @@ import oscar.log.LogAction;
 import oscar.log.LogConst;
 import oscar.util.AlertTimer;
 import oscar.util.CBIUtil;
-import oscar.util.ParameterActionForward;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -58,9 +59,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Pattern;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public final class Login2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -347,7 +345,7 @@ public final class Login2Action extends ActionSupport {
              * The following will redirect to the selected IDP for
              * an authentication request if SSO is enabled
              * The remainder of the login process will be handled through the
-             * SSOLoginAction class.
+             * SSOLogin2Action class.
              *
              */
             if (SSOUtility.isSSOEnabled()) {
@@ -562,13 +560,6 @@ public final class Login2Action extends ActionSupport {
                 json.write(response.getWriter());
                 return null;
             }
-
-            /*ParameterActionForward forward = new ParameterActionForward(mapping.findForward(where));
-            forward.addParameter("login", "failed");
-            if (oneIdKey != null && !oneIdKey.equals("")) {
-                forward.addParameter("nameId", oneIdKey);
-            }*/
-
             return where;
         }
 

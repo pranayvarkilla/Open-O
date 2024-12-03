@@ -55,13 +55,6 @@ public class EctDefineNewMeasurementGroup2Action extends ActionSupport {
             throws ServletException, IOException {
 
         if (securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin", "w", null) || securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin.measurements", "w", null)) {
-
-//            EctDefineNewMeasurementGroupForm frm = (EctDefineNewMeasurementGroupForm) form;
-//            request.getSession().setAttribute("EctDefineNewMeasurementGroupForm", frm);
-
-//            String groupName = frm.getGroupName();
-//            String styleSheet = frm.getStyleSheet();
-
             EctValidation validate = new EctValidation();
             String regExp = validate.getRegCharacterExp();
 

@@ -55,10 +55,8 @@ public final class RptSelectCDMReport2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_report)");
         }
 
-        //RptSelectCDMReportForm frm = (RptSelectCDMReportForm) form;
         HttpSession session = request.getSession();
         String CDMgroup = (String) this.getValue("CDMgroup");
-        //String forward = frm.getForward();
 
         MiscUtils.getLogger().debug("The selected group is" + CDMgroup);
         RptMeasurementTypesBeanHandler hd = new RptMeasurementTypesBeanHandler(CDMgroup);

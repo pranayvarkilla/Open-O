@@ -25,25 +25,17 @@
 
 package oscar.login;
 
-import java.io.IOException;
-import java.util.*;
-
-import javax.crypto.Cipher;
-import javax.crypto.Mac;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.onelogin.saml2.Auth;
 import com.onelogin.saml2.exception.Error;
 import com.onelogin.saml2.exception.SettingsException;
 import com.onelogin.saml2.settings.Saml2Settings;
+import com.opensymphony.xwork2.ActionSupport;
+import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.PMmodule.service.ProviderManager;
 import org.oscarehr.common.dao.FacilityDao;
@@ -53,16 +45,22 @@ import org.oscarehr.common.dao.UserPropertyDAO;
 import org.oscarehr.common.model.Security;
 import org.oscarehr.managers.AppManager;
 import org.oscarehr.managers.SsoAuthenticationManager;
-import org.oscarehr.util.*;
-
-import net.sf.json.JSONObject;
+import org.oscarehr.util.LoggedInInfo;
+import org.oscarehr.util.MiscUtils;
+import org.oscarehr.util.SpringUtils;
 import oscar.OscarProperties;
 import oscar.log.LogAction;
 import oscar.log.LogConst;
-import oscar.util.ParameterActionForward;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.crypto.Cipher;
+import javax.crypto.Mac;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.*;
 
 public final class SSOLogin2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

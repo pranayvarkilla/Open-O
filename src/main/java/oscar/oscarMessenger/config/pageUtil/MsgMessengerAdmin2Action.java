@@ -135,7 +135,6 @@ public class MsgMessengerAdmin2Action extends ActionSupport {
         String parent = new String();
 
         GroupsDao dao = SpringUtils.getBean(GroupsDao.class);
-        //String grpNo = ((MsgMessengerAdminForm) form).getGrpNo();
 
         Groups gg = dao.find(ConversionUtils.fromIntString(grpNo));
         if (gg != null) {
@@ -173,9 +172,6 @@ public class MsgMessengerAdmin2Action extends ActionSupport {
         }
 
         String[] providers = this.getProviders();
-        //String grpNo = ((MsgMessengerAdminForm) form).getGrpNo();
-        //String update = ((MsgMessengerAdminForm) form).getUpdate();
-        //String delete = ((MsgMessengerAdminForm) form).getDelete();
 
         String parent = new String();
 

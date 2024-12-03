@@ -254,7 +254,7 @@
             }
 
             function submitForm(methodName) {
-                // The sendListEmail() method in BillingInvoiceAction.java is not supported. For more details, please refer to the sendListEmail() method.
+                // The sendListEmail() method in BillingInvoice2Action.java is not supported. For more details, please refer to the sendListEmail() method.
                 // if (methodName=="email"){
                 //     document.invoiceForm.method.value="sendListEmail";
                 // } else

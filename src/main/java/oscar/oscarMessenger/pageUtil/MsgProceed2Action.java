@@ -57,11 +57,6 @@ public class MsgProceed2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_msg)");
         }
 
-        //MsgProceedForm frm = (MsgProceedForm) form;
-
-        //String id;
-        //String demoId;
-
         oscar.oscarMessenger.pageUtil.MsgSessionBean bean;
         bean = (oscar.oscarMessenger.pageUtil.MsgSessionBean) request.getSession().getAttribute("msgSessionBean");
 

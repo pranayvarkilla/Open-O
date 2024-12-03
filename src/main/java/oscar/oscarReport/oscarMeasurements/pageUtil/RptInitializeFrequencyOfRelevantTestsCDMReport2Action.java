@@ -25,30 +25,26 @@
 
 package oscar.oscarReport.oscarMeasurements.pageUtil;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.util.MessageResources;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.MeasurementDao;
 import org.oscarehr.common.model.Measurement;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.oscarEncounter.oscarMeasurements.pageUtil.EctValidation;
 import oscar.oscarReport.oscarMeasurements.data.RptMeasurementsData;
 import oscar.util.ConversionUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class RptInitializeFrequencyOfRelevantTestsCDMReport2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -63,8 +59,6 @@ public class RptInitializeFrequencyOfRelevantTestsCDMReport2Action extends Actio
             throw new SecurityException("missing required security object (_report)");
         }
 
-//        RptInitializeFrequencyOfRelevantTestsCDMReportForm frm = (RptInitializeFrequencyOfRelevantTestsCDMReportForm) form;
-//        request.getSession().setAttribute("RptInitializeFrequencyOfRelevantTestsCDMReportForm", frm);
         ArrayList<String> reportMsg = new ArrayList<String>();
         ArrayList<String> headings = new ArrayList<String>();
         RptMeasurementsData mData = new RptMeasurementsData();

@@ -25,12 +25,8 @@
 
 package oscar.oscarEncounter.oscarMeasurements.pageUtil;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.MeasurementDao;
 import org.oscarehr.common.dao.MeasurementsDeletedDao;
 import org.oscarehr.common.model.Measurement;
@@ -39,12 +35,12 @@ import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.util.ConversionUtils;
-import oscar.util.ParameterActionForward;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class EctDeleteData2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -58,10 +54,6 @@ public class EctDeleteData2Action extends ActionSupport {
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_measurement", "d", null)) {
             throw new SecurityException("missing required security object (_measurement)");
         }
-
-        /*EctDeleteDataForm frm = (EctDeleteDataForm) form;
-        request.getSession().setAttribute("EctDeleteDataForm", frm);*/
-        //String[] deleteCheckbox = frm.getDeleteCheckbox();
 
         MeasurementsDeletedDao measurementsDeletedDao = (MeasurementsDeletedDao) SpringUtils.getBean(MeasurementsDeletedDao.class);
         MeasurementDao measurementDao = SpringUtils.getBean(MeasurementDao.class);

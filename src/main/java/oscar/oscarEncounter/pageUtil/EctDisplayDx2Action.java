@@ -26,38 +26,29 @@
 
 package oscar.oscarEncounter.pageUtil;
 
+import org.oscarehr.common.dao.PartialDateDao;
+import org.oscarehr.common.model.PartialDate;
+import org.oscarehr.util.LoggedInInfo;
+import org.oscarehr.util.MiscUtils;
+import org.oscarehr.util.SpringUtils;
+import oscar.oscarResearch.oscarDxResearch.bean.dxResearchBean;
+import oscar.oscarResearch.oscarDxResearch.bean.dxResearchBeanHandler;
+import oscar.util.DateUtils;
+import oscar.util.StringUtils;
+
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts.util.MessageResources;
-import org.oscarehr.common.dao.PartialDateDao;
-import org.oscarehr.common.model.PartialDate;
-import org.oscarehr.util.LoggedInInfo;
-import org.oscarehr.util.MiscUtils;
-import org.oscarehr.util.SpringUtils;
-
-import oscar.oscarResearch.oscarDxResearch.bean.dxResearchBean;
-import oscar.oscarResearch.oscarDxResearch.bean.dxResearchBeanHandler;
-import oscar.util.DateUtils;
-import oscar.util.StringUtils;
-
-/**
- * retrieves info to display Disease entries for demographic
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-
 public class EctDisplayDx2Action extends EctDisplayAction {
     private String cmd = "Dx";
 
     PartialDateDao partialDateDao = SpringUtils.getBean(PartialDateDao.class);
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
 
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_dxresearch", "r", null)) {
             return true; //Dx link won't show up on new CME screen.
@@ -66,7 +57,7 @@ public class EctDisplayDx2Action extends EctDisplayAction {
             //set lefthand module heading and link
             String winName = "Disease" + bean.demographicNo;
             String url = "popupPage(580,900,'" + winName + "','" + request.getContextPath() + "/oscarResearch/oscarDxResearch/setupDxResearch.do?demographicNo=" + bean.demographicNo + "&providerNo=" + bean.providerNo + "&quickList=')";
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "oscarEncounter.LeftNavBar.DxRegistry"));
+            Dao.setLeftHeading(getText("oscarEncounter.LeftNavBar.DxRegistry"));
             Dao.setLeftURL(url);
 
             //set righthand link to same as left so we have visual consistency with other modules

@@ -74,7 +74,7 @@ public class ManageTeleplan2Action extends ActionSupport {
     private static Logger log = MiscUtils.getLogger();
 
     /**
-     * Creates a new instance of ManageTeleplanAction
+     * Creates a new instance of ManageTeleplan2Action
      */
     public ManageTeleplan2Action() {
     }

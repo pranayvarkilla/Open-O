@@ -26,29 +26,8 @@
 
 package oscar.oscarBilling.ca.on.pageUtil;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.URLEncoder;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.struts.upload.FormFile;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.BatchEligibilityDao;
 import org.oscarehr.common.dao.DemographicCustDao;
 import org.oscarehr.common.model.BatchEligibility;
@@ -58,7 +37,6 @@ import org.oscarehr.managers.DemographicManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.OscarProperties;
 import oscar.oscarBilling.ca.on.bean.BillingClaimBatchAcknowledgementReportBeanHandler;
 import oscar.oscarBilling.ca.on.bean.BillingClaimsErrorReportBeanHandler;
@@ -66,8 +44,14 @@ import oscar.oscarBilling.ca.on.bean.BillingEDTOBECOutputSpecificationBean;
 import oscar.oscarBilling.ca.on.bean.BillingEDTOBECOutputSpecificationBeanHandler;
 import oscar.oscarBilling.ca.on.data.BillingClaimsErrorReportBeanHandlerSave;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 public class BillingDocumentErrorReportUpload2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -79,9 +63,6 @@ public class BillingDocumentErrorReportUpload2Action extends ActionSupport {
     private DemographicManager demographicManager = SpringUtils.getBean(DemographicManager.class);
 
     public String execute() throws ServletException, IOException {
-//        BillingDocumentErrorReportUploadForm frm = (BillingDocumentErrorReportUploadForm) form;
-//        request.getSession().setAttribute("BillingDocumentErrorReportUploadForm", frm);
-//        FormFile file1 = frm.getFile1();
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
         String filename = request.getParameter("filename") == null ? "null" : request.getParameter("filename");

@@ -59,11 +59,4 @@ public class RptDemographQueryFavouriteDelete2Action extends ActionSupport {
 
         return SUCCESS;
     }
-
-    /**
-     * Creates a new instance of RptDemographQueryFavouriteDeleteAction
-     */
-    public RptDemographQueryFavouriteDelete2Action() {
-    }
-
 }

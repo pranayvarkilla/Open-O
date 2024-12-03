@@ -26,33 +26,27 @@
 
 package oscar.oscarEncounter.pageUtil;
 
+import org.oscarehr.util.LoggedInInfo;
+import org.oscarehr.util.MiscUtils;
+import oscar.eform.EFormUtil;
+import oscar.util.StringUtils;
+
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts.util.MessageResources;
-import org.oscarehr.util.LoggedInInfo;
-import org.oscarehr.util.MiscUtils;
-
-import oscar.eform.EFormUtil;
-import oscar.util.StringUtils;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-
 public class EctDisplayDiagram2Action extends EctDisplayAction {
     private static final String cmd = "diagrams";
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_eform", "r", null)) {
             throw new SecurityException("missing required security object (_eform)");
         }
 
         //set text for lefthand module title
-        Dao.setLeftHeading(messages.getMessage(request.getLocale(), "oscarEncounter.LeftNavBar.Diagrams"));
+        Dao.setLeftHeading(getText("oscarEncounter.LeftNavBar.Diagrams"));
 
         //set link for lefthand module title
         String winName = "Diagrams" + bean.demographicNo;

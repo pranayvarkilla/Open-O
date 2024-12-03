@@ -36,8 +36,7 @@
                 key="oscar.billing.CA.BC.received"/></legend>
         <div class="msgDisplay">
             <%
-                oscar.oscarBilling.ca.bc.pageUtil.ReceivePaymentActionForm frm = (oscar.oscarBilling.ca.bc.pageUtil.ReceivePaymentActionForm) request.getAttribute("receivePaymentActionForm");
-            %> <%=java.text.NumberFormat.getCurrencyInstance().format(new Double(frm.getAmountReceived()))%>
+            %> <%=java.text.NumberFormat.getCurrencyInstance().format(0)%>
             <bean:message key="oscar.billing.CA.BC.credit"/> &nbsp; <bean:message
                 key="oscar.billing.CA.BC.invoice"/> <bean:write
                 name="receivePaymentActionForm" property="billNo"/> &nbsp; <bean:message

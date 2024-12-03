@@ -58,7 +58,6 @@ public class EctConEditSpecialists2Action extends ActionSupport {
 
         ProfessionalSpecialistDao professionalSpecialistDao = (ProfessionalSpecialistDao) SpringUtils.getBean(ProfessionalSpecialistDao.class);
 
-        //EctConEditSpecialistsForm editSpecialistsForm = (EctConEditSpecialistsForm) form;
         String specId = this.getSpecId();
         String delete = this.getDelete();
         String specialists[] = this.getSpecialists();

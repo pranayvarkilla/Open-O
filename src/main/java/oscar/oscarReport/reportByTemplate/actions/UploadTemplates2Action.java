@@ -36,24 +36,17 @@
 package oscar.oscarReport.reportByTemplate.actions;
 
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+import org.oscarehr.util.LoggedInInfo;
+import org.oscarehr.util.MiscUtils;
+import oscar.oscarReport.reportByTemplate.ReportManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.upload.FormFile;
-import org.oscarehr.util.LoggedInInfo;
-import org.oscarehr.util.MiscUtils;
-
-import oscar.oscarReport.reportByTemplate.ReportManager;
-
-/**
- * @author apavel (Paul)
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 public class UploadTemplates2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

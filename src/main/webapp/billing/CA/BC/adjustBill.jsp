@@ -52,7 +52,7 @@
 <%@page import="org.oscarehr.common.dao.DemographicDao" %>
 <%@page import="org.oscarehr.common.model.Provider" %>
 <%@page import="org.oscarehr.PMmodule.dao.ProviderDao" %>
-<%@ page import="oscar.oscarBilling.ca.on.administration.GstControlAction" %>
+<%@ page import="oscar.oscarBilling.ca.on.administration.GstControl2Action" %>
 <%@ page import="oscar.oscarBilling.ca.bc.administration.GstReport" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <jsp:useBean id="providerBean" class="java.util.Properties" scope="session"/>
@@ -137,7 +137,7 @@
         request.setAttribute("invoiceNo", String.valueOf(bm.getBillingNo()));
     }
     GstReport gstReport = new GstReport();
-    String gstPercent = (new GstControlAction()).readDatabase().getProperty("gstPercent", "");
+    String gstPercent = (new GstControl2Action()).readDatabase().getProperty("gstPercent", "");
 
 %>
 <html>

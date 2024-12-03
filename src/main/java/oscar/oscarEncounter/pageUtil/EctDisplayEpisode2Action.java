@@ -24,29 +24,23 @@
  */
 package oscar.oscarEncounter.pageUtil;
 
-import java.util.List;
-import java.util.Properties;
-import java.util.Vector;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.EpisodeDao;
 import org.oscarehr.common.model.Episode;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.util.OscarRoleObjectPrivilege;
 import oscar.util.StringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Properties;
+import java.util.Vector;
 
 public class EctDisplayEpisode2Action extends EctDisplayAction {
 
     private static final String cmd = "episode";
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         boolean a = true;
         Vector v = OscarRoleObjectPrivilege.getPrivilegeProp("_newCasemgmt.episode");
         String roleName = (String) request.getSession().getAttribute("userrole") + "," + (String) request.getSession().getAttribute("user");
@@ -67,7 +61,7 @@ public class EctDisplayEpisode2Action extends EctDisplayAction {
 
 
                 String url = "popupPage(500,900,'" + winName + "','" + pathview + "')";
-                Dao.setLeftHeading(messages.getMessage(request.getLocale(), "global.episode"));
+                Dao.setLeftHeading(getText("global.episode"));
                 Dao.setLeftURL(url);
 
                 //set right hand heading link

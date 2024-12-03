@@ -61,9 +61,7 @@ public class RptByExample2Action extends ActionSupport {
 
     public String execute()
             throws ServletException, IOException {
-        //RptByExampleForm frm = (RptByExampleForm) form;
-
-        String roleName$ = (String) request.getSession().getAttribute("userrole") + "," + (String) request.getSession().getAttribute("user");
+        String roleName$ = request.getSession().getAttribute("userrole") + "," + (String) request.getSession().getAttribute("user");
         if (!com.quatro.service.security.SecurityManager.hasPrivilege("_admin", roleName$) && !com.quatro.service.security.SecurityManager.hasPrivilege("_report", roleName$)) {
             throw new SecurityException("Insufficient Privileges");
         }

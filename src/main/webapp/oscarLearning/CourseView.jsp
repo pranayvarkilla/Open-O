@@ -32,13 +32,13 @@
 
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@page import="java.util.*,org.oscarehr.learning.web.CourseManagerAction,org.oscarehr.common.model.SecRole,org.oscarehr.PMmodule.model.Program" %>
+<%@page import="java.util.*,org.oscarehr.PMmodule.model.Program" %>
 
 
 <%
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
     //get list of courses for the drop down
-    List<Program> courses = org.oscarehr.learning.web.CourseManagerAction.getCoursesByModerator(loggedInInfo.getLoggedInProviderNo());
+    List<Program> courses = org.oscarehr.learning.web.CourseManager2Action.getCoursesByModerator(loggedInInfo.getLoggedInProviderNo());
 %>
 <html>
 

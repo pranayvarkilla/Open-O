@@ -50,15 +50,10 @@ public class MsgViewPDF2Action extends ActionSupport {
 
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
-    public String execute()
-            throws IOException, ServletException {
-
-        //MsgViewPDFForm frm = (MsgViewPDFForm) form;
-
+    public String execute() throws IOException, ServletException {
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_msg", "r", null)) {
             throw new SecurityException("missing required security object (_msg)");
         }
-
 
         try {
 

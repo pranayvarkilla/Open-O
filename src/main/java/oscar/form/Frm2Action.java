@@ -28,9 +28,11 @@
 // c_lastVisited, formId - if the form has multiple pages
 package oscar.form;
 
+import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
@@ -44,10 +46,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-
-public final class Frm2Action extends JSONAction {
+public final class Frm2Action extends ActionSupport {
 
     HttpServletRequest request = ServletActionContext.getRequest();
     HttpServletResponse response = ServletActionContext.getResponse();
@@ -294,7 +293,7 @@ public final class Frm2Action extends JSONAction {
             jsonObject.element("newFormId", newFormId);
             jsonObject.element("newNewUrl", newUrl);
             jsonObject.element("formAutosaveDate", new SimpleDateFormat("h:mm a").format(new Date()));
-            jsonResponse(response, jsonObject);
+            JSONUtil.jsonResponse(response, jsonObject);
 
         } catch (Exception e) {
             throw new RuntimeException(e);

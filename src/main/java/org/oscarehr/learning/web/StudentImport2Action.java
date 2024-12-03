@@ -26,27 +26,22 @@
 
 package org.oscarehr.learning.web;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.Ostermiller.util.ExcelCSVParser;
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.upload.FormFile;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.learning.StudentImporter;
 import org.oscarehr.learning.StudentInfo;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 
-import com.Ostermiller.util.ExcelCSVParser;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentImport2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

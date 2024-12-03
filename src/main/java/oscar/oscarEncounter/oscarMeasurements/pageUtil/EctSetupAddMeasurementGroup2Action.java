@@ -53,14 +53,8 @@ public class EctSetupAddMeasurementGroup2Action extends ActionSupport {
 
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
-    public String execute()
-            throws ServletException, IOException {
-
+    public String execute() throws ServletException, IOException {
         if (securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin", "w", null) || securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin.measurements", "w", null)) {
-
-            //EctSetupAddMeasurementGroupForm frm = (EctSetupAddMeasurementGroupForm) form;
-            //request.getSession().setAttribute("EctSetupAddMeasurementGroupForm", frm);
-
             String groupName = (String) this.getValue("groupName");
             MiscUtils.getLogger().debug("The selected groupName is: " + groupName);
 

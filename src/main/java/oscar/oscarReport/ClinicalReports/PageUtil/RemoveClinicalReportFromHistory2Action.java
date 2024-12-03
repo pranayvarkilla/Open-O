@@ -44,7 +44,7 @@ public class RemoveClinicalReportFromHistory2Action extends ActionSupport {
 
 
     /**
-     * Creates a new instance of RunClinicalReportAction
+     * Creates a new instance of RunClinicalReport2Action
      */
     public RemoveClinicalReportFromHistory2Action() {
     }

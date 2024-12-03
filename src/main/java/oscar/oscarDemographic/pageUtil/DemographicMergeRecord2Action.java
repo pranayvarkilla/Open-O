@@ -25,7 +25,7 @@
 
 
 /*
- * DemographicMergeRecordAction.java
+ * DemographicMergeRecord2Action.java
  *
  * Created on September 11, 2007, 3:52 PM
  *

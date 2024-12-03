@@ -96,11 +96,4 @@ public class FrmFormAddRHWorkFlow2Action extends ActionSupport {
         request.setAttribute("demographic_no", demographicNo);
         return SUCCESS;
     }
-
-    /**
-     * Creates a new instance of FrmFormRHPreventionAction
-     */
-    public FrmFormAddRHWorkFlow2Action() {
-    }
-
 }

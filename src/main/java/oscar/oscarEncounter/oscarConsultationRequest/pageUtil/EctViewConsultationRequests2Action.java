@@ -57,8 +57,6 @@ public class EctViewConsultationRequests2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_con)");
         }
 
-        //EctViewConsultationRequestsForm frm = (EctViewConsultationRequestsForm) form;
-
         String defaultPattern = "yyyy-MM-dd";
         //String sendTo = null;
         String includeCompleted = null;

@@ -34,99 +34,16 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import oscar.oscarMessenger.docxfer.util.MsgCommxml;
 import oscar.oscarReport.pageUtil.RptDemographicReport2Form;
-import oscar.oscarReport.pageUtil.RptDemographicReportForm;
+import oscar.oscarReport.pageUtil.RptDemographicReport2Form;
 
 
 public class RptDemographicQuery2Loader {
 
     private DemographicQueryFavouritesDao demographicQueryFavouritesDao = SpringUtils.getBean(DemographicQueryFavouritesDao.class);
 
-    public RptDemographicQuery2Loader() {
-    }
-
-    public RptDemographicReportForm queryLoader(RptDemographicReportForm frm) {
+    public RptDemographicReport2Form queryLoader(RptDemographicReport2Form frm) {
         String qId = frm.getSavedQuery();
-        RptDemographicReportForm dRF = new RptDemographicReportForm();
-
-        String mSelect = null;
-        String mAge = null;
-        String mStartYear = null;
-        String mEndYear = null;
-        String mFirstName = null;
-        String mLastName = null;
-        String mRosterStatus = null;
-        String mSex = null;
-        String mProviderNo = null;
-        String mPatientStatus = null;
-        String mDemoIds = null;
-
-
-        DemographicQueryFavourite dqf = demographicQueryFavouritesDao.find(Integer.parseInt(qId));
-        if (dqf != null) {
-            mSelect = dqf.getSelects();
-            mAge = dqf.getAge();
-            mStartYear = dqf.getStartYear();
-            mEndYear = dqf.getEndYear();
-            mFirstName = dqf.getFirstName();
-            mLastName = dqf.getLastName();
-            mRosterStatus = dqf.getRosterStatus();
-            mSex = dqf.getSex();
-            mProviderNo = dqf.getProviderNo();
-            mPatientStatus = dqf.getPatientStatus();
-            mDemoIds = dqf.getDemoIds();
-        }
-
-
-        if (mSelect != null && mSelect.length() != 0) {
-            String[] t = fromXMLtoArray(mSelect);
-            dRF.setSelect(t);
-        }
-        if (mAge != null && mAge.length() != 0) {
-            dRF.setAge(mAge);
-        }
-        if (mStartYear != null && mStartYear.length() != 0) {
-            dRF.setStartYear(mStartYear);
-        }
-        if (mEndYear != null && mEndYear.length() != 0) {
-            dRF.setEndYear(mEndYear);
-        }
-        if (mFirstName != null && mFirstName.length() != 0) {
-            dRF.setFirstName(mFirstName);
-        }
-        if (mLastName != null && mLastName.length() != 0) {
-            dRF.setLastName(mLastName);
-        }
-
-
-        if (mRosterStatus != null && mRosterStatus.length() != 0) {
-            String[] t = fromXMLtoArray(mRosterStatus);
-            dRF.setRosterStatus(t);
-        }
-        if (mSex != null && mSex.length() != 0) {
-            dRF.setSex(mSex);
-        }
-        if (mRosterStatus != null && mRosterStatus.length() != 0) {
-            String[] t = fromXMLtoArray(mRosterStatus);
-            dRF.setRosterStatus(t);
-        }
-        if (mProviderNo != null && mProviderNo.length() != 0) {
-            String[] t = fromXMLtoArray(mProviderNo);
-            dRF.setProviderNo(t);
-        }
-        if (mPatientStatus != null && mPatientStatus.length() != 0) {
-            String[] t = fromXMLtoArray(mPatientStatus);
-            dRF.setPatientStatus(t);
-        }
-        if (mDemoIds != null && !mDemoIds.isEmpty()) {
-            dRF.setDemoIds(mDemoIds);
-        }
-
-        return dRF;
-    }
-
-    public RptDemographicReportForm queryLoader(RptDemographicReport2Form frm) {
-        String qId = frm.getSavedQuery();
-        RptDemographicReportForm dRF = new RptDemographicReportForm();
+        RptDemographicReport2Form dRF = new RptDemographicReport2Form();
 
         String mSelect = null;
         String mAge = null;

@@ -86,7 +86,7 @@ public class ConsultationPrintDocs2Action extends ActionSupport {
     }
 
     /**
-     * Creates a new instance of ConsultationPrintDocsAction
+     * Creates a new instance of ConsultationPrintDocs2Action
      */
     public ConsultationPrintDocs2Action() {
     }
