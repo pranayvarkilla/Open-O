@@ -50,7 +50,7 @@
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><%=bundle.getString(providertitle)%></title>
 
         <link rel="stylesheet" type="text/css"
@@ -112,16 +112,16 @@
         <tr>
             <td class="MainTableLeftColumn">&nbsp;</td>
             <td class="MainTableRightColumn">
-                <%if (request.getAttribute("status") == null) {%> <%=bundle.getString(providermsgEdit)%> <c:out value="${rxPageSizeProperty.value}"/> <html:form
-                    action="/setProviderStaleDate.do">
+                <%if (request.getAttribute("status") == null) {%> <%=bundle.getString(providermsgEdit)%> <c:out value="${rxPageSizeProperty.value}"/>
+                <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                 <input type="hidden" name="method" value="<c:out value="${method}"/>">
-                <!--html:text property="rxPageSizeProperty.value" /-->
-                <html:select property="rxPageSizeProperty.value">
-                    <html:option value="PageSize.A4">A4</html:option>
-                    <html:option value="PageSize.A6">A6</html:option>
-                </html:select>
+                <!--input type="text" name="rxPageSizeProperty.value" /-->
+                <select name="rxPageSizeProperty.value" id="rxPageSizeProperty.value">
+                    <option value="PageSize.A4">A4</option>
+                    <option value="PageSize.A6">A6</option>
+                </select>
                 <input type="submit" value="<%=bundle.getString(providerbtnSubmit)%>"/>
-            </html:form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
+            </form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
                 <%}%>
             </td>
         </tr>

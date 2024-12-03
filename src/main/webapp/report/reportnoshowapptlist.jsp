@@ -51,7 +51,7 @@
 <%@ page import="org.oscarehr.common.dao.ProviderDataDao" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <jsp:useBean id="patientBean" class="oscar.AppointmentMainBean" scope="page"/>
 <jsp:useBean id="myGroupBean" class="java.util.Vector" scope="page"/>

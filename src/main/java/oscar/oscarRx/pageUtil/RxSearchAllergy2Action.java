@@ -98,10 +98,10 @@ public final class RxSearchAllergy2Action extends ActionSupport {
         java.util.Vector catVec = new java.util.Vector();
 
         /**
-         * <html:checkbox property="type4" /> Drug Classes   9 |  4 | ther_class
-         * <html:checkbox property="type3" /> Ingredients   13 |  6 | ingredient
-         * <html:checkbox property="type2" /> Generic Names  6 |  1 | generic
-         * <html:checkbox property="type1" /> Brand Names    8 |  3 | brandname
+         * <input type="checkbox" name="type4" /> Drug Classes   9 |  4 | ther_class
+         * <input type="checkbox" name="type3" /> Ingredients   13 |  6 | ingredient
+         * <input type="checkbox" name="type2" /> Generic Names  6 |  1 | generic
+         * <input type="checkbox" name="type1" /> Brand Names    8 |  3 | brandname
          *
          *|  8 | anatomical class
          *|  9 | chemical class

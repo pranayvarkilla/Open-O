@@ -17,8 +17,8 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 
 <%
@@ -50,7 +50,7 @@
         <title>Antenatal Record 1</title>
         <link rel="stylesheet" type="text/css"
               href="<%=bView?"arStyleView.css" : "arStyle.css"%>">
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <script type="text/javascript" language="Javascript">
@@ -246,7 +246,7 @@
 
     <body bgproperties="fixed" topmargin="0" leftmargin="1" rightmargin="1">
 
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
         <input type="hidden" name="c_lastVisited"
                value=<%=props.getProperty("c_lastVisited", "pg1")%>/>
         <input type="hidden" name="demographic_no"
@@ -1487,6 +1487,6 @@
             </tr>
         </table>
 
-    </html:form>
+    </form>
     </body>
 </html>

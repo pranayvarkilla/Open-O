@@ -1,5 +1,3 @@
-<%@taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -30,7 +28,18 @@
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
     </head>
     <body class="BodyStyle" vlink="#0000FF">
-    <h2><html:errors/></h2>
+    <h2><% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %></h2>
     <!--  -->
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr>

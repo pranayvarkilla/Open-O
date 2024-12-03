@@ -29,7 +29,7 @@
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 
@@ -42,7 +42,7 @@
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.oldMeasurements"/>
         </title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <script src="<%= request.getContextPath() %>/js/global.js"></script>
 
@@ -75,8 +75,19 @@
     </head>
     <body
             onload="window.focus();">
-    <html:errors/>
-    <html:form action="/oscarEncounter/oscarMeasurements/DeleteData">
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
+    <form action="${pageContext.request.contextPath}/oscarEncounter/oscarMeasurements/DeleteData.do" method="post">
 
         <table style="border-width: 2px; width: 100%; border-spacing: 0px; ">
             <c:if test="${not empty messages}">
@@ -242,6 +253,6 @@
         <c:if test="${not empty type}">
             <input type="hidden" name="type" value="${type}">
         </c:if>
-    </html:form>
+    </form>
     </body>
 </html>

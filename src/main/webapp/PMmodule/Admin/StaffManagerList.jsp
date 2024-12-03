@@ -91,7 +91,7 @@
     <%@ include file="/common/messages.jsp" %>
     <br/>
 
-    <html:form action="/PMmodule/StaffManager.do">
+    <form action="${pageContext.request.contextPath}/PMmodule/StaffManager.do" method="post">
 
         <div class="tabs" id="tabs">
             <table cellpadding="3" cellspacing="0" border="0">
@@ -141,7 +141,7 @@
                                  value="No providers found."/>
             <display:column sortable="false" title="">
                 <a
-                        href="<html:rewrite action="/PMmodule/StaffManager.do"/>?method=edit&id=<c:out value="${provider.providerNo}" />">
+                        href="<%=request.getContextPath() %>/PMmodule/StaffManager.do?method=edit&id=<c:out value="${provider.providerNo}" />">
                     Edit </a>
             </display:column>
             <display:column property="formattedName" sortable="true" title="Name"/>
@@ -151,7 +151,7 @@
 
         </display:table>
 
-    </html:form>
+    </form>
 
     </body>
 </html>

@@ -31,9 +31,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.oscar-emr.com/tags/integration" prefix="i" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
 <%@ page import="java.lang.*, java.util.*, java.text.*,java.sql.*, oscar.*" %>
 <%
     String mcedtUsername = (String) session.getAttribute("mcedtUsername");
@@ -116,8 +116,7 @@
         </div>
 
         <div class="center" style="width:45%">
-            <%-- <html:form action="<%=request.getContextPath() %>/mcedt/kaichpass.do" method="POST"> --%>
-            <html:form action="/mcedt/kaichpass" method="post" styleId="form">
+            <form action="${pageContext.request.contextPath}/mcedt/kaichpass.do" method="post" styleId="form">
                 <input id="method" name="method" type="hidden" value=""/>
                 <table class="password">
                     <tr>
@@ -144,7 +143,7 @@
                         </td>
                     </tr>
                 </table>
-            </html:form>
+            </form>
         </div>
     </div>
 </div>

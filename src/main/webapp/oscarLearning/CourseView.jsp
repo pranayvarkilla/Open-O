@@ -31,7 +31,7 @@
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@page import="java.util.*,org.oscarehr.PMmodule.model.Program" %>
 
 
@@ -131,7 +131,7 @@
             }
 
         </script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarLearning.courseView.title"/>
         </title>
         <link rel="stylesheet" type="text/css"
@@ -152,7 +152,7 @@
                     <tr>
                         <td></td>
                         <td>&nbsp;</td>
-                        <td style="text-align: right"><oscar:help keywords="course" key="app.top1"/> | <a
+                        <td style="text-align: right"><a
                                 href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                 href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                     </tr>

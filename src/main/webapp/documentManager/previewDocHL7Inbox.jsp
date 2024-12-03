@@ -41,7 +41,7 @@
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@ taglib uri="/WEB-INF/oscarProperties-tag.tld" prefix="oscarProp" %>
 <%@ taglib uri="/WEB-INF/indivo-tag.tld" prefix="indivo" %>
@@ -186,7 +186,7 @@
            style="margin: 0px;">
         <tr>
             <td class="MainTableRightColumn" colspan="2" valign="top">
-                <html:form action="/documentManager/combinePDFs">
+                <form action="${pageContext.request.contextPath}/documentManager/combinePDFs.do" method="post">
                     <div class="documentLists"><%-- STUFF TO DISPLAY --%>
                         <%
                             for (int i = 0; i < categories.size(); i++) {
@@ -267,7 +267,7 @@
                         </div>
                         <%}%>
                     </div>
-                </html:form></td>
+                </form></td>
         </tr>
     </table>
 

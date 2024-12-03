@@ -107,7 +107,7 @@
                 }
             }
         </script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <title>Bulk fix custom allergies</title>
 

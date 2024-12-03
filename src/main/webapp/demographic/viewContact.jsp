@@ -65,7 +65,7 @@
             </tr>
         </table>
     </center>
-    <html:form action="/demographic/Contact">
+    <form action="${pageContext.request.contextPath}/demographic/Contact.do" method="post">
         <input type="hidden" name="contact.id" value="<c:out value="${contact.id}"/>"/>
         <input type="hidden" name="method" value="saveContact"/>
         <table width="100%" border="0" cellspacing="2" cellpadding="2">
@@ -209,6 +209,6 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

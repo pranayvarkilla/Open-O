@@ -18,7 +18,7 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
@@ -63,22 +63,22 @@
 </table>
 
 
-<html:form action="/appointment/apptStatusSetting">
+<form action="/appointment/apptStatusSetting">
     <table>
         <tr>
             <td class="tdLabel"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.appt.status.mgr.label.status"/>:
             </td>
-            <td><html:text readonly="true" property="apptStatus" size="40"/></td>
+            <td><input type="text" readonly="readonly" name="apptStatus" size="40"/></td>
         </tr>
         <tr>
             <td class="tdLabel"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.appt.status.mgr.label.desc"/>:
             </td>
-            <td><html:text property="apptDesc" size="40"/></td>
+            <td><input type="checkbox" name="apptDesc" size="40" /></td>
         </tr>
         <tr>
             <td class="tdLabel"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.appt.status.mgr.label.oldcolor"/>:
             </td>
-            <td><html:text readonly="true" styleId="old_color" property="apptOldColor" size="40"/>
+            <td><input type="text" readonly="true" id="old_color" name="apptOldColor" size="40"/>
             </td>
         </tr>
         <tr>
@@ -92,13 +92,13 @@
 
         <div id="list_entries"></div>
         <tr>
-            <td colspan="2"><html:hidden property="ID"/> <input
+            <td colspan="2"><input type="hidden" name="ID" id="ID"/> <input
                     type="hidden" name="dispatch" value="update"/> <br/>
                 <input type="submit"
                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.appt.status.mgr.label.submit"/>"/>
             </td>
         </tr>
     </table>
-</html:form>
+</form>
 </body>
 </html>

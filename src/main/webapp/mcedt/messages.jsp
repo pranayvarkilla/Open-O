@@ -27,16 +27,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.oscar-emr.com/tags/integration" prefix="i" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 
-<html:errors bundle="mcedt"/>
 
-<html:messages id="message" bundle="mcedt" message="true">
+<%
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+<div class="action-errors">
+    <ul>
+        <% for (String error : actionErrors) { %>
+        <li><%= error %></li>
+        <% } %>
+    </ul>
+</div>
+<% } %>
+<c:if test="${not empty savedMessage}">
     <div class="alert alert-info">
         <p>
-            <c:out escapeXml="false" value="${message}"/>
+            ${savedMessage}
         </p>
     </div>
-</html:messages>
+</c:if>

@@ -33,8 +33,6 @@
                 oscar.util.*,
                 org.springframework.web.context.support.WebApplicationContextUtils,
                 org.springframework.web.context.WebApplicationContext" %>
-<%@taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
@@ -202,7 +200,18 @@
     </div>
 </form>
 <div id="errors">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
 </div>
 <form action="<c:out value="${oscar_context_path}" />/saveMethadoneBillingBC.do"
       id="saveMethadoneBillingForm"

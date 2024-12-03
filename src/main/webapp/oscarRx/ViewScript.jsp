@@ -40,8 +40,8 @@
 
 <%@ page import="oscar.oscarProvider.data.*, oscar.OscarProperties, oscar.oscarClinic.ClinicData, java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%! boolean bMultisites = org.oscarehr.common.IsPropertiesOn.isMultisitesEnable(); %>
 
 
@@ -60,7 +60,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="ViewScript.title"/></title>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <c:if test="${empty RxSessionBean}">
             <% response.sendRedirect("error.html"); %>
         </c:if>
@@ -359,9 +359,9 @@
                                     </div>
                                 </td>
 
-                                <td valign=top><html:form action="/oscarRx/clearPending">
-                                    <html:hidden property="action" value=""/>
-                                </html:form>
+                                <td valign=top><form action="${pageContext.request.contextPath}/oscarRx/clearPending.do" method="post">
+                                    <input type="hidden" name="action" id="action" value=""/>
+                                </form>
                                     <script language=javascript>
                                         function clearPending(action) {
                                             document.forms.RxClearPendingForm.action.value = action;

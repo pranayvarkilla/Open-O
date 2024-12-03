@@ -158,8 +158,8 @@
 
 </script>
 
-<html:hidden property="program.id"/>
-<html:hidden property="admission.id"/>
+<input type="hidden" name="id" id="id"/>
+<input type="hidden" name="id" id="id"/>
 
 <p>This page is for discharging clients from:
 <ol>
@@ -287,50 +287,50 @@ Community Program:&nbsp;
     <table width="100%" border="1" cellspacing="2" cellpadding="3">
         <tr>
             <td>Discharge Reason</td>
-            <td><html:select property="admission.radioDischargeReason">
-                <html:option value='<%="" + DischargeReason.ADMITTED_TO_LTC_FACILITY.ordinal()%>'>
+            <td><select name="admission.radioDischargeReason" id="admission.radioDischargeReason">
+                <option value='<%="" + DischargeReason.ADMITTED_TO_LTC_FACILITY.ordinal()%>'>
                     <fmt:message bundle="${pmm}" key="discharge.reason.ADMITTED_TO_LTC_FACILITY"/>
-                </html:option>
-                <html:option value='<%="" + DischargeReason.DOES_NOT_FIT_CRITERIA.ordinal()%>'>
+                </option>
+                <option value='<%="" + DischargeReason.DOES_NOT_FIT_CRITERIA.ordinal()%>'>
                     <fmt:message bundle="${pmm}" key="discharge.reason.DOES_NOT_FIT_CRITERIA"/>
-                </html:option>
-                <html:option value='<%="" + DischargeReason.REQUIRES_ACUTE_CARE.ordinal()%>'>
+                </option>
+                <option value='<%="" + DischargeReason.REQUIRES_ACUTE_CARE.ordinal()%>'>
                     <fmt:message bundle="${pmm}" key="discharge.reason.REQUIRES_ACUTE_CARE"/>
-                </html:option>
-                <html:option value='<%="" + DischargeReason.COMPLETION_WITH_REFERRAL.ordinal()%>'>
+                </option>
+                <option value='<%="" + DischargeReason.COMPLETION_WITH_REFERRAL.ordinal()%>'>
                     <fmt:message bundle="${pmm}" key="discharge.reason.COMPLETION_WITH_REFERRAL"/>
-                </html:option>
-                <html:option value='<%="" + DischargeReason.COMPLETION_WITHOUT_REFERRAL.ordinal()%>'>
+                </option>
+                <option value='<%="" + DischargeReason.COMPLETION_WITHOUT_REFERRAL.ordinal()%>'>
                     <fmt:message bundle="${pmm}" key="discharge.reason.COMPLETION_WITHOUT_REFERRAL"/>
-                </html:option>
-                <html:option value='<%="" + DischargeReason.DEATH.ordinal()%>'>
+                </option>
+                <option value='<%="" + DischargeReason.DEATH.ordinal()%>'>
                     <fmt:message bundle="${pmm}" key="discharge.reason.DEATH"/>
-                </html:option>
-                <html:option value='<%="" + DischargeReason.NO_SPACE_AVAILABLE.ordinal()%>'>
+                </option>
+                <option value='<%="" + DischargeReason.NO_SPACE_AVAILABLE.ordinal()%>'>
                     <fmt:message bundle="${pmm}" key="discharge.reason.NO_SPACE_AVAILABLE"/>
-                </html:option>
-                <html:option value='<%="" + DischargeReason.RELOCATION.ordinal()%>'>
+                </option>
+                <option value='<%="" + DischargeReason.RELOCATION.ordinal()%>'>
                     <fmt:message bundle="${pmm}" key="discharge.reason.RELOCATION"/>
-                </html:option>
-                <html:option value='<%="" + DischargeReason.SERVICE_PLAN_COMPLETED.ordinal()%>'>
+                </option>
+                <option value='<%="" + DischargeReason.SERVICE_PLAN_COMPLETED.ordinal()%>'>
                     <fmt:message bundle="${pmm}" key="discharge.reason.SERVICE_PLAN_COMPLETED"/>
-                </html:option>
-                <html:option value='<%="" + DischargeReason.SUICIDE.ordinal()%>'>
+                </option>
+                <option value='<%="" + DischargeReason.SUICIDE.ordinal()%>'>
                     <fmt:message bundle="${pmm}" key="discharge.reason.SUICIDE"/>
-                </html:option>
-                <html:option value='<%="" + DischargeReason.WITHDRAWL_CLIENT_PREFERENCE.ordinal()%>'>
+                </option>
+                <option value='<%="" + DischargeReason.WITHDRAWL_CLIENT_PREFERENCE.ordinal()%>'>
                     <fmt:message bundle="${pmm}" key="discharge.reason.WITHDRAWL_CLIENT_PREFERENCE"/>
-                </html:option>
-                <html:option value='<%="" + DischargeReason.OTHER.ordinal()%>'>
-                    <fmt:message bundle="${pmm}" key="discharge.reason.OTHER"/></html:option>
-            </html:select>
+                </option>
+                <option value='<%="" + DischargeReason.OTHER.ordinal()%>'>
+                    <fmt:message bundle="${pmm}" key="discharge.reason.OTHER"/></option>
+            </select>
             </td>
         </tr>
 
         <tr class="b">
             <td width="20%">Discharge Notes:</td>
-            <td><html:textarea cols="50" rows="7"
-                               property="admission.dischargeNotes"/></td>
+            <td><textarea cols="50" rows="7"
+                          name="dischargeNotes"></textarea></td>
         </tr>
         <tr>
             <td width="20%">Discharge Date:</td>

@@ -80,7 +80,7 @@
                     <td style="text-align:center"><fmt:setBundle basename="oscarResources"/><fmt:message key="ScratchPad.title"/> <%=title%>
                     </td>
                     <td style="text-align: right">
-                        <oscar:help keywords="pad" key="app.top1"/> |
+
                         <a href="javascript:void(0)"
                            onclick="javascript:popup(600,700,'../oscarEncounter/About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
                     </td>

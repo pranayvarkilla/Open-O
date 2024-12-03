@@ -25,7 +25,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ page import="oscar.oscarProvider.data.*" %>
 
 
@@ -42,7 +42,7 @@
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setColour.title"/></title>
 
         <link rel="stylesheet" type="text/css"
@@ -76,8 +76,8 @@
                     if (request.getAttribute("status") == null) {
 
                 %>
-                <html:form action="/setProviderColour.do">
-                <html:hidden property="colour" value="<%=colour%>"/>
+                <form action="${pageContext.request.contextPath}/setProviderColour.do" method="post">
+                <input type="hidden" name="colour" id="colour" value="<%=colour%>"/>
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setColour.msgEdit"/>
                 <a href="javascript:TCP.popup(document.forms[0].elements['colour'])"><img
                         width="15" height="13" border="0" src="../images/sel.gif"></a>
@@ -86,7 +86,7 @@
                 </p>
                 <p><input type="submit" onclick="return validate();"
                           value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setColour.btnSubmit"/>"/>
-                    </html:form> <%
+                    </form> <%
                }
                else if( ((String)request.getAttribute("status")).equals("complete") ) {
             %>

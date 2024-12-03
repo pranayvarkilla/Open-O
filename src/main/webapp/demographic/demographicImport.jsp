@@ -43,7 +43,7 @@
 <%@page import="oscar.oscarDemographic.data.*,java.util.*,oscar.oscarDemographic.pageUtil.Util" %>
 <%@page import="org.oscarehr.PMmodule.dao.ProgramDao, org.oscarehr.util.SpringUtils,org.oscarehr.PMmodule.model.Program" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <%
     ProgramDao programDao = (ProgramDao) SpringUtils.getBean(ProgramDao.class);
@@ -192,7 +192,7 @@
     <div class="container-fluid well">
         <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.DemoImport"/></h3>
 
-        <html:form action="/form/importUpload.do" method="POST"
+        <form action="${pageContext.request.contextPath}/form/importUpload.do" method="POST"
                    enctype="multipart/form-data">
         <p><input type="file" name="importFile" id="importFile" multiple="multiple"/>
             <span id="uploadWarn" title="<fmt:setBundle basename="oscarResources"/><fmt:message key="global.uploadWarningBody"/>"
@@ -202,24 +202,24 @@
         </p>
                 <%if(learningEnabled != null && learningEnabled.equalsIgnoreCase("yes")) { %>
         <!-- Drop Down box of courses -->
-        Course:&nbsp;<html:select property="courseId">
+        Course:&nbsp;<select name="courseId" id="courseId">
         <option value="0">Choose One</option>
                 <%for(Program course:courses) { %>
         <option value="<%=course.getId().intValue()%>"><%=course.getName()%>
         </option>
                 <% } %>
-        </html:select><br/>
-        Timeshift (in days +/-):&nbsp;<html:text property="timeshiftInDays" value="0" size="5"/></br/>
+        </select><br/>
+        Timeshift (in days +/-):&nbsp;<input type="text" name="timeshiftInDays" value="0" size="5"/></br/>
                 <%} %>
         If patient's providers do not have OHIP numbers:<br>
-        <html:radio property="matchProviderNames" value="true">
+        <input type="radio" name="matchProviderNames" value="true"/>
         Match providers in database by first and last names (Recommended)
-        </html:radio><br>
-        <html:radio property="matchProviderNames" value="false">
+        <br>
+        <input type="radio" name="matchProviderNames" value="false"/>
         Import as new - same provider may have multiple entries
-        </html:radio><br><br>
+        <br><br>
         <p><input class="btn btn-primary" type="submit" name="Submit" value="Import (EMR DM 5.0)"></p>
-        </html:form>
+        </form>
 
         <div id="result"></div>
 

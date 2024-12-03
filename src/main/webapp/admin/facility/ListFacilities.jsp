@@ -45,8 +45,8 @@
 <html>
     <head>
         <title>Facilities</title>
-        <link rel="stylesheet" type="text/css" href='<html:rewrite page="/css/tigris.css" />'/>
-        <link rel="stylesheet" type="text/css" href='<html:rewrite page="/css/displaytag.css" />'/>
+        <link rel="stylesheet" type="text/css" href='${request.contextPath}/css/tigris.css'/>
+        <link rel="stylesheet" type="text/css" href='${request.contextPath}/css/displaytag.css'/>
 
         <script>
             function ConfirmDelete(name) {
@@ -59,7 +59,7 @@
     </head>
     <body>
     <h1>Facilities</h1>
-    <html:form action="/FacilityManager.do">
+    <form action="${pageContext.request.contextPath}/FacilityManager.do" method="post">
         <display:table class="simple" cellspacing="2" cellpadding="3"
                        id="facility" name="facilities" export="false" pagesize="0"
                        requestURI="/FacilityManager.do">
@@ -72,7 +72,7 @@
             <display:column property="description" sortable="true" title="Description"/>
 
             <display:column sortable="false" title="">
-                <a href="<html:rewrite action="/FacilityManager.do"/>?method=edit&id=<c:out value="${facility.id}" />">
+                <a href="<%=request.getContextPath() %>/FacilityManager.do?method=edit&id=<c:out value="${facility.id}" />">
                     Edit </a>
             </display:column>
             <!--
@@ -83,7 +83,7 @@
             </ isplay:column>
             -->
         </display:table>
-    </html:form>
+    </form>
     <!--
             <p><a href="< tml:rewrite action="/FacilityManager.do"/>?method=add">
             Add new facility </a></p>

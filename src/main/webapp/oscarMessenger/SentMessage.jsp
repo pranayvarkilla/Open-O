@@ -26,7 +26,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%
@@ -89,7 +89,6 @@
                         <td><h2><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.SentMessage.msgMessageSent"/></h2></td>
                         <td></td>
                         <td style="text-align: right">
-                            <oscar:help keywords="message" key="app.top1"/> |
                             <a href="javascript:void(0)"
                                onclick="javascript:popupPage(600,700,'../oscarEncounter/About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
                         </td>
@@ -111,22 +110,22 @@
                                     <td>
                                         <table class=messButtonsA cellspacing=0 cellpadding=3>
                                             <tr>
-                                                <td class="messengerButtonsA"><html:link
-                                                        page="/oscarMessenger/CreateMessage.jsp"
+                                                <td class="messengerButtonsA"><a
+                                                        href="${pageContext.request.contextPath}/oscarMessenger/CreateMessage.jsp"
                                                         styleClass="messengerButtons">
                                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.SentMessage.btnCompose"/>
-                                                </html:link></td>
+                                                </a></td>
                                             </tr>
                                         </table>
                                     </td>
                                     <td>
                                         <table class=messButtonsA cellspacing=0 cellpadding=3>
                                             <tr>
-                                                <td class="messengerButtonsA"><html:link
-                                                        page="/oscarMessenger/DisplayMessages.jsp"
+                                                <td class="messengerButtonsA"><a
+                                                        href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp"
                                                         styleClass="messengerButtons">
                                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.SentMessagebtnBack"/>
-                                                </html:link></td>
+                                                </a></td>
                                             </tr>
                                         </table>
                                     </td>

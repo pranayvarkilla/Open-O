@@ -45,9 +45,6 @@
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="oscar.util.UtilMisc" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-
 <%
     String formClass = "BCAR2020";
     Integer pageNo = 5;
@@ -142,14 +139,14 @@
                 $('form').trigger('checkform.areYouSure');
             }
         </script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
     </head>
 
     <body bgproperties="fixed">
     <div id="maincontent">
         <div id="content_bar" class="innertube">
-            <html:form action="/form/BCAR2020">
+            <form action="${pageContext.request.contextPath}/form/BCAR2020.do" method="post">
                 <input type="hidden" id="demographicNo" name="demographicNo" value="<%=demoNo%>"/>
                 <input type="hidden" id="formId" name="formId" value="<%=formId%>"/>
                 <input type="hidden" name="provider_no" value=<%=Encode.forHtmlAttribute(providerNo)%>/>
@@ -600,7 +597,7 @@
                     </tr>
                 </table>
 
-            </html:form>
+            </form>
         </div>
     </div>
     <div id="print-dialog" title="Print BCAR2020 Record">

@@ -33,7 +33,7 @@
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page import="oscar.OscarProperties" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <jsp:useBean id="myTempBean" class="oscar.ScheduleTemplateBean" scope="page"/>
 <%@ page import="org.oscarehr.util.SpringUtils" %>

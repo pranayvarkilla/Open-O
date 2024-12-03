@@ -32,7 +32,7 @@
 <%@page import="org.oscarehr.common.model.Demographic" %>
 <%@page import="org.oscarehr.common.model.DemographicExt" %>
 
-<html:form action="/PMmodule/ClientManager.do">
+<form action="${pageContext.request.contextPath}/PMmodule/ClientManager.do" method="post">
 
     <%@ include file="/common/messages.jsp" %>
 
@@ -88,10 +88,10 @@
         <tr>
             <td colspan="2"><c:if
                     test="${requestScope.hasOverridePermission}">
-                <html:submit property="submit.override">Override</html:submit>
+                <input type="submit" name="submit" value="Override“/>
             </c:if> <button type="button" onclick="window.history.back();">Cancel</button>
         </td>
         </tr>
 
     </table>
-</html:form>
+</form>

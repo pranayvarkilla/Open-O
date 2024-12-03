@@ -24,30 +24,18 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-
-<%@page import="org.oscarehr.util.SpringUtils" %>
-<%@page import="org.oscarehr.common.dao.DrugDao" %>
 <%@page import="java.util.List" %>
 <%@page import="org.oscarehr.common.model.Drug" %>
 <%@page import="oscar.oscarRx.data.RxPrescriptionData" %>
-<%@page import="org.oscarehr.util.SessionConstants" %>
-<%@page import="org.oscarehr.oscarRx.StaticScriptBean" %>
-<%@page import="oscar.oscarRx.util.RxUtil" %>
-<%@page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@page import="org.oscarehr.common.model.Demographic" %>
 <%@page import="org.oscarehr.common.model.Provider" %>
-<%@page import="org.apache.struts.util.LabelValueBean" %>
-<%@page import="org.oscarehr.common.model.DrugProduct" %>
 <%@page import="org.oscarehr.common.model.DrugDispensing" %>
 <%@page import="java.util.Map" %>
-
 <%
-    String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName$%>" objectName="_dispensing" rights="r" reverse="<%=true%>">
@@ -66,7 +54,7 @@
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.7.1.min.js"></script>
         <title>Dispensary</title>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:set var="ctx" value="${pageContext.request.contextPath}"/>
         <link rel="stylesheet" type="text/css" href="../styles.css">

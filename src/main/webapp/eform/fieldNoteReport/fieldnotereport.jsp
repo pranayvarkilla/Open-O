@@ -29,7 +29,7 @@
 <%@ page import="oscar.util.StringUtils" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%
     Calendar c = Calendar.getInstance();
     int year = c.get(Calendar.YEAR);

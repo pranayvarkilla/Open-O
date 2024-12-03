@@ -41,7 +41,7 @@
     }
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ page import="java.lang.*, java.util.*, java.text.*,java.sql.*, oscar.*" errorPage="/errorpage.jsp" %>
 
 <%@ page import="org.oscarehr.util.SpringUtils" %>

@@ -21,7 +21,7 @@
         import="java.util.*, java.sql.*, oscar.*, java.text.*, java.lang.*,java.net.*, oscar.appt.*, org.oscarehr.common.dao.AppointmentTypeDao, org.oscarehr.common.model.AppointmentType, org.oscarehr.util.SpringUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ include file="../admin/dbconnection.jsp" %>
 <%--RJ 07/07/2006 --%>
@@ -127,7 +127,18 @@
             <table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tr bgcolor="#486ebd" height="30">
                     <th align="LEFT" width="90%">
-                        <font face="Helvetica" color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<html:errors/>
+                        <font face="Helvetica" color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
                         </font>
                     </th>
                     <td nowrap>
@@ -146,7 +157,7 @@
                 <tr>
                     <td colspan=7>
                         <center>
-                            <html:form action="appointment/appointmentTypeAction">
+                            <form action="${pageContext.request.contextPath}/appointment/appointmentTypeAction.do" method="post">
                                 <input TYPE="hidden" NAME="oper" VALUE="save"/>
                                 <input TYPE="hidden" NAME="id"
                                        VALUE="<c:out value="${AppointmentTypeForm.id}"/>"/>
@@ -228,11 +239,11 @@
                                 </table>
                                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                     <tr bgcolor="#CCCCFF">
-                                        <TD nowrap align="center"><html:submit value="    Save  "/>
+                                        <TD nowrap align="center"><input type="submit" value="    Save  " />
                                         </TD>
                                     </tr>
                                 </table>
-                            </html:form>
+                            </form>
                         </center>
                     </td>
                 </tr>

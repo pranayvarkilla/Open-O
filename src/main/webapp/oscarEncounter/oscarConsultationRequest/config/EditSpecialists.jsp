@@ -40,8 +40,8 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -55,7 +55,7 @@
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.title"/>
         </title>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script language="javascript">
             function BackToOscar() {
                 window.close();
@@ -75,7 +75,18 @@
             }
         }
     </script>
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <div id="service-providers-wrapper" style="margin:auto 10px;">
         <table class="MainTable" id="scrollNumber1">
             <tr class="MainTableTopRow">
@@ -108,7 +119,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><html:form action="/oscarEncounter/EditSpecialists">
+                            <td><form action="${pageContext.request.contextPath}/oscarEncounter/EditSpecialists.do" method="post">
 
                                 <table>
                                     <tr>
@@ -156,7 +167,7 @@
 
                                 </table>
 
-                            </html:form></td>
+                            </form></td>
                         </tr>
 
                     </table>

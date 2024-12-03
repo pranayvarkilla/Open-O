@@ -11,9 +11,9 @@
 
 <%@ page import="oscar.OscarProperties" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -70,7 +70,7 @@
     <title>
         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.index.title"/>
     </title>
-    <html:base/>
+    <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     <link rel="stylesheet" type="text/css" media="all"
           href="${pageContext.servletContext.contextPath}/library/jquery/jquery-ui.theme-1.12.1.min.css"/>
     <link rel="stylesheet" type="text/css" media="all"
@@ -187,14 +187,9 @@
                                    style="color: #FFFFFF;"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.createLab"/></a>
                                 <a href="javascript:popupStart(800,1000, '${pageContext.servletContext.contextPath}/olis/Search.jsp')"
                                    style="color: #FFFFFF;"><fmt:setBundle basename="oscarResources"/><fmt:message key="olis.olisSearch"/></a>
-                                <a href="javascript:popupPage(400, 1050,'<html:rewrite page="/hospitalReportManager/hospitalReportManager.jsp"/>')"
+                                <a href="javascript:popupPage(400, 1050,'${request.contextPath}/hospitalReportManager/hospitalReportManager.jsp')"
                                    style="color: #FFFFFF;">HRM Status/Upload</a>
                                 <% } %>
-
-                                <%--								<span class="HelpAboutLogout">--%>
-                                <%--									<oscar:help keywords="&Title=Inbox&portal_type%3Alist=Document" key="app.top1" style="color: #FFFFFF"/>--%>
-                                <%--                                	<a href="javascript:popupStart(300,400,'${pageContext.servletContext.contextPath}/oscarEncounter/About.jsp')" style="color: #FFFFFF;" ><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>--%>
-                                <%--								</span>--%>
                             </td>
                         </tr>
                     </table>

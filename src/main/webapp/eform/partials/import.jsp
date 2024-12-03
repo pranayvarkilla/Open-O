@@ -27,7 +27,7 @@
 <html>
 <%@ page import="oscar.eform.data.*, oscar.eform.*, java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
@@ -73,7 +73,18 @@
         if (importErrors != null && importErrors.size() > 0) {
     %>
     <div class="row-fluid">
-        <html:errors/>
+        <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
         <ul>
             <%for (String importError : importErrors) {%>
             <li class="text-error"><%=importError%>

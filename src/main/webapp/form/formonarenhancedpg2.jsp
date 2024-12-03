@@ -23,10 +23,10 @@
     Ontario, Canada
 
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
-    String roleName2$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName2$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName2$%>" objectName="_form" rights="r" reverse="<%=true%>">
@@ -38,17 +38,11 @@
         return;
     }
 %>
-
 <%@ page import="oscar.form.graphic.*, oscar.util.*, oscar.form.*, oscar.form.data.*" %>
 <%@ page import="org.oscarehr.common.web.Pregnancy2Action" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.apache.struts.util.LabelValueBean" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
-
 <%
     String ctx = request.getContextPath();
     String formClass = "ONAREnhanced";
@@ -120,7 +114,7 @@
 <html>
     <head>
         <title>Antenatal Record 2</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script type="text/javascript" src="<%= ctx %>/js/global.js"></script>
         <link rel="stylesheet" type="text/css" href="<%=bView?"arStyleView.css" : "arStyle.css"%>">
         <link rel="stylesheet" type="text/css" media="all" href="../share/calendar/calendar.css" title="win2k-cold-1"/>
@@ -2333,7 +2327,7 @@ if (!fedb.equals("") && fedb.length()==10 ) {
     <div id="maincontent">
         <div id="content_bar" class="innertube">
 
-            <html:form action="/form/formname">
+            <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
 
                 <input type="hidden" name="commonField" value="ar2_"/>
                 <input type="hidden" name="c_lastVisited"
@@ -2922,7 +2916,7 @@ if (!fedb.equals("") && fedb.length()==10 ) {
                     </tr>
                 </table>
 
-            </html:form>
+            </form>
         </div>
     </div>
 
@@ -2932,7 +2926,7 @@ if (!fedb.equals("") && fedb.length()==10 ) {
         <form>
             <fieldset>
                 <input type="checkbox" name="penicillin" id="penicillin" class="text ui-widget-content ui-corner-all"/>
-                <label for="ferritin">Patient Penicillin Allergic</label>
+                <label for="penicillin">Patient Penicillin Allergic</label>
             </fieldset>
         </form>
     </div>

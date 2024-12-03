@@ -42,8 +42,8 @@
 <%@ page
         import="java.util.*,oscar.oscarLab.ca.on.*,oscar.oscarDemographic.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%
     String labType = request.getParameter("labType");
     String demographicNo = request.getParameter("demographic_no");
@@ -89,7 +89,7 @@
 <html>
 <head>
     <script type="text/javascript" src="<%= request.getContextPath()%>/js/global.js"></script>
-    <html:base/>
+    <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarRx.chartDrugProfile.title"/></title>
     <link rel="stylesheet" type="text/css" href="../../../share/css/OscarStandardLayout.css">
     <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>

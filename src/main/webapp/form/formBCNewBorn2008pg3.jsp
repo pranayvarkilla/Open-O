@@ -38,16 +38,10 @@
         return;
     }
 %>
-
-<%@ page language="java" %>
 <%@ page import="oscar.form.*, oscar.form.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
-<jsp:useBean id="oscarVariables" class="java.util.Properties"
-             scope="session"/>
-
+<jsp:useBean id="oscarVariables" class="java.util.Properties" scope="session"/>
 <%
     String formClass = "BCNewBorn2008";
     String formLink = "formBCNewBorn2008pg3.jsp";
@@ -106,7 +100,7 @@
         <script type="text/javascript" src="../share/calendar/calendar-setup.js"></script>
 
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <script type="text/javascript" language="Javascript">
@@ -433,7 +427,8 @@
         @oscar.formDB Field="c_lastVisited" Type="char(3)"
         --%>
 
-    <html:form action="/form/formname">
+        <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
+
         <input type="hidden" name="c_lastVisited" value="pg1"/>
         <input type="hidden" name="demographic_no"
                value="<%= props.getProperty("demographic_no", "0") %>"/>
@@ -1202,7 +1197,7 @@
         </table>
 
 
-    </html:form>
+    </form>
     <script type="text/javascript">
         Calendar.setup({
             inputField: "Section9DatePg3",

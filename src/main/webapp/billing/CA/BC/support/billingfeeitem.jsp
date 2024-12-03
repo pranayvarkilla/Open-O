@@ -55,7 +55,7 @@
 
 <html>
     <head>
-    <html:base/>
+    <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     <title>OSCAR Billing Fee Item</title>
     <link rel="stylesheet" href="../../../../share/css/oscar.css">
     </head>

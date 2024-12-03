@@ -66,8 +66,8 @@
 <%@ page import="org.owasp.encoder.Encode" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/phr-tag.tld" prefix="phr" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -228,7 +228,7 @@
     </head>
 
     <body class="BodyStyle" vlink="#0000FF">
-    <html:form action="/oscarMessenger/HandleMessages">
+    <form action="${pageContext.request.contextPath}/oscarMessenger/HandleMessages.do" method="post">
 
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
@@ -239,7 +239,7 @@
                             <td><h2><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.msgViewMessage"/></h2></td>
                             <td></td>
                             <td style="text-align: right">
-                                <oscar:help keywords="message" key="app.top1"/> |
+
                                 <a href="javascript:void(0)"
                                    onclick="javascript:popupPage(600,700,'../oscarEncounter/About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
                             </td>
@@ -260,11 +260,11 @@
                                             <td>
                                                 <table class=messButtonsA cellspacing=0 cellpadding=3>
                                                     <tr>
-                                                        <td class="messengerButtonsA"><html:link
-                                                                page="/oscarMessenger/CreateMessage.jsp"
+                                                        <td class="messengerButtonsA"><a
+                                                                href="${pageContext.request.contextPath}/oscarMessenger/CreateMessage.jsp"
                                                                 styleClass="messengerButtons">
                                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnCompose"/>
-                                                        </html:link></td>
+                                                        </a></td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -285,11 +285,11 @@
                                             <td>
                                                 <table class=messButtonsA cellspacing=0 cellpadding=3>
                                                     <tr>
-                                                        <td class="messengerButtonsA"><html:link
-                                                                page="/oscarMessenger/DisplayMessages.jsp"
+                                                        <td class="messengerButtonsA"><a
+                                                                href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp"
                                                                 styleClass="messengerButtons">
                                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnInbox"/>
-                                                        </html:link></td>
+                                                        </a></td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -299,11 +299,11 @@
                                         <td>
                                             <table class=messButtonsA cellspacing=0 cellpadding=3>
                                                 <tr>
-                                                    <td class="messengerButtonsA"><html:link
-                                                            page="/oscarMessenger/DisplayMessages.jsp?boxType=1"
+                                                    <td class="messengerButtonsA"><a
+                                                            href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp?boxType=1"
                                                             styleClass="messengerButtons">
                                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnSent"/>
-                                                    </html:link></td>
+                                                    </a></td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -448,19 +448,15 @@
                                             <tr>
                                                 <td bgcolor="#EEEEFF"></td>
                                                 <td bgcolor="#EEEEFF" colspan="2">
-                                                    <html:submit styleClass="ControlPushButton" property="reply">
-                                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnReply"/>
-                                                    </html:submit> <html:submit styleClass="ControlPushButton"
-                                                                                property="replyAll">
-                                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnReplyAll"/>
-                                                </html:submit> <html:submit styleClass="ControlPushButton"
-                                                                            property="forward">
-                                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnForward"/>
-                                                </html:submit> <html:submit styleClass="ControlPushButton"
-                                                                            property="delete">
-                                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnDelete"/>
-                                                </html:submit>
-                                                    <html:hidden property="messageNo" value="${ viewMessageNo }"/>
+                                                    <input type="submit"  class="ControlPushButton"
+                                                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnReply"/>"/>
+                                                    <input type="submit" class="ControlPushButton"
+                                                        value=" <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnReplyAll"/>"/>
+                                                    <input type="submit" class="ControlPushButton"
+                                                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnForward"/>"/>
+                                                    <input type="submit" class="ControlPushButton"
+                                                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnDelete"/>"/>
+                                                    <input type="hidden" name="messageNo" id="messageNo" value="${ viewMessageNo }"/>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -679,7 +675,7 @@
                 <td class="MainTableBottomRowRightColumn"></td>
             </tr>
         </table>
-    </html:form>
+    </form>
     <% String bodyTextAsHTML = (String) request.getAttribute("viewMessageMessage");
         bodyTextAsHTML = bodyTextAsHTML.replaceAll("\n|\r\n?", "<br/>"); %>
     <p class="NotDisplayable Printable"><%= bodyTextAsHTML %>

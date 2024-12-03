@@ -75,7 +75,6 @@
 
 <!-- Struts for i18n -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 
@@ -468,7 +467,7 @@
     <c:set var="masterLinkRights" value="true" scope="page"/>
 </security:oscarSec>
 
-<html:html lang="en">
+<html>
     <head>
         <title><%=WordUtils.capitalize(userlastname + ", " + org.apache.commons.lang.StringUtils.substring(userfirstname, 0, 1)) + "-"%><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.appointmentProviderAdminDay.title"/></title>
         <script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/global.js"></script>
@@ -828,8 +827,6 @@
             dateTimeCodeBean.put("color" + stc.getCode(), (stc.getColor() == null || "".equals(stc.getColor())) ? bgcolordef : stc.getColor());
             dateTimeCodeBean.put("confirm" + stc.getCode(), stc.getConfirm());
         }
-
-        java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
     %>
 
         <%-- set if reasons will be shown by default or not. --%>
@@ -1260,8 +1257,8 @@
                     }
                     if (anonymousEnabled) {
                 %>
-                &nbsp;&nbsp;(<a href="#" onclick="popupPage(710, 1024,'<html:rewrite
-                    page="/PMmodule/createAnonymousClient.jsp"/>?programId=<%=(String)session.getAttribute(SessionConstants.CURRENT_PROGRAM_ID)%>');return false;">New
+                &nbsp;&nbsp;(<a href="#" onclick="popupPage(710, 1024,
+                '<%=(request.getContextPath() + "/PMmodule/createAnonymousClient.jsp")%>?programId=<%=(String)session.getAttribute(SessionConstants.CURRENT_PROGRAM_ID)%>');return false;">New
                 Anon Client</a>)
                 <%
                     }
@@ -1273,8 +1270,8 @@
                     }
                     if (epe) {
                 %>
-                &nbsp;&nbsp;(<a href="#" onclick="popupPage(710, 1024,'<html:rewrite
-                    page="/PMmodule/createPEClient.jsp"/>?programId=<%=(String)session.getAttribute(SessionConstants.CURRENT_PROGRAM_ID)%>');return false;">Phone
+                &nbsp;&nbsp;(<a href="#" onclick="popupPage(710, 1024,
+                '<%=(request.getContextPath() + "/PMmodule/createPEClient.jsp")%>?programId=<%=(String)session.getAttribute(SessionConstants.CURRENT_PROGRAM_ID)%>');return false;">Phone
                 Encounter</a>)
                 <%
                     }
@@ -2519,7 +2516,7 @@
     <jsp:include page="/hcHandler/hcHandler.html"/>
     <% } %>
     </body>
-</html:html>
+</html>
 
 <%!
     public boolean checkRestriction(List<MyGroupAccessRestriction> restrictions, String name) {

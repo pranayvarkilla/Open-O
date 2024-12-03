@@ -25,13 +25,10 @@
 --%>
 <%@page import="org.oscarehr.common.model.PharmacyInfo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/oscarProperties-tag.tld" prefix="oscarProp" %>
 <%@ page import="oscar.oscarRx.data.*" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>
-<%@page import="org.oscarehr.util.SessionConstants" %>
 <%@page import="java.util.List" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@page import="java.util.ArrayList,oscar.util.*,java.util.*,org.oscarehr.common.model.Drug,org.oscarehr.common.dao.*" %>
@@ -75,7 +72,7 @@
         <title>Print Drug Profile</title>
         <link rel="stylesheet" type="text/css" href="../../../../oscarRx/styles.css">
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <link rel="stylesheet" type="text/css" media="all" href="../../../../share/css/extractedFromPages.css"/>
 

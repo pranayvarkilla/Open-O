@@ -37,16 +37,12 @@
         return;
     }
 %>
-
-<%@ page
-        import="oscar.form.*, oscar.form.data.*, oscar.util.*, java.util.Date" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-
+<%@ page import="oscar.form.*, oscar.form.data.*, oscar.util.*, java.util.Date" %>
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Length & Weight Graph</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" media="screen"
               href="rourkeStyle.css">
         <link rel="stylesheet" type="text/css" media="print" href="print.css">

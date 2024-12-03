@@ -49,7 +49,7 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@ taglib uri="/WEB-INF/oscarProperties-tag.tld" prefix="oscarProp" %>
 <%@ taglib uri="/WEB-INF/indivo-tag.tld" prefix="indivo" %>
@@ -366,7 +366,7 @@
         </jsp:include>
 
 
-        <html:form action="/documentManager/combinePDFs">
+        <form action="${pageContext.request.contextPath}/documentManager/combinePDFs.do" method="post">
             <input type="hidden" name="curUser" value="<%=curUser%>">
             <input type="hidden" name="demoId" value="<%=moduleid%>">
             <div class="documentLists"><%-- STUFF TO DISPLAY --%> <%
@@ -692,7 +692,7 @@
                        onclick="return submitForm('<rewrite:reWrite jspPage="combinePDFs.do"/>');"/>
             </div>
 
-        </html:form>
+        </form>
 
 
     </div>

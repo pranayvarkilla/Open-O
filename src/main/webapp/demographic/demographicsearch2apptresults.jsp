@@ -42,7 +42,7 @@
 <!DOCTYPE HTML>
 <%@ taglib prefix="csrf" uri="http://www.owasp.org/index.php/Category:OWASP_CSRFGuard_Project/Owasp.CsrfGuard.tld" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -634,8 +634,8 @@
                         OscarProperties.getInstance().getProperty("caisi.search.workflow", "false").equals("true")) {
 
         %>
-        <html:link action="/PMmodule/GenericIntake/Edit.do?method=create&type=quick&fromAppt=1" name="apptParamsName">
-            <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.search.btnCreateNew"/></html:link>
+        <a href="${pageContext.request.contextPath}/PMmodule/GenericIntake/Edit.do?method=create&type=quick&fromAppt=1" name="apptParamsName">
+            <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.search.btnCreateNew"/></a>
         <%
         } else {
         %>

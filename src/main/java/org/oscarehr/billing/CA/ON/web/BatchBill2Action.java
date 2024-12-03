@@ -24,6 +24,7 @@
 
 package org.oscarehr.billing.CA.ON.web;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -51,7 +52,7 @@ import org.apache.struts2.ServletActionContext;
 
 public class BatchBill2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse servletResponse = ServletActionContext.getResponse();
+    HttpServletResponse response = ServletActionContext.getResponse();
 
 
     private BillingONCHeader1Dao billingONCHeader1Dao = (BillingONCHeader1Dao) SpringUtils.getBean(BillingONCHeader1Dao.class);
@@ -77,7 +78,7 @@ public class BatchBill2Action extends ActionSupport {
                 billingDate = dateFmt.parse(strDate);
             } catch (ParseException e) {
                 MiscUtils.getLogger().error("Error", e);
-                servletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 return null;
             }
         }
@@ -148,8 +149,12 @@ public class BatchBill2Action extends ActionSupport {
 
         }
 
-        String fwd = "/billing/CA/ON/batchBilling.jsp?provider_no=" + request.getParameter("provider") + "&service_code=" + request.getParameter("service_code");
-        return fwd;
+        try {
+            response.sendRedirect("/billing/CA/ON/batchBilling.jsp?provider_no=" + request.getParameter("provider") + "&service_code=" + request.getParameter("service_code"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
     //Remove demographics from batch billing table
@@ -178,8 +183,13 @@ public class BatchBill2Action extends ActionSupport {
             }
         }
 
-        String fwd = "/billing/CA/ON/batchBilling.jsp?provider_no=" + request.getParameter("provider") + "&service_code=" + request.getParameter("service_code");
-        return fwd;
+        try {
+            response.sendRedirect("/billing/CA/ON/batchBilling.jsp?provider_no=" + request.getParameter("provider") + "&service_code=" + request.getParameter("service_code"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+
     }
 
     //Add demographic to batch billing table and allow update of record if already present
@@ -229,6 +239,8 @@ public class BatchBill2Action extends ActionSupport {
             batchBillingDAO.merge(batchBilling);
         }
 
+
         return "saved";
+
     }
 }

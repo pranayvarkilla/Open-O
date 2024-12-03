@@ -43,8 +43,8 @@
 <%@ page import="java.util.ResourceBundle" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <html>
     <jsp:useBean id="displayServiceUtil" scope="request"
                  class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConDisplayServiceUtil"/>
@@ -58,7 +58,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.title"/>
         </title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
     </head>
     <script language="javascript">
@@ -68,7 +68,18 @@
     </script>
     <link rel="stylesheet" type="text/css" href="../../encounterStyles.css">
     <body class="BodyStyle" vlink="#0000FF">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <!--  -->
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr class="MainTableTopRow">
@@ -106,7 +117,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <html:form action="/oscarEncounter/DelService">
+                            <form action="${pageContext.request.contextPath}/oscarEncounter/DelService.do" method="post">
                             <input type="submit" name="delete"
                                    value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.btnDeleteService"/>">
                             <div class="ChooseRecipientsBox1">
@@ -137,7 +148,7 @@
                     </tr>
                 </table>
                 </div>
-                </html:form></td>
+                </form></td>
         </tr>
         <!----End new rows here-->
 

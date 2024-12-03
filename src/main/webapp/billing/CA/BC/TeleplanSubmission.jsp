@@ -48,7 +48,7 @@
 <%@ page
         import="java.util.*, java.sql.*, oscar.util.*,oscar.oscarProvider.data.ProviderData,oscar.oscarBilling.ca.bc.data.*,oscar.entities.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
@@ -166,8 +166,8 @@
     </h4>
     <c:if test="${!empty error}"><c:out value="${error}"/></c:if>
 
-    <html:form action="/billing/CA/BC/GenerateTeleplanFile.do" onsubmit="return checkSubmit();"
-               styleClass="form-inline">
+    <form action="${pageContext.request.contextPath}/billing/CA/BC/GenerateTeleplanFile.do" onsubmit="return checkSubmit();"
+               class="form-inline">
 
         Select provider
         <select name="provider">
@@ -183,7 +183,7 @@
             <%}%>
         </select>
         <input class="btn btn-primary" type="submit" name="Submit" value="Create Report">
-    </html:form>
+    </form>
 
     Activity List | <a href="#" onClick="showHideLayers('Layer2','','show');">Show Archive</a>
     <button class="btn pull-right" type="button" value="Print" onclick="window.print()"/>

@@ -26,7 +26,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -124,28 +124,26 @@
         </div>
         <% }%>
 
-        <html:form action="/billing/CA/BC/AddReferralDoc" onsubmit="return checkBillingNumber();"
-                   styleId="addReferralDocform">
-
+        <form action="${pageContext.request.contextPath}/billing/CA/BC/AddReferralDoc.do" method="post"
+              onsubmit="return checkBillingNumber();" style="addReferralDocform">
             <%
                 String id = request.getParameter("id");
             %>
-
             <fieldset>
                 <legend><%=(id == null) ? "Add" : "Update"%> Referral Doctor</legend>
-                Billing #:<html:text property="referral_no"/><br>
-                Last Name:<html:text property="last_name"/> First Name:<html:text property="first_name"/><br/>
-                Specialty:<html:text property="specialty"/></br>
-                Address 1:<html:text property="address1" size="30"/><br/>
-                Address 2:<html:text property="address2" size="30"/><br/>
-                City:<html:text property="city"/>
-                Province:<html:text property="province"/><br/>
-                Postal:<html:text property="postal"/><br/>
-                Phone:<html:text property="phone"/>
-                Fax:<html:text property="fax"/><br/>
+                Billing #:<input type="text" name="referral_no" id="referral_no" /><br>
+                Last Name:<input type="text" name="last_name" id="last_name" /> First Name:<input type="text" name="first_name" id="first_name" /><br/>
+                Specialty:<input type="text" name="specialty" id="specialty" /></br>
+                Address 1:<input type="checkbox" name="address1" size="30" /><br/>
+                Address 2:<input type="checkbox" name="address2" size="30" /><br/>
+                City:<input type="text" name="city" id="city" />
+                Province:<input type="text" name="province" id="province" /><br/>
+                Postal:<input type="text" name="postal" id="postal" /><br/>
+                Phone:<input type="text" name="phone" id="phone" />
+                Fax:<input type="text" name="fax" id="fax" /><br/>
                 <input class="btn btn-primary" type="submit" value="Save"/>
             </fieldset>
-        </html:form>
+        </form>
     </div>
     <script>
         registerFormSubmit('addReferralDocform', 'dynamic-content');

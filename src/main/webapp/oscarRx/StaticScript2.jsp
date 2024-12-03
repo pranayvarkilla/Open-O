@@ -25,7 +25,7 @@
 --%>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>
@@ -64,7 +64,7 @@
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="StaticScript.title"/></title>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <%
             LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
@@ -308,11 +308,11 @@
                             <%
                                 if (drug.isLocal) {
                             %>
-                                <%--  <html:form action="">
-      <html:hidden property="drugList" value="<%=drug.localDrugId.toString()%>" />
+                                <%--  <form action="">
+      <input type="hidden" name="drugList" value="<%=drug.localDrugId.toString()%>" />
       <input type="hidden" name="method" value="represcribe">
-                                                  <html:submit style="width:100px" styleClass="ControlPushButton"  onclick="javascript:reRxDrugSearch3('<%=drug.localDrugId%>');" value="Re-prescribe" />
-  </html:form> --%>
+                                                  <input type="submit" name="submit" style="width:100px" styleClass="ControlPushButton"  onclick="javascript:reRxDrugSearch3('<%=drug.localDrugId%>');" value="Re-prescribe" />
+  </form> --%>
                             <input type="button" align="top" value="Represcribe" style="width: 100px"
                                    class="ControlPushButton"
                                    onclick="javascript:reRxDrugSearch3('<%=drug.localDrugId%>');"/>

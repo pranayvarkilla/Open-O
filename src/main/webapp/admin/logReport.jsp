@@ -29,7 +29,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="oscar.login.*, oscar.oscarDB.*, oscar.MyDateFormat" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 

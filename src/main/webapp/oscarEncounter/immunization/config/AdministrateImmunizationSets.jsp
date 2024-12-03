@@ -25,8 +25,8 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -60,7 +60,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.administrativeImmunizationSets.title"/>
         </title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
     </head>
@@ -107,8 +107,7 @@
         </tr>
         <tr>
             <td class="MainTableLeftColumn"></td>
-            <td class="MainTableRightColumn"><html:form
-                    action="/oscarEncounter/immunization/config/deleteImmunizationSet">
+            <td class="MainTableRightColumn"><form action="${pageContext.request.contextPath}/oscarEncounter/immunization/config/deleteImmunizationSet.do" method="post">
                 <table width="50%" border=0 cellspacing=1>
                     <tr>
                         <th>&nbsp;</th>
@@ -159,7 +158,7 @@
                         </td>
                     </tr>
                 </table>
-            </html:form></td>
+            </form></td>
         </tr>
         <tr>
             <td class="MainTableBottomRowLeftColumn"></td>

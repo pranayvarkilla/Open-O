@@ -45,7 +45,7 @@
 <%@page import="oscar.oscarReport.data.DemographicSets, oscar.oscarDemographic.data.*,java.util.*,oscar.oscarPrevention.*,oscar.oscarProvider.data.*,oscar.util.*,oscar.oscarReport.ClinicalReports.*,oscar.oscarEncounter.oscarMeasurements.*,oscar.oscarEncounter.oscarMeasurements.bean.*" %>
 <%@page import="com.Ostermiller.util.CSVPrinter,java.io.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
 <%
@@ -105,7 +105,7 @@
 
     <head>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="report.ClinicalReports.title"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" href="../share/css/OscarStandardLayout.css">
         <link rel="stylesheet" type="text/css" media="all" href="../share/calendar/calendar.css" title="win2k-cold-1"/>
 
@@ -322,7 +322,7 @@
 
                         </td>
                         <td style="text-align:right">
-                            <oscar:help keywords="clinical reports" key="app.top1"/> | <a
+                            <a
                                 href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
                             | <a href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a>
                         </td>
@@ -355,7 +355,7 @@
             <td valign="top" class="MainTableRightColumn">
                 <div>
                     <fieldset>
-                        <html:form action="RunClinicalReport">
+                        <form action="${pageContext.request.contextPath}//RunClinicalReport.do" method="post">
                             <!--
                             <label for="asOfDate" >As Of Date:</label><input type="text" name="asOfDate" id="asOfDate" value="<%=""%>" size="9" > <a id="date"><img title="Calendar" src="../images/cal.gif" alt="Calendar" border="0" /></a> <br>
                             -->
@@ -588,7 +588,7 @@
 
                             <br/>
                             <input type="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="report.ClinicalReports.btnEvaluate"/>"/>
-                        </html:form>
+                        </form>
                     </fieldset>
 
                 </div>

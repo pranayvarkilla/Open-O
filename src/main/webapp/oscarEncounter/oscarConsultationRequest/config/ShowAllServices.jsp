@@ -42,8 +42,8 @@
 <%@ page import="java.util.ResourceBundle" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -55,7 +55,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.ShowAllServices.title"/>
         </title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script>
             function BackToOscar() {
                 window.close();
@@ -65,7 +65,18 @@
     </head>
 
     <body class="BodyStyle" vlink="#0000FF">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <div id="service-providers-wrapper" style="margin:auto 10px;">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
@@ -95,7 +106,7 @@
                             <td>
 
                                 <table>
-                                    <html:form action="/oscarEncounter/AddService">
+                                    <form action="${pageContext.request.contextPath}/oscarEncounter/AddService.do" method="post">
                                         <tr>
                                             <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.ShowAllServices.services"/>
                                             </td>
@@ -122,7 +133,7 @@
                                                 </table>
                                             </td>
                                         </tr>
-                                    </html:form>
+                                    </form>
                                 </table>
                             </td>
                         </tr>

@@ -23,26 +23,14 @@
     Ontario, Canada
 
 --%>
-<%@page import="org.oscarehr.common.service.AcceptableUseAgreementManager" %>
-<%@page import="oscar.OscarProperties, javax.servlet.http.Cookie, oscar.oscarSecurity.CookieSecurity, oscar.login.UAgentInfo" %>
-<%@page import="org.apache.velocity.runtime.directive.Foreach" %>
-<%@page import="org.oscarehr.common.service.AcceptableUseAgreementManager" %>
-<%@page import="java.util.*" %>
+<%@ page import="java.util.*" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
-<%@ page import="org.oscarehr.PMmodule.model.Program" %>
 <%@ page import="org.oscarehr.common.model.Facility" %>
-<%@ page import="org.oscarehr.PMmodule.service.ProviderManager" %>
-<%@ page import="org.oscarehr.PMmodule.service.ProgramManager" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
-<%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page import="org.caisi.service.InfirmBedProgramManager" %>
-<%@ page import="org.apache.struts.util.LabelValueBean" %>
-
-
+<%@ page import="oscar.util.LabelValueBean" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ include file="/common/webAppContextAndSuperMgr.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -54,18 +42,12 @@
 </head>
 <body>
 <%
-    ProgramManager programManager = SpringUtils.getBean(ProgramManager.class);
-
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
     String providerNo = loggedInInfo.getLoggedInProviderNo();
     Facility facility = loggedInInfo.getCurrentFacility();
-
-//List<Program> programs = programManager.getActiveProgramByFacility(providerNo, facility.getId());
-    InfirmBedProgramManager bpm = (InfirmBedProgramManager) SpringUtils.getBean(InfirmBedProgramManager.class);
+    InfirmBedProgramManager bpm = SpringUtils.getBean(InfirmBedProgramManager.class);
     List<LabelValueBean> programs = bpm.getProgramBeans(providerNo, facility.getId());
-
     int defaultprogramId = bpm.getDefaultProgramId(providerNo);
-
 %>
 <p>&nbsp;</p>
 <table align="center">

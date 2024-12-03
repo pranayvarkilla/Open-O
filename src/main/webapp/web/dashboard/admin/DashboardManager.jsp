@@ -24,7 +24,6 @@
 
 --%>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -67,8 +66,8 @@
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container">
 
-                    <html:form styleClass="form-inline" styleId="importForm"
-                               method="POST" action="/web/dashboard/admin/DashboardManager.do"
+                    <form style="form-inline" id="importForm"
+                               method="POST" action="${pageContext.request.contextPath}/web/dashboard/admin/DashboardManager.do"
                                enctype="multipart/form-data">
 
                         <c:if test="${ not empty param.dashboardId }">
@@ -147,7 +146,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </html:form>
+                    </form>
                     <span ${ message['status'] eq 'success' ? 'style="color: green;"' : 'style="color: red;"' } >
 			<c:out value="${ message['message'] }"/>
 		</span>

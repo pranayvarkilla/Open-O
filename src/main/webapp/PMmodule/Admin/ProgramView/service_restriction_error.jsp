@@ -33,13 +33,13 @@
 <%@page import="org.oscarehr.common.model.DemographicExt" %>
 
 
-<html:form action="/PMmodule/ProgramManagerView">
+<form action="${pageContext.request.contextPath}/PMmodule/ProgramManagerView.do" method="post">
 
     <%@ include file="/common/messages.jsp" %>
 
     <input type="hidden" name="method" value="override_restriction"/>
-    <html:hidden property="clientId"/>
-    <html:hidden property="queueId"/>
+    <input type="hidden" name="clientId" id="clientId"/>
+    <input type="hidden" name="queueId" id="queueId"/>
     <input type="hidden" name="id"
            value="<c:out value="${requestScope.id}"/>"/>
 
@@ -91,11 +91,13 @@
         </tr>
 
         <tr>
-            <td colspan="2"><c:if
-                    test="${requestScope.hasOverridePermission}">
-                <html:submit property="submit.override">Override</html:submit>
-            </c:if> <button type="button" onclick="window.history.back();">Cancel</button></td>
+            <td colspan="2">
+                <c:if test="${requestScope.hasOverridePermission}">
+                    <input type="submit" name="submit" value="Override" />
+                </c:if>
+                <button type="button" onclick="window.history.back();">Cancel</button>
+            </td>
         </tr>
 
     </table>
-</html:form>
+</form>

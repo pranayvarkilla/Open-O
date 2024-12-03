@@ -40,8 +40,8 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib prefix="csrf" uri="http://www.owasp.org/index.php/Category:OWASP_CSRFGuard_Project/Owasp.CsrfGuard.tld" %>
 
 <%@ page import="oscar.util.*, oscar.form.*, oscar.form.data.*" %>
@@ -735,7 +735,7 @@
     </style>
 </head>
 <body onload="init()">
-<html:form styleId="frmP1" action="/form/formname">
+<form styleId="frmP1" action="${pageContext.request.contextPath}/form/formname.do" method="post">
     <div id="rourke2020-tabs">
         <ul id="tab-list">
             <li><a href="#tab-cp1">Page I</a></li>
@@ -760,7 +760,7 @@
             <div class="tab-page" id="tab-all"></div>
         </div>
     </div>
-</html:form>
+</form>
 <form id="frmPopUp" method="get" action=""></form>
 <form id="graph" method="post" action=""></form>
 <script type="text/javascript">

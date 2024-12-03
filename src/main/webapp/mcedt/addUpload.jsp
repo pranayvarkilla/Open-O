@@ -32,9 +32,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.oscar-emr.com/tags/integration" prefix="i" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
 
 <html>
     <head>
@@ -63,7 +63,7 @@
 
         <title>MCEDT: Upload</title>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <body>
@@ -72,8 +72,7 @@
 
             <h2>Upload Details</h2>
 
-            <html:form action="/mcedt/addUpload.do" method="post" styleId="form"
-                       enctype="multipart/form-data">
+            <form action="${pageContext.request.contextPath}/mcedt/addUpload.do" method="post" styleId="form" enctype="multipart/form-data">
 
             <jsp:include page="messages.jsp"/>
 
@@ -83,26 +82,26 @@
                 <label class="control-label" for="resourceType">Resource
                     Type</label>
 
-                <html:select property="resourceType" styleId="resourceType" styleClass="input-xxlarge">
+                <select name="resourceType" id="resourceType" class="input-xxlarge">
                     <c:forEach var="r" items="${mcedtTypeList.data}">
-                        <html:option value="${r.resourceType}">
+                        <option value="${r.resourceType}">
                             <c:out value="${r.resourceType}"/> -
                             <c:out value="${r.access}"/> -
                             <c:out value="${r.descriptionEn}"/>
-                        </html:option>
+                        </option>
                     </c:forEach>
-                </html:select>
+                </select>
                 <label class="control-label" for="description">Description:</label>
-                <html:text styleId="description" property="description" value=""/>
+                <input type="text" name="description" id="description" value=""/>
 
                 <label class="control-label" for="content">File Upload</label>
-                <html:file property="content" styleId="content"/>
+                <input type="file" name="content" id="content" style="content"/>
 
                 <div style="margin-top: 1em;">
                     <button class="btn" onclick="return create();">Create</button>
                     <button class="btn" onclick="return cancel();">Cancel</button>
                 </div>
-                </html:form>
+                </form>
             </div>
         </div>
     </body>

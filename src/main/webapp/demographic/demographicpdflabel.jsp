@@ -84,7 +84,7 @@
              scope="session"/>
 <% java.util.Properties oscarVariables = OscarProperties.getInstance(); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <%
     String curProvider_no = (String) session.getAttribute("user");

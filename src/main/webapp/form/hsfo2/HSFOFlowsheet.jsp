@@ -25,7 +25,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName2$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -62,7 +62,7 @@
     %>
     <body onLoad="initialize()">
 
-    <html:form action="/form/SaveHSFORegistrationForm2.do" onsubmit="return checkform(false)" styleId="form1">
+    <form action="${pageContext.request.contextPath}/form/SaveHSFORegistrationForm2.do" method="post" onsubmit="return checkform(false)" styleId="form1">
         <DIV id="page_1">
 
             <DIV id="id_1">
@@ -469,8 +469,7 @@
                     <!-- graphies link -->
                     <tr>
                         <td><Strong>
-                            <A HREF="#Graphs" onClick="window.open('<html:rewrite
-                                    action="/form/HSFOForm2.do"/>?operation=displayGraphs&demographic_no=<%=patientData.getPatient_Id()%>', 'Graphs', 'location=1,status=1,resizable=1,scrollbars=1,width=960,height=1024');">Display
+                            <A HREF="#Graphs" onClick="window.open('<%=request.getContextPath() %>/form/HSFOForm2.do?operation=displayGraphs&demographic_no=<%=patientData.getPatient_Id()%>', 'Graphs', 'location=1,status=1,resizable=1,scrollbars=1,width=960,height=1024');">Display
                                 graphs</A>
                         </Strong></td>
                     </tr>
@@ -2023,7 +2022,7 @@
                                 String user = (String) session.getAttribute("user");
                             %>
                             <!--
-        <input type="button" onclick="popupXmlMsg('<html:rewrite action="/form/HSFOXmlTransfer2.do" />?xmlHsfoProviderNo=<%=user%>&xmlHsfoDemographicNo=<%=patient%>')"
+        <input type="button" onclick="popupXmlMsg('<%=request.getContextPath() %>/form/HSFOXmlTransfer2.do?xmlHsfoProviderNo=<%=user%>&xmlHsfoDemographicNo=<%=patient%>')"
                 value="Assessment Complete" />
          -->
                             <input type="button" name="Reset" value="Reset" onClick="confirmReset(document.form1)"/>
@@ -2038,7 +2037,7 @@
         <!--end of page_1 -->
 
 
-    </html:form>
+    </form>
 
     </body>
 </html>

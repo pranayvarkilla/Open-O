@@ -51,7 +51,6 @@
         //response.sendRedirect("error.jsp");
         return;
     }
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
     oscar.util.UtilDateUtilities dateConvert = new oscar.util.UtilDateUtilities();
     String pAge = Integer.toString(dateConvert.calcAge(bean.yearOfBirth, bean.monthOfBirth, bean.dateOfBirth));
     String winName = "";

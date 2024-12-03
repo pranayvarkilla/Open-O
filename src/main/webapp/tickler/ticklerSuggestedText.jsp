@@ -28,7 +28,7 @@
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -151,7 +151,7 @@
 <body style="font-family:arial, sans-serif;">
 <div class="container">
     <h3>Tickler <fmt:setBundle basename="oscarResources"/><fmt:message key="tickler.ticklerTextSuggest.textSuggestTitle"/></h3>
-    <html:form action="/tickler/EditTicklerTextSuggest">
+    <form action="${pageContext.request.contextPath}/tickler/EditTicklerTextSuggest.do" method="post">
         <input type="hidden" name="method" value="updateTextSuggest">
         <table style="display: flex;justify-content: space-evenly;align-items: stretch;">
 
@@ -162,23 +162,23 @@
             </tr>
             <tr>
                 <td style="vertical-align: top">
-                    <html:select styleClass="form-control text-selection" property="activeText" multiple="true"
+                    <select class="form-control text-selection" name="activeText" multiple="true"
                                  size="10">
                         <% java.util.List<TicklerTextSuggest> activeTexts = ticklerTextSuggestDao.getActiveTicklerTextSuggests();
                             if (activeTexts.isEmpty()) {
                         %>
-                        <html:option value=""></html:option>
+                        <option value=""></option>
                         <% } else {
 
                             for (TicklerTextSuggest tTextSuggestActive : activeTexts) {
                         %>
-                        <html:option
+                        <option
                                 value="<%=tTextSuggestActive.getId().toString()%>"><%=tTextSuggestActive.getSuggestedText()%>
-                        </html:option>
+                        </option>
                         <% }
                         }
                         %>
-                    </html:select>
+                    </select>
                 </td>
                 <td>
                     <input type="button" class="btn" name="movetoInactive" value=">>"
@@ -188,24 +188,24 @@
                            onclick="swap('inactiveText','activeText')"/>
                 </td>
                 <td style="vertical-align: top">
-                    <html:select styleClass="form-control text-selection" property="inactiveText" multiple="true"
+                    <select class="form-control text-selection" name="inactiveText" multiple="true"
                                  size="10">
                         <%
                             java.util.List<TicklerTextSuggest> inactiveTexts = ticklerTextSuggestDao.getInactiveTicklerTextSuggests();
                             if (inactiveTexts.isEmpty()) {
                         %>
-                        <html:option value=""></html:option>
+                        <option value=""></option>
                         <%
                         } else {
                             for (TicklerTextSuggest tTextSuggestInactive : inactiveTexts) {
                         %>
-                        <html:option
+                        <option
                                 value="<%=tTextSuggestInactive.getId().toString()%>"><%=tTextSuggestInactive.getSuggestedText()%>
-                        </html:option>
+                        </option>
                         <% }
                         }
                         %>
-                    </html:select>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -235,7 +235,7 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
 </div>
 </body>
 </html>

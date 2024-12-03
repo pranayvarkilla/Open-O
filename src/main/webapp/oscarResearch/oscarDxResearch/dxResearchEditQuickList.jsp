@@ -26,7 +26,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%
 
     String user_no = (String) session.getAttribute("user");
@@ -114,43 +114,53 @@
             </td>
         </tr>
         <tr>
-            <td><html:form
-                    action="/oscarResearch/oscarDxResearch/dxResearchUpdateQuickList.do">
+            <td><form action="${pageContext.request.contextPath}/oscarResearch/oscarDxResearch/dxResearchUpdateQuickList.do" method="post">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0"
                        bgcolor="#EEEEFF" height="200">
                     <tr>
                         <td class="heading"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.codingSystem"/>: <%-- <c:out value="${codingSystem}"/> --%>
-                            <html:select property="selectedCodingSystem">
+                            <select name="selectedCodingSystem" id="selectedCodingSystem">
                                 <c:forEach var="codingSys" items="${codingSystem.codingSystems}">
                                     <option value="${codingSys}">${codingSys}</option>
                                 </c:forEach>
-                            </html:select></td>
+                            </select></td>
                         <td class="heading"></td>
                         <td class="heading"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.quickListItemsOf"/> 
                             <c:out value="${quickListName}"/> 
                             <input type="hidden" name="quickListName" value="<c:out value="${quickListName}"/>"/></td>
                     </tr>
                     <tr>
-                        <td colspan="3"><html:errors/></td>
+                        <td colspan="3"><% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %></td>
                     </tr>
                     <tr>
                         <td width="40%" valign="top">
                             <table width="100%" border="0" cellspacing="0" cellpadding="2"
                                    height="200">
                                 <tr>
-                                    <td><html:text property="xml_research1" size="30"/></td>
+                                    <td><input type="checkbox" name="xml_research1" size="30" /></td>
                                 </tr>
                                 <tr>
-                                    <td><html:text property="xml_research2" size="30"/></td>
+                                    <td><input type="checkbox" name="xml_research2" size="30" /></td>
                                 </tr>
                                 <tr>
-                                    <td><html:text property="xml_research3" size="30"/></td>
+                                    <td><input type="checkbox" name="xml_research3" size="30" /></td>
                                 </tr>
                                 <tr>
-                                    <td><html:text property="xml_research4" size="30"/></td>
+                                    <td><input type="checkbox" name="xml_research4" size="30" /></td>
                                 </tr>
                                 <tr>
-                                    <td><html:text property="xml_research5" size="30"/></td>
+                                    <td><input type="checkbox" name="xml_research5" size="30" /></td>
                                 </tr>
                                 <tr>
                                     <td><input type="button" name="button" class=mbttn
@@ -178,12 +188,12 @@
                         <td valign="top">
                             <table>
                                 <tr>
-                                    <td><html:select property="quickListItems"
+                                    <td><select name="quickListItems"
                                                      style="width:200px" size="10" multiple="true">
                                         <c:forEach var="qlItems" items="${allQuickListItems.dxQuickListItemsVector}">
                                             <option value="${qlItems.type},${qlItems.dxSearchCode}">${qlItems.description}</option>
                                         </c:forEach>
-                                    </html:select></td>
+                                    </select></td>
                                 </tr>
                             </table>
                         </td>
@@ -200,7 +210,7 @@
                         <td>&nbsp;</td>
                     </tr>
                 </table>
-            </html:form></td>
+            </form></td>
         </tr>
     </table>
     </body>

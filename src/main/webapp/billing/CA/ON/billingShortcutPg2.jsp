@@ -40,8 +40,8 @@
     String service_form = "";
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page errorPage="/errorpage.jsp" import="java.util.*,java.math.*,java.net.*,java.sql.*, oscar.util.*, oscar.*" %>
 
 <%@ page import="oscar.oscarBilling.ca.on.pageUtil.*" %>

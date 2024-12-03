@@ -26,7 +26,7 @@
 <!DOCTYPE html>
 <%@ page import="oscar.eform.data.*, oscar.eform.*, java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%
     String orderByRequest = request.getParameter("orderby");
     String orderBy = "";

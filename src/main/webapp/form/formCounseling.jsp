@@ -42,15 +42,11 @@
 <!DOCTYPE html>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-
 <%@ page import="oscar.form.FrmRecord" %>
 <%@ page import="oscar.form.FrmRecordFactory" %>
 <%@ page import="org.oscarehr.util.LocaleUtils" %>
 <%@ page import="org.oscarehr.common.dao.DemographicDao" %>
 <%@ page import="org.oscarehr.common.model.Demographic" %>
-<%@ page import="org.oscarehr.common.dao.ClinicDAO" %>
-<%@ page import="org.oscarehr.common.model.Clinic" %>
 <%@ page import="org.oscarehr.PMmodule.dao.ProviderDao" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
@@ -96,8 +92,9 @@
         <title>Counseling</title>
     </head>
     <body bgproperties="fixed" topmargin="0" leftmargin="0" rightmargin="0" onload="window.resizeTo(768,768)" bgcolor="#eeeeee">
-    <html:form action="/form/formname">
-        <input type="hidden" name="demographic_no" value="<%= props.getProperty("demographic_no", "0") %>"/>
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
+
+    <input type="hidden" name="demographic_no" value="<%= props.getProperty("demographic_no", "0") %>"/>
         <div class="DoNotPrint">
             <p> This date field must formatted as seen (DD/MM/YYYY), you may change the date but do not change
                 formatting. </p>
@@ -265,5 +262,5 @@
             }
 
         </script>
-    </html:form>
+    </form>
 </html>

@@ -35,8 +35,6 @@
 <%@ page import="oscar.util.DateUtils" %>
 <%@ page import="oscar.oscarLab.ca.all.Hl7textResultsData" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -114,7 +112,7 @@
     <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
     <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.index.title"/> Page <%=pageNum%>
     </title>
-    <html:base/>
+    <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
     <!-- link rel="stylesheet" type="text/css" href="encounterStyles.css" -->
     <link rel="stylesheet" type="text/css"
@@ -264,8 +262,7 @@
 				<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.index.msgUnclaimed"/> <%} else {%> <%=ProviderData.getProviderName(searchProviderNo)%>
 				<%}%> &nbsp;&nbsp;&nbsp; Page : <%=pageNum%> </span> <% } %>
                         </td>
-                        <td align="right" valign="center" width="30%"><oscar:help keywords="lab demographic"
-                                                                                  key="app.top1"/> | <a
+                        <td align="right" valign="center" width="30%"><a
                                 href="javascript:popupStart(300,400,'../oscarEncounter/About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a></td>
                     </tr>
                 </table>

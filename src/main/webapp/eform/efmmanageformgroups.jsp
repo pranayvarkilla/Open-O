@@ -26,7 +26,7 @@
 <%@page import="java.net.URLEncoder" %>
 <%@ page import="oscar.eform.data.*, oscar.eform.*, java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%
     String user = (String) session.getAttribute("user");
     if (session.getAttribute("userrole") == null) response.sendRedirect("../logout.jsp");
@@ -227,7 +227,7 @@
         </div>
         <!--modal-->
                 <% if (!groupView.equals("")) { %>
-        <html:form action="/eform/addToGroup" method="get" styleId="eformToGroupForm">
+        <form action="${pageContext.request.contextPath}/eform/addToGroup.do" method="get" styleId="eformToGroupForm">
         <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
              aria-hidden="true">
             <div class="modal-header">
@@ -239,16 +239,16 @@
 
                 <div style="text-align:center">
 
-                    <html:select property="fid" styleId="eformSelect">
+                    <select name="fid" id="eformSelect">
                         <%
                             for (int i = 0; i < forms.size(); i++) {
                                 HashMap<String, ? extends Object> curhash = forms.get(i);
                         %>
-                        <html:option
+                        <option
                                 value='<%= (String) curhash.get("fid")%>'><%= (String) curhash.get("formName")%> | <%= (String) curhash.get("formDate")%>
-                        </html:option>
+                        </option>
                         <% } %>
-                    </html:select>
+                    </select>
 
 
                     <input type="hidden" name="groupName" value="<%= groupView%>">
@@ -264,7 +264,7 @@
                        value="Add eForm to Group">
             </div>
         </div>
-        </html:form>
+        </form>
                 <% } %>
 
             <%@ include file="efmFooter.jspf" %>

@@ -16,8 +16,8 @@
 <%@ page
         import="oscar.form.graphic.*, oscar.util.*, oscar.form.*, oscar.form.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
 <%
@@ -54,7 +54,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Antenatal Record 2</title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css"
               href="<%=bView?"arStyleView.css" : "arStyle.css"%>">
         <!-- calendar stylesheet -->
@@ -560,7 +560,7 @@
 
 
     <body bgproperties="fixed" topmargin="0" leftmargin="0" rightmargin="0">
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
 
         <input type="hidden" name="commonField" value="ar2_"/>
         <input type="hidden" name="c_lastVisited"
@@ -1704,7 +1704,7 @@
             </tr>
         </table>
 
-    </html:form>
+    </form>
     <% if (bView) { %>
     <script type="text/javascript">
         window.onload = function () {

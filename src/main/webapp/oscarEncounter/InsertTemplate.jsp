@@ -25,14 +25,14 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="java.lang.*,oscar.oscarEncounter.oscarMeasurements.pageUtil.*" %>
-<html:html lang="en">
+<html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>
 
     <script language="javascript">
@@ -50,7 +50,18 @@
 
     <link rel="stylesheet" type="text/css" href="../styles.css">
     <body topmargin="0" leftmargin="0" vlink="#0000FF">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <table>
         <tr>
             <td>Processing...</td>
@@ -70,7 +81,7 @@
 
 
     </body>
-</html:html>
+</html>
 
 
 <%-- <%=request.getAttribute("templateValue")%> --%>

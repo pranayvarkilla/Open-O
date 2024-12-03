@@ -56,8 +56,8 @@
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 <%
     String curProvider_no = (String) session.getAttribute("user");
@@ -175,7 +175,7 @@
         </title>
 
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <link rel="stylesheet" type="text/css" media="all" href="../../share/calendar/calendar.css"
               title="win2k-cold-1"/>
@@ -318,7 +318,7 @@
                 <table width="100%">
                     <tr>
                         <td style="margin: 0; padding: 0;">
-                            <html:form action="/oscarEncounter/ViewConsultation" method="get">
+                            <form action="${pageContext.request.contextPath}/oscarEncounter/ViewConsultation" method="get">
                                 <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.formSelectTeam"/>:
                                 <select name="sendTo">
                                     <option value=""><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.formViewAll"/></option>
@@ -346,25 +346,25 @@
                                 <input type="submit"
                                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.btnConsReq"/>"/>
                                 <div style="margin: 0; padding: 0; ">
-                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgStart"/>:<html:text
-                                        property="startDate" size="8" styleId="startDate"/><a id="SCal"><img
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgStart"/>:
+                                    <input type="text" name="startDate" size="8" id="startDate"/><a id="SCal"><img
                                         title="Calendar" src="../../images/cal.gif" alt="Calendar" border="0"/></a>
-                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgEnd"/>:<html:text
-                                        property="endDate" size="8" styleId="endDate"/><a id="ECal"><img
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgEnd"/>:
+                                    <input type="text" name="endDate" size="8" id="endDate"/><a id="ECal"><img
                                         title="Calendar" src="../../images/cal.gif" alt="Calendar" border="0"/></a>
-                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgIncludeCompleted"/>:<html:checkbox
-                                        property="includeCompleted" value="include"/>
-                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgSearchon"/><html:radio
-                                        property="searchDate" value="0" titleKey="Search on Referal Date"/>
-                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgApptDate"/><html:radio
-                                        property="searchDate" value="1" titleKey="Search on Appt. Date"/>
-                                    <html:hidden property="currentTeam"/>
-                                    <html:hidden property="orderby"/>
-                                    <html:hidden property="desc"/>
-                                    <html:hidden property="offset"/>
-                                    <html:hidden property="limit"/>
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgIncludeCompleted"/>:
+                                    <input type="checkbox" name="includeCompleted" value="include"/>
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgSearchon"/>
+                                    <input type="radio" name="searchDate" value="0" titleKey="Search on Referal Date"/>
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgApptDate"/>
+                                    <input type="radio" name="searchDate" value="1" titleKey="Search on Appt. Date"/>
+                                    <input type="hidden" name="currentTeam" id="currentTeam"/>
+                                    <input type="hidden" name="orderby" id="orderby"/>
+                                    <input type="hidden" name="desc" id="desc"/>
+                                    <input type="hidden" name="offset" id="offset"/>
+                                    <input type="hidden" name="limit" id="limit"/>
                                 </div>
-                            </html:form>
+                            </form>
                         </td>
                     </tr>
                     <tr>

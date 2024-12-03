@@ -24,7 +24,7 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
@@ -45,7 +45,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="AddReaction.title"/></title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:if test="${empty RxSessionBean}">
             <% response.sendRedirect("error.html"); %>
@@ -124,7 +124,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td id="addAllergyDialogue"><html:form action="/oscarRx/addAllergy2"
+                        <td id="addAllergyDialogue"><form action="/oscarRx/addAllergy2.do"
                                                                focus="reactionDescription">
 
                             <script type="text/javascript">
@@ -190,15 +190,16 @@
                                 <tr valign="center">
                                     <td>
                                         <span class="label">Comment: </span>
-                                        <html:textarea property="reactionDescription" cols="40" rows="3"
-                                                       value="<%=reaction%>"/>
-                                        <html:hidden property="ID" value="<%=drugrefId%>"/>
-                                        <html:hidden property="name" value="<%=name%>"/>
-                                        <html:hidden property="allergyToArchive" value="<%=allergyToArchive%>"/>
+                                        <textarea name="reactionDescription" cols="40" rows="3">
+                                                       <%=reaction%>
+                                        </textarea>
+                                        <input type="hidden" name="ID" value="<%=drugrefId%>"/>
+                                        <input type="hidden" name="name" id="name" value="<%=name%>"/>
+                                        <input type="hidden" name="allergyToArchive" id="allergyToArchive" value="<%=allergyToArchive%>"/>
                                     </td>
                                 </tr>
 
-                                <html:hidden property="type" value="<%=type%>"/>
+                                <input type="hidden" name="type" id="type" value="<%=type%>"/>
 
                                 <tr valign="center">
                                     <td>
@@ -230,8 +231,8 @@
                                 </tr>
 
                                 <tr valign="center">
-                                    <td><span class="label">Age Of Onset:</span> <html:text
-                                            property="ageOfOnset" size="4" maxlength="4" value="<%=ageOfOnset%>"
+                                    <td><span class="label">Age Of Onset:</span> <input type="text"
+                                            name="ageOfOnset" size="4" maxlength="4" value="<%=ageOfOnset%>"
                                             onblur="checkAgeOfOnset();"/></td>
 
                                 </tr>
@@ -239,40 +240,40 @@
 
                                 <tr valign="center">
                                     <td><span class="label"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.title"/>:</span>
-                                        <html:select property="lifeStage" value="<%=lifeStage%>">
-                                            <html:option value=""><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.notset"/></html:option>
-                                            <html:option value="N"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.newborn"/></html:option>
-                                            <html:option value="I"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.infant"/></html:option>
-                                            <html:option value="C"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.child"/></html:option>
-                                            <html:option value="T"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.adolescent"/></html:option>
-                                            <html:option value="A"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.adult"/></html:option>
-                                        </html:select>
+                                        <select name="lifeStage" value="<%=lifeStage%>">
+                                            <option value=""><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.notset"/></option>
+                                            <option value="N"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.newborn"/></option>
+                                            <option value="I"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.infant"/></option>
+                                            <option value="C"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.child"/></option>
+                                            <option value="T"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.adolescent"/></option>
+                                            <option value="A"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.lifestage.opt.adult"/></option>
+                                        </select>
                                     </td>
                                 </tr>
 
                                 <% if (isNKDA) { %>
-                                <html:hidden property="severityOfReaction" value="4"/>
-                                <html:hidden property="onSetOfReaction" value="4"/>
+                                <input type="hidden" name="severityOfReaction" id="severityOfReaction" value="4"/>
+                                <input type="hidden" name="onSetOfReaction" id="onSetOfReaction" value="4"/>
                                 <% } else { %>
                                 <tr valign="center">
-                                    <td><span class="label">Severity Of Reaction:</span> <html:select
-                                            property="severityOfReaction" value="<%=severity%>">
-                                        <html:option value="4">Unknown</html:option>
-                                        <html:option value="1">Mild</html:option>
-                                        <html:option value="2">Moderate</html:option>
-                                        <html:option value="3">Severe</html:option>
-                                        <html:option value="5">No Reaction</html:option>
-                                    </html:select></td>
+                                    <td><span class="label">Severity Of Reaction:</span> <select
+                                            name="severityOfReaction" value="<%=severity%>">
+                                        <option value="4">Unknown</option>
+                                        <option value="1">Mild</option>
+                                        <option value="2">Moderate</option>
+                                        <option value="3">Severe</option>
+                                        <option value="5">No Reaction</option>
+                                    </select></td>
                                 </tr>
 
                                 <tr valign="center">
-                                    <td><span class="label">Onset Of Reaction:</span> <html:select
-                                            property="onSetOfReaction" value="<%=onsetOfReaction%>">
-                                        <html:option value="4">Unknown</html:option>
-                                        <html:option value="1">Immediate</html:option>
-                                        <html:option value="2">Gradual</html:option>
-                                        <html:option value="3">Slow</html:option>
-                                    </html:select></td>
+                                    <td><span class="label">Onset Of Reaction:</span> <select
+                                            name="onSetOfReaction" value="<%=onsetOfReaction%>">
+                                        <option value="4">Unknown</option>
+                                        <option value="1">Immediate</option>
+                                        <option value="2">Gradual</option>
+                                        <option value="3">Slow</option>
+                                    </select></td>
                                 </tr>
 
                                 <%if (drugrefId == null || "0".equals(drugrefId) || "null".equals(drugrefId)) { %>
@@ -299,9 +300,7 @@
 
                                 <tr>
                                     <td>
-                                        <html:submit property="submit" value="Add Allergy"
-                                                     styleClass="ControlPushButton"
-                                                     onclick="return doSubmit()"/>
+                                        <input type="submit" name="submit" value="Add Allergy" class="ControlPushButton" onclick="return doSubmit()"/>
                                         <input type=button class="ControlPushButton" id="cancelAddReactionButton"
                                                onclick="window.location='ShowAllergies2.jsp?demographicNo=<%=bean.getDemographicNo() %>'"
                                                value="Cancel"/>
@@ -309,7 +308,7 @@
                                 </tr>
                             </table>
 
-                        </html:form></td>
+                        </form></td>
                     </tr>
 
                     <tr>

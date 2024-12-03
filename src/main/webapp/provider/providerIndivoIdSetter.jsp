@@ -25,7 +25,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ page import="oscar.oscarProvider.data.*" %>
 
 
@@ -43,7 +43,7 @@
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.title"/></title>
 
         <link rel="stylesheet" type="text/css"
@@ -74,7 +74,18 @@
         </tr>
         <tr>
             <td class="MainTableLeftColumn">&nbsp;</td>
-            <td class="MainTableRightColumn"><html:errors/> <%
+            <td class="MainTableRightColumn"><% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %> <%
                 String login = ProviderMyOscarIdData.getMyOscarId(curUser_no);
                 int atsign = login.indexOf("@");
                 if (atsign > -1)
@@ -82,14 +93,14 @@
 
                 if (request.getAttribute("status") == null) {
 
-            %> <html:form action="/setMyOscarId.do">
+            %> <form action="${pageContext.request.contextPath}/setMyOscarId.do" method="post">
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.msgEdit"/>&nbsp;&nbsp;
-                <html:text property="myOscarLoginId" value="<%=login%>"
+                <input type="text" name="myOscarLoginId" value="<%=login%>"
                            size="20"/>
                 <br>
                 <input type="submit" onclick="return validate();"
                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.btnSubmit"/>"/>
-            </html:form> <%
+            </form> <%
             } else if (((String) request.getAttribute("status")).equals("complete")) {
             %> <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.msgSuccess"/>&nbsp;'<%=login%>'
 

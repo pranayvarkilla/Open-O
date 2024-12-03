@@ -25,8 +25,8 @@
 --%>
 <%@page import="oscar.oscarRx.data.RxPatientData" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/oscarProperties-tag.tld" prefix="oscar" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="oscar.oscarProvider.data.ProSignatureData, oscar.oscarProvider.data.ProviderData" %>
@@ -102,7 +102,7 @@
                 text-align: left;
             }
         </style>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
         <c:if test="${empty RxSessionBean}">
             <% response.sendRedirect("error.html"); %>
@@ -293,7 +293,7 @@
             showPatientDOB = true;
         }
     %>
-    <html:form action="/form/formname" styleId="preview2Form">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post" styleId="preview2Form">
         <input type="hidden" name="demographic_no" value="<%=bean.getDemographicNo()%>"/>
         <table>
             <tr>
@@ -662,6 +662,6 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

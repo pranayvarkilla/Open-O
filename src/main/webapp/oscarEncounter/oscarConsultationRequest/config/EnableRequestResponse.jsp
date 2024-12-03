@@ -45,8 +45,8 @@
 <%@ page import="org.oscarehr.managers.ConsultationManager" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%
     PropertyDao dao = (PropertyDao) SpringUtils.getBean(PropertyDao.class);
     ConsultationManager manager = (ConsultationManager) SpringUtils.getBean(ConsultationManager.class);
@@ -68,7 +68,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EnableRequestResponse.title"/>
         </title>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
     </head>
 
@@ -114,7 +114,7 @@
                     <tr>
                         <td>
                             <table>
-                                <html:form action="/oscarEncounter/EnableConRequestResponse">
+                                <form action="${pageContext.request.contextPath}/oscarEncounter/EnableConRequestResponse.do" method="post">
                                     <tr>
                                         <td>
                                             <input type="checkbox"
@@ -134,7 +134,7 @@
                                                    value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EnableRequestResponse.btnUpdate"/>"/>
                                         </td>
                                     </tr>
-                                </html:form>
+                                </form>
                             </table>
                         </td>
                     </tr>

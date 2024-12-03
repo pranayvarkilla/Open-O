@@ -39,9 +39,6 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://struts.apache.org/tags-bean"
-           prefix="bean" %>
-
 <%@ page import="java.util.Set, java.util.List, java.util.Iterator" %>
 <%@ page import="org.oscarehr.casemgmt.model.CaseManagementNote" %>
 <%@ page import="org.oscarehr.casemgmt.model.CaseManagementIssue" %>

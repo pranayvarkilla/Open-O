@@ -39,13 +39,13 @@
                     String securityRole = "" + session.getAttribute("userrole") + "," + session.getAttribute("user");
                 %>
                 <c:if test="${sessionScope.userrole == 'admin' && sessionScope.user == 'admin'}">
-                    <html:link action="/Lookup/LookupCodeEdit.do" paramName="lookupCodeListForm"
+                    <a href="${pageContext.request.contextPath}/Lookup/LookupCodeEdit.do" paramName="lookupCodeListForm"
                                paramProperty="tableDef.tableId" paramId="id">
-                        <img src="../images/New16.png" border="0"/> Add</html:link>&nbsp;|&nbsp;
+                        <img src="../images/New16.png" border="0"/> Add</a>&nbsp;|&nbsp;
                 </c:if>
             </c:if>
-            <html:link action="/Lookup/LookupTableList.do"> <img src="../images/Back16.png"
-                                                                 border="0"/> Back to Lookup Fields</html:link>
+            <a href="${pageContext.request.contextPath}/Lookup/LookupTableList.do"> <img src="../images/Back16.png"
+                                                                 border="0"/> Back to Lookup Fields</a>
         </td>
 
     </tr>
@@ -85,16 +85,16 @@
                     <c:forEach var="lkCode" items="${lookupCodeListForm.codes}">
                         <tr>
                             <td>
-                                <html:link action="/Lookup/LookupCodeEdit.do" paramId="id" paramProperty="codeId"
+                                <a href="${pageContext.request.contextPath}/Lookup/LookupCodeEdit.do" paramId="id" paramProperty="codeId"
                                            paramName="lkCode">
                                     <c:out value="${lkCode.code}"/>
-                                </html:link>
+                                </a>
                             </td>
                             <td>
-                                <html:link action="/Lookup/LookupCodeEdit.do" paramId="id" paramProperty="codeId"
+                                <a href="${pageContext.request.contextPath}/Lookup/LookupCodeEdit.do" paramId="id" paramProperty="codeId"
                                            paramName="lkCode">
                                     <c:out value="${lkCode.description}"/>
-                                </html:link>
+                                </a>
                             </td>
                             <c:if test="${lookupCodeListForm.tableDef.hasActive eq 'true'}">
                                 <td>

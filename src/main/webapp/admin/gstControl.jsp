@@ -21,8 +21,8 @@
 <%@ page
         import="java.util.*,oscar.oscarReport.data.*, java.util.Properties, oscar.oscarBilling.ca.on.administration.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -66,7 +66,7 @@
 
     <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.manageGSTControl"/></h3>
 
-    <html:form action="/admin/GstControl">
+    <form action="/admin/GstControl">
         GST:<br>
         <div class="input-append">
             <input type="text" class="span2" maxlength="3" id="gstPercent" name="gstPercent" value="<%=percent%>"/>
@@ -74,6 +74,6 @@
         </div>
         <br>
         <input class="btn btn-primary" type="submit" value="save" onclick="submitcheck()"/>
-    </html:form>
+    </form>
     </body>
 </html>

@@ -49,7 +49,7 @@
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title><%=bundle.getString(providertitle)%></title>
 
         <link rel="stylesheet" type="text/css"
@@ -112,12 +112,12 @@
             <td class="MainTableLeftColumn">&nbsp;</td>
             <td class="MainTableRightColumn">
                 <%if (request.getAttribute("status") == null) {%> <%=bundle.getString(providermsgEdit)%>
-                <html:form action="/setProviderStaleDate.do">
+                <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
-                    <html:checkbox property="useMyMedsProperty.checked">Use MyMeds</html:checkbox>
+                    <input type="checkbox" name="useMyMedsProperty.checked" value="true" />Use MyMeds
                     <br/>
-                    <html:submit property="btnApply"/>
-                </html:form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
+                    <input type="submit" name="btnApply" value="Apply" />
+                </form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
                 <%}%>
             </td>
         </tr>

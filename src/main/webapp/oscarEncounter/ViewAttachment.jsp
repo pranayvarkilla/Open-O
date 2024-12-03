@@ -44,8 +44,8 @@
 <%@ page
         import="oscar.oscarEncounter.immunization.pageUtil.*, java.util.*, org.w3c.dom.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 <%
     String remoteName = (String) request.getAttribute("remoteName");
@@ -185,7 +185,7 @@
                     <tr>
                         <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.ViewAttachment.msgViewAtt"/></td>
                         <td></td>
-                        <td style="text-align: right"><oscar:help keywords="attachment" key="app.top1"/> | <a
+                        <td style="text-align: right"><a
                                 href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                 href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                     </tr>

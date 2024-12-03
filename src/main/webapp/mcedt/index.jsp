@@ -31,9 +31,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.oscar-emr.com/tags/integration" prefix="i" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
 
 
 <html>
@@ -122,7 +122,7 @@
 
         <title>MCEDT: Index</title>
 
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
     </head>
 
@@ -132,7 +132,7 @@
 
             <h2>MCEDT Resources</h2>
 
-            <html:form action="/mcedt/mcedt" method="post" styleId="form">
+            <form action="${pageContext.request.contextPath}/mcedt/mcedt" method="post" styleId="form">
 
                 <jsp:include page="messages.jsp"/>
 
@@ -143,36 +143,36 @@
                          style="vertical-align: middle !important;">
 
                         Resource Type:
-                        <html:select property="resourceType" styleId="resourceType"
-                                     styleClass="input-xxlarge">
-                            <html:option value=""> - All - </html:option>
+                        <select name="resourceType" id="resourceType"
+                                     class="input-xxlarge">
+                            <option value=""> - All - </option>
                             <c:forEach var="r" items="${mcedtTypeList.data}">
-                                <html:option value="${r.resourceType}">
+                                <option value="${r.resourceType}">
                                     <c:out value="${r.resourceType}"/> -
                                     <c:out value="${r.access}"/> -
                                     <c:out value="${r.descriptionEn}"/>
-                                </html:option>
+                                </option>
                             </c:forEach>
-                        </html:select>
+                        </select>
 
                         Status:
-                        <html:select property="status" styleId="status">
-                            <html:option value=""> - All - </html:option>
+                        <select name="status" id="status">
+                            <option value=""> - All - </option>
                             <c:forEach var="i"
                                        items="${mcedtResourceForm.resourceStatusValues}">
-                                <html:option value="${i}"/>
+                                <option value="${i}"/>
                             </c:forEach>
-                        </html:select>
+                        </select>
 
                         Page #:
-                        <html:select property="pageNo" styleId="pageNo">
+                        <select name="pageNo" id="pageNo">
                             <c:forEach var="i" begin="1"
                                        end="${mcedtResourceForm.detail.resultSize}">
-                                <html:option value="${i}">
+                                <option value="${i}">
                                     <c:out value="${i}"/>
-                                </html:option>
+                                </option>
                             </c:forEach>
-                        </html:select>
+                        </select>
 
                         <button type="button" class="btn" onclick="return changeDisplay();">Display</button>
                     </div>
@@ -232,7 +232,7 @@
                         New Upload
                     </button>
                 </div>
-            </html:form>
+            </form>
         </div>
         <!-- row -->
     </div>

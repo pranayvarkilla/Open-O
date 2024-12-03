@@ -27,7 +27,7 @@
 
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css" href="dxResearch.css">
 <html>
@@ -49,8 +49,7 @@
     <body class="BodyStyle" vlink="#0000FF" rightmargin="0" leftmargin="0"
           topmargin="0" marginwidth="0" marginheight="0" onload="setfocus()">
     <!--  -->
-    <html:form
-            action="/oscarResearch/oscarDxResearch/dxResearchLoadQuickListItems.do">
+    <form action="${pageContext.request.contextPath}/oscarResearch/oscarDxResearch/dxResearchLoadQuickListItems.do" method="post">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td>
@@ -67,13 +66,13 @@
                            bgcolor="#EEEEFF" height="125">
                         <tr>
                             <td align="left"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxCustomization.pleaseSelectAQuickList"/>
-                                <html:select property="quickListName" style="width:200px">
+                                <select name="quickListName" style="width:200px">
                                     <c:forEach var="quickLists" items="${allQuickLists.dxQuickListBeanVector}">
                                         <option value="${quickLists.quickListName}" ${quickLists.lastUsed == 'true' ? 'selected' : ''}>
                                             <c:out value="${quickLists.quickListName}"/>
                                         </option>
                                     </c:forEach>
-                                </html:select></td>
+                                </select></td>
                         </tr>
                         <tr>
                             <td>
@@ -93,6 +92,6 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

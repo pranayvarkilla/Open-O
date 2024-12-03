@@ -28,8 +28,8 @@
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="oscar.oscarEncounter.pageUtil.*" %>
 <%@ page import="oscar.oscarEncounter.oscarMeasurements.pageUtil.*" %>
 <%@ page import="java.util.Vector" %>
@@ -39,7 +39,7 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgCustomization"/></title>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <script type="text/javascript">
             function popupOscarConS(vheight, vwidth, varpage) { //open a new popup window
                 var page = varpage;
@@ -51,7 +51,18 @@
 
     <link rel="stylesheet" type="text/css" href="../styles.css">
     <body topmargin="0" leftmargin="0" vlink="#0000FF">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <table>
         <tr>
             <td class=Title colspan="2"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgGroup"/></td>

@@ -41,8 +41,8 @@
 
 <%@ page import="java.util.*,oscar.oscarReport.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <link rel="stylesheet" type="text/css"
       href="../oscarEncounter/encounterStyles.css">
 <%
@@ -150,7 +150,7 @@
                             </select> <input type=submit
                                              value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.ConsultationReport.btnUpdateReport"/>"/>
                             </td>
-                            <td style="text-align: right"><oscar:help keywords="report" key="app.top1"/> | <a
+                            <td style="text-align: right"><a
                                     href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                     href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
                         </tr>

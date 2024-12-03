@@ -23,27 +23,22 @@
     Ontario, Canada
 
 --%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
-
 <%@ page errorPage="/errorpage.jsp" %>
-
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import="org.oscarehr.PMmodule.dao.ProviderDao" %>
 <%@ page import="org.oscarehr.common.model.Provider" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="org.apache.struts.util.LabelValueBean" %>
 <%@ page import="org.oscarehr.common.dao.ScheduleTemplateCodeDao" %>
 <%@ page import="org.oscarehr.common.model.ScheduleTemplateCode" %>
 <%@ page import="org.oscarehr.appointment.web.NextAppointmentSearchHelper" %>
 <%@ page import="org.oscarehr.appointment.web.NextAppointmentSearchBean" %>
 <%@ page import="org.oscarehr.appointment.web.NextAppointmentSearchResult" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="oscar.util.LabelValueBean" %>
 <%
     SimpleDateFormat dayFormatter = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm");
@@ -55,7 +50,7 @@
 
     //day of week
     String dayOfWeek = request.getParameter("dayOfWeek") != null ? request.getParameter("dayOfWeek") : "daily";
-    List<LabelValueBean> dayOfWeekOptions = new ArrayList<LabelValueBean>();
+    List<LabelValueBean> dayOfWeekOptions = new ArrayList<>();
     dayOfWeekOptions.add(new LabelValueBean("Any Weekday", "daily"));
     dayOfWeekOptions.add(new LabelValueBean("Monday", String.valueOf(Calendar.MONDAY)));
     dayOfWeekOptions.add(new LabelValueBean("Tuesday", String.valueOf(Calendar.TUESDAY)));

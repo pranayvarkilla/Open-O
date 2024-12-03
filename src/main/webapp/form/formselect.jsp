@@ -27,8 +27,8 @@
 
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 <html>
     <head>
@@ -44,7 +44,7 @@
 
     <div class="well">
 
-        <html:form action="/form/select.do" styleId="selectForm">
+        <form action="${pageContext.request.contextPath}/form/select.do" method="post" styleId="selectForm">
             <table id="scrollNumber1" name="encounterTable">
                 <tr>
                     <td class="MainTableLeftColumn"></td>
@@ -58,11 +58,14 @@
                                             <th></th>
                                             <th align="left"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.form.msgSelectedForms"/></th>
                                         </tr>
-                                        <td><html:select multiple="true" property="selectedAddTypes"
+                                        <td><select multiple="true" name="selectedAddTypes"
                                                          size="10" style="width:150">
-                                            <html:options collection="formHiddenVector" property="formName"
-                                                          labelProperty="formName"/>
-                                        </html:select></td>
+                                            <c:forEach var="f" items="${formHiddenVector}">
+                                                <option value="${f.formName}">
+                                                        ${f.formName}
+                                                </option>
+                                            </c:forEach>
+                                        </select></td>
                                         <td>
                                             <table>
                                                 <tr>
@@ -80,11 +83,14 @@
                                                 </tr>
                                             </table>
                                         </td>
-                                        <td><html:select multiple="true"
-                                                         property="selectedDeleteTypes" size="10" style="width:150">
-                                            <html:options collection="formShownVector" property="formName"
-                                                          labelProperty="formName"/>
-                                        </html:select></td>
+                                        <td><select multiple="true"
+                                                         name="selectedDeleteTypes" size="10" style="width:150">
+                                            <c:forEach var="f" items="${formShownVector}">
+                                                <option value="${f.formName}">
+                                                        ${f.formName}
+                                                </option>
+                                            </c:forEach>
+                                        </select></td>
                             </tr>
                             <tr>
 
@@ -108,7 +114,7 @@
             </table>
 
             <input type="hidden" name="forward" id="forward" value="error"/>
-        </html:form>
+        </form>
 
     </div>
 

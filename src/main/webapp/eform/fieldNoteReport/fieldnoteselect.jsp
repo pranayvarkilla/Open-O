@@ -30,7 +30,7 @@
 <%@ page import="java.util.*" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%
     String[] selectedEforms = request.getParameterValues("selected_eform");
     String unselectEform = request.getParameter("unselect_eform");

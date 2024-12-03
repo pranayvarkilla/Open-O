@@ -25,7 +25,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 
 <hr width="100%" color="orange">
@@ -36,7 +36,7 @@
 
         <td align="right">
             <caisi:isModuleLoad moduleName="caisi">
-            <a href='<html:rewrite page="/PMmodule/ProviderInfo.do"/>'>
+            <a href='${request.contextPath}/PMmodule/ProviderInfo.do'>
                 </caisi:isModuleLoad>
                 <caisi:isModuleLoad moduleName="caisi" reverse="true">
                 <a href="#" onClick="self.close();">

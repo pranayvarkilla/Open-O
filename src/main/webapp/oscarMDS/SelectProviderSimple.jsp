@@ -10,8 +10,8 @@
 --%>
 <%@ page language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="oscar.oscarMDS.data.ProviderData, java.util.ArrayList" %>
 
 <link rel="stylesheet" type="text/css" href="encounterStyles.css">

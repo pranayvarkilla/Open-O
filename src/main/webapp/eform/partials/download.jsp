@@ -30,7 +30,7 @@
 <%@page import="org.oscarehr.ws.rest.FormsService" %>
 <%@page import="org.oscarehr.app.AppOAuth1Config" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <html>
 
     <%@ page session="true" %>

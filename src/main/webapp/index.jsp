@@ -27,7 +27,6 @@
 
 <%@ page import="oscar.login.UAgentInfo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix="c" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ page contentType="text/html;charset=UTF-8" session="false" %>
@@ -44,7 +43,7 @@
 <jsp:useBean id="LoginResourceBean" beanName="oscar.login.LoginResourceBean" type="oscar.login.LoginResourceBean"/>
 <c:set var="login_error" value="" scope="page"/>
 <!DOCTYPE html>
-<html:html lang="en">
+<html>
 
     <head>
         <title>
@@ -561,7 +560,7 @@
 
                 <div class="panel-body">
                     <div class="leftinput">
-                        <html:form action="login" method="POST">
+                        <form action="login.do" method="POST">
 
                             <div class="form-group ${ login_error }">
                                 <input type="text" name="username" placeholder="Enter your username"
@@ -605,7 +604,7 @@
                                 </c:choose>
                             </div>
 
-                        </html:form>
+                        <form>
 
                         <oscar:oscarPropertiesCheck property="oneid.enabled" value="true" defaultVal="false">
                             <a href="${ LoginResourceBean.econsultURL }"
@@ -684,4 +683,4 @@
 
     </body>
     <script type="text/javascript" src="${pageContext.request.contextPath}/csrfguard"></script>
-</html:html>
+</html>

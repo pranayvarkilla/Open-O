@@ -48,7 +48,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
@@ -135,14 +135,13 @@
         }
     }
 
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
-    WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-    ProviderLabRoutingDao providerLabRoutingDao = (ProviderLabRoutingDao) ctx.getBean(ProviderLabRoutingDao.class);
-    ProviderDao providerDao = (ProviderDao) ctx.getBean(ProviderDao.class);
-    DemographicDao demographicDao = (DemographicDao) ctx.getBean(DemographicDao.class);
-    QueueDao queueDao = (QueueDao) ctx.getBean(QueueDao.class);
+    java.util.Locale vLocale = request.getLocale();
+    WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletConfig().getServletContext());
+    ProviderLabRoutingDao providerLabRoutingDao = ctx.getBean(ProviderLabRoutingDao.class);
+    DemographicDao demographicDao = ctx.getBean(DemographicDao.class);
+    QueueDao queueDao = ctx.getBean(QueueDao.class);
 
-    CtlDocClassDao docClassDao = (CtlDocClassDao) ctx.getBean(CtlDocClassDao.class);
+    CtlDocClassDao docClassDao = ctx.getBean(CtlDocClassDao.class);
     List<String> reportClasses = docClassDao.findUniqueReportClasses();
     ArrayList<String> subClasses = new ArrayList<String>();
     ArrayList<String> consultA = new ArrayList<String>();

@@ -44,7 +44,7 @@
 <%@page
         import="oscar.oscarDemographic.data.*,java.util.*,oscar.oscarPrevention.*,oscar.oscarProvider.data.*,oscar.util.*,oscar.oscarReport.data.*,oscar.oscarPrevention.pageUtil.*,java.net.*,oscar.eform.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <jsp:useBean id="providerBean" class="java.util.Properties"
              scope="session"/>
@@ -61,7 +61,7 @@
 
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-        <html:base/>
+        <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title>oscarPrevention</title>
         <!-- i18n -->
 
@@ -184,7 +184,7 @@
                     <tr>
                         <td>Choose Letter</td>
                         <td>&nbsp; <a href="ManageLetters.jsp">manage</a></td>
-                        <td style="text-align: right"><oscar:help keywords="letter generate report" key="app.top1"/> |
+                        <td style="text-align: right">
                             <a
                                     href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                     href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
@@ -194,8 +194,8 @@
         </tr>
         <tr>
             <td class="MainTableLeftColumn" valign="top">&nbsp;</td>
-            <td valign="top" class="MainTableRightColumn"><html:form
-                    action="/report/GenerateLetters" method="POST"
+            <td valign="top" class="MainTableRightColumn"><form
+                    action="${pageContext.request.contextPath}/report/GenerateLetters.do" method="POST"
                     styleId="listDemographic">
 
                 <%
@@ -260,7 +260,7 @@
                 </table>
                 <%}%>
 
-            </html:form></td>
+            </form></td>
         </tr>
         <tr>
             <td class="MainTableBottomRowLeftColumn">&nbsp;</td>
