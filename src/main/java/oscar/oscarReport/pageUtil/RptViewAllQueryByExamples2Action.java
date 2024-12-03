@@ -48,9 +48,6 @@ public class RptViewAllQueryByExamples2Action extends ActionSupport {
 
     public String execute()
             throws ServletException, IOException {
-        //RptViewAllQueryByExamplesForm frm = (RptViewAllQueryByExamplesForm) form;
-        //String startDate = frm.getStartDate();
-        //String endDate = frm.getEndDate();
         RptByExampleQueryBeanHandler hd = new RptByExampleQueryBeanHandler(startDate, endDate);
         request.setAttribute("allQueries", hd);
 

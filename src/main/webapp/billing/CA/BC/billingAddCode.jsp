@@ -109,16 +109,8 @@
                     action="/billing/CA/BC/billingAddCode"
                     onsubmit="return checkUnits();">
                 <%
-                    BillingAddCodeForm frm = (BillingAddCodeForm) request.getAttribute("BillingAddCodeForm");
-                    String isEdit = request.getParameter("edit") != null ? request.getParameter("edit") : "";
-                    if (request.getAttribute("code") != null) {
-                        frm.setCode((String) request.getAttribute("code"));
-                        frm.setDesc((String) request.getAttribute("desc"));
-                        frm.setValue((String) request.getAttribute("value"));
-                    }
-
-                    if (request.getAttribute("returnMessage") != null) {%>
-
+                    if (request.getAttribute("returnMessage") != null) {
+                %>
                 <table>
                     <tr>
                         <td style="font-color: red;"><%=request.getAttribute("returnMessage")%>

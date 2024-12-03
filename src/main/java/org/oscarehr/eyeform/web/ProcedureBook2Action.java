@@ -26,21 +26,18 @@
 
 package org.oscarehr.eyeform.web;
 
-import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.validator.DynaValidatorForm;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.eyeform.dao.EyeformProcedureBookDao;
 import org.oscarehr.eyeform.model.EyeformProcedureBook;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 public class ProcedureBook2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

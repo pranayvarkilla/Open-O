@@ -71,7 +71,7 @@ public class PatientMatch2Action extends ActionSupport {
             newURL = "/oscarMDS/OpenEChart.jsp";
             newURL = newURL + "?demographicNo=" + demographicNo;
         } catch (Exception e) {
-            MiscUtils.getLogger().debug("exception in ReportReassignAction:" + e);
+            MiscUtils.getLogger().debug("exception in ReportReassign2Action:" + e);
             newURL = "/errorpage.jsp";
         }
 

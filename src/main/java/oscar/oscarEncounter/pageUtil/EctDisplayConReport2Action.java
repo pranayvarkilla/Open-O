@@ -31,7 +31,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.ProfessionalSpecialistDao;
 import org.oscarehr.common.model.Demographic;
 import org.oscarehr.common.model.ProfessionalSpecialist;
@@ -53,7 +52,7 @@ public class EctDisplayConReport2Action extends EctDisplayAction {
     ProfessionalSpecialistDao professionalSpecialistDao = (ProfessionalSpecialistDao) SpringUtils.getBean(ProfessionalSpecialistDao.class);
     DemographicManager demographicManager = SpringUtils.getBean(DemographicManager.class);
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
 
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
         if (!securityInfoManager.hasPrivilege(loggedInInfo, "_eyeform", "r", null)) {
@@ -76,7 +75,7 @@ public class EctDisplayConReport2Action extends EctDisplayAction {
             pathedit = request.getContextPath() + "/eyeform/Eyeform.do?method=prepareConReport&demographicNo=" + bean.demographicNo + "&appNo=" + appointmentNo + "&flag=new&cpp=" + cpp;
 
             String url = "popupPage(500,900,'" + winName + "','" + pathview + "')";
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "global.viewConReport"));
+            Dao.setLeftHeading(getText("global.viewConReport"));
             Dao.setLeftURL(url);
 
             //set right hand heading link

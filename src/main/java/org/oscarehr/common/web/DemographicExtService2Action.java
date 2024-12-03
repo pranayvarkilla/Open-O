@@ -32,7 +32,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONObject;
 
-import org.apache.struts.util.LabelValueBean;
 import org.oscarehr.common.dao.DemographicExtDao;
 import org.oscarehr.common.model.DemographicExt;
 import org.oscarehr.managers.SecurityInfoManager;
@@ -43,6 +42,7 @@ import oscar.log.LogAction;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import oscar.util.LabelValueBean;
 
 public class DemographicExtService2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

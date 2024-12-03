@@ -98,9 +98,6 @@
 <% DisplayMessagesBeanId.setProviderNo(bean.getProviderNo());
     bean.nullAttachment();%>
 <jsp:setProperty name="DisplayMessagesBeanId" property="*"/>
-<jsp:useBean id="ViewMessageForm" scope="session"
-             class="oscar.oscarMessenger.pageUtil.MsgViewMessageForm"/>
-
 
 <html>
     <head>

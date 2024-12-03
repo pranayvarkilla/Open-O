@@ -26,25 +26,20 @@
 
 package oscar.eform.actions;
 
-import java.io.File;
-import java.util.HashMap;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
 import org.oscarehr.util.WebUtils;
-
 import oscar.eform.EFormUtil;
 import oscar.eform.data.EFormBase;
-import oscar.eform.data.HtmlEditForm;
 
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.util.HashMap;
 
 public class HtmlEdit2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -54,9 +49,6 @@ public class HtmlEdit2Action extends ActionSupport {
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
     public String execute() {
-
-        //HtmlEditForm fm = (HtmlEditForm) form;
-
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_eform", "w", null)) {
             throw new SecurityException("missing required security object (_eform)");
         }

@@ -26,27 +26,23 @@
 
 package org.oscarehr.eyeform.web;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.lang.StringUtils;
-import org.apache.struts.util.LabelValueBean;
-import org.apache.struts.validator.DynaValidatorForm;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.common.dao.BillingServiceDao;
 import org.oscarehr.eyeform.dao.MacroDao;
 import org.oscarehr.eyeform.model.Macro;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
+import oscar.util.LabelValueBean;
 
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Macro2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

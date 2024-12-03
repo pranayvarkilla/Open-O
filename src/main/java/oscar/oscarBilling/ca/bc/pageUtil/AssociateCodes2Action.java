@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * <p>Title: AssociateCodesAction</p>
+ * <p>Title: AssociateCodes2Action</p>
  *
  * <p>Description:This Action is responsible for associating a service code with up to three use specified Diagnostic codes</p>
  *
@@ -51,7 +51,6 @@ public class AssociateCodes2Action extends ActionSupport {
     HttpServletResponse response = ServletActionContext.getResponse();
 
     public String execute() {
-        //BillingCreateBillingForm frm = (BillingCreateBillingForm) actionForm;
         ServiceCodeAssociation svc = this.getSvcAssoc();
         /**
          * Send back to originating screen if there are no associated codes selected

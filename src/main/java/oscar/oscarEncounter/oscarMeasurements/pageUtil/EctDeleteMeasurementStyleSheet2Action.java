@@ -56,9 +56,6 @@ public class EctDeleteMeasurementStyleSheet2Action extends ActionSupport {
 
         if (securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin", "w", null) || securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin.measurements", "w", null)) {
 
-            //request.getSession().setAttribute("EctDeleteMeasurementStyleSheetForm", frm);
-            //String[] deleteCheckbox = frm.getDeleteCheckbox();
-
             MeasurementGroupStyleDao dao = SpringUtils.getBean(MeasurementGroupStyleDao.class);
             MeasurementCSSLocationDao lDao = SpringUtils.getBean(MeasurementCSSLocationDao.class);
 

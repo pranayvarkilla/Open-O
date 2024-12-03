@@ -58,12 +58,6 @@ public class EctAddShortMeasurement2Action extends ActionSupport {
 
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
-    /**
-     * Creates a new instance of EctAddShortMeasurementAction
-     */
-    public EctAddShortMeasurement2Action() {
-    }
-
     public String unspecified() throws IOException {
 
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_measurement", "w", null)) {

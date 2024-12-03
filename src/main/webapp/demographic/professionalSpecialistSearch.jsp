@@ -44,7 +44,7 @@
 */
 -->
 <%@ page import="java.util.*,java.sql.*, java.net.*" %>
-<%@ page import="org.oscarehr.common.web.ContactAction" %>
+<%@ page import="org.oscarehr.common.web.Contact2Action" %>
 <%@ page import="org.oscarehr.common.model.ProfessionalSpecialist" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page import="org.apache.commons.lang.WordUtils" %>

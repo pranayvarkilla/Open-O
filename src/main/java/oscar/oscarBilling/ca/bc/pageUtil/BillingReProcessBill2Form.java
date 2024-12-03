@@ -49,14 +49,11 @@ package oscar.oscarBilling.ca.bc.pageUtil;
  * Hamilton
  * Ontario, Canada
  */
-
-
-import org.apache.struts.action.*;
 import oscar.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
-public final class BillingReProcessBill2Form extends ActionForm {
+public final class BillingReProcessBill2Form {
     String billingmasterNo = null;
     String insurerCode = null;
     String provider_no = null;
@@ -195,24 +192,6 @@ update_date
 xml_visittype
 clinic_ref_code
    
-   
-   
-   
-   */
-
-
-    /**
-     * Used to reset everything to a null value
-     *
-     * @param mapping
-     * @param request
-     */
-    public void reset(ActionMapping mapping, HttpServletRequest request) {
-        //  this.service = null;
-        // this.message = null;
-        // this.subject = null;
-
-    }
 
     /**
      * Getter for property billingmasterNo.
@@ -1002,17 +981,6 @@ clinic_ref_code
 
     public void setAdjType(String adjType) {
         this.adjType = adjType;
-    }
-
-    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-        ActionErrors errors = new ActionErrors();
-        if (adjAmount != null && !"".equals(adjAmount)) {
-            if (!StringUtils.isNumeric(adjAmount)) {
-                errors.add(ActionMessages.GLOBAL_MESSAGE,
-                        new ActionMessage("oscar.billing.CA.BC.error.adjAmount"));
-            }
-        }
-        return errors;
     }
 
     /**

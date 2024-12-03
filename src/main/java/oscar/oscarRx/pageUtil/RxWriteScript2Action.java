@@ -26,9 +26,10 @@
 
 package oscar.oscarRx.pageUtil;
 
+import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.MessageResources;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.casemgmt.model.CaseManagementNote;
 import org.oscarehr.casemgmt.model.CaseManagementNoteLink;
 import org.oscarehr.casemgmt.service.CaseManagementManager;
@@ -60,9 +61,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public final class RxWriteScript2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -301,7 +299,7 @@ public final class RxWriteScript2Action extends ActionSupport {
     }
 
     public String newCustomNote() throws IOException {
-        logger.debug("=============Start newCustomNote RxWriteScriptAction.java===============");
+        logger.debug("=============Start newCustomNote RxWriteScript2Action.java===============");
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
         checkPrivilege(loggedInInfo, PRIVILEGE_WRITE);
 
@@ -356,14 +354,14 @@ public final class RxWriteScript2Action extends ActionSupport {
         } catch (Exception e) {
             logger.error("Error", e);
         }
-        logger.debug("=============END newCustomNote RxWriteScriptAction.java===============");
+        logger.debug("=============END newCustomNote RxWriteScript2Action.java===============");
         return "newRx";
     }
 
     public String listPreviousInstructions() throws IOException {
         checkPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), PRIVILEGE_READ);
 
-        logger.debug("=============Start listPreviousInstructions RxWriteScriptAction.java===============");
+        logger.debug("=============Start listPreviousInstructions RxWriteScript2Action.java===============");
         String randomId = request.getParameter("randomId");
         randomId = randomId.trim();
         // get rx from randomId.
@@ -386,7 +384,7 @@ public final class RxWriteScript2Action extends ActionSupport {
     }
 
     public String newCustomDrug() throws IOException {
-        logger.debug("=============Start newCustomDrug RxWriteScriptAction.java===============");
+        logger.debug("=============Start newCustomDrug RxWriteScript2Action.java===============");
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
         checkPrivilege(loggedInInfo, PRIVILEGE_WRITE);
 
@@ -500,7 +498,7 @@ public final class RxWriteScript2Action extends ActionSupport {
     }
 
     public String createNewRx() throws IOException {
-        logger.debug("=============Start createNewRx RxWriteScriptAction.java===============");
+        logger.debug("=============Start createNewRx RxWriteScript2Action.java===============");
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
         checkPrivilege(loggedInInfo, PRIVILEGE_WRITE);
 
@@ -633,7 +631,7 @@ public final class RxWriteScript2Action extends ActionSupport {
         } catch (Exception e) {
             logger.error("Error", e);
         }
-        logger.debug("=============END createNewRx RxWriteScriptAction.java===============");
+        logger.debug("=============END createNewRx RxWriteScript2Action.java===============");
 
         return success;
     }
@@ -1218,7 +1216,7 @@ public final class RxWriteScript2Action extends ActionSupport {
                 auditStr.append("\n");
 
                 // save drug reason. Method borrowed from
-                // RxReasonAction.
+                // RxReason2Action.
                 if (!StringUtils.isNullOrEmpty(rx.getDrugReasonCode())) {
                     addDrugReason(rx.getDrugReasonCodeSystem(),
                             "false", "", rx.getDrugReasonCode(),
@@ -1311,8 +1309,6 @@ public final class RxWriteScript2Action extends ActionSupport {
                                String primaryReasonFlagStr, String comments,
                                String code, String drugIdStr, String demographicNo,
                                String providerNo, HttpServletRequest request) {
-
-        MessageResources mResources = MessageResources.getMessageResources("oscarResources");
         DrugReasonDao drugReasonDao = (DrugReasonDao) SpringUtils.getBean(DrugReasonDao.class);
         Integer drugId = Integer.parseInt(drugIdStr);
 
@@ -1320,12 +1316,12 @@ public final class RxWriteScript2Action extends ActionSupport {
         CodingSystemManager codingSystemManager = new CodingSystemManager();
 
         if (!codingSystemManager.isCodeAvailable(codingSystem, code)) {
-            request.setAttribute("message", mResources.getMessage("SelectReason.error.codeValid"));
+            request.setAttribute("message", getText("SelectReason.error.codeValid"));
             return;
         }
 
         if (drugReasonDao.hasReason(drugId, codingSystem, code, true)) {
-            request.setAttribute("message", mResources.getMessage("SelectReason.error.duplicateCode"));
+            request.setAttribute("message", getText("SelectReason.error.duplicateCode"));
             return;
         }
 

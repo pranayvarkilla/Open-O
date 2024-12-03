@@ -52,7 +52,7 @@ public class DeletePatientLetters2Action extends ActionSupport {
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
     /**
-     * Creates a new instance of DeletePatientLettersAction
+     * Creates a new instance of DeletePatientLetters2Action
      */
     public DeletePatientLetters2Action() {
     }
@@ -63,7 +63,7 @@ public class DeletePatientLetters2Action extends ActionSupport {
         }
 
         if (log.isTraceEnabled()) {
-            log.trace("Start of DeletePatientLettersAction Action");
+            log.trace("Start of DeletePatientLetters2Action Action");
         }
 
         String fileId = request.getParameter("reportID");
@@ -75,7 +75,7 @@ public class DeletePatientLetters2Action extends ActionSupport {
         }
 
         if (log.isTraceEnabled()) {
-            log.trace("End of DeletePatientLettersAction Action");
+            log.trace("End of DeletePatientLetters2Action Action");
         }
         return SUCCESS;
     }

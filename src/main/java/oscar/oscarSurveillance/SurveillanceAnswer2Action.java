@@ -25,7 +25,7 @@
 
 
 /*
- * SurveillanceAnswerAction.java
+ * SurveillanceAnswer2Action.java
  *
  * Created on September 10, 2004, 8:07 PM
  */
@@ -57,14 +57,12 @@ public class SurveillanceAnswer2Action extends ActionSupport {
     private static Logger log = MiscUtils.getLogger();
 
     /**
-     * Creates a new instance of SurveillanceAnswerAction
+     * Creates a new instance of SurveillanceAnswer2Action
      */
     public SurveillanceAnswer2Action() {
     }
 
     public String execute() throws IOException, ServletException {
-
-        //SurveillanceAnswerForm frm = (SurveillanceAnswerForm) form;
 
         //String answer = frm.getAnswer();
         //String surveyId = frm.getSurveyId();

@@ -67,7 +67,6 @@
 
         <script language=javascript>
             function ajaxUpdateRow(rowId) {
-                //var put = document.forms.RxUpdateFavoriteForm;
                 var get = document.forms.DispForm;
                 var err = false;
                 var favoriteId = eval('get.fldFavoriteId' + rowId).value;

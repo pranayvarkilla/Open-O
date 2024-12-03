@@ -329,7 +329,6 @@
             var ret = checkAllDates();
             if (ret == true) {
 //            document.forms[0].action = "../form/createpdf?__title=Ovulation+Form&__cfgfile=bcar1PrintCfgPg1&__template=bcar1";
-//				document.all.FrmForm.action="../form/createpdf?__title=Invoice&__cfgfile=invoice&__template=invoice";
 
 //            document.forms[0].action = "../form/createpdf?__title=Ovulation+Form&__cfgfile=ovulationPrintCfgPg1&__template=bcar1";
                 document.forms[0].action = "../form/createpdf?__title=Ovulation+Form&__cfgfile=ovulationPrintCfgPg1&__cfgfile=ovulationPrintCfgPg2&__template=OvulationForm_95";

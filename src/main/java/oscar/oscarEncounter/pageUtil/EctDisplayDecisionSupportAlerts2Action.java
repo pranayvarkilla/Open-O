@@ -42,7 +42,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.DxresearchDAO;
 import org.oscarehr.common.model.Dxresearch;
 import org.oscarehr.decisionSupport.model.DSConsequence;
@@ -72,7 +71,7 @@ public class EctDisplayDecisionSupportAlerts2Action extends EctDisplayAction {
     private DxresearchDAO dxResearchDao = (DxresearchDAO) SpringUtils.getBean(DxresearchDAO.class);
 
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
 
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
         boolean a = true;
@@ -86,7 +85,7 @@ public class EctDisplayDecisionSupportAlerts2Action extends EctDisplayAction {
             //set lefthand module heading and link
             String winName = "dsalert" + bean.demographicNo;
             String url = "popupPage(500,950,'" + winName + "','" + request.getContextPath() + "/oscarEncounter/decisionSupport/guidelineAction.do?method=list&provider_no=" + bean.providerNo + "&demographic_no=" + bean.demographicNo + "&parentAjaxId=" + cmd + "'); return false;";
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "global.decisionSupportAlerts"));
+            Dao.setLeftHeading(getText("global.decisionSupportAlerts"));
             Dao.setLeftURL(url);
 
             //set the right hand heading link
@@ -98,7 +97,7 @@ public class EctDisplayDecisionSupportAlerts2Action extends EctDisplayAction {
             StringBuilder javascript = new StringBuilder("<script type=\"text/javascript\">");
             String js = "";
 
-            WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(getServlet().getServletContext());
+            WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(ServletActionContext.getServletContext());
             DSService dsService = (DSService) ctx.getBean(DSService.class);
 
             List<DSGuideline> dsGuidelines = dsService.getDsGuidelinesByProvider(bean.providerNo);

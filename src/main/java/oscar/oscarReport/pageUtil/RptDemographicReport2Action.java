@@ -50,7 +50,7 @@ public class RptDemographicReport2Action extends ActionSupport {
 
     public String execute() throws IOException, ServletException {
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
-        MiscUtils.getLogger().debug("RptDemographicReportAction Jackson");
+        MiscUtils.getLogger().debug("RptDemographicReport2Action Jackson");
         MiscUtils.getLogger().debug("query " + query);
         if (query.equals("Run Query")) {
             MiscUtils.getLogger().debug("run query");
@@ -65,7 +65,7 @@ public class RptDemographicReport2Action extends ActionSupport {
             demoS.saveQuery(form);
         } else if (query.equals("Load Query")) {
             RptDemographicQuery2Loader demoL = new RptDemographicQuery2Loader();
-            RptDemographicReportForm dRF = demoL.queryLoader(form);
+            RptDemographicReport2Form dRF = demoL.queryLoader(form);
             request.setAttribute("formBean", dRF);
         } else if (query.equals("Add to Study")) {
             RptDemographicQuery2Builder demoQ = new RptDemographicQuery2Builder();

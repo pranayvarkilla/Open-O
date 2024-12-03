@@ -23,10 +23,10 @@
  */
 package org.oscarehr.fax.admin;
 
+import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
-import oscar.form.JSONAction;
-
 import org.apache.commons.lang.StringUtils;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.FaxConfigDao;
 import org.oscarehr.common.model.FaxConfig;
 import org.oscarehr.managers.FaxManager;
@@ -34,16 +34,13 @@ import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
+import oscar.form.JSONUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-import oscar.form.JSONUtil;
 
 public class ConfigureFax2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

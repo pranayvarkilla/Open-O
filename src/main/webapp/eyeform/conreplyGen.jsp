@@ -48,7 +48,7 @@
 <%@page import="org.apache.commons.lang.StringEscapeUtils" %>
 
 <%@page import="org.oscarehr.eyeform.model.*" %>
-<%@page import="org.oscarehr.eyeform.web.EyeformAction" %>
+<%@page import="org.oscarehr.eyeform.web.Eyeform2Action" %>
 <%@page import="java.util.List" %>
 <%@page import="org.oscarehr.common.model.DemographicContact" %>
 
@@ -105,9 +105,9 @@
         %>
 
         <%
-            request.setAttribute("sections", EyeformAction.getMeasurementSections());
-            request.setAttribute("headers", EyeformAction.getMeasurementHeaders());
-            request.setAttribute("providers", EyeformAction.getActiveProviders());
+            request.setAttribute("sections", Eyeform2Action.getMeasurementSections());
+            request.setAttribute("headers", Eyeform2Action.getMeasurementHeaders());
+            request.setAttribute("providers", Eyeform2Action.getActiveProviders());
         %>
 
         <style type="text/css">
@@ -498,7 +498,7 @@
 
     <html:form action="/eyeform/Eyeform">
         <input type="hidden" name="method" value="saveConRequest"/>
-        <input type="hidden" name="demographicNo" value="<%=EyeformAction.getField(request,"demographicNo")%>"/>
+        <input type="hidden" name="demographicNo" value="<%=Eyeform2Action.getField(request,"demographicNo")%>"/>
         <input type="hidden" name="referralNo" value=""/>
         <input type="hidden" name="otherDocId" value=""/>
         <input type="hidden" name="famDoctor" value=""/>

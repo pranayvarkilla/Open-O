@@ -55,7 +55,6 @@ public class EctConDisplayInstitution2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_con)");
         }
 
-        //EctConDisplayInstitutionForm displayServiceForm = (EctConDisplayInstitutionForm) form;
         String id = this.getId();
         String specialists[] = this.getSpecialists();
 

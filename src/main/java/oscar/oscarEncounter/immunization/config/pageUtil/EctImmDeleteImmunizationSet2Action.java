@@ -49,7 +49,6 @@ public class EctImmDeleteImmunizationSet2Action extends ActionSupport {
 
     public String execute()
             throws ServletException, IOException {
-        //EctImmDeleteImmunizationSetForm frm = (EctImmDeleteImmunizationSetForm) form;
         String sets[] = this.getImmuSets();
 
         for (String set : sets) {

@@ -26,7 +26,8 @@
 
 package oscar.eform.upload;
 
-import org.apache.struts.upload.FormFile;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
@@ -35,13 +36,13 @@ import oscar.OscarProperties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public class ImageUpload2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -57,7 +58,7 @@ public class ImageUpload2Action extends ActionSupport {
         }
 
         try {
-            OutputStream fos = ImageUploadAction.getEFormImageOutputStream(image.getName());
+            OutputStream fos = ImageUpload2Action.getEFormImageOutputStream(image.getName());
             InputStream fis = Files.newInputStream(image.toPath());
             byte[] buffer = new byte[4096]; // 缓冲区
             while (fis.read(buffer) != -1) {

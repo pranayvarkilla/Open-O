@@ -757,7 +757,7 @@
 
                             <input type="button" style="display: none;" value="Save" id="save<%=hrmReportId %>hrm"/>
                             <%
-                                HRMDocumentToProvider hrmDocumentToProvider = HRMDisplayReportAction.getHRMDocumentFromProvider(loggedInInfo.getLoggedInProviderNo(), hrmReportId);
+                                HRMDocumentToProvider hrmDocumentToProvider = HRMDisplayReport2Action.getHRMDocumentFromProvider(loggedInInfo.getLoggedInProviderNo(), hrmReportId);
                                 if (hrmDocumentToProvider != null && hrmDocumentToProvider.getSignedOff() != null && hrmDocumentToProvider.getSignedOff() == 1) {
                             %>
                             <input type="button" id="signoff<%=hrmReportId %>" value="Revoke Sign-Off"

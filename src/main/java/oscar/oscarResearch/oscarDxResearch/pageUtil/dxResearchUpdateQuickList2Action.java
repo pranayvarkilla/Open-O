@@ -60,8 +60,6 @@ public class dxResearchUpdateQuickList2Action extends ActionSupport {
         //String forward = frm.getForward();
         String codingSystem = this.getSelectedCodingSystem();
         String curUser = (String) request.getSession().getAttribute("user");
-        dxResearchLoadQuickListItemsForm qLItemsFrm = (dxResearchLoadQuickListItemsForm) request.getSession().getAttribute("dxResearchLoadQuickListItemsFrm");
-        qLItemsFrm.setQuickListName(quickListName);
         boolean valid = true;
 
         if (forward.equals("add")) {

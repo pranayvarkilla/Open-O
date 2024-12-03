@@ -27,7 +27,6 @@
 package oscar.oscarEncounter.pageUtil;
 
 
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.model.Tickler;
 import org.oscarehr.managers.TicklerManager;
 import org.oscarehr.util.LoggedInInfo;
@@ -42,13 +41,10 @@ import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-
 public class EctDisplayTickler2Action extends EctDisplayAction {
     private static final String cmd = "tickler";
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
         if (!securityInfoManager.hasPrivilege(loggedInInfo, "_tickler", "r", null)) {
@@ -69,7 +65,7 @@ public class EctDisplayTickler2Action extends EctDisplayAction {
             }
 
             String url = "popupPage(500,900,'" + winName + "','" + pathview + "')";
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "global.viewTickler"));
+            Dao.setLeftHeading(getText("global.viewTickler"));
             Dao.setLeftURL(url);
 
             //set right hand heading link

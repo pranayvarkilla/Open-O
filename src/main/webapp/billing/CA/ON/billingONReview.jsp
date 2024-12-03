@@ -68,7 +68,7 @@
 
 <%
     Properties gstProp = new Properties();
-    GstControlAction db = new GstControlAction();
+    GstControl2Action db = new GstControl2Action();
     GstReport gstRep = new GstReport();
     gstProp = db.readDatabase();
     String gstFlag;

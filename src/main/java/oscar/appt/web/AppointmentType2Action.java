@@ -23,25 +23,21 @@
 
 package oscar.appt.web;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.util.LabelValueBean;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.AppointmentTypeDao;
 import org.oscarehr.common.dao.SiteDao;
 import org.oscarehr.common.model.AppointmentType;
 import org.oscarehr.common.model.Site;
 import org.oscarehr.util.SpringUtils;
+import oscar.util.LabelValueBean;
 
-import oscar.OscarAction;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AppointmentType2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -49,8 +45,6 @@ public class AppointmentType2Action extends ActionSupport {
 
     @Override
     public String execute() throws IOException, ServletException {
-
-        //AppointmentTypeForm formBean = (AppointmentTypeForm) form;
         String sOper = request.getParameter("oper");
         int typeNo = -1;
         if ((this.getId() != null ? this.getId().intValue() : -1) > 0) {
@@ -115,7 +109,6 @@ public class AppointmentType2Action extends ActionSupport {
                         return "failure";
                     }
                 }
-                request.setAttribute("AppointmentTypeForm", new AppointmentTypeForm());
             } else if (sOper.equals("del")) {
                 appDao.remove(typeNo);
             }

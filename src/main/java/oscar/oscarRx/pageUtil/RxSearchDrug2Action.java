@@ -76,7 +76,6 @@ public final class RxSearchDrug2Action extends ActionSupport {
 
 
         // Setup variables
-        //RxSearchDrugForm reqForm = (RxSearchDrugForm) form;
         String genericSearch = this.getGenericSearch();
         //String searchString = reqForm.getSearchString();
         //String searchRoute = reqForm.getSearchRoute();
@@ -286,12 +285,12 @@ public final class RxSearchDrug2Action extends ActionSupport {
 
 
     public String getAction() {
-        MiscUtils.getLogger().debug("Can i be deleted GETTER getAction RxSearchDrugForm");
+        MiscUtils.getLogger().debug("Can i be deleted GETTER getAction RxSearchDrug2Form");
         return "";
     }
 
     public void getAction(String d) {
-        MiscUtils.getLogger().debug("Can i be deleted SETTER getAction RxSearchDrugForm");
+        MiscUtils.getLogger().debug("Can i be deleted SETTER getAction RxSearchDrug2Form");
     }
 
     public String getAhfsSearch() {

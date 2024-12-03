@@ -112,24 +112,6 @@
                     </tr>
                     <tr>
                         <td><html:form action="/oscarRx/managePharmacy">
-                            <%
-                                if (request.getParameter("ID") != null) {
-                                    RxManagePharmacyForm frm = (RxManagePharmacyForm) request.getAttribute("RxManagePharmacyForm");
-                                    String ID = request.getParameter("ID");
-                                    RxPharmacyData pharmacy = new RxPharmacyData();
-                                    org.oscarehr.common.model.PharmacyInfo ph = pharmacy.getPharmacy(ID);
-                                    frm.setID(ID);
-                                    frm.setAddress(ph.getAddress());
-                                    frm.setCity(ph.getCity());
-                                    frm.setEmail(ph.getEmail());
-                                    frm.setFax(ph.getFax());
-                                    frm.setName(ph.getName());
-                                    frm.setNotes(ph.getNotes());
-                                    frm.setPhone1(ph.getPhone1());
-                                    frm.setPhone2(ph.getPhone2());
-                                    frm.setPostalCode(ph.getPostalCode());
-                                    frm.setProvince(ph.getProvince());
-                                }%>
                             <table>
                                 <tr>
                                     <td>

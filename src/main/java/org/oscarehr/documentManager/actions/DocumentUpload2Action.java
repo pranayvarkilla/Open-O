@@ -28,7 +28,6 @@ import net.sf.json.JSONObject;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.upload.FormFile;
 import org.oscarehr.PMmodule.model.ProgramProvider;
 import org.oscarehr.common.dao.ProviderInboxRoutingDao;
 import org.oscarehr.common.dao.QueueDocumentLinkDao;
@@ -46,7 +45,6 @@ import org.oscarehr.util.SpringUtils;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import org.oscarehr.documentManager.data.DocumentUploadForm;
 import oscar.log.LogAction;
 import oscar.log.LogConst;
 
@@ -69,8 +67,7 @@ public class DocumentUpload2Action extends ActionSupport {
         HashMap<String, Object> map = new HashMap<String, Object>();
         File docFile = form.getDocFile();
         String destination = request.getParameter("destination");
-        java.util.Locale locale = (java.util.Locale) request.getSession().getAttribute(org.apache.struts.Globals.LOCALE_KEY);
-        ResourceBundle props = ResourceBundle.getBundle("oscarResources", locale);
+        ResourceBundle props = ResourceBundle.getBundle("oscarResources");
         if (docFile == null) {
             map.put("error", 4);
         } else if (destination != null && destination.equals("incomingDocs")) {

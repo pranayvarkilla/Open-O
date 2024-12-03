@@ -35,7 +35,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.OscarAppointmentDao;
 import org.oscarehr.common.model.Appointment;
 import org.oscarehr.common.model.Demographic;
@@ -61,7 +60,7 @@ public class EctDisplayBilling2Action extends EctDisplayAction {
     DemographicManager demographicManager = SpringUtils.getBean(DemographicManager.class);
 
     @SuppressWarnings("unchecked")
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
 
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
         if (!securityInfoManager.hasPrivilege(loggedInInfo, "_billing", "r", null)) {
@@ -126,7 +125,7 @@ public class EctDisplayBilling2Action extends EctDisplayAction {
                     DateFormat formatter = new SimpleDateFormat(dbFormat);
                     date = formatter.parse(obj.getBilling_date());
                 } catch (ParseException e) {
-                    MiscUtils.getLogger().debug("EctDisplayMsgAction: Error creating date " + e.getMessage());
+                    MiscUtils.getLogger().debug("EctDisplayMsg2Action: Error creating date " + e.getMessage());
                     date = null;
                 }
 
@@ -186,7 +185,7 @@ public class EctDisplayBilling2Action extends EctDisplayAction {
                         DateFormat formatter = new SimpleDateFormat(dbFormat);
                         date = formatter.parse(b.getApptDate());
                     } catch (ParseException e) {
-                        MiscUtils.getLogger().debug("EctDisplayMsgAction: Error creating date " + e.getMessage());
+                        MiscUtils.getLogger().debug("EctDisplayMsg2Action: Error creating date " + e.getMessage());
                         date = null;
                     }
 

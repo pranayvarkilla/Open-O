@@ -71,7 +71,7 @@ public class DownloadPatientLetters2Action extends ActionSupport {
         }
 
         if (log.isTraceEnabled()) {
-            log.trace("Start of DownloadPatientLettersAction Action");
+            log.trace("Start of DownloadPatientLetters2Action Action");
         }
 
         String fileId = request.getParameter("reportID");
@@ -91,7 +91,7 @@ public class DownloadPatientLetters2Action extends ActionSupport {
         }
 
         if (log.isTraceEnabled()) {
-            log.trace("End of DownloadPatientLettersAction Action");
+            log.trace("End of DownloadPatientLetters2Action Action");
         }
         return null;
     }

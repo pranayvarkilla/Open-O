@@ -97,13 +97,6 @@ public class GeneratePatientSpreadSheetList2Action extends ActionSupport {
         return null;
     }
 
-    /**
-     * Creates a new instance of GenerateEnvelopesAction
-     */
-    public GeneratePatientSpreadSheetList2Action() {
-    }
-
-
     Paragraph getEnvelopeLabel(String text) {
         Paragraph p = new Paragraph(text, FontFactory.getFont(FontFactory.HELVETICA, 18));
         p.setLeading(22);

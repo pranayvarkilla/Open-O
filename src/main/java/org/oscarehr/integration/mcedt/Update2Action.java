@@ -24,30 +24,22 @@
  */
 package org.oscarehr.integration.mcedt;
 
-import static org.oscarehr.integration.mcedt.ActionUtils.clearUpdateList;
-import static org.oscarehr.integration.mcedt.ActionUtils.getResourceIds;
-import static org.oscarehr.integration.mcedt.ActionUtils.getUpdateList;
-import static org.oscarehr.integration.mcedt.McedtConstants.SESSION_KEY_UPLOAD_DETAILS;
-
-import java.math.BigInteger;
-import java.util.List;
+import ca.ontario.health.edt.*;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.logging.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
+import org.oscarehr.util.MiscUtils;
+import oscar.util.ConversionUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.math.BigInteger;
+import java.nio.file.Files;
+import java.util.List;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.struts.upload.FormFile;
-import org.oscarehr.util.MiscUtils;
-
-import ca.ontario.health.edt.Detail;
-import ca.ontario.health.edt.DetailData;
-import ca.ontario.health.edt.EDTDelegate;
-import ca.ontario.health.edt.ResourceResult;
-import ca.ontario.health.edt.UpdateRequest;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-import oscar.util.ConversionUtils;
+import static org.oscarehr.integration.mcedt.ActionUtils.*;
+import static org.oscarehr.integration.mcedt.McedtConstants.SESSION_KEY_UPLOAD_DETAILS;
 
 public class Update2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -82,7 +74,6 @@ public class Update2Action extends ActionSupport {
     public String addUpdateRequest() {
         List<UpdateRequest> updates = getUpdateList(request);
 
-        //UpdateForm updateForm = (UpdateForm) form;
         UpdateRequest update = this.toUpdateRequest();
         updates.add(update);
 
@@ -131,7 +122,7 @@ public class Update2Action extends ActionSupport {
     }
 
     private String resourceId;
-    private FormFile content;
+    private File content;
 
     public String getResourceId() {
         return resourceId;
@@ -141,11 +132,11 @@ public class Update2Action extends ActionSupport {
         this.resourceId = resourceId;
     }
 
-    public FormFile getContent() {
+    public File getContent() {
         return content;
     }
 
-    public void setContent(FormFile content) {
+    public void setContent(File content) {
         this.content = content;
     }
 
@@ -153,7 +144,7 @@ public class Update2Action extends ActionSupport {
         UpdateRequest result = new UpdateRequest();
         result.setResourceID(BigInteger.valueOf(ConversionUtils.fromIntString(resourceId)));
         try {
-            result.setContent(content.getFileData());
+            result.setContent(Files.readAllBytes(content.toPath()));
         } catch (Exception e) {
             throw new RuntimeException("Unable to read upload data", e);
         }

@@ -43,9 +43,6 @@ public final class EctViewAttachment2Action extends ActionSupport {
 
 
     public String execute() throws IOException, ServletException {
-        //EctViewAttachmentForm frm = (EctViewAttachmentForm) form;
-        //String mesId = frm.getMesId();
-
         OscarCommLocationsDao dao = SpringUtils.getBean(OscarCommLocationsDao.class);
         for (Object[] o : dao.findFormLocationByMesssageId(mesId)) {
             String thesubject = String.valueOf(o[0]);

@@ -74,7 +74,7 @@ public class ManageHSFO2Action extends ActionSupport {
     }
 
     /**
-     * Creates a new instance of ManageHSFOAction
+     * Creates a new instance of ManageHSFO2Action
      */
     public ManageHSFO2Action() {
     }
@@ -480,7 +480,6 @@ public class ManageHSFO2Action extends ActionSupport {
 
             JFreeChart chart = ChartFactory.createTimeSeriesChart(graphDesc.getGraphTitle(), graphDesc.getXAxisLabel(),
                     graphDesc.getYAxisLabel(), dataset, true, true, true);
-            //might need to adjust the XYPlot, see Line 459 of MeasurementGraphAction2
             try {
                 String fileName = graphDesc.getFileName() + "." + Calendar.getInstance().getTimeInMillis() + ".jpg";
                 String realFilePath = graphDirRealPath + "/" + fileName;

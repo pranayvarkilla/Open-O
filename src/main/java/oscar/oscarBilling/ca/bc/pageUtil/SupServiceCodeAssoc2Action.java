@@ -25,19 +25,13 @@
 
 package oscar.oscarBilling.ca.bc.pageUtil;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-import org.oscarehr.util.SpringUtils;
-
-import oscar.oscarBilling.ca.bc.data.SupServiceCodeAssocDAO;
-
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.oscarehr.util.SpringUtils;
+import oscar.oscarBilling.ca.bc.data.SupServiceCodeAssocDAO;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class SupServiceCodeAssoc2Action extends ActionSupport {

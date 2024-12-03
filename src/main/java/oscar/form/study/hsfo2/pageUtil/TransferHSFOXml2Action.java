@@ -74,7 +74,7 @@ public class TransferHSFOXml2Action extends ActionSupport {
 
         try {
             StringBuilder memoMsg = new StringBuilder();
-            RecommitHSFOAction.uploadXmlToServer(tfutil, providerNo, demoNo, memoMsg);
+            RecommitHSFO2Action.uploadXmlToServer(tfutil, providerNo, demoNo, memoMsg);
 
             request.setAttribute("HSFOmessage", memoMsg.toString());
 

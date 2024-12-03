@@ -120,7 +120,7 @@ public class EctSaveEncounter2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_demographic)");
         }
 
-        log.debug("EctSaveEncounterAction Start");
+        log.debug("EctSaveEncounter2Action Start");
         //UtilDateUtilities dateutilities = new UtilDateUtilities();
         EctSessionBean sessionbean = null;
         sessionbean = (EctSessionBean) httpservletrequest.getSession().getAttribute(

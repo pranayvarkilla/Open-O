@@ -26,7 +26,8 @@
 
 package oscar.eform.actions;
 
-import org.apache.struts.upload.FormFile;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
@@ -42,9 +43,6 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public class ManageEForm2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

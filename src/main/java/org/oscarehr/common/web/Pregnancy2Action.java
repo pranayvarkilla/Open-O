@@ -24,67 +24,36 @@
  */
 package org.oscarehr.common.web;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import com.opensymphony.xwork2.ActionSupport;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import org.apache.commons.lang.WordUtils;
+import org.apache.struts2.ServletActionContext;
+import org.oscarehr.PMmodule.dao.ProviderDao;
+import org.oscarehr.common.dao.*;
+import org.oscarehr.common.model.*;
+import org.oscarehr.util.LoggedInInfo;
+import org.oscarehr.util.MiscUtils;
+import org.oscarehr.util.SpringUtils;
+import oscar.OscarProperties;
+import oscar.form.*;
+import oscar.log.LogAction;
+import oscar.log.LogConst;
+import oscar.oscarEncounter.data.EctFormData;
+import oscar.util.LabelValueBean;
+
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Properties;
-
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
-import org.apache.commons.lang.WordUtils;
-import org.apache.struts.util.LabelValueBean;
-import org.oscarehr.PMmodule.dao.ProviderDao;
-import org.oscarehr.common.dao.AbstractCodeSystemDao;
-import org.oscarehr.common.dao.AllergyDao;
-import org.oscarehr.common.dao.DrugDao;
-import org.oscarehr.common.dao.EFormDao;
-import org.oscarehr.common.dao.EFormGroupDao;
-import org.oscarehr.common.dao.EpisodeDao;
-import org.oscarehr.common.dao.MeasurementDao;
-import org.oscarehr.common.dao.PregnancyFormsDao;
-import org.oscarehr.common.dao.PregnancyFormsDaoImpl;
-import org.oscarehr.common.dao.PrintResourceLogDao;
-import org.oscarehr.common.model.AbstractCodeSystemModel;
-import org.oscarehr.common.model.Allergy;
-import org.oscarehr.common.model.Drug;
-import org.oscarehr.common.model.EForm;
-import org.oscarehr.common.model.EFormGroup;
-import org.oscarehr.common.model.Episode;
-import org.oscarehr.common.model.Measurement;
-import org.oscarehr.common.model.PrintResourceLog;
-import org.oscarehr.util.LoggedInInfo;
-import org.oscarehr.util.MiscUtils;
-import org.oscarehr.util.SpringUtils;
-
-import oscar.OscarProperties;
-import oscar.form.FrmLabReq07Record;
-import oscar.form.FrmLabReq10Record;
-import oscar.form.FrmONAREnhancedRecord;
-import oscar.form.FrmONARRecord;
-import oscar.form.FrmRecord;
-import oscar.form.FrmRecordFactory;
-import oscar.log.LogAction;
-import oscar.log.LogConst;
-import oscar.oscarEncounter.data.EctFormData;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import java.util.*;
 
 public class Pregnancy2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

@@ -59,8 +59,6 @@ public class ViewBillingPreferences2Action
     private final ProviderDao providerDao = SpringUtils.getBean(ProviderDao.class);
 
     public String execute() {
-        //BillingPreferencesActionForm frm = (BillingPreferencesActionForm) actionForm;
-
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(servletRequest);
         List<Property> propList = propertyDao.findByNameAndProvider(Property.PROPERTY_KEY.invoice_payee_info, this.getProviderNo());
         Property invoicePayeeInfo = propList.isEmpty() ? null : propList.get(0);

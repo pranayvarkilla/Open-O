@@ -26,13 +26,6 @@
 
 package oscar.oscarRx.pageUtil;
 
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionMapping;
-
-import javax.servlet.http.HttpServletRequest;
-
-
 public final class RxSearchAllergy2Form {
 
     private String searchString = null;

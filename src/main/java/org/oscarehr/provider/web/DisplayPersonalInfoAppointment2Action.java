@@ -42,7 +42,7 @@ public class DisplayPersonalInfoAppointment2Action extends ActionSupport {
 
 
     /**
-     * Creates a new instance of DisplayPersonalInfoAppointmentAction
+     * Creates a new instance of DisplayPersonalInfoAppointment2Action
      */
     public DisplayPersonalInfoAppointment2Action() {
     }

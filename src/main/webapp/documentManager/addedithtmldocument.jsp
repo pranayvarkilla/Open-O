@@ -50,7 +50,7 @@
 
 <%@ page
         import="java.util.*, oscar.*, oscar.util.*, oscar.oscarProvider.data.ProviderData, org.oscarehr.util.SpringUtils, org.oscarehr.common.dao.CtlDocClassDao" %>
-<%@ page import="org.oscarehr.documentManager.data.AddEditDocumentForm" %>
+<%@ page import="org.oscarehr.documentManager.data.AddEditDocument2Form" %>
 <%@ page import="org.oscarehr.documentManager.EDocUtil" %>
 <%@ page import="org.oscarehr.documentManager.EDoc" %>
 <%
@@ -91,9 +91,9 @@
 
     String lastUpdate = "", fileName = "";
     boolean oldDoc = true;
-    AddEditDocumentForm formdata = new AddEditDocumentForm();
+    AddEditDocument2Form formdata = new AddEditDocument2Form();
     if (request.getAttribute("completedForm") != null) {
-        formdata = (AddEditDocumentForm) request.getAttribute("completedForm");
+        formdata = (AddEditDocument2Form) request.getAttribute("completedForm");
         lastUpdate = EDocUtil.getDmsDateTime();
     } else if ((editDocumentNo != null) && (!editDocumentNo.isEmpty())) {
         EDoc currentDoc = EDocUtil.getDoc(editDocumentNo);

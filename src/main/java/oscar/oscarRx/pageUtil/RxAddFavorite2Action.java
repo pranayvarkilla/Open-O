@@ -62,7 +62,6 @@ public final class RxAddFavorite2Action extends ActionSupport {
 
         // Setup variables        
 
-        //RxAddFavoriteForm frm = (RxAddFavoriteForm) form;
 
         //String favoriteName = frm.getFavoriteName();
 

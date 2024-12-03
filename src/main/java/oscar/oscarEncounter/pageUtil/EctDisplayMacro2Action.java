@@ -27,29 +27,23 @@
 package oscar.oscarEncounter.pageUtil;
 
 
-import java.util.List;
-import java.util.Properties;
-import java.util.Vector;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.eyeform.dao.MacroDao;
 import org.oscarehr.eyeform.model.Macro;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.util.OscarRoleObjectPrivilege;
 import oscar.util.StringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Properties;
+import java.util.Vector;
 
 public class EctDisplayMacro2Action extends EctDisplayAction {
     private static final String cmd = "macro";
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_eyeform", "r", null)) {
             throw new SecurityException("missing required security object (_eyeform)");
         }
@@ -81,7 +75,7 @@ public class EctDisplayMacro2Action extends EctDisplayAction {
 
 
                 String url = "popupPage(500,900,'" + winName + "','" + pathview + "')";
-                Dao.setLeftHeading(messages.getMessage(request.getLocale(), "global.macro"));
+                Dao.setLeftHeading(getText("global.macro"));
                 Dao.setLeftURL(url);
 
                 //set right hand heading link

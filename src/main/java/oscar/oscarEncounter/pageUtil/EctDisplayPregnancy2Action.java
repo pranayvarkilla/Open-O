@@ -24,26 +24,20 @@
  */
 package oscar.oscarEncounter.pageUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-import java.util.Vector;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.EpisodeDao;
 import org.oscarehr.common.model.Episode;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.OscarProperties;
 import oscar.oscarEncounter.data.EctFormData;
 import oscar.util.OscarRoleObjectPrivilege;
 import oscar.util.StringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import java.util.Vector;
 
 public class EctDisplayPregnancy2Action extends EctDisplayAction {
 
@@ -51,7 +45,7 @@ public class EctDisplayPregnancy2Action extends EctDisplayAction {
     private EpisodeDao episodeDao = SpringUtils.getBean(EpisodeDao.class);
 
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         boolean a = true;
         Vector v = OscarRoleObjectPrivilege.getPrivilegeProp("_newCasemgmt.pregnancy");
         String roleName = (String) request.getSession().getAttribute("userrole") + "," + (String) request.getSession().getAttribute("user");
@@ -72,7 +66,7 @@ public class EctDisplayPregnancy2Action extends EctDisplayAction {
 
 
                 String url = "popupPage(500,900,'" + winName + "','" + pathview + "')";
-                Dao.setLeftHeading(messages.getMessage(request.getLocale(), "global.pregnancy"));
+                Dao.setLeftHeading(getText("global.pregnancy"));
                 Dao.setLeftURL(url);
 
                 //we're going to display popup menu of 2 selections - row display and grid display

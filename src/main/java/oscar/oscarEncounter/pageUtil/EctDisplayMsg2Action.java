@@ -26,12 +26,6 @@
 
 package oscar.oscarEncounter.pageUtil;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.model.MessageTbl;
 import org.oscarehr.common.model.OscarMsgType;
 import org.oscarehr.managers.MessagingManager;
@@ -39,21 +33,23 @@ import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
 import oscar.util.StringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 public class EctDisplayMsg2Action extends EctDisplayAction {
 
     private static final String cmd = "msgs";
     private static MessagingManager messagingManager = SpringUtils.getBean(MessagingManager.class);
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
         if (!securityInfoManager.hasPrivilege(loggedInInfo, "_msg", "r", null)) {
             return true; //Oscar message link won't show up on new CME screen.
         } else {
             //set text for lefthand module title
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "oscarEncounter.LeftNavBar.Messages"));
+            Dao.setLeftHeading(getText("oscarEncounter.LeftNavBar.Messages"));
 
             //set link for lefthand module title
             String winName = "ViewMsg" + bean.demographicNo;

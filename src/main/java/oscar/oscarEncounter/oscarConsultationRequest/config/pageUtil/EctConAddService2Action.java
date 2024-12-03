@@ -55,9 +55,6 @@ public class EctConAddService2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_con)");
         }
 
-        //EctConAddServiceForm addServiceForm = (EctConAddServiceForm) form;
-        //String service = addServiceForm.getService();
-
         ConsultationServices cs = new ConsultationServices();
         cs.setActive(consultationServiceDao.ACTIVE);
         cs.setServiceDesc(service);

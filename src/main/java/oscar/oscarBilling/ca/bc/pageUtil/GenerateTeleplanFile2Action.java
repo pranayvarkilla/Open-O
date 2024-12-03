@@ -61,7 +61,7 @@ public class GenerateTeleplanFile2Action extends ActionSupport {
 
 
     /**
-     * Creates a new instance of GenerateTeleplanFileAction
+     * Creates a new instance of GenerateTeleplanFile2Action
      */
     public GenerateTeleplanFile2Action() {
     }

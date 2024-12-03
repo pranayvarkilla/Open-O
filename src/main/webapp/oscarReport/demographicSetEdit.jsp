@@ -283,7 +283,6 @@
             $('#delete-set-confirm').modal('hide');
             $('#deleteSet').val('deleteSet');
             document.getElementsByName("DemographicSetEditForm")[0].submit();
-            //$('form[name="DemographicSetEditForm"]').trigger( "submit" );
         }
 
 

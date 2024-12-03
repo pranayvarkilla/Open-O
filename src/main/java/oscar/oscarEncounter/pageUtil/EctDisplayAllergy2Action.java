@@ -33,7 +33,6 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.PMmodule.caisi_integrator.CaisiIntegratorManager;
 import org.oscarehr.PMmodule.caisi_integrator.IntegratorFallBackManager;
 import org.oscarehr.caisi_integrator.ws.CachedDemographicAllergy;
@@ -59,7 +58,7 @@ public class EctDisplayAllergy2Action extends EctDisplayAction {
 
     private String cmd = "allergies";
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
 
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
@@ -70,7 +69,7 @@ public class EctDisplayAllergy2Action extends EctDisplayAction {
             // set lefthand module heading and link
             String winName = "Allergy" + bean.demographicNo;
             String url = "popupPage(580,900,'" + winName + "','" + request.getContextPath() + "/oscarRx/showAllergy.do?demographicNo=" + bean.demographicNo + "')";
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "oscarEncounter.NavBar.Allergy"));
+            Dao.setLeftHeading(getText("oscarEncounter.NavBar.Allergy"));
             Dao.setLeftURL(url);
 
             // set righthand link to same as left so we have visual consistency with other modules

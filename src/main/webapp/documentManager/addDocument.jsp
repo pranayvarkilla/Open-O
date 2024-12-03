@@ -44,7 +44,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page
         import="java.util.*, oscar.util.*, oscar.OscarProperties, org.oscarehr.util.SpringUtils, org.oscarehr.common.dao.CtlDocClassDao" %>
-<%@ page import="org.oscarehr.documentManager.data.AddEditDocumentForm" %>
+<%@ page import="org.oscarehr.documentManager.data.AddEditDocument2Form" %>
 <%@ page import="org.oscarehr.documentManager.EDocUtil" %>
 
 <%--This is included in documentReport.jsp - wasn't meant to be displayed as a separate page --%>
@@ -71,7 +71,7 @@
 
     OscarProperties props = OscarProperties.getInstance();
 
-    AddEditDocumentForm formdata = new AddEditDocumentForm();
+    AddEditDocument2Form formdata = new AddEditDocument2Form();
     formdata.setAppointmentNo(appointment);
     String defaultType = (String) props.getProperty("eDocAddTypeDefault", "");
     String defaultDesc = "Enter Title"; //if defaultType isn't defined, this value is used for the title/description
@@ -99,7 +99,7 @@
         parentAjaxId = "";
 
     if (request.getAttribute("completedForm") != null) {
-        formdata = (AddEditDocumentForm) request.getAttribute("completedForm");
+        formdata = (AddEditDocument2Form) request.getAttribute("completedForm");
     } else {
         formdata.setFunction(module);  //"module" and "function" are the same
         formdata.setFunctionId(moduleid);

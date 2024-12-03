@@ -24,34 +24,27 @@
  */
 package oscar.oscarEncounter.pageUtil;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import org.apache.logging.log4j.Logger;
+import org.oscarehr.util.LoggedInInfo;
+import org.oscarehr.util.MiscUtils;
+import org.oscarehr.ws.rest.util.QuestimedUtil;
+import oscar.OscarProperties;
+import oscar.util.StringUtils;
+
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.servlet.http.HttpServletRequest;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import org.apache.struts.util.MessageResources;
-import org.oscarehr.util.MiscUtils;
-import org.apache.logging.log4j.Logger;
-import org.oscarehr.util.LoggedInInfo;
-import org.oscarehr.ws.rest.util.QuestimedUtil;
-import oscar.OscarProperties;
-
-import static oscar.oscarEncounter.pageUtil.EctDisplayAction.MAX_LEN_TITLE;
-
-import oscar.util.StringUtils;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public class EctDisplayQuestimed2Action extends EctDisplayAction {
 
     private static final String cmd = "Questimed";
     private static Logger logger = MiscUtils.getLogger();
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
 
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
         String defaultURL = "../questimed/launch.jsp?demographic_no=" + bean.demographicNo;
@@ -108,7 +101,7 @@ public class EctDisplayQuestimed2Action extends EctDisplayAction {
                             String a = dateList.getString(i);
                             date = formatter.parse(dateList.getString(i));
                         } catch (ParseException e) {
-                            MiscUtils.getLogger().debug("EctDisplayQuestimedAction: Error creating date " + e.getMessage());
+                            MiscUtils.getLogger().debug("EctDisplayQuestimed2Action: Error creating date " + e.getMessage());
                             date = null;
                         }
                     } else {

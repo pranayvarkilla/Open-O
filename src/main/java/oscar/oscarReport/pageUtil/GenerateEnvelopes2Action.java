@@ -140,13 +140,6 @@ public class GenerateEnvelopes2Action extends ActionSupport {
         return null;
     }
 
-    /**
-     * Creates a new instance of GenerateEnvelopesAction
-     */
-    public GenerateEnvelopes2Action() {
-    }
-
-
     Paragraph getEnvelopeLabel(String text) {
         Paragraph p = new Paragraph(text, FontFactory.getFont(FontFactory.HELVETICA, 18));
         p.setLeading(22);

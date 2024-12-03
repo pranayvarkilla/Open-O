@@ -54,7 +54,7 @@ public class DeleteDemographicRelationship2Action extends ActionSupport {
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
     /**
-     * Creates a new instance of DeleteDemographicRelationshipAction
+     * Creates a new instance of DeleteDemographicRelationship2Action
      */
     public DeleteDemographicRelationship2Action() {
     }

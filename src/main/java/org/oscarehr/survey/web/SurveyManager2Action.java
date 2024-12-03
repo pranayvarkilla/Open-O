@@ -23,50 +23,31 @@
 
 package org.oscarehr.survey.web;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.LabelValueBean;
+import org.apache.struts2.ServletActionContext;
 import org.apache.xmlbeans.XmlOptions;
 import org.oscarehr.common.dao.CaisiFormDao;
 import org.oscarehr.common.model.Survey;
 import org.oscarehr.survey.model.QuestionTypes;
-import org.oscarehr.survey.service.OscarFormManager;
-import org.oscarehr.survey.service.SurveyLaunchManager;
-import org.oscarehr.survey.service.SurveyManager;
-import org.oscarehr.survey.service.SurveyModelManager;
-import org.oscarehr.survey.service.SurveyTestManager;
-import org.oscarehr.survey.service.UserManager;
+import org.oscarehr.survey.service.*;
 import org.oscarehr.survey.web.formbean.PageNavEntry;
 import org.oscarehr.survey.web.formbean.SurveyManagerFormBean;
-import org.oscarehr.surveymodel.DateDocument;
+import org.oscarehr.surveymodel.*;
 import org.oscarehr.surveymodel.DateDocument.Date.Enum;
-import org.oscarehr.surveymodel.Page;
 import org.oscarehr.surveymodel.PossibleAnswersDocument.PossibleAnswers;
-import org.oscarehr.surveymodel.Question;
-import org.oscarehr.surveymodel.Section;
 import org.oscarehr.surveymodel.SelectDocument.Select;
-import org.oscarehr.surveymodel.SurveyDocument;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
+import oscar.util.LabelValueBean;
 
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.util.*;
 
 public class SurveyManager2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -456,7 +437,7 @@ public class SurveyManager2Action extends ActionSupport {
 
         Section section = page.addNewQContainer().addNewSection();
         section.setDescription("");
-        section.setId(SurveyManagerAction.getUnusedSectionId(page));
+        section.setId(getUnusedSectionId(page));
 
         return form();
     }
@@ -834,52 +815,6 @@ public class SurveyManager2Action extends ActionSupport {
         }
 
         return "import";
-    }
-
-    public String import_survey() {
-        if (!surveyUserManager.isAdmin(request)) {
-            addActionMessage(getText("survey.auth"));
-            return "auth";
-        }
-
-        SurveyManagerFormBean formBean = this.getWeb();
-
-        SurveyDocument surveyDocument = null;
-        try {
-            InputStream is = formBean.getImportFile().getInputStream();
-            surveyDocument = SurveyDocument.Factory.parse(is);
-        } catch (Exception e) {
-            addActionMessage(getText("execute.parse_error", new String[]{e.getMessage()}));
-            return list();
-        }
-
-        //check name
-        if (surveyManager.getSurveyByName(surveyDocument.getSurvey().getName()) != null) {
-            this.addActionMessage(getText("name.exists"));
-            return list();
-        }
-
-        try {
-            Survey survey = new Survey();
-            survey.setDateCreated(new Date());
-            survey.setDescription(surveyDocument.getSurvey().getName());
-            survey.setStatus(new Short(Survey.STATUS_TEST));
-            //survey.setSurveyData()
-            survey.setUserId(new Long(surveyUserManager.getUserId(request)).intValue());
-            survey.setVersion(surveyDocument.getSurvey().getVersion());
-
-            //save data
-            StringWriter sw = new StringWriter();
-            surveyDocument.save(sw);
-            String xml = sw.toString();
-            survey.setSurveyData(xml);
-
-            surveyManager.saveSurvey(survey);
-        } catch (Exception e) {
-            addActionMessage(getText("survey.import_error", new String[]{e.getMessage()}));
-            log.error("Error", e);
-        }
-        return list();
     }
 
 

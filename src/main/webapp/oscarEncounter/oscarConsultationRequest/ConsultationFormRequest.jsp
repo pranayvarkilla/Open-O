@@ -59,10 +59,9 @@ if(!authed) {
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@page import="org.oscarehr.common.model.Site"%>
 <%@page import="org.oscarehr.util.WebUtils"%>
-<%@page import="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctConsultationFormRequestForm"%>
 <%@page import="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctConsultationFormRequestUtil"%>
 <%@page import="oscar.oscarDemographic.data.DemographicData"%>
-<%@page import="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctViewRequestAction"%>
+<%@page import="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctViewRequest2Action"%>
 <%@page import="org.oscarehr.util.MiscUtils,oscar.oscarClinic.ClinicData"%>
 <%@ page import="org.oscarehr.util.LoggedInInfo"%>
 <%@ page import="org.oscarehr.util.DigitalSignatureUtils"%>
@@ -91,7 +90,6 @@ if(!authed) {
 <%@ page import="org.oscarehr.documentManager.EDocUtil" %>
 <%@ page import="org.oscarehr.documentManager.EDoc" %>
 <%@ page import="oscar.util.StringUtils" %>
-
 
 <jsp:useBean id="displayServiceUtil" scope="request" class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConDisplayServiceUtil" />
 <!DOCTYPE html>
@@ -1533,14 +1531,14 @@ function clearAppointmentDateAndTime() {
 
 		if (requestId != null && ! "null".equals( requestId ) && ! requestId.isEmpty() )
 		{
-			EctViewRequestAction.fillFormValues(LoggedInInfo.getLoggedInInfoFromSession(request), thisForm, new Integer(requestId));
+			EctViewRequest2Action.fillFormValues(LoggedInInfo.getLoggedInInfoFromSession(request), thisForm, new Integer(requestId));
                 thisForm.setSiteName(consultUtil.siteName);
                 defaultSiteName = consultUtil.siteName ;
 
 		}
 		else if (segmentId != null)
 		{
-			EctViewRequestAction.fillFormValues(thisForm, segmentId);
+			EctViewRequest2Action.fillFormValues(thisForm, segmentId);
                 thisForm.setSiteName(consultUtil.siteName);
                 defaultSiteName = consultUtil.siteName ;
 		}
@@ -1550,7 +1548,7 @@ function clearAppointmentDateAndTime() {
 			if (demo != null)
 			{
 				oscar.oscarDemographic.data.RxInformation RxInfo = new oscar.oscarDemographic.data.RxInformation();
-                EctViewRequestAction.fillFormValues(thisForm,consultUtil);
+                EctViewRequest2Action.fillFormValues(thisForm,consultUtil);
 
                 if( "true".equalsIgnoreCase( props.getProperty("CONSULTATION_AUTO_INCLUDE_ALLERGIES", "true") ) ) {
                 	String allergies = RxInfo.getAllergies( loggedInInfo, demo );

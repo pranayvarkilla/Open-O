@@ -26,30 +26,11 @@
 
 package org.oscarehr.provider.web;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.LabelValueBean;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.PMmodule.dao.ProviderDao;
-import org.oscarehr.common.dao.CtlBillingServiceDao;
-import org.oscarehr.common.dao.EFormDao;
-import org.oscarehr.common.dao.EFormGroupDao;
-import org.oscarehr.common.dao.EncounterFormDao;
-import org.oscarehr.common.dao.MyGroupDao;
-import org.oscarehr.common.dao.SecurityDao;
-import org.oscarehr.common.dao.UserPropertyDAO;
+import org.oscarehr.common.dao.*;
 import org.oscarehr.common.model.EForm;
 import org.oscarehr.common.model.EncounterForm;
 import org.oscarehr.common.model.Security;
@@ -57,20 +38,15 @@ import org.oscarehr.common.model.UserProperty;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.oscarBilling.ca.bc.MSP.MSPReconcile;
+import oscar.util.LabelValueBean;
 
-
-/**
- * Properties are loaded in the following order
- * Hard-coded defaults
- * OSCAR system properties file (pref.<key>)
- * Provider properties (db)
- *
- * @author Marc Dumontier
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.MessageDigest;
+import java.util.*;
 
 public class UserPreference2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

@@ -160,7 +160,7 @@ public class ConsultationAttachDocs2Action extends ActionSupport {
 
     public void getDocumentPDF() {
         //TODO: refactor this function, and similar code in EctConsultationFormRequestPrincAction2.java
-        //      and EctConsultationFormFaxAction.java as part of extending this attach item functionality
+        //      and EctConsultationFormFax2Action.java as part of extending this attach item functionality
         //      to eforms and ticklers
 
         String isImage = request.getParameter("isImage");
@@ -192,7 +192,7 @@ public class ConsultationAttachDocs2Action extends ActionSupport {
 
     public void getLabPDF() {
         //TODO: refactor this function, and similar code in EctConsultationFormRequestPrincAction2.java
-        //      and EctConsultationFormFaxAction.java as part of extending this attach item functionality
+        //      and EctConsultationFormFax2Action.java as part of extending this attach item functionality
         //      to eforms and ticklers
 
         String segmentID = request.getParameter("segmentID");
@@ -216,7 +216,7 @@ public class ConsultationAttachDocs2Action extends ActionSupport {
 
     public void getFormPDF() {
         //TODO: refactor this function, and similar code in EctConsultationFormRequestPrincAction2.java
-        //      and EctConsultationFormFaxAction.java as part of extending this attach item functionality
+        //      and EctConsultationFormFax2Action.java as part of extending this attach item functionality
         //      to eforms and ticklers
 
         String formId = request.getParameter("formId");
@@ -246,7 +246,7 @@ public class ConsultationAttachDocs2Action extends ActionSupport {
 
     public void getEFormPDF() {
         //TODO: refactor this function, and similar code in EctConsultationFormRequestPrincAction2.java
-        //      and EctConsultationFormFaxAction.java as part of extending this attach item functionality
+        //      and EctConsultationFormFax2Action.java as part of extending this attach item functionality
         //      to eforms and ticklers
 
         String eFormId = request.getParameter("eFormId");
@@ -258,7 +258,7 @@ public class ConsultationAttachDocs2Action extends ActionSupport {
 
     public void getHRMPDF() {
         //TODO: refactor this function, and similar code in EctConsultationFormRequestPrincAction2.java
-        //      and EctConsultationFormFaxAction.java as part of extending this attach item functionality
+        //      and EctConsultationFormFax2Action.java as part of extending this attach item functionality
         //      to eforms and ticklers
 
         String hrmId = request.getParameter("hrmId");

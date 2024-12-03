@@ -86,7 +86,7 @@
 
     } else {
         String resultUuid = oscar.Misc.getStr(request.getParameter("uuid"), "");
-        handlerMain = OLISResultsAction.searchResultsMap.get(resultUuid);
+        handlerMain = OLISResults2Action.searchResultsMap.get(resultUuid);
     }
 
 

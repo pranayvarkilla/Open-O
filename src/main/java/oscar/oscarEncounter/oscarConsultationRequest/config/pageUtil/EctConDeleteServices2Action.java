@@ -56,7 +56,6 @@ public class EctConDeleteServices2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_con)");
         }
 
-        //EctConDeleteServicesForm frm = (EctConDeleteServicesForm) form;
         String servs[] = this.getService();
         if (servs.length > 0) {
 

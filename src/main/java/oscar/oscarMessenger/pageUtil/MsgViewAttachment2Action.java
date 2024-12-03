@@ -55,10 +55,7 @@ public class MsgViewAttachment2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_msg)");
         }
 
-        //MsgViewAttachmentForm frm = (MsgViewAttachmentForm) form;
-        //String attachId;
         String att = null;
-        //attachId = frm.getAttachId();
 
         MessageTblDao dao = SpringUtils.getBean(MessageTblDao.class);
         MessageTbl m = dao.find(ConversionUtils.fromIntString(attachId));

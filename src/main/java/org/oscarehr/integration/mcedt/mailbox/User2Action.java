@@ -24,19 +24,16 @@
  */
 package org.oscarehr.integration.mcedt.mailbox;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.UserPropertyDAO;
 import org.oscarehr.common.model.UserProperty;
 import org.oscarehr.util.SpringUtils;
-
 import oscar.OscarProperties;
-import oscar.login.LoginForm;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class User2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();
@@ -58,7 +55,6 @@ public class User2Action extends ActionSupport {
     }
 
     public String changePassword() throws Exception {
-        //LoginForm resourceForm = (LoginForm) form;
         try {
 
             UserProperty prop = userPropertyDAO.getProp(UserProperty.MCEDT_ACCOUNT_PASSWORD);

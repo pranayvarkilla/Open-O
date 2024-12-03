@@ -71,8 +71,6 @@ public class BillingSaveBilling2Action extends ActionSupport {
             return "Logout";
         }
 
-        //BillingSaveBillingForm frm = (BillingSaveBillingForm) form;
-
         oscar.oscarBilling.ca.bc.pageUtil.BillingSessionBean bean = (BillingSessionBean) request.getSession().getAttribute("billingSessionBean");
 
         bean.setCreator(loggedInInfo.getLoggedInProviderNo());

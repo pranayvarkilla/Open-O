@@ -26,12 +26,8 @@
 
 package org.oscarehr.billing.CA.ON.web;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.validator.DynaValidatorForm;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.BillingServiceDao;
 import org.oscarehr.common.dao.CSSStylesDAO;
 import org.oscarehr.common.model.BillingService;
@@ -40,8 +36,9 @@ import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public class ManageCSS2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

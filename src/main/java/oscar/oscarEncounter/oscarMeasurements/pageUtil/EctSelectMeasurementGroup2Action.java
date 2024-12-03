@@ -58,12 +58,7 @@ public class EctSelectMeasurementGroup2Action extends ActionSupport {
     private MeasurementGroupDao groupDao = SpringUtils.getBean(MeasurementGroupDao.class);
     private MeasurementManager measurementManager = SpringUtils.getBean(MeasurementManager.class);
 
-    public String execute()
-            throws ServletException, IOException {
-
-        //EctSelectMeasurementGroupForm frm = (EctSelectMeasurementGroupForm) form;
-        //request.getSession().setAttribute("EctSelectMeasurementGroupForm", frm);
-
+    public String execute() throws ServletException, IOException {
         String groupName = this.getSelectedGroupName();
         //String forward = frm.getForward();
 

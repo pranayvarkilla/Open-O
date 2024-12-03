@@ -46,15 +46,7 @@ public final class MsgDoc2PDF2Action extends ActionSupport {
 
 
 
-    public String execute()
-            throws IOException, ServletException {
-
-        //MsgDoc2PDFForm frm = (MsgDoc2PDFForm) form;
-
-        //String srcText = frm.getSrcText();
-        //String pdfTitle = this.getPdfTitle();
-
-
+    public String execute() throws IOException, ServletException {
         if (this.getIsPreview()) {
 
             Doc2PDF.parseString2PDF(request, response, "<HTML>" + srcText + "</HTML>");

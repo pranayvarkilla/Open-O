@@ -23,11 +23,6 @@
     Ontario, Canada
 
 --%>
-
-<%@page import="org.oscarehr.eyeform.model.EyeformOcularProcedure" %>
-<%@page import="org.oscarehr.eyeform.web.OcularProcAction" %>
-
-
 <%@ include file="/taglibs.jsp" %>
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>

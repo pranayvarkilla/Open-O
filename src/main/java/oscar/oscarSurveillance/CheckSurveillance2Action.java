@@ -68,7 +68,6 @@ public class CheckSurveillance2Action extends ActionSupport {
 
 
         long startTime = System.currentTimeMillis();
-        //CheckSurveillanceForm frm = (CheckSurveillanceForm) form;
 
         String programId = request.getParameter("programId");
         if (programId != null)

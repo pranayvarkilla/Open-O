@@ -25,7 +25,7 @@
 
 
 /*
- * PreventionReportAction.java
+ * PreventionReport2Action.java
  *
  * Created on May 30, 2005, 7:52 PM
  */
@@ -51,7 +51,7 @@ import oscar.oscarPrevention.reports.PreventionReport;
 import oscar.oscarPrevention.reports.PreventionReportFactory;
 import oscar.oscarReport.data.RptDemographicQueryBuilder;
 import oscar.oscarReport.data.RptDemographicQueryLoader;
-import oscar.oscarReport.pageUtil.RptDemographicReportForm;
+import oscar.oscarReport.pageUtil.RptDemographicReport2Form;
 import oscar.util.UtilDateUtilities;
 
 /**
@@ -83,7 +83,7 @@ public class PreventionReport2Action extends ActionSupport {
         String prevention = request.getParameter("prevention");
         Date asofDate = UtilDateUtilities.getDateFromString(request.getParameter("asofDate"), "yyyy-MM-dd");
 
-        RptDemographicReportForm frm = new RptDemographicReportForm();
+        RptDemographicReport2Form frm = new RptDemographicReport2Form();
         frm.setSavedQuery(setName);
         RptDemographicQueryLoader demoL = new RptDemographicQueryLoader();
         frm = demoL.queryLoader(frm);

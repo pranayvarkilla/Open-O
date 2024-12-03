@@ -99,7 +99,7 @@ public class CombinePDF2Action extends ActionSupport {
     }
 
     /**
-     * Creates a new instance of CombinePDFAction
+     * Creates a new instance of CombinePDF2Action
      */
     public CombinePDF2Action() {
     }

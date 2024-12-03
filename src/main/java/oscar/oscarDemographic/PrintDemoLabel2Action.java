@@ -10,7 +10,6 @@ import org.oscarehr.util.DbConnectionFilter;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-import oscar.OscarAction;
 import oscar.OscarDocumentCreator;
 import oscar.OscarProperties;
 

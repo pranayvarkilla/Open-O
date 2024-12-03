@@ -101,7 +101,7 @@ public class MeasurementGraphAction22Action extends ActionSupport {
     private final String NUMERIC_REGEX = "[^-.\\d]";
 
     public String execute() throws IOException, ParseException {
-        log.debug("In MeasurementGraphAction2");
+        log.debug("In MeasurementGraphAction22Action");
         String userrole = (String) request.getSession().getAttribute("userrole");
         if (userrole == null) {
             response.sendRedirect("../logout.jsp");

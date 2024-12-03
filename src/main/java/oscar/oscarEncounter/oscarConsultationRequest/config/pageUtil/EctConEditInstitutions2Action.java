@@ -56,7 +56,6 @@ public class EctConEditInstitutions2Action extends ActionSupport {
 
         InstitutionDao institutionDao = SpringUtils.getBean(InstitutionDao.class);
 
-        //EctConEditInstitutionsForm editSpecialistsForm = (EctConEditInstitutionsForm) form;
         String id = this.getId();
         String delete = this.getDelete();
         String specialists[] = this.getSpecialists();

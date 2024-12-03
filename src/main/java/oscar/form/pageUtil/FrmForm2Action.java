@@ -100,7 +100,7 @@ public class FrmForm2Action extends ActionSupport {
         }
 
         boolean valid = true;
-        logger.debug("FrmFormAction is called " + currentMem());
+        logger.debug("FrmForm2Action is called " + currentMem());
 
         logger.debug("current mem 1 " + currentMem());
 

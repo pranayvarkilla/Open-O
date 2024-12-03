@@ -52,7 +52,7 @@ public class ForwardDemographicTickler2Action extends ActionSupport {
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
     /**
-     * Creates a new instance of ForwardDemographicTicklerAction
+     * Creates a new instance of ForwardDemographicTickler2Action
      */
     public ForwardDemographicTickler2Action() {
     }

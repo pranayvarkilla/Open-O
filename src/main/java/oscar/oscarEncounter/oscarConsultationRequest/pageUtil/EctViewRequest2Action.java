@@ -86,8 +86,6 @@ public class EctViewRequest2Action extends ActionSupport {
     public String execute() throws ServletException, IOException {
         checkPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request));
 
-        //EctViewRequestForm frm = (EctViewRequestForm) form;
-
         request.setAttribute("id", this.getRequestId());
 
         logger.debug("Id:" + this.getRequestId());

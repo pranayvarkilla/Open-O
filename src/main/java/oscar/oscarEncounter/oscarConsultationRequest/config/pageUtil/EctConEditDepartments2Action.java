@@ -56,7 +56,6 @@ public class EctConEditDepartments2Action extends ActionSupport {
 
         DepartmentDao DepartmentDao = SpringUtils.getBean(DepartmentDao.class);
 
-        //EctConEditDepartmentsForm editDepartmentsForm = (EctConEditDepartmentsForm) form;
         String id = this.getId();
         String delete = this.getDelete();
         String specialists[] = this.getSpecialists();

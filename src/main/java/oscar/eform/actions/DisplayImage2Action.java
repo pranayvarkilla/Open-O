@@ -27,9 +27,6 @@
 package oscar.eform.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.actions.DownloadAction;
 import org.apache.struts2.ServletActionContext;
 import org.oscarehr.util.MiscUtils;
 import oscar.OscarProperties;
@@ -51,7 +48,7 @@ public class DisplayImage2Action extends ActionSupport {
     private HttpServletResponse response = ServletActionContext.getResponse();
 
     /**
-     * Creates a new instance of DisplayImageAction
+     * Creates a new instance of DisplayImage2Action
      */
     public DisplayImage2Action() {
     }

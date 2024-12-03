@@ -55,11 +55,7 @@ public class MsgViewPDFAttachment2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_msg)");
         }
 
-        //MsgViewPDFAttachmentForm frm = (MsgViewPDFAttachmentForm) form;
-        //String attachId;
         String pdfAtt = null;
-
-        //attachId = frm.getAttachId();
 
         MessageTblDao dao = SpringUtils.getBean(MessageTblDao.class);
         MessageTbl m = dao.find(ConversionUtils.fromIntString(attachId));

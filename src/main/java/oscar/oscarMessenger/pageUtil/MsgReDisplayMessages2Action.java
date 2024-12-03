@@ -65,7 +65,6 @@ public class MsgReDisplayMessages2Action extends ActionSupport {
         ///
 
         String providerNo = bean.getProviderNo();
-        //String[] messageNo = ((MsgDisplayMessagesForm) form).getMessageNo();
         //This will go through the array of message Numbers and set them
         //to del.which stands for deleted. but you prolly could have figured that out
         for (int i = 0; i < messageNo.length; i++) {

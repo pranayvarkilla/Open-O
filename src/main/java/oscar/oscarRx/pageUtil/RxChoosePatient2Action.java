@@ -84,7 +84,6 @@ public final class RxChoosePatient2Action extends ActionSupport {
         String user_no;
         user_no = (String) request.getSession().getAttribute("user");
         // p("user_no",user_no);
-        //RxChoosePatientForm frm = (RxChoosePatientForm) form;
         // p("frm",frm.toString());
         // Setup bean
         RxSessionBean bean = new RxSessionBean();

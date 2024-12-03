@@ -29,9 +29,6 @@
 <%@ page import="org.oscarehr.survey.web.formbean.SurveyExecuteDataBean" %>
 <%@ page import="org.apache.struts.validator.DynaValidatorForm" %>
 <%@ page import="org.oscarehr.surveymodel.*" %>
-<%@ page import="org.oscarehr.PMmodule.web.forms.SurveyExecuteAction" %>
-
-<%@page import="org.springframework.web.context.request.RequestScope" %>
 <c:set var="id" scope="page">
     <c:out value="${question.id}"/>
 </c:set>

@@ -26,9 +26,6 @@
 package org.oscarehr.billing.CA.ON.util;
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.actions.DownloadAction;
 import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.DocumentDao;
 import org.oscarehr.util.MiscUtils;

@@ -63,7 +63,6 @@ public class MsgHandleMessages2Action extends ActionSupport {
             throw new SecurityException("missing required security object (_msg)");
         }
 
-        //MsgHandleMessagesForm frm = (MsgHandleMessagesForm) form;
         //String messageNo = frm.getMessageNo();
         String demographicNo = this.getDemographic_no();
 

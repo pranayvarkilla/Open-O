@@ -43,7 +43,7 @@
     <%
 
         Properties props = new Properties();
-        GstControlAction db = new GstControlAction();
+        GstControl2Action db = new GstControl2Action();
         props = db.readDatabase();
         String percent = props.getProperty("gstPercent");
 

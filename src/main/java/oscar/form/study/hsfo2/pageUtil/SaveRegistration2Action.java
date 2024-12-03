@@ -78,7 +78,7 @@ public class SaveRegistration2Action extends ActionSupport {
     }
 
     /**
-     * Creates a new instance of SaveRegistrationAction
+     * Creates a new instance of SaveRegistration2Action
      */
     public SaveRegistration2Action() {
     }

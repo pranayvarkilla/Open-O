@@ -26,39 +26,29 @@
 
 package oscar.oscarEncounter.pageUtil;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.DocumentDao.DocumentType;
-import org.oscarehr.util.LoggedInInfo;
-import org.oscarehr.util.MiscUtils;
-
 import org.oscarehr.documentManager.EDoc;
 import org.oscarehr.documentManager.EDocUtil;
 import org.oscarehr.documentManager.EDocUtil.EDocSort;
+import org.oscarehr.util.LoggedInInfo;
+import org.oscarehr.util.MiscUtils;
 import oscar.util.DateUtils;
 import oscar.util.StringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class EctDisplayDocs2Action extends EctDisplayAction {
     private static Logger logger = MiscUtils.getLogger();
 
     private static final String cmd = "docs";
 
-    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao, MessageResources messages) {
+    public boolean getInfo(EctSessionBean bean, HttpServletRequest request, NavBarDisplayDAO Dao) {
 
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 
@@ -78,10 +68,10 @@ public class EctDisplayDocs2Action extends EctDisplayAction {
             String winName = "docs" + bean.demographicNo;
             String url = "popupPage(500,1115,'" + winName + "', '" + request.getContextPath() + "/documentManager/documentReport.jsp?" + "function=demographic&doctype=lab&functionid=" + bean.demographicNo + "&curUser=" + bean.providerNo + "')";
 
-            Dao.setLeftHeading(messages.getMessage(request.getLocale(), "oscarEncounter.Index.msgDocuments"));
+            Dao.setLeftHeading(getText("oscarEncounter.Index.msgDocuments"));
             if (inboxflag) {
                 url = "popupPage(600,1024,'" + winName + "', '" + request.getContextPath() + "/mod/docmgmtComp/DocList.do?method=list&&demographic_no=" + bean.demographicNo + "');";
-                Dao.setLeftHeading(messages.getMessage("oscarEncounter.Index.inboxManager"));
+                Dao.setLeftHeading(getText("oscarEncounter.Index.inboxManager"));
             }
             Dao.setLeftURL(url);
 
@@ -152,7 +142,7 @@ public class EctDisplayDocs2Action extends EctDisplayAction {
                     date = formatter.parse(dateStr);
                     serviceDateStr = DateUtils.formatDate(date, request.getLocale());
                 } catch (ParseException ex) {
-                    MiscUtils.getLogger().debug("EctDisplayDocsAction: Error creating date " + ex.getMessage());
+                    MiscUtils.getLogger().debug("EctDisplayDocs2Action: Error creating date " + ex.getMessage());
                     serviceDateStr = "Error";
                     date = null;
                 }

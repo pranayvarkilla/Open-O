@@ -47,7 +47,6 @@ public final class RxStash2Action extends ActionSupport {
 
         // Setup variables
 
-        //RxStashForm frm = (RxStashForm) form;
         RxSessionBean bean = (RxSessionBean) request.getSession().getAttribute("RxSessionBean");
         // bean.setStashIndex(11);
         if (bean == null) {

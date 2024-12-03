@@ -25,7 +25,7 @@
 
 
 /*
- * RxManagePharmacyAction.java
+ * RxManagePharmacy2Action.java
  *
  * Created on September 29, 2004, 3:20 PM
  */
@@ -63,11 +63,7 @@ public final class RxManagePharmacy2Action extends ActionSupport {
     HttpServletResponse response = ServletActionContext.getResponse();
 
 
-    public String unspecified()
-            throws IOException, ServletException {
-
-        //RxManagePharmacyForm frm = (RxManagePharmacyForm) form;
-
+    public String execute() throws IOException, ServletException {
         String actionType = this.getPharmacyAction();
         RxPharmacyData pharmacy = new RxPharmacyData();
 
@@ -300,7 +296,7 @@ public final class RxManagePharmacy2Action extends ActionSupport {
     }
 
     /**
-     * Creates a new instance of RxManagePharmacyAction
+     * Creates a new instance of RxManagePharmacy2Action
      */
     public RxManagePharmacy2Action() {
     }

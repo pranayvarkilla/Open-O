@@ -84,7 +84,6 @@
             }
 
             function checkBillingNumber() {
-                //alert(">"+document.AddReferralDocForm.referral_no.value+"<");
                 if (document.AddReferralDocForm.referral_no.value.length == 0) {
                     alert("You must enter a Billing Number");
                     return false;
@@ -130,29 +129,6 @@
 
             <%
                 String id = request.getParameter("id");
-                if (id != null) {
-                    try {
-                        AddReferralDocForm frm = (AddReferralDocForm) request.getAttribute("AddReferralDocForm");
-                        Billingreferral billingReferral = billingReferralDao.getById(Integer.parseInt(id));
-                        if (billingReferral != null) {
-                            frm.setReferral_no(billingReferral.getReferralNo());
-                            frm.setAddress1(billingReferral.getAddress1());
-                            frm.setAddress2(billingReferral.getAddress2());
-                            frm.setCity(billingReferral.getCity());
-                            frm.setFax(billingReferral.getFax());
-                            frm.setFirst_name(billingReferral.getFirstName());
-                            frm.setLast_name(billingReferral.getLastName());
-                            frm.setPhone(billingReferral.getPhone());
-                            frm.setPostal(billingReferral.getPostal());
-                            frm.setProvince(billingReferral.getProvince());
-                            frm.setSpecialty(billingReferral.getSpecialty());
-                        }
-                    } catch (Exception e) {
-                        MiscUtils.getLogger().error("Error", e);
-                    }%>
-            <input type="hidden" name="id" value="<%=id%>"/>
-            <%
-                }
             %>
 
             <fieldset>

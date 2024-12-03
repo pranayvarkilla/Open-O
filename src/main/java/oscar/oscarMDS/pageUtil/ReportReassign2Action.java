@@ -195,7 +195,7 @@ public class ReportReassign2Action extends ActionSupport {
                 newURL = newURL + "&hnum=" + request.getParameter("hnum");
             }
         } catch (Exception e) {
-            logger.error("exception in ReportReassignAction", e);
+            logger.error("exception in ReportReassign2Action", e);
             return "failure";
         }
 

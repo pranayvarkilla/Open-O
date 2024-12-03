@@ -25,32 +25,23 @@
 
 package oscar.form.eCARES;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.Ostermiller.util.ExcelCSVPrinter;
+import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.managers.FormeCARESManager;
 import org.oscarehr.managers.SecurityInfoManager;
+import org.oscarehr.managers.constants.Constants;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-import oscar.form.JSONAction;
-import org.oscarehr.managers.constants.Constants;
+import oscar.form.JSONUtil;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
-
-/*
- * Author: Dennis Warren
- * Company: Colcamex Resources
- * Date: November 2020
- * For: Fraser Health Authority BC.
- */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
-import oscar.form.JSONUtil;
 
 public class EcaresForm2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

@@ -145,7 +145,7 @@ public class CaseloadContent2Action extends ActionSupport {
             json.put("size", size);
         }
 
-        LogAction.addLogSynchronous(LoggedInInfo.getLoggedInInfoFromSession(request), "CaseloadContentAction", "view caseload");
+        LogAction.addLogSynchronous(LoggedInInfo.getLoggedInInfoFromSession(request), "CaseloadContent2Action", "view caseload");
 
         try {
             json.write(response.getWriter());

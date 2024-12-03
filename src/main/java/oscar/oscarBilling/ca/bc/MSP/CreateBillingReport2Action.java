@@ -14,19 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionMapping;
 import org.oscarehr.util.DbConnectionFilter;
 import org.oscarehr.util.MiscUtils;
 
-import oscar.OscarAction;
 import oscar.OscarDocumentCreator;
 import oscar.entities.MSPBill;
 import oscar.oscarBilling.ca.bc.MSP.MSPReconcile.BillSearch;
 import oscar.oscarBilling.ca.bc.data.PayRefSummary;
 
 /**
- * <p>Title: CreateBillingReportAction</p>
+ * <p>Title: CreateBillingReport2Action</p>
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2005</p>
  * <p>Company: </p>
@@ -68,8 +65,6 @@ public class CreateBillingReport2Action extends ActionSupport {
         if (!System.getProperties().containsKey("java.awt.headless")) {
             System.setProperty("java.awt.headless", "true");
         }
-
-        //CreateBillingReportActionForm frm = (CreateBillingReportActionForm) actionForm;
 
         //get form field data
         String docFmt = this.getDocFormat();
@@ -417,11 +412,6 @@ public class CreateBillingReport2Action extends ActionSupport {
 
     public void setXml_vdate(String xml_vdate) {
         this.xml_vdate = xml_vdate;
-    }
-
-    public ActionErrors validate(ActionMapping actionMapping, HttpServletRequest httpServletRequest) {
-        /**@todo: finish this method, this is just the skeleton.*/
-        return null;
     }
 
     public String getRepType() {

@@ -24,7 +24,7 @@
     }
 %>
 <%@ page import="java.util.*,oscar.oscarBilling.ca.bc.data.BillingCodeData" %>
-<%@ page import="oscar.oscarBilling.ca.on.administration.GstControlAction" %>
+<%@ page import="oscar.oscarBilling.ca.on.administration.GstControl2Action" %>
 <%@ page import="oscar.oscarBilling.ca.on.data.JdbcBillingCodeImpl" %>
 <%@ page import="java.math.BigDecimal" %>
 <%@ page import="org.oscarehr.common.model.BillingService" %>
@@ -46,7 +46,7 @@
     JdbcBillingCodeImpl jdbc = new JdbcBillingCodeImpl();
 
     Properties prop = new Properties();
-    String gstPercent = new BigDecimal((new GstControlAction()).readDatabase().getProperty("gstPercent")).divide(new BigDecimal(100), 0).toString();
+    String gstPercent = new BigDecimal((new GstControl2Action()).readDatabase().getProperty("gstPercent")).divide(new BigDecimal(100), 0).toString();
 
     if (action.toLowerCase().startsWith("add")) {
         prop = new Properties();

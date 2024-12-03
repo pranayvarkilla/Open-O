@@ -43,7 +43,6 @@ import org.oscarehr.common.model.ProfessionalSpecialist;
 import org.oscarehr.util.DbConnectionFilter;
 import org.oscarehr.util.MiscUtils;
 
-import oscar.OscarAction;
 import oscar.OscarDocumentCreator;
 import oscar.util.ConcatPDF;
 

@@ -44,10 +44,7 @@ public class EctImmImmunizationSetDisplay2Action extends ActionSupport {
 
     public String execute()
             throws ServletException, IOException {
-        //EctImmImmunizationSetDisplayForm frm = (EctImmImmunizationSetDisplayForm) form;
-        //String setId = frm.getSetId();
         request.setAttribute("setId", setId);
-
         return SUCCESS;
     }
 

@@ -34,7 +34,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts.util.MessageResources;
 import org.oscarehr.common.dao.MeasurementTypeDao;
 import org.oscarehr.common.model.MeasurementType;
 import org.oscarehr.managers.SecurityInfoManager;
@@ -56,14 +55,8 @@ public class EctAddMeasurementType2Action extends ActionSupport {
 
     public String execute()
             throws ServletException, IOException {
-        //EctAddMeasurementTypeForm frm = (EctAddMeasurementTypeForm) form;
-
         if (securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin", "w", null) || securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_admin.measurements", "w", null)) {
-
-            //request.getSession().setAttribute("EctAddMeasurementTypeForm", frm);
-
             List<String> messages = new LinkedList<String>();
-
 
             String type = this.getType();
             String typeUp = type.toUpperCase();

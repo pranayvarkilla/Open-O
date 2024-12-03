@@ -18,15 +18,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.managers.SecurityInfoManager;
-import org.oscarehr.olis.OLISResultsAction;
+import org.oscarehr.olis.OLISResults2Action;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
 
 import oscar.oscarLab.ca.all.parsers.Factory;
 import oscar.oscarLab.ca.all.parsers.MessageHandler;
-
-import com.lowagie.text.DocumentException;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
@@ -52,7 +50,7 @@ public class PrintOLISLab2Action extends ActionSupport {
             MessageHandler handler = null;
             if (segmentId == null && segmentId.equals("0")) {
                 // if viewing in preview from OLIS search, use uuid
-                handler = OLISResultsAction.searchResultsMap.get(resultUuid);
+                handler = OLISResults2Action.searchResultsMap.get(resultUuid);
             } else {
                 handler = Factory.getHandler(segmentId);
             }

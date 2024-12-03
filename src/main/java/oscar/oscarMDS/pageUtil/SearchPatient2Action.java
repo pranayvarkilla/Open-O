@@ -75,7 +75,7 @@ public class SearchPatient2Action extends ActionSupport {
                 newURL = "/oscarMDS/OpenEChart.jsp";
             }
         } catch (Exception e) {
-            MiscUtils.getLogger().debug("exception in SearchPatientAction:" + e);
+            MiscUtils.getLogger().debug("exception in SearchPatient2Action:" + e);
             newURL = "/oscarMDS/OpenEChart.jsp";
         }
         newURL = newURL + "&labNo=" + labNo + "&labType=" + labType + "&keyword=" + java.net.URLEncoder.encode(name, "UTF-8");

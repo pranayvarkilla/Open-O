@@ -25,7 +25,7 @@
 
 
 /*
- * ForwardingRulesAction.java
+ * ForwardingRules2Action.java
  *
  * Created on July 16, 2007, 10:48 AM
  *
@@ -78,7 +78,7 @@ public class ForwardingRules2Action extends ActionSupport {
             operation = "";
         }
 
-        logger.info("ForwardingRulesAction performing: " + operation + " for provider: " + providerNo);
+        logger.info("ForwardingRules2Action performing: " + operation + " for provider: " + providerNo);
         if (operation.equals("update")) {
             String[] providerNums = request.getParameterValues("providerNums");
             if (providerNums == null) {

@@ -50,8 +50,6 @@ public class RptRehabStudy2Action extends ActionSupport {
 
 
     public String execute() throws ServletException, IOException {
-        //RptRehabStudyForm frm = (RptRehabStudyForm) form;
-
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("../logout.htm");
         }

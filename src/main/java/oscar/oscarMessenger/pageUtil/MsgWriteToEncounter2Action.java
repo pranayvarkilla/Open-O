@@ -26,19 +26,15 @@
 
 package oscar.oscarMessenger.pageUtil;
 
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-import oscar.util.ParameterActionForward;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class MsgWriteToEncounter2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

@@ -34,11 +34,11 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
-<%@ page import="java.util.*,org.oscarehr.learning.web.CourseManagerAction,org.oscarehr.common.model.SecRole" %>
+<%@ page import="java.util.*,org.oscarehr.learning.web.CourseManager2Action,org.oscarehr.common.model.SecRole" %>
 
 
 <%
-    List<SecRole> roles = CourseManagerAction.getRoles();
+    List<SecRole> roles = CourseManager2Action.getRoles();
     SecRole studentRole = null;
     SecRole moderatorRole = null;
     for (SecRole role : roles) {

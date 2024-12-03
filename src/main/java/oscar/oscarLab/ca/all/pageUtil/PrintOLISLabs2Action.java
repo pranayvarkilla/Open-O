@@ -7,19 +7,19 @@
  * License details are available via "indivica.ca/gplv2"
  * and "gnu.org/licenses/gpl-2.0.html".
  * <p>
- * PrintLabsAction.java
+ * PrintLabs2Action.java
  * <p>
  * Created on November 27, 2007, 9:42 AM
  * Author: Adam Balanga
  * <p>
- * PrintLabsAction.java
+ * PrintLabs2Action.java
  * <p>
  * Created on November 27, 2007, 9:42 AM
  * Author: Adam Balanga
  */
 
 /**
- * PrintLabsAction.java
+ * PrintLabs2Action.java
  *
  * Created on November 27, 2007, 9:42 AM
  * Author: Adam Balanga
@@ -32,7 +32,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.managers.SecurityInfoManager;
-import org.oscarehr.olis.OLISResultsAction;
+import org.oscarehr.olis.OLISResults2Action;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
@@ -56,10 +56,6 @@ public class PrintOLISLabs2Action extends ActionSupport {
     Logger logger = org.oscarehr.util.MiscUtils.getLogger();
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
-    /** Creates a new instance of PrintLabsAction */
-    public PrintOLISLabs2Action() {
-    }
-
     public String execute() {
 
         if (!securityInfoManager.hasPrivilege(LoggedInInfo.getLoggedInInfoFromSession(request), "_lab", "r", null)) {
@@ -82,7 +78,7 @@ public class PrintOLISLabs2Action extends ActionSupport {
             OLISHL7Handler handler = null;
 
             if (resultUuid != null && !"".equals(resultUuid)) {
-                handler = OLISResultsAction.searchResultsMap.get(resultUuid);
+                handler = OLISResults2Action.searchResultsMap.get(resultUuid);
 
             } else {
                 handler = (OLISHL7Handler) Factory.getHandler(segmentID);

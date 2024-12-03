@@ -39,7 +39,6 @@ import org.apache.logging.log4j.Logger;
 import org.oscarehr.util.DbConnectionFilter;
 import org.oscarehr.util.MiscUtils;
 
-import oscar.OscarAction;
 import oscar.OscarDocumentCreator;
 
 /**

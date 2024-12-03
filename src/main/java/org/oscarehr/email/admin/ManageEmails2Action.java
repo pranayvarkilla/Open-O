@@ -1,14 +1,9 @@
 //CHECKSTYLE:OFF
 package org.oscarehr.email.admin;
 
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.model.EmailAttachment;
 import org.oscarehr.common.model.EmailConfig;
 import org.oscarehr.common.model.EmailLog;
@@ -17,22 +12,19 @@ import org.oscarehr.common.model.EmailLog.TransactionType;
 import org.oscarehr.common.model.enumerator.DocumentType;
 import org.oscarehr.documentManager.DocumentAttachmentManager;
 import org.oscarehr.email.core.EmailStatusResult;
-import org.oscarehr.managers.DemographicManager;
-import org.oscarehr.managers.EmailComposeManager;
-import org.oscarehr.managers.EmailManager;
-import org.oscarehr.managers.FormsManager;
-import org.oscarehr.managers.SecurityInfoManager;
+import org.oscarehr.managers.*;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.PDFGenerationException;
 import org.oscarehr.util.SpringUtils;
-
-import oscar.form.JSONAction;
 import oscar.form.JSONUtil;
 import oscar.util.StringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ManageEmails2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

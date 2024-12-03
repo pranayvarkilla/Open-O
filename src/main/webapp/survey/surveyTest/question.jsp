@@ -29,7 +29,7 @@
 <%@ page import="org.oscarehr.survey.web.formbean.SurveyExecuteDataBean" %>
 <%@ page import="org.apache.struts.validator.DynaValidatorForm" %>
 <%@ page import="org.oscarehr.surveymodel.*" %>
-<%@ page import="org.oscarehr.survey.web.SurveyTestAction" %>
+<%@ page import="org.oscarehr.survey.web.SurveyTest2Action" %>
 
 <c:set var="id" scope="page">
     <c:out value="${question.id}"/>
@@ -165,7 +165,7 @@
                             style="cursor: pointer;" title="Date selector"/> <%
                         Question q = (Question) request.getAttribute("question");
                         String format = q.getType().getDate().toString();
-                        String calFormat = SurveyTestAction.getCalendarFormat(format);
+                        String calFormat = SurveyTest2Action.getCalendarFormat(format);
                     %>
                         <script type="text/javascript">
                             Calendar.setup({
