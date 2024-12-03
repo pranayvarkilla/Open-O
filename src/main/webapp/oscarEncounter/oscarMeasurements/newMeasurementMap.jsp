@@ -99,16 +99,15 @@
             window.opener.location.reload()
             window.close();
             <%
-        }else if (outcome.equals("failedcheck")){
-            %>
-            alert("Unable to add code: The specified code already exists in the database");
-            <%
-        }else{
-            %>
-            alert("Failed to add the new code");
-            <%
-        }
-    }%>
+            }else if (outcome.equals("failedcheck")){
+                %>
+                alert("Unable to add code: The specified code already exists in the database");
+                <%
+            }else{
+                %>
+                alert("Failed to add the new code");
+                <%
+            }}%>
 
         </script>
 
