@@ -539,7 +539,6 @@
                                     </option>
                                     <%
                                         }
-                                        MessageResources msg = MessageResourcesFactory.createFactory().createResources("oscarResources");
                                     %>
                                 </select> <input type="button" name="command" class="btn"
                                                  value="<fmt:setBundle basename="oscarResources"/><fmt:message key="schedule.scheduletemplateapplying.btnDelete"/>"
@@ -547,8 +546,16 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="color: red"
-                                    colspan="2"><%=request.getParameter("overlap") != null ? msg.getMessage("schedule.scheduletemplateapplying.msgScheduleConflict") : "&nbsp;"%>
+                                <td style="color: red" colspan="2">
+                                    <%
+                                        if(request.getParameter("overlap") != null) {
+                                    %>
+                                    <fmt:message key="schedule.scheduletemplateapplying.btnDelete"/>
+                                    <%
+                                        } else {
+                                            out.print("&nbsp;");
+                                        }
+                                    %>
                                 </td>
                             </tr>
                             <tr>

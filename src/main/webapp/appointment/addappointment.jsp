@@ -1454,9 +1454,6 @@ Ontario, Canada
                         if (dateString2.equals(inform.format(inform.parse(now.get(Calendar.YEAR) + "-" + (now.get(Calendar.MONTH) + 1) + "-" + now.get(Calendar.DAY_OF_MONTH))))
 
                                 || dateString2.equals(inform.format(inform.parse(cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH))))) {
-
-                            org.apache.struts.util.MessageResources resources = org.apache.struts.util.MessageResources.getMessageResources("oscarResources");
-
                     %> <input type="submit" id="addPrintPreviewButton" class="btn"
                               onclick="document.forms['ADDAPPT'].displaymode.value='Add Appt & PrintPreview'"
                               value="<fmt:setBundle basename='oscarResources'/><fmt:message key='appointment.addappointment.btnAddApptPrintPreview'/>"
