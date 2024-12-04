@@ -139,7 +139,7 @@
             <% }%>
         </select>
 
-        <i class="icon-question-sign"></i> <oscar:help keywords="lab forwarding" key="app.top1"/>
+        <i class="icon-question-sign"></i>
         <br>
 
     </div>

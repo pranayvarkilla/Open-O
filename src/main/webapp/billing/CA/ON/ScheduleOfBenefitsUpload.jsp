@@ -101,8 +101,7 @@
     </head>
 
     <body>
-    <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.scheduleOfBenefits"/> <small><oscar:help keywords="1.6.4"
-                                                                                key="app.top1"/></small></h3>
+    <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.scheduleOfBenefits"/> </h3>
     <div class="container-fluid form-inline">
 
 

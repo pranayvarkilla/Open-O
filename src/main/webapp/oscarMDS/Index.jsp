@@ -190,11 +190,6 @@
                                 <a href="javascript:popupPage(400, 1050,'<html:rewrite page="/hospitalReportManager/hospitalReportManager.jsp"/>')"
                                    style="color: #FFFFFF;">HRM Status/Upload</a>
                                 <% } %>
-
-                                <%--								<span class="HelpAboutLogout">--%>
-                                <%--									<oscar:help keywords="&Title=Inbox&portal_type%3Alist=Document" key="app.top1" style="color: #FFFFFF"/>--%>
-                                <%--                                	<a href="javascript:popupStart(300,400,'${pageContext.servletContext.contextPath}/oscarEncounter/About.jsp')" style="color: #FFFFFF;" ><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>--%>
-                                <%--								</span>--%>
                             </td>
                         </tr>
                     </table>

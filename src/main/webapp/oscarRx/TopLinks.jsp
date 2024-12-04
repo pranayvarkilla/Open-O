@@ -88,7 +88,7 @@
 
         <td id="topLinkRightColumn">
 	 		<span class="HelpAboutLogout" style="color:white;">
-                 <oscar:help keywords="2.2.4" key="app.top1" style="color:white;"/>
+
                  <a style="color:white;" href="${ ctx }/oscarEncounter/About.jsp" target="_new">About</a>
              </span>
         </td>

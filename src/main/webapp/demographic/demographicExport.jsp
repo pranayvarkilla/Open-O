@@ -226,8 +226,7 @@
     %>
 
     <div class="container-fluid well">
-        <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.title"/> <small><oscar:help keywords="export demographic"
-                                                                                         key="app.top1"/></small></h3>
+        <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.title"/> </h3>
 
         <div class="span2">
             <% if (demographicNo == null) { %>

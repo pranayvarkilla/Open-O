@@ -277,7 +277,7 @@
                             <!-- end edit 2006-0811-01 by wreby -->
                         </td>
                         <td style="text-align:right">
-                            <oscar:help keywords="&Title=Messenger&portal_type%3Alist=Document" key="app.top1"/>&nbsp;|
+
                             <a href="<%=request.getContextPath()%>/oscarEncounter/About.jsp" target="_new"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
                         </td>
                     </tr>

@@ -184,7 +184,7 @@
                     <tr>
                         <td>Choose Letter</td>
                         <td>&nbsp; <a href="ManageLetters.jsp">manage</a></td>
-                        <td style="text-align: right"><oscar:help keywords="letter generate report" key="app.top1"/> |
+                        <td style="text-align: right">
                             <a
                                     href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                     href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>

@@ -308,9 +308,6 @@
 </head>
 
 <body>
-
-<!--<oscar:help keywords="admin" key="app.top1"/> -->
-
 <div class="container-fluid">
     <div class="row-fluid hidden-print" style="text-align:right">
         <i class=" icon-question-sign"></i>

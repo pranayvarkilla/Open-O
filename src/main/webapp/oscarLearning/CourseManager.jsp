@@ -237,7 +237,6 @@
 
     <!--
 removed for now since "course" provides no usefule results that I can see
-<small><oscar:help keywords="course" key="app.top1"/></small>
 -->
 
     <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.learning.manageCourses"/></h3>

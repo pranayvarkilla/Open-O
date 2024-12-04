@@ -1249,9 +1249,8 @@
            style="width: 100%; background-color: silver;">
         <tr>
             <td><H4><i class="icon-money" style="margin-left:10px;"></i>&nbsp;Ontario Billing</H4></td>
-            <td style="text-align: right"><i class="icon-question-sign"></i>&nbsp;<oscar:help keywords="Billing"
-                                                                                              key="app.top1"/>
-                | <i class="icon-edit"></i><a href="javascript:void(0);"
+            <td style="text-align: right"><i class="icon-question-sign"></i>&nbsp;
+                <i class="icon-edit"></i><a href="javascript:void(0);"
                                               onclick="popupPage(800,700,'billingONfavourite.jsp'); return false;">
                     Edit
                 </a> <select name="cutlist" id="cutlist" onchange="changeCut(this)">

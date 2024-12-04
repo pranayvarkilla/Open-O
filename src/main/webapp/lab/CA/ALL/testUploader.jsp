@@ -265,7 +265,7 @@
           action='${ctx}/lab/CA/ALL/insideLabUpload.do'>
 
         <fmt:setBundle basename="oscarResources"/><fmt:message key="lab.ca.all.testUploader.pleaseSelectTheLabfile"/>: <i class="icon-question-sign"></i>
-        <oscar:help keywords="lab" key="app.top1"/> <br>
+        
 
         <div style="position:relative;">
 <span class='btn'>

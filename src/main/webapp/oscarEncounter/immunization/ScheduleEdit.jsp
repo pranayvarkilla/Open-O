@@ -282,7 +282,7 @@
                         <%=bean.patientSex%> <%=bean.patientAge%>
                     </td>
                     <td></td>
-                    <td style="text-align: right" NOWRAP><oscar:help keywords="schedule" key="app.top1"/>> |</td>
+                    <td style="text-align: right" NOWRAP> |</td>
                 </tr>
             </table>
         </td>

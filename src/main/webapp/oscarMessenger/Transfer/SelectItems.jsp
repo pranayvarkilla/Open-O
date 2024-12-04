@@ -291,7 +291,7 @@
                 <tr>
                     <td>Document Transfer</td>
                     <td></td>
-                    <td style="text-align: right"><oscar:help keywords="message" key="app.top1"/> | <a
+                    <td style="text-align: right"><a
                             href="javascript:popupStart(300,400,'About.jsp')">About</a> | <a
                             href="javascript:popupStart(300,400,'License.jsp')">License</a></td>
                 </tr>

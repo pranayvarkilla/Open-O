@@ -267,8 +267,7 @@
                 </td>
                 <td align=RIGHT>
 		<span class="HelpAboutLogout">
-			<oscar:help keywords="&Title=Report+Tab&portal_type%3Alist=Document" key="app.top1"
-                        style="color:white; font-size:10px;font-style:normal;"/>&nbsp;
+
         		<a style="color:white; font-size:10px;font-style:normal;"
                    href="<%=request.getContextPath()%>/oscarEncounter/About.jsp" target="_new"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a>
 		</span> </font>

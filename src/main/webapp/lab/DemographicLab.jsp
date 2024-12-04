@@ -262,8 +262,7 @@
 				<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMDS.index.msgUnclaimed"/> <%} else {%> <%=ProviderData.getProviderName(searchProviderNo)%>
 				<%}%> &nbsp;&nbsp;&nbsp; Page : <%=pageNum%> </span> <% } %>
                         </td>
-                        <td align="right" valign="center" width="30%"><oscar:help keywords="lab demographic"
-                                                                                  key="app.top1"/> | <a
+                        <td align="right" valign="center" width="30%"><a
                                 href="javascript:popupStart(300,400,'../oscarEncounter/About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a></td>
                     </tr>
                 </table>
