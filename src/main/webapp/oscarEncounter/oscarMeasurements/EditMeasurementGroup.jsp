@@ -30,8 +30,8 @@
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
 <html>
     <head>
@@ -59,8 +59,7 @@
           onload="window.resizeTo(1000,500)">
     <!--  -->
     <html:errors/>
-    <html:form
-            action="/oscarEncounter/oscarMeasurements/EditMeasurementGroup.do">
+    <form action="${pageContext.request.contextPath}/oscarEncounter/oscarMeasurements/EditMeasurementGroup.do" method="post">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
                 <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgMeasurements"/></td>
@@ -91,16 +90,16 @@
                                         <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementGroup.deleteTypes"/>
                                             <c:out value="${groupName}"/></td>
                                     <tr>
-                                        <td><html:select multiple="true" property="selectedAddTypes"
+                                        <td><select multiple="true" name="selectedAddTypes"
                                                          size="10">
                                             <html:options collection="allTypeDisplayNames"
                                                           property="typeDisplayName" labelProperty="typeDisplayName"/>
-                                        </html:select></td>
-                                        <td><html:select multiple="true"
-                                                         property="selectedDeleteTypes" size="10">
+                                        </select></td>
+                                        <td><select multiple="true"
+                                                         name="selectedDeleteTypes" size="10">
                                             <html:options collection="existingTypeDisplayNames"
                                                           property="typeDisplayName" labelProperty="typeDisplayName"/>
-                                        </html:select></td>
+                                        </select></td>
                                     </tr>
                                     <tr>
                                         <input type="hidden" name="forward" value="error"/>
@@ -130,6 +129,6 @@
                 <td class="MainTableBottomRowRightColumn"></td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

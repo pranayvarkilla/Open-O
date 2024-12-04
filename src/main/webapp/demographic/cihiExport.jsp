@@ -81,7 +81,7 @@
 </head>
 <body>
 <div class="container-fluid well">
-    <html:form action="/demographic/cihiExportOMD4.do" method="get">
+    <form action="${pageContext.request.contextPath}/demographic/cihiExportOMD4.do" method="get">
         <h3>Vendor Information</h3>
         <table class="table-condensed">
             <tr>
@@ -140,12 +140,12 @@
             <tr>
                 <td>Extract Type</td>
                 <td>
-                    <html:select property="extractType" onchange="setReportType(this);">
-                        <html:option value="<%=DataExportDao.CIHI_OMD4%>"><%=DataExportDao.CIHI_OMD4%>
-                        </html:option>
-                        <html:option value="<%=DataExportDao.CIHI_PHC_VRS%>"><%=DataExportDao.CIHI_PHC_VRS%>
-                        </html:option>
-                    </html:select>
+                    <select name="extractType" onchange="setReportType(this);">
+                        <option value="<%=DataExportDao.CIHI_OMD4%>"><%=DataExportDao.CIHI_OMD4%>
+                        </option>
+                        <option value="<%=DataExportDao.CIHI_PHC_VRS%>"><%=DataExportDao.CIHI_PHC_VRS%>
+                        </option>
+                    </select>
                 </td>
             </tr>
 
@@ -154,19 +154,19 @@
                     Patient Set
                 </td>
                 <td>
-                    <html:select property="patientSet">
-                        <html:option value="-1">--Select Set--</html:option>
+                    <select name="patientSet" id="patientSet">
+                        <option value="-1">--Select Set--</option>
                         <%
                             String setName;
                             for (int idx = 0; idx < setsList.size(); ++idx) {
                                 setName = setsList.get(idx);
                         %>
-                        <html:option value="<%=setName%>"><%=setName%>
-                        </html:option>
+                        <option value="<%=setName%>"><%=setName%>
+                        </option>
                         <%
                             }
                         %>
-                    </html:select>
+                    </select>
                 </td>
             </tr>
 
@@ -205,7 +205,7 @@
                 }
             %>
         </table>
-    </html:form>
+    </form>
 </div>
 </body>
 </html>

@@ -42,8 +42,8 @@
 <%@ page language="java" %>
 <%@ page import="oscar.form.*, oscar.form.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <jsp:useBean id="oscarVariables" class="java.util.Properties"
              scope="session"/>
@@ -541,8 +541,8 @@
     @oscar.formDB Field="formCreated" Type="date" Null="" Default="NULL"
     @oscar.formDB Field="formEdited" Type="timestamp"
     -->
-    <html:form action="/form/formname">
-        <input type="hidden" name="demographic_no"
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
+    <input type="hidden" name="demographic_no"
                value="<%= props.getProperty("demographic_no", "0") %>"/>
         <input type="hidden" name="formCreated"
                value="<%= props.getProperty("formCreated", "") %>"/>
@@ -1808,7 +1808,7 @@
             </tr>
         </table>
 
-    </html:form>
+    </form>
     <br>
     <br>
     <br>

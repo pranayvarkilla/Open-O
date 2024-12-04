@@ -26,8 +26,8 @@
 
 <!-- Jan 20, 2003,-->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%
     oscar.oscarEncounter.pageUtil.EctSessionBean sessionbean = null;
     if ((sessionbean = (oscar.oscarEncounter.pageUtil.EctSessionBean) request.getSession().getAttribute("EctSessionBean")) == null) {

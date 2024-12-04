@@ -1,6 +1,4 @@
-<%@page import="java.sql.*" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
@@ -47,9 +45,9 @@
     </fieldset>
 </c:if>
 <c:if test="${not receivePaymentActionForm.paymentReceived}">
-    <html:form action="/billing/CA/BC/receivePaymentAction">
-        <html:hidden property="billingmasterNo"/>
-        <html:hidden property="billNo"/>
+    <form action="${pageContext.request.contextPath}/billing/CA/BC/receivePaymentAction.do" method="post">
+        <input type="hidden" name="billingmasterNo" id="billingmasterNo"/>
+        <input type="hidden" name="billNo" id="billNo"/>
 
         <fieldset>
             <legend><fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.CA.BC.title"/></legend>
@@ -73,7 +71,7 @@
             </p>
             <p><input type="submit" value="Submit"/></p>
         </fieldset>
-    </html:form>
+    </form>
 </c:if>
 </body>
 </html>

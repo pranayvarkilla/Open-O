@@ -40,7 +40,6 @@
 
 <%@page import="oscar.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
@@ -275,7 +274,7 @@
                 <% String[] visitList = (String[]) request.getAttribute("visitDates");
                     String[] idList = (String[]) request.getAttribute("visitIds");
                     if (visitList != null) {
-                %> Jump to visit record: <html:form action="/form/HSFOform">
+                %> Jump to visit record: <form action="${pageContext.request.contextPath}/form/HSFOform.do" method="post">
                     <select name="recordNumber">
                         <% for (int i = 0; i < visitList.length; i++) {%>
                         <option value="<%= idList[i] %>"><%= visitList[i] %>
@@ -286,12 +285,12 @@
                            value="<%= patientData.getPatient_Id() %>">
                     <input type="hidden" name="refresh" value="true"/>
                     <input type="submit" name="submit" value="Submit"/>
-                </html:form> <%} %>
+                </form> <%} %>
             </td>
         </tr>
     </table>
 
-    <html:form action="/form/HSFOsaveform.do" onsubmit="return checkform()"
+    <form action="${pageContext.request.contextPath}/form/HSFOsaveform.do" method="post" onsubmit="return checkform()">
                styleId="form1">
         <input type="hidden" name="dispatch" value="flowsheet"/>
         <table width="82%" border="0" cellpadding="1" cellspacing="0"
@@ -2663,7 +2662,7 @@
         <p align="center"><font size="2"
                                 face="Arial, Helvetica, sans-serif">Copyright &copy; 2006 Heart
             &amp; Stroke Foundation.</font></p>
-    </html:form>
+    </form>
 
     <script language="JavaScript" type="text/javascript">
         function confirmReset() {

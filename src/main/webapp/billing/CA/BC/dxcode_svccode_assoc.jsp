@@ -1,10 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
-<%@page import="oscar.oscarDemographic.data.*" %>
-<%@page
-        import="java.text.*, java.util.*, oscar.oscarBilling.ca.bc.data.*,oscar.oscarBilling.ca.bc.pageUtil.*" %>
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -64,9 +59,8 @@
     <body bgcolor="#FFFFFF" text="#000000" rightmargin="0" leftmargin="0"
           topmargin="10" marginwidth="0" marginheight="0">
     <h2><html:errors/></h2>
-    <html:form action="/billing/CA/BC/saveAssocAction"
-               target="oscar.oscarBilling.ca.bc.pageUtil.BillingCreateBillingForm">
-        <html:hidden property="mode"/>
+    <form action="${pageContext.request.contextPath}/billing/CA/BC/saveAssocAction.do" method="post">
+        <input type="hidden" name="mode" id="mode"/>
         <table width="75%" border="1" align="center" cellpadding="3"
                cellspacing="3" bgcolor="EEEEFF">
             <tr bgcolor="#000000">
@@ -103,8 +97,8 @@
             </tr>
             <!--This is really quite redundant but its code copied from bcBilling.jsp
           using the same search screens, therefore the hidden fields need to be here so that the javascript doesn't break -->
-            <html:hidden property="xml_diagnostic_detail2"/>
-            <html:hidden property="xml_diagnostic_detail3"/>
+            <input type="hidden" name="xml_diagnostic_detail2" id="xml_diagnostic_detail2"/>
+            <input type="hidden" name="xml_diagnostic_detail3" id="xml_diagnostic_detail3"/>
             <!--Technically don't need three but just in case
       <tr>
         <td>
@@ -130,6 +124,6 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

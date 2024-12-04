@@ -43,8 +43,8 @@
 <%@ page import="org.owasp.encoder.Encode" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <fmt:setBundle basename="oscarResources"/>
 <!DOCTYPE html>
 <html>
@@ -114,8 +114,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><html:form
-                                    action="/oscarEncounter/UpdateServiceSpecialists">
+                            <td><form action="${pageContext.request.contextPath}/oscarEncounter/UpdateServiceSpecialists.do" method="post">
                                 <input type="hidden" name="serviceId" value="<%=serviceId %>">
                                 <input type="submit"
                                        value="<fmt:message key="oscarEncounter.oscarConsultationRequest.config.DisplayService.btnUpdateServices"/>">
@@ -167,7 +166,7 @@
 
                                 </table>
 
-                            </html:form></td>
+                            </form></td>
                         </tr>
                     </table>
                 </td>

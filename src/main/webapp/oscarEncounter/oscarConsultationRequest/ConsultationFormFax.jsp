@@ -44,8 +44,8 @@
         import="java.util.*, org.w3c.dom.*, oscar.oscarEncounter.oscarConsultationRequest.pageUtil.*" %>
 <%@ page import="oscar.oscarClinic.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 <%
     String curUser_no, requestId;
@@ -167,8 +167,8 @@
     </tr>
     <tr>
         <td class="MainTableLeftColumn">&nbsp;</td>
-        <td class="MainTableRightColumn"><html:form
-                action="/oscarEncounter/oscarConsultationRequests/consultationFax"
+        <td class="MainTableRightColumn"><form
+                action="${pageContext.request.contextPath}/oscarEncounter/oscarConsultationRequests/consultationFax.do" method="post"
                 onsubmit="return ValidateForm()">
             <%
                 EctConsultationFaxForm thisForm;
@@ -193,32 +193,31 @@
 
                 <tr>
                     <td>Senders Phone:</td>
-                    <td><html:select property="sendersPhone">
+                    <td><select name="sendersPhone" id="sendersPhone">
                         <% for (int i = 0; i < vecPhones.size(); i++) {
                             String te = (String) vecPhones.elementAt(i);
                         %>
-                        <html:option value="<%=te%>"><%=te%>
-                        </html:option>
+                        <option value="<%=te%>"><%=te%>
+                        </option>
                         <% }%>
-                    </html:select></td>
+                    </select></td>
                 </tr>
                 <tr>
                     <td>Senders Fax:</td>
-                    <td><html:select property="sendersFax">
+                    <td><select name="sendersFax" id="sendersFax">
                         <% for (int i = 0; i < vecFaxes.size(); i++) {
                             String te = (String) vecFaxes.elementAt(i);
                         %>
-                        <html:option value="<%=te%>"><%=te%>
-                        </html:option>
+                        <option value="<%=te%>"><%=te%>
+                        </option>
                         <% }%>
-                    </html:select></td>
+                    </select></td>
                 </tr>
                 <tr>
                     <td colspan=2>Comments</td>
                 </tr>
                 <tr>
-                    <td colspan=2><html:textarea cols="30" rows="7"
-                                                 property="comments"/></td>
+                    <td colspan=2><textarea cols="30" rows="7" name="comments"></textarea></td>
                 </tr>
                 <tr>
                     <td colspan=2><input type="submit" value="Send to Fax Server"/>
@@ -229,7 +228,7 @@
                    value="<%= (String) request.getAttribute("reqId")%>" \>
             <input type="hidden" name="printType"
                    value="<%= (String) request.getAttribute("printType")%>" \>
-        </html:form></td>
+        </form></td>
     </tr>
     <tr>
         <td class="MainTableBottomRowLeftColumn">&nbsp;</td>

@@ -29,7 +29,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
@@ -208,7 +208,7 @@
 
         <table>
             <tr>
-                <td><html:form action="/oscarResearch/oscarDxResearch/dxResearch.do">
+                <td><form action="${pageContext.request.contextPath}/oscarResearch/oscarDxResearch/dxResearch.do" method="post">
                     <table>
                         <html:errors/>
                         <tr>
@@ -222,14 +222,14 @@
 									<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.codingSystem"/>
 								</span>
 
-                                                <html:select styleClass="form-control" property="selectedCodingSystem"
+                                                <select class="form-control" name="selectedCodingSystem"
                                                              disabled="<%=disable%>">
                                                     <c:forEach var="codingSys" items="${codingSystem.codingSystems}">
                                                         <option value="${codingSys}">
                                                             <c:out value="${codingSys}"/>
                                                         </option>
                                                     </c:forEach>
-                                                </html:select>
+                                                </select>
                                             </div>
                                         </td>
                                     </tr>
@@ -373,7 +373,7 @@
                             </td>
                         </tr>
                     </table>
-                </html:form>
+                </form>
                 </td>
             </tr>
         </table>

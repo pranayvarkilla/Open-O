@@ -62,17 +62,17 @@
             <td class="MainTableLeftColumn"></td>
             <td class="MainTableRightColumn">
                 <%if (request.getAttribute("status") == null) {%>
-                <html:form action="/setProviderStaleDate.do">
+                <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
 
-                    <html:textarea property="labMacroJSON.value" style="width:80%;height:80%" rows="25"></html:textarea>
+                    <textarea name="value" style="width:80%;height:80%" rows="25"></textarea>
 
                     <br/>
 
                     <input type="submit" value="<%=bundle.getString(providerbtnSubmit)%>"/>
                     <input type="button" value="<%=bundle.getString(providerbtnCancel)%>"
                            onclick="window.close();"/>
-                </html:form>
+                </form>
                 <%} else {%>
                 <%=bundle.getString(providermsgSuccess)%>
                 <br/><br/>

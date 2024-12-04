@@ -63,14 +63,14 @@
             <td class="MainTableLeftColumn">&nbsp;</td>
             <td class="MainTableRightColumn">
                 <%if (request.getAttribute("status") == null) {%> <%=bundle.getString(providermsgEdit)%>
-                <html:form action="/setProviderStaleDate.do">
+                <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
-                    <html:select property="displayDocumentAsProperty.value">
+                    <select name="displayDocumentAsProperty.value" id="displayDocumentAsProperty.value">
                         <html:options collection="dropOpts" property="value"
                                       labelProperty="label"/>
-                    </html:select>
+                    </select>
                     <html:submit property="btnApply"/>
-                </html:form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
+                </form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
                 <%}%>
             </td>
         </tr>

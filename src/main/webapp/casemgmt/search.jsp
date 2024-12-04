@@ -73,19 +73,19 @@
 
     <tr>
         <td bgcolor="#EEEEFF">Program:</td>
-        <td bgcolor="#EEEEFF"><html:select property="searchProgramId">
-            <html:option value="0">&nbsp;</html:option>
+        <td bgcolor="#EEEEFF"><select name="searchProgramId" id="searchProgramId">
+            <option value="0">&nbsp;</option>
             <html:options collection="program_domain" property="id"
                           labelProperty="name"/>
-        </html:select></td>
+        </select></td>
     </tr>
 
     <tr>
         <td bgcolor="#EEEEFF">Role:</td>
-        <td bgcolor="#EEEEFF"><html:select property="searchRoleId">
-            <html:option value="0">&nbsp;</html:option>
+        <td bgcolor="#EEEEFF"><select name="searchRoleId" id="searchRoleId">
+            <option value="0">&nbsp;</option>
             <html:options collection="roles" property="id" labelProperty="name"/>
-        </html:select></td>
+        </select></td>
     </tr>
 
     <tr>
@@ -108,10 +108,10 @@
             </td>
             <td align="right">Sort: <select name="note_sort"
                                                     onchange="document.caseManagementViewForm.method.value='search';document.caseManagementViewForm.note_view.value='${param.note_view}';document.caseManagementViewForm.submit()">
-                <html:option value="update_date">Date</html:option>
-                <html:option value="providerName">Provider</html:option>
-                <html:option value="programName">Program</html:option>
-                <html:option value="roleName">Role</html:option>
+                <option value="update_date">Date</option>
+                <option value="providerName">Provider</option>
+                <option value="programName">Program</option>
+                <option value="roleName">Role</option>
             </select></td>
         </tr>
     </table>

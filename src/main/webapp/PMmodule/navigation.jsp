@@ -163,13 +163,13 @@
     <div class="body">
         <div><span>Client Management</span> <security:oscarSec
                 roleName="<%=roleName$%>" objectName="_pmm.clientSearch" rights="r">
-            <div><html:link action="/PMmodule/ClientSearch2.do">Search Client</html:link>
+            <div><a href="${pageContext.request.contextPath}/PMmodule/ClientSearch2.do">Search Client</a>
             </div>
         </security:oscarSec> <%
             if (!userHasExternalOrErClerkRole) {
         %> <security:oscarSec roleName="<%=roleName$%>"
                               objectName="_pmm.newClient" rights="r">
-            <div><html:link action="/PMmodule/ClientSearch2.do">New Client</html:link>
+            <div><a href="${pageContext.request.contextPath}/PMmodule/ClientSearch2.do">New Client</a>
             </div>
         </security:oscarSec> <security:oscarSec roleName="<%=roleName$%>"
                                                 objectName="_pmm.mergeRecords" rights="r">
@@ -220,7 +220,7 @@
             <!--
 		<div><span><a target='_blank' href='<c:out value="${ctx}"/>/PMmodule/incVacancyMatches.jsp'>New Vacancies</a></span></div>
 		-->
-            <div><html:link action="/PMmodule/AllVacancies.do">All Vacancies</html:link></div>
+            <div><a href="${pageContext.request.contextPath}/PMmodule/AllVacancies.do">All Vacancies</a></div>
         </div>
 
         <div>
@@ -244,7 +244,7 @@
                                         objectName="_pmm.manageFacilities" rights="r">
                     <span>Facilities</span>
 
-                    <div><html:link action="/PMmodule/FacilityManager.do?method=list">Manage Facilities</html:link>
+                    <div><a href="${pageContext.request.contextPath}/PMmodule/FacilityManager.do?method=list">Manage Facilities</a>
                     </div>
                 </security:oscarSec> <security:oscarSec roleName="<%=roleName$%>" objectName="_pmm.editor"
                                                         rights="r">
@@ -258,25 +258,25 @@
                 <div>
                     <security:oscarSec roleName="<%=roleName$%>" objectName="_pmm.staffList" rights="r">
                         <span>Staff</span>
-                        <div><html:link action="/PMmodule/StaffManager.do">Staff List</html:link></div>
+                        <div><a href="${pageContext.request.contextPath}/PMmodule/StaffManager.do">Staff List</a></div>
                     </security:oscarSec>
                 </div>
 
                 <div>
                     <security:oscarSec roleName="<%=roleName$%>" objectName="_pmm.programList" rights="r">
                         <span>Program</span>
-                        <div><html:link action="/PMmodule/ProgramManager.do">Program List</html:link>
+                        <div><a href="${pageContext.request.contextPath}/PMmodule/ProgramManager.do">Program List</a>
                         </div>
                     </security:oscarSec>
 
                     <security:oscarSec roleName="<%=roleName$%>" objectName="_pmm.addProgram" rights="r">
-                        <div><html:link action="/PMmodule/ProgramManager.do?method=add">Add Program</html:link>
+                        <div><a href="${pageContext.request.contextPath}/PMmodule/ProgramManager.do?method=add">Add Program</a>
                         </div>
                     </security:oscarSec>
 
                     <security:oscarSec roleName="<%=roleName$%>"
                                        objectName="_pmm.globalRoleAccess" rights="r">
-                        <div><html:link action="/PMmodule/Admin/DefaultRoleAccess.do">Global Role Access</html:link>
+                        <div><a href="${pageContext.request.contextPath}/PMmodule/Admin/DefaultRoleAccess.do">Global Role Access</a>
                         </div>
                     </security:oscarSec>
                 </div>

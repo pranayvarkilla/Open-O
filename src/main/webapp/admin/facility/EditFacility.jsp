@@ -90,11 +90,11 @@
     </head>
     <body>
     <h1>Edit Facility</h1>
-    <html:form action="/FacilityManager.do"
+    <form action="${pageContext.request.contextPath}/FacilityManager.do" method="post"
                onsubmit="return validateForm();">
         <input type="hidden" name="method" value="save"/>
-        <html:hidden property="facility.orgId"/>
-        <html:hidden property="facility.sectorId"/>
+        <input type="hidden" name="orgId" id="orgId"/>
+        <input type="hidden" name="sectorId" id="sectorId"/>
         <!-- Ronnie
         < :hidden property="facility.ocanServiceOrgNumber" />
         -->
@@ -131,7 +131,7 @@
             </tr>
             <tr class="b">
                 <td>Integrator Password:</td>
-                <td><html:password property="facility.integratorPassword"/></td>
+                <td><input type="password" name="integratorPassword" id="integratorPassword"/></td>
             </tr>
             <tr class="b">
                 <td>Remove Demographic Identity:</td>
@@ -145,13 +145,13 @@
             <tr class="b">
                 <td>Rx Interaction Warning Level:</td>
                 <td>
-                    <html:select property="facility.rxInteractionWarningLevel">
-                        <html:option value="0">Not Specified</html:option>
-                        <html:option value="1">Low</html:option>
-                        <html:option value="2">Medium</html:option>
-                        <html:option value="3">High</html:option>
-                        <html:option value="4">None</html:option>
-                    </html:select>
+                    <select name="rxInteractionWarningLevel">
+                        <option value="0">Not Specified</option>
+                        <option value="1">Low</option>
+                        <option value="2">Medium</option>
+                        <option value="3">High</option>
+                        <option value="4">None</option>
+                    </select>
                 </td>
             </tr>
             <!--Ronnie
@@ -172,6 +172,6 @@
                     <button type="button" onclick="window.history.back();">Cancel</button></td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

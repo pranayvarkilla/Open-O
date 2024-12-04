@@ -37,11 +37,7 @@
         return;
     }
 %>
-
-<%@ page
-        import="oscar.form.*, oscar.form.data.*, oscar.util.*, java.util.Date" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-
+<%@ page import="oscar.form.*, oscar.form.data.*, oscar.util.*, java.util.Date" %>
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>

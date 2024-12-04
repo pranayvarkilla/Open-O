@@ -85,7 +85,7 @@
 </display:table>
 <br/>
 <table width="100%" border="1" cellspacing="2" cellpadding="3">
-    <html:hidden property="team.id"/>
+    <input type="hidden" name="id" id="id"/>
     <tr class="b">
         <td width="20%">Name:</td>
         <td><html:text property="team.name" size="50" maxlength="255"/></td>

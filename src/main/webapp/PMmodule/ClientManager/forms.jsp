@@ -305,9 +305,9 @@ New General Form:&nbsp;
 </c:forEach>
 <tr>
 <td colspan="3">
-<html:select property="programWithIntakeId">
+<select name="programWithIntakeId" id="programWithIntakeId">
     <html:options collection="programsWithIntake" property="id" labelProperty="name"/>
-</html:select>
+</select>
 <input type="button" value="Update" onclick="updateProgramIntake('<c:out value="${client.demographicNo}"/>')" />
 </td>
 </tr>
@@ -349,10 +349,10 @@ New General Form:&nbsp;
     </c:forEach>
 </table>
 New User Created Form:&nbsp;
-<html:select property="form.formId" onchange="openSurvey(0)">
-    <html:option value="0">&nbsp;</html:option>
+<select name="formId" onchange="openSurvey(0)">
+    <option value="0">&nbsp;</option>
     <html:options collection="survey_list" property="id" labelProperty="description"/>
-</html:select>
+</select>
 <br/>
 <br/>
 

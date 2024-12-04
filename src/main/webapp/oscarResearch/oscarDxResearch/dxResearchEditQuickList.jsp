@@ -26,7 +26,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%
 
     String user_no = (String) session.getAttribute("user");
@@ -114,17 +114,16 @@
             </td>
         </tr>
         <tr>
-            <td><html:form
-                    action="/oscarResearch/oscarDxResearch/dxResearchUpdateQuickList.do">
+            <td><form action="${pageContext.request.contextPath}/oscarResearch/oscarDxResearch/dxResearchUpdateQuickList.do" method="post">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0"
                        bgcolor="#EEEEFF" height="200">
                     <tr>
                         <td class="heading"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.codingSystem"/>: <%-- <c:out value="${codingSystem}"/> --%>
-                            <html:select property="selectedCodingSystem">
+                            <select name="selectedCodingSystem" id="selectedCodingSystem">
                                 <c:forEach var="codingSys" items="${codingSystem.codingSystems}">
                                     <option value="${codingSys}">${codingSys}</option>
                                 </c:forEach>
-                            </html:select></td>
+                            </select></td>
                         <td class="heading"></td>
                         <td class="heading"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.quickListItemsOf"/> 
                             <c:out value="${quickListName}"/> 
@@ -178,12 +177,12 @@
                         <td valign="top">
                             <table>
                                 <tr>
-                                    <td><html:select property="quickListItems"
+                                    <td><select name="quickListItems"
                                                      style="width:200px" size="10" multiple="true">
                                         <c:forEach var="qlItems" items="${allQuickListItems.dxQuickListItemsVector}">
                                             <option value="${qlItems.type},${qlItems.dxSearchCode}">${qlItems.description}</option>
                                         </c:forEach>
-                                    </html:select></td>
+                                    </select></td>
                                 </tr>
                             </table>
                         </td>
@@ -200,7 +199,7 @@
                         <td>&nbsp;</td>
                     </tr>
                 </table>
-            </html:form></td>
+            </form></td>
         </tr>
     </table>
     </body>

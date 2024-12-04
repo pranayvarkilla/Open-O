@@ -154,8 +154,8 @@
     <tr class="b">
         <td width="20%">Provider:</td>
         <td>
-            <html:hidden property="provider.id"/>
-            <html:hidden property="provider.providerNo"/>
+            <input type="hidden" name="id" id="id"/>
+            <input type="hidden" name="providerNo" id="providerNo"/>
             <%
                 String providerName = (String) request.getAttribute("providerName");
                 if (providerName == null) {
@@ -169,9 +169,9 @@
     <tr class="b">
         <td width="20%">Role:</td>
         <td>
-            <html:select property="provider.roleId">
+            <select name="provider.roleId" id="provider.roleId">
                 <html:options collection="roles" property="id" labelProperty="name"/>
-            </html:select>
+            </select>
         </td>
     </tr>
     <tr>

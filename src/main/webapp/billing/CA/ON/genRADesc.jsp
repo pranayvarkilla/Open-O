@@ -20,7 +20,6 @@
 
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <%@page import="oscar.util.DateUtils" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>
@@ -238,7 +237,7 @@ Colposcopy Total :
 
     if (!bPremiumList.isEmpty()) {
 %>
-<html:form action="/billing/CA/ON/ApplyPractitionerPremium">
+<form action="/billing/CA/ON/ApplyPractitionerPremium">
     <input type="hidden" name="rano" value="<%=raNo%>"/>
     <input type="hidden" name="method" value="applyPremium"/>
     <h3><fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.on.genRADesc.premiumTitle"/></h3>
@@ -295,7 +294,7 @@ Colposcopy Total :
             </td>
         </tr>
     </table>
-</html:form>
+</form>
 <% } %><%--  --%>
 <pre><%=message_txt%></pre>
 

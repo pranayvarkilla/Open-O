@@ -59,7 +59,7 @@
     </head>
     <body>
     <h1>Facilities</h1>
-    <html:form action="/FacilityManager.do">
+    <form action="${pageContext.request.contextPath}/FacilityManager.do" method="post">
         <display:table class="simple" cellspacing="2" cellpadding="3"
                        id="facility" name="facilities" export="false" pagesize="0"
                        requestURI="/FacilityManager.do">
@@ -83,7 +83,7 @@
             </ isplay:column>
             -->
         </display:table>
-    </html:form>
+    </form>
     <!--
             <p><a href="< tml:rewrite action="/FacilityManager.do"/>?method=add">
             Add new facility </a></p>

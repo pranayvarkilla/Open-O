@@ -20,7 +20,7 @@
 --%>
 <%@ page language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <html>
 <head>
@@ -104,8 +104,8 @@
 <div class="container-fluid">
 
     <div class="row well">
-        <html:form action="billing/CA/ON/endYearStatement">
-            <html:hidden property="demographicNoParam"/>
+        <form action="${pageContext.request.contextPath}/billing/CA/ON/endYearStatement.do" method="post">
+            <input type="hidden" name="demographicNoParam" id="demographicNoParam"/>
 
             <div class="span5">
                 Patient Name: <br>
@@ -116,8 +116,8 @@
                 </div>
             </div>
 
-            <html:hidden property="firstNameParam" styleId="fname"></html:hidden>
-            <html:hidden property="lastNameParam" styleId="lname"></html:hidden>
+            <input type="hidden" name="firstNameParam" id="fname"/>
+            <input type="hidden" name="lastNameParam" id="lname"/>
 
 
             <div class="span2">
@@ -148,7 +148,7 @@
                 <input class="btn" type="submit" name="pdf" value="Print PDF"
                        <c:if test="${empty result}">disabled="disabled"</c:if> >
             </div>
-        </html:form>
+        </form>
     </div>
 
     <div class="row">

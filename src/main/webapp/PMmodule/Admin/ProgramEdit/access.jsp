@@ -69,11 +69,12 @@
 <table width="100%" border="1" cellspacing="2" cellpadding="3">
     <tr class="b">
         <td width="20%">Name :</td>
-        <td><html:select property="access.accessTypeId">
+        <td><select name="access.accessTypeId" id="access.accessTypeId">
             <html:options collection="accessTypes" property="id"
                           labelProperty="name"/>
-        </html:select> <html:hidden property="access.id"/> <html:hidden
-                property="access.programId"/></td>
+        </select> <input type="hidden" name="id" id="id"/>
+            <input type="hidden" name="programId" id="programId"/>
+        </td>
     </tr>
     <tr class="b">
         <td width="20%">All Roles:</td>

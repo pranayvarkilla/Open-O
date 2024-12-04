@@ -36,8 +36,8 @@
 </security:oscarSec>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ page import="org.oscarehr.common.model.Episode" %>
@@ -158,7 +158,7 @@
                 &nbsp;
             </td>
             <td class="MainTableRightColumn">
-                <html:form action="/Episode">
+                <form action="${pageContext.request.contextPath}/Episode.do" method="post">
                     <input type="hidden" name="method" value="save"/>
                     <input type="hidden" id="episode.demographicNo" name="episode.demographicNo"
                            value="<%=request.getAttribute("demographicNo")%>"/>
@@ -223,7 +223,7 @@
                         </tr>
                     </table>
                     <html:submit styleClass="btn btn-primary" onclick="return validate();"/>
-                </html:form>
+                </form>
             </td>
         </tr>
         <tr>

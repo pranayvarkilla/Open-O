@@ -130,13 +130,13 @@
     </table>
 </div>
 
-<html:form action="/PMmodule/BedManager.do">
+<form action="${pageContext.request.contextPath}/PMmodule/BedManager.do" method="post">
 
     <table width="100%" summary="Manage rooms and beds">
 
-        <html:hidden property="facilityId"/>
-        <html:hidden property="roomToDelete"/>
-        <html:hidden property="bedToDelete"/>
+        <input type="hidden" name="facilityId" id="facilityId"/>
+        <input type="hidden" name="roomToDelete" id="roomToDelete"/>
+        <input type="hidden" name="bedToDelete" id="bedToDelete"/>
 
         <tr>
             <td width="80%">
@@ -153,19 +153,19 @@
                     <tr>
                         <td width="40%"></td>
                         <td width="30%" style="font-weight: bold">Room Status<br/>
-                            <html:select property="roomStatusFilter" name="bedManagerForm"
+                            <select name="roomStatusFilter" name="bedManagerForm"
                                          onchange="roomFilter();">
                                 <html:optionsCollection property="roomStatusNames" value="key"
                                                         label="value"/>
-                            </html:select></td>
+                            </select></td>
                         <td width="30%" align="right" style="font-weight: bold">Bed
                             Program<br/>
-                            <html:select property="bedProgramFilterForRoom"
+                            <select name="bedProgramFilterForRoom"
                                          name="bedManagerForm" onchange="roomFilter();">
                                 <option value="0">Any</option>
                                 <html:optionsCollection property="programs" value="id"
                                                         label="name"/>
-                            </html:select></td>
+                            </select></td>
                     </tr>
                 </table>
 
@@ -300,17 +300,18 @@
                     <tr>
                         <td width="40%"></td>
                         <td width="30%" style="font-weight: bold">Bed Status<br/>
-                            <html:select property="bedStatusFilter" name="bedManagerForm"
+                            <select name="bedStatusFilter"
+                            <select name="bedStatusFilter"
                                          onchange="bedFilter();">
                                 <html:optionsCollection property="bedStatusNames" value="key"
                                                         label="value"/>
-                            </html:select></td>
+                            </select></td>
                         <td width="30%" align="right" style="font-weight: bold">Room<br/>
-                            <html:select property="bedRoomFilterForBed" name="bedManagerForm"
+                            <select name="bedRoomFilterForBed"
                                          onchange="bedFilter();">
                                 <html:optionsCollection property="assignedBedRooms" value="id"
                                                         label="name"/>
-                            </html:select></td>
+                            </select></td>
                     </tr>
                 </table>
                 <!-- end bed status & bedRoom filter --> <display:table
@@ -401,4 +402,4 @@
             to facilities list</a></p>
     </div>
 
-</html:form>
+</form>

@@ -144,24 +144,24 @@
         </div>
 
         <div class="well well-small">
-            <html:form action="/report/DxresearchReport?method=addSearchCode">
+            <form action="${pageContext.request.contextPath}/report/DxresearchReport?method=addSearchCode.do" method="post">
                 <div class="row-fluid">
                     <input type="hidden" name="action" value="NA"/>
-                    <html:select property="quicklistname" styleClass="sel">
+                    <select name="quicklistname" class="sel">
                         <option value="">Add Dx QuickList</option>
                         <c:forEach var="quickLists" items="${allQuickLists.dxQuickListBeanVector}">
                             <option value="${quickLists.quickListName}" ${quickLists.lastUsed}>
                                 ${quickLists.quickListName}
                             </option>
                         </c:forEach>
-                    </html:select>
+                    </select>
                     OR
-                    <html:select property="codesystem" styleClass="sel" styleId="codingSystem">
+                    <select name="codesystem" class="sel" id="codingSystem">
                         <option value="">Select Coding System</option>
                         <c:forEach var="codingSys" items="${codingSystem.codingSystems}">
                             <option value="${codingSys}">${codingSys}</option>
                         </c:forEach>
-                    </html:select>
+                    </select>
                     <input type="text" id="codesearch" placeholder="search description" name="codesearch"
                            class="span4 jsonDxSearch"/>
                 </div>
@@ -170,7 +170,7 @@
                     <input type="button" class="btn btn-danger" value="Clear"
                            onclick="javascript:this.form.action='${pageContext.servletContext.contextPath}/report/DxresearchReport.do?method=clearSearchCode';this.form.submit()"/>
                 </div>
-            </html:form>
+            </form>
 
         </div>
         <div class="row-fluid">

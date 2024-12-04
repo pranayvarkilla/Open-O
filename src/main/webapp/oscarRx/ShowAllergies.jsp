@@ -33,8 +33,8 @@
 <%@page import="java.util.List" %>
 <%@page import="oscar.OscarProperties" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName2$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -437,7 +437,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><html:form action="/oscarRx/searchAllergy"
+                        <td><form action="${pageContext.request.contextPath}/oscarRx/searchAllergy.do" method="post"
                                        focus="searchString" onsubmit="return isEmpty()">
                             <table>
                                 <tr valign="center">
@@ -532,7 +532,7 @@
                                                                            value="Clear All"/></td>
                                 </tr>
                             </table>
-                        </html:form> <br>
+                        </form> <br>
                             <br>
                             <%
                                 String sBack = "SearchDrug.jsp";

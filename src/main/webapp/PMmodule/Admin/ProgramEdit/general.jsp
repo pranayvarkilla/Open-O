@@ -53,8 +53,8 @@
         window.open(url + id, 'signature', 'width=600,height=600,scrollbars=1');
     }
 </script>
-<html:hidden property="program.numOfMembers"/>
-<html:hidden property="program.id"/>
+<input type="hidden" name="numOfMembers" id="numOfMembers"/>
+<input type="hidden" name="id" id="id"/>
 <%
     Program p = (Program) request.getAttribute("oldProgram");
 
@@ -142,7 +142,7 @@
     <tr class="b">
         <td width="20%">Functional Centre:</td>
         <td>
-            <html:select property="program.functionalCentreId">
+            <select name="program.functionalCentreId" id="program.functionalCentreId">
                 <option value="">&nbsp;</option>
 
                 <c:forEach var="functionalCentre" items="${functionalCentres}">
@@ -151,7 +151,7 @@
                         <c:out value="${functionalCentre.accountId}"/>, <c:out
                             value="${functionalCentre.description}"/></option>
                 </c:forEach>
-            </html:select>
+            </select>
         </td>
     </tr>
     <tr class="b">
@@ -186,21 +186,21 @@
     </tr>
     <tr class="b">
         <td width="20%">Type:</td>
-        <td><html:select property="program.type">
-            <html:option value="Bed"/>
-            <html:option value="Service"/>
+        <td><select name="program.type" id="program.type">
+            <option value="Bed"/>
+            <option value="Service"/>
             <caisi:isModuleLoad moduleName="TORONTO_RFQ" reverse="false">
-                <html:option value="External"/>
-                <html:option value="community">Community</html:option>
+                <option value="External"/>
+                <option value="community">Community</option>
             </caisi:isModuleLoad>
-        </html:select></td>
+        </select></td>
     </tr>
     <tr class="b">
         <td width="20%">Status:</td>
-        <td><html:select property="program.programStatus">
-            <html:option value="active"/>
-            <html:option value="inactive"/>
-        </html:select></td>
+        <td><select name="program.programStatus" id="program.programStatus">
+            <option value="active"/>
+            <option value="inactive"/>
+        </select></td>
     </tr>
     <tr class="b">
         <td width="20%">Location:</td>
@@ -239,11 +239,11 @@
 	-->
     <tr class="b">
         <td width="20%">Man or Woman:</td>
-        <td><html:select property="program.manOrWoman">
-            <html:option value=""/>
-            <html:option value="Man"/>
-            <html:option value="Woman"/>
-        </html:select></td>
+        <td><select name="program.manOrWoman" id="program.manOrWoman">
+            <option value=""/>
+            <option value="Man"/>
+            <option value="Woman"/>
+        </select></td>
     </tr>
     <tr class="b">
         <td width="20%">Transgender:</td>
@@ -263,12 +263,12 @@
     </tr>
     <tr class="b">
         <td width="20%">Abstinence Support?</td>
-        <td><html:select property="program.abstinenceSupport">
-            <html:option value=" "/>
-            <html:option value="Harm Reduction"/>
-            <html:option value="Abstinence Support"/>
-            <html:option value="Not Applicable"/>
-        </html:select></td>
+        <td><select name="program.abstinenceSupport" id="program.abstinenceSupport">
+            <option value=" "/>
+            <option value="Harm Reduction"/>
+            <option value="Abstinence Support"/>
+            <option value="Not Applicable"/>
+        </select></td>
     </tr>
     <tr class="b">
         <td width="20%">Physical Health:</td>
@@ -284,11 +284,11 @@
     </tr>
     <tr class="b">
         <td width="20%">Exclusive View:</td>
-        <td><html:select property="program.exclusiveView">
-            <html:option value="no">No</html:option>
-            <html:option value="appointment">Appointment View</html:option>
-            <html:option value="case-management">Case-management View</html:option>
-        </html:select> (Selecting "No" allows users to switch views)
+        <td><select name="program.exclusiveView" id="program.exclusiveView">
+            <option value="no">No</option>
+            <option value="appointment">Appointment View</option>
+            <option value="case-management">Case-management View</option>
+        </select> (Selecting "No" allows users to switch views)
         </td>
     </tr>
     <tr class="b">

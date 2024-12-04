@@ -24,9 +24,9 @@
 
 --%>
 
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
+
 
 <html>
 <script src="${pageContext.request.contextPath}/csrfguard"></script>
@@ -71,7 +71,7 @@
     </tr>
 </table>
 
-<html:form action="/demographic/ValidateSwipeCard" onsubmit="return verifyInput();">
+<form action="/demographic/ValidateSwipeCard" onsubmit="return verifyInput();">
 
     <div class="container">
 
@@ -91,7 +91,7 @@
         </p>
     </div>
 
-</html:form>
+</form>
 <br>
 <br>
 <form>

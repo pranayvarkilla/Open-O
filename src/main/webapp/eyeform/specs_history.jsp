@@ -61,7 +61,7 @@
 Specs History
 <br/>
 
-<html:form action="/eyeform/SpecsHistory.do">
+<form action="${pageContext.request.contextPath}/eyeform/SpecsHistory.do" method="post">
     <table border="0" cellspacing="5" width="100%">
         <tbody>
         <tr>
@@ -95,12 +95,12 @@ Specs History
         <tr>
             <td>Specs Type:</td>
             <td>
-                <html:select property="specs.type">
-                    <html:option value="distance">distance</html:option>
-                    <html:option value="bifocal">bifocal</html:option>
-                    <html:option value="invisible bifocal">invisible bifocal</html:option>
-                    <html:option value="reading">reading</html:option>
-                </html:select>
+                <select name="type">
+                    <option value="distance">distance</option>
+                    <option value="bifocal">bifocal</option>
+                    <option value="invisible bifocal">invisible bifocal</option>
+                    <option value="reading">reading</option>
+                </select>
             </td>
         </tr>
 
@@ -161,12 +161,12 @@ Specs History
 
     <input type="hidden" name="method" value="save"/>
 
-    <html:hidden property="specs.demographicNo"/>
-    <html:hidden property="specs.appointmentNo"/>
-    <html:hidden property="specs.id"/>
+    <input type="hidden" name="demographicNo" id="demographicNo"/>
+    <input type="hidden" name="appointmentNo" id="appointmentNo"/>
+    <input type="hidden" name="id" id="id"/>
 
 
-</html:form>
+</form>
 
 </body>
 </html>

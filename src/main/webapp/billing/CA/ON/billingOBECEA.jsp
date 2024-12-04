@@ -18,8 +18,8 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
 <%
     if (session.getValue("user") == null)
@@ -45,7 +45,7 @@
 
     <p>EDT OBEC Response Report Generator</p>
 
-    <html:form action="/oscarBilling/DocumentErrorReportUpload.do" method="POST" enctype="multipart/form-data">
+    <form action="${pageContext.request.contextPath}/oscarBilling/DocumentErrorReportUpload.do" method="POST" enctype="multipart/form-data">
 
 
         <div class="alert alert-error">
@@ -60,6 +60,6 @@
         </div>
 
 
-    </html:form>
+    </form>
     </body>
 </html>

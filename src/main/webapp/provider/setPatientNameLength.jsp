@@ -71,7 +71,7 @@
                 <%if (request.getAttribute("status") == null) {%>
                 <%=bundle.getString(providermsgEdit)%>
 
-                <html:form styleId="providerForm" action="/setProviderStaleDate.do">
+                <form styleId="providerForm" action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
                     <p id="errorMessage" class="alert alert-danger" style="display: none; color: red;">
                         Invalid input.
@@ -80,7 +80,7 @@
                     <html:text styleId="numericFormField" property="patientNameLength.value"/>
                     <br/>
                     <html:submit styleClass="btn btn-primary" property="btnApply"/>
-                </html:form>
+                </form>
 
                 <%} else {%>
                 <div class="alert alert-success" style="width:100%"><%=bundle.getString(providermsgSuccess)%></div>

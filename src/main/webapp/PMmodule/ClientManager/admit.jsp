@@ -51,7 +51,7 @@
         </tr>
     </table>
 </div>
-<html:hidden property="program.id"/>
+<input type="hidden" name="id" id="id"/>
 <display:table class="simple" cellspacing="2" cellpadding="3"
                id="admission" name="admissions" export="false" pagesize="0"
                requestURI="/PMmodule/ClientManager.do">
@@ -106,14 +106,12 @@
             </tr>
             <tr class="b">
                 <td width="20%">Discharge Notes:</td>
-                <td><html:textarea cols="50" rows="7"
-                                   property="admission.dischargeNotes"/></td>
+                <td><textarea cols="50" rows="7" name="dischargeNotes"></textarea></td>
             </tr>
         </c:if>
         <tr class="b">
             <td width="20%">Admission Notes:</td>
-            <td><html:textarea cols="50" rows="7"
-                               property="admission.admissionNotes"/></td>
+            <td><textarea cols="50" rows="7" name="admissionNotes"></textarea></td>
         </tr>
         <tr class="b">
             <td colspan="2"><input type="button" value="Process Admission"

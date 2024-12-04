@@ -30,7 +30,7 @@
 <%@taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page import="org.oscarehr.casemgmt.model.*" %>
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+
 <%
     String demo = request.getParameter("demographicNo");
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");

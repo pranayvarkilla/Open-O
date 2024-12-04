@@ -24,7 +24,7 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@page import="oscar.oscarSurveillance.*,java.util.*,org.commonmark.node.*,org.commonmark.parser.Parser,org.commonmark.renderer.html.HtmlRenderer" %>
 <%
     Survey survey = (Survey) request.getAttribute("survey");
@@ -62,18 +62,18 @@
         <div class="jumbotron" style="text-align: center;">
             <%=surveyQuestion%>
             <br/>
-            <html:form action="/oscarSurveillance/SurveillanceAnswer">
-                <html:hidden property="proceed" value='<%=(String) request.getAttribute(\"proceedURL\")%>'/>
-                <html:hidden property="demographicNo" value='<%=(String) request.getAttribute(\"demographic_no\")%>'/>
-                <html:hidden property="surveyId" value="<%=(String) survey.getSurveyId()%>"/>
-                <html:hidden property="currentSurveyNum" value="<%=currSurveyNum%>"/>
+            <form action="${pageContext.request.contextPath}/oscarSurveillance/SurveillanceAnswer.do" method="post">
+                <input type="hidden" name="proceed" id="proceed" value='<%=(String) request.getAttribute(\"proceedURL\")%>'/>
+                <input type="hidden" name="demographicNo" id="demographicNo" value='<%=(String) request.getAttribute(\"demographic_no\")%>'/>
+                <input type="hidden" name="surveyId" id="surveyId" value="<%=(String) survey.getSurveyId()%>"/>
+                <input type="hidden" name="currentSurveyNum" id="currentSurveyNum" value="<%=currSurveyNum%>"/>
 
                 <% for (int i = 0; i < survey.numAnswers(); i++) {%>
                 <input type="submit" name="answer" class="btn btn-primary btn-lg"
                        value="<%=survey.getAnswerString(i)%>"/>
                 <%}%>
 
-            </html:form>
+            </form>
         </div>
     </body>
 </html>

@@ -40,9 +40,6 @@
 <!DOCTYPE html>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ page import="org.oscarehr.util.LoggedInInfo" %>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -51,7 +48,7 @@
     </head>
     <body bgproperties="fixed" topmargin="0" leftmargin="0" rightmargin="0" onload="window.resizeTo(768,768)"
           bgcolor="#eeeeee">
-    <html:form action="/form/formname">
+    <form action="/form/formname">
         <h1><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.formIntakeHx.title"/></h1>
 
         <%@include file="formIntakeHxTitleBar.jsp" %>
@@ -159,6 +156,6 @@
                            value="<%=props.getProperty("NameofOperationAge6","")%>"/></td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

@@ -66,7 +66,7 @@
     </table>
 </div>
 
-<html:form action="/PMmodule/FacilityManager.do"
+<form action="${pageContext.request.contextPath}/PMmodule/FacilityManager.do" method="post"
            onsubmit="return validateForm();">
     <input type="hidden" name="method" value="save"/>
     <table width="100%" border="1" cellspacing="2" cellpadding="3">
@@ -165,7 +165,7 @@
         </tr>
         <tr class="b">
             <td width="20%">Integrator Password:</td>
-            <td><html:password property="facility.integratorPassword"/></td>
+            <td><input type="password" name="integratorPassword" id="integratorPassword"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Allow SIMS Integration:</td>
@@ -203,13 +203,13 @@
         <tr class="b">
             <td width="20%">Assign vacancy withdrawn tickler notification:</td>
             <td>
-                <html:select property="facility.vacancyWithdrawnTicklerProvider">
-                    <html:option value="">Select Below</html:option>
+                <select name="facility.vacancyWithdrawnTicklerProvider" id="facility.vacancyWithdrawnTicklerProvider">
+                    <option value="">Select Below</option>
                     <%for (Provider p : providerDao.getActiveProviders()) { %>
-                    <html:option value="<%=p.getProviderNo() %>"><%=p.getFormattedName() %>
-                    </html:option>
+                    <option value="<%=p.getProviderNo() %>"><%=p.getFormattedName() %>
+                    </option>
                     <% } %>
-                </html:select>
+                </select>
                 &nbsp;Default client ID:&nbsp;
                 <html:text property="facility.vacancyWithdrawnTicklerDemographic"/>
             </td>
@@ -218,13 +218,13 @@
         <tr class="b">
             <td width="20%">Assign new vacancy tickler notification to:</td>
             <td>
-                <html:select property="facility.assignNewVacancyTicklerProvider">
-                    <html:option value="">Select Below</html:option>
+                <select name="facility.assignNewVacancyTicklerProvider" id="facility.assignNewVacancyTicklerProvider">
+                    <option value="">Select Below</option>
                     <%for (Provider p : providerDao.getActiveProviders()) { %>
-                    <html:option value="<%=p.getProviderNo() %>"><%=p.getFormattedName() %>
-                    </html:option>
+                    <option value="<%=p.getProviderNo() %>"><%=p.getFormattedName() %>
+                    </option>
                     <% } %>
-                </html:select>
+                </select>
                 &nbsp;Default client ID:&nbsp;
                 <html:text property="facility.assignNewVacancyTicklerDemographic"/>
             </td>
@@ -233,13 +233,13 @@
         <tr class="b">
             <td width="20%">Assign notification of rejected applicant from a vacancy:</td>
             <td>
-                <html:select property="facility.assignRejectedVacancyApplicant">
-                    <html:option value="">Select Below</html:option>
+                <select name="facility.assignRejectedVacancyApplicant" id="facility.assignRejectedVacancyApplicant">
+                    <option value="">Select Below</option>
                     <%for (Provider p : providerDao.getActiveProviders()) { %>
-                    <html:option value="<%=p.getProviderNo() %>"><%=p.getFormattedName() %>
-                    </html:option>
+                    <option value="<%=p.getProviderNo() %>"><%=p.getFormattedName() %>
+                    </option>
                     <% } %>
-                </html:select>
+                </select>
 
             </td>
         </tr>
@@ -247,19 +247,19 @@
         <tr class="b">
             <td width="20%">Registration Intake</td>
             <td>
-                <html:select property="facility.registrationIntake">
-                    <html:option value="-1">Null</html:option>
-                    <html:optionsCollection property="registrationIntakeForms" label="formName" value="id"/>
-                </html:select>
+                <select name="facility.registrationIntake" id="facility.registrationIntake">
+                    <option value="-1">Null</option>
+                    <optionsCollection property="registrationIntakeForms" label="formName" value="id"/>
+                </select>
             </td>
         </tr>
         <tr class="b">
             <td width="20%">Display All vacancies</td>
             <td>
-                <html:select property="facility.displayAllVacancies">
-                    <html:option value="1">All vacancies in all facilities</html:option>
-                    <html:option value="0">All vacancies in users facility program domain</html:option>
-                </html:select>
+                <select name="facility.displayAllVacancies" id="facility.displayAllVacancies">
+                    <option value="1">All vacancies in all facilities</option>
+                    <option value="0">All vacancies in users facility program domain</option>
+                </select>
             </td>
         </tr>
 
@@ -275,13 +275,13 @@
         <tr class="b">
             <td width="20%">Rx Interaction Warning Level:</td>
             <td>
-                <html:select property="facility.rxInteractionWarningLevel">
-                    <html:option value="0">Not Specified</html:option>
-                    <html:option value="1">Low</html:option>
-                    <html:option value="2">Medium</html:option>
-                    <html:option value="3">High</html:option>
-                    <html:option value="4">None</html:option>
-                </html:select>
+                <select name="facility.rxInteractionWarningLevel" id="facility.rxInteractionWarningLevel">
+                    <option value="0">Not Specified</option>
+                    <option value="1">Low</option>
+                    <option value="2">Medium</option>
+                    <option value="3">High</option>
+                    <option value="4">None</option>
+                </select>
 
             </td>
         </tr>
@@ -291,7 +291,7 @@
                 <button type="button" onclick="window.history.back();">Cancel</button></td>
         </tr>
     </table>
-</html:form>
+</form>
 <div>
     <p><a
             href="<html:rewrite action="/PMmodule/FacilityManager.do"/>?method=list">Return

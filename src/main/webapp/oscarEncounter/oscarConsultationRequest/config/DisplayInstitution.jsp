@@ -42,8 +42,8 @@
 <%@ page import="java.util.ResourceBundle" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@page import="java.util.List" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>
 <%@page import="org.oscarehr.common.model.Institution" %>
@@ -105,8 +105,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <html:form
-                                    action="/oscarEncounter/UpdateInstitutionDepartment">
+                            <form action="${pageContext.request.contextPath}/oscarEncounter/UpdateInstitutionDepartment.do" method="post">
                             <input type="hidden" name="id" value="<%=id %>">
                             <input type="submit"
                                    value="Update Institution Department">
@@ -141,7 +140,7 @@
                     </tr>
                 </table>
                 </div>
-                </html:form></td>
+                </form></td>
         </tr>
         <!----End new rows here-->
 

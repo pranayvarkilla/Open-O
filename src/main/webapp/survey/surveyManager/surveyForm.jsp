@@ -28,7 +28,7 @@
 
 <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
 
-<html:form action="/SurveyManager" method="POST" styleId="surveyForm">
+<form action="${pageContext.request.contextPath}/SurveyManager.do" method="POST" styleId="surveyForm">
 
     <script language="JavaScript">
 
@@ -123,13 +123,13 @@
     </script>
 
     <input type="hidden" name="method" value="save"/>
-    <html:hidden property="web.page"/>
-    <html:hidden property="web.section"/>
-    <html:hidden property="web.questionTypeData"/>
+    <input type="hidden" name="page" id="page"/>
+    <input type="hidden" name="section" id="section"/>
+    <input type="hidden" name="questionTypeData" id="questionTypeData"/>
 
     <input type="hidden" name="numPages" id="numPages" value="1"/>
 
-    <html:hidden property="survey.id"/>
+    <input type="hidden" name="id" id="id"/>
     <br/>
     <table width="100%">
         <tr>
@@ -219,17 +219,15 @@
                                     <td width="1%" class="pageTitle" nowrap>Include on First
                                         Page
                                     </td>
-                                    <td align="left"><html:radio
-                                            property="model.survey.introduction.includeOnFirstPage"
-                                            value="true"/>Yes&nbsp; <html:radio
-                                            property="model.survey.introduction.includeOnFirstPage"
+                                    <td align="left"><input type="radio" name="includeOnFirstPage"
+                                            value="true"/>Yes&nbsp; <input type="radio" name="includeOnFirstPage"
                                             value="false"/>No&nbsp;
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="1%" class="pageTitle" nowrap>Introduction Text:</td>
-                                    <td align="left"><html:textarea cols="80" rows="10"
-                                                                    property="model.survey.introduction.text"></html:textarea></td>
+                                    <td align="left">
+                                        <textarea cols="80" rows="10" name="introduction.text"></textarea></td>
                                 </tr>
                             </table>
                         </div>
@@ -244,16 +242,14 @@
                                 </tr>
                                 <tr>
                                     <td width="1%" class="pageTitle" nowrap>Include on Last Page</td>
-                                    <td align="left"><html:radio
-                                            property="model.survey.closing.includeOnLastPage" value="true"/>Yes&nbsp;
-                                        <html:radio property="model.survey.closing.includeOnLastPage"
+                                    <td align="left"><input type="radio" name="includeOnLastPage" value="true"/>Yes&nbsp;
+                                        <input type="radio" name="includeOnLastPage"
                                                     value="false"/>No&nbsp;
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="1%" class="pageTitle" nowrap>Closing Text:</td>
-                                    <td align="left"><html:textarea cols="80" rows="10"
-                                                                    property="model.survey.closing.text"></html:textarea></td>
+                                    <td align="left"><textarea cols="80" rows="10" name="closing.text"></textarea></td>
                                 </tr>
                             </table>
                         </div>
@@ -272,13 +268,13 @@
                                                                 size="60" styleClass="formElement"/></td>
                                 </tr>
                                 <tr>
-                                    <td width="1%"><html:select property="web.questionType"
+                                    <td width="1%"><select name="questionType"
                                                                 onchange="addQuestionType('0', this.options[this.selectedIndex].value);"
-                                                                styleClass="formElement">
-                                        <html:option value="">Add New Question:</html:option>
+                                                                class="formElement">
+                                        <option value="">Add New Question:</option>
                                         <html:options collection="QuestionTypes" property="value"
                                                       labelProperty="label"/>
-                                    </html:select></td>
+                                    </select></td>
 
                                     <td align="right"><input type="button"
                                                              value="Add New Section" onclick="addSection()"/></td>
@@ -399,7 +395,7 @@
                                                         name="web.questionType"
                                                         onchange="addQuestionType('${section.id}', this.options[this.selectedIndex].value);"
                                                         styleClass="formElement">
-                                                    <html:option value="">Add New Question:</html:option>
+                                                    <option value="">Add New Question:</option>
                                                     <html:options collection="QuestionTypes" property="value"
                                                                   labelProperty="label"/>
                                                 </select></td>
@@ -458,4 +454,4 @@
             </td>
         </tr>
     </table>
-</html:form>
+</form>

@@ -55,7 +55,7 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -300,7 +300,7 @@
 
     <body onLoad="addQuickPick()">
     <div class="container">
-        <html:form action="/tickler/EditTickler">
+        <form action="${pageContext.request.contextPath}/tickler/EditTickler.do" method="post">
             <input type="hidden" name="method" value="editTickler"/>
             <input type="hidden" name="ticklerNo" value="<%=ticklerNo%>"/>
             <h2><fmt:setBundle basename="oscarResources"/><fmt:message key="tickler.ticklerEdit.title"/></h2>
@@ -517,7 +517,7 @@
                     </td>
                 </tr>
             </table>
-        </html:form>
+        </form>
     </div>
 
     </body>

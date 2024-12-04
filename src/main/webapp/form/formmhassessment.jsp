@@ -42,8 +42,6 @@
 <%@ page import="oscar.form.*, java.util.*" %>
 <%@ page import="java.io.FileInputStream" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
@@ -240,7 +238,7 @@
 
     <body bgproperties="fixed" topmargin="0" leftmargin="0" rightmargin="0"
           onload="getMainAction()">
-    <html:form action="/form/formname" onsubmit="return numvalidate()">
+    <form action="${pageContext.request.contextPath}/form/formname.do" onsubmit="return numvalidate()">
 
         <input type="hidden" name="demographic_no"
                value="<%= props.getProperty("demographic_no", "0") %>"/>
@@ -482,6 +480,6 @@
             </tr>
         </table>
 
-    </html:form>
+    </form>
     </body>
 </html>

@@ -191,9 +191,9 @@
         </tr>
     </table>
 </div>
-<html:hidden property="program.id"/>
-<html:hidden property="referral.remoteFacilityId"/>
-<html:hidden property="referral.remoteProgramId"/>
+<input type="hidden" name="id" id="id"/>
+<input type="hidden" name="remoteFacilityId" id="remoteFacilityId"/>
+<input type="hidden" name="remoteProgramId" id="remoteProgramId"/>
 <table width="100%" border="1" cellspacing="2" cellpadding="3">
     <tr class="b">
         <td width="20%">Program Name</td>
@@ -201,20 +201,20 @@
     </tr>
     <tr class="b">
         <td width="20%">Program Type</td>
-        <td><html:select property="program.type">
-            <html:option value="">&nbsp;</html:option>
-            <html:option value="Bed">Bed</html:option>
-            <html:option value="Service">Service</html:option>
-        </html:select></td>
+        <td><select name="program.type" id="program.type">
+            <option value="">&nbsp;</option>
+            <option value="Bed">Bed</option>
+            <option value="Service">Service</option>
+        </select></td>
     </tr>
 
     <tr class="b">
         <td width="20%">Man or Woman:</td>
-        <td><html:select property="program.manOrWoman">
-            <html:option value="">&nbsp;</html:option>
-            <html:option value="Man">Man</html:option>
-            <html:option value="Woman">Woman</html:option>
-        </html:select></td>
+        <td><select name="program.manOrWoman" id="program.manOrWoman">
+            <option value="">&nbsp;</option>
+            <option value="Man">Man</option>
+            <option value="Woman">Woman</option>
+        </select></td>
     </tr>
 
     <tr class="b">
@@ -235,12 +235,12 @@
     </tr>
     <tr class="b">
         <td width="20%">Abstinence Support?</td>
-        <td><html:select property="program.abstinenceSupport">
-            <html:option value="">&nbsp;</html:option>
-            <html:option value="Harm Reduction"/>
-            <html:option value="Abstinence Support"/>
-            <html:option value="Not Applicable"/>
-        </html:select></td>
+        <td><select name="program.abstinenceSupport" id="program.abstinenceSupport">
+            <option value="">&nbsp;</option>
+            <option value="Harm Reduction"/>
+            <option value="Abstinence Support"/>
+            <option value="Not Applicable"/>
+        </select></td>
     </tr>
     <tr class="b">
         <td width="20%">Physical Health:</td>
@@ -292,12 +292,11 @@
     <table width="100%" border="1" cellspacing="2" cellpadding="3">
         <tr class="b">
             <td width="20%">Reason for referral:</td>
-            <td><html:textarea cols="50" rows="7" property="referral.notes"/></td>
+            <td><textarea cols="50" rows="7" name="notes"></textarea></td>
         </tr>
         <tr class="b">
             <td width="20%">Presenting Problems:</td>
-            <td><html:textarea cols="50" rows="7"
-                               property="referral.presentProblems"/></td>
+            <td><textarea cols="50" rows="7" name="presentProblems"></textarea></td>
         </tr>
         <tr>
             <td>Referral Date:</td>

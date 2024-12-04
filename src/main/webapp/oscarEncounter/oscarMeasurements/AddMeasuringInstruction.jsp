@@ -28,7 +28,7 @@
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
 <html>
@@ -48,8 +48,7 @@
     <body class="BodyStyle" vlink="#0000FF">
     <!--  -->
     <html:errors/>
-    <html:form
-            action="/oscarEncounter/oscarMeasurements/AddMeasuringInstruction.do">
+    <form action="${pageContext.request.contextPath}/oscarEncounter/oscarMeasurements/AddMeasuringInstruction.do" method="post">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
                 <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgMeasurements"/></td>
@@ -83,10 +82,10 @@
                                     <tr>
                                         <th align="left" class="td.tite"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingType"/>
                                         </th>
-                                        <td><html:select property="typeDisplayName">
+                                        <td><select name="typeDisplayName" id="typeDisplayName">
                                             <html:options collection="typeDisplayNames"
                                                           property="typeDisplayName" labelProperty="typeDisplayName"/>
-                                        </html:select></td>
+                                        </select></td>
                                     </tr>
                                     <tr>
                                         <th align="left" class="td.tite"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingMeasuringInstrc"/>
@@ -96,10 +95,10 @@
                                     <tr>
                                         <th align="left" class="td.tite"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingValidation"/>
                                         </th>
-                                        <td><html:select property="validation">
+                                        <td><select name="validation" id="validation">
                                             <html:options collection="validations" property="id"
                                                           labelProperty="name"/>
-                                        </html:select> <input type="hidden" name="msgBetween"
+                                        </select> <input type="hidden" name="msgBetween"
                                                               value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.AddMeasurementType.successful"/>"/>
                                         </td>
                                     </tr>
@@ -131,6 +130,6 @@
             <td class="MainTableBottomRowRightColumn"></td>
         </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

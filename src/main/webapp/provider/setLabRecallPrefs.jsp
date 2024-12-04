@@ -60,15 +60,15 @@
             <td class="MainTableRightColumn">
                 <%if (request.getAttribute("status") == null) {%>
                 <%=bundle.getString(providermsgEdit)%>
-                <html:form action="/setProviderStaleDate.do">
+                <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
                     <table>
                         <tr>
                             <td>Delegate: <font color="red">*required</font></td>
                             <td>
-                                <html:select property="labRecallDelegate.value" onchange="delegateCheck();">
+                                <select name="value" onchange="delegateCheck();">
                                     <html:options collection="providerSelect" property="value" labelProperty="label"/>
-                                </html:select>
+                                </select>
                             </td>
                         </tr>
 
@@ -85,15 +85,15 @@
 
                         <tr>
                             <td>Tickler Priority:</td>
-                            <td><html:select property="labRecallTicklerPriority.value">
+                            <td><select name="labRecallTicklerPriority.value" id="labRecallTicklerPriority.value">
                                 <html:options collection="prioritySelect" property="value" labelProperty="label"/>
-                            </html:select></td>
+                            </select></td>
                         </tr>
 
                     </table>
                     <html:submit property="btnApply"/>
                     <input type="button" name="delete" value="Delete" onclick="deleteProp();" style="display:none;">
-                </html:form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
+                </form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
                 <%}%>
             </td>
         </tr>

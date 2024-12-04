@@ -25,7 +25,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ page import="oscar.oscarProvider.data.*" %>
 <%@ page import="org.oscarehr.common.dao.UserPropertyDAO" %>
 <%@ page import="org.oscarehr.common.model.UserProperty" %>
@@ -81,7 +81,7 @@
 
                     if (request.getAttribute("status") == null) {
 
-                %> <html:form action="/EditFaxNum.do">
+                %> <form action="${pageContext.request.contextPath}/EditFaxNum.do" method="post">
 
 
 			<span style="color:blue">By entering in a value, you will 
@@ -98,7 +98,7 @@
 
                 <input type="submit" onclick="return validate();"
                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editRxFax.btnSubmit"/>"/>
-            </html:form> <%
+            </form> <%
             } else if (((String) request.getAttribute("status")).equals("complete")) {
             %> <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editRxFax.msgSuccess"/> <br>
                 <%=faxNum%> <%

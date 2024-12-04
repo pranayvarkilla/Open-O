@@ -116,20 +116,20 @@
 <table width="60%" border="0" cellpadding="0" cellspacing="1"
        bgcolor="#C0C0C0">
 
-    <html:form action="/CustomFilter"
+    <form action="${pageContext.request.contextPath}/CustomFilter.do"
                onsubmit="return validateCustomFilterForm(this);">
 
         <input type="hidden" name="method" value="save"/>
 
         <c:if test="${not empty custom_filter.name}">
-            <html:hidden property="filter.id"/>
+            <input type="hidden" name="id" id="id"/>
         </c:if>
         <tr>
             <td class="fieldTitle">Filter Name:</td>
             <td class="fieldValue"><c:choose>
                 <c:when test="${custom_filter.name == '*Myticklers*'}">
                     *Myticklers*
-                    <html:hidden property="filter.name"/>
+                    <input type="hidden" name="name" id="name"/>
                 </c:when>
                 <c:otherwise>
                     <html:text property="filter.name" maxlength="255"/>
@@ -138,10 +138,10 @@
         </tr>
         <tr>
             <td class="fieldTitle">Demographic:</td>
-            <td class="fieldValue"><html:hidden
-                    property="filter.demographic_no"/> <html:text
-                    property="filter.demographic_webName" maxlength="60"/> <input
-                    type="button" value="Search" onclick="search_demographic();"/></td>
+            <td class="fieldValue">
+                <input type="hidden" name="demographic_no" id="demographic_no"/>
+                <input type="text" name="demographic_webName" id="demographic_webName" maxlength="60"/>
+                <input type="button" value="Search" onclick="search_demographic();"/>
             </td>
         </tr>
         <tr>
@@ -160,26 +160,26 @@
         </tr>
         <tr>
             <td class="fieldTitle">Status:</td>
-            <td class="fieldValue"><html:select property="filter.status">
+            <td class="fieldValue"><select name="filter.status" id="filter.status">
                 <html:options collection="statusList" property="property"
                               labelProperty="labelProperty"/>
-            </html:select></td>
+            </select></td>
         </tr>
         <tr>
             <td class="fieldTitle">Priority:</td>
-            <td class="fieldValue"><html:select property="filter.priority">
+            <td class="fieldValue"><select name="filter.priority" id="filter.priority">
                 <html:options collection="priorityList" property="property"
                               labelProperty="labelProperty"/>
-            </html:select></td>
+            </select></td>
         </tr>
 
         <tr>
             <td class="fieldTitle">Program:</td>
-            <td class="fieldValue"><html:select property="filter.programId">
+            <td class="fieldValue"><select name="filter.programId" id="filter.programId">
                 <option value="All Programs">All Programs</option>
                 <html:options collection="programs" property="id"
                               labelProperty="name"/>
-            </html:select></td>
+            </select></td>
         </tr>
 
 
@@ -252,7 +252,7 @@
                                                                   onclick="location.href='<html:rewrite
                                                                           action="CustomFilter"/>'"/></td>
         </tr>
-    </html:form>
+    </form>
 </table>
 
 </body>

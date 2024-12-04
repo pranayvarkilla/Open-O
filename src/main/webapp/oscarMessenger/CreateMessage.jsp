@@ -26,8 +26,8 @@
 
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="org.w3c.dom.*" %>
 <%@ page import="oscar.oscarMessenger.util.Msgxml" %>
 <%@ page import="oscar.oscarDemographic.data.*" %>
@@ -298,22 +298,22 @@
                                         <td>
                                             <table class=messButtonsA cellspacing=0 cellpadding=3>
                                                 <tr>
-                                                    <td class="messengerButtonsA"><html:link
-                                                            page="/oscarMessenger/DisplayMessages.jsp"
-                                                            styleClass="messengerButtons">
+                                                    <td class="messengerButtonsA"><a
+                                                            href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp"
+                                                            class="messengerButtons">
                                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnInbox"/>
-                                                    </html:link></td>
+                                                    </a></td>
                                                 </tr>
                                             </table>
                                         </td>
                                         <td>
                                             <table class=messButtonsA cellspacing=0 cellpadding=3>
                                                 <tr>
-                                                    <td class="messengerButtonsA"><html:link
-                                                            page="/oscarMessenger/ClearMessage.do"
-                                                            styleClass="messengerButtons">
+                                                    <td class="messengerButtonsA"><a
+                                                            href="${pageContext.request.contextPath}/oscarMessenger/ClearMessage.do"
+                                                            class="messengerButtons">
                                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.btnClear"/>
-                                                    </html:link></td>
+                                                    </a></td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -333,7 +333,7 @@
 
                         <tr>
                             <td>
-                                <html:form action="/oscarMessenger/CreateMessage" onsubmit="return validatefields()">
+                                <form action="${pageContext.request.contextPath}/oscarMessenger/CreateMessage.do" method="post" onsubmit="return validatefields()">
                                     <table>
                                         <tr>
                                             <th bgcolor="#DDDDFF" width="75"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.msgRecipients"/></th>
@@ -507,9 +507,9 @@
                                                     <br>
                                                 </div>
                                                 <div>
-                                                    <html:textarea styleClass="boxsizingBorder"
-                                                                   name="msgCreateMessageForm" property="message"
-                                                                   cols="60" rows="18" value="${messageBody}"/>
+                                                    <textarea class="boxsizingBorder"
+                                                                   name="message"
+                                                              cols="60" rows="18">${messageBody}</textarea>
                                                 </div>
                                                 <%
                                                     String att = bean.getAttachment();
@@ -591,7 +591,7 @@
                                         </tr>
 
                                     </table>
-                                </html:form>
+                                </form>
                             </td>
                         </tr>
                         <tr>

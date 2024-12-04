@@ -827,11 +827,11 @@
     <table cellspacing="0" cellpadding="0">
         <tr>
             <td>New User Created Form:</td>
-            <td><html:select property="form.formId" onchange="openSurvey()">
-                <html:option value="0">&nbsp;</html:option>
+            <td><select name="formId" onchange="openSurvey()">
+                <option value="0">&nbsp;</option>
                 <html:options collection="survey_list" property="formId"
                               labelProperty="description"/>
-            </html:select></td>
+            </select></td>
         </tr>
     </table>
     <br/>

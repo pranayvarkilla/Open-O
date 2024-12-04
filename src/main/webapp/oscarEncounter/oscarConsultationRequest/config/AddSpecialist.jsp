@@ -43,8 +43,8 @@
 <%@ page import="java.util.ResourceBundle" %>
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConAddSpecialistForm" %>
 <%@page import="java.util.List" %>
@@ -191,7 +191,7 @@
                     <tr>
                         <td>
 
-                            <html:form action="/oscarEncounter/AddSpecialist">
+                            <form action="${pageContext.request.contextPath}/oscarEncounter/AddSpecialist.do" method="post">
                                 <%
                                     if (request.getAttribute("specId") != null) {
                                         EctConAddSpecialistForm thisForm;
@@ -234,7 +234,7 @@
                                 %>
                                 <table>
 
-                                    <html:hidden name="EctConAddSpecialistForm" property="specId"/>
+                                    <input type="hidden" name="specId" id="specId"/>
                                     <tr>
                                         <td><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.firstName"/></td>
                                         <td><html:text name="EctConAddSpecialistForm" property="firstName"/></td>
@@ -247,13 +247,12 @@
                                     <tr>
                                         <td><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.address"/>
                                         </td>
-                                        <td><html:textarea name="EctConAddSpecialistForm" property="address" cols="30"
-                                                           rows="3"/> <%=oscarVariables.getProperty("consultation_comments", "") %>
+                                        <td><textarea name="address" cols="30"
+                                                           rows="3"></textarea> <%=oscarVariables.getProperty("consultation_comments", "") %>
                                         </td>
                                         <td><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.Annotation"/>
                                         </td>
-                                        <td colspan="4"><html:textarea name="EctConAddSpecialistForm"
-                                                                       property="annotation" cols="30" rows="3"/>
+                                        <td colspan="4"><textarea name="annotation" cols="30" rows="3"></textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -278,14 +277,14 @@
                                         <td><html:text name="EctConAddSpecialistForm" property="pagerNumber"/></td>
                                         <td><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.salutation"/></td>
                                         <td colspan="4">
-                                            <html:select name="EctConAddSpecialistForm" property="salutation">
-                                                <html:option value=""><fmt:message key="demographic.demographiceditdemographic.msgNotSet"/></html:option>
-                                                <html:option value="Dr."><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.msgDr"/></html:option>
-                                                <html:option value="Mr."><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.msgMr"/></html:option>
-                                                <html:option value="Mrs."><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.msgMrs"/></html:option>
-                                                <html:option value="Miss"><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.msgMiss"/></html:option>
-                                                <html:option value="Ms."><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.msgMs"/></html:option>
-                                            </html:select>
+                                            <select name="salutation">
+                                                <option value=""><fmt:message key="demographic.demographiceditdemographic.msgNotSet"/></option>
+                                                <option value="Dr."><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.msgDr"/></option>
+                                                <option value="Mr."><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.msgMr"/></option>
+                                                <option value="Mrs."><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.msgMrs"/></option>
+                                                <option value="Miss"><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.msgMiss"/></option>
+                                                <option value="Ms."><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.msgMs"/></option>
+                                            </select>
                                         </td>
                                     </tr>
 
@@ -331,21 +330,21 @@
                                     <tr>
                                         <td><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.institution"/></td>
                                         <td>
-                                            <html:select property="institution" styleId="institution">
+                                            <select name="institution" id="institution">
                                                 <option value="0">Select Below</option>
                                                 <%for (Institution institution : institutionDao.findAll()) { %>
                                                 <option value="<%=institution.getId()%>"><%=institution.getName() %>
                                                 </option>
                                                 <%} %>
-                                            </html:select>
+                                            </select>
 
                                         </td>
                                         <td><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.department"/></td>
                                         <td>
 
-                                            <html:select property="department" styleId="department">
+                                            <select name="department" id="department">
                                                 <option value="0">Select Below</option>
-                                            </html:select>
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr>
@@ -376,20 +375,20 @@
                                     <tr>
                                         <td><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.hideFromView"/></td>
                                         <td colspan="5">
-                                            <html:select name="EctConAddSpecialistForm" property="hideFromView">
-                                                <html:option value="false"></html:option>
-                                                <html:option value="true"></html:option>
-                                            </html:select>
+                                            <select name="hideFromView">
+                                                <option value="false"></option>
+                                                <option value="true"></option>
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddSpecialist.eform"/></td>
                                         <td colspan="5">
-                                            <html:select name="EctConAddSpecialistForm" property="eformId">
-                                                <html:option value="0">--None--</html:option>
+                                            <select name="EctConAddSpecialistForm" name="eformId">
+                                                <option value="0">--None--</option>
                                                 <html:options collection="eforms" property="id"
                                                               labelProperty="formName"/>
-                                            </html:select>
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr>
@@ -399,7 +398,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                            </html:form>
+                            </form>
                         </td>
                     </tr>
                     <!----End new rows here-->

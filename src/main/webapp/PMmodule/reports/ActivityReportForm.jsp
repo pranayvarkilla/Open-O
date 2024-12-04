@@ -32,13 +32,13 @@
     <h4>Program Activity Report Generator</h4>
 </div>
 
-<html:form action="/PMmodule/Reports/ProgramActivityReport"
-           styleId="actForm" styleClass="well form-inline">
+<form action="/PMmodule/Reports/ProgramActivityReport"
+           styleId="actForm" class="well form-inline">
     <input type="hidden" name="method" value="generate"/>
     <html:text styleId="sdate" property="form.startDate" size="15"/>
     <html:text styleId="edate" property="form.endDate" size="15"/>
     <html:submit value="Generate Report" styleClass="btn btn-primary"/>
-</html:form>
+</form>
 
 <script>
     var startDt = $("#sdate").datepicker({

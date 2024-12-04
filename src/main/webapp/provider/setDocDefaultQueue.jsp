@@ -125,7 +125,7 @@
             <td style="color: white" class="MainTableTopRowRightColumn"><%=bundle.getString(providermsgProvider)%></td>
         </tr>
         <%if (request.getAttribute("status") == null) {%>
-        <html:form action="/setProviderStaleDate.do">
+        <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
             <tr>
                 <td class="MainTableLeftColumn">&nbsp;</td>
                 <td class="MainTableRightColumn">
@@ -138,9 +138,9 @@
                     <div id="fromExisting">
                         <c:out value="${defaultDocQueueProperty.value}"/>
                         <input type="hidden" name="method" value="<c:out value="${method}"/>">
-                        <html:select property="existingDefaultDocQueueProperty.value">
+                        <select name="existingDefaultDocQueueProperty.value" id="existingDefaultDocQueueProperty.value">
                             <html:options collection="viewChoices" property="value" labelProperty="label"/>
-                        </html:select>
+                        </select>
                     </div>
                 </td>
             </tr>
@@ -166,7 +166,7 @@
                     <input type="submit" value="<%=bundle.getString(providerbtnSubmit)%>"/>
                 </td>
             </tr>
-        </html:form>
+        </form>
         <%} else {%>
         <tr>
             <td class="MainTableLeftColumn">&nbsp;</td>

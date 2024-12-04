@@ -32,9 +32,9 @@
     </head>
 
     <body>
-    <html:form action="/SurveyManager">
+    <form action="${pageContext.request.contextPath}/SurveyManager.do" method="post">
         <input type="hidden" name="method" value="save"/>
-        <html:hidden property="survey.surveyId"/>
+        <input type="hidden" name="surveyId" id="surveyId"/>
         <h3>Please enter details</h3>
         <br/>
         <table>
@@ -45,6 +45,6 @@
         </table>
         <html:submit value="save"/>
         <button type="button" onclick="window.history.back();">Cancel</button>
-    </html:form>
+    </form>
     </body>
 </html>

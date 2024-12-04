@@ -173,7 +173,7 @@
 <b>Follow Up/Consult:</b>
 <br/>
 
-<html:form action="/eyeform/EyeformPlan.do">
+<form action="${pageContext.request.contextPath}/eyeform/EyeformPlan.do" method="post">
 
     <input type="hidden" name="method" value="save"/>
 
@@ -207,7 +207,7 @@
 
     </td>
     </tr>
-</html:form>
+</form>
 
 
 </body>

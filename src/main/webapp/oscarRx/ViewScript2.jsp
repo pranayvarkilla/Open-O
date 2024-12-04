@@ -26,8 +26,8 @@
 <%@ page
         import="oscar.oscarProvider.data.*, oscar.oscarRx.data.*,oscar.OscarProperties, oscar.oscarClinic.ClinicData, java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -693,14 +693,14 @@
                                     </div>
                                 </td>
 
-                                <td valign=top><html:form action="/oscarRx/clearPending">
-                                    <html:hidden property="action" value=""/>
+                                <td valign=top><form action="${pageContext.request.contextPath}/oscarRx/clearPending.do" method="post">
+                                    <input type="hidden" name="action" id="action" value=""/>
                                     <div class="warning-note" id="faxWarningNote">
                                         <strong>Warning:</strong> faxing is disabled because no pharmacy fax number is
                                         available.</br></br>To enable faxing, close this window and select a pharmacy
                                         with a fax number before trying again.
                                     </div>
-                                </html:form>
+                                </form>
                                     <script type="text/javascript">
                                         function clearPending(action) {
                                             document.forms.RxClearPendingForm.action.value = action;

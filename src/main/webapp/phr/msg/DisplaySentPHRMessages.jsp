@@ -28,8 +28,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.net.URLEncoder" %>
 
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -172,10 +172,10 @@
                                     <table class=messButtonsA cellspacing=0 cellpadding=3>
                                         <tr>
                                             <td class="messengerButtonsA">
-                                                <html:link page="/phr/PhrMessage.do?method=viewMessages"
+                                                <a href="${pageContext.request.contextPath}//phr/PhrMessage.do?method=viewMessages"
                                                            styleClass="messengerButtons">
                                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.btnRefresh"/>
-                                                </html:link>
+                                                </a>
                                             </td>
                                         </tr>
                                     </table>

@@ -21,7 +21,7 @@
         import="java.util.*, java.sql.*, oscar.*, java.text.*, java.lang.*,java.net.*, oscar.appt.*, org.oscarehr.common.dao.AppointmentTypeDao, org.oscarehr.common.model.AppointmentType, org.oscarehr.util.SpringUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ include file="../admin/dbconnection.jsp" %>
 <%--RJ 07/07/2006 --%>
@@ -146,7 +146,7 @@
                 <tr>
                     <td colspan=7>
                         <center>
-                            <html:form action="appointment/appointmentTypeAction">
+                            <form action="${pageContext.request.contextPath}/appointment/appointmentTypeAction.do" method="post">
                                 <input TYPE="hidden" NAME="oper" VALUE="save"/>
                                 <input TYPE="hidden" NAME="id"
                                        VALUE="<c:out value="${AppointmentTypeForm.id}"/>"/>
@@ -232,7 +232,7 @@
                                         </TD>
                                     </tr>
                                 </table>
-                            </html:form>
+                            </form>
                         </center>
                     </td>
                 </tr>

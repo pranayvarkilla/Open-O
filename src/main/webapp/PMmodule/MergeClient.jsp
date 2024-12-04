@@ -168,7 +168,7 @@
     }
 </script>
 <% String a = "1"; %>
-<html:form action="/PMmodule/MergeClient.do">
+<form action="${pageContext.request.contextPath}/PMmodule/MergeClient.do" method="post">
     <input type="hidden" name="method"/>
     <input type="hidden" name="mergeAction"/>
     <table width="100%" height="100%" cellpadding="1px" cellspacing="1px">
@@ -207,9 +207,9 @@
                     </c:otherwise>
                 </c:choose>
             </security:oscarSec>
-            <html:link action="/PMmodule/Admin/SysAdmin.do" style="color:Navy;text-decoration:none;">
+            <a href="${pageContext.request.contextPath}/PMmodule/Admin/SysAdmin.do" style="color:Navy;text-decoration:none;">
                 <img border=0 src=
-                        <html:rewrite page="/images/close16.png"/>/>&nbsp;Close&nbsp;&nbsp;</html:link>
+                        <html:rewrite page="/images/close16.png"/>/>&nbsp;Close&nbsp;&nbsp;</a>
         </td>
     </tr>
     <tr height="18px">
@@ -254,11 +254,11 @@
                         </tr>
                         <tr>
                             <th align="right" width="20%"><fmt:message key="ClientSearch.active" bundle="${pmm}"/></th>
-                            <td align="left" width="80%"><html:select property="criteria.active">
-                                <html:option value="">Any</html:option>
-                                <html:option value="1">Yes</html:option>
-                                <html:option value="0">No</html:option>
-                            </html:select></td>
+                            <td align="left" width="80%"><select name="criteria.active" id="criteria.active">
+                                <option value="">Any</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select></td>
                         </tr>
                         <tr>
                             <th align="right" width="20%"><fmt:message key="ClientSearch.gender" bundle="${pmm}"/></th>
@@ -274,24 +274,24 @@
                         <tr>
                             <th align="right" width="20%"><fmt:message key="ClientSearch.assignedTo" bundle="${pmm}"/></th>
                             <th align="left" width="80%">
-                                <html:select property="criteria.assignedToProviderNo">
-                                    <html:option value="">
-                                    </html:option>
+                                <select name="criteria.assignedToProviderNo" id="criteria.assignedToProviderNo">
+                                    <option value="">
+                                    </option>
                                     <html:options collection="allProviders" property="providerNo"
                                                   labelProperty="fullName"/>
-                                </html:select>
+                                </select>
                             </th>
                         </tr>
                         <tr>
                             <th align="right" width="20%"><fmt:message key="ClientSearch.program" bundle="${pmm}"/></th>
                             <th align="left" width="80%">
-                                <html:select property="criteria.bedProgramId">
-                                    <html:option value="">
-                                    </html:option>
-                                    <html:option value="MyP">My Programs
-                                    </html:option>
-                                    <html:options collection="allBedPrograms" property="id" labelProperty="name"/>
-                                </html:select>
+                                <select name="criteria.bedProgramId" id="criteria.bedProgramId">
+                                    <option value="">
+                                    </option>
+                                    <option value="MyP">My Programs
+                                    </option>
+                                    <options collection="allBedPrograms" property="id" labelProperty="name"/>
+                                </select>
                             </th>
                         </tr>
                     </table>
@@ -396,4 +396,4 @@
         </tr>
         </table>
     </c:if>
-</html:form>
+</form>

@@ -53,7 +53,7 @@
 <%@ page import="org.oscarehr.common.model.UserProperty" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ include file="/common/webAppContextAndSuperMgr.jsp" %>
 
 <html>

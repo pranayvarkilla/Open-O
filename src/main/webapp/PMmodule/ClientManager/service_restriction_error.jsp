@@ -32,7 +32,7 @@
 <%@page import="org.oscarehr.common.model.Demographic" %>
 <%@page import="org.oscarehr.common.model.DemographicExt" %>
 
-<html:form action="/PMmodule/ClientManager.do">
+<form action="${pageContext.request.contextPath}/PMmodule/ClientManager.do" method="post">
 
     <%@ include file="/common/messages.jsp" %>
 
@@ -94,4 +94,4 @@
         </tr>
 
     </table>
-</html:form>
+</form>

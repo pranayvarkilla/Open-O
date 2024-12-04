@@ -7,7 +7,6 @@
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="org.oscarehr.util.MiscUtils" %>
 <%@ taglib prefix="security" uri="/oscarSecuritytag" %>
-<%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean-el" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 

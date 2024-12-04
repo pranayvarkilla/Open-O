@@ -34,7 +34,8 @@
 <%@ page
         import="java.util.*,oscar.util.*, oscar.oscarWaitingList.bean.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%
     String wlid = (String) request.getAttribute("WLId");
     if (wlid == null) {
@@ -157,8 +158,7 @@
     <body class="BodyStyle" vlink="#0000FF"
           onload='window.resizeTo(900,400)'>
     <!--  -->
-    <html:form
-            action="/oscarWaitingList/SetupDisplayWaitingList.do?update=Y">
+    <form action="${pageContext.request.contextPath}/oscarWaitingList/SetupDisplayWaitingList.do?update=Y" method="post">
 
         <input type="hidden" name="demographicNumSelected" value=""/>
         <input type="hidden" name="wlNoteSelected" value=""/>
@@ -181,7 +181,7 @@
 
                             <td align="left">Please Select a Waiting List:</td>
                             <td>
-                                <html:select property="selectedWL">
+                                <select name="selectedWL" id="selectedWL">
                                 <option value=""></option>
                                         <%
                                 	String providerNo = (String)session.getAttribute("user");
@@ -201,7 +201,7 @@
                                 <option value="<%=id%>" <%=selected%>><%=name%>
                                 </option>
                                         <%}%>
-                                </html:select> <INPUT type="button" onClick="goToPage()" value="Generate Report">
+                                </select> <INPUT type="button" onClick="goToPage()" value="Generate Report">
                                         <%
         String userRole = "";
         if(session.getAttribute("userrole") != null){
@@ -243,7 +243,7 @@
                                         <td align="left" class="Header" width="50"></td>
                                     </tr>
                                     <c:forEach var="waitingListBean" items="${waitingList.waitingList}" varStatus="ctr">
-                                        <html:hidden name="waitingListBean" property="demographicNo" indexed="true"/>
+                                        <input type="hidden" name="demographicNo" id="demographicNo" indexed="true"/>
 
                                         <c:set var="styleClass" value="${(ctr.index % 2 == 0) ? 'data5' : 'data2'}"/>
 
@@ -262,7 +262,7 @@
                                                    onClick="updateWaitingList('${waitingListBean.waitingListID}', ${ctr.index});"/>
                                         </td>
                                         <td class="${styleClass}">
-                                            <html:textarea cols="45" name="waitingListBean" property="note" indexed="true" styleClass="data3" onblur="setParameters(this);"/>
+                                            <textarea cols="45" name="note" indexed="true" styleClass="data3" onblur="setParameters(this);"></textarea>
                                         </td>
                                         <td class="${styleClass}">
                                             <html:text name="waitingListBean" property="onListSince" indexed="true" styleClass="data3" onblur="setParameters(this);" onchange="setParameters(this);"/>
@@ -279,9 +279,9 @@
                                             </script>
                                         </td>
                                         <td class="${styleClass}">
-                                            <html:select property="selectedProvider" styleClass="data3">
+                                            <select name="selectedProvider" class="data3">
                                                 <html:options collection="allProviders" property="providerID" labelProperty="providerName"/>
-                                            </html:select>
+                                            </select>
                                             <a href="#" onClick="popupPage(${ctr.index}, '${waitingListBean.patientName}', '${waitingListBean.demographicNo}', '${today}', 400, 780, '../schedule/scheduleflipview.jsp?originalpage=../oscarWaitingList/DisplayWaitingList.jsp'); return false;">
                                                 make_appt
                                             </a>
@@ -312,7 +312,7 @@
             <td class="MainTableBottomRowRightColumn"></td>
         </tr>
         </table>
-    </html:form>
+    </form>
 
     </body>
 </html>

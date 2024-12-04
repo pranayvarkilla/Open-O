@@ -43,8 +43,8 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 <%
     String formClass = "Rourke2006";
@@ -334,7 +334,7 @@
          onmouseout="overdiv=0; setTimeout('hideLayer()',1000)">pop up
         description layer
     </div>
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
 
         <input type="hidden" name="demographic_no"
                value="<%= props.getProperty("demographic_no", "0") %>"/>
@@ -1539,7 +1539,7 @@
         <p style="font-size: 8pt;"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.formRourke2006.footer"/><br/>
         </p>
 
-    </html:form>
+    </form>
     <form id="frmPopUp" method="get" action=""></form>
     <form id="graph" method="post" action=""></form>
     </body>

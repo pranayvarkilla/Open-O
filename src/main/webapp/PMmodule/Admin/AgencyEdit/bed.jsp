@@ -27,7 +27,7 @@
 <%--<%@ include file="/taglibs.jsp"%>--%>
 
 <%@ page import="org.oscarehr.PMmodule.web.formbean.*" %>
-<html:form action="/PMmodule/AgencyManager">
+<form action="${pageContext.request.contextPath}/PMmodule/AgencyManager.do" method="post">
     <table width="100%" summary="Create and edit rooms, and beds">
         <tr>
             <td width="80%">
@@ -199,4 +199,4 @@
     </table>
     <%@include file="/common/messages.jsp" %>
 
-</html:form>
+</form>

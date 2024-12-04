@@ -31,9 +31,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
 
 <html>
     <head>
@@ -68,7 +68,7 @@
         <div class="row-fluid">
             <h2>Update Upload</h2>
 
-            <html:form action="/mcedt/update" method="post" styleId="form"
+            <form action="${pageContext.request.contextPath}/mcedt/update" method="post" styleId="form"
                        enctype="multipart/form-data">
 
                 <html:errors/>
@@ -87,7 +87,7 @@
 
             <div class="form-group">
                 <label>File Upload</label>
-                <html:file property="content"/>
+                <input type="file" name="content" id="content"/>
             </div>
 
             <div class="control-group" style="margin-top: 1em;">
@@ -96,6 +96,6 @@
                     <button class="btn" onclick="return cancel(this);">Cancel</button>
                 </div>
             </div>
-            </html:form>
+            </form>
     </body>
 </html>

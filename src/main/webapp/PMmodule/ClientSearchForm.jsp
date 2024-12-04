@@ -62,7 +62,7 @@
         alert('not yet implemented... will show term definitions');
     }
 </script>
-<html:form action="/PMmodule/ClientSearch2">
+<form action="${pageContext.request.contextPath}/PMmodule/ClientSearch2.do" method="post">
     <input type="hidden" name="method" value="search"/>
 
     <div id="projecthome" class="app">
@@ -123,11 +123,11 @@
                         <tr>
                             <th>Bed Program</th>
                               <td>
-                                <html:select property="criteria.bedProgramId">
-                                    <html:option value="">
+                                <select name="criteria.bedProgramId" id="criteria.bedProgramId">
+                                    <option value="">
                                     </html:option>
                                       <html:options collection="allBedPrograms" property="id" labelProperty="name" />
-                                </html:select>
+                                </select>
                               </td>
                         </tr>
                          --%>
@@ -143,11 +143,11 @@
                 </caisi:isModuleLoad>
                 <tr>
                     <th>Status</th>
-                    <td><html:select property="criteria.active" value="">
-                        <html:option value="">ALL</html:option>
-                        <html:option value="1">Admitted</html:option>
-                        <html:option value="0">Discharged</html:option>
-                    </html:select></td>
+                    <td><select name="active" value="">
+                        <option value="">ALL</option>
+                        <option value="1">Admitted</option>
+                        <option value="0">Discharged</option>
+                    </select></td>
                 </tr>
                 <tr>
                     <th>Gender</th>
@@ -170,7 +170,7 @@
             </table>
         </div>
     </div>
-</html:form>
+</form>
 <br/>
 <c:if test="${requestScope.clients != null}">
     <form method="post" name="mergeform" action="../admin/MergeRecords.do">

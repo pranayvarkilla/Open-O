@@ -108,7 +108,7 @@
     <!-- End of Assign Room -------------------------------------------------------------->
     <tr>
         <th width="20%">Assign Bed</th>
-        <td><html:select property="bedDemographic.bedId">
+        <td><select name="bedDemographic.bedId" id="bedDemographic.bedId">
             <c:choose>
                 <c:when test="${!isAssignedBed}">
                     <option value="0" selected="selected"><c:out value="N/A"/>
@@ -136,11 +136,11 @@
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
-        </html:select></td>
+        </select></td>
     </tr>
     <tr>
         <th width="20%">Status</th>
-        <td><html:select property="bedDemographic.bedDemographicStatusId">
+        <td><select name="bedDemographic.bedDemographicStatusId" id="bedDemographic.bedDemographicStatusId">
             <c:forEach var="bedDemographicStatus"
                        items="${clientManagerForm.map.bedDemographicStatuses}">
                 <c:choose>
@@ -156,7 +156,7 @@
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
-        </html:select></td>
+        </select></td>
     </tr>
     <tr>
         <th width="20%">Late Pass</th>

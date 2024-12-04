@@ -50,7 +50,7 @@
 <%@page
         import="java.util.*,oscar.oscarDemographic.data.*,oscar.oscarPrevention.*,oscar.oscarProvider.data.*,oscar.util.*,oscar.oscarReport.data.*,oscar.oscarPrevention.pageUtil.*,oscar.oscarDemographic.pageUtil.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
@@ -238,15 +238,15 @@
 
         <div class="span4">
 
-            <html:form action="/demographic/DemographicExport" method="get" onsubmit="return checkValidOptions();">
+            <form action="${pageContext.request.contextPath}/demographic/DemographicExport.do" method="get" onsubmit="return checkValidOptions();">
 
                 <% if (demographicNo != null) { %>
-                <html:hidden property="demographicNo" value="<%=demographicNo%>"/>
+                <input type="hidden" name="demographicNo" id="demographicNo" value="<%=demographicNo%>"/>
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.exportingdemographicno"/><%=demographicNo%>
                 <%} else {%>
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.patientset"/><br>
-                <html:select style="width: 189px" property="patientSet" styleId="patientSet">
-                    <html:option value="-1"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.selectset"/></html:option>
+                <select style="width: 189px" name="patientSet" id="patientSet">
+                    <option value="-1"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.selectset"/></option>
                     <%
                         /*			    for (int i =0 ; i < queryArray.size(); i++){
                         RptSearchData.SearchCriteria sc = (RptSearchData.SearchCriteria) queryArray.get(i);
@@ -256,16 +256,16 @@
                         for (int i = 0; i < sets.size(); i++) {
                             String setName = sets.get(i);
                     %>
-                    <html:option value="<%=setName%>"><%=setName%>
-                    </html:option>
+                    <option value="<%=setName%>"><%=setName%>
+                    </option>
                     <%}%>
-                </html:select>
+                </select>
 
                 <br>
 
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.providers"/><br>
-                <html:select style="width: 189px" property="providerNo" styleId="providerNo">
-                    <html:option value="-1"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.selectProvider"/></html:option>
+                <select style="width: 189px" name="providerNo" id="providerNo">
+                    <option value="-1"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.selectProvider"/></option>
                     <%
                         ProviderDao providerDao = SpringUtils.getBean(ProviderDao.class);
                         List<Provider> providers = providerDao.getActiveProviders();
@@ -277,10 +277,10 @@
                         for (int i = 0; i < providers.size(); i++) {
                             Provider p = providers.get(i);
                     %>
-                    <html:option value="<%=p.getProviderNo()%>"><%=p.getFormattedName()%>
-                    </html:option>
+                    <option value="<%=p.getProviderNo()%>"><%=p.getFormattedName()%>
+                    </option>
                     <%}%>
-                </html:select>
+                </select>
 
                 <%}%>
 
@@ -289,11 +289,11 @@
 
 
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.exporttemplate"/><br>
-                <html:select style="width: 189px" property="template">
-                    <html:option
-                            value="<%=(new Integer(DemographicExportAction4.CMS4)).toString() %>">EMR DM 5.0</html:option>
-                    <html:option value="<%=(new Integer(DemographicExportAction4.E2E)).toString() %>">E2E</html:option>
-                </html:select>
+                <select style="width: 189px" name="template">
+                    <option
+                            value="<%=(new Integer(DemographicExportAction42Action.CMS4)).toString() %>">EMR DM 5.0</option>
+                    <option value="<%=(new Integer(DemographicExportAction42Action.E2E)).toString() %>">E2E</option>
+                </select>
 
                 <br>
 
@@ -318,7 +318,7 @@
                 <html:checkbox property="exAlertsAndSpecialNeeds"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.alertsandspecialneeds"/></html:checkbox>
 
                 <br>
-                <html:hidden property="pgpReady" value="<%=pgp_ready%>"/>
+                <input type="hidden" name="pgpReady" id="pgpReady" value="<%=pgp_ready%>"/>
 
                 <% boolean pgpReady = pgp_ready.equals("Yes") ? true : false;
 //    pgpReady = true; //To be removed after CMS4
@@ -351,7 +351,7 @@
                 </div>
                 <% } %>
 
-            </html:form>
+            </form>
 
         </div><!--span4-->
 

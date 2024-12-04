@@ -47,33 +47,33 @@
 Follow Up/Consult
 <br/><br/><br/>
 
-<html:form action="/eyeform/FollowUp.do">
+<form action="${pageContext.request.contextPath}/eyeform/FollowUp.do" method="post">
 
 
     <input type="hidden" name="method" value="save"/>
 
-    <html:hidden property="followup.demographicNo"/>
+    <input type="hidden" name="demographicNo" id="demographicNo"/>
 
-    <html:hidden property="followup.appointmentNo"/>
+    <input type="hidden" name="appointmentNo" id="appointmentNo"/>
 
 
     <table border="0">
         <tbody>
         <tr>
             <td width="25%">
-                <html:select property="followup.type">
-                    <html:option value="followup">Follow up</html:option>
-                    <html:option value="consult">Consult</html:option>
-                </html:select>
+                <select name="followup.type">
+                    <option value="followup">Follow up</option>
+                    <option value="consult">Consult</option>
+                </select>
             </td>
             <td width="25%">
                 Doctor:
-                <html:select property="followup.followupProvider">
+                <select name="followupProvider">
                     <c:forEach var="item" items="${providers}">
                         <option value="<c:out value="${item.providerNo}"/>"><c:out
                                 value="${item.formattedName}"/></option>
                     </c:forEach>
-                </html:select>
+                </select>
             </td>
         </tr>
         <tr>
@@ -82,24 +82,24 @@ Follow Up/Consult
 
                 <html:text property="followup.timespan" size="4" styleId="width: 25px;" styleClass="special"/>
 
-                <html:select property="followup.timeframe" styleId="width: 50px;" styleClass="special">
-                    <html:option value="days">days</html:option>
-                    <html:option value="weeks">weeks</html:option>
-                    <html:option value="months">months</html:option>
-                </html:select>
+                <select property="followup.timeframe" styleId="width: 50px;" styleClass="special">
+                    <option value="days">days</option>
+                    <option value="weeks">weeks</option>
+                    <option value="months">months</option>
+                </select>
             </td>
         </tr>
         <tr>
             <td>
-                <html:select property="followup.urgency" styleId="width: 50px;" styleClass="special">
-                    <html:option value="routine">routine</html:option>
-                    <html:option value="asap">ASAP</html:option>
-                </html:select>
+                <select name="urgency" styleId="width: 50px;" style="special">
+                    <option value="routine">routine</option>
+                    <option value="asap">ASAP</option>
+                </select>
             </td>
         </tr>
         <tr>
             <td>
-                Comment:<html:textarea rows="5" cols="40" property="followup.comment"></html:textarea>
+                Comment:<textarea rows="5" cols="40" name="comment" id="comment"></textarea>
             </td>
         </tr>
         <tr>
@@ -109,7 +109,7 @@ Follow Up/Consult
     </table>
 
 
-</html:form>
+</form>
 
 </body>
 </html>

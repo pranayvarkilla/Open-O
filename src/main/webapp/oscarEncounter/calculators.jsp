@@ -44,7 +44,7 @@
 <%@ page
         import="oscar.oscarDemographic.data.*, org.oscarehr.common.model.Demographic" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <%
     String sex = request.getParameter("sex");

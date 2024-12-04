@@ -25,7 +25,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName2$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -62,7 +62,7 @@
     %>
     <body onLoad="initialize()">
 
-    <html:form action="/form/SaveHSFORegistrationForm2.do" onsubmit="return checkform(false)" styleId="form1">
+    <form action="${pageContext.request.contextPath}/form/SaveHSFORegistrationForm2.do" method="post" onsubmit="return checkform(false)" styleId="form1">
         <DIV id="page_1">
 
             <DIV id="id_1">
@@ -2038,7 +2038,7 @@
         <!--end of page_1 -->
 
 
-    </html:form>
+    </form>
 
     </body>
 </html>

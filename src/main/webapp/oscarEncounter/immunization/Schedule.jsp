@@ -86,8 +86,8 @@
 
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 <html>
 <head>
@@ -211,7 +211,7 @@
 
         </td>
         <td class="MainTableRightColumn">
-            <html:form action="/oscarEncounter/immunization/saveSchedule">
+            <form action="${pageContext.request.contextPath}/oscarEncounter/immunization/saveSchedule.do" method="post">
                 <input type="hidden" name="demographic_no" value="<%=demoNo%>">
                 <table name="encounterTableRightCol" width="100%">
                     <tr>
@@ -449,7 +449,7 @@
                     </tr>
                     <!----End new rows here-->
                 </table>
-            </html:form></td>
+            </form></td>
     </tr>
     <tr>
         <td class="MainTableBottomRowLeftColumn"></td>

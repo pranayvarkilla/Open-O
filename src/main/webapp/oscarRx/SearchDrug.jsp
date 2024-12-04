@@ -24,8 +24,8 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -568,13 +568,13 @@
                                                 }
                                             }
                                         </script>
-                                        <html:form action="/oscarRx/rePrescribe">
-                                            <html:hidden property="drugList"/>
+                                        <form action="${pageContext.request.contextPath}/oscarRx/rePrescribe.do" method="post">
+                                            <input type="hidden" name="drugList" id="drugList"/>
                                             <input type="hidden" name="method">
-                                        </html:form> <br>
-                                        <html:form action="/oscarRx/deleteRx">
-                                            <html:hidden property="drugList"/>
-                                        </html:form></td>
+                                        </form> <br>
+                                        <form action="${pageContext.request.contextPath}/oscarRx/deleteRx.do" method="post">
+                                            <input type="hidden" name="drugList" id="drugList"/>
+                                        </form></td>
                                 </tr>
                             </table>
                         </td>
@@ -586,9 +586,9 @@
                     </tr>
 
                     <tr>
-                        <td><html:form action="/oscarRx/searchDrug" focus="searchString"
-                                       onsubmit="return processData();">
-                            <html:hidden property="demographicNo"
+                        <td><form action="${pageContext.request.contextPath}/oscarRx/searchDrug.do" focus="searchString"
+                                       onsubmit="return processData();" method="post">
+                            <input type="hidden" name="demographicNo" id="demographicNo"
                                          value="<%=new Integer(patient.getDemographicNo()).toString()%>"/>
                             <table>
                                 <tr valign="center">
@@ -616,7 +616,7 @@
                                         <%
                                             }
                                         %>
-                                        <html:hidden property="searchRoute"/>
+                                        <input type="hidden" name="searchRoute" id="searchRoute"/>
                                     </oscar:oscarPropertiesCheck></td>
                                 </tr>
                                 <tr>
@@ -629,7 +629,7 @@
                                                value="<fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.msgCustomDrug"/>"/></td>
                                 </tr>
                             </table>
-                        </html:form></td>
+                        </form></td>
                     </tr>
 
                     <c:if test="${bean.stashSize != 0}">
@@ -644,10 +644,10 @@
                                     }
 
                                 </script>
-                                <html:form action="/oscarRx/stash">
-                                    <html:hidden property="action"/>
-                                    <html:hidden property="stashId"/>
-                                </html:form>
+                                <form action="${pageContext.request.contextPath}/oscarRx/stash.do" method="post">
+                                    <input type="hidden" name="action" id="action"/>
+                                    <input type="hidden" name="stashId" id="stashId"/>
+                                </form>
 
                                 <div class="DivContentSectionHead"><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.section5Title"/></div>
                             </td>

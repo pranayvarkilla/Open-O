@@ -14,8 +14,8 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="oscar.form.study.*" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
@@ -223,7 +223,7 @@
     <body bgproperties="fixed" class="Type2DiabetesForm" bgcolor="#EEEEFF"
           onLoad="javascript:window.focus()" topmargin="0" leftmargin="0"
           rightmargin="0">
-    <html:form action="/form/study/studyname">
+    <form action="${pageContext.request.contextPath}/form/study/studyname.do" method="post">
 
 
         <input type="hidden" name="demographic_no"
@@ -853,6 +853,6 @@
             </tr>
         </table>
 
-    </html:form>
+    </form>
     </body>
 </html>

@@ -51,9 +51,6 @@
 <%@ page import="org.oscarehr.common.dao.UserPropertyDAO" %>
 <%@ page import="org.oscarehr.common.model.UserProperty" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-
 <%
     String formClass = "BCAR2020";
     Integer pageNo = 6;
@@ -279,7 +276,7 @@
     <body bgproperties="fixed" topmargin="0" leftmargin="1" rightmargin="1">
     <div id="maincontent">
         <div id="content_bar" class="innertube">
-            <html:form action="/form/BCAR2020">
+            <form action="${pageContext.request.contextPath}/form/BCAR2020.do" method="post">
                 <input type="hidden" id="demographicNo" name="demographicNo" value="<%=demoNo%>"/>
                 <input type="hidden" id="formId" name="formId" value="<%=formId%>"/>
                 <input type="hidden" name="provider_no" value=<%=Encode.forHtmlAttribute(providerNo)%>/>
@@ -559,7 +556,7 @@
                         </td>
                     </tr>
                 </table>
-            </html:form>
+            </form>
         </div>
     </div>
     <div id="print-dialog" title="Print BCAR2020 Record">

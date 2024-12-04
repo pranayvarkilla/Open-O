@@ -81,8 +81,8 @@
 
 </script>
 
-<html:hidden property="switchBed1"/>
-<html:hidden property="switchBed2"/>
+<input type="hidden" name="switchBed1" id="switchBed1"/>
+<input type="hidden" name="switchBed2" id="switchBed2"/>
 
 <table width="100%" summary="View program reserved beds">
     <tr>

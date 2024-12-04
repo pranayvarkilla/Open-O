@@ -29,8 +29,8 @@
 %>
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
 <html>
     <head>
@@ -40,7 +40,7 @@
 
     <body class="BodyStyle" vlink="#0000FF">
     <html:errors/>
-    <html:form action="/oscarEncounter/oscarMeasurements/DefineNewMeasurementGroup.do" onsubmit="return validateForm()">
+    <form action="${pageContext.request.contextPath}/oscarEncounter/oscarMeasurements/DefineNewMeasurementGroup.do" onsubmit="return validateForm()" method="post">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
                 <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgMeasurements"/></td>
@@ -73,11 +73,11 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><html:select property="styleSheet" style="width:250">
-                                            <html:option value=""></html:option>
+                                        <td><select name="styleSheet" style="width:250">
+                                            <option value=""></option>
                                             <html:options collection="allStyleSheets" property="cssId"
                                                           labelProperty="styleSheetName"/>
-                                        </html:select></td>
+                                        </select></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -104,7 +104,7 @@
                 <td class="MainTableBottomRowRightColumn"></td>
             </tr>
         </table>
-    </html:form>
+    </form>
 
     <script type="text/javascript">
         function validateForm() {

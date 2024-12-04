@@ -27,8 +27,8 @@
 <%@ page import="java.util.ResourceBundle" %>
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -114,9 +114,9 @@
                     <tr>
                         <td>
 
-                            <html:form action="/oscarEncounter/AddDepartment">
+                            <form action="${pageContext.request.contextPath}/oscarEncounter/AddDepartment.do" method="post">
                             <table>
-                                    <html:hidden name="EctConAddDepartmentForm" property="id"/>
+                                    <input type="hidden" name="EctConAddDepartmentForm" id="EctConAddDepartmentForm" property="id"/>
                                 <tr>
                                     <td>Name</td>
                                     <td><html:text name="EctConAddDepartmentForm" property="name"/></td>
@@ -125,8 +125,7 @@
 
                                 <td>Annotation
                                 </td>
-                                <td colspan="4"><html:textarea name="EctConAddDepartmentForm" property="annotation"
-                                                               cols="30" rows="3"/>
+                                <td colspan="4"><textarea name="annotation" cols="30" rows="3"></textarea>
                                 </td>
                     </tr>
 
@@ -137,7 +136,7 @@
                         </td>
                     </tr>
                 </table>
-                </html:form>
+                </form>
             </td>
         </tr>
         <!----End new rows here-->

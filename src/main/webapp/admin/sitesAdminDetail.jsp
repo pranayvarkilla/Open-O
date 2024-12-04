@@ -116,19 +116,19 @@
                         <tr>
                             <td>Province:</td>
                             <td><nested:select property="site.province">
-                                <html:option value="AB">AB-Alberta</html:option>
-                                <html:option value="BC">BC-British Columbia</html:option>
-                                <html:option value="MB">MB-Manitoba</html:option>
-                                <html:option value="NB">NB-New Brunswick</html:option>
-                                <html:option value="NL">NL-Newfoundland & Labrador</html:option>
-                                <html:option value="NT">NT-Northwest Territory</html:option>
-                                <html:option value="NS">NS-Nova Scotia</html:option>
-                                <html:option value="NU">NU-Nunavut</html:option>
-                                <html:option value="ON">ON-Ontario</html:option>
-                                <html:option value="PE">PE-Prince Edward Island</html:option>
-                                <html:option value="QC">QC-Quebec</html:option>
-                                <html:option value="SK">SK-Saskatchewan</html:option>
-                                <html:option value="YT">YT-Yukon</html:option>
+                                <option value="AB">AB-Alberta</option>
+                                <option value="BC">BC-British Columbia</option>
+                                <option value="MB">MB-Manitoba</option>
+                                <option value="NB">NB-New Brunswick</option>
+                                <option value="NL">NL-Newfoundland & Labrador</option>
+                                <option value="NT">NT-Northwest Territory</option>
+                                <option value="NS">NS-Nova Scotia</option>
+                                <option value="NU">NU-Nunavut</option>
+                                <option value="ON">ON-Ontario</option>
+                                <option value="PE">PE-Prince Edward Island</option>
+                                <option value="QC">QC-Quebec</option>
+                                <option value="SK">SK-Saskatchewan</option>
+                                <option value="YT">YT-Yukon</option>
                             </nested:select></td>
                         </tr>
                         <tr>

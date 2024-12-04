@@ -62,10 +62,10 @@
     <body>
 
     <%@ include file="/survey/messages.jsp" %>
-    <html:form action="/SurveyTest"
+    <form action="/SurveyTest"
                onsubmit="return validateForm(this,document.surveyTestForm.elements['view.tab'].value,true);">
-        <html:hidden property="view.tab"/>
-        <html:hidden property="view.id"/>
+        <input type="hidden" name="tab" id="tab"/>
+        <input type="hidden" name="id" id="id"/>
         <input type="hidden" name="method" value="save"/>
         <h3>Survey</h3>
         <br/>
@@ -135,6 +135,6 @@
             </tr>
         </table>
 
-    </html:form>
+    </form>
     </body>
 </html>

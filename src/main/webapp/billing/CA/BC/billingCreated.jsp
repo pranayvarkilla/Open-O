@@ -45,8 +45,8 @@
         response.sendRedirect(request.getContextPath() + "/logout.jsp");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ page import="oscar.oscarBilling.ca.bc.data.*,oscar.oscarBilling.ca.bc.pageUtil.*" %>
@@ -297,7 +297,7 @@
 <body onLoad="setfocus();showHideLayers('Layer1','','hide')">
 
 <div class="wrapper">
-    <html:form styleClass="form-inline" action="/billing/CA/BC/SaveBilling">
+    <form class="form-inline" action="${pageContext.request.contextPath}/billing/CA/BC/SaveBilling.do" method="post">
 
         <div id="page-header">
             <table id="oscarBillingHeader">
@@ -575,7 +575,7 @@
 
 
         </div>
-    </html:form>
+    </form>
 
 </div>    <!--  end wrapper -->
 </body>

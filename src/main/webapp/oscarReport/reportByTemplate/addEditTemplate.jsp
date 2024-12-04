@@ -31,7 +31,7 @@
 
 <%@ page import="oscar.oscarReport.reportByTemplate.*, java.sql.*, org.apache.commons.lang.StringUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -128,7 +128,7 @@
         </c:choose>
     </c:if>
     <c:if test="${ empty opentext and empty param.opentext }">
-        <!-- <html:form styleClass="form-horizontal" action="/oscarReport/reportByTemplate/uploadTemplates"
+        <!-- <form styleClass="form-horizontal" action="/oscarReport/reportByTemplate/uploadTemplates"
                         enctype="multipart/form-data">
         <div class="row-fluid">
         <div class="well">
@@ -149,9 +149,9 @@
         </div>
         </div>
         </div>
-    </html:form> -->
-        <html:form styleClass="form-horizontal" action="/oscarReport/reportByTemplate/uploadTemplates"
-                   enctype="multipart/form-data" onsubmit="return validateFileUpload()">
+    </form> -->
+        <form class="form-horizontal" action="${pageContext.request.contextPath}/oscarReport/reportByTemplate/uploadTemplates.do"
+                   method="post" enctype="multipart/form-data" onsubmit="return validateFileUpload()">
             <div class="row-fluid">
                 <div class="well">
                     <div class="control-group">
@@ -173,11 +173,11 @@
                     </div>
                 </div>
             </div>
-        </html:form>
+        </form>
     </c:if>
     <c:if test="${ opentext eq '1' or param.opentext eq '1' }">
 
-        <html:form styleClass="form" action="/oscarReport/reportByTemplate/addEditTemplatesAction">
+        <form class="form" action="${pageContext.request.contextPath}/oscarReport/reportByTemplate/addEditTemplatesAction.do" method="post">
             <div class="row-fluid">
                 <div class="well">
                     <textarea id="xmltext" name="xmltext"
@@ -200,7 +200,7 @@
                     </c:if>
                 </div>
             </div>
-        </html:form>
+        </form>
 
     </c:if>
 

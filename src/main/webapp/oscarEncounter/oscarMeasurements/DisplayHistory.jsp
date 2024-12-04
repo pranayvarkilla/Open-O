@@ -29,7 +29,7 @@
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 
@@ -76,7 +76,7 @@
     <body
             onload="window.focus();">
     <html:errors/>
-    <html:form action="/oscarEncounter/oscarMeasurements/DeleteData">
+    <form action="${pageContext.request.contextPath}/oscarEncounter/oscarMeasurements/DeleteData.do" method="post">
 
         <table style="border-width: 2px; width: 100%; border-spacing: 0px; ">
             <c:if test="${not empty messages}">
@@ -242,6 +242,6 @@
         <c:if test="${not empty type}">
             <input type="hidden" name="type" value="${type}">
         </c:if>
-    </html:form>
+    </form>
     </body>
 </html>

@@ -16,8 +16,6 @@
 <%@page import="oscar.OscarProperties" %>
 <%@ page import="oscar.util.*, oscar.form.*, oscar.form.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <!--add for con report-->
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
@@ -406,7 +404,7 @@
 
     <body bgproperties="fixed" topmargin="0" leftmargin="1" rightmargin="1">
 
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
         <input type="hidden" name="c_lastVisited"
                value=<%=props.getProperty("c_lastVisited", "pg1")%>/>
         <input type="hidden" name="demographic_no"
@@ -1940,7 +1938,7 @@
             </tr>
         </table>
 
-    </html:form>
+    </form>
     <% if (bView || (props.getProperty("pg1_lockPage", "") != "")) { %>
     <script type="text/javascript">
         window.onload = function () {

@@ -68,7 +68,7 @@
 </head>
 <body>
 <div class="container-fluid well">
-    <html:form action="/demographic/eRourkeExport.do" method="post">
+    <form action="${pageContext.request.contextPath}/demographic/eRourkeExport.do" method="post">
 
         <h3>Vendor Information</h3>
         <table class="table-condensed">
@@ -130,10 +130,10 @@
                     Extract Type
                 </td>
                 <td>
-                    <html:select property="extractType">
-                        <html:option value="<%=DataExportDao.ROURKE%>"><%=DataExportDao.ROURKE%>
-                        </html:option>
-                    </html:select>
+                    <select name="extractType" id="extractType">
+                        <option value="<%=DataExportDao.ROURKE%>"><%=DataExportDao.ROURKE%>
+                        </option>
+                    </select>
                 </td>
             </tr>
 
@@ -142,19 +142,19 @@
                     Patient Set
                 </td>
                 <td>
-                    <html:select property="patientSet">
-                        <html:option value="-1">--Select Set--</html:option>
+                    <select name="patientSet" id="patientSet">
+                        <option value="-1">--Select Set--</option>
                         <%
                             String setName;
                             for (int idx = 0; idx < setsList.size(); ++idx) {
                                 setName = setsList.get(idx);
                         %>
-                        <html:option value="<%=setName%>"><%=setName%>
-                        </html:option>
+                        <option value="<%=setName%>"><%=setName%>
+                        </option>
                         <%
                             }
                         %>
-                    </html:select>
+                    </select>
                 </td>
             </tr>
 
@@ -194,7 +194,7 @@
                 }
             %>
         </table>
-    </html:form>
+    </form>
 </div>
 </body>
 </html>

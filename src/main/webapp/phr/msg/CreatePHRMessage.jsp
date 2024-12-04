@@ -35,8 +35,6 @@
 <%@page import="org.oscarehr.phr.util.MyOscarServerRelationManager" %>
 <%@page import="org.oscarehr.myoscar_server.ws.MessageTransfer" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="org.w3c.dom.*" %>
 <%@ page
         import="oscar.oscarDemographic.data.*,org.oscarehr.common.model.Demographic,org.oscarehr.common.dao.DemographicDao,org.oscarehr.util.SpringUtils" %>
@@ -189,10 +187,10 @@
                                         <table class=messButtonsA cellspacing=0 cellpadding=3>
                                             <tr>
                                                 <td class="messengerButtonsA">
-                                                    <html:link action="/phr/PhrMessage.do?method=viewMessages"
+                                                    <a href="${pageContext.request.contextPath}/phr/PhrMessage.do?method=viewMessages"
                                                                styleClass="messengerButtons">
                                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnInbox"/>
-                                                    </html:link>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -248,7 +246,7 @@
                                         }
                                     }
                                 %>
-                                <html:form action="/phr/PhrMessage" enctype="multipart/form-data">
+                                <form action="${pageContext.request.contextPath}/phr/PhrMessage.do" method="post" enctype="multipart/form-data">
                                     <tr>
                                         <th align="left" bgcolor="#DDDDFF">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.msgMessage"/>
@@ -356,9 +354,9 @@
                                                                 body = "\n\n\n\n-----------------------\n" + request.getParameter("message");
                                                             }
                                                         %>
-                                                        <html:textarea value="<%=StringEscapeUtils.escapeHtml(body)%>"
-                                                                       name="body" styleId="message" property="body"
-                                                                       cols="60" rows="18"/>
+                                                        <textarea name="body" id="message" cols="60" rows="18">
+                                                            <%=StringEscapeUtils.escapeHtml(body)%>
+                                                        </textarea>
                                                     </td>
 
                                                 </tr>
@@ -422,7 +420,7 @@
                                             %>
                                         </td>
                                     </tr>
-                                </html:form>
+                                </form>
                             </table>
                         </td>
                     </tr>

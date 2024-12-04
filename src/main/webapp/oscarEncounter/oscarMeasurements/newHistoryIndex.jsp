@@ -21,8 +21,8 @@
     if (session.getValue("user") == null) response.sendRedirect("../../logout.jsp");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ page import="oscar.oscarEncounter.pageUtil.*" %>
@@ -61,7 +61,7 @@
     </script>
     <body topmargin="0" leftmargin="0" vlink="#0000FF" onload="window.focus();">
     <html:errors/>
-    <html:form action="/oscarEncounter/oscarMeasurements/DeleteData">
+    <form action="${pageContext.request.contextPath}/oscarEncounter/oscarMeasurements/DeleteData.do" method="post">
         <table>
             <tr>
                 <td>
@@ -144,6 +144,6 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

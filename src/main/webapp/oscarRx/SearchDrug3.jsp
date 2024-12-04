@@ -34,7 +34,7 @@
 <%@page import="org.oscarehr.phr.util.MyOscarUtils" %>
 <%@page import="org.oscarehr.util.LocaleUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="/WEB-INF/indivo-tag.tld" prefix="indivo" %>
@@ -878,15 +878,15 @@
                     <tr><!--put this left-->
                         <td valign="top" align="left">
                             <%if (securityManager.hasWriteAccess("_rx", roleName2$, true)) {%>
-                            <html:form action="/oscarRx/searchDrug" onsubmit="return checkEnterSendRx();"
-                                       style="display: inline; margin-bottom:0;" styleId="drugForm">
+                            <form action="${pageContext.request.contextPath}/oscarRx/searchDrug.do" onsubmit="return checkEnterSendRx();"
+                                       style="display: inline; margin-bottom:0;" styleId="drugForm" method="post">
                                 <div id="interactingDrugErrorMsg" style="display:none"></div>
                                 <div id="rxText" style="float:left;"></div>
                                 <br style="clear:left;">
                                 <input type="hidden" id="deleteOnCloseRxBox" value="false">
                                 <input type="hidden" id="rxPharmacyId" name="rxPharmacyId" value=""/>
 
-                                <html:hidden property="demographicNo"
+                                <input type="hidden" name="demographicNo" id="demographicNo"
                                              value="<%=new Integer(patient.getDemographicNo()).toString()%>"/>
                                 <table border="0">
                                     <tr valign="top">
@@ -957,7 +957,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                            </html:form>
+                            </form>
                             <div id="previewForm" style="display:none;"></div>
                             <%} %>
                         </td>
@@ -1161,13 +1161,13 @@
 
                                                         <div id="drugProfile"></div>
 
-                                                        <html:form action="/oscarRx/rePrescribe">
-                                                            <html:hidden property="drugList"/>
+                                                        <form action="${pageContext.request.contextPath}/oscarRx/rePrescribe.do" method="post">
+                                                            <input type="hidden" name="drugList" id="drugList"/>
                                                             <input type="hidden" name="method">
-                                                        </html:form> <br>
-                                                        <html:form action="/oscarRx/deleteRx">
-                                                            <html:hidden property="drugList"/>
-                                                        </html:form></td>
+                                                        </form> <br>
+                                                        <form action="${pageContext.request.contextPath}/oscarRx/deleteRx.do" method="post">
+                                                            <input type="hidden" name="drugList" id="drugList"/>
+                                                        </form></td>
 
                                                 </tr>
                                             </table>

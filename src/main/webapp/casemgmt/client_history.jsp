@@ -44,7 +44,7 @@
 <%@ page import="org.oscarehr.casemgmt.web.formbeans.*" %>
 <%@ page import="oscar.OscarProperties" %>
 
-<html:hidden property="cpp.reminders"/>
+<input type="hidden" name="reminders" id="reminders"/>
 <table width="100%" border="0" cellpadding="0" cellspacing="1"
        bgcolor="#C0C0C0">
     <%if (!OscarProperties.getInstance().isTorontoRFQ()) { %>
@@ -77,10 +77,8 @@
         <td>Family History</td>
     </tr>
     <tr>
-        <td bgcolor="white"><html:textarea property="cpp.socialHistory"
-                                           rows="5" cols="45"/></td>
-        <td bgcolor="white"><html:textarea property="cpp.familyHistory"
-                                           rows="5" cols="45"/></td>
+        <td bgcolor="white"><textarea name="socialHistory" rows="5" cols="45"></textarea></td>
+        <td bgcolor="white"><textarea name="familyHistory" rows="5" cols="45"></textarea></td>
     </tr>
 
     <tr class="title">
@@ -88,18 +86,18 @@
         <td>Past Medications</td>
     </tr>
     <tr>
-        <td bgcolor="white"><html:textarea property="cpp.medicalHistory"
-                                           rows="5" cols="45"/></td>
-        <td bgcolor="white"><html:textarea property="cpp.pastMedications"
-                                           rows="5" cols="45"/></td>
+        <td bgcolor="white"><textarea name="medicalHistory"
+                                      rows="5" cols="45"></textarea></td>
+        <td bgcolor="white"><textarea name="pastMedications"
+                                      rows="5" cols="45"></textarea></td>
     </tr>
 
     <tr class="title">
         <td colspan="2">Other Support Systems</td>
     </tr>
     <tr>
-        <td colspan="2" bgcolor="white"><html:textarea
-                property="cpp.otherSupportSystems" rows="2" cols="95"/></td>
+        <td colspan="2" bgcolor="white"><textarea
+                name="otherSupportSystems" rows="2" cols="95"></textarea></td>
     </tr>
 </table>
 <html:submit value="Save"

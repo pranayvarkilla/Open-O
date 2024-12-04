@@ -35,7 +35,7 @@
 
 <%@ page import="oscar.oscarDemographic.data.*,java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
 
@@ -117,8 +117,8 @@
             <div>
                 2. Browse & find file:
                 <% if (warnings == null) { %>
-                <html:form
-                        action="/billing/CA/ON/benefitScheduleUpload" method="POST"
+                <form
+                        action="${pageContext.request.contextPath}/billing/CA/ON/benefitScheduleUpload.do" method="POST"
                         enctype="multipart/form-data" onsubmit="return checkForm();">
                     <input type="file" name="importFile" value="/root/apr05sob.001">
                     <input class="btn btn-primary" type="submit" name="Submit" value="Import">
@@ -143,7 +143,7 @@
                                                                                       style="margin-left:8px;"
                                                                                       tabindex="8"/></span>
                     </div>
-                </html:form>
+                </form>
                 <% } else { %>
                 <a href="ScheduleOfBenefitsUpload.jsp">Try again</a>
                 <%}%>
@@ -169,8 +169,7 @@
             <div>
                 4. Click "Update" checkbox to select All<br>
 
-                <html:form
-                        action="/billing/CA/ON/benefitScheduleChange" method="POST"
+                <form action="${pageContext.request.contextPath}/billing/CA/ON/benefitScheduleChange.do" method="POST"
                         styleId="sbForm">
                     <table class="table table-striped  table-condensed">
                         <tr>
@@ -215,7 +214,7 @@
                         <%}%>
                     </table>
                     <input class="btn btn-primary" type="submit" value="Update Billing Code Prices">
-                </html:form>
+                </form>
 
                 5. Click "Update Billing Code Prices"
             </div><!--#4-->

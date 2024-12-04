@@ -41,7 +41,7 @@
 
 <%@page import="org.oscarehr.util.WebUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -1552,8 +1552,8 @@ if (userAgent != null) {
           onload="window.focus();disableDateFields();disableEditing();showSignatureImage();">
     <jsp:include page="../../images/spinner.jsp" flush="true"/>
     <html:errors/>
-    <html:form styleId="consultationRequestForm" action="/oscarEncounter/RequestConsultation"
-               onsubmit="alert('HTHT'); return false;">
+    <form style="consultationRequestForm" action="${pageContext.request.contextPath}/oscarEncounter/RequestConsultation.do"
+                method="post" onsubmit="alert('HTHT'); return false;">
         <%
             EctConsultationFormRequestForm thisForm = (EctConsultationFormRequestForm) request.getAttribute("EctConsultationFormRequestForm");
 
@@ -1669,7 +1669,7 @@ if (userAgent != null) {
                             <td colspan="2">
                                 <table>
                                     <tr>
-                                        <td class="stat"><html:radio property="status" value="1"/>
+                                        <td class="stat"><input type="radio" name="status" value="1"/>
                                         </td>
                                         <td class="stat"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgNoth"/>:
                                         </td>
@@ -1681,7 +1681,7 @@ if (userAgent != null) {
                             <td colspan="2">
                                 <table>
                                     <tr>
-                                        <td class="stat"><html:radio property="status" value="2"/>
+                                        <td class="stat"><input type="radio" name="status" value="2"/>
                                         </td>
                                         <td class="stat"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgSpecCall"/>
                                         </td>
@@ -1693,7 +1693,7 @@ if (userAgent != null) {
                             <td colspan="2">
                                 <table>
                                     <tr>
-                                        <td class="stat"><html:radio property="status" value="3"/>
+                                        <td class="stat"><input type="radio" name="status" value="3"/>
                                         </td>
                                         <td class="stat"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgPatCall"/>
                                         </td>
@@ -1708,7 +1708,7 @@ if (userAgent != null) {
                             <td colspan="2">
                                 <table>
                                     <tr>
-                                        <td class="stat"><html:radio property="status" value="5"/>
+                                        <td class="stat"><input type="radio" name="status" value="5"/>
                                         </td>
                                         <td class="stat"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgBookCon"/>
                                         </td>
@@ -1723,7 +1723,7 @@ if (userAgent != null) {
                             <td colspan="2">
                                 <table>
                                     <tr>
-                                        <td class="stat"><html:radio property="status" value="4"/>
+                                        <td class="stat"><input type="radio" name="status" value="4"/>
                                         </td>
                                         <td class="stat"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgCompleted"/></td>
                                     </tr>
@@ -1949,7 +1949,7 @@ if (userAgent != null) {
                                     <tr>
                                         <td class="tite4"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgAssociated2"/></td>
                                         <td class="tite1">
-                                            <html:select property="providerNo" onchange="switchProvider(this.value)">
+                                            <select name="providerNo" onchange="switchProvider(this.value)">
                                                 <%
                                                     for (Provider p : prList) {
                                                         if (p.getProviderNo().compareTo("-1") != 0) {
@@ -1961,7 +1961,7 @@ if (userAgent != null) {
 
                                                 }
                                                 %>
-                                            </html:select>
+                                            </select>
                                         </td>
                                     </tr>
                                     <% } %>
@@ -2011,8 +2011,8 @@ if (userAgent != null) {
                                                 <% if (thisForm.iseReferral() && !thisForm.geteReferralService().isEmpty()) { %>
                                                 <%= thisForm.geteReferralService() %>
                                                 <% } else { %>
-                                                <html:select styleId="service" property="service"
-                                                             onchange="fillSpecialistSelect(this);"></html:select>
+                                                <select id="service" name="service"
+                                                             onchange="fillSpecialistSelect(this);"></select>
                                                 <% } %>
                                             </td>
                                         </tr>
@@ -2040,8 +2040,8 @@ if (userAgent != null) {
                                             <span id="consult-disclaimer"
                                                   title="When consult was saved this was the saved consultant but is no longer on this specialist list."
                                                   style="display:none;font-size:24px;">*</span>
-                                            <html:select styleId="specialist" property="specialist" size="1"
-                                                         onchange="onSelectSpecialist(this)"></html:select>
+                                            <select id="specialist" name="specialist" size="1"
+                                                         onchange="onSelectSpecialist(this)"></select>
 
                                             <%} // end specialist list condition block %>
                                         </td>
@@ -2075,17 +2075,17 @@ if (userAgent != null) {
                                     <tr>
                                         <td class="tite4"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.formUrgency"/></td>
                                         <td class="tite3">
-                                            <html:select property="urgency">
-                                                <html:option value="2">
+                                            <select name="urgency" id="urgency">
+                                                <option value="2">
                                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgNUrgent"/>
-                                                </html:option>
-                                                <html:option value="1">
+                                                </option>
+                                                <option value="1">
                                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgUrgent"/>
-                                                </html:option>
-                                                <html:option value="3">
+                                                </option>
+                                                <option value="3">
                                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgReturn"/>
-                                                </html:option>
-                                            </html:select>
+                                                </option>
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2126,19 +2126,19 @@ if (userAgent != null) {
                                                 <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.appointmentInstr"/>
                                             </td>
                                             <td class="tite3">
-                                                <html:select property="appointmentInstructions"
-                                                             styleId="appointmentInstructions">
-                                                    <html:option value=""></html:option>
+                                                <select name="appointmentInstructions"
+                                                             id="appointmentInstructions">
+                                                    <option value=""></option>
                                                     <c:forEach items="${ appointmentInstructionList.items }"
                                                                var="appointmentInstruction">
                                                         <%-- Ensure that only active items are shown --%>
                                                         <c:if test="${ appointmentInstruction.active }">
-                                                            <html:option value="${ appointmentInstruction.value }">
+                                                            <option value="${ appointmentInstruction.value }">
                                                                 <c:out value="${ appointmentInstruction.label }"/>
-                                                            </html:option>
+                                                            </option>
                                                         </c:if>
                                                     </c:forEach>
-                                                </html:select>
+                                                </select>
                                             </td>
                                         </tr>
                                     </oscar:oscarPropertiesCheck>
@@ -2168,20 +2168,20 @@ if (userAgent != null) {
                                         <td class="tite3">
                                             <table>
                                                 <tr>
-                                                    <td><html:select property="appointmentHour">
-                                                        <html:option value="-1"></html:option>
+                                                    <td><select name="appointmentHour" id="appointmentHour">
+                                                        <option value="-1"></option>
                                                         <%
                                                             for (int i = 1; i < 13; i = i + 1) {
                                                                 String hourOfday = Integer.toString(i);
                                                         %>
-                                                        <html:option value="<%=hourOfday%>"><%=hourOfday%>
-                                                        </html:option>
+                                                        <option value="<%=hourOfday%>"><%=hourOfday%>
+                                                        </option>
                                                         <%
                                                             }
                                                         %>
-                                                    </html:select></td>
-                                                    <td><html:select property="appointmentMinute">
-                                                        <html:option value="-1"></html:option>
+                                                    </select></td>
+                                                    <td><select name="appointmentMinute" id="appointmentMinute">
+                                                        <option value="-1"></option>
                                                         <%
                                                             for (int i = 0; i < 60; i = i + 1) {
                                                                 String minuteOfhour = Integer.toString(i);
@@ -2189,16 +2189,16 @@ if (userAgent != null) {
                                                                     minuteOfhour = "0" + minuteOfhour;
                                                                 }
                                                         %>
-                                                        <html:option value="<%=String.valueOf(i)%>"><%=minuteOfhour%>
-                                                        </html:option>
+                                                        <option value="<%=String.valueOf(i)%>"><%=minuteOfhour%>
+                                                        </option>
                                                         <%
                                                             }
                                                         %>
-                                                    </html:select></td>
-                                                    <td><html:select property="appointmentPm">
-                                                        <html:option value="AM">AM</html:option>
-                                                        <html:option value="PM">PM</html:option>
-                                                    </html:select></td>
+                                                    </select></td>
+                                                    <td><select name="appointmentPm" id="appointmentPm">
+                                                        <option value="AM">AM</option>
+                                                        <option value="PM">PM</option>
+                                                    </select></td>
                                                     <td><input type="button" value="Clear Date & Time"
                                                                onclick="clearAppointmentDateAndTime()"/></td>
                                                 </tr>
@@ -2212,7 +2212,7 @@ if (userAgent != null) {
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.siteName"/>
                                         </td>
                                         <td>
-                                            <html:select property="siteName"
+                                            <select name="siteName"
                                                          onchange='this.style.backgroundColor=this.options[this.selectedIndex].style.backgroundColor'>
                                                 <% for (int i = 0; i < vecAddressName.size(); i++) {
                                                     String te = vecAddressName.get(i);
@@ -2220,11 +2220,11 @@ if (userAgent != null) {
                                                     if (te.equals(defaultSiteName))
                                                         defaultSiteId = siteIds.get(i);
                                                 %>
-                                                <html:option value="<%=te%>"
+                                                <option value="<%=te%>"
                                                              style='<%="background-color: "+bg%>'><%=te%>
-                                                </html:option>
+                                                </option>
                                                 <% }%>
-                                            </html:select>
+                                            </select>
                                         </td>
                                     </tr>
                                     <%} %>
@@ -2290,18 +2290,18 @@ if (userAgent != null) {
                                     <tr id="conReqSendTo">
                                         <td class="tite4"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgSendTo"/>
                                         </td>
-                                        <td class="tite3"><html:select property="sendTo">
-                                            <html:option value="-1">---- <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgTeams"/> ----</html:option>
+                                        <td class="tite3"><select name="sendTo" id="sendTo">
+                                            <option value="-1">---- <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.msgTeams"/> ----</option>
                                             <%
                                                 for (int i = 0; i < consultUtil.teamVec.size(); i++) {
                                                     String te = (String) consultUtil.teamVec.elementAt(i);
                                             %>
-                                            <html:option value="<%=te%>"><%=te%>
-                                            </html:option>
+                                            <option value="<%=te%>"><%=te%>
+                                            </option>
                                             <%
                                                 }
                                             %>
-                                        </html:select></td>
+                                        </select></td>
                                     </tr>
 
                                     <tr>
@@ -2309,8 +2309,8 @@ if (userAgent != null) {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" class="tite3"><html:textarea
-                                                property="appointmentNotes"></html:textarea></td>
+                                        <td colspan="2" class="tite3"><textarea
+                                                name="appointmentNotes"></textarea></td>
                                     </tr>
 
 
@@ -2507,7 +2507,7 @@ if (userAgent != null) {
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <html:textarea rows="10" property="reasonForConsultation"></html:textarea>
+                                <textarea rows="10" name="reasonForConsultation"></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -2549,8 +2549,8 @@ if (userAgent != null) {
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <html:textarea rows="10" styleId="clinicalInformation"
-                                               property="clinicalInformation"></html:textarea></td>
+                                <textarea rows="10" id="clinicalInformation"
+                                               name="clinicalInformation"></textarea></td>
                         </tr>
                         <tr>
                             <td colspan="2">
@@ -2601,8 +2601,8 @@ if (userAgent != null) {
                         <tr id="trConcurrentProblems">
                             <td colspan=2>
 
-                                <html:textarea rows="10" styleId="concurrentProblems"
-                                               property="concurrentProblems"></html:textarea>
+                                <textarea rows="10" id="concurrentProblems"
+                                               name="concurrentProblems"></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -2632,8 +2632,8 @@ if (userAgent != null) {
                         </tr>
                         <tr>
                             <td colspan=2>
-                                <html:textarea rows="10" styleId="currentMedications"
-                                               property="currentMedications"></html:textarea>
+                                <textarea rows="10" id="currentMedications"
+                                               name="currentMedications"></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -2655,7 +2655,7 @@ if (userAgent != null) {
                         </tr>
                         <tr>
                             <td colspan=2>
-                                <html:textarea rows="10" styleId="allergies" property="allergies"></html:textarea></td>
+                                <textarea rows="10" id="allergies" name="allergies"></textarea></td>
                         </tr>
 
                         <%
@@ -2842,7 +2842,7 @@ if (userAgent != null) {
             </tr>
         </table>
         <div id="attachDocumentDisplay" style="display:none;"></div>
-    </html:form>
+    </form>
     </body>
 
     <script type="text/javascript">

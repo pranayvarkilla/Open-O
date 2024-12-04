@@ -57,14 +57,14 @@
 Enter Ocular Procedure
 <br/>
 
-<html:form action="/eyeform/OcularProc.do">
+<form action="${pageContext.request.contextPath}/eyeform/OcularProc.do" method="post">
     <table style="margin-left:auto;margin-right:auto;background-color:#f0f0f0;border-collapse:collapse">
         <input type="hidden" name="method" value="save"/>
 
-        <html:hidden property="proc.demographicNo"/>
-        <html:hidden property="proc.appointmentNo"/>
-        <html:hidden property="proc.id"/>
-        <html:hidden property="proc.status"/>
+        <input type="hidden" name="demographicNo" id="demographicNo"/>
+        <input type="hidden" name="appointmentNo" id="appointmentNo"/>
+        <input type="hidden" name="id" id="id"/>
+        <input type="hidden" name="status" id="status"/>
 
 
         <tr>
@@ -87,11 +87,11 @@ Enter Ocular Procedure
         <tr>
             <td class="genericTableHeader">Eye</td>
             <td class="genericTableData">
-                <html:select property="proc.eye">
-                    <html:option value="OD">OD</html:option>
-                    <html:option value="OS">OS</html:option>
-                    <html:option value="OU">OU</html:option>
-                </html:select>
+                <select name="eye">
+                    <option value="OD">OD</option>
+                    <option value="OS">OS</option>
+                    <option value="OU">OU</option>
+                </select>
             </td>
         </tr>
         <tr>
@@ -103,9 +103,9 @@ Enter Ocular Procedure
         <tr>
             <td class="genericTableHeader">Doctor Name</td>
             <td class="genericTableData">
-                <html:select property="proc.doctor">
+                <select name="doctor">
                     <html:options collection="providers" property="providerNo" labelProperty="formattedName"/>
-                </html:select>
+                </select>
             </td>
         </tr>
         <tr>
@@ -117,7 +117,7 @@ Enter Ocular Procedure
         <tr>
             <td class="genericTableHeader">Procedure Notes</td>
             <td class="genericTableData">
-                <html:textarea rows="5" cols="40" property="proc.procedureNote"></html:textarea>
+                <textarea rows="5" cols="40" name="procedureNote" id="procedureNote"></textarea>
             </td>
         </tr>
 
@@ -136,7 +136,7 @@ Enter Ocular Procedure
         </tr>
     </table>
 
-</html:form>
+</form>
 
 </body>
 </html>

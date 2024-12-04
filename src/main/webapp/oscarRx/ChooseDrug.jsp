@@ -39,8 +39,8 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -203,19 +203,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <html:form action="/oscarRx/searchDrug" focus="searchString" onsubmit="processData();">
+                            <form action="${pageContext.request.contextPath}/oscarRx/searchDrug.do" method="post" focus="searchString" onsubmit="processData();">
                                 <%if (request.getParameter("rx2") != null && request.getParameter("rx2").equals("true")) { %>
                                 <input type="hidden" name="rx2" value="true"/>
                                 <%}%>
 
-                                <html:hidden property="demographicNo"/>
+                                <input type="hidden" name="demographicNo" id="demographicNo"/>
                                 <table>
                                     <tr>
                                         <td>
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="ChooseDrug.searchAgain"/><br>
                                             <html:text styleId="searchString" property="searchString" size="16"
                                                        maxlength="16"/>
-                                            <!--<html:hidden property="otcExcluded" value="true"/>OTC Excluded-->
+                                            <!--<input type="hidden" name="otcExcluded" value="true"/>OTC Excluded-->
                                         </td>
                                         <td width=100>
                                             <% if (!OscarProperties.getInstance().getProperty("rx.drugofchoice.hide", "false").equals("true")) { %>
@@ -230,7 +230,7 @@
                                                 <input type=checkbox <%=selRoute[j]%> name=route<%=j%>
                                                        value="<%=d_route[j].trim()%>"><%=d_route[j].trim()%> &nbsp;</input>
                                                 <% } %>
-                                                <html:hidden property="searchRoute"/>
+                                                <input type="hidden" name="searchRoute" id="searchRoute"/>
                                             </oscar:oscarPropertiesCheck>
                                         </td>
                                     </tr>
@@ -250,7 +250,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                            </html:form>
+                            </form>
                         </td>
                     </tr>
                     <tr>

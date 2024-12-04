@@ -66,10 +66,10 @@
         return true;
     }
 </script>
-<html:form action="/PMmodule/Intake"
+<form action="${pageContext.request.contextPath}/PMmodule/Intake.do" method="post"
            onsubmit="return validateSearchForm(this)">
     <input type="hidden" name="action" value="do_intake"/>
-    <html:hidden property="form.demographicId"/>
+    <input type="hidden" name="demographicId" id="demographicId"/>
     <table width="50%">
         <tr>
             <td>First Name</td>
@@ -81,22 +81,22 @@
         </tr>
         <tr>
             <td>Date Of Birth</td>
-            <td><html:select property="form.monthOfBirth">
-                <html:option value="">&nbsp;</html:option>
-                <html:option value="01">January</html:option>
-                <html:option value="02">February</html:option>
-                <html:option value="03">March</html:option>
-                <html:option value="04">April</html:option>
-                <html:option value="05">May</html:option>
-                <html:option value="06">June</html:option>
-                <html:option value="07">July</html:option>
-                <html:option value="08">August</html:option>
-                <html:option value="09">September</html:option>
-                <html:option value="10">October</html:option>
-                <html:option value="11">November</html:option>
-                <html:option value="12">December</html:option>
-            </html:select> &nbsp; <html:select property="form.dayOfBirth">
-                <html:option value="">&nbsp;</html:option>
+            <td><select name="form.monthOfBirth" id="form.monthOfBirth">
+                <option value="">&nbsp;</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select> &nbsp; <select name="form.dayOfBirth" id="form.dayOfBirth">
+                <option value="">&nbsp;</option>
                 <%
                     for (int x = 1; x <= 31; x++) {
                         String value = String.valueOf(x);
@@ -104,11 +104,11 @@
                             value = "0" + value;
                         }
                 %>
-                <html:option value="<%=value %>"/>
+                <option value="<%=value %>"/>
                 <%
                     }
                 %>
-            </html:select>&nbsp;<html:text property="form.yearOfBirth" size="4"/></td>
+            </select>&nbsp;<html:text property="form.yearOfBirth" size="4"/></td>
         </tr>
         <caisi:isModuleLoad moduleName="GET_OHIP_INFO" reverse="false">
             <tr>
@@ -156,4 +156,4 @@
             </display:column>
         </display:table> <br/>
     </c:if>
-</html:form>
+</form>

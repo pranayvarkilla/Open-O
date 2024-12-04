@@ -50,7 +50,7 @@
 <%@page import="org.oscarehr.common.model.PreventionsLotNrs" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
@@ -796,7 +796,7 @@
                 <% if (prevHash == null) { %>
                 <h3 style="color:red">Prevention not found!</h3>
                 <%} else { %>
-                <html:form action="/oscarPrevention/AddPrevention" onsubmit="return handleFormSubmission()">
+                <form action="${pageContext.request.contextPath}/oscarPrevention/AddPrevention.do" method="post" onsubmit="return handleFormSubmission()">
                     <input type="hidden" name="prevention" value="<%=prevention%>"/>
                     <input type="hidden" name="demographic_no" value="<%=demographic_no%>"/>
                     <%if (snomedId != null) {%>
@@ -1456,7 +1456,7 @@
                     <% if (id != null) { %>
                     <input type="submit" name="delete" value="Delete"/>
                     <% } %>
-                </html:form>
+                </form>
                 <% } %>
             </td>
         </tr>

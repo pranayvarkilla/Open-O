@@ -45,8 +45,8 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -264,8 +264,7 @@
 
                     <tr>
 
-                        <td bgcolor="#EEEEFF"><html:form
-                                action="/oscarMessenger/Doc2PDF">
+                        <td bgcolor="#EEEEFF"><form action="${pageContext.request.contextPath}/oscarMessenger/Doc2PDF.do" method="post">
 
 
                             <table border="0" cellpadding="0" cellspacing="1" width="400">
@@ -387,21 +386,18 @@
                                 </tr>
 
                                 <tr>
-                                    <td colspan="3"><html:hidden property="srcText" value=''/>
+                                    <td colspan="3"><input type="hidden" name="srcText" id="srcText" value=''/>
 
-                                        <html:hidden property="attachmentCount"
-                                                     value='<%=request.getParameter("attachmentCount")%>'/> <html:hidden
-                                                property="demographic_no" value='<%=demographic_no%>'/> <html:hidden
-                                                property="isPreview"
-                                                value='<%=request.getParameter("isPreview")%>'/> <html:hidden
-                                                property="isAttaching"
-                                                value='<%=request.getParameter("isAttaching")%>'/> <html:hidden
-                                                property="isNew" value='true'/> <html:hidden
-                                                property="attachmentTitle" value=''/></td>
+                                        <input type="hidden" name="attachmentCount" id="attachmentCount" value='<%=request.getParameter("attachmentCount")%>'/>
+                                        <input type="hidden" name="demographic_no" id="demographic_no" value='<%=demographic_no%>'/>
+                                        <input type="hidden" name="isPreview" id="isPreview" value='<%=request.getParameter("isPreview")%>'/>
+                                        <input type="hidden" name="isAttaching" id="isAttaching" value='<%=request.getParameter("isAttaching")%>'/>
+                                        <input type="hidden" name="isNew" id="isNew" value='true'/>
+                                        <input type="hidden" name="attachmentTitle" id="attachmentTitle" value=''/></td>
                                 </tr>
 
                             </table>
-                        </html:form>
+                        </form>
                             <script>
                                 if (document.forms[0].isAttaching.value == "true") {
 

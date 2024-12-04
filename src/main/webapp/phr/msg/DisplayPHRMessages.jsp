@@ -23,7 +23,10 @@
     Ontario, Canada
 
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="/WEB-INF/phr-tag.tld" prefix="phr" %>
+<%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@page import="org.oscarehr.myoscar.commons.MedicalDataType" %>
 <%@page import="org.oscarehr.phr.util.MyOscarUtils" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
@@ -37,29 +40,11 @@
 <%@page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@page import="org.oscarehr.common.model.Demographic" %>
 <%@page import="org.oscarehr.phr.web.MyOscarMessagesHelper" %>
-<%@page import="org.oscarehr.myoscar_server.ws.MessageTransfer" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.net.URLEncoder" %>
-
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/phr-tag.tld" prefix="phr" %>
-<%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
-
-<%@ page import="oscar.oscarDemographic.data.DemographicData" %>
-<%@ page import="org.oscarehr.phr.model.PHRAction" %>
-<%@ page import="oscar.oscarProvider.data.ProviderData" %>
-<%@ page import="org.oscarehr.phr.model.PHRMessage" %>
-<%@ page
-        import="org.oscarehr.phr.dao.PHRActionDAO, org.springframework.web.context.support.WebApplicationContextUtils" %>
-<%@ page import="java.util.*" %>
-<%@ page import="oscar.util.StringUtils" %>
-<%@ page import="org.oscarehr.phr.indivo.service.accesspolicies.IndivoAPService" %>
-<%@ page import="oscar.util.UtilDateUtilities" %>
-
+<%@page import="org.oscarehr.phr.model.PHRAction" %>
+<%@page import="oscar.oscarProvider.data.ProviderData" %>
+<%@page import="java.util.*" %>
+<%@page import="org.oscarehr.phr.indivo.service.accesspolicies.IndivoAPService" %>
+<%@page import="oscar.util.UtilDateUtilities" %>
 <%
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
     String providerNo = loggedInInfo.getLoggedInProviderNo();
@@ -333,10 +318,10 @@
                                     <table class=messButtonsA cellspacing=0 cellpadding=3>
                                         <tr>
                                             <td class="messengerButtonsA<%if (pageMethod.equals("viewMessages")) {%>Current<%}%>">
-                                                <html:link page="/phr/PhrMessage.do?method=viewMessages"
+                                                <a href="${pageContext.request.contextPath}/phr/PhrMessage.do?method=viewMessages"
                                                            styleClass="messengerButtons">
                                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgInbox"/>
-                                                </html:link>
+                                                </a>
                                             </td>
                                         </tr>
                                     </table>
@@ -345,10 +330,10 @@
                                     <table class=messButtonsA cellspacing=0 cellpadding=3>
                                         <tr>
                                             <td class="messengerButtonsA<%if (pageMethod.equals("viewSentMessages")) {%>Current<%}%>">
-                                                <html:link page="/phr/PhrMessage.do?method=viewSentMessages"
+                                                <a href="${pageContext.request.contextPath}/phr/PhrMessage.do?method=viewSentMessages"
                                                            styleClass="messengerButtons">
                                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgSentTitle"/>
-                                                </html:link>
+                                                </a>
                                             </td>
                                         </tr>
                                     </table>
@@ -357,10 +342,10 @@
                                     <table class=messButtonsA cellspacing=0 cellpadding=3>
                                         <tr>
                                             <td class="messengerButtonsA<%if (pageMethod.equals("viewArchivedMessages")) {%>Current<%}%>">
-                                                <html:link page="/phr/PhrMessage.do?method=viewArchivedMessages"
+                                                <a href="${pageContext.request.contextPath}/phr/PhrMessage.do?method=viewArchivedMessages"
                                                            styleClass="messengerButtons">
                                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgArchived"/>
-                                                </html:link>
+                                                </a>
                                             </td>
                                         </tr>
                                     </table>

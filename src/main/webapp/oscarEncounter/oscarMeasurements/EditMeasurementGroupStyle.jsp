@@ -29,7 +29,7 @@
 %>
 <%@ page import="java.util.*,oscar.oscarReport.pageUtil.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
 <html>
@@ -48,8 +48,7 @@
     <body class="BodyStyle" vlink="#0000FF">
     <!--  -->
     <html:errors/>
-    <html:form
-            action="/oscarEncounter/oscarMeasurements/EditMeasurementStyle.do">
+    <form action="${pageContext.request.contextPath}/oscarEncounter/oscarMeasurements/EditMeasurementStyle.do" method="post">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
                 <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Measurements.msgMeasurements"/></td>
@@ -77,10 +76,10 @@
                                             </c:if></td>
                                     <tr>
                                         <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.SelectMeasurementGroup.msgChangeTo"/>:
-                                            <html:select property="styleSheet" style="width:250">
+                                            <select name="styleSheet" style="width:250">
                                                 <html:options collection="allStyleSheets" property="cssId"
                                                               labelProperty="styleSheetName"/>
-                                            </html:select></td>
+                                            </select></td>
                                     </tr>
                         </tr>
                         <tr>
@@ -113,6 +112,6 @@
             <td class="MainTableBottomRowRightColumn"></td>
         </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

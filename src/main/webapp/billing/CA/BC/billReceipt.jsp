@@ -44,9 +44,6 @@
     if (session.getValue("user") == null)
         response.sendRedirect("../logout.jsp");
 %>
-<%@taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@page import="java.util.*, oscar.oscarDemographic.data.*" %>
 <%@page import="oscar.oscarBilling.ca.bc.data.*,oscar.oscarBilling.ca.bc.pageUtil.*,oscar.*,oscar.oscarClinic.*" %>
 <%@ page import="oscar.util.StringUtils" %>
@@ -267,8 +264,8 @@
     </head>
     <body bgcolor="#FFFFFF" text="#000000" rightmargin="0" leftmargin="0" topmargin="10" marginwidth="0"
           marginheight="0">
-    <html:form action="/billing/CA/BC/UpdateBilling">
-        <html:hidden property="billingNo"/>
+    <form action="${pageContext.request.contextPath}/billing/CA/BC/UpdateBilling.do" method="post">
+        <input type="hidden" name="billingNo" id="billingNo"/>
         <table width="650" border="0" align="center" style="border:black solid 1px ">
             <tr>
                 <td>
@@ -635,9 +632,9 @@
                                                 </tr>
                                                 <tr>
                                                     <td rowspan="2">
-                                                        <html:textarea cols="60" style="width:100%;" styleClass="notes"
+                                                        <textarea cols="60" style="width:100%;" class="notes"
                                                                        rows="5"
-                                                                       property="messageNotes">&nbsp;</html:textarea>
+                                                                       name="messageNotes">&nbsp;</textarea>
                                                     </td>
                                                 </tr>
 
@@ -679,6 +676,6 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

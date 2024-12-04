@@ -40,8 +40,8 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="oscar.oscarReport.data.RptSearchData,java.util.*" %>
 
 <%
@@ -104,8 +104,7 @@
         <tr>
 
             <td class="MainTableLeftColumn">&nbsp;</td>
-            <td class="MainTableRightColumn"><html:form
-                    action="/report/DeleteDemographicReport">
+            <td class="MainTableRightColumn"><form action="${pageContext.request.contextPath}/report/DeleteDemographicReport.do" method="post">
                 <ul style="list-style-type: none; padding-left: 3px;">
                     <%
                         for (int i = 0; i < queryArray.size(); i++) {
@@ -120,7 +119,7 @@
                 </ul>
                 <input type="submit" value="Delete"/>
                 <a href="ReportDemographicReport.jsp">cancel</a>
-            </html:form></td>
+            </form></td>
         </tr>
         <tr>
             <td class="MainTableBottomRowLeftColumn">&nbsp;</td>

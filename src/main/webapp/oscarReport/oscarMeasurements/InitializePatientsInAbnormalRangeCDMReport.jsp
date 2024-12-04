@@ -26,7 +26,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ page import="oscar.oscarReport.oscarMeasurements.pageUtil.*" %>
 <%@ page import="java.util.*, java.sql.*, java.text.*, java.net.*" %>
 <%
@@ -82,8 +82,7 @@
     <body topmargin="0" leftmargin="0" vlink="#0000FF"
           onload="window.focus();">
     <html:errors/>
-    <html:form
-            action="oscarReport/oscarMeasurements/InitializePatientsInAbnormalRangeCDMReport.do">
+    <form action="${pageContext.request.contextPath}/oscarReport/oscarMeasurements/InitializePatientsInAbnormalRangeCDMReport.do" method="post">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
                 <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgReport"/></td>
@@ -233,7 +232,7 @@
         </tr>
         </table>
 
-    </html:form>
+    </form>
 
     </body>
 </html>

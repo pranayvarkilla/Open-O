@@ -24,7 +24,7 @@
 --%>
 <%@ include file="/taglibs.jsp" %>
 <h3 style="font-color: red"><c:out value="${requestScope.errormsg}"/></h3>
-<html:form action="/UnreadTickler.do">
+<form action="${pageContext.request.contextPath}/UnreadTickler.do" method="post">
     <input type="hidden" name="method" value="login"/>
     <table>
         <tr>
@@ -43,4 +43,4 @@
             <td colspan="2" align="left"><html:submit/></td>
         </tr>
     </table>
-</html:form>
+</form>

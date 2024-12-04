@@ -25,7 +25,7 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ page import="java.util.*" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import="org.oscarehr.common.dao.FavoritesDao" %>
@@ -95,7 +95,7 @@
 
 
     <body topmargin="0" leftmargin="0" vlink="#0000FF">
-    <html:form action="/oscarRx/copyFavorite2">
+    <form action="/oscarRx/copyFavorite2.do">
         <input type="hidden" name="dispatch" value="refresh"/>
         <input type="hidden" name="userProviderNo" value=<%=providerNo%>/>
         <input type="hidden" name="copyProviderNo" value=""/>
@@ -398,6 +398,6 @@
                     colspan="2"></td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

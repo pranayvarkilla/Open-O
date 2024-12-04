@@ -44,7 +44,7 @@
         </tr>
     </table>
 </div>
-<html:form action="/PMmodule/ProgramManager.do">
+<form action="${pageContext.request.contextPath}/PMmodule/ProgramManager.do" method="post">
     <table class="simple" cellspacing="2" cellpadding="3" width="100%">
         <thead>
         <tr>
@@ -56,20 +56,20 @@
         </thead>
         <tbody>
         <tr>
-            <td><html:select property="searchStatus">
-                <html:option value="Any"/>
-                <html:option value="active"/>
-                <html:option value="inactive"/>
-            </html:select></td>
-            <td><html:select property="searchType">
-                <html:option value="Any"/>
-                <html:option value="Bed"/>
-                <html:option value="Service"/>
+            <td><select name="searchStatus" id="searchStatus">
+                <option value="Any"/>
+                <option value="active"/>
+                <option value="inactive"/>
+            </select></td>
+            <td><select name="searchType" id="searchType">
+                <option value="Any"/>
+                <option value="Bed"/>
+                <option value="Service"/>
                 <caisi:isModuleLoad moduleName="TORONTO_RFQ" reverse="false">
-                    <html:option value="External"/>
-                    <html:option value="community">Community</html:option>
+                    <option value="External"/>
+                    <option value="community">Community</option>
                 </caisi:isModuleLoad>
-            </html:select></td>
+            </select></td>
             <td><select property="searchFacilityId">
                 <option value="0">Any</option>
                 <c:forEach var="facility" items="${facilities}">
@@ -86,7 +86,7 @@
         </tr>
         </tbody>
     </table>
-</html:form>
+</form>
 <display:table class="simple" cellspacing="2" cellpadding="3"
                id="program" name="programs" export="false" pagesize="0"
                requestURI="/PMmodule/ProgramManager.do">

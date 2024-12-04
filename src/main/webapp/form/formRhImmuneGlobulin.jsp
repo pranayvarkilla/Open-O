@@ -44,9 +44,6 @@
 <%@ page
         import="oscar.oscarProvider.data.*,oscar.oscarWorkflow.*,oscar.oscarEncounter.oscarMeasurements.bean.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
 <%--
@@ -255,7 +252,7 @@
             <span style="margin-right: 20px;">Current State:<%=flow.getState("" + h.get("current_state"))%>
 </span> <span style="margin-right: 20px;">Weeks: <%=gestAge%></span> <%} else {%> <span
                 style="margin-right: 20px;">No Current Pregnancy</span> <%}%> <br/>
-            <html:form action="/form/RHPrevention">
+            <form action="${pageContext.request.contextPath}/form/RHPrevention.do" method="post">
 
                 <%-- input type="hidden" name="demographic_no" value="<%= props.getProperty("demographic_no", "0") %>" / --%>
             <input type="hidden" name="formCreated"
@@ -582,19 +579,18 @@
             onClick="javascript: popup(700,600,'addRhInjection.jsp?demographic_no=<%=demographicNo%>&amp;workflowId=<%=h.get("ID")%>&amp;formId=<%=formId%>','addInjection');"
             value="Add Injection"/> <%-- a style="color:blue; " href="javascript: function myFunction() {return false; }" onClick="popup(700,600,'addRhInjection.jsp?demographic_no=<%=demographicNo%>&amp;workflowId=<%=h.get("ID")%>&amp;formId=<%=formId%>','addInjection')">Add Injection</a --%>
                 <%}%>
-        </html:form>
+        </form>
 
         <div id="injectionInfo"></div>
 
-        <html:form
-                action="/oscarPrevention/AddPrevention" styleId="deleteForm"
-                target="_blank">
+        <form action="${pageContext.request.contextPath}/oscarPrevention/AddPrevention.do" styleId="deleteForm"
+                method="post" target="_blank">
 
         <input type="hidden" name="id" id="deleteId"/>
         <input type="hidden" name="demographic_no" value="<%=demographicNo%>"/>
 
         <input type="hidden" name="delete" value="delete"/>
-        </html:form>
+        </form>
         <script type="text/javascript">
 
             <%

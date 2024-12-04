@@ -91,11 +91,11 @@
     <body onload="init()">
 
     <%@ include file="/common/messages.jsp" %>
-    <html:form action="/PMmodule/Forms/SurveyExecute"
+    <form action="${pageContext.request.contextPath}/PMmodule/Forms/SurveyExecute.do" method="post"
                onsubmit="return validateForm(this,document.surveyExecuteForm.elements['view.tab'].value,true);">
-        <html:hidden property="view.tab"/>
-        <html:hidden property="view.id"/>
-        <html:hidden property="view.admissionId"/>
+        <input type="hidden" name="tab" id="tab"/>
+        <input type="hidden" name="id" id="id"/>
+        <input type="hidden" name="admissionId" id="admissionId"/>
         <input type="hidden" name="method" value="save_survey"/>
         <input type="hidden" name="type" value="<c:out value="${type}"/>"/>
 
@@ -168,6 +168,6 @@
             </tr>
         </table>
 
-    </html:form>
+    </form>
     </body>
 </html>

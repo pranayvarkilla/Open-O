@@ -32,8 +32,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%@page import="org.oscarehr.myoscar.utils.MyOscarLoggedInInfo" %>
 <%@page import="org.oscarehr.phr.util.MyOscarUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/phr-tag.tld" prefix="phr" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <%

@@ -42,8 +42,8 @@
 <%@ page import="java.util.ResourceBundle" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -95,7 +95,7 @@
                             <td>
 
                                 <table>
-                                    <html:form action="/oscarEncounter/AddService">
+                                    <form action="${pageContext.request.contextPath}/oscarEncounter/AddService.do" method="post">
                                         <tr>
                                             <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.ShowAllServices.services"/>
                                             </td>
@@ -122,7 +122,7 @@
                                                 </table>
                                             </td>
                                         </tr>
-                                    </html:form>
+                                    </form>
                                 </table>
                             </td>
                         </tr>

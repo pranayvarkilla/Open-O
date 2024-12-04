@@ -26,8 +26,8 @@
 <!DOCTYPE html>
 <%@ page import="oscar.eform.data.*, oscar.OscarProperties, oscar.eform.*, java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -90,7 +90,7 @@
 
     <div class="row-fluid">
         <div class="well">
-            <html:form action="/eform/imageUpload" enctype="multipart/form-data" method="post">
+            <form action="${pageContext.request.contextPath}/eform/imageUpload.do" enctype="multipart/form-data" method="post">
 
                 <div class="text-error message row-fluid"><html:errors/></div>
                 <div class="control-group">
@@ -104,7 +104,7 @@
                                value="<fmt:setBundle basename="oscarResources"/><fmt:message key="eform.uploadimages.btnUpload"/>" disabled>
                     </div>
                 </div>
-            </html:form>
+            </form>
         </div>
     </div>
 

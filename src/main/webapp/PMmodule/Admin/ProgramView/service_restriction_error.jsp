@@ -33,13 +33,13 @@
 <%@page import="org.oscarehr.common.model.DemographicExt" %>
 
 
-<html:form action="/PMmodule/ProgramManagerView">
+<form action="${pageContext.request.contextPath}/PMmodule/ProgramManagerView.do" method="post">
 
     <%@ include file="/common/messages.jsp" %>
 
     <input type="hidden" name="method" value="override_restriction"/>
-    <html:hidden property="clientId"/>
-    <html:hidden property="queueId"/>
+    <input type="hidden" name="clientId" id="clientId"/>
+    <input type="hidden" name="queueId" id="queueId"/>
     <input type="hidden" name="id"
            value="<c:out value="${requestScope.id}"/>"/>
 
@@ -98,4 +98,4 @@
         </tr>
 
     </table>
-</html:form>
+</form>

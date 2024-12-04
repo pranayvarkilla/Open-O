@@ -25,7 +25,7 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ page import="java.util.*,oscar.oscarRx.data.*,oscar.oscarRx.pageUtil.*,oscar.oscarRx.util.*" %>
 <%@page import="org.oscarehr.util.MiscUtils" %>
@@ -829,9 +829,9 @@
     <body topmargin="0" leftmargin="0" vlink="#0000FF"
           onload="javascript:pageLoad();">
 
-    <html:form action="/oscarRx/writeScript">
+    <form action="${pageContext.request.contextPath}/oscarRx/writeScript.do" method="post">
 
-    <html:hidden property="action"/>
+    <input type="hidden" name="action" id="action"/>
 
     <%
 
@@ -983,11 +983,11 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
         <%}%>
     </script>
 
-    <html:hidden property="demographicNo"/>
-    <html:hidden property="GCN_SEQNO"/>
-    <html:hidden property="atcCode"/>
-    <html:hidden property="regionalIdentifier"/>
-    <html:hidden property="dosage"/>
+    <input type="hidden" name="demographicNo" id="demographicNo"/>
+    <input type="hidden" name="GCN_SEQNO" id="GCN_SEQNO"/>
+    <input type="hidden" name="atcCode" id="atcCode"/>
+    <input type="hidden" name="regionalIdentifier" id="regionalIdentifier"/>
+    <input type="hidden" name="dosage" id="dosage"/>
 
 
     <table border="0" cellpadding="0" cellspacing="0" <% /*style="border-collapse: collapse"*/%> bordercolor="#111111"
@@ -1034,7 +1034,7 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.genericNameText"/>:
                                     </td>
                                     <td colspan=2>
-                                        <html:hidden property="genericName"/>
+                                        <input type="hidden" name="genericName" id="genericName"/>
                                         <b><%= thisForm.getGenericName() %>
                                         </b>
                                         <%if (compString != null) {%>
@@ -1058,7 +1058,7 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.brandNameText"/>:
                                     </td>
                                     <td colspan=2>
-                                        <html:hidden property="brandName"/>
+                                        <input type="hidden" name="brandName" id="brandName"/>
                                         <b title="<%=thisForm.getRegionalIdentifier()%>"><%= thisForm.getBrandName() %>
                                         </b>
                                         <oscar:oscarPropertiesCheck property="SHOW_ODB_LINK" value="yes">
@@ -1078,9 +1078,9 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
 
                                 <tr>
                                     <td colspan=2 valign="top">Custom Drug:</td>
-                                    <td colspan=2><html:textarea property="customName" cols="50"
+                                    <td colspan=2><textarea name="customName" cols="50"
                                                                  rows="3"
-                                                                 onchange="javascript:writeScriptDisplay();"/></td>
+                                                            onchange="javascript:writeScriptDisplay();"></textarea></td>
                                     <td valign=top rowspan=8>
                                         <div style="z-index: 0;"><select size=20 name="selSpecial"
                                                                          ondblclick="javascript:cmdSpecial_click();">
@@ -1104,13 +1104,13 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
 
 
                                 <tr>
-                                    <td colspan=2><html:select property="method"
+                                    <td colspan=2><select name="method"
                                                                style="width:90px" onchange="calcQty();">
-                                        <html:option value="Take">Take</html:option>
-                                        <html:option value="Apply">Apply</html:option>
-                                        <html:option value="Rub">Rub well in</html:option>
-                                        <html:option value=""></html:option>
-                                    </html:select></td>
+                                        <option value="Take">Take</option>
+                                        <option value="Apply">Apply</option>
+                                        <option value="Rub">Rub well in</option>
+                                        <option value=""></option>
+                                    </select></td>
                                     <td colspan=2><select name="take" style="width: 72px"
                                                           onChange="javascript:takeChg();">
                                         <option value="1/4">1/4</option>
@@ -1130,43 +1130,43 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                         <option value="9">9</option>
                                         <option value="Other">Other</option>
                                     </select> <input type=text name="takeOther" style="display: none" size="5"
-                                                     onChange="javascript:takeChg();"/> <html:select
-                                            property="unit" style="width:80px" onchange="calcQty();">
-                                        <html:option value="tab">Tabs</html:option>
-                                        <html:option value="mL">mL</html:option>
-                                        <html:option value="sqrt">Squirts</html:option>
-                                        <html:option value="gm">gm</html:option>
-                                        <html:option value="mg">mg</html:option>
-                                        <html:option value="micg">µg</html:option>
-                                        <html:option value="drop">Drops</html:option>
-                                        <html:option value="patc">Patch</html:option>
-                                        <html:option value="puff">Puffs</html:option>
-                                        <html:option value="units">Units</html:option>
-                                        <html:option value="units">Inhalations</html:option>
-                                        <html:option value=""></html:option>
-                                    </html:select> <html:select property="route" style="width:80px"
+                                                     onChange="javascript:takeChg();"/> <select
+                                            name="unit" style="width:80px" onchange="calcQty();">
+                                        <option value="tab">Tabs</option>
+                                        <option value="mL">mL</option>
+                                        <option value="sqrt">Squirts</option>
+                                        <option value="gm">gm</option>
+                                        <option value="mg">mg</option>
+                                        <option value="micg">µg</option>
+                                        <option value="drop">Drops</option>
+                                        <option value="patc">Patch</option>
+                                        <option value="puff">Puffs</option>
+                                        <option value="units">Units</option>
+                                        <option value="units">Inhalations</option>
+                                        <option value=""></option>
+                                    </select> <select name="route" style="width:80px"
                                                                 onchange="calcQty();">
-                                        <html:option value="PO">PO</html:option>
-                                        <html:option value="SL">SL</html:option>
-                                        <html:option value="IM">IM</html:option>
-                                        <html:option value="SC">SC</html:option>
-                                        <html:option value="TOP">TOP.</html:option>
-                                        <html:option value="INH">INH</html:option>
-                                        <html:option value="SUPP">SUPP</html:option>
-                                        <html:option value="O.D.">O.D.</html:option>
-                                        <html:option value="O.S.">O.S.</html:option>
-                                        <html:option value="O.U.">O.U.</html:option>
+                                        <option value="PO">PO</option>
+                                        <option value="SL">SL</option>
+                                        <option value="IM">IM</option>
+                                        <option value="SC">SC</option>
+                                        <option value="TOP">TOP.</option>
+                                        <option value="INH">INH</option>
+                                        <option value="SUPP">SUPP</option>
+                                        <option value="O.D.">O.D.</option>
+                                        <option value="O.S.">O.S.</option>
+                                        <option value="O.U.">O.U.</option>
 
-                                        <html:option value=""></html:option>
-                                    </html:select> <html:select property="frequencyCode" style="width:80px"
+                                        <option value=""></option>
+                                    </select> <select name="frequencyCode" style="width:80px"
                                                                 onchange="javascript:changeDuration();calcQty();">
                                         <%for (i = 0; i < freq.length; i++) {%>
-                                        <html:option value="<%= freq[i].getFreqCode() %>">
+                                        <option value="<%= freq[i].getFreqCode() %>">
                                             <%= freq[i].getFreqCode() %>
-                                        </html:option>
+                                        </option>
                                         <%}%>
-                                    </html:select> <html:hidden property="takeMin"/> <html:hidden
-                                            property="takeMax"/>
+                                    </select> <input type="hidden" name="takeMin" id="takeMin"/>
+                                        <input type="hidden" name="takeMax" id="takeMax"/>
                                         <script language=javascript>
                                             var frm = document.forms.RxWriteScriptForm;
 
@@ -1213,13 +1213,13 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                         <option value="Other">Other</option>
                                     </select> <input type=text name="txtDuration" size="4"
                                                      onchange="javascript:calcQty();" style="display: none"/>
-                                        <html:select
-                                                property="durationUnit" style="width:80px"
+                                        <select
+                                                name="durationUnit" style="width:80px"
                                                 onchange="javascript:calcQty();">
-                                            <html:option value="D"><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgDays"/></html:option>
-                                            <html:option value="W"><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgWeeks"/></html:option>
-                                            <html:option value="M"><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgMonths"/></html:option>
-                                        </html:select> <html:hidden property="duration"/>
+                                            <option value="D"><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgDays"/></option>
+                                            <option value="W"><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgWeeks"/></option>
+                                            <option value="M"><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgMonths"/></option>
+                                        </select> <input type="hidden" name="duration" id="duration"/>
                                         <script language=javascript>
                                             frm.txtDuration.value = frm.duration.value;
 
@@ -1287,8 +1287,7 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                         <option value="Other"><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgOther"/></option>
                                     </select> <input type=text name="txtRepeat" size="5"
                                                      onchange="javascript:calcQty();" style="display: none"/>
-                                        <html:hidden
-                                                property="repeat"/>
+                                        <input type="hidden" name="repeat" id="repeat"/>
                                         <script language=javascript>
                                             frm.txtRepeat.value = frm.repeat.value;
 
@@ -1341,8 +1340,8 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
 
                                         <table width=100% border=1>
                                             <tr>
-                                                <td valign=top><html:textarea property="special" cols="50"
-                                                                              rows="5"/> <input type=button value="RD"
+                                                <td valign=top><textarea name="special" cols="50"
+                                                                         rows="5"></textarea> <input type=button value="RD"
                                                                                                 title="Redraw"
                                                                                                 onclick="javascript:first = false; writeScriptDisplay(); clearWarning(); fillWarnings();"/>
                                                     <div id="warningDiv" style="display: none;">
@@ -1411,7 +1410,7 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
 
                     <tr>
                         <td><!--3a-->
-                            </html:form>
+                            </form>
                             <table width="100%">
                                 <tr>
                                     <td>
@@ -1473,10 +1472,10 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                     frm[0].submit();
                                 }
                             </script>
-                            <html:form action="/oscarRx/stash">
+                            <form action="${pageContext.request.contextPath}/oscarRx/stash.do" method="post">
                                 <input type="hidden" name="action" value="">
                                 <input type="hidden" name="stashId"/>
-                            </html:form></td>
+                            </form></td>
                     </tr>
 
                     <tr>

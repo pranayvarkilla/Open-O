@@ -38,16 +38,9 @@
         return;
     }
 %>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="oscar.form.*" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
-<%@ page
-        import="oscar.oscarDemographic.data.*,java.util.*,oscar.oscarPrevention.*,oscar.oscarProvider.data.*,oscar.util.*,oscar.oscarEncounter.oscarMeasurements.*,oscar.oscarEncounter.oscarMeasurements.bean.*,oscar.oscarEncounter.oscarMeasurements.pageUtil.*" %>
-
-
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
@@ -475,10 +468,11 @@
     <body bgproperties="fixed" class="chfform" bgcolor="#EEEEFF"
           onLoad="javascript:window.focus()" topmargin="0" leftmargin="0"
           rightmargin="0">
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
 
 
-        <input type="hidden" name="demographic_no"
+
+    <input type="hidden" name="demographic_no"
                value="<%= props.getProperty("demographic_no", "0") %>"/>
         <input type="hidden" name="ID"
                value="<%= props.getProperty("ID", "0") %>"/>
@@ -1639,7 +1633,7 @@
             </table>
 
         </div>
-    </html:form>
+    </form>
     </body>
     <script type="text/javascript">
 

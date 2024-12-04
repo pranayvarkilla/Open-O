@@ -15,8 +15,8 @@
 
 <%@ page import="oscar.form.graphic.*, oscar.util.*, oscar.form.*, oscar.form.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
 
@@ -910,7 +910,7 @@ if (!fedb.equals("") && fedb.length()==10 ) {
         </table>
     </div>
 
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
 
         <input type="hidden" name="commonField" value="ar2_"/>
         <input type="hidden" name="c_lastVisited" value="pg3"/>
@@ -2751,7 +2751,7 @@ if (!fedb.equals("") && fedb.length()==10 ) {
         </table>
 
 
-    </html:form>
+    </form>
     <script type="text/javascript">
         Calendar.setup({
             inputField: "ar2_labDiabDate",      // id of the input field

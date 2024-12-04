@@ -51,7 +51,7 @@
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <%
     if (session.getValue("user") == null) response.sendRedirect("../logout.jsp");

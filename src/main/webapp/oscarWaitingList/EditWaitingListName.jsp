@@ -38,8 +38,8 @@
 <%@page import="oscar.util.*" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 <html>
     <head>
@@ -87,9 +87,8 @@
     %>
 
 
-    <html:form
-            action="/oscarWaitingList/WLEditWaitingListNameAction.do?edit=Y">
-        <html:hidden property="actionChosen"/>
+    <form action="${pageContext.request.contextPath}/oscarWaitingList/WLEditWaitingListNameAction.do?edit=Y.do" method="post">
+        <input type="hidden" name="actionChosen" id="actionChosen"/>
 
         <h3>&nbsp;&nbsp;<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarwaitinglist.displayPatientWaitingList.waitinglist"/></h3>
         <%
@@ -166,7 +165,7 @@
             <input type="reset" class="btn btn-link" value='<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnClose"/>'
                    onClick="window.close();">
         </div>
-    </html:form>
+    </form>
 
     </body>
 </html>

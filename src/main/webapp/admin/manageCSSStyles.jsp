@@ -266,17 +266,17 @@
         }
     %>
 
-    <html:form action="/admin/manageCSSStyles" method="post">
+    <form action="${pageContext.request.contextPath}/admin/manageCSSStyles.do" method="post">
         <input type="hidden" id="method" name="method" value="save"/>
 
         <div class="row well"><!--select existing styles-->
 
             <fmt:setBundle basename="oscarResources"/><fmt:message key="admin.manageCodeStyles.CurrentStyles"/><br/>
 
-            <html:select styleId="style" property="selectedStyle">
+            <select name="selectedStyle" id="style">
                 <option value="-1"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.manageCodeStyles.NoneSelected"/></option>
                 <html:optionsCollection property="styles" label="name" value="style"></html:optionsCollection>
-            </html:select>
+            </select>
 
             <input class="btn" type="button" onclick="edit();return false;"
                    value="<fmt:setBundle basename="oscarResources"/><fmt:message key="admin.manageCodeStyles.Edit"/>"/>
@@ -362,12 +362,11 @@
 
 
             <div class="span4">
-                <html:hidden styleId="editStyle" property="editStyle"/>
+                <input type="hidden" id="editStyle" name="editStyle"/>
 
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="admin.manageCodeStyles.StyleText"/> <small><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.manageCodeStyles.ManualEnter"/><input type="checkbox"
                                                                      onclick="enableEdit(this);"></small><br/>
-                <html:textarea rows="8" styleClass="span6" readonly="true" styleId="styleText"
-                               property="styleText"></html:textarea>
+                <textarea rows="8" class="span6" readonly="true" id="styleText" name="styleText"></textarea>
                 <input class="btn" id="apply-btn" type="button"
                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="admin.manageCodeStyles.Apply"/>" onclick="applyStyle();return false;"
                        style="display:none"/>
@@ -390,7 +389,7 @@
                          onclick="return checkfields();"></html:submit>
         </div>
 
-    </html:form>
+    </form>
 </div>
 
 

@@ -40,8 +40,6 @@
 
 <%@page import="oscar.oscarBilling.ca.bc.data.*,oscar.*" %>
 <%@page import="java.util.*,java.io.*,oscar.oscarBilling.ca.bc.MSP.*,oscar.oscarBilling.ca.bc.administration.*,java.sql.*" %>
-<%@taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <%@page import="org.oscarehr.util.SpringUtils" %>
 <%@page import="org.oscarehr.common.dao.ClinicLocationDao" %>
@@ -166,7 +164,7 @@
         </script>
     </head>
     <body>
-    <html:form action="billing/CA/BC/billingTeleplanCorrectionWCB">
+    <form action="${pageContext.request.contextPath}/billing/CA/BC/billingTeleplanCorrectionWCB.do" method="post">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr bgcolor="#000000">
                 <td height="40" width="10%"></td>
@@ -187,8 +185,9 @@
                                                        onClick="popup(700,900,'../../../demographic/demographiccontrol.jsp?demographic_no=<%=form.getDemographicNumber()%>&displaymode=edit&dboperation=search_detail','
                                                            <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.popupPage2Window"/>');return false;"
                                                        title="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.appointmentProviderAdminDay.msgMasterFile"/>">Patient
-                    Information</a> <html:hidden property="id" value="<%=form.getId()%>"/> <html:hidden
-                        property="demographicNumber"
+                    Information</a> <input type="hidden" name="id" id="id" value="<%=form.getId()%>"/>
+                    <input type="hidden"
+                           name="demographicNumber" id="demographicNumber"
                         value="<%=form.getDemographicNumber()%>"/></td>
             </tr>
             <tr>
@@ -319,41 +318,41 @@
                         </tr>
                         <tr>
                             <td>Capability:</td>
-                            <td><html:select name="w_capability"
-                                             value="<%=form.getW_capability()%>" property="w_capability">
-                                <html:option value="Y">Yes</html:option>
-                                <html:option value="N">No</html:option>
-                            </html:select></td>
+                            <td><select name="w_capability"
+                                             value="<%=form.getW_capability()%>" id="w_capability">
+                                <option value="Y">Yes</option>
+                                <option value="N">No</option>
+                            </select></td>
                             <td>Rehab:</td>
-                            <td><html:select name="w_rehab" value="<%=form.getW_rehab()%>"
-                                             property="w_rehab">
-                                <html:option value="Y">Yes</html:option>
-                                <html:option value="N">No</html:option>
-                            </html:select></td>
+                            <td><select name="w_rehab" value="<%=form.getW_rehab()%>"
+                                             id="w_rehab">
+                                <option value="Y">Yes</option>
+                                <option value="N">No</option>
+                            </select></td>
                         </tr>
                         <tr>
                             <td>Rehab Type:</td>
-                            <td><html:select name="w_rehabtype"
-                                             value="<%=form.getW_rehabtype()%>" property="w_rehabtype">
-                                <html:option value="C">Work Conditioning</html:option>
-                                <html:option value="O">Other</html:option>
-                            </html:select></td>
+                            <td><select name="w_rehabtype"
+                                             value="<%=form.getW_rehabtype()%>" id="w_rehabtype">
+                                <option value="C">Work Conditioning</option>
+                                <option value="O">Other</option>
+                            </select></td>
                             <td>To Follow:</td>
-                            <td><html:select name="w_tofollow"
-                                             value="<%=form.getW_tofollow()%>" property="w_tofollow">
-                                <html:option value="Y">Yes</html:option>
-                                <html:option value="N">No</html:option>
-                            </html:select></td>
+                            <td><select name="w_tofollow"
+                                             value="<%=form.getW_tofollow()%>" id="w_tofollow">
+                                <option value="Y">Yes</option>
+                                <option value="N">No</option>
+                            </select></td>
                         </tr>
 
 
             </tr>
             <td>Advisor:</td>
-            <td><html:select name="w_wcbadvisor"
-                             value="<%=form.getW_wcbadvisor()%>" property="w_wcbadvisor">
-                <html:option value="Y">Yes</html:option>
-                <html:option value="N">No</html:option>
-            </html:select></td>
+            <td><select name="w_wcbadvisor"
+                             value="<%=form.getW_wcbadvisor()%>" id="w_wcbadvisor">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+            </select></td>
             </tr>
         </table>
         </td>
@@ -375,7 +374,7 @@
                         </tr>
                         <tr>
                             <td class="FormLabel">Billing Physician</td>
-                            <td><html:select style="font-size:80%;" property="providerNo"
+                            <td><select style="font-size:80%;" name="providerNo"
                                              value="<%=form.getProviderNo()%>">
                                 <%
                                     String proFirst = "", proLast = "", proOHIP = "", proNo = "";
@@ -385,15 +384,15 @@
                                             proLast = p.getLastName();
                                             proOHIP = p.getProviderNo();
                                 %>
-                                <html:option value="<%=proOHIP%>"><%=proOHIP%>                    |
+                                <option value="<%=proOHIP%>"><%=proOHIP%>                    |
                                     <%=proLast%>                    ,
                                     <%=proFirst%>
-                                </html:option>
+                                </option>
                                 <%
                                         }
                                     }
                                 %>
-                            </html:select></td>
+                            </select></td>
                         </tr>
                         <tr>
                             <td class="FormLabel">Practioner Num:</td>
@@ -407,21 +406,21 @@
                         </tr>
                         <tr>
                             <td class="FormLabel">Regular Physician:</td>
-                            <td><html:select name="w_rphysician"
-                                             value="<%=form.getW_rphysician()%>" property="w_rphysician">
-                                <html:option value="Y">Yes</html:option>
-                                <html:option value="N">No</html:option>
-                            </html:select></td>
+                            <td><select name="w_rphysician"
+                                             value="<%=form.getW_rphysician()%>" id="w_rphysician">
+                                <option value="Y">Yes</option>
+                                <option value="N">No</option>
+                            </select></td>
                         </tr>
                         <tr>
                             <td class="FormLabel">Duration:</td>
-                            <td><html:select name="w_duration"
-                                             value="<%=form.getW_duration()%>" property="w_duration">
-                                <html:option value="1">0-6 months</html:option>
-                                <html:option value="2">7-12 months</html:option>
-                                <html:option value="9"> &gt;
-                                    12 months</html:option>
-                            </html:select></td>
+                            <td><select name="w_duration"
+                                             value="<%=form.getW_duration()%>" id="w_duration">
+                                <option value="1">0-6 months</option>
+                                <option value="2">7-12 months</option>
+                                <option value="9"> &gt;
+                                    12 months</option>
+                            </select></td>
                         </tr>
                         <tr>
                             <td class="FormLabel">Billing Unit:</td>
@@ -464,13 +463,13 @@
                         </tr>
                         <tr>
                             <td class="FormLabel">Side:</td>
-                            <td colspan="2"><html:select name="w_side"
-                                                         value="<%=form.getW_side()%>" property="w_side">
-                                <html:option value="B">Left and Right</html:option>
-                                <html:option value="L">Left</html:option>
-                                <html:option value="N">Not Applicable</html:option>
-                                <html:option value="R">Right</html:option>
-                            </html:select></td>
+                            <td colspan="2"><select name="w_side"
+                                                         value="<%=form.getW_side()%>" id="w_side">
+                                <option value="B">Left and Right</option>
+                                <option value="L">Left</option>
+                                <option value="N">Not Applicable</option>
+                                <option value="R">Right</option>
+                            </select></td>
                         </tr>
                         <tr>
                             <td class="FormLabel">Nature Of Injury:</td>
@@ -496,11 +495,11 @@
 				</tr>-->
                         <tr>
                             <td class="FormLabel">Service Location:</td>
-                            <td><html:select property="serviceLocation"
+                            <td><select name="serviceLocation"
                                              style="font-size:80%;" value="<%=form.getServiceLocation()%>">
                                 <html:options collection="billvisit" property="visitType"
                                               labelProperty="description"/>
-                            </html:select></td>
+                            </select></td>
                         </tr>
                         <tr>
                             <td class="FormLabel">Report Type:</td>
@@ -533,10 +532,10 @@
                                     <tr>
                                         <td class="FormLabel">Disabled from Work:</td>
                                         <td>
-                                            <html:select name="w_work" value="<%=form.getW_work()%>" property="w_work">
-                                                <html:option value="Y">Yes</html:option>
-                                                <html:option value="N">No</html:option>
-                                            </html:select>
+                                            <select name="w_work" value="<%=form.getW_work()%>" property="w_work">
+                                                <option value="Y">Yes</option>
+                                                <option value="N">No</option>
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr>
@@ -566,16 +565,15 @@
                                     <tr>
                                         <td class="FormLabel">Estimate:</td>
                                         <td>
-                                            <html:select name="w_estimate" value="<%=form.getW_estimate()%>"
-                                                         property="w_estimate">
-                                                <html:option value="0">At Work</html:option>
-                                                <html:option value="1">1-6 days</html:option>
-                                                <html:option value="2">7-13 days</html:option>
-                                                <html:option value="3">14-20 days</html:option>
-                                                <html:option value="9"> &gt;
+                                            <select name="w_estimate" value="<%=form.getW_estimate()%>">
+                                                <option value="0">At Work</option>
+                                                <option value="1">1-6 days</option>
+                                                <option value="2">7-13 days</option>
+                                                <option value="3">14-20 days</option>
+                                                <option value="9"> &gt;
                                                     20 days
-                                                </html:option>
-                                            </html:select></td>
+                                                </option>
+                                            </select></td>
                                     </tr>
                                     <tr>
                                         <td class="FormLabel">Estimate Date:</td>
@@ -590,24 +588,27 @@
                                     </tr>
                                     <tr>
                                         <td class="FormLabel">Problem:</td>
-                                        <td><html:textarea style="width:100%" property="w_problem"
-                                                           value="<%=form.getW_problem()%>"/></td>
+                                        <td><textarea style="width:100%" name="w_problem" id="w_problem">
+                                            <%=form.getW_problem()%>
+                                        </textarea></td>
                                     </tr>
                                     <tr>
                                         <td class="FormLabel">Diagnosis:</td>
-                                        <td><html:textarea style="width:100%" property="w_diagnosis"
-                                                           value="<%=form.getW_diagnosis()%>"/></td>
+                                        <td><textarea style="width:100%" name="w_diagnosis" id="w_diagnosis">
+                                                           <%=form.getW_diagnosis()%>
+                                        </textarea></td>
                                     </tr>
                                     <tr>
                                         <td class="FormLabel">Clinical Info:</td>
-                                        <td><html:textarea style="width:100%"
-                                                           property="w_clinicinfo"
-                                                           value="<%=form.getW_clinicinfo()%>"/></td>
+                                        <td><textarea style="width:100%" name="w_clinicinfo" id="w_clinicinfo">
+                                            <%=form.getW_clinicinfo()%>
+                                        </textarea></td>
                                     </tr>
                                     <tr>
                                         <td class="FormLabel">Problem:</td>
-                                        <td><html:textarea style="width:100%" property="w_capreason"
-                                                           value="<%=form.getW_capreason()%>"/></td>
+                                        <td><textarea style="width:100%" name="w_capreason" id="w_capreason">
+                                            <%=form.getW_capreason()%>
+                                        </textarea></td>
                                     </tr>
                                 </table>
                             </td>
@@ -699,8 +700,8 @@
         </table>
         <table width="100%">
         </table>
-        <html:hidden property="billingNo" value="<%=form.getBillingNo()%>"/>
-        <html:hidden property="id" value="<%=form.getId()%>"/>
+        <input type="hidden" name="billingNo" id="billingNo" value="<%=form.getBillingNo()%>"/>
+        <input type="hidden" name="id" id="id" value="<%=form.getId()%>"/>
         <table width="100%">
             <tr>
                 <td colspan="2" align="center" class="SectionHead"><a
@@ -762,7 +763,7 @@
             });
 
         </script>
-    </html:form>
+    </form>
     </body>
 </html>
 <%!

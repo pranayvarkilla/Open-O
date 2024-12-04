@@ -42,8 +42,8 @@
 <%@ page import="java.util.ResourceBundle" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@page import="org.oscarehr.common.dao.InstitutionDao" %>
 <%@page import="org.oscarehr.common.model.Institution" %>
@@ -91,7 +91,7 @@
                         <td>
 
                             <table>
-                                <html:form action="/oscarEncounter/AddService">
+                                <form action="${pageContext.request.contextPath}/oscarEncounter/AddService.do" method="post">
                                     <tr>
                                         <td>Institutions</td>
                                     </tr>
@@ -114,7 +114,7 @@
                                             </table>
                                         </td>
                                     </tr>
-                                </html:form>
+                                </form>
                             </table>
                         </td>
                     </tr>

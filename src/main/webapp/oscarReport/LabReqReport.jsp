@@ -41,8 +41,8 @@
 
 <%@ page import="java.util.*,oscar.oscarReport.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <link rel="stylesheet" type="text/css"
       href="../oscarEncounter/encounterStyles.css">
 <% //This could be done alot better.

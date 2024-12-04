@@ -146,7 +146,7 @@
         win.focus();
     }
 </script>
-<html:form action="/PMmodule/UnmergeClient.do">
+<form action="${pageContext.request.contextPath}/PMmodule/UnmergeClient.do" method="post">
     <input type="hidden" name="method"/>
     <input type="hidden" name="mergeAction"/>
     <table width="100%" height="100%" cellpadding="1px" cellspacing="1px">
@@ -185,9 +185,9 @@
                     </c:otherwise>
                 </c:choose>
             </security:oscarSec>
-            <html:link action="/PMmodule/Admin/SysAdmin.do" style="color:Navy;text-decoration:none;">
+            <a href="${pageContext.request.contextPath}/PMmodule/Admin/SysAdmin.do" style="color:Navy;text-decoration:none;">
                 <img border=0 src=
-                        <html:rewrite page="/images/close16.png"/>/>&nbsp;Close&nbsp;&nbsp;</html:link>
+                        <html:rewrite page="/images/close16.png"/>/>&nbsp;Close&nbsp;&nbsp;</a>
         </td>
     </tr>
     <tr height="18px">
@@ -230,11 +230,11 @@
                         </tr>
                         <tr>
                             <th><fmt:message bundle="${pmm}" key="ClientSearch.active" /></th>
-                            <td><html:select property="criteria.active">
-                                <html:option value="">Any</html:option>
-                                <html:option value="1">Yes</html:option>
-                                <html:option value="0">No</html:option>
-                            </html:select></td>
+                            <td><select name="criteria.active" id="criteria.active">
+                                <option value="">Any</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select></td>
                         </tr>
                         <tr>
                             <th><fmt:message bundle="${pmm}" key="ClientSearch.gender" /></th>
@@ -314,4 +314,4 @@
         </tr>
         </table>
     </c:if>
-</html:form>
+</form>

@@ -44,9 +44,9 @@
 <h3>New Client</h3>
 <p>Please enter the following information. The system will try to determine if the client has already been entered into
     the system.</p>
-<html:form action="/PMmodule/GenericIntake/Search" onsubmit="return validateSearchForm()">
-    <html:hidden property="method"/>
-    <html:hidden property="demographicId"/>
+<form action="${pageContext.request.contextPath}/PMmodule/GenericIntake/Search.do" method="post" onsubmit="return validateSearchForm()">
+    <input type="hidden" name="method" id="method"/>
+    <input type="hidden" name="demographicId" id="demographicId"/>
     <input type="hidden" name="remoteFacilityId"/>
     <input type="hidden" name="remoteDemographicId"/>
     <%
@@ -67,12 +67,12 @@
         <tr>
             <th>Birth Date</th>
             <td>
-                <html:select property="monthOfBirth">
+                <select name="monthOfBirth" id="monthOfBirth">
                     <html:optionsCollection property="months" value="value" label="label"/>
-                </html:select>&nbsp;
-                <html:select property="dayOfBirth">
+                </select>&nbsp;
+                <select name="dayOfBirth" id="dayOfBirth">
                     <html:optionsCollection property="days" value="value" label="label"/>
-                </html:select>&nbsp;
+                </select>&nbsp;
                 <html:text property="yearOfBirth" size="4" maxlength="4"/>&nbsp;(YYYY)
             </td>
         </tr>
@@ -178,4 +178,4 @@
         <% } %>
         <br/>
     </c:if>
-</html:form>
+</form>

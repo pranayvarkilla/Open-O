@@ -25,7 +25,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ page import="oscar.oscarProvider.data.*" %>
 
 
@@ -82,14 +82,14 @@
 
                 if (request.getAttribute("status") == null) {
 
-            %> <html:form action="/setMyOscarId.do">
+            %> <form action="${pageContext.request.contextPath}/setMyOscarId.do" method="post">
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.msgEdit"/>&nbsp;&nbsp;
                 <html:text property="myOscarLoginId" value="<%=login%>"
                            size="20"/>
                 <br>
                 <input type="submit" onclick="return validate();"
                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.btnSubmit"/>"/>
-            </html:form> <%
+            </form> <%
             } else if (((String) request.getAttribute("status")).equals("complete")) {
             %> <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.msgSuccess"/>&nbsp;'<%=login%>'
 

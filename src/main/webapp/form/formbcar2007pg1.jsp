@@ -40,8 +40,6 @@
 
 <%@ page import=" oscar.form.*, oscar.form.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
 
@@ -952,7 +950,7 @@
 @oscar.formDB Field="formEdited" Type="timestamp"
 @oscar.formDB Field="c_lastVisited" Type="char(3)"
 -->
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
         <input type="hidden" name="commonField" value="ar2_"/>
         <input type="hidden" name="c_lastVisited" value="pg1"/>
         <input type="hidden" name="demographic_no"
@@ -2941,7 +2939,7 @@
         </table>
 
 
-    </html:form>
+    </form>
     </body>
     <script type="text/javascript">
         Calendar.setup({

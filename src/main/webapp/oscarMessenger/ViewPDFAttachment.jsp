@@ -28,8 +28,8 @@
         import="oscar.oscarMessenger.docxfer.send.*, oscar.oscarMessenger.docxfer.util.*, oscar.util.*" %>
 <%@ page import="java.util.*, org.w3c.dom.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -96,7 +96,7 @@
     <tr>
         <td class="MainTableBottomRowLeftColumn"></td>
 
-        <html:form action="/oscarMessenger/ViewPDFFile">
+        <form action="${pageContext.request.contextPath}/oscarMessenger/ViewPDFFile.do" method="post">
             <td class="MainTableBottomRowRightColumn">
                 <table cellspacing=3>
                     <tr>
@@ -124,12 +124,12 @@
                                                      value="Download"/></td>
                     </tr>
                             <% }  %>
-                        <html:hidden property="file_id"/>
-                        <html:hidden property="attachment" value="<%=pdfAttch%>"/>
+                        <input type="hidden" name="file_id" id="file_id"/>
+                        <input type="hidden" name="attachment" id="attachment" value="<%=pdfAttch%>"/>
 
                     <table>
             </td>
-        </html:form>
+        </form>
     </tr>
 </table>
 </body>

@@ -46,8 +46,8 @@
 <%@ page
         import="oscar.oscarProvider.data.*,oscar.oscarWorkflow.*,oscar.oscarEncounter.oscarMeasurements.bean.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 
 <%
@@ -214,9 +214,7 @@
         }
     </script>
 
-
-    <html:form action="/oscarPrevention/AddPrevention"
-               onsubmit="return process(this);" styleId="injectForm">
+    <form action="${pageContext.request.contextPath}/oscarPrevention/AddPrevention.do" method="post" onsubmit="return process(this);" styleId="injectForm">
         <input type="hidden" name="prevention" value="RH"/>
         <input type="hidden" name="demographic_no" value="<%=demographicNo%>"/>
         <input type="hidden" name="workflowId" value="<%=workflowId%>"/>
@@ -317,7 +315,7 @@
         &nbsp;<input type="submit"
         value="Save Injection" />
 
-    </html:form>
+    </form>
     </div>
 
     <script type="text/javascript">

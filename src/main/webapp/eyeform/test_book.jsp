@@ -57,13 +57,13 @@
 Book Test
 <br/>
 
-<html:form action="/eyeform/TestBook.do">
+<form action="${pageContext.request.contextPath}/eyeform/TestBook.do" method="post">
     <table style="margin-left:auto;margin-right:auto;background-color:#f0f0f0;border-collapse:collapse">
         <input type="hidden" name="method" value="save"/>
 
-        <html:hidden property="data.id"/>
-        <html:hidden property="data.demographicNo"/>
-        <html:hidden property="data.appointmentNo"/>
+        <input type="hidden" name="id" id="id"/>
+        <input type="hidden" name="demographicNo" id="demographicNo"/>
+        <input type="hidden" name="appointmentNo" id="appointmentNo"/>
 
 
         <tr>
@@ -77,30 +77,30 @@ Book Test
         <tr>
             <td class="genericTableHeader">Eye</td>
             <td class="genericTableData">
-                <html:select property="data.eye">
-                    <html:option value="OU">OU</html:option>
-                    <html:option value="OD">OD</html:option>
-                    <html:option value="OS">OS</html:option>
-                    <html:option value="n/a">n/a</html:option>
-                </html:select>
+                <select name="eye">
+                    <option value="OU">OU</option>
+                    <option value="OD">OD</option>
+                    <option value="OS">OS</option>
+                    <option value="n/a">n/a</option>
+                </select>
             </td>
         </tr>
 
         <tr>
             <td class="genericTableHeader">Comment</td>
             <td class="genericTableData">
-                <html:textarea rows="5" cols="40" property="data.comment"></html:textarea>
+                <textarea rows="5" cols="40" name="comment" id="comment"></textarea>
             </td>
         </tr>
 
         <tr>
             <td class="genericTableHeader">Urgency</td>
             <td class="genericTableData">
-                <html:select property="data.urgency">
-                    <html:option value="routine">routine</html:option>
-                    <html:option value="ASAP">ASAP</html:option>
-                    <html:option value="PTNV">PTNV</html:option>
-                </html:select>
+                <select name="urgency">
+                    <option value="routine">routine</option>
+                    <option value="ASAP">ASAP</option>
+                    <option value="PTNV">PTNV</option>
+                </select>
             </td>
         </tr>
 
@@ -119,7 +119,7 @@ Book Test
         </tr>
     </table>
 
-</html:form>
+</form>
 
 </body>
 </html>

@@ -66,8 +66,8 @@
 
 <%=WebUtils.popErrorMessagesAsHtml(session)%>
 
-<html:hidden property="program.id"/>
-<html:hidden property="program.vacancyId"/>
+<input type="hidden" name="id" id="id"/>
+<input type="hidden" name="vacancyId" id="vacancyId"/>
 <div class="tabs" id="tabs">
     <table cellpadding="3" cellspacing="0" border="0">
         <tr>
@@ -124,8 +124,8 @@
 <display:table class="simple" cellspacing="2" cellpadding="3"
                id="program" name="programs" pagesize="200"
                requestURI="/PMmodule/ClientManager.do">
-    <html:hidden property="program.id"/>
-    <html:hidden property="program.vacancyId"/>
+    <input type="hidden" name="id" id="id"/>
+    <input type="hidden" name="vacancyId" id="vacancyId"/>
     <display:setProperty name="paging.banner.placement" value="bottom"/>
     <%
         Program p = (Program) pageContext.getAttribute("program");

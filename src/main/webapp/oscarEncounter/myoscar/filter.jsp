@@ -27,8 +27,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 
 <script type="text/javascript">
     function setToFrom(dateFrom, dateTo) {
@@ -60,12 +60,12 @@
 <a onclick="setToFrom('<%=sdf.format(month12)%>','<%=sdf.format(now)%>')"> Last 12 Months </a> -
 <a onclick="setToFrom('','')"> Clear </a>
 
-<html:form action="${request.contextPath}/oscarEncounter/myoscar/measurements_${param.sourcePage}.do"
-           styleId="tofromForm" styleClass="form-inline">
+<form action="${request.contextPath}/oscarEncounter/myoscar/measurements_${param.sourcePage}.do"
+           styleId="tofromForm" class="form-inline">
 
     <div class="form-group">
-        <html:hidden name="EctMyOscarFilterForm" property="type" value="${param.sourcePage}"/>
-        <html:hidden name="EctMyOscarFilterForm" property="demoNo" value="${param.demoNo}"/>
+        <input type="hidden" name="type" id="type" value="${param.sourcePage}"/>
+        <input type="hidden" name="demoNo" id="demoNo" value="${param.demoNo}"/>
         <div class="input-group">
             <div class="input-group-addon">From</div>
             <html:text styleId="from" name="EctMyOscarFilterForm" property="from" value="${param.from}"
@@ -82,4 +82,4 @@
     <div class="form-group">
         <html:submit value="Filter" styleClass="btn btn-default"/>
     </div>
-</html:form>
+</form>

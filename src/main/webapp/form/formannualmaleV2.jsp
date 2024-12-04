@@ -39,8 +39,8 @@
 %>
 <%@ page import="oscar.form.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
 <html>
@@ -240,7 +240,7 @@
 
     <BODY bgproperties="fixed" onLoad="javascript:window.focus()"
           topmargin="0" leftmargin="0" rightmargin="0">
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
 
 
     <input type="hidden" name="demographic_no"
@@ -1466,7 +1466,7 @@
                     </tr>
                 </table>
 
-                </html:form>
+                </form>
 
     </body>
 </html>

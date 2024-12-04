@@ -48,8 +48,7 @@
         <td><fmt:setBundle basename="oscarResources"/><fmt:message key="casemgmt.ongoingconcerns"/></td>
     </tr>
     <tr>
-        <td bgcolor="white"><html:textarea property="cpp.ongoingConcerns"
-                                           rows="4" cols="85"/></td>
+        <td bgcolor="white"><textarea name="ongoingConcerns" rows="4" cols="85"></textarea></td>
     </tr>
 </table>
 <html:submit value="save"

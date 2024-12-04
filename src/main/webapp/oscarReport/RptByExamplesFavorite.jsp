@@ -41,8 +41,8 @@
 
 <%@ page import="java.util.*,oscar.oscarReport.data.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <link rel="stylesheet" type="text/css"
       href="../oscarEncounter/encounterStyles.css">
 <html>
@@ -56,7 +56,7 @@
 
     <body vlink="#0000FF" class="BodyStyle">
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
-        <html:form action="/oscarReport/RptByExamplesFavorite.do">
+        <form action="${pageContext.request.contextPath}/oscarReport/RptByExamplesFavorite.do" method="post">
         <tr class="MainTableTopRow">
             <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgReport"/></td>
             <td class="MainTableTopRowRightColumn">
@@ -75,7 +75,7 @@
                         <td><html:text property="favoriteName" size="40"/></td>
                     </tr>
                     <tr>
-                        <td><html:textarea property="query" cols="80" rows="3"/></td>
+                        <td><textarea name="query" cols="80" rows="3"></textarea></td>
                     </tr>
                     <tr>
                         <td><input type="button" value="Add" onclick="submit();"/> <input
@@ -94,6 +94,6 @@
         </tr>
     </table>
 
-    </html:form>
+    </form>
     </body>
 </html>

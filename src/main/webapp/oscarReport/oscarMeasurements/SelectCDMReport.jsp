@@ -42,8 +42,8 @@
 <%@ page
         import="java.util.*,oscar.oscarReport.oscarMeasurements.pageUtil.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <link rel="stylesheet" type="text/css"
       href="../../oscarEncounter/encounterStyles.css">
 <html>
@@ -70,7 +70,7 @@
 
     <body class="BodyStyle" vlink="#0000FF">
     <!--  -->
-    <html:form action="oscarReport/oscarMeasurements/SelectCDMReport">
+    <form action="${pageContext.request.contextPath}/oscarReport/oscarMeasurements/SelectCDMReport.do" method="post">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
                 <td class="MainTableTopRowLeftColumn"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgReport"/></td>
@@ -78,11 +78,11 @@
                     <table class="TopStatusBar">
                         <tr>
                             <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTitle"/></td>
-                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgSelectCDMGroup"/> <html:select
-                                    property="value(CDMgroup)">
+                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgSelectCDMGroup"/> <select
+                                    name="value(CDMgroup)">
                                 <html:options collection="CDMGroups" property="groupName"
                                               labelProperty="groupName"/>
-                            </html:select></td>
+                            </select></td>
                             <td style="text-align: right"><oscar:help keywords="report" key="app.top1"/> | <a
                                     href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a
                                     href="javascript:popupStart(300,400,'License.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.license"/></a></td>
@@ -137,6 +137,6 @@
                 <td class="MainTableBottomRowRightColumn"></td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

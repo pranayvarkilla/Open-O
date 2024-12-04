@@ -39,7 +39,7 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib prefix="csrf" uri="http://www.owasp.org/index.php/Category:OWASP_CSRFGuard_Project/Owasp.CsrfGuard.tld" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page
@@ -255,8 +255,8 @@
     </div>
 
     <div id="addDocDiv" class="addDocDiv well form-inline" style="display: none; padding:5px;">
-        <html:form action="/documentManager/addEditDocument" method="POST" enctype="multipart/form-data"
-                   styleClass="forms" onsubmit="return submitUpload(this)">
+        <form action="${pageContext.request.contextPath}/documentManager/addEditDocument.do" method="POST" enctype="multipart/form-data"
+                   class="forms" onsubmit="return submitUpload(this)">
 
             <c:forEach var="error" items="${ docerrors }">
                 <div class="alert alert-danger">
@@ -360,12 +360,12 @@
             </div>
 
 
-        </html:form>
+        </form>
     </div>
 
     <div id="addLinkDiv" class="addDocDiv form-inline well" style="display: none;">
 
-        <html:form action="/documentManager/addLink" method="POST" styleClass="forms"
+        <form action="${pageContext.request.contextPath}/documentManager/addLink.do" method="POST" class="forms"
                    onsubmit="return submitUploadLink(this)">
             <%-- Lists Errors --%>
         <c:forEach var="error" items="${ linkhtmlerrors }">
@@ -455,7 +455,7 @@
                            onclick="window.location='documentReport.jsp?function=<%=module%>&functionid=<%=moduleid%>'">
                 </div>
             </div>
-            </html:form>
+            </form>
 
         </div>
     </div>

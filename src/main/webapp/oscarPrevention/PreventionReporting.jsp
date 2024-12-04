@@ -31,7 +31,7 @@
 <%@page import="oscar.OscarProperties, org.oscarehr.util.SpringUtils, org.oscarehr.common.dao.BillingONCHeader1Dao" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="providerBean" class="java.util.Properties" scope="session"/>
@@ -418,32 +418,32 @@
                 &nbsp;
             </td>
             <td valign="top" class="MainTableRightColumn">
-                <html:form action="/oscarPrevention/PreventionReport" method="get">
+                <form action="${pageContext.request.contextPath}/oscarPrevention/PreventionReport.do" method="get">
                     <div>
                         Patient Demographic Query:
-                        <html:select property="patientSet">
-                            <html:option value="-1">--Select Query--</html:option>
+                        <select name="patientSet" id="patientSet">
+                            <option value="-1">--Select Query--</option>
                             <%
                                 for (int i = 0; i < queryArray.size(); i++) {
                                     RptSearchData.SearchCriteria sc = (RptSearchData.SearchCriteria) queryArray.get(i);
                                     String qId = sc.id;
                                     String qName = sc.queryName;
                             %>
-                            <html:option value="<%=qId%>"><%=qName%>
-                            </html:option>
+                            <option value="<%=qId%>"><%=qName%>
+                            </option>
                             <%}%>
-                        </html:select>
+                        </select>
                     </div>
                     <div>
                         Prevention:
-                        <html:select property="prevention">
-                            <html:option value="-1">--Select Prevention--</html:option>
-                            <html:option value="PAP">PAP</html:option>
-                            <html:option value="Mammogram">Mammogram</html:option>
-                            <html:option value="Flu">Flu</html:option>
-                            <html:option value="ChildImmunizations">Child Immunizations</html:option>
-                            <html:option value="FOBT">FOBT</html:option>
-                        </html:select>
+                        <select name="prevention" id="prevention">
+                            <option value="-1">--Select Prevention--</option>
+                            <option value="PAP">PAP</option>
+                            <option value="Mammogram">Mammogram</option>
+                            <option value="Flu">Flu</option>
+                            <option value="ChildImmunizations">Child Immunizations</option>
+                            <option value="FOBT">FOBT</option>
+                        </select>
                     </div>
                     <div>
                         As of:
@@ -456,7 +456,7 @@
 
                     </div>
                     <input type="submit"/>
-                </html:form>
+                </form>
 
 
             </td>

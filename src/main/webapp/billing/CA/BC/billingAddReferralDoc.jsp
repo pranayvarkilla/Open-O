@@ -26,7 +26,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -124,13 +124,11 @@
         </div>
         <% }%>
 
-        <html:form action="/billing/CA/BC/AddReferralDoc" onsubmit="return checkBillingNumber();"
-                   styleId="addReferralDocform">
-
+        <form action="${pageContext.request.contextPath}/billing/CA/BC/AddReferralDoc.do" method="post"
+              onsubmit="return checkBillingNumber();" style="addReferralDocform">
             <%
                 String id = request.getParameter("id");
             %>
-
             <fieldset>
                 <legend><%=(id == null) ? "Add" : "Update"%> Referral Doctor</legend>
                 Billing #:<html:text property="referral_no"/><br>
@@ -145,7 +143,7 @@
                 Fax:<html:text property="fax"/><br/>
                 <input class="btn btn-primary" type="submit" value="Save"/>
             </fieldset>
-        </html:form>
+        </form>
     </div>
     <script>
         registerFormSubmit('addReferralDocform', 'dynamic-content');

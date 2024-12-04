@@ -38,11 +38,11 @@
 
 <title>MyIssues ~ Issue Details</title>
 <p>Please fill in issue's information below:</p>
-<!-- html:form action="/issueAdmin" focus="issueAdmin.code" onsubmit="return validateIssueAdminForm(this)" -->
-<html:form action="/issueAdmin" focus="issueAdmin.code">
+<!-- form action="/issueAdmin" focus="issueAdmin.code" onsubmit="return validateIssueAdminForm(this)" -->
+<form action="${pageContext.request.contextPath}/issueAdmin.do" method="post" focus="issueAdmin.code">
     <input type="hidden" name="method" value="save"/>
-    <html:hidden property="issueAdmin.id"/>
-    <html:hidden property="issueAdmin.update_date_web"/>
+    <input type="hidden" name="id" id="id"/>
+    <input type="hidden" name="update_date_web" id="update_date_web"/>
 
     <div style="color: red">
     <%@ include file="messages.jsp" %>
@@ -96,5 +96,5 @@
        	--> <html:submit styleClass="button"
                             onclick="this.form.method.value='cancel'">Cancel</html:submit></td>
     </table>
-</html:form>
+</form>
 <!-- html:javascript formName="issueAdminForm"/ -->

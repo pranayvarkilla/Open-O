@@ -32,25 +32,25 @@
     </table>
 </div>
 
-<html:form action="/PMmodule/Admin/DefaultRoleAccess">
+<form action="${pageContext.request.contextPath}/PMmodule/Admin/DefaultRoleAccess.do" method="post">
     <input type="hidden" name="method" value="save"/>
-    <html:hidden property="form.id"/>
+    <input type="hidden" name="id" id="id"/>
 
     <table width="100%" border="1" cellspacing="2" cellpadding="3"
            class="b">
         <tr class="b">
             <td width="20%">Role:</td>
-            <td><html:select property="form.roleId">
+            <td><select name="form.roleId" id="form.roleId">
                 <html:options collection="roles" property="id" labelProperty="name"/>
-            </html:select></td>
+            </select></td>
         </tr>
 
         <tr class="b">
             <td width="20%">Access Type:</td>
-            <td><html:select property="form.accessTypeId">
+            <td><select name="form.accessTypeId" id="form.accessTypeId">
                 <html:options collection="access_types" property="id"
                               labelProperty="name"/>
-            </html:select></td>
+            </select></td>
         </tr>
 
         <tr>
@@ -60,4 +60,4 @@
             </td>
         </tr>
     </table>
-</html:form>
+</form>

@@ -136,10 +136,10 @@
 
     <body>
 
-    <html:form action="/eyeform/ConsultationReportList">
+    <form action="${pageContext.request.contextPath}/eyeform/ConsultationReportList.do" method="post">
         <input type="hidden" name="method" value="list"/>
-        <html:hidden property="cr.demographicNo"/>
-        <html:hidden property="cr.demographicName"/>
+        <input type="hidden" name="demographicNo" id="demographicNo"/>
+        <input type="hidden" name="demographicName" id="demographicName"/>
 
         <table style="border:0;">
             <tr>
@@ -152,17 +152,17 @@
             <tr>
 
                 <td>Status:</td>
-                <td><html:select property="cr.status">
-                    <html:option value="">All</html:option>
-                    <html:option value="Incomplete">Incomplete</html:option>
-                    <html:option value="Completed,not sent">Completed,not sent</html:option>
-                    <html:option value="Completed,and sent">Completed,and sent</html:option>
-                </html:select></td>
+                <td><select name="status">
+                    <option value="">All</option>
+                    <option value="Incomplete">Incomplete</option>
+                    <option value="Completed,not sent">Completed,not sent</option>
+                    <option value="Completed,and sent">Completed,and sent</option>
+                </select></td>
                 <td>Internal Doctor:</td>
-                <td><html:select property="cr.providerNo">
-                    <html:option value="">All</html:option>
+                <td><select name="providerNo">
+                    <option value="">All</option>
                     <html:optionsCollection property="cr.providerList" label="formattedName" value="providerNo"/>
-                </html:select></td>
+                </select></td>
                 <td>Demographic:</td>
                 <td>
                     <%
@@ -276,7 +276,7 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
 
     </body>
 </html>

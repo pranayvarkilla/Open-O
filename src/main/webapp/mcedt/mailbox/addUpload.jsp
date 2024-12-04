@@ -32,9 +32,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.oscar-emr.com/tags/integration" prefix="i" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
 
 <html>
     <head>
@@ -76,7 +76,7 @@
         <div class="center">
             <h1>Upload Details</h1>
 
-            <html:form action="/mcedt/addUpload.do" method="post" styleId="formAddUpload"
+            <form action="${pageContext.request.contextPath}/mcedt/addUpload.do" method="post" styleId="formAddUpload"
                        enctype="multipart/form-data">
 
                 <jsp:include page="../messages.jsp"/>
@@ -90,7 +90,7 @@
                     </button>
                     <button class="noBorder blackBox flatLink font12" onclick="return cancel();">Cancel</button>
                 </div>
-            </html:form>
+            </form>
         </div>
     </div>
     </body>

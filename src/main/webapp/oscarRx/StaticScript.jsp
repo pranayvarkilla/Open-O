@@ -25,8 +25,8 @@
 --%>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@page import="org.oscarehr.util.SpringUtils" %>
 <%@page import="org.oscarehr.common.dao.DrugDao" %>
 <%@page import="java.util.List" %>
@@ -189,12 +189,12 @@
                                         <%
                                             if (drug.isLocal) {
                                         %>
-                                        <html:form action="/oscarRx/rePrescribe">
-                                            <html:hidden property="drugList" value="<%=drug.localDrugId.toString()%>"/>
+                                        <form action="${pageContext.request.contextPath}/oscarRx/rePrescribe.do" method="post">
+                                            <input type="hidden" name="drugList" id="drugList" value="<%=drug.localDrugId.toString()%>"/>
                                             <input type="hidden" name="method" value="represcribe">
                                             <html:submit style="width:100px" styleClass="ControlPushButton"
                                                          value="Re-prescribe"/>
-                                        </html:form> <input type="button" align="top" value="Add to Favorites"
+                                        </form> <input type="button" align="top" value="Add to Favorites"
                                                             style="width: 100px" class="ControlPushButton"
                                                             onclick="javascript:addFavorite(<%=drug.localDrugId%>, '<%=(drug.customName!=null&&(!drug.customName.equalsIgnoreCase("null")))?drug.customName:drug.brandName%>');"/>
                                         <%

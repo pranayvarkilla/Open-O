@@ -35,11 +35,7 @@
         errormsg = request.getParameter("errormsg");
     }
 %>
-
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-
 <%@ page import="org.springframework.web.util.JavaScriptUtils" %>
 <%@ page
         import="java.lang.*,oscar.*"
@@ -222,7 +218,7 @@
     </head>
 
     <body onLoad="setfocus('oldPassword')" topmargin="0" leftmargin="0" rightmargin="0">
-    <html:form method="post" action="login" onsubmit="return checkPwdPolicy();">
+    <form method="post" action="${pageContext.request.contextPath}/login.do" onsubmit="return checkPwdPolicy();">
         <table border=0 cellspacing=0 cellpadding=0 width="100%">
             <tr bgcolor="#486ebd">
                 <th align=CENTER NOWRAP><font face="Helvetica" color="#FFFFFF"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.providerchangepassword.description"/></font></th>
@@ -271,6 +267,6 @@
 
         <input type=hidden name='forcedpasswordchange' value='true'/>
 
-    </html:form>
+    </form>
     </body>
 </html>

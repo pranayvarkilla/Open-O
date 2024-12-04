@@ -70,7 +70,7 @@
     <display:column property="name" sortable="true" title="Name"/>
 </display:table>
 <br/>
-<html:hidden property="client_status.id"/>
+<input type="hidden" name="id" id="id"/>
 <table width="100%" border="1" cellspacing="2" cellpadding="3">
     <tr class="b">
         <td width="20%">Name:</td>

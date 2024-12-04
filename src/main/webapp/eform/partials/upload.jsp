@@ -26,7 +26,7 @@
 <!DOCTYPE html>
 <%@ page import="oscar.eform.data.*, oscar.eform.*, java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -65,7 +65,7 @@
     </c:if>
 
 
-    <html:form action="/eform/uploadHtml" method="POST" onsubmit="return checkFormAndDisable()"
+    <form action="${pageContext.request.contextPath}/eform/uploadHtml.do" method="POST" onsubmit="return checkFormAndDisable()"
                enctype="multipart/form-data">
         <div class="alert alert-error" style="display:none"><html:errors/></div>
 
@@ -117,7 +117,7 @@
         <input type="submit" name="subm" class="btn btn-primary upload"
                value="<fmt:setBundle basename="oscarResources"/><fmt:message key="eform.uploadhtml.btnUpload"/>" disabled>
 
-    </html:form>
+    </form>
 
     <div style="font-size:0; line-height:0">&nbsp;</div>
 

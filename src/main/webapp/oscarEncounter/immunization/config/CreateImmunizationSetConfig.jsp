@@ -25,8 +25,8 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -132,10 +132,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><html:form
-                                action="/oscarEncounter/immunization/config/CreateImmunizationSetConfig">
+                        <td><form action="${pageContext.request.contextPath}/oscarEncounter/immunization/config/CreateImmunizationSetConfig.do" method="post">
 
-                            <html:hidden property="name" value="<%=setName%>"/>
+                            <input type="hidden" name="name" id="name" value="<%=setName%>"/>
                             <table border=1>
                                 <%for (int i = 0; i < rows; i++) { %>
                                 <tr>
@@ -174,7 +173,7 @@
                                     </td>
                                 </tr>
                             </table>
-                        </html:form></td>
+                        </form></td>
 
                     </tr>
 

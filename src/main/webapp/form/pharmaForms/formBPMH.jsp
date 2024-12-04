@@ -34,7 +34,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
@@ -89,9 +89,9 @@
 
     <!--  HEADING  -->
     <!-- FORM BEGIN -->
-    <html:form action="/formBPMH.do">
-        <html:hidden property="demographicNo"/>
-        <html:hidden property="formId"/>
+    <form action="${pageContext.request.contextPath}/formBPMH.do" method="post">
+        <input type="hidden" name="demographicNo" id="demographicNo"/>
+        <input type="hidden" name="formId" id="formId"/>
         <header>
 
             <h1><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.title"/></h1>
@@ -196,7 +196,7 @@
 
         <!-- FAMILY PHYSICIAN -->
         <section id="familyPhysician">
-            <html:hidden name="bpmh" property="familyDrContactId" styleId="familyDrContactId"/>
+            <input type="hidden" name="bpmh" property="familyDrContactId" id="familyDrContactId"/>
             <table id="providerId">
                 <tr>
                     <th colspan="7"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.familyDr"/></th>
@@ -431,7 +431,7 @@
                 </tr>
             </table>
         </section>
-    </html:form>
+    </form>
 
     <!-- FOOTER -->
     <footer>

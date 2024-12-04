@@ -91,7 +91,7 @@
     <%@ include file="/common/messages.jsp" %>
     <br/>
 
-    <html:form action="/PMmodule/StaffManager.do">
+    <form action="${pageContext.request.contextPath}/PMmodule/StaffManager.do" method="post">
 
         <div class="tabs" id="tabs">
             <table cellpadding="3" cellspacing="0" border="0">
@@ -151,7 +151,7 @@
 
         </display:table>
 
-    </html:form>
+    </form>
 
     </body>
 </html>

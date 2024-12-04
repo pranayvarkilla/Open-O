@@ -40,8 +40,8 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@page import="org.oscarehr.util.SpringUtils" %>
 <%@page import="org.oscarehr.common.dao.DepartmentDao" %>
 <%@page import="org.oscarehr.common.model.Department" %>
@@ -106,7 +106,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <html:form action="/oscarEncounter/EditDepartments">
+                            <form action="${pageContext.request.contextPath}/oscarEncounter/EditDepartments.do" method="post">
                                 <%-- input type="submit" name="delete"
                                     value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.EditSpecialists.btnDeleteSpecialist"/>"--%>
                             <div class="ChooseRecipientsBox1">
@@ -140,7 +140,7 @@
                     </tr>
                 </table>
                 </div>
-                </html:form></td>
+                </form></td>
         </tr>
         <!----End new rows here-->
 

@@ -27,8 +27,8 @@
 <%@ page import="java.util.ResourceBundle" %>
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -117,7 +117,7 @@
                     <tr>
                         <td>
 
-                            <html:form action="/oscarEncounter/AddInstitution">
+                            <form action="${pageContext.request.contextPath}/oscarEncounter/AddInstitution.do" method="post">
                                 <table>
                                     <%
                                         if (request.getAttribute("id") != null) {
@@ -136,7 +136,7 @@
                                             thisForm.setAnnotation((String) request.getAttribute("annotation"));
                                         }
                                     %>
-                                    <html:hidden name="EctConAddInstitutionForm" property="id"/>
+                                    <input type="hidden" name="id" id="id"/>
                                     <tr>
                                         <td>Name</td>
                                         <td><html:text name="EctConAddInstitutionForm" property="name"/></td>
@@ -171,8 +171,7 @@
                                     <tr>
                                         <td>Annotation
                                         </td>
-                                        <td colspan="4"><html:textarea name="EctConAddInstitutionForm"
-                                                                       property="annotation" cols="30" rows="3"/>
+                                        <td colspan="4"><textarea name="annotation" cols="30" rows="3"></textarea>
                                         </td>
                                     </tr>
 
@@ -183,7 +182,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                            </html:form>
+                            </form>
                         </td>
                     </tr>
                     <!----End new rows here-->

@@ -66,10 +66,10 @@
 </table>
 
 <br/>
-<html:form action="/SystemMessage"
+<form action="/SystemMessage"
            onsubmit="return validateRequiredFieldByName('system_message.message', 'Message', 4000);">
     <input type="hidden" name="method" value="save"/>
-    <html:hidden property="system_message.id"/>
+    <input type="hidden" name="id" id="id"/>
     <table width="60%" border="0" cellpadding="0" cellspacing="1"
            bgcolor="#C0C0C0">
         <tr>
@@ -88,19 +88,19 @@
         </tr>
         <tr>
             <td class="fieldTitle">Expiry Time:&nbsp;</td>
-            <td class="fieldValue">Hour: <html:select
-                    property="system_message.expiry_hour">
+            <td class="fieldValue">Hour: <select
+                    name="expiry_hour">
                 <%for (int x = 1; x < 24; x++) { %>
-                <html:option value="<%=String.valueOf(x) %>"><%=x %>
-                </html:option>
+                <option value="<%=String.valueOf(x) %>"><%=x %>
+                </option>
                 <% } %>
-            </html:select> &nbsp;&nbsp; Minute: <html:select
-                    property="system_message.expiry_minute">
+            </select> &nbsp;&nbsp; Minute: <select
+                    property="expiry_minute">
                 <%for (int x = 0; x < 60; x++) {%>
-                <html:option value="<%=String.valueOf(x) %>"><%=x %>
-                </html:option>
+                <option value="<%=String.valueOf(x) %>"><%=x %>
+                </option>
                 <% } %>
-            </html:select></td>
+            </select></td>
             <td></td>
         </tr>
         <tr>
@@ -114,6 +114,6 @@
                        onclick="location.href='SystemMessage.do'"/></td>
         </tr>
     </table>
-</html:form>
+</form>
 </body>
 </html>

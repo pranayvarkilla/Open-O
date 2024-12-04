@@ -25,7 +25,7 @@
 --%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <%@ page import="java.sql.*, java.util.*, oscar.*" buffer="none" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>

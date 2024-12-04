@@ -40,8 +40,8 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="oscar.oscarReport.data.RptSearchData,java.util.*" %>
 
 
@@ -176,25 +176,25 @@
                 oscarReport
             </td>
             <td class="MainTableTopRowRightColumn">
-                <html:form action="/report/DemographicReport" onsubmit="return checkQuery();">
-                <html:hidden property="studyId" value='<%=studyId == null ? "" : studyId%>'/>
+                <form action="${pageContext.request.contextPath}/report/DemographicReport.do" method="post" onsubmit="return checkQuery();">
+                <input type="hidden" name="studyId" id="studyId" value='<%=studyId == null ? "" : studyId%>'/>
                 <table class="TopStatusBar">
                     <tr>
                         <td>
                             Demographic Search
                         </td>
                         <td>
-                            <html:select property="savedQuery">
+                            <select name="savedQuery" id="savedQuery">
                                 <%
                                     for (int i = 0; i < queryArray.size(); i++) {
                                         RptSearchData.SearchCriteria sc = (RptSearchData.SearchCriteria) queryArray.get(i);
                                         String qId = sc.id;
                                         String qName = sc.queryName;%>
-                                <html:option value="<%=qId%>"><%=qName%>
-                                </html:option>
+                                <option value="<%=qId%>"><%=qName%>
+                                </option>
 
                                 <%}%>
-                            </html:select>
+                            </select>
                             <input type="submit" value="Load Query" name="query"/>
                             <a href="ManageDemographicQueryFavourites.jsp">manage</a>
                         </td>
@@ -499,13 +499,13 @@
                                         AGE
                                     </td>
                                     <td>
-                                        <html:select property="age">
-                                            <html:option value="0">---NO AGE SPECIFIED---</html:option>
-                                            <html:option value="1">younger than</html:option>
-                                            <html:option value="2">older than</html:option>
-                                            <html:option value="3">equal too</html:option>
-                                            <html:option value="4">ages between</html:option>
-                                        </html:select>
+                                        <select name="age" id="age">
+                                            <option value="0">---NO AGE SPECIFIED---</option>
+                                            <option value="1">younger than</option>
+                                            <option value="2">older than</option>
+                                            <option value="3">equal too</option>
+                                            <option value="4">ages between</option>
+                                        </select>
                                     </td>
                                     <td>
                                         <html:text property="startYear" size="4"/>
@@ -515,9 +515,9 @@
 
                                         Age Style:
                                         Exact:
-                                        <html:radio property="ageStyle" value="1"/>
+                                        <input type="radio" name="ageStyle" value="1"/>
                                         In the year
-                                        <html:radio property="ageStyle" value="2"/>
+                                        <input type="radio" name="ageStyle" value="2"/>
                                         As of : <html:text property="asofDate" size="9" styleId="asofDate"/> <a
                                             id="date"><img title="Calendar" src="../images/cal.gif" alt="Calendar"
                                                            border="0"/></a> <br>
@@ -572,11 +572,11 @@
                                         Sex
                                     </td>
                                     <td>
-                                        <html:select property="sex">
-                                            <html:option value="0">---NO SEX SPECIFIED---</html:option>
-                                            <html:option value="1">Female</html:option>
-                                            <html:option value="2">Male</html:option>
-                                        </html:select>
+                                        <select name="sex" id="sex">
+                                            <option value="0">---NO SEX SPECIFIED---</option>
+                                            <option value="1">Female</option>
+                                            <option value="2">Male</option>
+                                        </select>
                                     </td>
                                     <td colspan='2'>
                                         &nbsp;
@@ -633,7 +633,7 @@
                                         Demographic ID(s):
                                     </td>
                                     <td colspan="3">
-                                        <html:textarea property="demoIds" cols="60" rows="5"> </html:textarea>
+                                        <textarea name="demoIds" cols="60" rows="5"> </textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -641,36 +641,36 @@
                                         Order By
                                     </td>
                                     <td>
-                                        <html:select property="orderBy">
-                                            <html:option value="0">---NO ORDER---</html:option>
-                                            <html:option value="Demographic #">Demographic #</html:option>
-                                            <html:option value="Last Name">Last Name</html:option>
-                                            <html:option value="First Name">First Name</html:option>
-                                            <html:option value="Address">Address</html:option>
-                                            <html:option value="City">City</html:option>
-                                            <html:option value="Province">Province</html:option>
-                                            <html:option value="Postal Code">Postal Code</html:option>
-                                            <html:option value="Phone">Phone</html:option>
-                                            <html:option value="Phone 2">Phone 2</html:option>
-                                            <html:option value="Year of Birth">Year of Birth</html:option>
-                                            <html:option value="Month of Birth">Month of Birth</html:option>
-                                            <html:option value="Date of Birth">Date of Birth</html:option>
-                                            <html:option value="HIN">HIN</html:option>
-                                            <html:option value="Version Code">Version Code</html:option>
-                                            <html:option value="Roster Status">Roster Status</html:option>
-                                            <html:option value="Patient Status">Patient Status</html:option>
-                                            <html:option value="Date Joined">Date Joined</html:option>
-                                            <html:option value="Chart #">Chart #</html:option>
-                                            <html:option value="Provider #">Provider #</html:option>
-                                            <html:option value="Sex">Sex</html:option>
-                                            <html:option value="End Date">End Date</html:option>
-                                            <html:option value="Eff. Date">Eff. Date</html:option>
-                                            <html:option value="Pcn indicator">Pcn indicator</html:option>
-                                            <html:option value="HC Type">HC Type</html:option>
-                                            <html:option value="HC Renew Date">HC Renew Date</html:option>
-                                            <html:option value="Family Doctor">Family Doctor</html:option>
-                                            <html:option value="Random">Random</html:option>
-                                        </html:select>
+                                        <select name="orderBy" id="orderBy">
+                                            <option value="0">---NO ORDER---</option>
+                                            <option value="Demographic #">Demographic #</option>
+                                            <option value="Last Name">Last Name</option>
+                                            <option value="First Name">First Name</option>
+                                            <option value="Address">Address</option>
+                                            <option value="City">City</option>
+                                            <option value="Province">Province</option>
+                                            <option value="Postal Code">Postal Code</option>
+                                            <option value="Phone">Phone</option>
+                                            <option value="Phone 2">Phone 2</option>
+                                            <option value="Year of Birth">Year of Birth</option>
+                                            <option value="Month of Birth">Month of Birth</option>
+                                            <option value="Date of Birth">Date of Birth</option>
+                                            <option value="HIN">HIN</option>
+                                            <option value="Version Code">Version Code</option>
+                                            <option value="Roster Status">Roster Status</option>
+                                            <option value="Patient Status">Patient Status</option>
+                                            <option value="Date Joined">Date Joined</option>
+                                            <option value="Chart #">Chart #</option>
+                                            <option value="Provider #">Provider #</option>
+                                            <option value="Sex">Sex</option>
+                                            <option value="End Date">End Date</option>
+                                            <option value="Eff. Date">Eff. Date</option>
+                                            <option value="Pcn indicator">Pcn indicator</option>
+                                            <option value="HC Type">HC Type</option>
+                                            <option value="HC Renew Date">HC Renew Date</option>
+                                            <option value="Family Doctor">Family Doctor</option>
+                                            <option value="Random">Random</option>
+                                        </select>
                                     </td>
                                     <td colspan='2'>
                                         &nbsp;
@@ -681,17 +681,17 @@
                                         Limit Results to:
                                     </td>
                                     <td>
-                                        <html:select property="resultNum">
-                                            <html:option value="0">---NO LIMIT---</html:option>
-                                            <html:option value="10">10</html:option>
-                                            <html:option value="50">50</html:option>
-                                            <html:option value="100">100</html:option>
-                                            <html:option value="150">150</html:option>
-                                            <html:option value="200">200</html:option>
-                                            <html:option value="250">250</html:option>
-                                            <html:option value="300">300</html:option>
+                                        <select name="resultNum" id="resultNum">
+                                            <option value="0">---NO LIMIT---</option>
+                                            <option value="10">10</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                            <option value="150">150</option>
+                                            <option value="200">200</option>
+                                            <option value="250">250</option>
+                                            <option value="300">300</option>
 
-                                        </html:select>
+                                        </select>
                                     </td>
                                     <td colspan='2'>
 
@@ -699,7 +699,7 @@
                                 </tr>
 
                             </table>
-                            </html:form>
+                            </form>
                         </td>
                     </tr>
                 </table>

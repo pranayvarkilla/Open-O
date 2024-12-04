@@ -32,7 +32,7 @@
 <%@page import="org.oscarehr.common.dao.*,org.oscarehr.common.model.FlowSheetCustomization,org.oscarehr.common.model.Validations" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib prefix="csrf" uri="http://www.owasp.org/index.php/Category:OWASP_CSRFGuard_Project/Owasp.CsrfGuard.tld" %>
 
@@ -388,7 +388,7 @@
                 %>
                 <!-- END of Master Calendar Input -->
 
-                <html:form action="<%=saveAction%>" styleId="measurementForm">
+                <form action="${pageContext.request.contextPath}/<%=saveAction%>" styleId="measurementForm">
                     <input type="hidden" name="<csrf:tokenname/>" value="<csrf:tokenvalue/>"/>
 
                     <input type="hidden" name="value(numType)" value="<%=measurements.length%>"/>
@@ -514,7 +514,7 @@
                     <% } else { %>
                     <input type="button" value="Save" onClick="doSubmit();">
                     <%}%>
-                </html:form>
+                </form>
             </td>
         </tr>
         <tr>

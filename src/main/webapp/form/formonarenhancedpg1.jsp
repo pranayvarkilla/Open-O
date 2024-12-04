@@ -45,8 +45,6 @@
 <%@ page import="org.apache.struts.util.LabelValueBean" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
 
 
@@ -2213,7 +2211,7 @@
 
     <div id="maincontent">
         <div id="content_bar" class="innertube">
-            <html:form action="/form/formname">
+            <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
                 <input type="hidden" name="c_lastVisited"
                        value=<%=props.getProperty("c_lastVisited", "pg1")%>/>
                 <input type="hidden" name="demographic_no"
@@ -3873,7 +3871,7 @@
                     </tr>
                 </table>
 
-            </html:form>
+            </form>
         </div>
     </div>
 

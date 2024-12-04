@@ -12,8 +12,8 @@
 <%@page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="java.util.*,oscar.*,java.io.*,java.net.*,oscar.util.*,org.apache.commons.io.FileUtils"
          errorPage="/errorpage.jsp" %>
 <jsp:useBean id="oscarVariables" class="java.util.Properties" scope="session"/>

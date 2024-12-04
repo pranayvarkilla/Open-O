@@ -26,8 +26,8 @@
 
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ page import="oscar.oscarDemographic.data.DemographicData" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -180,49 +180,49 @@
                         <td>
                             <%String strutsAction = "/oscarMessenger/DisplayDemographicMessages.do?demographic_no=" + demographic_no; %>
 
-                            <html:form action="<%=strutsAction%>">
+                            <form action="<%=strutsAction%>" method="post">
 
                                 <table border="0" width="80%" cellspacing="1">
                                     <tr>
                                         <th bgcolor="#DDDDFF" width="75">&nbsp;</th>
                                         <th align="left" bgcolor="#DDDDFF">
-                                            <% if (moreMessages.equals("true")) {%> <html:link
-                                                page="/oscarMessenger/DisplayDemographicMessages.jsp?orderby=from&moreMessages=true">
+                                            <% if (moreMessages.equals("true")) {%> <a
+                                                href="${pageContext.request.contextPath}/oscarMessenger/DisplayDemographicMessages.jsp?orderby=from&moreMessages=true">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgFrom"/>
-                                        </html:link> <%} else {%> <html:link
-                                                page="/oscarMessenger/DisplayDemographicMessages.jsp?orderby=from&moreMessages=false">
+                                        </a> <%} else {%> <a
+                                                href="${pageContext.request.contextPath}/oscarMessenger/DisplayDemographicMessages.jsp?orderby=from&moreMessages=false">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgFrom"/>
-                                        </html:link> <%}%>
+                                        </a> <%}%>
                                         </th>
                                         <th align="left" bgcolor="#DDDDFF">
-                                            <% if (moreMessages.equals("true")) {%> <html:link
-                                                page="/oscarMessenger/DisplayDemographicMessages.jsp?orderby=subject&moreMessages=true">
+                                            <% if (moreMessages.equals("true")) {%> <a
+                                                href="${pageContext.request.contextPath}/oscarMessenger/DisplayDemographicMessages.jsp?orderby=subject&moreMessages=true">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgSubject"/>
-                                        </html:link> <%} else {%> <html:link
-                                                page="/oscarMessenger/DisplayDemographicMessages.jsp?orderby=subject&moreMessages=false">
+                                        </a> <%} else {%> <a
+                                                href="${pageContext.request.contextPath}/oscarMessenger/DisplayDemographicMessages.jsp?orderby=subject&moreMessages=false">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgSubject"/>
-                                        </html:link> <%}%>
+                                        </a> <%}%>
                                         </th>
                                         <th align="left" bgcolor="#DDDDFF">
-                                            <% if (moreMessages.equals("true")) {%> <html:link
-                                                page="/oscarMessenger/DisplayDemographicMessages.jsp?orderby=date&moreMessages=true">
+                                            <% if (moreMessages.equals("true")) {%> <a
+                                                href="${pageContext.request.contextPath}/oscarMessenger/DisplayDemographicMessages.jsp?orderby=date&moreMessages=true">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgDate"/>
-                                        </html:link> <%} else {%> <html:link
-                                                page="/oscarMessenger/DisplayDemographicMessages.jsp?orderby=date&moreMessages=false">
+                                        </a> <%} else {%> <a
+                                                href="${pageContext.request.contextPath}/oscarMessenger/DisplayDemographicMessages.jsp?orderby=date&moreMessages=false">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgDate"/>
-                                        </html:link> <%}%>
+                                        </a> <%}%>
                                         </th>
                                         <th align="left" bgcolor="#DDDDFF">
                                             <% if (moreMessages.equals("true")) {%>
-                                            <html:link
-                                                    page="/oscarMessenger/DisplayDemographicMessages.jsp?orderby=linked&moreMessages=true">
+                                            <a
+                                                    href="${pageContext.request.contextPath}/oscarMessenger/DisplayDemographicMessages.jsp?orderby=linked&moreMessages=true">
                                                 <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgLinked"/>
-                                            </html:link>
+                                            </a>
                                             <%} else {%>
-                                            <html:link
-                                                    page="/oscarMessenger/DisplayDemographicMessages.jsp?orderby=linked&moreMessages=false">
+                                            <a
+                                                    href="${pageContext.request.contextPath}/oscarMessenger/DisplayDemographicMessages.jsp?orderby=linked&moreMessages=false">
                                                 <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgLinked"/>
-                                            </html:link>
+                                            </a>
                                             <%}%>
                                         </th>
                                     </tr>
@@ -272,15 +272,15 @@
                                             if (moreMessages.equals("false") && theMessages2.size() >= INITIAL_DISPLAY) {
                                         %>
                                         <td width="60%"></td>
-                                        <td align="left"><html:link
-                                                page="/oscarMessenger/DisplayMessages.jsp?moreMessages=true">
+                                        <td align="left"><a
+                                                href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp?moreMessages=true">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgAllMessage"/>
-                                        </html:link></td>
+                                        </a></td>
                                         <%}%>
                                     </tr>
                                 </table>
 
-                            </html:form></td>
+                            </form></td>
                     </tr>
                 </table>
             </td>

@@ -44,7 +44,7 @@
 <%@page
         import="oscar.oscarDemographic.data.*,java.util.*,oscar.oscarPrevention.*,oscar.oscarProvider.data.*,oscar.util.*,oscar.oscarReport.data.*,oscar.oscarPrevention.pageUtil.*,java.net.*,oscar.eform.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <jsp:useBean id="providerBean" class="java.util.Properties"
              scope="session"/>
@@ -193,8 +193,8 @@
         </tr>
         <tr>
             <td class="MainTableLeftColumn" valign="top">&nbsp;</td>
-            <td valign="top" class="MainTableRightColumn"><html:form
-                    action="/report/ManageLetters" enctype="multipart/form-data">
+            <td valign="top" class="MainTableRightColumn"><form method="post"
+                    action="${pageContext.request.contextPath}/report/ManageLetters.do" enctype="multipart/form-data">
                 <input type="hidden" name="goto"
                        value="<%=request.getParameter("goto")%>"/>
                 <div>Select Letter: <input type="file" name="reportFile"
@@ -210,7 +210,7 @@
                 <input type="submit"/>
 
 
-            </html:form> <%
+            </form> <%
                 ManageLetters mLetter = new ManageLetters();
                 ArrayList list = mLetter.getActiveReportList();
 

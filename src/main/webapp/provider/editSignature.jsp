@@ -29,8 +29,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- add by caisi end<style>* {border:1px solid black;}</style> -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page import="oscar.oscarProvider.data.*" %>
 <%@ page import="oscar.oscarProvider.pageUtil.*" %>
 
@@ -87,8 +87,7 @@
         </tr>
         <tr>
             <td class="MainTableLeftColumn">&nbsp;</td>
-            <td class="MainTableRightColumn"><html:form
-                    action="/EnterSignature.do">
+            <td class="MainTableRightColumn"><form action="${pageContext.request.contextPath}/EnterSignature.do" method="post">
                 <%
                     if (sig.hasSignature(curUser_no)) {
                 %>
@@ -125,7 +124,7 @@
                 <input type="submit"
                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.editSignature.btnSubmit"/>"/>
                 <%}%>
-            </html:form></td>
+            </form></td>
         </tr>
         <tr>
             <td class="MainTableBottomRowLeftColumn"></td>

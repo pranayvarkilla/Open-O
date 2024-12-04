@@ -59,9 +59,9 @@
         document.staffManagerForm.submit();
     }
 </script>
-<html:hidden property="program_provider.roleId"/>
-<html:hidden property="program_provider.programId"/>
-<html:hidden property="program_provider.id"/>
+<input type="hidden" name="roleId" id="roleId"/>
+<input type="hidden" name="programId" id="programId"/>
+<input type="hidden" name="id" id="id"/>
 <input type="hidden" name="teamId" value=""/>
 <div class="tabs" id="tabs">
     <table cellpadding="3" cellspacing="0" border="0">

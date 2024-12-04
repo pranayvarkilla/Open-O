@@ -44,12 +44,7 @@
     //int demographic_no = Integer.parseInt(request.getParameter("demographic_no"));
     String demographic_no = request.getParameter("demographic_no");
 %>
-
-<%@page import="oscar.oscarDemographic.data.*,java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-
-
 <html>
 
     <head>
@@ -99,12 +94,12 @@
         </tr>
         <tr>
             <td class="MainTableLeftColumn" valign="top">&nbsp;</td>
-            <td valign="top" class="MainTableRightColumn"><html:form
-                    action="/lab/labUpload" method="POST" enctype="multipart/form-data"
+            <td valign="top" class="MainTableRightColumn">
+                <form action="${pageContext.request.contextPath}/lab/labUpload.do" method="POST" enctype="multipart/form-data"
                     onsubmit="javascript: return displayAndDisable()">
                 <input type="file" name="importFile" value="">
                 <input type="submit" name="Submit" value="Import">
-            </html:form> <%
+            </form> <%
                 String outcome = (String) request.getAttribute("outcome");
                 if (outcome != null && outcome.equals("success")) { %>
                 <div>Lab File Successfully Uploaded</div>

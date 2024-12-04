@@ -31,7 +31,7 @@
         import="java.util.*, java.sql.*, oscar.*, java.text.*, java.lang.*"
         errorPage="../appointment/errorpage.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 
 <jsp:useBean id="dataBean" class="java.util.Properties" scope="page"/>
 <%@ page import="org.oscarehr.util.SpringUtils" %>

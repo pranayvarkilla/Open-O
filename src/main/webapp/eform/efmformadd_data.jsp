@@ -28,7 +28,7 @@
 <%@ page import="org.oscarehr.managers.EmailComposeManager" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
 	Addition of a floating global toolbar specifically for activation of the 

@@ -25,7 +25,7 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ page
         import="java.util.*,oscar.oscarBilling.ca.bc.data.BillingCodeData,oscar.oscarBilling.ca.bc.pageUtil.*" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -102,9 +102,8 @@
         </tr>
         <tr>
             <td class="MainTableLeftColumn" valign="top">&nbsp; &nbsp;</td>
-            <td class="MainTableRightColumn" valign="top"><html:form
-                    action="/billing/CA/BC/billingAddCode"
-                    onsubmit="return checkUnits();">
+            <td class="MainTableRightColumn" valign="top">
+                <form action="${pageContext.request.contextPath}/billing/CA/BC/billingAddCode.do" method="post" onsubmit="return checkUnits();">
                 <%
                     if (request.getAttribute("returnMessage") != null) {
                 %>
@@ -115,7 +114,7 @@
                     </tr>
                 </table>
                 <%}%>
-                <html:hidden property="whereTo" value=""/>
+                <input type="hidden" name="whereTo" id="whereTo" value=""/>
 
                 <table width="50%">
                     <!--<tr>
@@ -142,7 +141,7 @@
                             <button type="button" onclick="document.location = 'billingCodeAdjust.jsp'">Back</button>
                     </tr>
                 </table>
-            </html:form></td>
+            </form></td>
         </tr>
         <tr>
             <td class="MainTableBottomRowLeftColumn"></td>

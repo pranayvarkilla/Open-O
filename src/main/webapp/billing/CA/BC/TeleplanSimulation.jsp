@@ -49,10 +49,7 @@
         import="java.util.*, java.sql.*, oscar.util.*,oscar.oscarProvider.data.ProviderData,oscar.oscarBilling.ca.bc.data.*,oscar.entities.*" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <%
     GregorianCalendar now = new GregorianCalendar();
     int curYear = now.get(Calendar.YEAR);
@@ -147,8 +144,8 @@
     </h4>
     <c:if test="${!empty error}"><c:out value="${error}"/></c:if>
 
-    <html:form action="/billing/CA/BC/SimulateTeleplanFile.do"
-               onsubmit="return checkSubmit();" styleClass="form-inline">
+    <form action="${pageContext.request.contextPath}/billing/CA/BC/SimulateTeleplanFile.do"
+               onsubmit="return checkSubmit();" class="form-inline">
         <label for="provider">Select provider</label>
         <select id="provider" name="provider">
             <option value="all">All Providers</option>
@@ -165,7 +162,7 @@
             <%}%>
         </select>
         <input class="btn btn-primary" type="submit" name="Submit" value="Create Report">
-    </html:form>
+    </form>
 
 </div>
 

@@ -27,8 +27,8 @@
 <%@ page import="java.util.ResourceBundle" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -117,7 +117,7 @@
                         <td>
 
                             <table>
-                                <html:form action="/oscarEncounter/AddService" onsubmit="return checkServiceName();">
+                                <form action="${pageContext.request.contextPath}/oscarEncounter/AddService.do" method="post" onsubmit="return checkServiceName();">
                                     <tr>
                                         <td><fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddService.service"/>
                                         </td>
@@ -128,7 +128,7 @@
                                                                value="<fmt:message key="oscarEncounter.oscarConsultationRequest.config.AddService.btnAddService"/>"/>
                                         </td>
                                     </tr>
-                                </html:form>
+                                </form>
                             </table>
                         </td>
                     </tr>

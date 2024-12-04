@@ -95,7 +95,7 @@ Please define the following parameters control the behaviour of new service rest
         document.programManagerForm.submit();
     }
 </script>
-<html:hidden property="restriction.id"/>
+<input type="hidden" name="id" id="id"/>
 
 <display-el:table class="simple" cellspacing="2" cellpadding="3" id="restriction" name="service_restrictions"
                   export="false" pagesize="0" requestURI="/PMmodule/ProgramManager.do">

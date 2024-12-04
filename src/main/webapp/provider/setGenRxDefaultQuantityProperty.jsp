@@ -67,7 +67,7 @@
             <td class="MainTableLeftColumn">&nbsp;</td>
             <td class="MainTableRightColumn">
                 <%if (request.getAttribute("status") == null) {%> <%=bundle.getString(providermsgEdit)%> <!--c:out value="${rxDefaultQuantityProperty.value}" /-->
-                <html:form styleId="providerForm" action="/setProviderStaleDate.do">
+                <form styleId="providerForm" action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
                     <html:text styleId="numericFormField" property="rxDefaultQuantityProperty.value"/>
                     <p id="errorMessage" class="alert alert-danger" style="display: none; color: red;">
@@ -75,7 +75,7 @@
                     </p>
                     <br>
                     <input type="submit" value="<%=bundle.getString(providerbtnSubmit)%>"/>
-                </html:form> <%} else {%>
+                </form> <%} else {%>
                 <div class="alert alert-success"><%=bundle.getString(providermsgSuccess)%></div>
                 <br>
                 <%}%>

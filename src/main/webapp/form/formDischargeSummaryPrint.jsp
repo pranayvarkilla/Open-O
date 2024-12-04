@@ -42,8 +42,8 @@
 <%@ page
         import="oscar.util.*, oscar.form.*, oscar.form.data.*, org.oscarehr.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page
         import="org.springframework.context.*,org.springframework.web.context.support.*" %>
 

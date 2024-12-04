@@ -25,8 +25,8 @@
 --%>
 <%@page import="oscar.oscarRx.data.RxPatientData" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="oscar.oscarProvider.data.*" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
@@ -86,7 +86,7 @@
         doctorName = doctorName.replaceAll("\\-", "");
         OscarProperties props = OscarProperties.getInstance();
     %>
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
 
         <table width="400px" height="500px" cellspacing=0 cellpadding=8
                border=0 style="border: 2px ridge;">
@@ -278,6 +278,6 @@
                 </td>
             </tr>
         </table>
-    </html:form>
+    </form>
     </body>
 </html>

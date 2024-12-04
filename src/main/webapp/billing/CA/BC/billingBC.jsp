@@ -42,8 +42,6 @@
 
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
-<%@taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -1317,8 +1315,8 @@
         </div>
         <%}%>
 
-        <html:form styleId="bcBillingForm" styleClass="form-inline" action="/billing/CA/BC/CreateBilling"
-                   onsubmit="toggleWCB();">
+        <form style="bcBillingForm" class="form-inline"
+              action="${pageContext.request.contextPath}/billing/CA/BC/CreateBilling.do" onsubmit="toggleWCB();">
 
             <input autocomplete="false" name="hidden" type="text" style="display:none;">
             <input type="hidden" name="fromBilling" value="">
@@ -1426,18 +1424,18 @@
                                         <div class="form-group">
 
                                             <label for="xml_provider"><fmt:setBundle basename="oscarResources"/><fmt:message key="billing.provider.billProvider"/></label>
-                                            <html:select styleId="xml_provider" styleClass="form-control"
-                                                         property="xml_provider">
+                                            <select id="xml_provider" class="form-control"
+                                                         name="xml_provider">
 
-                                                <html:option value="">
+                                                <option value="">
                                                     Select Provider
-                                                </html:option>
+                                                </option>
                                                 <% for (int j = 0; j < billphysician.length; j++) { %>
-                                                <html:option
+                                                <option
                                                         value="<%=billphysician[j].getProviderNo()%>"><%=Encode.forHtmlContent(billphysician[j].getProviderName())%>
-                                                </html:option>
+                                                </option>
                                                 <%} %>
-                                            </html:select>
+                                            </select>
 
 
                                         </div>
@@ -1447,14 +1445,14 @@
                                         <div class="form-group">
 
                                             <label for="xml_billtype"><fmt:setBundle basename="oscarResources"/><fmt:message key="billing.billingtype"/></label>
-                                            <html:select styleClass="form-control" styleId="xml_billtype"
+                                            <select class="form-control" id="xml_billtype"
                                                          property="xml_billtype" onchange="CheckType();gotoPrivate();">
-                                                <html:option value="MSP">Bill MSP</html:option>
-                                                <html:option value="WCB">Bill WCB</html:option>
-                                                <html:option value="ICBC">Bill ICBC</html:option>
-                                                <html:option value="Pri">Private</html:option>
-                                                <html:option value="DONOTBILL">Do Not Bill</html:option>
-                                            </html:select>
+                                                <option value="MSP">Bill MSP</option>
+                                                <option value="WCB">Bill WCB</option>
+                                                <option value="ICBC">Bill ICBC</option>
+                                                <option value="Pri">Private</option>
+                                                <option value="DONOTBILL">Do Not Bill</option>
+                                            </select>
 
                                         </div>
 
@@ -1463,18 +1461,18 @@
                                         <div class="form-group">
 
                                             <label for="xml_location">Clarification Code</label>
-                                            <html:select styleClass="form-control" styleId="xml_location"
-                                                         property="xml_location">
+                                            <select class="form-control" id="xml_location"
+                                                         name="xml_location">
                                                 <%
                                                     for (int i = 0; i < billlocation.length; i++) {
                                                         String locationDescription = billlocation[i].getBillingLocation() + "|" + billlocation[i].getDescription().replaceAll("[^A-Za-z]+", "").toUpperCase();
                                                         ;
                                                 %>
-                                                <html:option
+                                                <option
                                                         value="<%=Encode.forHtmlAttribute(locationDescription)%>"><%=Encode.forHtmlContent(billlocation[i].getDescription())%>
-                                                </html:option>
+                                                </option>
                                                 <%} %>
-                                            </html:select>
+                                            </select>
                                         </div>
 
                                     </td>
@@ -1483,17 +1481,17 @@
                                         <div class="form-group">
 
                                             <label for="xml_visittype">Service Location</label>
-                                            <html:select styleClass="form-control" styleId="xml_visittype"
-                                                         property="xml_visittype">
+                                            <select class="form-control" id="xml_visittype"
+                                                         name="xml_visittype">
                                                 <%
                                                     for (BillingFormData.BillingVisit billingVisit : billvisit) {
                                                 %>
-                                                <html:option
+                                                <option
                                                         value="<%=Encode.forHtmlAttribute(billingVisit.getVisitType())%>">
                                                     <%=Encode.forHtmlContent(billingVisit.getDescription())%>
-                                                </html:option>
+                                                </option>
                                                 <%}%>
-                                            </html:select>
+                                            </select>
 
                                         </div>
 
@@ -1535,13 +1533,13 @@
                                     <div class="form-group">
 
                                         <label for="afterHours">After Hours</label>
-                                        <html:select styleClass="form-control" property="afterHours"
-                                                     styleId="afterHours">
-                                            <html:option value="0">No</html:option>
-                                            <html:option value="E">Evening</html:option>
-                                            <html:option value="N">Night</html:option>
-                                            <html:option value="W">Weekend</html:option>
-                                        </html:select>
+                                        <select styleClass="form-control" name="afterHours"
+                                                     id="afterHours">
+                                            <option value="0">No</option>
+                                            <option value="E">Evening</option>
+                                            <option value="N">Night</option>
+                                            <option value="W">Weekend</option>
+                                        </select>
                                     </div>
 
                                 </td>
@@ -1588,10 +1586,10 @@
                                     <div class="form-group">
 
                                         <label for="dependent">Dependent</label>
-                                        <html:select styleClass="form-control" property="dependent" styleId="dependent">
-                                            <html:option value="00">No</html:option>
-                                            <html:option value="66">Yes</html:option>
-                                        </html:select>
+                                        <select class="form-control" name="dependent" id="dependent">
+                                            <option value="00">No</option>
+                                            <option value="66">Yes</option>
+                                        </select>
                                     </div>
 
                                 </td>
@@ -1599,19 +1597,19 @@
                                     <div class="form-group">
 
                                         <label for="submissionCode">Sub Code</label>
-                                        <html:select styleClass="form-control" property="submissionCode"
-                                                     styleId="submissionCode">
-                                            <html:option value="0">O - Normal</html:option>
-                                            <html:option value="D">D - Duplicate</html:option>
-                                            <html:option value="E">E - Debit</html:option>
-                                            <html:option value="C">C - Subscriber Coverage</html:option>
-                                            <html:option value="R">R - Resubmitted</html:option>
-                                            <html:option value="I">I - ICBC Claim > 90 Days</html:option>
-                                            <html:option value="A">A - Requested Preapproval</html:option>
-                                            <html:option value="W">W - WCB Rejected Claim</html:option>
-                                            <html:option
-                                                    value="X">X - Resubmitting Refused / Partially Paid Claim</html:option>
-                                        </html:select>
+                                        <select class="form-control" name="submissionCode"
+                                                     id="submissionCode">
+                                            <option value="0">O - Normal</option>
+                                            <option value="D">D - Duplicate</option>
+                                            <option value="E">E - Debit</option>
+                                            <option value="C">C - Subscriber Coverage</option>
+                                            <option value="R">R - Resubmitted</option>
+                                            <option value="I">I - ICBC Claim > 90 Days</option>
+                                            <option value="A">A - Requested Preapproval</option>
+                                            <option value="W">W - WCB Rejected Claim</option>
+                                            <option
+                                                    value="X">X - Resubmitting Refused / Partially Paid Claim</option>
+                                        </select>
                                     </div>
 
                                 </td>
@@ -1736,11 +1734,11 @@
                                         </div>
                                         <div class='form-group'>
                                             <label for="mva_claim_code">MVA?</label>
-                                            <html:select styleClass="form-control" property="mva_claim_code"
-                                                         styleId="mva_claim_code">
-                                                <html:option value="N">No</html:option>
-                                                <html:option value="Y">Yes</html:option>
-                                            </html:select>
+                                            <select class="form-control" name="mva_claim_code"
+                                                         id="mva_claim_code">
+                                                <option value="N">No</option>
+                                                <option value="Y">Yes</option>
+                                            </select>
 
                                         </div>
 
@@ -1786,11 +1784,11 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <html:select styleClass="form-control" property="refertype1">
-                                                        <html:option value="">Select Type</html:option>
-                                                        <html:option value="T">Refer To</html:option>
-                                                        <html:option value="B">Refer By</html:option>
-                                                    </html:select>
+                                                    <select class="form-control" name="refertype1">
+                                                        <option value="">Select Type</option>
+                                                        <option value="T">Refer To</option>
+                                                        <option value="B">Refer By</option>
+                                                    </select>
                                                 </td>
                                             </tr>
 
@@ -1808,11 +1806,11 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <html:select styleClass="form-control" property="refertype2">
-                                                        <html:option value="">Select Type</html:option>
-                                                        <html:option value="T">Refer To</html:option>
-                                                        <html:option value="B">Refer By</html:option>
-                                                    </html:select>
+                                                    <select class="form-control" name="refertype2">
+                                                        <option value="">Select Type</option>
+                                                        <option value="T">Refer To</option>
+                                                        <option value="B">Refer By</option>
+                                                    </select>
                                                 </td>
                                             </tr>
 
@@ -2135,20 +2133,19 @@
 
                                 <tr>
                                     <td align="left" colspan="2">
-                                        <html:select styleClass="form-control" property="correspondenceCode"
+                                        <select class="form-control" name="correspondenceCode"
                                                      onchange="correspondenceNote();">
-                                            <html:option value="0">No Correspondence</html:option>
-                                            <html:option value="N">Electronic Correspondence</html:option>
-                                            <html:option value="C">Paper Correspondence</html:option>
-                                            <html:option value="B">Both</html:option>
-                                        </html:select>
+                                            <option value="0">No Correspondence</option>
+                                            <option value="N">Electronic Correspondence</option>
+                                            <option value="C">Paper Correspondence</option>
+                                            <option value="B">Both</option>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div id="CORRESPONDENCENOTE" style="display:none;">
-                                            <html:textarea styleClass="form-control notes-box" property="notes"
-                                                           onkeyup="checkTextLimit(this.form.notes,400);"></html:textarea>
+                                            <textarea class="form-control notes-box" name="notes" onkeyup="checkTextLimit(this.form.notes,400);"></textarea>
                                             <small>400 characters max.</small>
                                         </div>
                                         <div>
@@ -2156,9 +2153,7 @@
                                                 <label for="billing-notes-box">Billing Notes
                                                     <small>(Internal use. Not sent to MSP)</small></label>
                                             </div>
-                                            <html:textarea styleClass="form-control notes-box"
-                                                           styleId="billing-notes-box"
-                                                           property="messageNotes"></html:textarea>
+                                            <textarea class="form-control notes-box" id="billing-notes-box" name="messageNotes"></textarea>
                                         </div>
                                     </td>
                                 </tr>
@@ -2333,7 +2328,7 @@
             <div class="container-fluid">
                 <div id="wcbForms"></div>
             </div>
-        </html:form>
+        </form>
     </div>
 </div>
 

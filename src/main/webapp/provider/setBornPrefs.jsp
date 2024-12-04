@@ -62,7 +62,7 @@
             <td class="MainTableLeftColumn"></td>
             <td class="MainTableRightColumn">
                 <%if (request.getAttribute("status") == null) {%>
-                <html:form action="/setProviderStaleDate.do">
+                <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
                     <html:checkbox property="bornPromptsProperty.checked">
                         <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.pref.bornPrompts"/></html:checkbox>
@@ -70,7 +70,7 @@
                     <input type="submit" value="<%=bundle.getString(providerbtnSubmit)%>"/>
                     <input type="button" value="<%=bundle.getString(providerbtnCancel)%>"
                            onclick="window.close();"/>
-                </html:form>
+                </form>
                 <%} else {%>
                 <%=bundle.getString(providermsgSuccess)%>
                 <br/><br/>

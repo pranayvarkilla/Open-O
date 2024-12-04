@@ -31,7 +31,7 @@
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
 <%@ page import="java.util.*,org.oscarehr.learning.web.CourseManager2Action,org.oscarehr.common.model.SecRole" %>

@@ -43,8 +43,8 @@
 <%@ page import="java.util.ResourceBundle" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <html>
     <jsp:useBean id="displayServiceUtil" scope="request"
                  class="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConDisplayServiceUtil"/>
@@ -106,7 +106,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <html:form action="/oscarEncounter/DelService">
+                            <form action="${pageContext.request.contextPath}/oscarEncounter/DelService.do" method="post">
                             <input type="submit" name="delete"
                                    value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.config.DeleteServices.btnDeleteService"/>">
                             <div class="ChooseRecipientsBox1">
@@ -137,7 +137,7 @@
                     </tr>
                 </table>
                 </div>
-                </html:form></td>
+                </form></td>
         </tr>
         <!----End new rows here-->
 

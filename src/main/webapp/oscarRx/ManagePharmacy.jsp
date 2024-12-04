@@ -24,8 +24,8 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ page
         import="oscar.oscarRx.pageUtil.*,oscar.oscarRx.data.*,java.util.*" %>
 
@@ -105,14 +105,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><html:form action="/oscarRx/managePharmacy">
+                        <td><form action="${pageContext.request.contextPath}/oscarRx/managePharmacy.do" method="post">
                             <table>
                                 <tr>
                                     <td>
                                         <%String type = request.getParameter("type"); %>
-                                        <html:hidden property="pharmacyAction" value="<%=type%>"/>
-                                        <html:hidden property="pharmacyAction" value="<%=type%>"/>
-                                        <html:hidden property="ID"/> <fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.pharmacyName"/> :
+                                        <input type="hidden" name="pharmacyAction" id="pharmacyAction" value="<%=type%>"/>
+                                        <input type="hidden" name="ID" id="ID"/> <fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.pharmacyName"/> :
                                     </td>
                                     <td><html:text property="name"/></td>
                                 </tr>
@@ -168,7 +167,7 @@
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
-                                    <td><html:textarea property="notes"/></td>
+                                    <td><textarea name="notes"></textarea></td>
                                 </tr>
 
                                 <tr>
@@ -177,7 +176,7 @@
                                     </td>
                                 </tr>
                             </table>
-                        </html:form></td>
+                        </form></td>
                     </tr>
 
                     <tr>

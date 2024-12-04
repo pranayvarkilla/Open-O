@@ -27,7 +27,7 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ page import="oscar.oscarDemographic.data.DemographicData" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
@@ -265,7 +265,7 @@
                         </td>
                         <td>
                             <!-- edit 2006-0811-01 by wreby -->
-                            <html:form action="/oscarMessenger/DisplayMessages">
+                            <form action="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.do" method="post">
                                 <input name="boxType" type="hidden" value="<%=pageType%>">
                                 <input name="searchString" type="text" size="20"
                                        value="<jsp:getProperty name="DisplayMessagesBeanId" property="filter"/>">
@@ -273,7 +273,7 @@
                                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.btnSearch"/>">
                                 <input name="btnClearSearch" type="submit"
                                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.btnClearSearch"/>">
-                            </html:form>
+                            </form>
                             <!-- end edit 2006-0811-01 by wreby -->
                         </td>
                         <td style="text-align:right">
@@ -298,10 +298,10 @@
                                         <table class=messButtonsA cellspacing=0 cellpadding=3>
                                             <tr>
                                                 <td class="messengerButtonsA">
-                                                    <html:link page="/oscarMessenger/CreateMessage.jsp"
+                                                    <a href="${pageContext.request.contextPath}/oscarMessenger/CreateMessage.jsp"
                                                                styleClass="messengerButtons">
                                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.btnCompose"/>
-                                                    </html:link>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -310,10 +310,10 @@
                                         <table class=messButtonsA cellspacing=0 cellpadding=3>
                                             <tr>
                                                 <td class="messengerButtonsA">
-                                                    <html:link page="/oscarMessenger/DisplayMessages.jsp"
+                                                    <a href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp"
                                                                styleClass="messengerButtons">
                                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.btnRefresh"/>
-                                                    </html:link>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -322,10 +322,10 @@
                                         <table class=messButtonsA cellspacing=0 cellpadding=3>
                                             <tr>
                                                 <td class="messengerButtonsA">
-                                                    <html:link page="/oscarMessenger/DisplayMessages.jsp?boxType=1"
+                                                    <a href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp?boxType=1"
                                                                styleClass="messengerButtons">
                                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.btnSent"/><!--sentMessage--link-->
-                                                    </html:link>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -334,10 +334,10 @@
                                         <table class=messButtonsA cellspacing=0 cellpadding=3>
                                             <tr>
                                                 <td class="messengerButtonsA">
-                                                    <html:link page="/oscarMessenger/DisplayMessages.jsp?boxType=2"
+                                                    <a href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp?boxType=2"
                                                                styleClass="messengerButtons">
                                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.btnDeletedMessage"/><!--deletedMessage--link-->
-                                                    </html:link>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -364,7 +364,7 @@
                         }
                     %>
 
-                    <html:form action="<%=strutsAction%>" styleId="msgList">
+                    <form action="<%=strutsAction%>" method="post" styleId="msgList">
                     <%
                         java.util.Vector theMessages2 = new java.util.Vector();
                         switch (pageType) {
@@ -443,41 +443,41 @@
                                         <%} %>
                                     </th>
                                     <th align="left" bgcolor="#DDDDFF">
-                                        <html:link page="/oscarMessenger/DisplayMessages.jsp?orderby=status"
+                                        <a href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp?orderby=status"
                                                    paramId="boxType" paramName="pageType">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgStatus"/>
-                                        </html:link>
+                                        </a>
                                     </th>
                                     <th align="left" bgcolor="#DDDDFF">
                                         <%if (pageType == 1) {%>
-                                        <html:link page="/oscarMessenger/DisplayMessages.jsp?orderby=sentto"
+                                        <a href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp?orderby=sentto"
                                                    paramId="boxType" paramName="pageType">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgTo"/>
-                                        </html:link>
+                                        </a>
                                         <%} else {%>
-                                        <html:link page="/oscarMessenger/DisplayMessages.jsp?orderby=from"
+                                        <a href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp?orderby=from"
                                                    paramId="boxType" paramName="pageType">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgFrom"/>
-                                        </html:link>
+                                        </a>
                                         <% } %>
                                     </th>
                                     <th align="left" bgcolor="#DDDDFF">
-                                        <html:link page="/oscarMessenger/DisplayMessages.jsp?orderby=subject"
+                                        <a href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp?orderby=subject"
                                                    paramId="boxType" paramName="pageType">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgSubject"/>
-                                        </html:link>
+                                        </a>
                                     </th>
                                     <th align="left" bgcolor="#DDDDFF">
-                                        <html:link page="/oscarMessenger/DisplayMessages.jsp?orderby=date"
+                                        <a href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp?orderby=date"
                                                    paramId="boxType" paramName="pageType">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgDate"/>
-                                        </html:link>
+                                        </a>
                                     </th>
                                     <th align="left" bgcolor="#DDDDFF">
-                                        <html:link page="/oscarMessenger/DisplayMessages.jsp?orderby=linked"
+                                        <a href="${pageContext.request.contextPath}/oscarMessenger/DisplayMessages.jsp?orderby=linked"
                                                    paramId="boxType" paramName="pageType">
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.DisplayMessages.msgLinked"/>
-                                        </html:link>
+                                        </a>
                                     </th>
                                 </tr>
 
@@ -573,7 +573,7 @@
                             </table>
 
 
-                            </html:form>
+                            </form>
                         </td>
                     </tr>
                 </table>

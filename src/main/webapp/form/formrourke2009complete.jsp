@@ -40,9 +40,6 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-
 <%@ page import="oscar.util.*, oscar.form.*, oscar.form.data.*" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
@@ -737,7 +734,7 @@
     </script>
 </head>
 <body onload="init()">
-<html:form styleId="frmP1" action="/form/formname">
+<form styleId="frmP1" action="${pageContext.request.contextPath}/form/formname.do" method="post">
     <table>
         <tr>
             <td id="cp1">
@@ -754,7 +751,7 @@
             </td>
         </tr>
     </table>
-</html:form>
+</form>
 <form id="frmPopUp" method="get" action=""></form>
 <form id="graph" method="post" action=""></form>
 </body>

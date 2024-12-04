@@ -25,8 +25,8 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
@@ -112,8 +112,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><html:form
-                                action="/oscarEncounter/immunization/config/CreateInitImmunization">
+                        <td><form action="${pageContext.request.contextPath}/oscarEncounter/immunization/config/CreateInitImmunization.do" method="post">
                             <table cellspacing="1">
                                 <tr>
                                     <td class="cells"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.formSetName"/>:
@@ -137,7 +136,7 @@
                                     </td>
                                 </tr>
                             </table>
-                        </html:form></td>
+                        </form></td>
 
                     </tr>
 

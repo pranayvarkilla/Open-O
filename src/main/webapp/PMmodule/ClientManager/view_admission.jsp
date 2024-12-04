@@ -50,12 +50,12 @@
         </script>
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
     <body>
-    <html:form action="/PMmodule/ClientManager.do">
+    <form action="${pageContext.request.contextPath}/PMmodule/ClientManager.do" method="post">`
         <%
             DynaValidatorForm form = (DynaValidatorForm) session.getAttribute("clientManagerForm");
             Admission admission = (Admission) form.get("admission");
         %>
-        <html:hidden property="admission.id"/>
+        <input type="hidden" name="id" id="id"/>
 
         <table width="100%" border="1" cellspacing="2" cellpadding="3">
             <tr class="b">
@@ -135,6 +135,6 @@
             </tr>
         </table>
 
-    </html:form>
+    </form>
     </body>
 </html>

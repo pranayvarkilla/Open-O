@@ -43,9 +43,6 @@
 <%@page import="org.oscarehr.common.dao.FrmLabReqPreSetDao, org.oscarehr.util.SpringUtils" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-<%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <html>
     <head>
@@ -290,7 +287,7 @@
     </script>
 
     <body style="page: doublepage; page-break-after: right">
-    <html:form action="/form/formname">
+    <form action="${pageContext.request.contextPath}/form/formname.do" method="post">
 
         <input type="hidden" name="demographic_no"
                value="<%= props.getProperty("demographic_no", "0") %>"/>
@@ -1006,6 +1003,6 @@
             </tr>
         </table>
 
-    </html:form>
+    </form>
     </body>
 </html>

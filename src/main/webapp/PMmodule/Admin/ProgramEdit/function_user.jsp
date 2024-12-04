@@ -92,8 +92,8 @@
     <tr class="b">
         <td width="20%">Provider :</td>
         <td>
-            <html:hidden property="function.id"/>
-            <html:hidden property="function.providerNo"/>
+            <input type="hidden" name="id" id="id"/>
+            <input type="hidden" name="providerNo" id="providerNo"/>
             <%
                 String providerName = (String) request.getAttribute("providerName");
                 if (providerName == null) {
@@ -107,9 +107,9 @@
     <tr class="b">
         <td width="20%">Functional User Type:</td>
         <td>
-            <html:select property="function.userTypeId">
+            <select name="function.userTypeId" id="function.userTypeId">
                 <html:options collection="functionalUserTypes" property="id" labelProperty="name"/>
-            </html:select>
+            </select>
         </td>
     </tr>
     <tr>

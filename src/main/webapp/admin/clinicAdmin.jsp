@@ -44,8 +44,8 @@
 <%@ page import="java.util.*" %>
 <%@ page import="oscar.oscarReport.reportByTemplate.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <html>
     <head>
         <title>Clinic</title>
@@ -60,10 +60,10 @@
     <h4><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.clinicAdmin"/></h4></h4>
     <div class="well">
 
-        <html:form action="/admin/ManageClinic" styleClass="form-horizontal">
-            <html:hidden property="clinic.id"/>
-            <html:hidden property="clinic.status" value="A"/>
-            <html:hidden property="method" value="update"/>
+        <form action="/admin/ManageClinic" styleClass="form-horizontal">
+            <input type="hidden" name="id" id="id"/>
+            <input type="hidden" name="status" id="status" value="A"/>
+            <input type="hidden" name="method" id="method" value="update"/>
 
             <div class="control-group">
                 <label class="control-label" for="clinic.clinicName"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.k2a.clinicName"/></label>
@@ -132,7 +132,7 @@
                 </div>
             </div>
 
-        </html:form>
+        </form>
 
     </div>
 </html>

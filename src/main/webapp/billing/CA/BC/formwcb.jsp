@@ -46,8 +46,8 @@
 <%@ page
         import="oscar.form.*, java.util.*,oscar.oscarBilling.ca.bc.pageUtil.*,oscar.oscarDB.*,oscar.oscarBilling.ca.bc.MSP.*, oscar.oscarBilling.ca.bc.Teleplan.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 
 <%
@@ -402,8 +402,8 @@
     <body onLoad="isformNeeded()" bgproperties="fixed" topmargin="0"
           leftmargin="0" rightmargin="0">
     <html:errors/>
-    <html:form action="/billing/CA/BC/formwcb" onsubmit="return validateForm()">
-        <html:hidden property="w_servicelocation"/>
+    <form action="${pageContext.request.contextPath}/billing/CA/BC/formwcb.do" method="post" onsubmit="return validateForm()">
+        <input type="hidden" name="w_servicelocation" id="w_servicelocation"/>
 
         <!-- Params for billingBC.jsp `-->
         <input type="hidden" name="method" value="save"/>
@@ -424,7 +424,7 @@
                value="<%=form.getProviderNo()%>"/>
         <input type="hidden" name="bNewForm" value="1"/>
         <input type="hidden" name="fromBilling" value="<%=fromBilling%>"/>
-        <html:hidden property="wcbFormId"/>
+        <input type="hidden" name="wcbFormId" id="wcbFormId"/>
 
         <%
             java.text.SimpleDateFormat fmt = new java.text.SimpleDateFormat("yyyy-MM-dd");
@@ -460,9 +460,9 @@
                 <td>Form Needed <html:checkbox value="1" property="formNeeded"
                                                onclick="isformNeeded();"/></td>
                 <td colspan="1" valign="top" height="25" class="SmallerText"
-                    id="reportTypeSection">Physician's First Report <html:radio
-                        value="F" property="w_reporttype"/> or The worker's condition or
-                    treatment has changed: <html:radio value="C" property="w_reporttype"/>
+                    id="reportTypeSection">Physician's First Report <input type="radio"
+                        value="F" name="w_reporttype"/> or The worker's condition or
+                    treatment has changed: <input type="radio" value="C" name="w_reporttype"/>
                     </span></td>
             </tr>
 
@@ -569,17 +569,16 @@
 
         <tr id="secondSection1">
             <td>Are you the worker's regular physician?</td>
-            <td><html:radio value="Y" property="w_rphysician"
-                            onclick="ShowElementById('secondSection2')"/> Yes <html:radio
-                    value="N" property="w_rphysician"
+            <td><input type="radio" value="Y" name="w_rphysician"
+                            onclick="ShowElementById('secondSection2')"/> Yes <input type="radio"
+                    value="N" name="w_rphysician"
                     onclick="HideElementById('secondSection2')"/> No
             </td>
         </tr>
         <tr id="secondSection2">
             <td>If yes, how long has the worker been your patient?</td>
-            <td><html:radio value="1" property="w_duration"/> 0-6 months <html:radio
-                    value="2" property="w_duration"/> 7-12 months <html:radio value="9"
-                                                                              property="w_duration"/>&gt; 12 months
+            <td><input type="radio" value="1" name="w_duration"/> 0-6 months <input type="radio"
+                    value="2" name="w_duration"/> 7-12 months <input type="radio" value="9" name="w_duration"/>&gt; 12 months
             </td>
         </tr>
         <tr id="secondSection3">
@@ -591,8 +590,8 @@
             <td>Prior/Other Problems Affecting Injury, Recovery and
                 Disability
             </td>
-            <td><html:textarea cols="50" onkeyup="checkTextLimit(this.form.w_problem,160);" styleId="w_problem"
-                               property="w_problem" style="height:50px;width:100%;"></html:textarea>
+            <td><textarea cols="50" onkeyup="checkTextLimit(this.form.w_problem,160);" id="w_problem"
+                               name="w_problem" style="height:50px;width:100%;"></textarea>
             </td>
         </tr>
 
@@ -644,10 +643,10 @@
         </tr>
         <tr>
             <td><b>Side:</b></td>
-            <td><html:select property="w_side">
+            <td><select name="w_side">
                 <html:options collection="injuryLocations" property="sidetype"
                               labelProperty="sidedesc"/>
-            </html:select></td>
+            </select></td>
         </tr>
         <tr>
             <td><b>Nature of Injury</b></td>
@@ -659,9 +658,9 @@
             <td>From injury or since last report, has the worker been
                 disabled from work?
             </td>
-            <td><html:radio value="Y" property="w_work"
-                            onclick="ShowElementById('thirdSection9')"/>Yes <html:radio
-                    value="N" property="w_work"
+            <td><input type="radio" value="Y" name="w_work"
+                            onclick="ShowElementById('thirdSection9')"/>Yes <input type="radio"
+                    value="N" name="w_work"
                     onclick="HideElementById('thirdSection9')"/>No
                 </p>
             </td>
@@ -682,10 +681,10 @@
                     Examination<br>
                     Investigations<br>
                     Treatment, Meds</small></td>
-            <td align="left" valign="top"><html:textarea
-                    styleClass="mhAssTextarea"
-                    onkeyup="checkTextLimit(this.form.w_clinicinfo,800);" styleId="w_clinicinfo"
-                    property="w_clinicinfo" style="height:80px;width:100%;"></html:textarea>
+            <td align="left" valign="top"><textarea
+                    class="mhAssTextarea"
+                    onkeyup="checkTextLimit(this.form.w_clinicinfo,800);" id="w_clinicinfo"
+                    name="w_clinicinfo" style="height:80px;width:100%;"></textarea>
             </td>
         </tr>
         <tr id="forthSectionTitle">
@@ -695,9 +694,9 @@
             <td>Is the worker now medically capable of working full duties,
                 full time?
             </td>
-            <td><html:radio value="Y" property="w_capability"
-                            onclick="HideElementById('forthSection2')"/> Yes <html:radio
-                    value="N" property="w_capability"
+            <td><input type="radio" value="Y" name="w_capability"
+                            onclick="HideElementById('forthSection2')"/> Yes <input type="radio"
+                    value="N" name="w_capability"
                     onclick="ShowElementById('forthSection2')"/> No
             </td>
         </tr>
@@ -705,42 +704,42 @@
             <td valign="top">If No: What are the current physical and/or
                 psychological restrictions?
             </td>
-            <td><html:textarea styleClass="mhAssTextarea"
-                               onkeyup="checkTextLimit(this.form.w_capreason,240);" styleId="w_capreason"
-                               property="w_capreason" style="height:80px;width:100%;"></html:textarea>
+            <td><textarea class="mhAssTextarea"
+                               onkeyup="checkTextLimit(this.form.w_capreason,240);" id="w_capreason"
+                               name="w_capreason" style="height:80px;width:100%;"></textarea>
             </td>
         </tr>
         <tr id="forthSection3">
             <td valign="top">Estimated time before the worker will be able
                 to return to the workplace.
             </td>
-            <td><html:radio value="0" property="w_estimate"/>At Work<br>
-                <html:radio value="1" property="w_estimate"/>1-6 days <html:radio
-                        value="2" property="w_estimate"/>7-13 days<br>
-                <html:radio value="3" property="w_estimate"/>14-20 days <html:radio
-                        value="9" property="w_estimate"/>20 days
+            <td><input type="radio" value="0" name="w_estimate"/>At Work<br>
+                <input type="radio" value="1" name="w_estimate"/>1-6 days
+                <input type="radio" value="2" name="w_estimate"/>7-13 days<br>
+                <input type="radio" value="3" name="w_estimate"/>14-20 days
+                <input type="radio" value="9" name="w_estimate"/>20 days
             </td>
         </tr>
         <tr id="forthSection4">
             <td>If appropriate, is the worker now ready for a rehabilitation
                 program?
             </td>
-            <td><html:radio value="Y" property="w_rehab"
-                            onclick="ShowElementById('forthSection5')"/> Yes <html:radio
-                    value="N" property="w_rehab"
+            <td><input type="radio" value="Y" name="w_rehab"
+                            onclick="ShowElementById('forthSection5')"/> Yes <input type="radio"
+                    value="N" name="w_rehab"
                     onclick="HideElementById('forthSection5')"/> No
             </td>
         </tr>
         <tr id="forthSection5">
             <td>If Yes, Select &quot;WCP&quot; or Other</td>
-            <td><html:radio value="C" property="w_rehabtype"/>WCP <html:radio
-                    value="O" property="w_rehabtype"/>Other
+            <td><input type="radio" value="C" name="w_rehabtype"/>WCP <input type="radio"
+                    value="O" name="w_rehabtype"/>Other
             </td>
         </tr>
         <tr id="forthSection6">
             <td>Do you wish to consult with WCB physician or nurse advisor?</td>
-            <td><html:radio value="Y" property="w_wcbadvisor"/> Yes <html:radio
-                    value="N" property="w_wcbadvisor"/> No
+            <td><input type="radio" value="Y" name="w_wcbadvisor"/> Yes <input type="radio"
+                    value="N" name="w_wcbadvisor"/> No
             </td>
         </tr>
         <tr id="forthSection7">
@@ -757,8 +756,8 @@
             <td>Further Correspondence to Follow: (2nd electronic form or
                 paper)
             </td>
-            <td><html:radio value="Y" property="w_tofollow"/> Yes <html:radio
-                    value="N" property="w_tofollow"/> No
+            <td><input type="radio" value="Y" name="w_tofollow"/> Yes <input type="radio"
+                    value="N" name="w_tofollow"/> No
             </td>
         </tr>
         <tr>
@@ -772,7 +771,7 @@
             <td colspan="2" align="center" valign="top" class="SectionHead">
                 <input type="button" onclick="checkAskiiData(document.getElementById('w_diagnosis'))"/>
 
-                <html:hidden property="doValidate"/>
+                <input type="hidden" name="doValidate" id="doValidate"/>
                 <%if (hideToBill) { %>
                 <hidden name="hideToBill" value="true"/>
                 <%}%>
@@ -827,7 +826,7 @@
             });
             //Calendar.setup({inputField:"w_doi",ifFormat:"y-m-d",button:"hlDDate",align:"Bl",singleClick:true});
         </script>
-    </html:form>
+    </form>
 
 
     <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
