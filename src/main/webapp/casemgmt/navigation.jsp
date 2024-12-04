@@ -430,11 +430,9 @@
                         <select name="msgSelect" class="ControlSelect"
                                 onchange="javascript:popUpMsg(600,900,this.options[this.selectedIndex].value)">
                             <option value="null" selected>-Select Message-</option>
-                            <nested:iterate id="cmb" name="casemgmt_msgBeans"
-                                            type="org.apache.struts.util.LabelValueBean">
-                                <option value="<%= cmb.getLabel() %>"><%= cmb.getValue() %>
-                                </option>
-                            </nested:iterate>
+                            <c:forEach var="cmb" items="casemgmt_msgBeans">
+                                <option value="<%= cmb.getLabel() %>"><%= cmb.getValue() %></option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>

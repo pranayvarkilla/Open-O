@@ -193,7 +193,6 @@
     String providerName = bean.userName;
 
     String pAge = Integer.toString(dateConvert.calcAge(bean.yearOfBirth, bean.monthOfBirth, bean.dateOfBirth));
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
 
     String province = (oscarVariables.getProperty("billregion", "")).trim().toUpperCase();
     Properties windowSizes = oscar.oscarEncounter.pageUtil.EctWindowSizes.getWindowSizes(provNo);

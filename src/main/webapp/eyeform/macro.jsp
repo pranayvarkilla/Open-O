@@ -27,7 +27,7 @@
 <%@ include file="/taglibs.jsp" %>
 <%@page import="java.util.List" %>
 <%@page import="org.oscarehr.eyeform.web.Macro2Action" %>
-<%@page import="org.apache.struts.util.LabelValueBean" %>
+<%@ page import="oscar.util.LabelValueBean" %>
 <%
     List<LabelValueBean> sliCodes = Macro2Action.sliCodeList;
     request.setAttribute("sliCodes", sliCodes);

@@ -22,25 +22,17 @@
     Toronto, Ontario, Canada
 
 --%>
-
-
 <%@ include file="/survey/taglibs.jsp" %>
 <%@ page import="java.util.*" %>
 <%@ page import="org.oscarehr.survey.web.formbean.SurveyExecuteDataBean" %>
-<%@ page import="org.apache.struts.validator.DynaValidatorForm" %>
 <%@ page import="org.oscarehr.surveymodel.*" %>
 <%@ page import="org.oscarehr.survey.web.SurveyTest2Action" %>
-
 <c:set var="id" scope="page">
     <c:out value="${question.id}"/>
 </c:set>
 <%
     //This little piece of code is needed to expose the value-map from the formbean
     //to the scriptlets - too bad html:text doesn't support the id attribute.
-    String id = ((String) pageContext.getAttribute("id"));
-    DynaValidatorForm form = (DynaValidatorForm) session.getAttribute("surveyTestForm");
-    SurveyExecuteDataBean data = (SurveyExecuteDataBean) form.get("data");
-    Map valueMap = data.getValues();
 %>
 <script>
     function select_checkbox(name) {

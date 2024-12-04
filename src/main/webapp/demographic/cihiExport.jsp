@@ -39,26 +39,17 @@
         return;
     }
 %>
-
 <%@page import="org.oscarehr.common.dao.DataExportDao" %>
 <%@page import="org.apache.commons.lang.time.DateFormatUtils" %>
-<%@page import="oscar.util.StringUtils" %>
 <%@page import="oscar.oscarReport.data.DemographicSets" %>
-<%@page import="org.apache.struts.validator.DynaValidatorForm" %>
-<%@page import="java.util.ArrayList, java.util.List" %>
+<%@page import="java.util.List" %>
 <%@page import="org.oscarehr.common.model.DataExport" %>
 <%@include file="/casemgmt/taglibs.jsp" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <%
-    String demographic_no = request.getParameter("demographic_no");
-%>
-
-<%
     DemographicSets ds = new DemographicSets();
     List<String> setsList = ds.getDemographicSets();
-
 %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script src="${pageContext.request.contextPath}/csrfguard"></script>

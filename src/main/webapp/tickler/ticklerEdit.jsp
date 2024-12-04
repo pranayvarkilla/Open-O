@@ -23,7 +23,6 @@
     Ontario, Canada
 
 --%>
-
 <%@page import="java.util.Set" %>
 <%@page import="java.util.List" %>
 <%@page import="java.util.GregorianCalendar" %>
@@ -31,7 +30,7 @@
 <%@page import="java.util.Locale" %>
 <%@page import="java.text.DateFormat" %>
 <%@page import="java.text.SimpleDateFormat" %>
-<%@ page import="org.owasp.encoder.Encode" %>
+<%@page import="org.owasp.encoder.Encode" %>
 <%@page import="org.oscarehr.common.dao.TicklerTextSuggestDao" %>
 <%@page import="org.oscarehr.util.LocaleUtils" %>
 <%@page import="org.oscarehr.common.dao.TicklerTextSuggestDao" %>
@@ -46,21 +45,16 @@
 <%@page import="org.oscarehr.managers.TicklerManager" %>
 <%@page import="org.oscarehr.managers.DemographicManager" %>
 <%@page import="oscar.OscarProperties" %>
-
-
 <%
     TicklerManager ticklerManager = SpringUtils.getBean(TicklerManager.class);
     DemographicManager demographicManager = SpringUtils.getBean(DemographicManager.class);
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 %>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
-
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
-    String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName$%>" objectName="_tickler" rights="w" reverse="<%=true%>">
@@ -72,7 +66,6 @@
         return;
     }
 %>
-
 <%
     boolean caisiEnabled = OscarProperties.getInstance().isPropertyActive("caisi");
     String ticklerNoStr = request.getParameter("tickler_no");
@@ -83,7 +76,6 @@
     } catch (NumberFormatException ignored) {
     }
 
-
     Tickler t = null;
     Demographic d = null;
     if (ticklerNo != null) {
@@ -93,7 +85,7 @@
         response.sendRedirect("../errorpage.jsp");
     }
 
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
+    java.util.Locale vLocale = request.getLocale();
 
     String selected = "";
     String stActive = LocaleUtils.getMessage(request.getLocale(), "tickler.ticklerMain.stActive");

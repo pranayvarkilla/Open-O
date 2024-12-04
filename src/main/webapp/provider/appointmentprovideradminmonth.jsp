@@ -307,15 +307,11 @@
         }
 
     }
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
 %>
-
-
 <%@page import="org.oscarehr.common.dao.SiteDao" %>
 <%@page import="org.oscarehr.common.model.Site" %>
-<%@page import="oscar.appt.JdbcApptImpl" %>
 <%@page import="oscar.appt.ApptUtil" %>
-<html>
+
     <body bgcolor="#EEEEFF" onLoad="refreshAllTabAlerts();">
 
     <head>

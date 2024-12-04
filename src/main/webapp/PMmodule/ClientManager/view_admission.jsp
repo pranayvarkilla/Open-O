@@ -1,8 +1,3 @@
-<%@ page import="org.apache.struts.validator.DynaValidatorForm" %>
-<%@ page import="org.oscarehr.common.model.Admission" %>
-<%@ page import="org.oscarehr.PMmodule.model.DischargeReason" %>
-<%@ page import="org.oscarehr.common.model.OscarLog" %>
-<%@ page import="java.util.List" %>
 <%--
 
 
@@ -27,8 +22,10 @@
     Toronto, Ontario, Canada
 
 --%>
-
-
+<%@ page import="org.oscarehr.common.model.Admission" %>
+<%@ page import="org.oscarehr.PMmodule.model.DischargeReason" %>
+<%@ page import="org.oscarehr.common.model.OscarLog" %>
+<%@ page import="java.util.List" %>
 <%@ include file="/taglibs.jsp" %>
 <html>
     <head>
@@ -52,8 +49,7 @@
     <body>
     <form action="${pageContext.request.contextPath}/PMmodule/ClientManager.do" method="post">`
         <%
-            DynaValidatorForm form = (DynaValidatorForm) session.getAttribute("clientManagerForm");
-            Admission admission = (Admission) form.get("admission");
+            String id = (String) request.getAttribute("id");
         %>
         <input type="hidden" name="id" id="id"/>
 
@@ -96,7 +92,7 @@
                     <c:out value="${clientManagerForm.admission.admissionDate}"/>
                     <%if (request.getAttribute("admission_date_updates") != null) { %>
                     <sup><a href="javascript:void(0)"
-                            onclick="popupPage(600,400,'<%=request.getContextPath()%>/PMmodule/ClientManager/showHistory.jsp?type=update_admission_date&title=Admission Date Updates&id=<%=admission.getId()%>');return false;"><%=((List<OscarLog>) request.getAttribute("admission_date_updates")).size() %>
+                            onclick="popupPage(600,400,'<%=request.getContextPath()%>/PMmodule/ClientManager/showHistory.jsp?type=update_admission_date&title=Admission Date Updates&id=<%=id%>');return false;"><%=((List<OscarLog>) request.getAttribute("admission_date_updates")).size() %>
                     </a></sup>
                     <%} %>
                 </td>
@@ -111,7 +107,7 @@
                     <c:out value="${clientManagerForm.admission.dischargeDate}"/>
                     <%if (request.getAttribute("discharge_date_updates") != null) { %>
                     <sup><a href="javascript:void(0)"
-                            onclick="popupPage(600,400,'<%=request.getContextPath()%>/PMmodule/ClientManager/showHistory.jsp?type=update_discharge_date&title=Discharge Date Updates&id=<%=admission.getId()%>');return false;"><%=((List<OscarLog>) request.getAttribute("discharge_date_updates")).size() %>
+                            onclick="popupPage(600,400,'<%=request.getContextPath()%>/PMmodule/ClientManager/showHistory.jsp?type=update_discharge_date&title=Discharge Date Updates&id=<%=id%>');return false;"><%=((List<OscarLog>) request.getAttribute("discharge_date_updates")).size() %>
                     </a></sup>
                     <%} %>
 

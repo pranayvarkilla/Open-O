@@ -101,7 +101,7 @@
 
 <%@ include file="../admin/dbconnection.jsp" %>
 <%
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
+    java.util.Locale vLocale = request.getLocale();
 
     OscarProperties props = OscarProperties.getInstance();
 

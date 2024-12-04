@@ -23,10 +23,11 @@
     Ontario, Canada
 
 --%>
-
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
-    String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName$%>" objectName="_report,_admin.reporting" rights="r" reverse="<%=true%>">
@@ -38,48 +39,34 @@
         return;
     }
 %>
-
-<%@ page import="java.util.*, java.sql.*, oscar.*, java.text.*, oscar.login.*,java.net.*"
-         errorPage="../appointment/errorpage.jsp" %>
+<%@ page import="java.util.*, java.sql.*, oscar.*, java.text.*" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import="org.oscarehr.common.dao.AppointmentArchiveDao" %>
 <%@ page import="org.oscarehr.common.dao.OscarAppointmentDao" %>
 <%@ page import="org.oscarehr.common.model.Appointment" %>
-
 <%@ page import="org.oscarehr.common.model.MyGroup" %>
 <%@ page import="org.oscarehr.common.dao.MyGroupDao" %>
-
 <%@ page import="org.oscarehr.common.model.ProviderData" %>
 <%@ page import="org.oscarehr.common.dao.ProviderDataDao" %>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
-<%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-
 <jsp:useBean id="daySheetBean" class="oscar.AppointmentMainBean" scope="page"/>
 <jsp:useBean id="myGroupBean" class="java.util.Properties" scope="page"/>
 <jsp:useBean id="providerBean" class="java.util.Properties" scope="session"/>
 
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <%
-
     String curProvider_no = (String) session.getAttribute("user");
     String orderby = request.getParameter("orderby") != null ? request.getParameter("orderby") : ("start_time");
 
     java.util.Properties oscarVariables = oscar.OscarProperties.getInstance();
-    java.util.Locale vLocale = (java.util.Locale) session.getAttribute(org.apache.struts.Globals.LOCALE_KEY);
 
     SimpleDateFormat dayFormatter = new SimpleDateFormat("yyyy-MM-dd");
     String deepColor = "#CCCCFF", weakColor = "#EEEEFF";
     int count = 0;
 
-    AppointmentArchiveDao appointmentArchiveDao = (AppointmentArchiveDao) SpringUtils.getBean(AppointmentArchiveDao.class);
-    OscarAppointmentDao appointmentDao = (OscarAppointmentDao) SpringUtils.getBean(OscarAppointmentDao.class);
+    AppointmentArchiveDao appointmentArchiveDao = SpringUtils.getBean(AppointmentArchiveDao.class);
+    OscarAppointmentDao appointmentDao = SpringUtils.getBean(OscarAppointmentDao.class);
     MyGroupDao myGroupDao = SpringUtils.getBean(MyGroupDao.class);
     ProviderDataDao providerDataDao = SpringUtils.getBean(ProviderDataDao.class);
-
 
     String[][] dbQueries;
     dbQueries = new String[][]{
@@ -89,18 +76,13 @@
             {"search_daysheetsinglenew", "select concat(d.year_of_birth,'/',d.month_of_birth,'/',d.date_of_birth)as dob, d.family_doctor, a.appointment_date, a.provider_no, a.start_time, a.end_time, a.reason, a.name,a.bookingSource, p.last_name, p.first_name, d.sex, d.hin, d.ver, d.family_doctor, d.provider_no as doc_no, d.phone, d.roster_status, p2.last_name as doc_last_name, p2.first_name as doc_first_name, d.chart_no  from (appointment a, provider p) left join demographic d on a.demographic_no=d.demographic_no left join provider p2 on d.provider_no=p2.provider_no where a.appointment_date=? and a.provider_no=? and a.status like binary 't' and a.provider_no=p.provider_no order by a.appointment_date," + orderby}
     };
 
-
     daySheetBean.doConfigure(dbQueries);
 
     boolean isSiteAccessPrivacy = false;
     boolean isTeamAccessPrivacy = false;
 %>
-
-<security:oscarSec objectName="_site_access_privacy" roleName="<%=roleName$%>" rights="r"
-                   reverse="false"><%isSiteAccessPrivacy = true; %></security:oscarSec>
-<security:oscarSec objectName="_team_access_privacy" roleName="<%=roleName$%>" rights="r"
-                   reverse="false"><%isTeamAccessPrivacy = true;%></security:oscarSec>
-
+<security:oscarSec objectName="_site_access_privacy" roleName="<%=roleName$%>" rights="r" reverse="false"><%isSiteAccessPrivacy = true; %></security:oscarSec>
+<security:oscarSec objectName="_team_access_privacy" roleName="<%=roleName$%>" rights="r" reverse="false"><%isTeamAccessPrivacy = true;%></security:oscarSec>
 <%
     List<ProviderData> pdList = null;
     HashMap<String, String> providerMap = new HashMap<String, String>();

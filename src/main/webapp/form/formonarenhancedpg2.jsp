@@ -23,10 +23,10 @@
     Ontario, Canada
 
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
-    String roleName2$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
+    String roleName2$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
 %>
 <security:oscarSec roleName="<%=roleName2$%>" objectName="_form" rights="r" reverse="<%=true%>">
@@ -38,15 +38,11 @@
         return;
     }
 %>
-
 <%@ page import="oscar.form.graphic.*, oscar.util.*, oscar.form.*, oscar.form.data.*" %>
 <%@ page import="org.oscarehr.common.web.Pregnancy2Action" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.apache.struts.util.LabelValueBean" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
-
 <%
     String ctx = request.getContextPath();
     String formClass = "ONAREnhanced";
@@ -2930,7 +2926,7 @@ if (!fedb.equals("") && fedb.length()==10 ) {
         <form>
             <fieldset>
                 <input type="checkbox" name="penicillin" id="penicillin" class="text ui-widget-content ui-corner-all"/>
-                <label for="ferritin">Patient Penicillin Allergic</label>
+                <label for="penicillin">Patient Penicillin Allergic</label>
             </fieldset>
         </form>
     </div>
