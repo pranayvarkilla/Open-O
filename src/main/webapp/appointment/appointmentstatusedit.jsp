@@ -63,7 +63,11 @@
 </table>
 
 
+<<<<<<< HEAD
 <form action="<%=request.getContextPath() %>/appointment/apptStatusSetting.do">
+=======
+<form action="/appointment/apptStatusSetting">
+>>>>>>> fe2d9b0c274b847226525a32bdc1a4282b44edca
     <table>
         <tr>
             <td class="tdLabel"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.appt.status.mgr.label.status"/>:

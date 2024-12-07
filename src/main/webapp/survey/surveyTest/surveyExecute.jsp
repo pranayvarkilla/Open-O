@@ -62,7 +62,11 @@
     <body>
 
     <%@ include file="/survey/messages.jsp" %>
+<<<<<<< HEAD
     <form action="<%=request.getContextPath() %>/SurveyTest.do"
+=======
+    <form action="/SurveyTest"
+>>>>>>> fe2d9b0c274b847226525a32bdc1a4282b44edca
                onsubmit="return validateForm(this,document.surveyTestForm.elements['view.tab'].value,true);">
         <input type="hidden" name="tab" id="tab"/>
         <input type="hidden" name="id" id="id"/>
