@@ -109,7 +109,7 @@
             </c:otherwise>
         </c:choose></td>
         <td>
-            <a href="<html:rewrite action="/PMmodule/ProgramManager"/>?id=<c:out value="${program.program.id}"/>&view.tab=staff&method=edit"><c:out
+            <a href="<%=request.getContextPath() %>/PMmodule/ProgramManager.do?id=<c:out value="${program.program.id}"/>&view.tab=staff&method=edit"><c:out
                     value="${program.program.name}"/></a></td>
         <td><select name="x" onchange="assignRole('<c:out value="${program.program.id}"/>',this);">
             <option value="0">&nbsp;</option>

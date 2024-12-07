@@ -27,7 +27,7 @@
 <%@ include file="/taglibs.jsp" %>
 <script>
     function search_provider(name) {
-        var url = '<html:rewrite action="/PMmodule/ProviderSearch.do"/>';
+        var url = '<%=request.getContextPath() %>/PMmodule/ProviderSearch.do';
         url += '?q=' + name;
         url += '&formName=programManagerForm';
         url += '&formElementId=function.providerNo';
@@ -108,7 +108,11 @@
         <td width="20%">Functional User Type:</td>
         <td>
             <select name="function.userTypeId" id="function.userTypeId">
-                <html:options collection="functionalUserTypes" property="id" labelProperty="name"/>
+                <c:forEach var="functionalUserType" items="${functionalUserTypes}">
+                    <option value="${functionalUserType.id}">
+                            ${functionalUserType.name}
+                    </option>
+                </c:forEach>
             </select>
         </td>
     </tr>

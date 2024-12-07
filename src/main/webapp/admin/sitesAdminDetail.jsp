@@ -49,7 +49,7 @@
                 src="../share/javascript/prototype.js"></script>
         <script type="text/javascript" language="JavaScript"
                 src="../share/javascript/Oscar.js"></script>
-        <link href="<html:rewrite page='/css/displaytag.css'/>" rel="stylesheet"></link>
+        <link href="${request.contextPath}/css/displaytag.css" rel="stylesheet"></link>
         <style>.button {
             border: 1px solid #666666;
         } </style>
@@ -74,9 +74,11 @@
                     &nbsp;
                 </td>
                 <td class="MainTableRightColumn" valign="top">
-                    <html:messages id="errors" header="errors.header" footer="errors.footer">
-                        <li><c:out value="${errors}"/></li>
-                    </html:messages>
+                    <c:if test="${not empty savedMessage}">
+                        <div class="messages">
+                                ${savedMessage}
+                        </div>
+                    </c:if>
 
                     <table>
                         <tr>

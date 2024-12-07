@@ -76,13 +76,13 @@
                 <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
                     <br/>
-                    Width: <html:text property="encounterWindowWidth.value" size="5"/>
+                    Width: <input type="checkbox" name="encounterWindowWidth.value" size="5" />
                     <br/>
-                    Height: <html:text property="encounterWindowHeight.value" size="5"/>
+                    Height: <input type="checkbox" name="encounterWindowHeight.value" size="5" />
                     <br/>
-                    Maximize: <html:checkbox property="encounterWindowMaximize.checked"/>
+                    Maximize: <input type="checkbox" name="encounterWindowMaximize.checked"/>
                     <br/>
-                    <html:submit property="btnApply"/>
+                    <input type="submit" name="btnApply" value="Apply" />
                 </form>
 
                 <%} else {%>

@@ -160,7 +160,7 @@
     </tr>
     <tr>
         <th width="20%">Late Pass</th>
-        <td><html:checkbox property="bedDemographic.latePass"/></td>
+        <td><input type="checkbox" name="bedDemographic.latePass"/></td>
     </tr>
     <tr>
         <th width="20%">Until</th>
@@ -179,7 +179,7 @@
             <input type="text" name="" id="strReservationEnd_field"
                    readonly="readonly" value="<c:out value="${endDate}"/>"
                    onchange="setEndDate();"/> <img align="top"
-                                                   src="<html:rewrite page="/images/calendar.gif" />"
+                                                   src="${request.contextPath}/images/calendar.gif"
                                                    id="strReservationEnd_field-button" alt="Reserve Until Calendar"
                                                    title="Reserve Until Calendar"/>
             <script type="text/javascript">
@@ -204,8 +204,7 @@
 </table>
 <table>
     <tr>
-        <td><html:submit
-                onclick="return validateAndSubmit();">Save</html:submit>
+        <td><input type="submit" name="submit" value="Save" onclick="return validateAndSubmit();" />
         </td>
         <td><input type="reset" value="Reset"/></td>
     </tr>

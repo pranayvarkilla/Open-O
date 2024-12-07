@@ -119,25 +119,25 @@
                 <table width="50%">
                     <!--<tr>
                         <td>Code ID</td>
-                        <td><html:text property="codeId"/></td>
+                        <td><input type="text" name="codeId" id="codeId" /></td>
                     </tr>-->
 
                     <tr>
                         <td width="23%"><strong>Service Code:</strong></td>
-                        <td width="77%"><html:text property="code" maxlength="5"/></td>
+                        <td width="77%"><input type="checkbox" name="code" maxlength="5" /></td>
                     </tr>
                     <tr>
                         <td><strong>Description:</strong></td>
-                        <td><html:text property="desc"/></td>
+                        <td><input type="text" name="desc" id="desc" /></td>
                     </tr>
                     <tr>
                         <td><strong>Price:</strong></td>
-                        <td><html:text property="value"/></td>
+                        <td><input type="text" name="value" id="value" /></td>
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
                         <td>
-                            <html:submit value="Add"/>
+                            <input type="submit" value="Add" />
                             <button type="button" onclick="document.location = 'billingCodeAdjust.jsp'">Back</button>
                     </tr>
                 </table>

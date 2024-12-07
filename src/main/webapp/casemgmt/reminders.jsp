@@ -63,8 +63,7 @@
         <td bgcolor="white"><textarea name="reminders" rows="4" cols="85"></textarea></td>
     </tr>
 </table>
-<html:submit value="save"
-             onclick="this.form.method.value='patientCPPSave'"/>
+<input type="submit" name="submit" value="save" onclick="this.form.method.value='patientCPPSave'"/>
 <c:if test="${not empty messages}">
     <c:forEach var="message" items="${messages}">
         <div style="color: blue"><I><c:out value="${message}"/></I></div>

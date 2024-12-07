@@ -28,7 +28,18 @@
         <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
     </head>
     <body class="BodyStyle" vlink="#0000FF">
-    <h2><html:errors/></h2>
+    <h2><% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %></h2>
     <!--  -->
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr>

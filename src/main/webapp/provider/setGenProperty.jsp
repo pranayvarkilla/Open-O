@@ -125,17 +125,19 @@
                 </p>
 
                 <% if (request.getAttribute("dropOpts") == null) { %>
-                <html:text
-                        styleId="numericFormField"
-                        property="dateProperty.value"/>
+                <input type="text"
+                        id="numericFormField"
+                        name="dateProperty.value"/>
                 <%if (request.getAttribute("dateProperty2") != null) {%>
-                <html:text property="dateProperty2.value"/>
+                <input type="text" name="dateProperty2.value" id="dateProperty2.value" />
                 <%}%>
                 <% } else { %>
                 <select name="dateProperty.value" id="dateProperty.value">
-                    <html:options collection="dropOpts" property="value"
-                                  labelProperty="label"/>
-
+                    <c:forEach var="dropOpt" items="${dropOpts}">
+                        <option value="${dropOpt.value}">
+                                ${dropOpt.label}
+                        </option>
+                    </c:forEach>
                 </select>
 
                 <%}%>

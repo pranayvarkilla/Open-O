@@ -75,7 +75,18 @@
     <link rel="stylesheet" type="text/css" href="../../encounterStyles.css">
     <body class="BodyStyle" vlink="#0000FF">
 
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <!--  -->
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr class="MainTableTopRow">
@@ -139,33 +150,32 @@
                                     <input type="hidden" name="id" id="id"/>
                                     <tr>
                                         <td>Name</td>
-                                        <td><html:text name="EctConAddInstitutionForm" property="name"/></td>
+                                        <td><input type="text" name="name"/></td>
 
                                     </tr>
                                     <tr>
                                         <td>Address</td>
-                                        <td><html:text name="EctConAddInstitutionForm" property="address"/></td>
+                                        <td><input type="text" name="address"/></td>
                                         <td>City</td>
-                                        <td><html:text name="EctConAddInstitutionForm" property="city"/></td>
+                                        <td><input type="text" name="city"/></td>
                                     </tr>
                                     <tr>
                                         <td>Province</td>
-                                        <td><html:text name="EctConAddInstitutionForm" property="province"/></td>
+                                        <td><input type="text" name="province"/></td>
                                         <td>Postal Code</td>
-                                        <td><html:text name="EctConAddInstitutionForm" property="postal"/></td>
+                                        <td><input type="text" name="postal"/></td>
                                     </tr>
                                     <tr>
                                         <td>Phone</td>
-                                        <td><html:text name="EctConAddInstitutionForm" property="phone"/></td>
+                                        <td><input type="text" name="phone"/></td>
                                         <td>Fax</td>
-                                        <td colspan="4"><html:text name="EctConAddInstitutionForm" property="fax"/></td>
+                                        <td colspan="4"><input type="text" name="fax"/></td>
                                     </tr>
                                     <tr>
                                         <td>Website</td>
-                                        <td><html:text name="EctConAddInstitutionForm" property="website"/></td>
+                                        <td><input type="text" name="website"/></td>
                                         <td>Email</td>
-                                        <td colspan="4"><html:text name="EctConAddInstitutionForm"
-                                                                   property="email"/></td>
+                                        <td colspan="4"><input type="text" name="email"/></td>
                                     </tr>
 
                                     <tr>

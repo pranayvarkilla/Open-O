@@ -1,5 +1,5 @@
 function getGeneralFormsReport() {
-    popupPage2('<html:rewrite action="/PMmodule/ClientManager.do"/>?method=getGeneralFormsReport', "generalFormsReport");
+    popupPage2('${request.contextPath}/PMmodule/ClientManager.do?method=getGeneralFormsReport', "generalFormsReport");
 }
 
 function getIntakeReport(type) {
@@ -51,7 +51,7 @@ function createStreetHealthReport() {
 
     alert('Generating report for date ' + startDate);
 
-    //popupPage2('<html:rewrite action="/PMmodule/StreetHealthIntakeReportAction.do"/>?startDate=' + startDate, "StreetHealthReport");
+    //popupPage2('<%=request.getContextPath() %>/PMmodule/StreetHealthIntakeReportAction.do?startDate=' + startDate, "StreetHealthReport");
     popupPage2("../PMmodule/StreetHealthIntakeReportAction.do?startDate=" + startDate, "StreetHealthReport");
 }
 

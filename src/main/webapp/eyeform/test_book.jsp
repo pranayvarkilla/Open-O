@@ -43,7 +43,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href='<html:rewrite page="/jsCalendar/skins/aqua/theme.css" />'/>
+    <link rel="stylesheet" type="text/css" href='${request.contextPath}/jsCalendar/skins/aqua/theme.css'/>
 
     <link rel="stylesheet" type="text/css" media="all" href="<%=request.getContextPath()%>/share/calendar/calendar.css"
           title="win2k-cold-1"/>
@@ -69,7 +69,7 @@ Book Test
         <tr>
             <td class="genericTableHeader">Test name</td>
             <td class="genericTableData">
-                <html:text property="data.testname" size="50"/>
+                <input type="checkbox" name="data.testname" size="50" />
             </td>
         </tr>
 
@@ -110,7 +110,7 @@ Book Test
 
 
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <html:submit value="Book Procedure"/>
+                <input type="submit" value="Book Procedure" />
 
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="button" name="cancel" value="Cancel" onclick="window.close()"/>

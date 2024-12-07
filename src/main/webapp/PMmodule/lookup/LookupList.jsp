@@ -32,7 +32,7 @@
     <script type="text/javascript" src='<c:out value="${ctx}"/>/js/quatroReport.js'></script>
     <script type="text/javascript" src='<c:out value="${ctx}"/>/js/quatroLookup.js'></script>
     <style type="text/css">
-        @import "<html:rewrite page="/css/core.css" />";
+        @import "${request.contextPath}/css/core.css";
 
         <
         style type
@@ -41,7 +41,7 @@
         "text/css"
         >
 
-        @import "<html:rewrite page="/css/displaytag.css" />";
+        @import "${request.contextPath}/css/displaytag.css";
     </style>
     <style type="text/css">
         .clsAlignLeft {
@@ -64,8 +64,8 @@
 			</span></th>
         </tr>
         <tr>
-            <td width="80%">Description: <html:text property="keywordName" style="width:100%;" maxlength="80"/></td>
-            <td width="20%"><html:submit property="method" value="search"/></td>
+            <td width="80%">Description: <input type="text" name="keywordName" style="width:100%;" maxlength="80"/></td>
+            <td width="20%"><input type="submit" name="submit" value="search"/></td>
         </tr>
         <tr>
             <td colspan="2">

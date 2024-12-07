@@ -43,7 +43,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href='<html:rewrite page="/jsCalendar/skins/aqua/theme.css" />'/>
+    <link rel="stylesheet" type="text/css" href='${request.contextPath}/jsCalendar/skins/aqua/theme.css'/>
 
     <link rel="stylesheet" type="text/css" media="all" href="<%=request.getContextPath()%>/share/calendar/calendar.css"
           title="win2k-cold-1"/>
@@ -70,7 +70,7 @@ Enter Ocular Procedure
         <tr>
             <td class="genericTableHeader">Date</td>
             <td class="genericTableData">
-                <html:text property="proc.dateStr" size="10" styleId="pdate"/> <img
+                <input type="text" name="proc.dateStr" size="10" id="pdate"/> <img
                     src="<%=request.getContextPath()%>/images/cal.gif" id="pdate_cal">
             </td>
             <script type="text/javascript">
@@ -97,21 +97,25 @@ Enter Ocular Procedure
         <tr>
             <td class="genericTableHeader">Procedure</td>
             <td class="genericTableData">
-                <html:text property="proc.procedureName" size="50"/>
+                <input type="checkbox" name="proc.procedureName" size="50" />
             </td>
         </tr>
         <tr>
             <td class="genericTableHeader">Doctor Name</td>
             <td class="genericTableData">
                 <select name="doctor">
-                    <html:options collection="providers" property="providerNo" labelProperty="formattedName"/>
+                    <c:forEach var="provider" items="${providers}">
+                        <option value="${provider.providerNo}">
+                                ${provider.formattedName}
+                        </option>
+                    </c:forEach>
                 </select>
             </td>
         </tr>
         <tr>
             <td class="genericTableHeader">Location</td>
             <td class="genericTableData">
-                <html:text property="proc.location" size="35"/>
+                <input type="checkbox" name="proc.location" size="35" />
             </td>
         </tr>
         <tr>
@@ -127,7 +131,7 @@ Enter Ocular Procedure
 
 
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <html:submit value="Submit"/>
+                <input type="submit" value="Submit" />
 
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="button" name="cancel" value="Cancel" onclick="window.close()"/>

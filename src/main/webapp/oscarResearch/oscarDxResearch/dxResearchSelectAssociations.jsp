@@ -129,7 +129,7 @@
                         <input type="radio" name="replace" value="true"/>Replace&nbsp;
                         <input type="radio" name="replace" value="false"/>Append
                         <br/>
-                        <html:submit/>
+                        <input type="submit" name="submit" value="Submit" />
                     </form>
                 </div>
                 <br/>

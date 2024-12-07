@@ -49,7 +49,7 @@
 
     function getProgramSignatures(id) {
         if (id == null || id == "") return;
-        var url = '<html:rewrite action="/PMmodule/ProgramManager.do"/>?method=programSignatures&programId=';
+        var url = '<%=request.getContextPath() %>/PMmodule/ProgramManager.do?method=programSignatures&programId=';
         window.open(url + id, 'signature', 'width=600,height=600,scrollbars=1');
     }
 </script>
@@ -122,7 +122,7 @@
 <table width="100%" border="1" cellspacing="2" cellpadding="3">
     <tr class="b">
         <td width="20%">Name:</td>
-        <td><html:text property="program.name" size="30" maxlength="70"/></td>
+        <td><input type="checkbox" name="program.name" size="30" maxlength="70" /></td>
     </tr>
     <tr class="b">
         <td width="20%">Facility</td>
@@ -136,7 +136,7 @@
     </tr>
     <tr class="b">
         <td width="20%">Description:</td>
-        <td><html:text property="program.description" size="30"
+        <td><input type="text" name="program.description" size="30"
                        maxlength="255"/></td>
     </tr>
     <tr class="b">
@@ -156,32 +156,32 @@
     </tr>
     <tr class="b">
         <td width="20%">HIC:</td>
-        <td><html:checkbox property="program.hic"/></td>
+        <td><input type="checkbox" name="program.hic"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Address:</td>
-        <td><html:text property="program.address" size="30"
+        <td><input type="text" name="program.address" size="30"
                        maxlength="255"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Phone:</td>
-        <td><html:text property="program.phone" size="30" maxlength="25"/></td>
+        <td><input type="checkbox" name="program.phone" size="30" maxlength="25" /></td>
     </tr>
     <tr class="b">
         <td width="20%">Fax:</td>
-        <td><html:text property="program.fax" size="30" maxlength="25"/></td>
+        <td><input type="checkbox" name="program.fax" size="30" maxlength="25" /></td>
     </tr>
     <tr class="b">
         <td width="20%">URL:</td>
-        <td><html:text property="program.url" size="30" maxlength="100"/></td>
+        <td><input type="checkbox" name="program.url" size="30" maxlength="100" /></td>
     </tr>
     <tr class="b">
         <td width="20%">Email:</td>
-        <td><html:text property="program.email" size="30" maxlength="50"/></td>
+        <td><input type="checkbox" name="program.email" size="30" maxlength="50" /></td>
     </tr>
     <tr class="b">
         <td width="20%">Emergency Number:</td>
-        <td><html:text property="program.emergencyNumber" size="30"
+        <td><input type="text" name="program.emergencyNumber" size="30"
                        maxlength="25"/></td>
     </tr>
     <tr class="b">
@@ -204,25 +204,25 @@
     </tr>
     <tr class="b">
         <td width="20%">Location:</td>
-        <td><html:text property="program.location" size="30"
+        <td><input type="text" name="program.location" size="30"
                        maxlength="70"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Max Participants:</td>
-        <td><html:text property="program.maxAllowed" size="8"
+        <td><input type="text" name="program.maxAllowed" size="8"
                        maxlength="8"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Holding Tank:</td>
-        <td><html:checkbox property="program.holdingTank"/></td>
+        <td><input type="checkbox" name="program.holdingTank"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Allow Batch Admissions:</td>
-        <td><html:checkbox property="program.allowBatchAdmission"/></td>
+        <td><input type="checkbox" name="program.allowBatchAdmission"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Allow Batch Discharges:</td>
-        <td><html:checkbox property="program.allowBatchDischarge"/></td>
+        <td><input type="checkbox" name="program.allowBatchDischarge"/></td>
     </tr>
     <!--
 	<tr class="b">
@@ -247,19 +247,19 @@
     </tr>
     <tr class="b">
         <td width="20%">Transgender:</td>
-        <td><html:checkbox property="program.transgender"/></td>
+        <td><input type="checkbox" name="program.transgender"/></td>
     </tr>
     <tr class="b">
         <td width="20%">First Nation:</td>
-        <td><html:checkbox property="program.firstNation"/></td>
+        <td><input type="checkbox" name="program.firstNation"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Bed Program Affiliated:</td>
-        <td><html:checkbox property="program.bedProgramAffiliated"/></td>
+        <td><input type="checkbox" name="program.bedProgramAffiliated"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Alcohol:</td>
-        <td><html:checkbox property="program.alcohol"/></td>
+        <td><input type="checkbox" name="program.alcohol"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Abstinence Support?</td>
@@ -272,15 +272,15 @@
     </tr>
     <tr class="b">
         <td width="20%">Physical Health:</td>
-        <td><html:checkbox property="program.physicalHealth"/></td>
+        <td><input type="checkbox" name="program.physicalHealth"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Mental Health:</td>
-        <td><html:checkbox property="program.mentalHealth"/></td>
+        <td><input type="checkbox" name="program.mentalHealth"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Housing:</td>
-        <td><html:checkbox property="program.housing"/></td>
+        <td><input type="checkbox" name="program.housing"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Exclusive View:</td>
@@ -293,27 +293,27 @@
     </tr>
     <tr class="b">
         <td width="20%">Minimum Age (inclusive):</td>
-        <td><html:text property="program.ageMin" size="8" maxlength="8"/></td>
+        <td><input type="checkbox" name="program.ageMin" size="8" maxlength="8" /></td>
     </tr>
     <tr class="b">
         <td width="20%">Maximum Age (inclusive):</td>
-        <td><html:text property="program.ageMax" size="8" maxlength="8"/></td>
+        <td><input type="checkbox" name="program.ageMax" size="8" maxlength="8" /></td>
     </tr>
     <tr class="b">
         <td width="20%">Enable Mandatory Encounter Time:</td>
-        <td><html:checkbox property="program.enableEncounterTime"/></td>
+        <td><input type="checkbox" name="program.enableEncounterTime"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Enable Mandatory Transportation Time:</td>
-        <td><html:checkbox property="program.enableEncounterTransportationTime"/></td>
+        <td><input type="checkbox" name="program.enableEncounterTransportationTime"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Email Notification Addresses (csv):</td>
-        <td><html:text property="program.emailNotificationAddressesCsv"/></td>
+        <td><input type="text" name="program.emailNotificationAddressesCsv" id="program.emailNotificationAddressesCsv" /></td>
     </tr>
     <tr class="b">
         <td width="20%">Enable OCAN:</td>
-        <td><html:checkbox property="program.enableOCAN"/></td>
+        <td><input type="checkbox" name="program.enableOCAN"/></td>
     </tr>
     <tr>
         <td colspan="2"><input type="button" value="Save" onclick="return save()"/> <button type="button" onclick="window.history.back();">Cancel</button></td>

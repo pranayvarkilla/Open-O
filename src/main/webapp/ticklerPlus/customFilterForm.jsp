@@ -132,7 +132,7 @@
                     <input type="hidden" name="name" id="name"/>
                 </c:when>
                 <c:otherwise>
-                    <html:text property="filter.name" maxlength="255"/>
+                    <input type="checkbox" name="filter.name" maxlength="255" />
                 </c:otherwise>
             </c:choose></td>
         </tr>
@@ -146,14 +146,14 @@
         </tr>
         <tr>
             <td class="fieldTitle">Start Date:</td>
-            <td class="fieldValue"><html:text property="filter.startDate"
+            <td class="fieldValue"><input type="text" name="filter.startDate"
                                               maxlength="10"/> <span
                     onClick="openBrWindow('calendar/oscarCalendarPopup.jsp?type=caisi&openerForm=customFilterForm&amp;openerElement=filter.startDate&amp;year=<%=year%>&amp;month=<%=month%>','','width=300,height=300')"><img
                     border="0" src="images/calendar.jpg"/></span></td>
         </tr>
         <tr>
             <td class="fieldTitle">End Date:</td>
-            <td class="fieldValue"><html:text property="filter.endDate"
+            <td class="fieldValue"><input type="text" name="filter.endDate"
                                               maxlength="10"/> <span
                     onClick="openBrWindow('calendar/oscarCalendarPopup.jsp?type=caisi&openerForm=customFilterForm&amp;openerElement=filter.endDate&amp;year=<%=year%>&amp;month=<%=month%>','','width=300,height=300')"><img
                     border="0" src="images/calendar.jpg"/></span></td>
@@ -161,24 +161,35 @@
         <tr>
             <td class="fieldTitle">Status:</td>
             <td class="fieldValue"><select name="filter.status" id="filter.status">
-                <html:options collection="statusList" property="property"
-                              labelProperty="labelProperty"/>
+                <c:forEach var="status" items="${statusList}">
+                    <option value="${status.property}">
+                            ${status.labelProperty}
+                    </option>
+                </c:forEach>
             </select></td>
         </tr>
         <tr>
             <td class="fieldTitle">Priority:</td>
-            <td class="fieldValue"><select name="filter.priority" id="filter.priority">
-                <html:options collection="priorityList" property="property"
-                              labelProperty="labelProperty"/>
-            </select></td>
+            <td class="fieldValue">
+                <select name="filter.priority" id="filter.priority">
+                    <c:forEach var="priority" items="${priorityList}">
+                        <option value="${priority.property}">
+                                ${priority.labelProperty}
+                        </option>
+                    </c:forEach>
+                </select>
+            </td>
         </tr>
 
         <tr>
             <td class="fieldTitle">Program:</td>
             <td class="fieldValue"><select name="filter.programId" id="filter.programId">
                 <option value="All Programs">All Programs</option>
-                <html:options collection="programs" property="id"
-                              labelProperty="name"/>
+                <c:forEach var="program" items="${programs}">
+                    <option value="${program.id}">
+                            ${program.name}
+                    </option>
+                </c:forEach>
             </select></td>
         </tr>
 
@@ -246,11 +257,9 @@
             </c:choose></td>
         </tr>
         <tr>
-            <td class="fieldValue" colspan="3" align="left"><html:submit
-                    styleClass="button">Save</html:submit> <input type="button"
-                                                                  class="button" value="Cancel"
-                                                                  onclick="location.href='<html:rewrite
-                                                                          action="CustomFilter"/>'"/></td>
+            <td class="fieldValue" colspan="3" align="left">
+                <input type="submit" class="button" value="Save" />
+                <input type="button" class="button" value="Cancel" onclick="location.href='<%=request.getContextPath() %>/CustomFilter.do'"/></td>
         </tr>
     </form>
 </table>

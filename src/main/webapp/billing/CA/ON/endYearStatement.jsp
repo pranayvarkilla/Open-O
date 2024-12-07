@@ -154,7 +154,18 @@
     <div class="row">
 
         <div style="color" red
-        "><html:errors/></div>
+        "><% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %></div>
 
     <c:if test="${not empty summary}">
         <table class="table table-striped table-condensed">

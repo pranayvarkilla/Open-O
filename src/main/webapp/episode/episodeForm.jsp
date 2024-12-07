@@ -222,13 +222,12 @@
                             </td>
                         </tr>
                     </table>
-                    <html:submit styleClass="btn btn-primary" onclick="return validate();"/>
+                    <input type="submit" name="submit" value="Submit" class="btn btn-primary" onclick="return validate();"/>
                 </form>
             </td>
         </tr>
         <tr>
             <td class="MainTableBottomRowLeftColumn">&nbsp;</td>
-
             <td class="MainTableBottomRowRightColumn">&nbsp;</td>
         </tr>
     </table>

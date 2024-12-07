@@ -276,9 +276,10 @@
                                 <tr>
                                     <td>
                                         <% String currentURI = "../demographic/demographiccontrol.jsp?demographic_no=" + demographic_no + "&displaymode=pdflabel&dboperation=search_detail"; %>
-                                        <html:checkbox property="uriArray" value="<%=currentURI%>"
-                                                       style="display:none"/> <html:multibox property="indexArray"
-                                                                                             value="<%= Integer.toString(indexCount++) %>"/>
+                                        <input type="checkbox" name="uriArray" value="<%=currentURI%>"
+                                                       style="display:none"/>
+
+                                        <input type="checkbox" name="indexArray" value="<%= Integer.toString(indexCount++) %>"/>
                                         <input
                                                 type=checkbox name="titleArray"
                                                 value="<%=demoName%> information" style="display: none"/></td>
@@ -308,9 +309,9 @@
                                 <tr>
                                     <td>
                                         <% currentURI = "../oscarEncounter/echarthistoryprint.jsp?echartid=" + ec.getId() + "&demographic_no=" + demographic_no; %>
-                                        <html:checkbox property="uriArray" value="<%=currentURI%>"
-                                                       style="display:none"/> <html:multibox property="indexArray"
-                                                                                             value="<%= Integer.toString(indexCount++) %>"/>
+                                        <input type="checkbox" name="uriArray" value="<%=currentURI%>"
+                                                       style="display:none"/>
+                                        <input type="checkbox" name="indexArray" value="<%= Integer.toString(indexCount++) %>"/>
                                         <input
                                                 type=checkbox name="titleArray"
                                                 value='Encounter: <%=ec.getTimestamp().toString()%>'
@@ -362,9 +363,9 @@
 
                                         %> <% currentURI = "../oscarRx/PrintDrugProfile.jsp?demographic_no=" + demographic_no; %>
 
-                                        <html:checkbox property="uriArray" value="<%=currentURI%>"
-                                                       style="display:none"/> <html:multibox property="indexArray"
-                                                                                             value="<%= Integer.toString(indexCount++) %>"/>
+                                        <input type="checkbox" name="uriArray" value="<%=currentURI%>"
+                                                       style="display:none"/>
+                                        <input type="checkbox" name="indexArray" value="<%= Integer.toString(indexCount++) %>"/>
                                         <input
                                                 type=checkbox name="titleArray" value='Current prescriptions'
                                                 style="display: none"/></td>

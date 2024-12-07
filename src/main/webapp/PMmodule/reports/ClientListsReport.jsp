@@ -57,6 +57,6 @@
         %>
     </table>
 
-    <html:submit value="go back to form"/>
+    <input type="submit" value="go back to form" />
 
 </form></div>

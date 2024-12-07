@@ -498,7 +498,7 @@
                                     <td class='<%= dm.getType() == 3 ? "integratedMessage" : "normalMessage" %>'
                                         width="75">
                                         <%if (pageType != 1) {%>
-                                        <html:checkbox property="messageNo" value="<%=dm.getMessageId() %>"/>
+                                        <input type="checkbox" name="messageNo" value="<%=dm.getMessageId() %>"/>
                                         <% } %>
                                         &nbsp;
                                         <%

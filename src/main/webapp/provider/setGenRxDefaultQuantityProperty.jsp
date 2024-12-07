@@ -69,7 +69,7 @@
                 <%if (request.getAttribute("status") == null) {%> <%=bundle.getString(providermsgEdit)%> <!--c:out value="${rxDefaultQuantityProperty.value}" /-->
                 <form styleId="providerForm" action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
-                    <html:text styleId="numericFormField" property="rxDefaultQuantityProperty.value"/>
+                    <input type="text" id="numericFormField" name="rxDefaultQuantityProperty.value"/>
                     <p id="errorMessage" class="alert alert-danger" style="display: none; color: red;">
                         Invalid input.
                     </p>

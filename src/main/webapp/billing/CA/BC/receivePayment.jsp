@@ -58,7 +58,7 @@
                     <c:out value="${receivePaymentActionForm.billingmasterNo}"/></p>
             </div>
             <p><label> <fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.CA.BC.amount"/>
-                <html:text maxlength="6" property="amountReceived" /><!--&nbsp;<html:checkbox property="isRefund" value="true"/>-->
+                <input type="text" maxlength="6" name="amountReceived" /><!--&nbsp;<input type="checkbox" name="isRefund" value="true"/>-->
             </label></p>
             <p>
                 <label> <fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.CA.BC.method"/>

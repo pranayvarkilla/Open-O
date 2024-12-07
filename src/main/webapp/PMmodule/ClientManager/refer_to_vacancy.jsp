@@ -148,7 +148,7 @@
     <display:column property="dateCreated" sortable="false" title="Created"></display:column>
     <display:column sortable="true" title="Matches">
         <c:if test="${program.matches !=0}">
-            <a href="<html:rewrite action="/PMmodule/VacancyClientMatch.do"/>?vacancyId=<c:out value="${program.vacancyId}" />">
+            <a href="<%=request.getContextPath() %>/PMmodule/VacancyClientMatch.do?vacancyId=<c:out value="${program.vacancyId}" />">
                 <c:out value="${program.matches}"/>
             </a>
         </c:if>
@@ -158,7 +158,7 @@
     </display:column>
 
     <display:column sortable="true" title="Program Name">
-        <a href="<html:rewrite action="/PMmodule/ProgramManagerView.do"/>?id=<c:out value="${program.id}" />">
+        <a href="<%=request.getContextPath() %>/PMmodule/ProgramManagerView.do?id=<c:out value="${program.id}" />">
             <c:out value="${program.name}"/>
         </a>
     </display:column>

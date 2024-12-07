@@ -213,7 +213,7 @@
                                     <tr>
                                         <td>
                                             <fmt:setBundle basename="oscarResources"/><fmt:message key="ChooseDrug.searchAgain"/><br>
-                                            <html:text styleId="searchString" property="searchString" size="16"
+                                            <input type="text" id="searchString" name="searchString" size="16"
                                                        maxlength="16"/>
                                             <!--<input type="hidden" name="otcExcluded" value="true"/>OTC Excluded-->
                                         </td>
@@ -236,7 +236,8 @@
                                     </tr>
                                     <tr>
                                         <td colspan=3>
-                                            <html:submit property="submit" styleClass="ControlPushButton"><fmt:setBundle basename="oscarResources"/><fmt:message key="ChooseDrug.msgSearch"/></html:submit>
+                                            <input type="submit" name="submit" class="ControlPushButton"
+                                                   value="<fmt:setBundle basename="oscarResources"/><fmt:message key="ChooseDrug.msgSearch"/>" />
                                             &nbsp;&nbsp;&nbsp;
                                             <input type=button class="ControlPushButton"
                                                    onclick="javascript:document.forms.RxSearchDrugForm.searchString.value='';document.forms.RxSearchDrugForm.searchString.focus();"

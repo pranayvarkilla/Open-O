@@ -137,9 +137,8 @@
                 <table width="80%">
                     <tr>
                         <td>
-                            <html:submit>
-                                <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.ScheduleConfig.addTemplate"/>
-                            </html:submit>
+                            <<input type="submit" name="submit"
+                                    value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.ScheduleConfig.addTemplate"/>" />
                             <input type="button" value='<fmt:setBundle basename="oscarResources"/><fmt:message key="global.btnCancel"/>'
                                    onclick="javascript:location.href='loadSchedule.do?demographic_no=<%=demoNo%>';"/>
                         </td>

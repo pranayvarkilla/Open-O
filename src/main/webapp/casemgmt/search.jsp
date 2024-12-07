@@ -66,8 +66,8 @@
     </tr>
     <tr>
         <td bgcolor="#EEEEFF">Date Range:</td>
-        <td bgcolor="#EEEEFF"><html:text property="searchStartDate"/>
-            to <html:text property="searchEndDate"/> (yyyy-mm-dd)
+        <td bgcolor="#EEEEFF"><input type="text" name="searchStartDate" id="searchStartDate" />
+            to <input type="text" name="searchEndDate" id="searchEndDate" /> (yyyy-mm-dd)
         </td>
     </tr>
 
@@ -75,8 +75,11 @@
         <td bgcolor="#EEEEFF">Program:</td>
         <td bgcolor="#EEEEFF"><select name="searchProgramId" id="searchProgramId">
             <option value="0">&nbsp;</option>
-            <html:options collection="program_domain" property="id"
-                          labelProperty="name"/>
+            <c:forEach var="p" items="${program_domain}">
+                <option value="${p.id}">
+                        ${p.name}
+                </option>
+            </c:forEach>
         </select></td>
     </tr>
 
@@ -84,13 +87,16 @@
         <td bgcolor="#EEEEFF">Role:</td>
         <td bgcolor="#EEEEFF"><select name="searchRoleId" id="searchRoleId">
             <option value="0">&nbsp;</option>
-            <html:options collection="roles" property="id" labelProperty="name"/>
+            <c:forEach var="role" items="${roles}">
+                <option value="${role.id}">
+                        ${role.name}
+                </option>
+            </c:forEach>
         </select></td>
     </tr>
 
     <tr>
-        <td bgcolor="#EEEEFF" colspan="2"><html:submit
-                onclick="this.form.method.value='search'"/></td>
+        <td bgcolor="#EEEEFF" colspan="2"><input type="submit" name="submit" value="Submit" onclick="this.form.method.value='search'"/></td>
     </tr>
 </table>
 

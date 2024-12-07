@@ -29,18 +29,18 @@
     <table>
         <tr>
             <td>Username:</td>
-            <td><html:text property="username"/></td>
+            <td><input type="text" name="username" id="username" /></td>
         </tr>
         <tr>
             <td>Password:</td>
-            <td><html:text property="password"/></td>
+            <td><input type="text" name="password" id="password" /></td>
         </tr>
         <tr>
             <td>PIN:</td>
-            <td><html:text property="pin"/></td>
+            <td><input type="text" name="pin" id="pin" /></td>
         </tr>
         <tr>
-            <td colspan="2" align="left"><html:submit/></td>
+            <td colspan="2" align="left"><input type="submit" name="submit" value="Submit" /></td>
         </tr>
     </table>
 </form>

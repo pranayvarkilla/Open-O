@@ -397,7 +397,7 @@ label.error {
 			<%int menuTagNumber=0; %>
 			<caisi:isModuleLoad moduleName="caisi">
 			   <li>
-			     <a href='<html:rewrite page="<%=request.getContextPath()%>/PMmodule/ProviderInfo.do"/>'>Program</a>
+			     <a href='<%=request.getContextPath()%>/PMmodule/ProviderInfo.do'>Program</a>
 			     <% menuTagNumber++ ; %>
 			   </li>
 			</caisi:isModuleLoad>

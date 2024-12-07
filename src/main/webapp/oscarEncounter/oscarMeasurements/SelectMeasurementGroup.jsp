@@ -58,7 +58,18 @@
 
     <body class="BodyStyle" vlink="#0000FF">
     <!--  -->
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <form action="${pageContext.request.contextPath}/oscarEncounter/oscarMeasurements/SelectMeasurementGroup.do" method="post">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
@@ -83,8 +94,11 @@
                                     <tr>
                                         <td align="left"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.SelectMeasurementGroup.selectGroup"/>
                                             <select name="selectedGroupName" id="selectedGroupName">
-                                                <html:options collection="groups" property="groupName"
-                                                              labelProperty="groupName"/>
+                                                <c:forEach var="group" items="${groups}">
+                                                    <option value="${group.groupName}">
+                                                            ${group.groupName}
+                                                    </option>
+                                                </c:forEach>
                                             </select></td>
                                     </tr>
                                     <tr>

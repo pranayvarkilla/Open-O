@@ -141,7 +141,7 @@
                                  value="No providers found."/>
             <display:column sortable="false" title="">
                 <a
-                        href="<html:rewrite action="/PMmodule/StaffManager.do"/>?method=edit&id=<c:out value="${provider.providerNo}" />">
+                        href="<%=request.getContextPath() %>/PMmodule/StaffManager.do?method=edit&id=<c:out value="${provider.providerNo}" />">
                     Edit </a>
             </display:column>
             <display:column property="formattedName" sortable="true" title="Name"/>

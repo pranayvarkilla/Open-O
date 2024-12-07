@@ -346,14 +346,14 @@
                                 <input type="submit"
                                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.btnConsReq"/>"/>
                                 <div style="margin: 0; padding: 0; ">
-                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgStart"/>:<html:text
-                                        property="startDate" size="8" styleId="startDate"/><a id="SCal"><img
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgStart"/>:
+                                    <input type="text" name="startDate" size="8" id="startDate"/><a id="SCal"><img
                                         title="Calendar" src="../../images/cal.gif" alt="Calendar" border="0"/></a>
-                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgEnd"/>:<html:text
-                                        property="endDate" size="8" styleId="endDate"/><a id="ECal"><img
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgEnd"/>:
+                                    <input type="text" name="endDate" size="8" id="endDate"/><a id="ECal"><img
                                         title="Calendar" src="../../images/cal.gif" alt="Calendar" border="0"/></a>
-                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgIncludeCompleted"/>:<html:checkbox
-                                        property="includeCompleted" value="include"/>
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgIncludeCompleted"/>:
+                                    <input type="checkbox" name="includeCompleted" value="include"/>
                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgSearchon"/>
                                     <input type="radio" name="searchDate" value="0" titleKey="Search on Referal Date"/>
                                     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ViewConsultationRequests.msgApptDate"/>

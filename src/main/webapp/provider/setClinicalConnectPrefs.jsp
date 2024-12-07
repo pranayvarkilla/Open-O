@@ -66,13 +66,11 @@
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
 
 
-                    <html:checkbox
-                            property="clinicalConnectDisableCloseWindow.checked">Disable Close Window (when eChart closed)</html:checkbox>
+                    <input type="checkbox" name="clinicalConnectDisableCloseWindow.checked" />Disable Close Window (when eChart closed)
 
                     <br/>
 
-                    <html:checkbox
-                            property="clinicalConnectDisableLogoutWarning.checked">Disable Logout Warning</html:checkbox>
+                    <input type="checkbox" name="clinicalConnectDisableLogoutWarning.checked" />Disable Logout Warning
 
                     <br/><br/>
 

@@ -161,7 +161,11 @@
                 <td>Internal Doctor:</td>
                 <td><select name="providerNo">
                     <option value="">All</option>
-                    <html:optionsCollection property="cr.providerList" label="formattedName" value="providerNo"/>
+                    <c:forEach var="provider" items="${cr.providerList}">
+                        <option value="${provider.formattedName}">
+                                ${provider.providerNo}
+                        </option>
+                    </c:forEach>
                 </select></td>
                 <td>Demographic:</td>
                 <td>
@@ -182,14 +186,14 @@
             <tr>
                 <td>Report Start Date:</td>
                 <td>
-                    <html:text styleClass="plain" property="cr.startDate" size="12" onfocus="this.blur()"
-                               readonly="readonly" styleId="sdate"/><img
+                    <input type="text" class="plain" name="cr.startDate" size="12" onfocus="this.blur()"
+                               readonly="readonly" id="sdate"/><img
                         src="<%=request.getContextPath()%>/images/cal.gif" id="sdate_cal">
                 </td>
                 <td>Report End Date:</td>
                 <td>
-                    <html:text styleClass="plain" property="cr.endDate" size="12" onfocus="this.blur()"
-                               readonly="readonly" styleId="edate"/><img
+                    <input type="text" class="plain" name="cr.endDate" size="12" onfocus="this.blur()"
+                               readonly="readonly" id="edate"/><img
                         src="<%=request.getContextPath()%>/images/cal.gif" id="edate_cal">
 
                 </td>
@@ -215,8 +219,7 @@
                 <td></td>
 
                 <td>
-
-                    <html:submit onclick="return doSubmit();">List Consultation Reports</html:submit>
+                    <input type="submit" name="submit" value="List Consultation Reports" onclick="return doSubmit();" />
 
                 </td>
 

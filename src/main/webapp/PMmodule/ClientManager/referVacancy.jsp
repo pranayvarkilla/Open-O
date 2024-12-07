@@ -146,7 +146,7 @@
             <caisi:isModuleLoad moduleName="pmm.refer.temporaryAdmission.enabled">
                 <tr class="b">
                     <td width="20%">Request Temporary Admission:</td>
-                    <td><html:checkbox name="temporaryAdmission"/></td>
+                    <td><<input type="checkbox" name="temporaryAdmission"/></td>
                 </tr>
             </caisi:isModuleLoad>
             <!-- </c:if> -->

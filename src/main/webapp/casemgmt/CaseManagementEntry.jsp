@@ -186,7 +186,7 @@
         function autoSave() {
             if (XMLHttpRequestObject) {
                 var obj = document.getElementById('caseNote_note');
-                XMLHttpRequestObject.open("POST", '<html:rewrite action="/CaseManagementEntry"/>', true);
+                XMLHttpRequestObject.open("POST", '<%=request.getContextPath() %>/CaseManagementEntry.do', true);
                 XMLHttpRequestObject.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 var demographicNo = '<c:out value="${param.demographicNo}"/>';
@@ -444,12 +444,12 @@
 
             <tr>
                 <td class="fieldTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.Sign"/></td>
-                <td class="fieldValue"><html:checkbox property="sign" onchange="setChangeFlag(true);"/></td>
+                <td class="fieldValue"><input type="checkbox" name="sign" onchange="setChangeFlag(true);"/></td>
             </tr>
 
             <tr>
                 <td class="fieldTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.includecheckedissuesinnote"/></td>
-                <td class="fieldValue"><html:checkbox property="includeIssue" onchange="setChangeFlag(true);"/></td>
+                <td class="fieldValue"><input type="checkbox" name="includeIssue" onchange="setChangeFlag(true);"/></td>
             </tr>
 
             <caisi:isModuleLoad moduleName="TORONTO_RFQ" reverse="true">

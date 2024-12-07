@@ -143,7 +143,7 @@
                 <form action="${pageContext.request.contextPath}/billing/CA/BC/billingEditCode.do" method="post">
                     <input type="hidden" name="whereTo" value="<%=request.getParameter("whereTo")%>"/>
                     <input type="hidden" name="method" value="returnToSearch"/>
-                    <html:submit property="submitButton" value="Back"/>
+                    <input type="submit" name="submit" value="Back"/>
                 </form>
 
 

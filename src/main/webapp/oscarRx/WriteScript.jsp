@@ -1096,7 +1096,7 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
 
                                 <tr>
                                     <td colspan=2><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.startDate"/>:</td>
-                                    <td colspan=2><html:text property="rxDate"/></td>
+                                    <td colspan=2><input type="text" name="rxDate" id="rxDate" /></td>
                                     <!--<td >
                                           &nbsp;
                                         </td>-->
@@ -1190,8 +1190,8 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                                 frm.takeOther.style.display = '';
                                             }
                                         </script>
-                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.prn"/><html:checkbox property="prn"
-                                                                                            onchange="javascript:writeScriptDisplay();"/>
+                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.prn"/>
+                                        <input type="checkbox" name="prn" onchange="javascript:writeScriptDisplay();"/>
                                     </td>
                                     <!--<td>
                                             &nbsp;
@@ -1239,7 +1239,7 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                     <td colspan=2><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.quantity"/>: auto<input type="checkbox"
                                                                                                          name="autoQty"/>
                                     </td>
-                                    <td colspan=2 width=65%><html:text property="quantity"
+                                    <td colspan=2 width=65%><input type="text" name="quantity"
                                                                        size="8"
                                                                        onchange="javascript:if( chkQty(this.value) ) {writeScriptDisplay(); customQty(this.value);}"
                                                                        onkeypress="return validNum(event);"
@@ -1248,7 +1248,7 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                             value="<<" onclick=" javascript:useQtyMax();"/>
                                         (<fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgCalculated"/>:&nbsp;<span id="lblSugQty"
                                                                                                      style="font-weight: bold"></span>&nbsp;
-                                        )&nbsp;<html:text property="unitName" size="5"
+                                        )&nbsp;<input type="text" name="unitName" size="5"
                                                           onchange="javascript:writeScriptDisplay();"/> <input
                                                 type=hidden name="sugQtyMin"/> <input type=hidden
                                                                                       name="sugQtyMax"/>
@@ -1298,35 +1298,32 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                             }
                                         </script>
                                         &nbsp;
-                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.noSubs"/>:<html:checkbox property="nosubs"
-                                                                                                onchange="javascript:writeScriptDisplay();"/>
+                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.noSubs"/>:
+                                        <input type="checkbox" name="nosubs" onchange="javascript:writeScriptDisplay();"/>
                                         &nbsp;
-                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgLastRefillDate"/>:<html:text
-                                                property="lastRefillDate"
-                                                onfocus="javascript:lastRefillDate.value='';"/>
+                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgLastRefillDate"/>:
+                                        <input type="text" name="lastRefillDate" onfocus="javascript:lastRefillDate.value='';"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan=4>
-                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgLongTermMedication"/>:<html:checkbox
-                                            property="longTerm" onchange="javascript:writeScriptDisplay();"/>&nbsp;&nbsp;
-                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgDispenseInternal"/>:<html:checkbox
-                                            property="dispenseInternal" onchange="javascript:writeScriptDisplay();"/>&nbsp;&nbsp;
-                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgPastMedication"/>:<html:checkbox
-                                            property="pastMed" onchange="javascript:writeScriptDisplay();"/>&nbsp;&nbsp;
+                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgLongTermMedication"/>:
+                                        <input type="checkbox" name="longTerm" onchange="javascript:writeScriptDisplay();"/>&nbsp;&nbsp;
+                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgDispenseInternal"/>:
+                                        <input type="checkbox" name="dispenseInternal" onchange="javascript:writeScriptDisplay();"/>&nbsp;&nbsp;
+                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgPastMedication"/>:
+                                        <input type="checkbox" name="pastMed" onchange="javascript:writeScriptDisplay();"/>&nbsp;&nbsp;
                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgPatientCompliance"/>:
-                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgYes"/><html:checkbox
-                                            property="patientComplianceY"
-                                            onchange="javascript:checkPatientCompliance('Y');"/>
-                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgNo"/><html:checkbox
-                                            property="patientComplianceN"
-                                            onchange="javascript:checkPatientCompliance('N');"/>
+                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgYes"/>
+                                        <input type="checkbox" name="patientComplianceY" onchange="javascript:checkPatientCompliance('Y');"/>
+                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgNo"/>
+                                        <input type="checkbox" name="patientComplianceN" onchange="javascript:checkPatientCompliance('N');"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan=4>
                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.special"/>: &nbsp; &nbsp; &nbsp; &nbsp;
-                                        <html:checkbox property="customInstr"/><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgCustomInstructions"/>
+                                        <input type="checkbox" name="customInstr"/><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgCustomInstructions"/>
                                         <script language=javascript>
                                             function cmdSpecial_click() {
                                                 var frm = document.forms.RxWriteScriptForm;
@@ -1394,16 +1391,16 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                         <input type="checkbox" id="ocheck"
                                                onclick="javascript:showHideOutsideProvider();"/> &nbsp;
                                         <span id="otext">
-							    <b><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgName"/>:</b> <html:text
-                                                property="outsideProviderName"/> &nbsp;
-							    <b><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgOHIPNO"/>:</b> <html:text
-                                                property="outsideProviderOhip"/>
+							    <b><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgName"/>:</b>
+                                            <input type="text" name="outsideProviderName"/> &nbsp;
+							    <b><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgOHIPNO"/>:</b>
+                                            <input type="text" name="outsideProviderOhip"/>
 							</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="5"><fmt:setBundle basename="oscarResources"/><fmt:message key="WriteScript.msgRxWrittenDate"/>:
-                                            <html:text property="writtenDate"/>
+                                            <input type="text" name="writtenDate" id="writtenDate" />
                             </table>
                         </td>
                     </tr>

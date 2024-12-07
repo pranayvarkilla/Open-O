@@ -77,34 +77,34 @@
         </tr>
         <tr class="b">
             <td width="20%">Name: *</td>
-            <td><html:text property="facility.name" size="32" maxlength="32"
-                           styleId="facilityName"/></td>
+            <td><input type="text" name="facility.name" size="32" maxlength="32"
+                           id="facilityName"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Description: *</td>
-            <td><html:text property="facility.description" size="70"
-                           maxlength="70" styleId="facilityDesc"/></td>
+            <td><input type="text" name="facility.description" size="70"
+                           maxlength="70" id="facilityDesc"/></td>
         </tr>
         <tr class="b">
             <td width="20%">HIC:</td>
-            <td><html:checkbox property="facility.hic"/></td>
+            <td><input type="checkbox" name="facility.hic"/></td>
         </tr>
         <tr class="b">
             <td width="20%">OCAN Service Org Number:</td>
-            <td><html:text property="facility.ocanServiceOrgNumber" size="5" maxlength="5"
-                           styleId="ocanServiceOrgNumber"/></td>
+            <td><input type="text" name="facility.ocanServiceOrgNumber" size="5" maxlength="5"
+                           id="ocanServiceOrgNumber"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Primary Contact Name:</td>
-            <td><html:text property="facility.contactName"/></td>
+            <td><input type="text" name="facility.contactName" id="facility.contactName" /></td>
         </tr>
         <tr class="b">
             <td width="20%">Primary Contact Email:</td>
-            <td><html:text property="facility.contactEmail"/></td>
+            <td><input type="text" name="facility.contactEmail" id="facility.contactEmail" /></td>
         </tr>
         <tr class="b">
             <td width="20%">Primary Contact Phone:</td>
-            <td><html:text property="facility.contactPhone"/></td>
+            <td><input type="text" name="facility.contactPhone" id="facility.contactPhone" /></td>
         </tr>
         <%
             Integer orgId = (Integer) request.getAttribute("orgId");
@@ -149,19 +149,19 @@
         </tr>
         <tr class="b">
             <td width="20%">Enable Digital Signatures:</td>
-            <td><html:checkbox property="facility.enableDigitalSignatures"/></td>
+            <td><input type="checkbox" name="facility.enableDigitalSignatures"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Enable Integrator:</td>
-            <td><html:checkbox property="facility.integratorEnabled"/></td>
+            <td><input type="checkbox" name="facility.integratorEnabled"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Integrator Url:</td>
-            <td><html:text property="facility.integratorUrl"/></td>
+            <td><input type="text" name="facility.integratorUrl" id="facility.integratorUrl" /></td>
         </tr>
         <tr class="b">
             <td width="20%">Integrator User:</td>
-            <td><html:text property="facility.integratorUser"/></td>
+            <td><input type="text" name="facility.integratorUser" id="facility.integratorUser" /></td>
         </tr>
         <tr class="b">
             <td width="20%">Integrator Password:</td>
@@ -169,35 +169,35 @@
         </tr>
         <tr class="b">
             <td width="20%">Allow SIMS Integration:</td>
-            <td><html:checkbox property="facility.allowSims"/></td>
+            <td><input type="checkbox" name="facility.allowSims"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Enable Integrated Referrals:</td>
-            <td><html:checkbox property="facility.enableIntegratedReferrals"/></td>
+            <td><input type="checkbox" name="facility.enableIntegratedReferrals"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Enable Health Number Registry:</td>
-            <td><html:checkbox property="facility.enableHealthNumberRegistry"/></td>
+            <td><input type="checkbox" name="facility.enableHealthNumberRegistry"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Enable OCAN Forms:</td>
-            <td><html:checkbox property="facility.enableOcanForms"/></td>
+            <td><input type="checkbox" name="facility.enableOcanForms"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Enable CBI Form:</td>
-            <td><html:checkbox property="facility.enableCbiForm"/></td>
+            <td><input type="checkbox" name="facility.enableCbiForm"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Enable Anonymous Clients:</td>
-            <td><html:checkbox property="facility.enableAnonymous"/></td>
+            <td><input type="checkbox" name="facility.enableAnonymous"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Enable Phone Encounter Clients:</td>
-            <td><html:checkbox property="facility.enablePhoneEncounter"/></td>
+            <td><input type="checkbox" name="facility.enablePhoneEncounter"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Enable Group Notes:</td>
-            <td><html:checkbox property="facility.enableGroupNotes"/></td>
+            <td><input type="checkbox" name="facility.enableGroupNotes"/></td>
         </tr>
 
         <tr class="b">
@@ -211,7 +211,7 @@
                     <% } %>
                 </select>
                 &nbsp;Default client ID:&nbsp;
-                <html:text property="facility.vacancyWithdrawnTicklerDemographic"/>
+                <input type="text" name="facility.vacancyWithdrawnTicklerDemographic" id="facility.vacancyWithdrawnTicklerDemographic" />
             </td>
         </tr>
 
@@ -226,7 +226,7 @@
                     <% } %>
                 </select>
                 &nbsp;Default client ID:&nbsp;
-                <html:text property="facility.assignNewVacancyTicklerDemographic"/>
+                <input type="text" name="facility.assignNewVacancyTicklerDemographic" id="facility.assignNewVacancyTicklerDemographic" />
             </td>
         </tr>
 
@@ -265,11 +265,11 @@
 
         <tr class="b">
             <td width="20%">Enable Mandatory Encounter Time in Encounter:</td>
-            <td><html:checkbox property="facility.enableEncounterTime"/></td>
+            <td><input type="checkbox" name="facility.enableEncounterTime"/></td>
         </tr>
         <tr class="b">
             <td width="20%">Enable Mandatory Transportation Time in Encounter:</td>
-            <td><html:checkbox property="facility.enableEncounterTransportationTime"/></td>
+            <td><input type="checkbox" name="facility.enableEncounterTransportationTime"/></td>
         </tr>
 
         <tr class="b">
@@ -287,13 +287,13 @@
         </tr>
 
         <tr>
-            <td colspan="2"><html:submit property="submit.save" onclick="bCancel=false;">Save</html:submit>
+            <td colspan="2"><input type="submit" name="submit" value="Save" onclick="bCancel=false;" />
                 <button type="button" onclick="window.history.back();">Cancel</button></td>
         </tr>
     </table>
 </form>
 <div>
     <p><a
-            href="<html:rewrite action="/PMmodule/FacilityManager.do"/>?method=list">Return
+            href="<%=request.getContextPath() %>/PMmodule/FacilityManager.do?method=list">Return
         to facilities list</a></p>
 </div>

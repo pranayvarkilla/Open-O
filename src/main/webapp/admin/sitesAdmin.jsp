@@ -49,7 +49,7 @@
                 src="../share/javascript/prototype.js"></script>
         <script type="text/javascript" language="JavaScript"
                 src="../share/javascript/Oscar.js"></script>
-        <link href="<html:rewrite page='/css/displaytag.css'/>" rel="stylesheet"></link>
+        <link href="${request.contextPath}/css/displaytag.css" rel="stylesheet"></link>
     </head>
 
     <body vlink="#0000FF" class="BodyStyle">

@@ -395,7 +395,7 @@
                         return;
                     }
                     var id = document.getElementById('formInstanceId').value;
-                    var url = '<html:rewrite action="/PMmodule/Forms/SurveyExecute"/>?method=survey&type=provider&formId=' + formId + '&formInstanceId=' + id + '&clientId=' + <%=bean.demographicNo%>;
+                    var url = '<%=request.getContextPath() %>/PMmodule/Forms/SurveyExecute.do?method=survey&type=provider&formId=' + formId + '&formInstanceId=' + id + '&clientId=' + <%=bean.demographicNo%>;
                     ctl.selectedIndex = 0;
 
                     popupPage(url)

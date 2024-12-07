@@ -74,8 +74,7 @@
            bgcolor="#C0C0C0">
         <tr>
             <td class="fieldTitle">Expiry Day:&nbsp;</td>
-            <td class="fieldValue"><html:text
-                    property="system_message.expiry_day"/> <%
+            <td class="fieldValue"><input type="text" name="system_message.expiry_day"/> <%
                 Calendar rightNow = Calendar.getInstance();
                 int year = rightNow.get(Calendar.YEAR);
                 int month = rightNow.get(Calendar.MONTH) + 1;
@@ -105,11 +104,12 @@
         </tr>
         <tr>
             <td class="fieldTitle">Message&nbsp;</td>
-            <td colspan="2" class="fieldValue"><html:text size="60"
-                                                          property="system_message.message"/></td>
+            <td colspan="2" class="fieldValue"><input type="text" size="60"
+                                                          name="system_message.message"/></td>
         </tr>
         <tr>
-            <td class="fieldValue" colspan="3"><html:submit>Save</html:submit>
+            <td class="fieldValue" colspan="3">
+                <input type="submit" name="submit" value="Save" />
                 <input type="button" value="Cancel"
                        onclick="location.href='SystemMessage.do'"/></td>
         </tr>

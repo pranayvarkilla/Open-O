@@ -69,7 +69,7 @@
                            enctype="multipart/form-data">
                     <input type="file" name="file" id="file" size="35"/>
                     <br/>
-                    <html:submit/>
+                    <input type="submit" name="submit" value="Submit" />
                 </form>
             </div>
         </div>

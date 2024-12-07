@@ -64,7 +64,18 @@
     <link rel="stylesheet" type="text/css" href="../../encounterStyles.css">
     <body topmargin="0" leftmargin="0" vlink="#0000FF"
           onload="window.focus();">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <table border="0" cellpadding="0" cellspacing="0"
            style="border-collapse: collapse" bordercolor="#111111" width="100%"
            id="AutoNumber1" height="100%">
@@ -117,17 +128,17 @@
                                 <tr>
                                     <td class="cells"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.formSetName"/>:
                                     </td>
-                                    <td class="cells"><html:text property="setName"/></td>
+                                    <td class="cells"><input type="text" name="setName" id="setName" /></td>
                                 </tr>
                                 <tr>
                                     <td class="cells"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.formNRows"/>:
                                     </td>
-                                    <td class="cells"><html:text property="numRows"/></td>
+                                    <td class="cells"><input type="text" name="numRows" id="numRows" /></td>
                                 </tr>
                                 <tr>
                                     <td class="cells"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.immunization.config.createImmunizationSetinit.formNCol"/>:
                                     </td>
-                                    <td class="cells"><html:text property="numCols"/></td>
+                                    <td class="cells"><input type="text" name="numCols" id="numCols" /></td>
                                 </tr>
 
                                 <tr>

@@ -66,9 +66,9 @@
                 <%if (request.getAttribute("status") == null) {%> <%=bundle.getString(providermsgEdit)%>
                 <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
-                    <html:checkbox property="eDocBrowserInDocumentReportProperty.checked"><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setEDocBrowserInDocumentReport.msgEnableLink"/></html:checkbox>
+                    <input type="checkbox" name="eDocBrowserInDocumentReportProperty.checked" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setEDocBrowserInDocumentReport.msgEnableLink"/>
                     <br/>
-                    <html:submit property="btnApply"/>
+                    <input type="submit" name="btnApply" value="Apply" />
                 </form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
                 <%}%>
             </td>

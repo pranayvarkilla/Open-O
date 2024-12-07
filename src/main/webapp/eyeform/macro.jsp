@@ -136,11 +136,11 @@
             <tbody>
             <tr>
                 <td width="150">Label</td>
-                <td><html:text property="macro.label"/></td>
+                <td><input type="text" name="macro.label" id="macro.label" /></td>
             </tr>
             <tr>
                 <td>Display Order</td>
-                <td><html:text property="macro.displayOrder"/></td>
+                <td><input type="text" name="macro.displayOrder" id="macro.displayOrder" /></td>
             </tr>
 
             </tbody>
@@ -157,7 +157,7 @@
                 </tr>
                 <tr>
                     <td>Followup in</td>
-                    <td nowrap="nowrap"><html:text property="macro.followupNo" style="width: 40px;"/>
+                    <td nowrap="nowrap"><input type="text" name="macro.followupNo" style="width: 40px;"/>
                         <select name="followupUnit" style="width: 80px;">
                             <option value="days">days</option>
                             <option value="weeks">weeks</option>
@@ -166,7 +166,11 @@
                         &nbsp;
                         with doctor
                         <select name="followupDoctorId">
-                            <html:options collection="providers" property="providerNo" labelProperty="formattedName"/>
+                            <c:forEach var="provider" items="${providers}">
+                                <option value="${provider.providerNo}">
+                                        ${provider.formattedName}
+                                </option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
@@ -175,9 +179,9 @@
 
                     <td nowrap="nowrap">
 
-                        <html:checkbox property="macro.statFlag" value="statFlag"/> STAT/PRN
-                        <html:checkbox property="macro.optFlag" value="optFlag"/> Optom Routine
-                        <html:checkbox property="macro.dischargeFlag" value="dischargeFlag"/> Discharge
+                        <input type="checkbox" name="macro.statFlag" value="statFlag"/> STAT/PRN
+                        <input type="checkbox" name="macro.optFlag" value="optFlag"/> Optom Routine
+                        <input type="checkbox" name="macro.dischargeFlag" value="dischargeFlag"/> Discharge
                     </td>
                 </tr>
                 <tr>
@@ -194,7 +198,11 @@
                     <td>
                         <select name="macro.ticklerRecipient">
                             <option value="">Nobody</option>
-                            <html:options collection="providers" property="providerNo" labelProperty="formattedName"/>
+                            <c:forEach var="provider" items="${providers}">
+                                <option value="${provider.providerNo}">
+                                        ${provider.formattedName}
+                                </option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
@@ -214,7 +222,11 @@
                     </td>
                     <td>
                         <select name="macro.sliCode">
-                            <html:options collection="sliCodes" property="value" labelProperty="label"/>
+                            <c:forEach var="sliCode" items="${sliCodes}">
+                                <option value="${sliCode.value}">
+                                        ${sliCode.label}
+                                </option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
@@ -228,7 +240,7 @@
                 </tr>
                 <tr>
                     <td>DX Code<br></td>
-                    <td><html:text property="macro.billingDxcode"/></td>
+                    <td><input type="text" name="macro.billingDxcode" id="macro.billingDxcode" /></td>
                 </tr>
                 <tr>
                     <td width="150">Visit Type</td>

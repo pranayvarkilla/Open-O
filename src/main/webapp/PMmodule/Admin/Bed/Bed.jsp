@@ -30,12 +30,12 @@
     }
 
     function roomFilter() {
-        document.forms[0].action = '<html:rewrite action="/PMmodule/BedManager.do?method=doRoomFilter" />';
+        document.forms[0].action = '<%=request.getContextPath() %>/PMmodule/BedManager.do?method=doRoomFilter';
         document.forms[0].submit();
     }
 
     function bedFilter() {
-        document.forms[0].action = '<html:rewrite action="/PMmodule/BedManager.do?method=doBedFilter" />';
+        document.forms[0].action = '<%=request.getContextPath() %>/PMmodule/BedManager.do?method=doBedFilter';
         document.forms[0].submit();
     }
 
@@ -104,7 +104,7 @@
     function deleteRoom() {
         var doDelete = confirm("Are you sure you want to delete the room?");
         if (doDelete) {
-            document.forms[0].action = '<html:rewrite action="/PMmodule/BedManager.do?method=deleteRoom" />';
+            document.forms[0].action = '<%=request.getContextPath() %>/PMmodule/BedManager.do?method=deleteRoom';
             document.forms[0].submit();
         }
     }
@@ -112,7 +112,7 @@
     function deleteBed() {
         var doDelete = confirm("Are you sure you want to delete the bed?");
         if (doDelete) {
-            document.forms[0].action = '<html:rewrite action="/PMmodule/BedManager.do?method=deleteBed" />';
+            document.forms[0].action = '<%=request.getContextPath() %>/PMmodule/BedManager.do?method=deleteBed';
             document.forms[0].submit();
         }
     }
@@ -155,16 +155,22 @@
                         <td width="30%" style="font-weight: bold">Room Status<br/>
                             <select name="roomStatusFilter" name="bedManagerForm"
                                          onchange="roomFilter();">
-                                <html:optionsCollection property="roomStatusNames" value="key"
-                                                        label="value"/>
+                                <c:forEach var="roomStatusName" items="${roomStatusNames}">
+                                    <option value="${roomStatusName.key}">
+                                            ${roomStatusName.value}
+                                    </option>
+                                </c:forEach>
                             </select></td>
                         <td width="30%" align="right" style="font-weight: bold">Bed
                             Program<br/>
                             <select name="bedProgramFilterForRoom"
                                          name="bedManagerForm" onchange="roomFilter();">
                                 <option value="0">Any</option>
-                                <html:optionsCollection property="programs" value="id"
-                                                        label="name"/>
+                                <c:forEach var="program" items="${programs}">
+                                    <option value="${program.id}">
+                                            ${program.name}
+                                    </option>
+                                </c:forEach>
                             </select></td>
                     </tr>
                 </table>
@@ -277,7 +283,7 @@
                 <input type=hidden name="submit.saveRoom" value=""></td>
         </tr>
         <tr>
-            <td><html:text property="numRooms"/> 
+            <td><input type="text" name="numRooms" id="numRooms" /> 
                 <button type="button" onclick="addRooms();" data-property="submit.addRooms">Add Rooms</button>
                 <input type=hidden name="submit.addRoom" value=""></td>
         </tr>
@@ -303,14 +309,19 @@
                             <select name="bedStatusFilter"
                             <select name="bedStatusFilter"
                                          onchange="bedFilter();">
-                                <html:optionsCollection property="bedStatusNames" value="key"
-                                                        label="value"/>
+                                <c:forEach var="bedStatusName" items="${bedStatusNames}">
+                                    <option value="${bedStatusName.key}">
+                                            ${bedStatusName.value}
+                                    </option>
+                                </c:forEach>
                             </select></td>
                         <td width="30%" align="right" style="font-weight: bold">Room<br/>
-                            <select name="bedRoomFilterForBed"
-                                         onchange="bedFilter();">
-                                <html:optionsCollection property="assignedBedRooms" value="id"
-                                                        label="name"/>
+                            <select name="bedRoomFilterForBed" onchange="bedFilter();">
+                                <c:forEach var="assignedBedRoom" items="${assignedBedRooms}">
+                                    <option value="${assignedBedRoom.id}">
+                                            ${assignedBedRoom.name}
+                                    </option>
+                                </c:forEach>
                             </select></td>
                     </tr>
                 </table>
@@ -386,19 +397,18 @@
             <td><input type=hidden name="bedslines"
                        value="<c:out value="${bed_rowNum}" />"> <c:choose>
                 <c:when test="${not empty bedManagerForm.rooms}">
-                    <html:text property="numBeds"/>
+                    <input type="text" name="numBeds" id="numBeds" />
                     <button type="button" onclick="addBeds();" data-property="submit.addBeds">Add Beds</button>
                     <input type=hidden name="submit.addBed" value="">
                 </c:when>
                 <c:otherwise>
-                    <html:submit property="submit.addBeds" disabled="true">Add Beds</html:submit>
+                    <input type="submit" name="submit" value="Add beds" disabled="true" />
                 </c:otherwise>
             </c:choose></td>
         </tr>
     </table>
     <div>
-        <p><a
-                href="<html:rewrite action="/PMmodule/FacilityManager.do"/>?method=list"/>Return
+        <p><a href="<%=request.getContextPath() %>/PMmodule/FacilityManager.do?method=list">Return
             to facilities list</a></p>
     </div>
 

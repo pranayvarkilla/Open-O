@@ -444,12 +444,12 @@
                                     <td>Search:</td>
                                 </tr>
                                 <tr>
-                                    <td><html:text property="searchString" size="50" styleId="searchString"
+                                    <td><input type="text" name="searchString" size="50" id="searchString"
                                                    maxlength="50"/></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <html:submit property="submit" value="Search" styleClass="ControlPushButton"/>
+                                        <input type="submit" name="submit" value="Search" class="ControlPushButton"/>
                                         <input type=button class="ControlPushButton"
                                                onclick="javascript:document.forms.RxSearchAllergyForm.searchString.value='';document.forms.RxSearchAllergyForm.searchString.focus();"
                                                value="Reset"/>
@@ -484,10 +484,10 @@
                                 </tr>
 
                                 <tr>
-                                    <td><html:checkbox property="type4"/> Drug Classes</td>
-                                    <td><html:checkbox property="type3"/> Ingredients</td>
-                                    <td><html:checkbox property="type2"/> Generic Names</td>
-                                    <td><html:checkbox property="type1"/> Brand Names</td>
+                                    <td><input type="checkbox" name="type4"/> Drug Classes</td>
+                                    <td><input type="checkbox" name="type3"/> Ingredients</td>
+                                    <td><input type="checkbox" name="type2"/> Generic Names</td>
+                                    <td><input type="checkbox" name="type1"/> Brand Names</td>
                                 </tr>
                                 <tr>
                                     <td colspan=4>

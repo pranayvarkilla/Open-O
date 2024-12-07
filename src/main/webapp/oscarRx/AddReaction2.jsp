@@ -231,8 +231,8 @@
                                 </tr>
 
                                 <tr valign="center">
-                                    <td><span class="label">Age Of Onset:</span> <html:text
-                                            property="ageOfOnset" size="4" maxlength="4" value="<%=ageOfOnset%>"
+                                    <td><span class="label">Age Of Onset:</span> <input type="text"
+                                            name="ageOfOnset" size="4" maxlength="4" value="<%=ageOfOnset%>"
                                             onblur="checkAgeOfOnset();"/></td>
 
                                 </tr>
@@ -300,9 +300,7 @@
 
                                 <tr>
                                     <td>
-                                        <html:submit property="submit" value="Add Allergy"
-                                                     styleClass="ControlPushButton"
-                                                     onclick="return doSubmit()"/>
+                                        <input type="submit" name="submit" value="Add Allergy" class="ControlPushButton" onclick="return doSubmit()"/>
                                         <input type=button class="ControlPushButton" id="cancelAddReactionButton"
                                                onclick="window.location='ShowAllergies2.jsp?demographicNo=<%=bean.getDemographicNo() %>'"
                                                value="Cancel"/>

@@ -39,7 +39,18 @@
     </head>
 
     <body class="BodyStyle" vlink="#0000FF">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <form action="${pageContext.request.contextPath}/oscarEncounter/oscarMeasurements/DefineNewMeasurementGroup.do" onsubmit="return validateForm()" method="post">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
@@ -66,7 +77,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><html:text property="groupName" size="35"/></td>
+                                        <td><input type="checkbox" name="groupName" size="35" /></td>
                                     </tr>
                                     <tr>
                                         <td align="left"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.addMeasurementGroup.selectStyleSheet"/>
@@ -75,8 +86,11 @@
                                     <tr>
                                         <td><select name="styleSheet" style="width:250">
                                             <option value=""></option>
-                                            <html:options collection="allStyleSheets" property="cssId"
-                                                          labelProperty="styleSheetName"/>
+                                            <c:forEach var="allStyleSheet" items="${allStyleSheets}">
+                                                <option value="${allStyleSheet.cssId}">
+                                                        ${allStyleSheet.styleSheetName}
+                                                </option>
+                                            </c:forEach>
                                         </select></td>
                                     </tr>
                                     <tr>

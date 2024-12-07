@@ -136,11 +136,11 @@
             </tr>
             <tr>
                 <td align="right" width=73>Start Date:</td>
-                <td><html:text property="startDate" size="10"/> (YYYY-MM-DD)</td>
+                <td><input type="checkbox" name="startDate" size="10" /> (YYYY-MM-DD)</td>
             </tr>
             <tr>
                 <td align="right">End Date:</td>
-                <td><html:text property="endDate" size="10"/> (YYYY-MM-DD)</td>
+                <td><input type="checkbox" name="endDate" size="10" /> (YYYY-MM-DD)</td>
             </tr>
         </table>
         <p><input class="btn btn-primary" type="submit" value="Export"/>

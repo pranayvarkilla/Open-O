@@ -58,22 +58,30 @@
     <table id="genericIntakeSearch" width="50%">
         <tr>
             <th>First Name</th>
-            <td><html:text property="firstName" size="30" maxlength="30"/></td>
+            <td><input type="checkbox" name="firstName" size="30" maxlength="30" /></td>
         </tr>
         <tr>
             <th>Last Name</th>
-            <td><html:text property="lastName" size="30" maxlength="30"/></td>
+            <td><input type="checkbox" name="lastName" size="30" maxlength="30" /></td>
         </tr>
         <tr>
             <th>Birth Date</th>
             <td>
                 <select name="monthOfBirth" id="monthOfBirth">
-                    <html:optionsCollection property="months" value="value" label="label"/>
+                    <c:forEach var="month" items="${months}">
+                        <option value="${month.value}">
+                                ${month.label}
+                        </option>
+                    </c:forEach>
                 </select>&nbsp;
                 <select name="dayOfBirth" id="dayOfBirth">
-                    <html:optionsCollection property="days" value="value" label="label"/>
+                    <c:forEach var="day" items="${days}">
+                        <option value="${day.value}">
+                                ${day.label}
+                        </option>
+                    </c:forEach>
                 </select>&nbsp;
-                <html:text property="yearOfBirth" size="4" maxlength="4"/>&nbsp;(YYYY)
+                <input type="checkbox" name="yearOfBirth" size="4" maxlength="4" />&nbsp;(YYYY)
             </td>
         </tr>
         <tr>
@@ -92,8 +100,8 @@
                 <tr>
                     <th>Health Card</th>
                     <td>
-                        <html:text property="healthCardNumber" size="10" maxlength="10"/>&nbsp;
-                        <html:text property="healthCardVersion" size="2" maxlength="2"/>&nbsp;(version)
+                        <input type="checkbox" name="healthCardNumber" size="10" maxlength="10" />&nbsp;
+                        <input type="checkbox" name="healthCardVersion" size="2" maxlength="2" />&nbsp;(version)
                     </td>
                 </tr>
             </caisi:isModuleLoad>
@@ -101,7 +109,7 @@
         <tr>
             <td colspan="2">
                 <br/>
-                <html:submit onclick="search()">Search</html:submit>
+                <input type="submit" name="submit" value="Search" onclick="search()" />
             </td>
         </tr>
     </table>
@@ -174,7 +182,7 @@
             <p style="color:red">No Clients found.</p>
         </c:if>
         <% } else { %>
-        <p><html:submit onclick="createLocal()">New Client</html:submit></p>
+        <p><input type="submit" onclick="createLocal()" value="New Client" /></p>
         <% } %>
         <br/>
     </c:if>

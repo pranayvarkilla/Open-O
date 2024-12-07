@@ -352,7 +352,7 @@
             <table>
                 <tr>
                     <td>
-                        <html:checkbox name="bpmh" property="confirm" value="checked"/>
+                        <input type="checkbox" name="confirm" id="confirm" value="checked"/>
                         <label for="confirm"><fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.confirm"/></label>
                     </td>
                 </tr>
@@ -406,27 +406,19 @@
 
                         <c:if test="${ controls eq 'on' }">
 
-                            <html:submit property="method">
-                                <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.print"/>
-                            </html:submit>
+                            <input type="submit" name="submit" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.print"/>" />
 
                             <c:if test="${bpmh.formId == 0}">
-                                <html:submit property="method">
-                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.save"/>
-                                </html:submit>
+                            <input type="submit" name="submit" value=“<fmt:setBundle basename="oscarResources"/><fmt:message key="colcamex.formBPMH.save"/>" />
                             </c:if>
 
                         </c:if>
 
-                        <logic:messagesPresent message="true">
-                            <html:messages id="saved" message="true">
-                                <logic:present name="saved">
-                                    <div class="messages">
-                                        <c:out value="${saved}" escapeXml="true" />
-                                    </div>
-                                </logic:present>
-                            </html:messages>
-                        </logic:messagesPresent>
+                        <c:if test="${not empty savedMessage}">
+                            <div class="messages">
+                                    ${savedMessage}
+                            </div>
+                        </c:if>
                     </td>
                 </tr>
             </table>

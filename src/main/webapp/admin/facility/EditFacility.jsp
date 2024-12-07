@@ -45,8 +45,8 @@
 <html>
     <head>
         <title>Edit Facility</title>
-        <link rel="stylesheet" type="text/css" href='<html:rewrite page="/css/tigris.css" />'/>
-        <link rel="stylesheet" type="text/css" href='<html:rewrite page="/css/displaytag.css" />'/>
+        <link rel="stylesheet" type="text/css" href='${request.contextPath}/css/tigris.css'/>
+        <link rel="stylesheet" type="text/css" href='${request.contextPath}/css/displaytag.css'/>
 
         <script type="text/javascript"
                 src="<%=request.getContextPath()%>/js/validation.js">
@@ -105,29 +105,27 @@
             </tr>
             <tr class="b">
                 <td>Name: *</td>
-                <td><html:text property="facility.name" size="32"
-                               maxlength="32" styleId="facilityName"/></td>
+                <td><input type="text" name="facility.name" size="32" maxlength="32" id="facilityName"/></td>
             </tr>
             <tr class="b">
                 <td>Description: *</td>
-                <td><html:text property="facility.description" size="60"
-                               maxlength="70" styleId="facilityDesc"/></td>
+                <td><input type="text" name="facility.description" size="60" maxlength="70" id="facilityDesc"/></td>
             </tr>
             <tr class="b">
                 <td width="20%">Enable Digital Signatures:</td>
-                <td><html:checkbox property="facility.enableDigitalSignatures"/></td>
+                <td><input type="checkbox" name="facility.enableDigitalSignatures"/></td>
             </tr>
             <tr class="b">
                 <td>Enable Integrator:</td>
-                <td><html:checkbox property="facility.integratorEnabled"/></td>
+                <td><input type="checkbox" name="facility.integratorEnabled"/></td>
             </tr>
             <tr class="b">
                 <td>Integrator Url:</td>
-                <td><html:text property="facility.integratorUrl" size="40"/></td>
+                <td><input type="checkbox" name="facility.integratorUrl" size="40" /></td>
             </tr>
             <tr class="b">
                 <td>Integrator User:</td>
-                <td><html:text property="facility.integratorUser"/></td>
+                <td><input type="text" name="facility.integratorUser" id="facility.integratorUser" /></td>
             </tr>
             <tr class="b">
                 <td>Integrator Password:</td>
@@ -136,7 +134,7 @@
             <tr class="b">
                 <td>Remove Demographic Identity:</td>
                 <td>
-                    <html:checkbox property="removeDemographicIdentity"/>
+                    <input type="checkbox" name="removeDemographicIdentity"/>
                     (All patients' names, hin# & sin# will be removed in Integrator)
                     <br>
                 </td>
@@ -159,7 +157,7 @@
                 <tr class="b">
                     <td>Integrator Update Interval:</td>
                     <td>
-                        <html:text property="updateInterval" size="3" />
+                        <input type="checkbox" name="updateInterval" id="updateInterval" size="3" />
                         Hour(s)
                         <br>
                     </td>
@@ -168,7 +166,8 @@
             <tr>
                 <td colspan="2">* Mandatory fields</td>
             <tr>
-                <td colspan="2"><html:submit property="submit.save" onclick="bCancel=false;">Save</html:submit>
+                <td colspan="2">
+                    <input type="submit" name="submit" value="Save" onclick="bCancel=false;" />
                     <button type="button" onclick="window.history.back();">Cancel</button></td>
             </tr>
         </table>

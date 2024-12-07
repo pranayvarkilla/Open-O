@@ -192,7 +192,7 @@
                                         <form action="${pageContext.request.contextPath}/oscarRx/rePrescribe.do" method="post">
                                             <input type="hidden" name="drugList" id="drugList" value="<%=drug.localDrugId.toString()%>"/>
                                             <input type="hidden" name="method" value="represcribe">
-                                            <html:submit style="width:100px" styleClass="ControlPushButton"
+                                            <input type="submit" name="submit" style="width:100px" class="ControlPushButton"
                                                          value="Re-prescribe"/>
                                         </form> <input type="button" align="top" value="Add to Favorites"
                                                             style="width: 100px" class="ControlPushButton"

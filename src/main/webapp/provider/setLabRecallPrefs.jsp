@@ -67,31 +67,38 @@
                             <td>Delegate: <font color="red">*required</font></td>
                             <td>
                                 <select name="value" onchange="delegateCheck();">
-                                    <html:options collection="providerSelect" property="value" labelProperty="label"/>
+                                    <c:forEach var="provider" items="${providerSelect}">
+                                        <option value="${provider.value}">
+                                                ${provider.label}
+                                        </option>
+                                    </c:forEach>
                                 </select>
                             </td>
                         </tr>
 
                         <tr>
                             <td>Default Message Subject:</td>
-                            <td><html:text property="labRecallMsgSubject.value" size="50"/></td>
+                            <td><input type="checkbox" name="labRecallMsgSubject.value" size="50" /></td>
                         </tr>
 
                         <tr>
                             <td>Tickler Assignee:</td>
-                            <td><html:checkbox
-                                    property="labRecallTicklerAssignee.checked">default to delegate</html:checkbox></td>
+                            <td><input type="checkbox" name="labRecallTicklerAssignee.checked" />default to delegate</td>
                         </tr>
 
                         <tr>
                             <td>Tickler Priority:</td>
                             <td><select name="labRecallTicklerPriority.value" id="labRecallTicklerPriority.value">
-                                <html:options collection="prioritySelect" property="value" labelProperty="label"/>
+                                <c:forEach var="priority" items="${prioritySelect}">
+                                    <option value="${priority.value}">
+                                            ${priority.label}
+                                    </option>
+                                </c:forEach>
                             </select></td>
                         </tr>
 
                     </table>
-                    <html:submit property="btnApply"/>
+                    <input type="submit" name="btnApply" value="Apply" />
                     <input type="button" name="delete" value="Delete" onclick="deleteProp();" style="display:none;">
                 </form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
                 <%}%>

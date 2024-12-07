@@ -892,7 +892,7 @@
                                     <tr valign="top">
                                         <td style="width:330px">
                                             <label for="searchString"><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.drugSearchTextBox"/></label>
-                                            <html:text styleId="searchString" property="searchString"
+                                            <input type="text" id="searchString" name="searchString"
                                                        onfocus="changeContainerHeight();"
                                                        onblur="changeContainerHeight();"
                                                        onclick="changeContainerHeight();"

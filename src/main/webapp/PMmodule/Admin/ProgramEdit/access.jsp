@@ -70,15 +70,18 @@
     <tr class="b">
         <td width="20%">Name :</td>
         <td><select name="access.accessTypeId" id="access.accessTypeId">
-            <html:options collection="accessTypes" property="id"
-                          labelProperty="name"/>
+            <c:forEach var="accessType" items="${accessTypes}">
+                <option value="${accessType.id}">
+                        ${accessType.name}
+                </option>
+            </c:forEach>
         </select> <input type="hidden" name="id" id="id"/>
             <input type="hidden" name="programId" id="programId"/>
         </td>
     </tr>
     <tr class="b">
         <td width="20%">All Roles:</td>
-        <td><html:checkbox property="access.allRoles"/></td>
+        <td><input type="checkbox" name="access.allRoles"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Roles:</td>

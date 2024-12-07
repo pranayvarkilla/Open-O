@@ -32,7 +32,7 @@
                 href="${pageContext.request.contextPath}/PMmodule/Admin/SysAdmin.do"
                 style="color:Navy;text-decoration:none;">
             <img border=0 src=
-                    <html:rewrite page="/images/close16.png"/>/>&nbsp;Close&nbsp;&nbsp;|</a>
+                    ${request.contextPath}/images/close16.png/>&nbsp;Close&nbsp;&nbsp;|</a>
         </td>
 
     </tr>

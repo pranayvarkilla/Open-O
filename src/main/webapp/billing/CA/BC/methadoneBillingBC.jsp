@@ -200,7 +200,18 @@
     </div>
 </form>
 <div id="errors">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
 </div>
 <form action="<c:out value="${oscar_context_path}" />/saveMethadoneBillingBC.do"
       id="saveMethadoneBillingForm"

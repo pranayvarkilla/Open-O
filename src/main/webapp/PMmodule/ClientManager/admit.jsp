@@ -31,7 +31,7 @@
 
         form.method.value = 'admit_select_program';
         var programName = form.elements['program.name'].value;
-        var url = '<html:rewrite action="/PMmodule/ClientManager.do"/>';
+        var url = '<%=request.getContextPath() %>/PMmodule/ClientManager.do';
         url += '?method=search_programs&program.name=' + programName;
         url += '&formName=clientManagerForm&formElementName=program.name&formElementId=program.id&submit=true';
 
@@ -81,7 +81,7 @@
     </tr>
     <tr class="b">
         <td width="20%">Program Name</td>
-        <td><html:text property="program.name"/></td>
+        <td><input type="text" name="program.name" id="program.name" /></td>
     </tr>
 </table>
 <table>

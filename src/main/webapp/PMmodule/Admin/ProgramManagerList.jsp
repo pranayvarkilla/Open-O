@@ -99,7 +99,7 @@
     <display:column sortable="false" title="">
         <a
                 onclick="return ConfirmDelete('<c:out value="${program.nameJs}"/>')"
-                href="<html:rewrite action="/PMmodule/ProgramManager.do"/>?method=delete&id=<c:out value="${program.id}"/>&name=<c:out value="${program.name}"/>">
+                href="<%=request.getContextPath() %>/PMmodule/ProgramManager.do?method=delete&id=<c:out value="${program.id}"/>&name=<c:out value="${program.name}"/>">
             Delete </a>
     </display:column>
 
@@ -107,7 +107,7 @@
         <c:when test="${program.programStatus=='active'}">
             <display:column sortable="false" title="">
                 <a
-                        href="<html:rewrite action="/PMmodule/ProgramManager.do"/>?method=edit&id=<c:out value="${program.id}" />">
+                        href="<%=request.getContextPath() %>/PMmodule/ProgramManager.do?method=edit&id=<c:out value="${program.id}" />">
                     Edit </a>
             </display:column>
         </c:when>
@@ -120,7 +120,7 @@
 
     <display:column sortable="true" title="Name">
         <a
-                href="<html:rewrite action="/PMmodule/ProgramManagerView.do"/>?id=<c:out value="${program.id}" />">
+                href="<%=request.getContextPath() %>/PMmodule/ProgramManagerView.do?id=<c:out value="${program.id}" />">
             <c:out value="${program.name}"/> </a>
     </display:column>
     <display:column property="description" sortable="true"

@@ -161,7 +161,7 @@
                 <td colspan="2">
                     <input type="submit" value="Temporary Save"
                            onclick="this.form.method.value='tmpsave_survey'; return true;"/>
-                    <html:submit value="Save"/>
+                    <input type="submit" value="Save" />
                     <button type="button" onclick="window.history.back();">Cancel</button>
 
                 </td>

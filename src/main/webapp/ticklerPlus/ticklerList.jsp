@@ -218,12 +218,12 @@
         <td class="blueText" width="30%"><span style="text-decoration:underline"
                                                onClick="openBrWindow('<c:out
                                                        value="${ctx}"/>/ticklerPlus/calendar/oscarCalendarPopup.jsp?type=caisi&openerForm=ticklerForm&amp;openerElement=filter.startDateWeb&amp;year=<%=curYear%>&amp;month=<%=curMonth%>','','width=300,height=300')">Begin&nbsp;Date:</span>
-            <html:text property="filter.startDateWeb" maxlength="10"/></td>
+            <input type="checkbox" name="filter.startDateWeb" maxlength="10" /></td>
 
         <td class="blueText" width="30%"><span style="text-decoration:underline"
                                                onClick="openBrWindow('<c:out
                                                        value="${ctx}"/>/ticklerPlus/calendar/oscarCalendarPopup.jsp?type=caisi&openerForm=ticklerForm&amp;openerElement=filter.endDateWeb&amp;year=<%=curYear%>&amp;month=<%=curMonth %>','','width=300,height=300')">End&nbsp;Date:</span>
-            <html:text property="filter.endDateWeb" maxlength="10"/>
+            <input type="checkbox" name="filter.endDateWeb" maxlength="10" />
         </td>
 
         <td width="10%">&nbsp;</td>
@@ -233,22 +233,32 @@
                 name="programId"
                 onchange="return checkTicklerDate();">
             <option value="All Programs">All Programs</option>
-            <html:options collection="programs" property="id" labelProperty="name"/>
+            <c:forEach var="program" items="${programs}">
+                <option value="${program.id}">
+                        ${program.name}
+                </option>
+            </c:forEach>
         </select></td>
 
         <td class="blueText">Provider: <select name="provider"
                                                     onchange="return checkTicklerDate();">
             <option value="All Providers">All Providers</option>
-            <html:options collection="providers" property="providerNo"
-                          labelProperty="formattedName"/>
+            <c:forEach var="provider" items="${providers}">
+                <option value="${provider.providerNo}">
+                        ${provider.formattedName}
+                </option>
+            </c:forEach>
         </select></td>
 
         <td class="blueText" colspan="2">Task Assigned To: <select
                 name="assignee"
                 onchange="return checkTicklerDate();">
             <option value="All Providers">All Providers</option>
-            <html:options collection="providers" property="providerNo"
-                          labelProperty="formattedName"/>
+            <c:forEach var="provider" items="${providers}">
+                <option value="${provider.providerNo}">
+                        ${provider.formattedName}
+                </option>
+            </c:forEach>
         </select></td>
 
     </tr>
@@ -259,13 +269,17 @@
                 <select name="demographicNo"
                              onchange="return checkTicklerDate();">
                     <option value="All Clients">All Clients</option>
-                    <html:options collection="demographics" property="demographicNo" labelProperty="formattedName"/>
+                    <c:forEach var="demographic" items="${demographics}">
+                        <option value="${demographic.demographicNo}">
+                                ${demographic.formattedName}
+                        </option>
+                    </c:forEach>
                 </select>
             </oscar:oscarPropertiesCheck>
 
             <oscar:oscarPropertiesCheck property="clientdropbox" value="off" defaultVal="true">
                 <input type="hidden" name="demographicNo" id="demographicNo"/>
-                <html:text property="filter.demographic_webName" onkeyup="filter(this.value, 'ticklersTbl', 2)"
+                <input type="text" name="filter.demographic_webName" onkeyup="filter(this.value, 'ticklersTbl', 2)"
                            size="15"/>
                 <span id="clear_button"><input type="button" value="Clear" onclick="clearClientFilter();"/></span>
                 <script language="JavaScript">showClearButton();</script>
@@ -278,7 +292,11 @@
             <select name="name"
                          onchange="this.form.method.value='run_custom_filter';this.form.submit();">
                 <option value=""></option>
-                <html:options collection="customFilters" property="name"/>
+                <c:forEach var="customFilter" items="${customFilters}">
+                    <option value="${customFilter.name}">
+                            ${customFilter.name}
+                    </option>
+                </c:forEach>
             </select></td>
     </tr>
 
@@ -460,7 +478,7 @@
         </tr>
     -->
         <tr>
-            <!--<td><input type="button" value="Create New Tickler" onclick="location.href='<html:rewrite action="/Tickler"/>?method=edit'"/></td>-->
+            <!--<td><input type="button" value="Create New Tickler" onclick="location.href='<%=request.getContextPath() %>/Tickler.do?method=edit'"/></td>-->
             <td class=noprint><input type="button" value="Complete"
                                      onclick="batch_operation('complete');"/></td>
             <td class=noprint><input type="button" value="Delete"

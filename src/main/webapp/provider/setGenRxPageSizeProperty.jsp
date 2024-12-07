@@ -115,7 +115,7 @@
                 <%if (request.getAttribute("status") == null) {%> <%=bundle.getString(providermsgEdit)%> <c:out value="${rxPageSizeProperty.value}"/>
                 <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                 <input type="hidden" name="method" value="<c:out value="${method}"/>">
-                <!--html:text property="rxPageSizeProperty.value" /-->
+                <!--input type="text" name="rxPageSizeProperty.value" /-->
                 <select name="rxPageSizeProperty.value" id="rxPageSizeProperty.value">
                     <option value="PageSize.A4">A4</option>
                     <option value="PageSize.A6">A6</option>

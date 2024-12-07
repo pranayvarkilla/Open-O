@@ -401,7 +401,18 @@
     </head>
     <body onLoad="isformNeeded()" bgproperties="fixed" topmargin="0"
           leftmargin="0" rightmargin="0">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <form action="${pageContext.request.contextPath}/billing/CA/BC/formwcb.do" method="post" onsubmit="return validateForm()">
         <input type="hidden" name="w_servicelocation" id="w_servicelocation"/>
 
@@ -457,8 +468,7 @@
                     }
                 %>
 
-                <td>Form Needed <html:checkbox value="1" property="formNeeded"
-                                               onclick="isformNeeded();"/></td>
+                <td>Form Needed <input type="checkbox" value="1" name="formNeeded" onclick="isformNeeded();"/></td>
                 <td colspan="1" valign="top" height="25" class="SmallerText"
                     id="reportTypeSection">Physician's First Report <input type="radio"
                         value="F" name="w_reporttype"/> or The worker's condition or
@@ -471,7 +481,7 @@
                     <%if (!haveClaims) {%> <a
                         href="javascript: function myFunction() {return false; }"
                         onClick="showpic('claimLayer','claimId');" id="claimId"><%}%> <b>WCB
-                    Claim Number:</B> <html:text maxlength="25" property="w_wcbno"/> *Can be left
+                    Claim Number:</B> <input type="text" maxlength="25" name="w_wcbno"/> *Can be left
                     blank <%if (!haveClaims) {%>
                 </a> <%}%>
                 </td>
@@ -491,20 +501,20 @@
                                     onClick="showpic('employerLayer','employerId');" id="employerId">
                                 <%}%> Employer's Name: <%if (!haveClaims) {%></a> <%}%>
                             </td>
-                            <td><html:text maxlength="25" property="w_empname"/></td>
+                            <td><input type="text" maxlength="25" name="w_empname"/></td>
                             <!--</tr>
                         <tr id="firstSection2">-->
                             <td class="SmallerText">Operating Address:</td>
-                            <td><html:text maxlength="25" property="w_opaddress" size="25"/></td>
+                            <td><input type="text" maxlength="25" name="w_opaddress" size="25"/></td>
                         </tr>
                         <tr id="firstSection3">
                             <td class="SmallerText">Operating City:</td>
-                            <td><html:text maxlength="25" property="w_opcity"/></td>
+                            <td><input type="text" maxlength="25" name="w_opcity"/></td>
                             <!--</tr>
                         <tr id="firstSection4">-->
                             <td class="SmallerText">Employers Telephone No:</td>
-                            <td><html:text maxlength="3" property="w_emparea" size="3"/>-<html:text
-                                    maxlength="7" property="w_empphone" size="10"/></td>
+                            <td><input type="text" maxlength="3" name="w_emparea" size="3"/>-
+                                <input type="text" maxlength="7" name="w_empphone" size="10"/></td>
                 </td>
             </tr>
 
@@ -521,38 +531,39 @@
                         <td colspan="4" class="SmallerText">Worker's Info</td>
                     </tr>
                     <tr>
-                        <td colspan="1" class="SmallerText"><b>Last Name:</b> <html:text
-                                maxlength="18" property="w_lname" size="20"/></td>
-                        <td class="SmallerText"><b>First Name:</b> <html:text
-                                maxlength="12" property="w_fname" size="20"/></td>
-                        <td class="SmallerText" colspan="2">Initial: <html:text
-                                maxlength="1" property="w_mname" size="1"/></td>
+                        <td colspan="1" class="SmallerText"><b>Last Name:</b>
+                            <input type="text"
+                                maxlength="18" name="w_lname" size="20"/></td>
+                        <td class="SmallerText"><b>First Name:</b>
+                            <input type="text"
+                                maxlength="12" name="w_fname" size="20"/></td>
+                        <td class="SmallerText" colspan="2">Initial:
+                            <input type="text"
+                                maxlength="1" name="w_mname" size="1"/></td>
 
                     </tr>
                     <tr>
 
-                        <td class="SmallerText"><b>Date of Birth:</b> <html:text
-                                readonly="readonly" maxlength="10" property="w_dob" size="10"/>
+                        <td class="SmallerText"><b>Date of Birth:</b>
+                            <input type="text" readonly="readonly" maxlength="10" name="w_dob" size="10"/>
                         </td>
-                        <td class="SmallerText"><b>Gender:</b> <html:text
-                                readonly="readonly" maxlength="1" property="w_gender" size="1"/>
+                        <td class="SmallerText"><b>Gender:</b>
+                            <input type="text" readonly="readonly" maxlength="1" name="w_gender" size="1"/>
                         </td>
-                        <td class="SmallerText"><b>PHN:</b> <html:text maxlength="12"
-                                                                       property="w_phn" size="12"/></td>
+                        <td class="SmallerText"><b>PHN:</b>
+                            <input type="text" maxlength="12" name="w_phn" size="12"/></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr id="workersAddressSection">
-                        <td class="SmallerText">Worker's Telephone No: <html:text
-                                maxlength="3" property="w_area" size="3"/> <html:text
-                                maxlength="7" property="w_phone" size="7"/></td>
-                        <td class="SmallerText">Address: <html:text maxlength="25"
-                                                                    property="w_address" size="20"/></td>
-                        <td class="SmallerText">City: <html:text maxlength="20"
-                                                                 property="w_city" size="20"/></td>
-                        <td class="SmallerText">Postal Code: <html:text maxlength="6"
-                                                                        property="w_postal" size="6"/></td>
-
-
+                        <td class="SmallerText">Worker's Telephone No:
+                            <input type="text" maxlength="3" name="w_area" size="3"/>
+                            <input type="text" maxlength="7" name="w_phone" size="7"/></td>
+                        <td class="SmallerText">Address:
+                            <input type="text" maxlength="25" name="w_address" size="20"/></td>
+                        <td class="SmallerText">City:
+                            <input type="text" maxlength="20" name="w_city" size="20"/></td>
+                        <td class="SmallerText">Postal Code:
+                            <input type="text" maxlength="6" name="w_postal" size="6"/></td>
             </td>
         </tr>
         <tr>
@@ -583,7 +594,7 @@
         </tr>
         <tr id="secondSection3">
             <td>Who rendered the first treatment?</td>
-            <td><html:text maxlength="25" property="w_ftreatment" size="25"/>
+            <td><input type="text" maxlength="25" name="w_ftreatment" size="25"/>
             </td>
         </tr>
         <tr id="secondSection4">
@@ -600,18 +611,18 @@
         </tr>
         <tr>
             <td class="SectionHead">Injury Codes and Descriptions</td>
-            <td><b>Date of Service</b> <html:text property="w_servicedate"
-                                                  styleId="w_servicedate" size="10" readonly="true"/> <a
+            <td><b>Date of Service</b> <input type="text" name="w_servicedate"
+                                                  id="w_servicedate" size="10" readonly="true"/> <a
                     id="hlSDate"><img
                     title="Calendar" src="../../../images/cal.gif" alt="Calendar"
                     border="0"/></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Date of Injury:</b>
-                <html:text styleId="w_doi" property="w_doi" readonly="true" size="12"/>
+                <input type="text" id="w_doi" name="w_doi" readonly="true" size="12"/>
                 <a id="hlDDate"><img title="Calendar"
                                      src="../../../images/cal.gif" alt="Calendar" border="0"/></a></td>
         </tr>
         <tr id="thirdSection1">
             <td>Diagnosis:</td>
-            <td><html:text maxlength="120" property="w_diagnosis" styleId="w_diagnosis" size="120"/>
+            <td><input type="text" maxlength="120" name="w_diagnosis" id="w_diagnosis" size="120"/>
             </td>
         </tr>
         <tr>
@@ -621,36 +632,39 @@
             </td>
 
 
-            <td><html:text maxlength="5" property="w_feeitem" size="5"
+            <td><input type="text" maxlength="5" name="w_feeitem" size="5"
                            onkeypress="return grabEnter(event,WCBFeeItemCall)"/>
                 <a onClick="popFeeItemList('WCBForm','w_feeitem');">Search</a></td>
         </tr>
         <tr>
             <td>Service code:</td>
-            <td><html:text maxlength="5" property="w_extrafeeitem" size="5"
+            <td><input type="text" maxlength="5" name="w_extrafeeitem" size="5"
                            onkeypress="return grabEnter(event,extraFeeItemCall)"/>
                 <a onClick="popFeeItemList('WCBForm','w_extrafeeitem');">Search</a></td>
         </tr>
         <tr>
             <td><b>ICD9:</b></td>
-            <td><html:text maxlength="5" property="w_icd9" size="5" onkeypress="return grabEnter(event,icd9Call)"/> <a
+            <td><input type="text" maxlength="5" name="w_icd9" size="5" onkeypress="return grabEnter(event,icd9Call)"/> <a
                     onClick="popICD9List('WCBForm','w_icd9');">Search</a></td>
         </tr>
         <tr>
             <td><b>Body Part:</b></td>
-            <td><html:text maxlength="5" property="w_bp" size="5" onkeypress="return grabEnter(event,bodyPartCall)"/> <a
+            <td><input type="text" maxlength="5" name="w_bp" size="5" onkeypress="return grabEnter(event,bodyPartCall)"/> <a
                     onClick="popBodyPartList('WCBForm','w_bp');">Search</a></td>
         </tr>
         <tr>
             <td><b>Side:</b></td>
             <td><select name="w_side">
-                <html:options collection="injuryLocations" property="sidetype"
-                              labelProperty="sidedesc"/>
+                <c:forEach var="injury" items="${injuryLocations}">
+                    <option value="${injury.sidetype}">
+                            ${injury.sidedesc}
+                    </option>
+                </c:forEach>
             </select></td>
         </tr>
         <tr>
             <td><b>Nature of Injury</b></td>
-            <td><html:text maxlength="5" property="w_noi" size="5"
+            <td><input type="text" maxlength="5" name="w_noi" size="5"
                            onkeypress="return grabEnter(event,natureOfInjuryCall)"/> <a
                     onClick="popNOIList('WCBForm','w_noi');">Search</a></td>
         </tr>
@@ -667,8 +681,8 @@
         </tr>
         <tr id="thirdSection9">
             <td>If Yes, as of what date? (if known)</td>
-            <td align="left" valign="top"><html:text readonly="true"
-                                                     styleId="w_workdate" property="w_workdate"
+            <td align="left" valign="top"><input type="text" readonly="true"
+                                                     id="w_workdate" name="w_workdate"
                                                      onclick="window.WCBForm.w_workdate.value = '';"/> <a
                     id="hlWDate"><img
                     title="Calendar" src="../../../images/cal.gif" alt="Calendar"
@@ -746,8 +760,8 @@
             <td>If possible, please estimate date of Maximal Medical
                 Recovery
             </td>
-            <td><html:text readonly="readonly" styleId="w_estimatedate"
-                           property="w_estimatedate"
+            <td><input type="text" readonly="readonly" id="w_estimatedate"
+                           name="w_estimatedate"
                            onclick="window.WCBForm.w_estimatedate.value = '';"/><a
                     id="hlEDate"> <img title="Calendar"
                                        src="../../../images/cal.gif" alt="Calendar" border="0"/></a></td>
@@ -761,10 +775,10 @@
             </td>
         </tr>
         <tr>
-            <td>Payee Number: <html:text readonly="readonly"
-                                         property="w_payeeno" size="5"/></td>
-            <td>Provider No: <html:text readonly="readonly"
-                                        property="w_pracno" size="5"/>(<%=form.getW_pracname()%>)
+            <td>Payee Number: <input type="text" readonly="readonly"
+                                         name="w_payeeno" size="5"/></td>
+            <td>Provider No: <input type="text" readonly="readonly"
+                                        name="w_pracno" size="5"/>(<%=form.getW_pracname()%>)
             </td>
         </tr>
         <tr>

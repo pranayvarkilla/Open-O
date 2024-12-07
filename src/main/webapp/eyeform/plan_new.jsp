@@ -36,7 +36,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href='<html:rewrite page="/jsCalendar/skins/aqua/theme.css" />'/>
+    <link rel="stylesheet" type="text/css" href='${request.contextPath}/jsCalendar/skins/aqua/theme.css'/>
 
     <link rel="stylesheet" type="text/css" media="all" href="<%=request.getContextPath()%>/share/calendar/calendar.css"
           title="win2k-cold-1"/>
@@ -201,7 +201,7 @@
     <a href="#" onclick="addTest();">[Add]</a>
     <br/>
     <br/>
-    <html:submit value="Submit"/>
+    <input type="submit" value="Submit" />
     &nbsp;&nbsp;
     <input type="button" name="cancel" value="Cancel" onclick="window.close()"/>
 

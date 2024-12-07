@@ -101,7 +101,7 @@
 
             <td valign="middle" rowspan="2" ALIGN="left">
                 <input type="file" name="clientImage" id="clientImage" size="30" accept="*.gif,*.jpg"/><br>
-                <html:submit value="Upload"/></td>
+                <input type="submit" value="Upload" /></td>
         </tr>
     </form>
 </table>

@@ -69,7 +69,18 @@
         <title>Manage Procedure and Tray Fee Associations</title>
     </head>
     <body>
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <form action="${pageContext.request.contextPath}/billing/CA/BC/supServiceCodeAssocAction.do" method="post">
         <input type="hidden" name="actionMode" id="actionMode"/>
         <input type="hidden" name="id" id="id"/>
@@ -77,12 +88,12 @@
             <legend> Edit Procedure/Tray Fee
                 Associations
             </legend>
-            <p><label for="primaryCode"> Procedure Fee Code: </label> <html:text
-                    property="primaryCode" styleId="primaryCode"/> <a href="#"
+            <p><label for="primaryCode"> Procedure Fee Code: </label>
+                <input type="text" name="primaryCode" id="primaryCode"/> <a href="#"
                                                                       onClick="popFeeItemList('supServiceCodeAssocActionForm','primaryCode'); return false;">Search</a>
             </p>
-            <p><label for="secondaryCode"> Tray Fee Code: </label> <html:text
-                    property="secondaryCode" styleId="secondaryCode"/> <a href="#"
+            <p><label for="secondaryCode"> Tray Fee Code: </label>
+                <input type="text" name="secondaryCode" id="secondaryCode"/> <a href="#"
                                                                           onClick="popFeeItemList('supServiceCodeAssocActionForm','secondaryCode'); return false;">Search</a>
             </p>
             <input type="submit" name="submitButton" value="Save Association"

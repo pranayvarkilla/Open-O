@@ -593,8 +593,7 @@
                             <table>
                                 <tr valign="center">
                                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.drugSearchTextBox"/><br>
-                                        <html:text styleId="searchString" property="searchString" size="16"
-                                                   maxlength="16"/></td>
+                                        <input type="text" id="searchString" name="searchString" size="16" maxlength="16"/></td>
                                     <td width="100"><a href="javascript:goDOC();"><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.msgDrugOfChoice"/></a> <%
                                         if (OscarProperties.getInstance().hasProperty("ONTARIO_MD_INCOMINGREQUESTOR")) {
                                     %> <a href="javascript:goOMD();"><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.msgOMDLookup"/></a> <%
@@ -621,7 +620,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3">
-                                        <html:submit property="submit" styleClass="ControlPushButton"><fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.msgSearch"/></html:submit> &nbsp;&nbsp;&nbsp;
+                                        <input type="submit" name="submit" class="ControlPushButton" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.msgSearch"/>"/> &nbsp;&nbsp;&nbsp;
                                         <input type="button" class="ControlPushButton"
                                                onclick="searchString.value='';searchRoute.value='';searchString.focus();"
                                                value="<fmt:setBundle basename="oscarResources"/><fmt:message key="SearchDrug.msgReset"/>"/>

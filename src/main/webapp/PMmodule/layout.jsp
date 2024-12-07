@@ -31,28 +31,28 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title>Program Management Module</title>
         <link rel="stylesheet" type="text/css"
-              href='<html:rewrite page="/css/tigris.css" />'/>
+              href='${request.contextPath}/css/tigris.css'/>
         <link rel="stylesheet" type="text/css"
-              href='<html:rewrite page="/css/displaytag.css" />'/>
+              href='${request.contextPath}/css/displaytag.css'/>
 
         <link rel="stylesheet" type="text/css"
-              href='<html:rewrite page="/share/calendar/skins/aqua/theme.css" />'/>
+              href='${request.contextPath}/share/calendar/skins/aqua/theme.css'/>
 
         <link rel="stylesheet" type="text/css"
-              href='<html:rewrite page="/css/topnav.css" />'/>
+              href='${request.contextPath}/css/topnav.css'/>
 
         <!--   style type="text/css">
-			@import "<html:rewrite page="/css/tigris.css" />";
-			@import "<html:rewrite page="/css/displaytag.css" />";
-			@import "<html:rewrite page="/jsCalendar/skins/aqua/theme.css" />";
+			@import "${request.contextPath}/css/tigris.css";
+			@import "${request.contextPath}/css/displaytag.css";
+			@import "${request.contextPath}/jsCalendar/skins/aqua/theme.css";
 		</style -->
         <script type="text/javascript"
-                src="<html:rewrite page="/share/calendar/calendar.js" />"/>
+                src="${request.contextPath}/share/calendar/calendar.js"/>
         </script>
         <script type="text/javascript"
-                src="<html:rewrite page="/share/calendar/lang/calendar-en.js" />"></script>
+                src="${request.contextPath}/share/calendar/lang/calendar-en.js"></script>
         <script type="text/javascript"
-                src="<html:rewrite page="/share/calendar/calendar-setup.js" />"></script>
+                src="${request.contextPath}/share/calendar/calendar-setup.js"></script>
 
         <script type="text/javascript">
             var djConfig = {
@@ -63,7 +63,7 @@
         </script>
 
         <script type="text/javascript"
-                src="<html:rewrite page="/dojoAjax/dojo.js" />">
+                src="${request.contextPath}/dojoAjax/dojo.js">
         </script>
 
         <script type="text/javascript" language="JavaScript">
@@ -73,10 +73,10 @@
         </script>
 
         <script type="text/javascript"
-                src="<html:rewrite page="/js/genericIntake.js" />"></script>
+                src="${request.contextPath}/js/genericIntake.js"></script>
 
-        <script type="text/javascript" src="<html:rewrite page="/js/jquery.js" />"></script>
-        <script type="text/javascript" src="<html:rewrite page="/js/topnav.js" />"></script>
+        <script type="text/javascript" src="${request.contextPath}/js/jquery.js"></script>
+        <script type="text/javascript" src="${request.contextPath}/js/topnav.js"></script>
 
         <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
     </head>

@@ -60,10 +60,10 @@
                     <textarea name="description" id="description" rows="5" cols="50"></textarea></td>
             </tr>
             <tr>
-                <td colspan="2"><html:checkbox property="questionModel.bold"
-                                               value="true"/>Bold&nbsp;&nbsp; <html:checkbox
-                        property="questionModel.underline" value="true"/>Underline&nbsp;&nbsp;
-                    <html:checkbox property="questionModel.italics" value="true"/>Italics&nbsp;&nbsp;
+                <td colspan="2"><input type="checkbox" name="questionModel.bold"
+                                               value="true"/>Bold&nbsp;&nbsp;
+                    <input type="checkbox" name="questionModel.underline" value="true"/>Underline&nbsp;&nbsp;
+                    <input type="checkbox" name="questionModel.italics" value="true"/>Italics&nbsp;&nbsp;
                     <select name="questionModel.color">
                         <option value="">&nbsp;</option>
                         <c:forEach var="color" items="${colors}">
@@ -79,7 +79,7 @@
             </tr>
             <tr>
                 <td>Units (optional)</td>
-                <td><html:text property="questionModel.unit"/></td>
+                <td><input type="text" name="questionModel.unit" id="questionModel.unit" /></td>
             </tr>
             <tr>
                 <td>Orientation</td>
@@ -151,13 +151,11 @@
                     <table width="100%">
                         <tr>
                             <td>Rows:</td>
-                            <td><html:text property="questionModel.type.openEnded.rows"
-                                           size="4"/></td>
+                            <td><input type="text" name="questionModel.type.openEnded.rows" size="4"/></td>
                         </tr>
                         <tr>
                             <td>Cols:</td>
-                            <td><html:text property="questionModel.type.openEnded.cols"
-                                           size="4"/></td>
+                            <td><input type="text" name="questionModel.type.openEnded.cols" size="4"/></td>
                         </tr>
                     </table>
                     <% } %> <%if (question.getType().isSetDate()) { %>
@@ -165,8 +163,11 @@
                         <tr>
                             <td>Format:</td>
                             <td><select name="dateFormat">
-                                <html:options collection="dateFormats" property="value"
-                                              labelProperty="label"/>
+                                <c:forEach var="d" items="${dateFormats}">
+                                    <option value="${d.value}">
+                                            ${d.label}
+                                    </option>
+                                </c:forEach>
                             </select></td>
                         </tr>
                     </table>
@@ -253,7 +254,8 @@
         <input type="button" value="Save" onClick="save();"/>
         <input type="button" value="Cancel" onclick="window.close();"/>
         -->
-        <html:submit styleClass="button">Save</html:submit>
+
+        <input type="submit" name="submit" value="Save" class="button"/>
         <button type="button" onclick="window.history.back();">Cancel</button>
     </form>
     </body>

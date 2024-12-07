@@ -502,8 +502,7 @@
                                                     <label for="subject">
                                                         <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.CreateMessage.formSubject"/> :
                                                     </label>
-                                                    <html:text name="msgCreateMessageForm" styleId="subject"
-                                                               property="subject" size="67" value="${messageSubject}"/>
+                                                    <input type="text" name="subject" id="subject" size="67" value="${messageSubject}"/>
                                                     <br>
                                                 </div>
                                                 <div>

@@ -184,16 +184,16 @@
 
 
                     <label for="address">Address</label>
-                    <html:text property="address" value="<%=address %>"/>
+                    <input type="checkbox" name="address" value="<%=address %>" />
                     <br/>
                     <label for="city">City</label>
-                    <html:text property="city" value="<%=city %>"/>
+                    <input type="checkbox" name="city" value="<%=city %>" />
                     <br/>
                     <label for="province">Province</label>
-                    <html:text property="province" value="<%=province %>"/>
+                    <input type="checkbox" name="province" value="<%=province %>" />
                     <br/>
                     <label for="postal">Postal</label>
-                    <html:text property="postal" value="<%=postal %>"/>
+                    <input type="checkbox" name="postal" value="<%=postal %>" />
                     <br/>
 
                     <input type="submit" onclick="return validate();"

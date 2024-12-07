@@ -145,7 +145,7 @@
                 String formattedDate = year + "-" + month + "-" + day;
             %>
             <td class="fieldValue">
-                <html:text property="tickler.serviceDateWeb" value="<%=formattedDate%>" maxlength="10"/>
+                <input type="text" name="tickler.serviceDateWeb" value="<%=formattedDate%>" maxlength="10"/>
                 <span onClick="openBrWindow('calendar/oscarCalendarPopup.jsp?type=caisi&openerForm=ticklerForm&amp;openerElement=tickler.serviceDateWeb&amp;year=<%=year%>&amp;month=<%=month%>','','width=300,height=300')">
 					<img border="0" src="images/calendar.jpg"/>
 				</span>
@@ -226,10 +226,14 @@
                 <input type="hidden" name="taskAssignedToName" id="taskAssignedToName"/>
                 <select name="taskAssignedTo" value="none">
                     <option value="none">- select -</option>
-                    <html:options collection="providers" property="providerNo" labelProperty="formattedName"/>
+                    <c:forEach var="provider" items="${providers}">
+                        <option value="${provider.providerNo}">
+                                ${provider.formattedName}
+                        </option>
+                    </c:forEach>
                 </select>
                     <%--input type="hidden" name= property="tickler.taskAssignedTo" />
-                    <html:text property="tickler.taskAssignedToName" />
+                    <input type="text" name="tickler.taskAssignedToName" id="tickler.taskAssignedToName" />
                     <input type="button" value="Search" onclick="search_provider();" /--%>
             </td>
         </tr>
@@ -267,7 +271,7 @@
             <td class="fieldValue" colspan="3" align="left">
                 <input type="hidden" name="docType" value="<%=request.getParameter("docType")%>"/>
                 <input type="hidden" name="docId" value="<%=request.getParameter("docId")%>"/>
-                <html:submit styleClass="button">Save</html:submit>
+                <input type="submit" class="button" value="Save" />
                 <input type="button" value="Cancel" onclick="window.close()"/>
             </td>
         </tr>

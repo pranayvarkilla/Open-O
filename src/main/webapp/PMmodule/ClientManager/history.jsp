@@ -45,12 +45,12 @@
 
 <script type="text/javascript">
     function popupAdmissionInfo(admissionId) {
-        url = '<html:rewrite page="/PMmodule/ClientManager.do?method=view_admission&admissionId="/>';
+        url = '${request.contextPath}/PMmodule/ClientManager.do?method=view_admission&admissionId=';
         window.open(url + admissionId, 'admission', 'width=600,height=600');
     }
 
     function popupReferralInfo(referralId) {
-        url = '<html:rewrite page="/PMmodule/ClientManager.do?method=view_referral&referralId="/>';
+        url = '${request.contextPath}/PMmodule/ClientManager.do?method=view_referral&referralId=';
         window.open(url + referralId, 'referral', 'width=500,height=600');
     }
 

@@ -77,55 +77,55 @@
         <table class="table-condensed">
             <tr>
                 <td>Organization Name</td>
-                <td><html:text styleClass="right" property="orgName"></html:text></td>
+                <td><input type="text" name="orgName" styleClass="right" /></td>
             </tr>
             <tr>
                 <td>Contact Last Name</td>
-                <td><html:text styleClass="right" property="contactLName"></html:text></td>
+                <td><input type="text" name="contactLName" styleClass="right" /></td>
             </tr>
             <tr>
                 <td>Contact First Name</td>
-                <td><html:text styleClass="right" property="contactFName"></html:text></td>
+                <td><input type="text" name="contactFName" styleClass="right" /></td>
             </tr>
             <tr>
                 <td>Contact Phone</td>
-                <td><html:text styleClass="right" property="contactPhone"></html:text></td>
+                <td><input type="text" name="contactPhone" styleClass="right" /></td>
             </tr>
             <tr>
                 <td>Contact Email</td>
-                <td><html:text styleClass="right" property="contactEmail"></html:text></td>
+                <td><input type="text" name="contactEmail" styleClass="right" /></td>
             </tr>
             <tr>
                 <td>Contact Username</td>
-                <td><html:text styleClass="right" property="contactUserName"></html:text></td>
+                <td><input type="text" name="contactUserName" styleClass="right" /></td>
             </tr>
             <tr>
                 <td>Vendor Business Name</td>
-                <td><html:text styleClass="right" property="vendorBusinessName"></html:text></td>
+                <td><input type="text" name="vendorBusinessName" styleClass="right" /></td>
             </tr>
             <tr>
                 <td>Vendor ID</td>
-                <td><html:text styleClass="right" readonly="true" property="vendorId"></html:text></td>
+                <td><input type="text" name="vendorId" styleClass="right" readonly="true" /></td>
             </tr>
             <tr>
                 <td>Vendor Common Name</td>
-                <td><html:text styleClass="right" readonly="true" property="vendorCommonName"></html:text></td>
+                <td><input type="text" name="vendorCommonName" styleClass="right" readonly="true" /></td>
             </tr>
             <tr>
                 <td>Vendor Software</td>
-                <td><html:text styleClass="right" readonly="true" property="vendorSoftware"></html:text></td>
+                <td><input type="text" name="vendorSoftware" styleClass="right" readonly="true" /></td>
             </tr>
             <tr>
                 <td>Vendor Software Common Name</td>
-                <td><html:text styleClass="right" readonly="true" property="vendorSoftwareCommonName"></html:text></td>
+                <td><input type="text" name="vendorSoftwareCommonName" styleClass="right" readonly="true" /></td>
             </tr>
             <tr>
                 <td>Vendor Software Ver</td>
-                <td><html:text styleClass="right" readonly="true" property="vendorSoftwareVer"></html:text></td>
+                <td><input type="text" name="vendorSoftwareVer" styleClass="right" readonly="true" /></td>
             </tr>
             <tr>
                 <td>Vendor Install Date</td>
-                <td><html:text styleClass="right" readonly="true" property="installDate"></html:text></td>
+                <td><input type="text" name="installDate" styleClass="right" readonly="true" /></td>
             </tr>
 
             <tr>

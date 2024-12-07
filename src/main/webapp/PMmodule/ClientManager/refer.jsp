@@ -61,7 +61,7 @@
         var mentalHealth = form.elements['program.mentalHealth'].checked;
         var housing = form.elements['program.housing'].checked;
 
-        var url = '<html:rewrite action="/PMmodule/ClientManager.do"/>';
+        var url = '<%=request.getContextPath() %>/PMmodule/ClientManager.do';
         url += '?method=search_programs&program.name=' + programName + '&program.type=' + programType;
         url += '&program.manOrWoman=' + manOrWoman + '&program.transgender=' + transgender + '&program.firstNation=' + firstNation + '&program.bedProgramAffiliated=' + bedProgramAffiliated + '&program.alcohol=' + alcohol + '&program.abstinenceSupport=' + abstinenceSupport + '&program.physicalHealth=' + physicalHealth + '&program.mentalHealth=' + mentalHealth + '&program.housing=' + housing;
         //url += '&program.manOrWoman='+manOrWoman;
@@ -197,7 +197,7 @@
 <table width="100%" border="1" cellspacing="2" cellpadding="3">
     <tr class="b">
         <td width="20%">Program Name</td>
-        <td><html:text property="program.name"/></td>
+        <td><input type="text" name="program.name" id="program.name" /></td>
     </tr>
     <tr class="b">
         <td width="20%">Program Type</td>
@@ -219,19 +219,19 @@
 
     <tr class="b">
         <td width="20%">Transgender:</td>
-        <td><html:checkbox property="program.transgender"/></td>
+        <td><input type="checkbox" name="program.transgender"/></td>
     </tr>
     <tr class="b">
         <td width="20%">First Nation:</td>
-        <td><html:checkbox property="program.firstNation"/></td>
+        <td><input type="checkbox" name="program.firstNation"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Bed Program Affiliated:</td>
-        <td><html:checkbox property="program.bedProgramAffiliated"/></td>
+        <td><input type="checkbox" name="program.bedProgramAffiliated"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Alcohol:</td>
-        <td><html:checkbox property="program.alcohol"/></td>
+        <td><input type="checkbox" name="program.alcohol"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Abstinence Support?</td>
@@ -244,15 +244,15 @@
     </tr>
     <tr class="b">
         <td width="20%">Physical Health:</td>
-        <td><html:checkbox property="program.physicalHealth"/></td>
+        <td><input type="checkbox" name="program.physicalHealth"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Mental Health:</td>
-        <td><html:checkbox property="program.mentalHealth"/></td>
+        <td><input type="checkbox" name="program.mentalHealth"/></td>
     </tr>
     <tr class="b">
         <td width="20%">Housing:</td>
-        <td><html:checkbox property="program.housing"/></td>
+        <td><input type="checkbox" name="program.housing"/></td>
     </tr>
 
 
@@ -322,7 +322,7 @@
             <caisi:isModuleLoad moduleName="pmm.refer.temporaryAdmission.enabled">
                 <tr class="b">
                     <td width="20%">Request Temporary Admission:</td>
-                    <td><html:checkbox property="referral.temporaryAdmission"/></td>
+                    <td><input type="checkbox" name="referral.temporaryAdmission"/></td>
                 </tr>
             </caisi:isModuleLoad>
             <!-- </c:if> -->

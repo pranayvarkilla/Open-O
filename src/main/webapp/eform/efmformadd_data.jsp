@@ -52,7 +52,18 @@
 
     <div id="hideshow" style="position: relative; z-index: 999;">
         <a href="javascript:hideDiv()">Hide Errors</a>
-        <span style="font-size: 10px; font-color: darkred;"> <html:errors/> </span>
+        <span style="font-size: 10px; font-color: darkred;"> <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %> </span>
     </div>
 </c:if>
 

@@ -126,8 +126,7 @@
                 <div class="controls">
                     <a href="../<%=privateKey%>" id="pkeyLink">View Private Key</a>
                     <input type="button" class="btn" name="privateKey" value="Upload Private Key"
-                           onClick='popupPage(600,900,&quot;<html:rewrite
-                                   page="/hospitalReportManager/hrmKeyUploader.jsp"/>&quot;);return false;'/>
+                           onClick='popupPage(600,900,"<%=request.getContextPath() %>/hospitalReportManager/hrmKeyUploader.jsp");return false;'/>
                 </div>
             </div>
             <div class="control-group">
@@ -135,8 +134,7 @@
                 <div class="controls">
                     <a href="../<%=decryptionKey%>" id="dkeyLink">View Decryption Key</a>
                     <input type="button" class="btn" name="decryptionKey" value="Upload Decryption Key"
-                           onClick='popupPage(600,900,&quot;<html:rewrite
-                                   page="/hospitalReportManager/hrmKeyUploader.jsp"/>&quot;);return false;'/>
+                           onClick='popupPage(600,900,"<%=request.getContextPath() %>/hospitalReportManager/hrmKeyUploader.jsp");return false;'/>
                 </div>
             </div>
             <div class="control-group">

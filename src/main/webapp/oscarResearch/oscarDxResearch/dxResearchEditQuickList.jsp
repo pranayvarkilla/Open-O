@@ -130,26 +130,37 @@
                             <input type="hidden" name="quickListName" value="<c:out value="${quickListName}"/>"/></td>
                     </tr>
                     <tr>
-                        <td colspan="3"><html:errors/></td>
+                        <td colspan="3"><% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %></td>
                     </tr>
                     <tr>
                         <td width="40%" valign="top">
                             <table width="100%" border="0" cellspacing="0" cellpadding="2"
                                    height="200">
                                 <tr>
-                                    <td><html:text property="xml_research1" size="30"/></td>
+                                    <td><input type="checkbox" name="xml_research1" size="30" /></td>
                                 </tr>
                                 <tr>
-                                    <td><html:text property="xml_research2" size="30"/></td>
+                                    <td><input type="checkbox" name="xml_research2" size="30" /></td>
                                 </tr>
                                 <tr>
-                                    <td><html:text property="xml_research3" size="30"/></td>
+                                    <td><input type="checkbox" name="xml_research3" size="30" /></td>
                                 </tr>
                                 <tr>
-                                    <td><html:text property="xml_research4" size="30"/></td>
+                                    <td><input type="checkbox" name="xml_research4" size="30" /></td>
                                 </tr>
                                 <tr>
-                                    <td><html:text property="xml_research5" size="30"/></td>
+                                    <td><input type="checkbox" name="xml_research5" size="30" /></td>
                                 </tr>
                                 <tr>
                                     <td><input type="button" name="button" class=mbttn

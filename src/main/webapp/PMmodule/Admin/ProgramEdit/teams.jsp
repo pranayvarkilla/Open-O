@@ -88,7 +88,7 @@
     <input type="hidden" name="id" id="id"/>
     <tr class="b">
         <td width="20%">Name:</td>
-        <td><html:text property="team.name" size="50" maxlength="255"/></td>
+        <td><input type="checkbox" name="team.name" size="50" maxlength="255" /></td>
     </tr>
     <tr>
         <td colspan="2"><input type="button" value="Save" onclick="add_team(this.form)"/> <button type="button" onclick="window.history.back();">Cancel</button>

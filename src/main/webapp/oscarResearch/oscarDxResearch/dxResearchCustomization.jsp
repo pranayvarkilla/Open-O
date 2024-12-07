@@ -39,7 +39,18 @@
     </head>
 
     <body topmargin="0" leftmargin="0" vlink="#0000FF" onload="setfocus();">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <table width="100%" bgcolor="#EEEEFF">
         <tr bgcolor="#000000">
             <td class="subject" colspan="3">&nbsp;&nbsp;&nbsp;<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarResearch.oscarDxResearch.dxResearch.msgDxResearch"/></td>

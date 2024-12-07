@@ -202,8 +202,11 @@
                         <td><select name="selectedRecentSearch"
                                          style="width:660">
                             <option value="My favorites" disabled="true"/>
-                            <html:options collection="favorites" labelProperty="queryName"
-                                          property="query"/>
+                            <c:forEach var="favorite" items="${favorites}">
+                                <option value="${favorite.queryName}">
+                                        ${favorite.query}
+                                </option>
+                            </c:forEach>
                         </select> <input type="button" value="Load Query"
                                               onClick="write2TextArea(); return false;"></td>
                     </tr>

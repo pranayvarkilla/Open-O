@@ -187,7 +187,7 @@
                                    style="color: #FFFFFF;"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.createLab"/></a>
                                 <a href="javascript:popupStart(800,1000, '${pageContext.servletContext.contextPath}/olis/Search.jsp')"
                                    style="color: #FFFFFF;"><fmt:setBundle basename="oscarResources"/><fmt:message key="olis.olisSearch"/></a>
-                                <a href="javascript:popupPage(400, 1050,'<html:rewrite page="/hospitalReportManager/hospitalReportManager.jsp"/>')"
+                                <a href="javascript:popupPage(400, 1050,'${request.contextPath}/hospitalReportManager/hospitalReportManager.jsp')"
                                    style="color: #FFFFFF;">HRM Status/Upload</a>
                                 <% } %>
                             </td>

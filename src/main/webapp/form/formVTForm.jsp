@@ -727,7 +727,18 @@
                         <tr>
                             <td>
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <html:errors/>
+                                    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
                                     <tr>
                                         <td colspan="2">
 
@@ -758,26 +769,15 @@
                                                     <td width="53%">
                                                         <table width="100%">
                                                             <tr>
-                                                                <td align="left" class="sixtyPercent"><html:checkbox
-                                                                        property="value(DMValue)"
-                                                                        onclick="javascript: DMCheck();"/></td>
-                                                                <td align="left" class="sixtyPercent"><html:checkbox
-                                                                        property="value(HTNValue)"/></td>
-                                                                <td align="left" class="sixtyPercent"><html:checkbox
-                                                                        property="value(HchlValue)"/></td>
-                                                                <td align="left" class="sixtyPercent"><html:checkbox
-                                                                        property="value(MIValue)"/></td>
-                                                                <td align="left" class="sixtyPercent"><html:checkbox
-                                                                        property="value(AngValue)"/></td>
-                                                                <td align="left" class="sixtyPercent"><html:checkbox
-                                                                        property="value(ACSValue)"/></td>
-                                                                <td align="left" class="sixtyPercent"><html:checkbox
-                                                                        property="value(RVTNValue)"/></td>
-                                                                <td align="left" class="sixtyPercent"><html:checkbox
-                                                                        property="value(CVDValue)"/></td>
-                                                                <td align="left" class="sixtyPercent"><html:checkbox
-                                                                        property="value(PVDValue)"
-                                                                        onclick="javascript: PVDCheck();"/></td>
+                                                                <td align="left" class="sixtyPercent"><input type="checkbox" name="value(DMValue)" onclick="javascript: DMCheck();"/></td>
+                                                                <td align="left" class="sixtyPercent"><input type="checkbox" name="value(HTNValue)"/></td>
+                                                                <td align="left" class="sixtyPercent"><input type="checkbox" name="value(HchlValue)"/></td>
+                                                                <td align="left" class="sixtyPercent"><input type="checkbox" name="value(MIValue)"/></td>
+                                                                <td align="left" class="sixtyPercent"><input type="checkbox" name="value(AngValue)"/></td>
+                                                                <td align="left" class="sixtyPercent"><input type="checkbox" name="value(ACSValue)"/></td>
+                                                                <td align="left" class="sixtyPercent"><input type="checkbox" name="value(RVTNValue)"/></td>
+                                                                <td align="left" class="sixtyPercent"><input type="checkbox" name="value(CVDValue)"/></td>
+                                                                <td align="left" class="sixtyPercent"><input type="checkbox" name="value(PVDValue)" onclick="javascript: PVDCheck();"/></td>
                                                             </tr>
                                                             <tr>
                                                                 <td valign="top" align="center" class="sixtyPercent"
@@ -814,8 +814,7 @@
                                                         <table>
                                                             <tr>
                                                                 <td>FP Visit Date</td>
-                                                                <td rowspan="2"><html:text size="8"
-                                                                                           property="value(visitCod)"/></td>
+                                                                <td rowspan="2"><input type="text" size="8" name="value(visitCod)"/></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>(YYYY-MM-DD)</td>
@@ -906,12 +905,12 @@
                                                             </tr>
                                                             <tr>
                                                                 <td class="dataEntryTable">New Data</td>
-                                                                <td class="dataEntryTable" align="center"><html:text
-                                                                        property="value(SmkSValue)" size="8%"/></td>
-                                                                <td class="dataEntryTable" align="center"><html:text
-                                                                        property="value(SmkHValue)" size="8%"/></td>
-                                                                <td class="dataEntryTable" align="center"><html:text
-                                                                        property="value(SmkCValue)" size="8%"/></td>
+                                                                <td class="dataEntryTable" align="center">
+                                                                    <input type="text" name="value(SmkSValue)" size="8%" /></td>
+                                                                <td class="dataEntryTable" align="center">
+                                                                    <input type="text" name="value(SmkHValue)" size="8%" /></td>
+                                                                <td class="dataEntryTable" align="center">
+                                                                    <input type="text" name="value(SmkCValue)" size="8%" /></td>
                                                                 <td class="dataEntryTable" align="center"><input
                                                                         type="text" id="SmkDate" name="SmkDate"
                                                                         value="<%=request.getAttribute("SmkSDate")%>"
@@ -966,12 +965,13 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(ExerValue)" size="4%"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(ExerValue)" size="4%" />
+                                                    </td>
                                                     <input type="hidden" name="value(ExerDate)" id="value(ExerDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(ExerComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(ExerComments)" size="30%" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><c:out value="${DietDesc}"/>
@@ -991,12 +991,11 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(DietValue)" size="4%"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(DietValue)" size="4%" /></td>
                                                     <input type="hidden" name="value(DietDate)" id="value(DietDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(DietComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(DietComments)" size="30%" tabindex="9999" /></td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -1046,9 +1045,8 @@
                                                         <font style="text-decoration: underline; color: blue;">clr</font>
                                                     </a></td>
                                                     <input type="hidden" name="value(DpScDate)" id="value(DpScDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(DpScComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(DpScComments)" size="30%" tabindex="9999" /></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("StScDesc")%>
@@ -1075,9 +1073,8 @@
                                                         <font style="text-decoration: underline; color: blue;">clr</font>
                                                     </a></td>
                                                     <input type="hidden" name="value(StScDate)" id="value(StScDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(StScComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(StScComments)" size="30%" tabindex="9999" /></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("LcCtDesc")%>
@@ -1103,9 +1100,8 @@
                                                         <font style="text-decoration: underline; color: blue;">clr</font>
                                                     </a></td>
                                                     <input type="hidden" name="value(LcCtDate)" id="value(LcCtDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(LcCtComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(LcCtComments)" size="30%" tabindex="9999" /></td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -1153,9 +1149,8 @@
                                                         <font style="text-decoration: underline; color: blue;">clr</font>
                                                     </a></td>
                                                     <input type="hidden" name="value(MedGDate)" id="value(MedGDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(MedGComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(MedGComments)" size="30%" tabindex="9999" /></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("MedNDesc")%>
@@ -1181,9 +1176,8 @@
                                                         <font style="text-decoration: underline; color: blue;">clr</font>
                                                     </a></td>
                                                     <input type="hidden" name="value(MedNDate)" id="value(MedNDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(MedNComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(MedNComments)" size="30%" tabindex="9999" /></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("MedRDesc")%>
@@ -1209,9 +1203,8 @@
                                                         <font style="text-decoration: underline; color: blue;">clr</font>
                                                     </a></td>
                                                     <input type="hidden" name="value(MedRDate)" id="value(MedRDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(MedRComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(MedRComments)" size="30%" tabindex="9999" /></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("MedADesc")%>
@@ -1238,9 +1231,8 @@
                                                         <font style="text-decoration: underline; color: blue;">clr</font>
                                                     </a></td>
                                                     <input type="hidden" name="value(MedADate)" id="value(MedADate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(MedAComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(MedAComments)" size="30%" abindex="9999"/></td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -1300,12 +1292,11 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(BPValue)" size="5%"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(BPValue)" size="5%" /></td>
                                                     <input type="hidden" name="value(BPDate)" id="value(BPDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(BPComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(BPComments)" size="30%" tabindex="9999" /></td>
                                                 </tr>
 
 
@@ -1333,9 +1324,8 @@
                                                             href="javascript:clearAll(MedAId, MedAId-1)">&nbsp
                                                         <font style="text-decoration: underline; color: blue;">clr</font>
                                                     </a></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(WHRBComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(WHRBComments)" size="30%" tabindex="9999" /></td>
                                                     </tr-->
 
 
@@ -1357,12 +1347,11 @@
                                                         </c:if>
 
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(WCValue)" size="5%"
-                                                            onchange="javascript: updateHipAndRatio();"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(WCComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(WCValue)" size="5%" onchange="javascript: updateHipAndRatio();"/>
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(WCComments)" size="30%" tabindex="9999" /></td>
                                                 </tr>
                                                 <!--new-->
                                                 <tr>
@@ -1383,12 +1372,12 @@
                                                             </table>
                                                         </c:if>
                                                     </td>
-                                                    <td width="18%" class="dataEntryTable" align="center"><html:text
-                                                            property="value(HCValue)" size="5%"
-                                                            onchange="javascript: updateWaistAndRatio();"/></td>
-                                                    <td width="33%" class="dataEntryTable" align="center"><html:text
-                                                            property="value(HCComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td width="18%" class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(HCValue)" size="5%" onchange="javascript: updateWaistAndRatio();"/>
+                                                    </td>
+                                                    <td width="33%" class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(HCComments)" size="30%" tabindex="9999"/>
+                                                    </td>
                                                 </tr>
 
                                                 <tr>
@@ -1415,11 +1404,12 @@
                                                                         </tr>
                                                                     </table>
                                                                 </td>
-                                                                <td class="dataEntryTable" align="center"><html:text
-                                                                        property="value(HRValue)" size="5%"/></td>
-                                                                <td class="dataEntryTable" align="center"><html:text
-                                                                        property="value(HRComments)" size="30%"
-                                                                        tabindex="9999"/></td>
+                                                                <td class="dataEntryTable" align="center">
+                                                                    <input type="text" name="value(HRValue)" size="5%" />
+                                                                </td>
+                                                                <td class="dataEntryTable" align="center">
+                                                                    <input type="text" name="value(HRComments)" size="30%" tabindex="9999" />
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="dataEntryTable"><%=request.getAttribute("HTDisplay")%>
@@ -1440,11 +1430,12 @@
                                                                         </tr>
                                                                     </table>
                                                                 </td>
-                                                                <td class="dataEntryTable" align="center"><html:text
-                                                                        property="value(HTValue)" size="5%"/></td>
-                                                                <td class="dataEntryTable" align="center"><html:text
-                                                                        property="value(HTComments)" size="30%"
-                                                                        tabindex="9999"/></td>
+                                                                <td class="dataEntryTable" align="center">
+                                                                    <input type="text" name="value(HTValue)" size="5%" />
+                                                                </td>
+                                                                <td class="dataEntryTable" align="center">
+                                                                    <input type="text" name="value(HTComments)" size="30%" tabindex="9999" />
+                                                                </td>
                                                             </tr>
                                                         </table>
                                                     </td>
@@ -1466,11 +1457,12 @@
                                                             </table>
                                                         </c:if>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(WTValue)" size="5%"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(WTComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(WTValue)" size="5%" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(WTComments)" size="30%" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -1903,13 +1895,15 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(HbA1Value)" size="4%"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(HbA1Date)" size="10%" tabindex="9999"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(HbA1Comments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(HbA1Value)" size="4%" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(HbA1Date)" size="10%" tabindex="9999" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(HbA1Comments)" size="30%" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("LDLDesc")%><br>
@@ -1929,13 +1923,14 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(LDLValue)" size="4%"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(LDLDate)" size="10%" tabindex="9999"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(LDLComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(LDLValue)" size="4%" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(LDLDate)" size="10%" tabindex="9999" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(LDLComments)" size="30%" tabindex="9999" /></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("HDLDesc")%><br>
@@ -1955,13 +1950,15 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(HDLValue)" size="4%"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(HDLDate)" size="10%" tabindex="9999"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(HDLComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(HDLValue)" size="4%" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(HDLDate)" size="10%" tabindex="9999" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(HDLComments)" size="30%" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("TCHLDesc")%><br>
@@ -1981,13 +1978,15 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(TCHLValue)" size="4%"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(TCHLDate)" size="10%" tabindex="9999"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(TCHLComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(TCHLValue)" size="4%" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(TCHLDate)" size="10%" tabindex="9999" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(TCHLComments)" size="30%" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan='5'>
@@ -2014,15 +2013,12 @@
                                                                     </table>
                                                                 </td>
                                                                 <td width="5%" class="dataEntryTable" align="center">
-                                                                    <html:text
-                                                                            property="value(TRIGValue)" size="4%"/></td>
+                                                                    <input type="text" name="value(TRIGValue)" size="4%"/></td>
                                                                 <td width="10%" class="dataEntryTable" align="center">
-                                                                    <html:text
-                                                                            property="value(TRIGDate)" size="10%"
+                                                                    <input type="text" name="value(TRIGDate)" size="10%"
                                                                             tabindex="9999"/></td>
                                                                 <td width="35%" class="dataEntryTable" align="center">
-                                                                    <html:text
-                                                                            property="value(TRIGComments)" size="30%"
+                                                                    <input type="text" name="value(TRIGComments)" size="30%"
                                                                             tabindex="9999"/></td>
                                                             </tr>
                                                             <tr>
@@ -2044,14 +2040,15 @@
                                                                         </tr>
                                                                     </table>
                                                                 </td>
-                                                                <td class="dataEntryTable" align="center"><html:text
-                                                                        property="value(BGValue)" size="4%"/></td>
-                                                                <td class="dataEntryTable" align="center"><html:text
-                                                                        property="value(BGDate)" size="10%"
-                                                                        tabindex="9999"/></td>
-                                                                <td class="dataEntryTable" align="center"><html:text
-                                                                        property="value(BGComments)" size="30%"
-                                                                        tabindex="9999"/></td>
+                                                                <td class="dataEntryTable" align="center">
+                                                                    <input type="text" name="value(BGValue)" size="4%" />
+                                                                </td>
+                                                                <td class="dataEntryTable" align="center">
+                                                                    <input type="text" name="value(BGDate)" size="10%" tabindex="9999" />
+                                                                </td>
+                                                                <td class="dataEntryTable" align="center">
+                                                                    <input type="text" name="value(BGComments)" size="30%" tabindex="9999" />
+                                                                </td>
                                                             </tr>
                                                         </table>
                                                     </td>
@@ -2074,13 +2071,15 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(UALBValue)" size="4%"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(UALBDate)" size="10%" tabindex="9999"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(UALBComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(UALBValue)" size="4%" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(UALBDate)" size="10%" tabindex="9999" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(UALBComments)" size="30%" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("24UADesc")%><br>
@@ -2100,13 +2099,15 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(24UAValue)" size="4%"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(24UADate)" size="10%" tabindex="9999"/></td>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(24UAComments)" size="30%"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(24UAValue)" size="4%" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(24UADate)" size="10%" tabindex="9999" />
+                                                    </td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(24UAComments)" size="30%" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -2253,12 +2254,13 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:checkbox
-                                                            property="value(NtrCValue)"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="checkbox" name="value(NtrCValue)"/>
+                                                    </td>
                                                     <input type="hidden" name="value(NtrCDate)" id="value(NtrCDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(NtrCComments)" size="45"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(NtrCComments)" size="45" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("ExeCDesc")%>
@@ -2277,12 +2279,13 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:checkbox
-                                                            property="value(ExeCValue)"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="checkbox" name="value(ExeCValue)"/>
+                                                    </td>
                                                     <input type="hidden" name="value(ExeCDate)" id="value(ExeCDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(ExeCComments)" size="45"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(ExeCComments)" size="45" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("SmCCDesc")%>
@@ -2301,12 +2304,13 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:checkbox
-                                                            property="value(SmCCValue)"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="checkbox" name="value(SmCCValue)"/>
+                                                    </td>
                                                     <input type="hidden" name="value(SmCCDate)" id="value(SmCCDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(SmCCComments)" size="45"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(SmCCComments)" size="45" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("DiaCDesc")%>
@@ -2325,12 +2329,13 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:checkbox
-                                                            property="value(DiaCValue)"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="checkbox" name="value(DiaCValue)"/>
+                                                    </td>
                                                     <input type="hidden" name="value(DiaCDate)" id="value(DiaCDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(DiaCComments)" size="45"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(DiaCComments)" size="45" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("PsyCDesc")%>
@@ -2349,12 +2354,13 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:checkbox
-                                                            property="value(PsyCValue)"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="checkbox" name="value(PsyCValue)"/>
+                                                    </td>
                                                     <input type="hidden" name="value(PsyCDate)" id="value(PsyCDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(PsyCComments)" size="45"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(PsyCComments)" size="45" tabindex="9999" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="dataEntryTable"><%=request.getAttribute("OthCDesc")%>
@@ -2375,12 +2381,11 @@
                                                             <input type="hidden" name="value(OthCLastData)" id="value(OthCLastData)"/>
                                                         </table>
                                                     </td>
-                                                    <td class="dataEntryTable" align="center"><html:checkbox
-                                                            property="value(OthCValue)"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="checkbox" name="value(OthCValue)"/></td>
                                                     <input type="hidden" name="value(OthCDate)" id="value(OthCDate)"/>
-                                                    <td class="dataEntryTable" align="center"><html:text
-                                                            property="value(OthCComments)" size="45"
-                                                            tabindex="9999"/></td>
+                                                    <td class="dataEntryTable" align="center">
+                                                        <input type="text" name="value(OthCComments)" size="45" tabindex="9999"/></td>
                                                 </tr>
                                             </table>
                                         </td>

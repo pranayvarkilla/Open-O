@@ -53,7 +53,18 @@
     <body class="BodyStyle" vlink="#0000FF"
           onload="window.resizeTo(1000,500)" ;>
     <!--  -->
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <form action="${pageContext.request.contextPath}/oscarEncounter/oscarMeasurements/AddMeasurementGroup.do" method="post">
         <table class="MainTable" id="scrollNumber1" name="encounterTable">
             <tr class="MainTableTopRow">
@@ -85,15 +96,19 @@
                                         <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.MeasurementGroup.deleteTypes"/>
                                             <c:out value="${groupName}"/></td>
                                     <tr>
-                                        <td><select multiple="true" name="selectedAddTypes"
-                                                         size="10">
-                                            <html:options collection="allTypeDisplayNames"
-                                                          property="typeDisplayName" labelProperty="typeDisplayName"/>
+                                        <td><select multiple="true" name="selectedAddTypes" size="10">
+                                            <c:forEach var="allTypeDisplayName" items="${allTypeDisplayNames}">
+                                                <option value="${allTypeDisplayName.typeDisplayName}">
+                                                        ${allTypeDisplayName.typeDisplayName}
+                                                </option>
+                                            </c:forEach>
                                         </select></td>
-                                        <td><select multiple="true"
-                                                         name="selectedDeleteTypes" size="10">
-                                            <html:options collection="existingTypeDisplayNames"
-                                                          property="typeDisplayName" labelProperty="typeDisplayName"/>
+                                        <td><select multiple="true" name="selectedDeleteTypes" size="10">
+                                            <c:forEach var="existingTypeDisplayName" items="${existingTypeDisplayNames}">
+                                                <option value="${existingTypeDisplayName.typeDisplayName}">
+                                                        ${existingTypeDisplayName.typeDisplayName}
+                                                </option>
+                                            </c:forEach>
                                         </select></td>
                                     </tr>
                                     <tr>

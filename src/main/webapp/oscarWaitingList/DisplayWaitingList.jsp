@@ -265,7 +265,7 @@
                                             <textarea cols="45" name="note" indexed="true" styleClass="data3" onblur="setParameters(this);"></textarea>
                                         </td>
                                         <td class="${styleClass}">
-                                            <html:text name="waitingListBean" property="onListSince" indexed="true" styleClass="data3" onblur="setParameters(this);" onchange="setParameters(this);"/>
+                                            <input type="text" name="onListSince" indexed="true" class="data3" onblur="setParameters(this);" onchange="setParameters(this);"/>
                                             <img src="../images/cal.gif" id="referral_date_cal_${ctr.index}">
                                             <script type="text/javascript">
                                                 Calendar.setup({
@@ -280,7 +280,11 @@
                                         </td>
                                         <td class="${styleClass}">
                                             <select name="selectedProvider" class="data3">
-                                                <html:options collection="allProviders" property="providerID" labelProperty="providerName"/>
+                                                <c:forEach var="allProvider" items="${allProviders}">
+                                                    <option value="${allProvider.providerID}">
+                                                            ${allProvider.providerName}
+                                                    </option>
+                                                </c:forEach>
                                             </select>
                                             <a href="#" onClick="popupPage(${ctr.index}, '${waitingListBean.patientName}', '${waitingListBean.demographicNo}', '${today}', 400, 780, '../schedule/scheduleflipview.jsp?originalpage=../oscarWaitingList/DisplayWaitingList.jsp'); return false;">
                                                 make_appt

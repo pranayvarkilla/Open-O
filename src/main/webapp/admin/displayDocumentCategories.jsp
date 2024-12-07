@@ -142,10 +142,9 @@
         </tr>
     </table>
 
-    <input type="button" class="btn" value="Add New" onclick='popupPage(550,800,&quot;<html:rewrite
-            page="/documentManager/addNewDocumentCategories.jsp"/>&quot;);return false;'/>
-    <input type="button" class="btn" value="Update Status" onclick='popupPage(550,800,&quot;<html:rewrite
-            page="/documentManager/changeStatus.jsp"/>&quot;);return false;'/>
+    <input type="button" class="btn" value="Add New" onclick='popupPage(550,800,"<%=request.getContextPath() %>/documentManager/addNewDocumentCategories.jsp");return false;'/>
+    <input type="button" class="btn" value="Update Status" onclick='popupPage(550,800,"<%=request.getContextPath() %>/documentManager/changeStatus.jsp");return false;'/>
+
 
 
 </div> <!-- well -->

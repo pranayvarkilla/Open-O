@@ -498,7 +498,7 @@
                 <tr>
                     <td colspan="2" style="vertical-align: bottom;text-align:right; padding-top:15px; border:none;">
                         <oscar:oscarPropertiesCheck property="tickler_email_enabled" value="true">
-                            <html:checkbox property="emailDemographic"><fmt:setBundle basename="oscarResources"/><fmt:message key="tickler.ticklerEdit.emailDemographic"/></html:checkbox>
+                            <input type="checkbox" name="emailDemographic" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="tickler.ticklerEdit.emailDemographic"/>
                         </oscar:oscarPropertiesCheck>
 
                         <input type="button" class="btn btn-primary" name="updateTickler"

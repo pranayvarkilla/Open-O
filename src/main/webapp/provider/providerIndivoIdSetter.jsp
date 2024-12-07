@@ -74,7 +74,18 @@
         </tr>
         <tr>
             <td class="MainTableLeftColumn">&nbsp;</td>
-            <td class="MainTableRightColumn"><html:errors/> <%
+            <td class="MainTableRightColumn"><% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %> <%
                 String login = ProviderMyOscarIdData.getMyOscarId(curUser_no);
                 int atsign = login.indexOf("@");
                 if (atsign > -1)
@@ -84,7 +95,7 @@
 
             %> <form action="${pageContext.request.contextPath}/setMyOscarId.do" method="post">
                 <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.setPHRLogin.msgEdit"/>&nbsp;&nbsp;
-                <html:text property="myOscarLoginId" value="<%=login%>"
+                <input type="text" name="myOscarLoginId" value="<%=login%>"
                            size="20"/>
                 <br>
                 <input type="submit" onclick="return validate();"

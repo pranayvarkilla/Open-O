@@ -344,40 +344,40 @@
                                                                 <td>
                                                                     <strong>Name:</strong></td>
                                                                 <td>
-                                                                    <html:text styleClass="billTo" maxlength="100"
-                                                                               property="recipientName" size="50"/>
+                                                                    <input type="text" class="billTo" maxlength="100"
+                                                                               name="recipientName" size="50"/>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
                                                                     <strong>Address:</strong></td>
                                                                 <td>
-                                                                    <html:text styleClass="billTo" maxlength="100"
-                                                                               property="recipientAddress" size="50"/>
+                                                                    <input type="text" class="billTo" maxlength="100"
+                                                                               name="recipientAddress" size="50"/>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
                                                                     <strong>City:</strong></td>
                                                                 <td>
-                                                                    <html:text styleClass="billTo" maxlength="100"
-                                                                               property="recipientCity" size="50"/>
+                                                                    <input type="text" class="billTo" maxlength="100"
+                                                                               name="recipientCity" size="50"/>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
                                                                     <strong>Province:</strong></td>
                                                                 <td>
-                                                                    <html:text styleClass="billTo" maxlength="100"
-                                                                               property="recipientProvince" size="50"/>
+                                                                    <input type="text" class="billTo" maxlength="100"
+                                                                               name="recipientProvince" size="50"/>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
                                                                     <strong>Postal:</strong></td>
                                                                 <td>
-                                                                    <html:text styleClass="billTo" maxlength="6"
-                                                                               property="recipientPostal" size="50"/>
+                                                                    <input type="text" class="billTo" maxlength="6"
+                                                                               name="recipientPostal" size="50"/>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -650,8 +650,7 @@
 
                                                             <tr>
                                                                 <td colspan="2" align="left" valign="bottom">
-                                                                    <html:submit styleClass="header"
-                                                                                 value="Update Invoice" property=""/>
+                                                                    <input type="submit" name="submit" class="header" value="Update Invoice" />
                                                                     <button class="header" value="Edit Invoice"
                                                                             onclick="editInvoice('<%=bean.getBillingMasterNo()%>')">
                                                                         Edit Invoice

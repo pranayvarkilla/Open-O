@@ -33,7 +33,7 @@
     <script language="JavaScript">
 
         function OpenQuestionEditor(page, section, question) {
-            window.open('<html:rewrite action="/SurveyManager"/>?method=edit_question&page=' + page + '&section=' + section + '&id=' + question, 'question_editor', 'width=500,height=500');
+            window.open('<%=request.getContextPath() %>/SurveyManager"/>?method=edit_question&page=' + page + '&section=' + section + '&id=' + question, 'question_editor', 'width=500,height=500');
         }
 
         function navigate(pageName) {
@@ -140,13 +140,11 @@
                 <table>
                     <tr>
                         <td class="field">Form Name:</td>
-                        <td><html:text property="survey.description"
-                                       styleClass="formElement" disabled="true"/></td>
+                        <td><input type="text" name="survey.description" class="formElement" disabled="true"/></td>
                     </tr>
                     <tr>
                         <td class="field">Version:</td>
-                        <td><html:text property="survey.version"
-                                       styleClass="formElement" disabled="true"/></td>
+                        <td><input type="text" name="survey.version" class="formElement" disabled="true"/></td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -262,18 +260,20 @@
                             <table class="surveyPage" width="100%">
                                 <tr>
                                     <td class="pageTitle" colspan="3"><a
-                                            href="<html:rewrite action="/SurveyManager"/>?method=remove_page&id=<c:out value="${page_number }"/>"><img
+                                            href="<%=request.getContextPath() %>/SurveyManager.do?method=remove_page&id=<c:out value="${page_number }"/>"><img
                                             src="images/delete.png" border="0"></a> &nbsp; Page
-                                        Title:&nbsp; <html:text property="pageModel.description"
-                                                                size="60" styleClass="formElement"/></td>
+                                        Title:&nbsp; <input type="text" name="pageModel.description" size="60" class="formElement"/></td>
                                 </tr>
                                 <tr>
                                     <td width="1%"><select name="questionType"
                                                                 onchange="addQuestionType('0', this.options[this.selectedIndex].value);"
                                                                 class="formElement">
                                         <option value="">Add New Question:</option>
-                                        <html:options collection="QuestionTypes" property="value"
-                                                      labelProperty="label"/>
+                                        <c:forEach var="q" items="${QuestionTypes}">
+                                            <option value="${q.value}">
+                                                    ${q.label}
+                                            </option>
+                                        </c:forEach>
                                     </select></td>
 
                                     <td align="right"><input type="button"
@@ -301,12 +301,12 @@
                                         <table class="section" width="90%">
                                             <tr>
                                                 <td width="10%"><a
-                                                        href="<html:rewrite action="/SurveyManager"/>?method=remove_question&id=<c:out value="${question.id }"/>&section=0"><img
+                                                        href="<%=request.getContextPath() %>/SurveyManager.do?method=remove_question&id=<c:out value="${question.id }"/>&section=0"><img
                                                         src="images/delete.png" border="0"></a> &nbsp; <!--
                                           	<a href="javascript:void(0);return false;" onclick="OpenQuestionEditor('<c:out value="${surveyForm.map.web.page}"/>','0','<c:out value="${question.id}"/>')"><img src="images/edit.png" border="0"></a>
                                        		&nbsp;
                                        		  --> <a
-                                                        href="<html:rewrite action="/SurveyManager"/>?method=edit_question&page=<c:out value="${surveyForm.map.web.page}"/>&section=0&id=<c:out value="${question.id}"/>"><img
+                                                        href="<%=request.getContextPath() %>/SurveyManager.do?method=edit_question&page=<c:out value="${surveyForm.map.web.page}"/>&section=0&id=<c:out value="${question.id}"/>"><img
                                                         src="images/edit.png" border="0"></a></td>
                                                 <td align="left"><c:out value="${question.description}"/>
                                                 </td>
@@ -344,7 +344,7 @@
                                         <table class="section" width="90%">
                                             <tr>
                                                 <td class="sectionDescr" width="1%"><a
-                                                        href="<html:rewrite action="/SurveyManager"/>?method=remove_section&id=<c:out value="${section.id}"/>"><img
+                                                        href="<%=request.getContextPath() %>/SurveyManager.do?method=remove_section&id=<c:out value="${section.id}"/>"><img
                                                         src="images/delete.png" border="0"></a> &nbsp; <input
                                                         type="text"
                                                         name="section_description_<%=containers[x].getSection().getId() %>"
@@ -396,8 +396,11 @@
                                                         onchange="addQuestionType('${section.id}', this.options[this.selectedIndex].value);"
                                                         styleClass="formElement">
                                                     <option value="">Add New Question:</option>
-                                                    <html:options collection="QuestionTypes" property="value"
-                                                                  labelProperty="label"/>
+                                                    <c:forEach var="qt" items="${QuestionTypes}">
+                                                        <option value="${qt.value}">
+                                                                ${qt.label}
+                                                        </option>
+                                                    </c:forEach>
                                                 </select></td>
                                             </tr>
                                             <!--  loop through questions at this level -->
@@ -408,12 +411,12 @@
                                                         <table class="section" width="90%">
                                                             <tr>
                                                                 <td width="10%"><a
-                                                                        href="<html:rewrite action="/SurveyManager"/>?method=remove_question&id=<c:out value="${question.id }"/>&web.section=<c:out value="${section.id}"/>"><img
+                                                                        href="<%=request.getContextPath() %>/SurveyManager.do?method=remove_question&id=<c:out value="${question.id }"/>&web.section=<c:out value="${section.id}"/>"><img
                                                                         src="images/delete.png" border="0"></a> &nbsp; <!--
                                           	<a href="javascript:void(0);return false;" onclick="OpenQuestionEditor('<c:out value="${surveyForm.map.web.page}"/>','<c:out value="${section.id}"/>','<c:out value="${question.id}"/>')"><img src="images/edit.png" border="0"></a>
                                        		&nbsp;
                                        		 --> <a
-                                                                        href="<html:rewrite action="/SurveyManager"/>?method=edit_question&page=<c:out value="${surveyForm.map.web.page}"/>&section=<c:out value="${section.id}"/>&id=<c:out value="${question.id}"/>"><img
+                                                                        href="<%=request.getContextPath() %>/SurveyManager.do?method=edit_question&page=<c:out value="${surveyForm.map.web.page}"/>&section=<c:out value="${section.id}"/>&id=<c:out value="${question.id}"/>"><img
                                                                         src="images/edit.png" border="0"></a></td>
                                                                 <td align="left"><c:out value="${question.description}"/>
                                                                 </td>

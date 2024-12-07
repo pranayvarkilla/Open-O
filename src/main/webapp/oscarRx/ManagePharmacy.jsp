@@ -113,53 +113,53 @@
                                         <input type="hidden" name="pharmacyAction" id="pharmacyAction" value="<%=type%>"/>
                                         <input type="hidden" name="ID" id="ID"/> <fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.pharmacyName"/> :
                                     </td>
-                                    <td><html:text property="name"/></td>
+                                    <td><input type="text" name="name" id="name" /></td>
                                 </tr>
                                 <tr>
                                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.address"/>
                                         :
                                     </td>
-                                    <td><html:text property="address"/></td>
+                                    <td><input type="text" name="address" id="address" /></td>
                                 </tr>
                                 <tr>
                                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.city"/>
                                         :
                                     </td>
-                                    <td><html:text property="city"/></td>
+                                    <td><input type="text" name="city" id="city" /></td>
                                 </tr>
                                 <tr>
                                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.province"/>
                                         :
                                     </td>
-                                    <td><html:text property="province"/></td>
+                                    <td><input type="text" name="province" id="province" /></td>
                                 </tr>
                                 <tr>
                                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.postalCode"/> :
                                     </td>
-                                    <td><html:text property="postalCode"/></td>
+                                    <td><input type="text" name="postalCode" id="postalCode" /></td>
                                 </tr>
                                 <tr>
                                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.phone1"/>
                                         :
                                     </td>
-                                    <td><html:text property="phone1"/></td>
+                                    <td><input type="text" name="phone1" id="phone1" /></td>
                                 </tr>
                                 <tr>
                                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.phone2"/>
                                         :
                                     </td>
-                                    <td><html:text property="phone2"/></td>
+                                    <td><input type="text" name="phone2" id="phone2" /></td>
                                 </tr>
                                 <tr>
                                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.fax"/> :
                                     </td>
-                                    <td><html:text property="fax"/></td>
+                                    <td><input type="text" name="fax" id="fax" /></td>
                                 </tr>
                                 <tr>
                                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.email"/>
                                         :
                                     </td>
-                                    <td><html:text property="email"/></td>
+                                    <td><input type="text" name="email" id="email" /></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><fmt:setBundle basename="oscarResources"/><fmt:message key="ManagePharmacy.txtfld.label.notes"/> :

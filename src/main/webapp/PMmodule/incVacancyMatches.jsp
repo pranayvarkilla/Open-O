@@ -110,13 +110,13 @@
                 <display:setProperty name="sort.amount" value="list"/>
 
                 <display:column sortable="true" title="Client No" sortProperty="clientID" defaultorder="ascending">
-                    <a href="<html:rewrite action="/PMmodule/ClientManager.do"/>?id=<c:out value="${client.clientID}"/>">
+                    <a href="<%=request.getContextPath() %>/PMmodule/ClientManager.do?id=<c:out value="${client.clientID}"/>">
                         <c:out value="${client.clientID}"/>
                     </a>
                 </display:column>
 
                 <display:column sortable="true" title="Name" sortProperty="clientName" defaultorder="ascending">
-                    <a href="<html:rewrite action="/PMmodule/ClientManager.do"/>?id=<c:out value="${client.clientID}"/>">
+                    <a href="<%=request.getContextPath() %>/PMmodule/ClientManager.do?id=<c:out value="${client.clientID}"/>">
                         <c:out value="${client.clientName}"/>
                     </a>
                 </display:column>
@@ -137,7 +137,7 @@
                 </display:column>
 
                 <display:column sortable="false" title="Create Referral<br/>(Forward Match)">
-                    <a href="<html:rewrite action="/PMmodule/ClientManager.do"/>?method=vacancy_refer_select_program&program.id=<c:out value="${vacancyClientMatchForm.programId}"/>&vacancyId=<%=vacancyId %>&vacancyName=<c:out value="${vacancyClientMatchForm.vacancy}"/>&view.tab=Refer&id=<c:out value="${client.clientID}" />">
+                    <a href="<%=request.getContextPath() %>/PMmodule/ClientManager.do?method=vacancy_refer_select_program&program.id=<c:out value="${vacancyClientMatchForm.programId}"/>&vacancyId=<%=vacancyId %>&vacancyName=<c:out value="${vacancyClientMatchForm.vacancy}"/>&view.tab=Refer&id=<c:out value="${client.clientID}" />">
                         Create Referral
                     </a>
                 </display:column>

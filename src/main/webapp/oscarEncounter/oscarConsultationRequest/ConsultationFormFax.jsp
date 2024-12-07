@@ -180,15 +180,15 @@
             <table>
                 <tr>
                     <td>To:</td>
-                    <td><html:text property="recipient"/></td>
+                    <td><input type="text" name="recipient" id="recipient" /></td>
                 </tr>
                 <tr>
                     <td>From:</td>
-                    <td><html:text property="from"/></td>
+                    <td><input type="text" name="from" id="from" /></td>
                 </tr>
                 <tr>
                     <td>Fax Number:</td>
-                    <td><html:text property="recipientFaxNumber"/></td>
+                    <td><input type="text" name="recipientFaxNumber" id="recipientFaxNumber" /></td>
                 </tr>
 
                 <tr>

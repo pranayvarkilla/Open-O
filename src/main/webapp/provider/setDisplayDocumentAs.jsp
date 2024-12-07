@@ -66,10 +66,13 @@
                 <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
                     <select name="displayDocumentAsProperty.value" id="displayDocumentAsProperty.value">
-                        <html:options collection="dropOpts" property="value"
-                                      labelProperty="label"/>
+                        <c:forEach var="dropOpt" items="${dropOpts}">
+                            <option value="${dropOpt.value}">
+                                    ${dropOpt.label}
+                            </option>
+                        </c:forEach>
                     </select>
-                    <html:submit property="btnApply"/>
+                    <input type="submit" name="btnApply" value="Apply" />
                 </form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
                 <%}%>
             </td>

@@ -72,7 +72,18 @@
     <link rel="stylesheet" type="text/css" href="../../encounterStyles.css">
     <body class="BodyStyle" vlink="#0000FF">
 
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <!--  -->
     <table class="MainTable" id="scrollNumber1" name="encounterTable">
         <tr class="MainTableTopRow">
@@ -119,7 +130,7 @@
                                     <input type="hidden" name="EctConAddDepartmentForm" id="EctConAddDepartmentForm" property="id"/>
                                 <tr>
                                     <td>Name</td>
-                                    <td><html:text name="EctConAddDepartmentForm" property="name"/></td>
+                                    <td><input type="text" name="name"/></td>
 
                                 </tr>
 

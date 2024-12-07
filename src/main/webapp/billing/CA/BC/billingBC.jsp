@@ -1298,7 +1298,18 @@
 <div class="wrapper">
 
     <div class="container-fluid">
-        <html:errors/>
+        <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
 
         <!-- end error row -->
 
@@ -1511,9 +1522,9 @@
                                         <a href="javascript:void(0)" id="hlSDate">
                                             <label for="xml_appointment_date"><fmt:setBundle basename="oscarResources"/><fmt:message key="billing.servicedate"/></label>
                                         </a>
-                                        <html:text style="min-width:100px;" styleClass="form-control"
-                                                   property="xml_appointment_date" size="10" readonly="true"
-                                                   styleId="xml_appointment_date"/>
+                                        <input type="text" style="min-width:100px;" class="form-control"
+                                                   name="xml_appointment_date" size="10" readonly="true"
+                                                   id="xml_appointment_date"/>
                                     </div>
 
                                 </td>
@@ -1524,8 +1535,8 @@
                                             <label for="service_to_date">To Date</label>
                                         </a>
 
-                                        <html:text styleClass="form-control" property="service_to_date" size="2"
-                                                   maxlength="2" styleId="service_to_date"/>
+                                        <input type="text" class="form-control" name="service_to_date" size="2"
+                                                   maxlength="2" id="service_to_date"/>
                                     </div>
 
                                 </td>
@@ -1547,7 +1558,7 @@
                                     <div class="form-group">
 
                                         <label for="timeCall">Time Call</label>
-                                        <html:text styleClass="form-control" property="timeCall" styleId="timeCall"/>
+                                        <input type="text" class="form-control" name="timeCall" id="timeCall"/>
 
                                     </div>
                                 </td>
@@ -1651,8 +1662,8 @@
 
                                     <div class="form-group">
                                         <label for="facilityNum">BCP Facility</label>
-                                        <html:text styleClass="form-control" property="facilityNum"
-                                                   styleId="facilityNum" size="5" maxlength="5"/>
+                                        <input type="text" class="form-control" name="facilityNum"
+                                                   id="facilityNum" size="5" maxlength="5"/>
 
                                     </div>
                                 </td>
@@ -1662,8 +1673,8 @@
 
                                     <div class="form-group">
                                         <label for="facilitySubNum">Sub Facility</label>
-                                        <html:text styleClass="form-control" property="facilitySubNum"
-                                                   styleId="facilitySubNum" size="5" maxlength="5"/>
+                                        <input type="text" class="form-control" name="facilitySubNum"
+                                                   id="facilitySubNum" size="5" maxlength="5"/>
 
                                     </div>
                                 </td>
@@ -1681,8 +1692,8 @@
                                         <div class="form-group">
                                             <div class='input-group text'>
 
-                                                <html:text property="xml_vdate" readonly="true" value="" size="10"
-                                                           styleId="xml_vdate"/>
+                                                <input type="text" name="xml_vdate" readonly="true" value="" size="10"
+                                                           id="xml_vdate"/>
                                                 <a id="hlADate">
                                                     <img title="Calendar"
                                                          src="${pageContext.servletContext.contextPath}/images/cal.gif"
@@ -1729,8 +1740,8 @@
 
                                         <div class='form-group'>
                                             <label for="icbc_claim_no">ICBC Claim No</label>
-                                            <html:text styleClass="form-control" property="icbc_claim_no"
-                                                       styleId="icbc_claim_no" maxlength="8"/>
+                                            <input type="text" class="form-control" name="icbc_claim_no"
+                                                       id="icbc_claim_no" maxlength="8"/>
                                         </div>
                                         <div class='form-group'>
                                             <label for="mva_claim_code">MVA?</label>
@@ -1773,7 +1784,7 @@
                                             <tr>
                                                 <td>
                                                     <div class="input-group">
-                                                        <html:text styleClass="form-control" property="xml_refer1"
+                                                        <input type="text" class="form-control" name="xml_refer1"
                                                                    onkeypress="return grabEnter(event,'ReferralScriptAttach1()')"/>
                                                         <span class="input-group-btn">
 		                     	<button type="button" class="btn btn-primary"
@@ -1795,7 +1806,7 @@
                                             <tr>
                                                 <td>
                                                     <div class="input-group">
-                                                        <html:text styleClass="form-control" property="xml_refer2"
+                                                        <input type="text" class="form-control" name="xml_refer2"
                                                                    onkeypress="return grabEnter(event,'ReferralScriptAttach2()')"/>
                                                         <span class="input-group-btn">
 			                     	<button type="button" class="btn btn-primary"
@@ -1918,7 +1929,7 @@
  							<span class="input-group-addon">
 								1
 							</span>
-                                            <html:text styleClass="form-control" property="xml_other1"
+                                            <input type="text" class="form-control" name="xml_other1"
                                                        onblur="checkSelectedCodes()"
                                                        onkeypress="return grabEnter(event,'OtherScriptAttach()')"/>
                                             <span class="input-group-btn">
@@ -1931,8 +1942,8 @@
                                     </td>
                                     <td style="width:40%;">
                                         <div class="input-group">
-                                            <html:text styleClass="form-control" property="xml_other1_unit" size="6"
-                                                       maxlength="6" styleId="xml_other1_unit"/>
+                                            <input type="text" class="form-control" name="xml_other1_unit" size="6"
+                                                       maxlength="6" id="xml_other1_unit"/>
                                             <span class="input-group-btn">
                             	<button type="button" class="btn btn-primary" value=".5"
                                         onClick="$('xml_other1_unit').value = '0.5'">.5</button>
@@ -1946,7 +1957,7 @@
  							<span class="input-group-addon">
 								2
 							</span>
-                                            <html:text styleClass="form-control" property="xml_other2"
+                                            <input type="text" class="form-control" name="xml_other2"
                                                        onblur="checkSelectedCodes()"
                                                        onkeypress="return grabEnter(event,'OtherScriptAttach()')"/>
                                             <span class="input-group-btn">
@@ -1959,8 +1970,8 @@
                                     </td>
                                     <td>
                                         <div class="input-group">
-                                            <html:text styleClass="form-control" property="xml_other2_unit" size="6"
-                                                       maxlength="6" styleId="xml_other2_unit"/>
+                                            <input type="text" class="form-control" name="xml_other2_unit" size="6"
+                                                       maxlength="6" id="xml_other2_unit"/>
                                             <span class="input-group-btn">
                              	<button type="button" class="btn btn-primary" value=".5"
                                         onClick="$('xml_other2_unit').value = '0.5'">.5</button>
@@ -1974,7 +1985,7 @@
  							<span class="input-group-addon">
 								3
 							</span>
-                                            <html:text styleClass="form-control" property="xml_other3"
+                                            <input type="text" class="form-control" name="xml_other3"
                                                        onblur="checkSelectedCodes()"
                                                        onkeypress="return grabEnter(event,'OtherScriptAttach()')"/>
                                             <span class="input-group-btn">
@@ -1987,8 +1998,8 @@
                                     </td>
                                     <td>
                                         <div class="input-group">
-                                            <html:text styleClass="form-control" property="xml_other3_unit"
-                                                       styleId="xml_other3_unit"/>
+                                            <input type="text" class="form-control" name="xml_other3_unit"
+                                                       id="xml_other3_unit"/>
                                             <span class="input-group-btn">
                             	<button type="button" class="btn btn-primary" value=".5"
                                         onClick="$('xml_other3_unit').value = '0.5'">.5</button>
@@ -2061,8 +2072,8 @@
 								<span class="input-group-addon">
 									1
 								</span>
-                                            <html:text styleClass="form-control jsonDxSearchInput"
-                                                       styleId="jsonDxSearchInput-1" property="xml_diagnostic_detail1"/>
+                                            <input type="text" class="form-control jsonDxSearchInput"
+                                                       id="jsonDxSearchInput-1" name="xml_diagnostic_detail1"/>
                                             <span class="input-group-btn">
 		                     		<button type="button" title="Search diagnostic code"
                                             class="btn btn-primary jsonDxSearchButton" value="jsonDxSearchInput-1">
@@ -2079,8 +2090,8 @@
   								<span class="input-group-addon">
 									2
 								</span>
-                                            <html:text styleClass="form-control jsonDxSearchInput"
-                                                       styleId="jsonDxSearchInput-2" property="xml_diagnostic_detail2"/>
+                                            <input type="text" class="form-control jsonDxSearchInput"
+                                                       id="jsonDxSearchInput-2" name="xml_diagnostic_detail2"/>
                                             <span class="input-group-btn">
 		                     		<button type="button" title="Search Dx Description"
                                             class="btn btn-primary jsonDxSearchButton" value="jsonDxSearchInput-2">
@@ -2096,8 +2107,8 @@
   								<span class="input-group-addon">
 									3
 								</span>
-                                            <html:text styleClass="form-control jsonDxSearchInput"
-                                                       styleId="jsonDxSearchInput-3" property="xml_diagnostic_detail3"/>
+                                            <input type="text" class="form-control jsonDxSearchInput"
+                                                       id="jsonDxSearchInput-3" name="xml_diagnostic_detail3"/>
                                             <span class="input-group-btn">
 		                     		<button type="button" title="Search Dx Description"
                                             class="btn btn-primary jsonDxSearchButton" value="jsonDxSearchInput-3">
@@ -2125,8 +2136,8 @@
                                 <tr>
                                     <td>
                                         <label for="shortClaimNote">Short Claim Note</label>
-                                        <html:text styleId="shortClaimNote" styleClass="form-control"
-                                                   property="shortClaimNote"/>
+                                        <input type="text" id="shortClaimNote" class="form-control"
+                                                   name="shortClaimNote"/>
                                     </td>
 
                                 </tr>
@@ -2221,9 +2232,7 @@
                                                 <%String svcCall = "addSvcCode('" + billlist1[i].getServiceCode() + "')"; %>
                                                 <td width="25%" valign="middle">
                                                     <label class="checkbox">
-                                                        <html:multibox property="service"
-                                                                       value="<%=billlist1[i].getServiceCode()%>"
-                                                                       onclick="<%=svcCall%>"/>
+                                                        <input type="checkbox" name="service" value="<%=billlist1[i].getServiceCode()%>" onclick="<%=svcCall%>" />
                                                         <%=billlist1[i].getServiceCode()%>
                                                     </label>
                                                 </td>
@@ -2262,9 +2271,7 @@
                                                 <%String svcCall = "addSvcCode('" + billlist2[i].getServiceCode() + "')"; %>
                                                 <td width="25%">
                                                     <label class="checkbox">
-                                                        <html:multibox property="service"
-                                                                       value="<%=billlist2[i].getServiceCode()%>"
-                                                                       onclick="<%=svcCall%>"/>
+                                                        <input type="checkbox" name="service" value="<%=billlist2[i].getServiceCode()%>" onclick="<%=svcCall%>"/>
                                                         <%=billlist2[i].getServiceCode()%>
                                                     </label>
                                                 </td>
@@ -2300,9 +2307,7 @@
                                                 <%String svcCall = "addSvcCode('" + billlist3[i].getServiceCode() + "')"; %>
                                                 <td width="25%">
                                                     <label class="checkbox">
-                                                        <html:multibox property="service"
-                                                                       value="<%=billlist3[i].getServiceCode()%>"
-                                                                       onclick="<%=svcCall%>"/>
+                                                        <input type="checkbox" name="service" value="<%=billlist3[i].getServiceCode()%>"/>
                                                         <%=billlist3[i].getServiceCode()%>
                                                     </label>
                                                 </td>

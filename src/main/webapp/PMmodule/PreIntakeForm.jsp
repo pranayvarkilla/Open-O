@@ -73,11 +73,11 @@
     <table width="50%">
         <tr>
             <td>First Name</td>
-            <td><html:text property="form.firstName"/></td>
+            <td><input type="text" name="form.firstName" id="form.firstName" /></td>
         </tr>
         <tr>
             <td>Last Name</td>
-            <td><html:text property="form.lastName"/></td>
+            <td><input type="text" name="form.lastName" id="form.lastName" /></td>
         </tr>
         <tr>
             <td>Date Of Birth</td>
@@ -108,18 +108,18 @@
                 <%
                     }
                 %>
-            </select>&nbsp;<html:text property="form.yearOfBirth" size="4"/></td>
+            </select>&nbsp;<input type="checkbox" name="form.yearOfBirth" size="4" /></td>
         </tr>
         <caisi:isModuleLoad moduleName="GET_OHIP_INFO" reverse="false">
             <tr>
                 <td>Health Card</td>
-                <td><html:text property="form.healthCardNumber" size="10"/>
-                    &nbsp; <html:text property="form.healthCardVersion" size="2"/></td>
+                <td><input type="checkbox" name="form.healthCardNumber" size="10" />
+                    &nbsp; <input type="checkbox" name="form.healthCardVersion" size="2" /></td>
             </tr>
         </caisi:isModuleLoad>
         <tr>
             <td colspan="2"><br/>
-                <html:submit/></td>
+                <input type="submit" name="submit" value="Submit" /></td>
         </tr>
     </table>
     <br/>

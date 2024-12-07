@@ -93,7 +93,7 @@
 			</span>
                 <br/>
 
-                <html:text property="faxNumber" value="<%=faxNum%>" size="40"/>
+                <input type="text" name="faxNumber" value="<%=faxNum%>" size="40"/>
                 <br>
 
                 <input type="submit" onclick="return validate();"

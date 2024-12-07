@@ -32,7 +32,7 @@
 </style>
 <script>
     function search_provider(name) {
-        var url = '<html:rewrite action="/PMmodule/ProviderSearch.do"/>';
+        var url = '<%=request.getContextPath() %>/PMmodule/ProviderSearch.do';
         url += '?q=' + name;
         url += '&formName=programManagerForm';
         url += '&formElementId=provider.providerNo';
@@ -170,7 +170,11 @@
         <td width="20%">Role:</td>
         <td>
             <select name="provider.roleId" id="provider.roleId">
-                <html:options collection="roles" property="id" labelProperty="name"/>
+                <c:forEach var="role" items="${roles}">
+                    <option value="${role.id}">
+                            ${role.name}
+                    </option>
+                </c:forEach>
             </select>
         </td>
     </tr>

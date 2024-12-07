@@ -117,10 +117,9 @@
                 <%=bundle.getString(providermsgEdit)%>
                 <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
-                    <html:checkbox
-                            property="labAckCommentProperty.checked">Disable Comment on Acknowledgement</html:checkbox>
+                    <input type="checkbox" name="labAckCommentProperty.checked" />Disable Comment on Acknowledgement
                     <br/>
-                    <html:submit property="btnApply"/>
+                    <input type="submit" name="btnApply" value="Apply" />
                     <%--  <input type="submit" value="<%=bundle.getString(providerbtnSubmit)%>" />--%>
                 </form> <%} else {%> <%=bundle.getString(providermsgSuccess)%> <br>
                 <%}%>

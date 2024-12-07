@@ -4650,12 +4650,9 @@
                             <tr>
                                 <td align="center" class="style76"><input type="submit"
                                                                           value="Save"
-                                                                          onclick="javascript:return onSave('
-                                                                              <html:rewrite
-                                                                                      page="/form/formname.do"/>');"/>
+                                                                          onclick="javascript:return onSave('<%=request.getContextPath() %>/form/formname.do');"/>
                                     <input type="submit" value="Save and Exit"
-                                           onclick="javascript:return onSaveExit('<html:rewrite
-                                                   page="/form/formname.do"/>');"/>
+                                           onclick="javascript:return onSaveExit('<%=request.getContextPath() %>/form/formname.do"/>');"/>
                                     <input type="submit" value="Exit"
                                            onclick="javascript:return onExit();"/> <input type="submit"
                                                                                           value="Print"

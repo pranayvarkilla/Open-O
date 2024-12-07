@@ -35,9 +35,9 @@
 <form action="/PMmodule/Reports/ProgramActivityReport"
            styleId="actForm" class="well form-inline">
     <input type="hidden" name="method" value="generate"/>
-    <html:text styleId="sdate" property="form.startDate" size="15"/>
-    <html:text styleId="edate" property="form.endDate" size="15"/>
-    <html:submit value="Generate Report" styleClass="btn btn-primary"/>
+    <input type="text" id="sdate" name="form.startDate" size="15"/>
+    <input type="text" id="edate" name="form.endDate" size="15"/>
+    <input type="submit" name="submit" value="Generate Report" class="btn btn-primary"/>
 </form>
 
 <script>

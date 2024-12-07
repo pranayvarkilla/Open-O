@@ -72,7 +72,7 @@
             <td class="MainTableRightColumn">
                 <table>
                     <tr>
-                        <td><html:text property="favoriteName" size="40"/></td>
+                        <td><input type="checkbox" name="favoriteName" size="40" /></td>
                     </tr>
                     <tr>
                         <td><textarea name="query" cols="80" rows="3"></textarea></td>

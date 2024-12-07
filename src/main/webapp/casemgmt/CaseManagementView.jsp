@@ -317,8 +317,7 @@
                          OnMouseOver="document.getElementById('ci').src='../imageRenderingServlet?source=local_client&clientId=
                              <c:out value="${clientId}"/>'"
                          OnMouseOut="delay(5000)" window.status='Click to upload new photo' ; return true;"
-                    onClick="popupUploadPage('<html:rewrite
-                        page="/casemgmt/uploadimage.jsp"/>',<%=demo%>);return false;" />
+                    onClick="popupUploadPage('<%=request.getContextPath() %>/casemgmt/uploadimage.jsp',<%=demo%>);return false;" />
                 </c:when>
                 <c:otherwise>
                     <img style="cursor: pointer;"
@@ -395,9 +394,13 @@
                             name="filter_provider"
                             onchange="filter(this.options[this.selectedIndex].text, 'test', 2);">
                         <option value="">All</option>
-                        <html:options collection="providers" property="value" labelProperty="label"/>
+                        <c:forEach var="provider" items="${providers}">
+                            <option value="${provider.value}">
+                                    ${provider.label}
+                            </option>
+                        </c:forEach>
                     </select> &nbsp; &nbsp; &nbsp; Sort: <select name="note_sort"
-                                                                              onchange="document.caseManagementViewForm.method.value='view';document.caseManagementViewForm.note_view.value='${param.note_view}';document.caseManagementViewForm.submit()">
+                                                                 onchange="document.caseManagementViewForm.method.value='view';document.caseManagementViewForm.note_view.value='${param.note_view}';document.caseManagementViewForm.submit()">
                         <option value="observation_date_desc">Observation Date - Desc</option>
                         <option value="observation_date_asc">Observation Date - Asc</option>
                         <option value="providerName">Provider</option>

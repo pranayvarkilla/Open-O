@@ -60,8 +60,11 @@
                                         </tr>
                                         <td><select multiple="true" name="selectedAddTypes"
                                                          size="10" style="width:150">
-                                            <html:options collection="formHiddenVector" property="formName"
-                                                          labelProperty="formName"/>
+                                            <c:forEach var="f" items="${formHiddenVector}">
+                                                <option value="${f.formName}">
+                                                        ${f.formName}
+                                                </option>
+                                            </c:forEach>
                                         </select></td>
                                         <td>
                                             <table>
@@ -82,8 +85,11 @@
                                         </td>
                                         <td><select multiple="true"
                                                          name="selectedDeleteTypes" size="10" style="width:150">
-                                            <html:options collection="formShownVector" property="formName"
-                                                          labelProperty="formName"/>
+                                            <c:forEach var="f" items="${formShownVector}">
+                                                <option value="${f.formName}">
+                                                        ${f.formName}
+                                                </option>
+                                            </c:forEach>
                                         </select></td>
                             </tr>
                             <tr>

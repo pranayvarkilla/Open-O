@@ -631,8 +631,7 @@
                                     String user = (String) session.getAttribute("user");
                                 %> <input
                                     type="button"
-                                    onclick="popupXmlMsg('<html:rewrite
-                                            action="/form/HSFOXmlTransfer.do"/>?xmlHsfoProviderNo=<%=user%>&xmlHsfoDemographicNo=<%=patient%>')"
+                                    onclick="popupXmlMsg('<%=request.getContextPath() %>/form/HSFOXmlTransfer.do?xmlHsfoProviderNo=<%=user%>&xmlHsfoDemographicNo=<%=patient%>')"
                                     value="Submit current patient's data"></td>
                         </tr>
 

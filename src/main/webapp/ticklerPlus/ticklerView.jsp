@@ -178,7 +178,11 @@
                     <%
                         }
                     %>
-                    <html:options collection="providers" property="providerNo" labelProperty="formattedName"/>
+                    <c:forEach var="provider" items="${providers}">
+                        <option value="${provider.providerNo}">
+                                ${provider.formattedName}
+                        </option>
+                    </c:forEach>
                 </select>
                 <input type="button" value="Re-Assign Task" onclick="reassign_tickler()"/>
                 <%

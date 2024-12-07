@@ -80,13 +80,13 @@
             Swipe card
         </p>
         <p class="span">
-            <html:text property="magneticStripe" size="79"/>
+            <input type="checkbox" name="magneticStripe" size="79" />
         </p>
         </p>
 
         <p class="row">
         <p class="span2">
-            <html:submit value="Validate"/>
+            <input type="submit" value="Validate" />
         </p>
         </p>
     </div>

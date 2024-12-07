@@ -31,7 +31,7 @@
 </c:set>
 <%
     //This little piece of code is needed to expose the value-map from the formbean
-    //to the scriptlets - too bad html:text doesn't support the id attribute.
+    //to the scriptlets - too bad html doesn't support the id attribute.
 %>
 <script>
     function select_checkbox(name) {

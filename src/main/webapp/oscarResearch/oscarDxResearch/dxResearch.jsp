@@ -210,7 +210,18 @@
             <tr>
                 <td><form action="${pageContext.request.contextPath}/oscarResearch/oscarDxResearch/dxResearch.do" method="post">
                     <table>
-                        <html:errors/>
+                        <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
                         <tr>
                             <td id="codeSelectorTable">
 
@@ -234,7 +245,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><html:text styleClass="form-control" property="xml_research1"
+                                        <td><input type="text" class="form-control" name="xml_research1"
                                                        disabled="<%=disable%>"/>
                                             <input type="hidden" name="demographicNo"
                                                    value="<c:out value="${demographicNo}"/>">
@@ -242,19 +253,19 @@
                                                    value="<c:out value="${providerNo}"/>"></td>
                                     </tr>
                                     <tr>
-                                        <td><html:text styleClass="form-control" property="xml_research2"
+                                        <td><input type="text" class="form-control" name="xml_research2"
                                                        disabled="<%=disable%>"/></td>
                                     </tr>
                                     <tr>
-                                        <td><html:text styleClass="form-control" property="xml_research3"
+                                        <td><input type="text" class="form-control" name="xml_research3"
                                                        disabled="<%=disable%>"/></td>
                                     </tr>
                                     <tr>
-                                        <td><html:text styleClass="form-control" property="xml_research4"
+                                        <td><input type="text" class="form-control" name="xml_research4"
                                                        disabled="<%=disable%>"/></td>
                                     </tr>
                                     <tr>
-                                        <td><html:text styleClass="form-control" property="xml_research5"
+                                        <td><input type="text" class="form-control" name="xml_research5"
                                                        disabled="<%=disable%>"/></td>
                                     </tr>
                                     <tr>

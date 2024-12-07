@@ -98,9 +98,12 @@
                         <div style="display:none;" id="taskAssigneeProviderContainer">
                             <h3>Select a provider from the list to set as your default assignee:</h3>
                             <br>
-                            <select name="value"
-                                         onchange="updateTaskAssignee(this.value)">
-                                <html:options collection="providerSelect" property="value" labelProperty="label"/>
+                            <select name="value" onchange="updateTaskAssignee(this.value)">
+                                <c:forEach var="provider" items="${providerSelect}">
+                                    <option value="${provider.value}">
+                                            ${provider.label}
+                                    </option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>

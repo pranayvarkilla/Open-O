@@ -291,8 +291,10 @@
                     <td style="border-left:solid #ddddff 3px">
                         <div style="height:150px;overflow:auto">
                             <ul style="padding:0;margin:0;list-style:none inside none">
-                                <li><html:multibox property="filter_providers" value="a"
-                                                   onclick="filterCheckBox(this)"></html:multibox><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/></li>
+                                <li>
+                                    <input type="checkbox" name="filter_providers" value="a" onclick="filterCheckBox(this)" />
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/>
+                                </li>
                                 <%
                                     @SuppressWarnings("unchecked")
                                     Set<Provider> providers = (Set<Provider>) request.getAttribute("providers");
@@ -304,8 +306,8 @@
                                         prov = iter.next();
                                         providerNo = prov.getProviderNo();
                                 %>
-                                <li><html:multibox property="filter_providers" value="<%=providerNo%>"
-                                                   onclick="filterCheckBox(this)"></html:multibox><%=prov.getFormattedName()%>
+                                <li>
+                                    <input type="checkbox" name="filter_providers" value="<%= providerNo %>" onclick="filterCheckBox(this)" /><%=prov.getFormattedName()%>
                                 </li>
                                 <%
                                     }
@@ -316,16 +318,19 @@
                     <td style="border-left:solid #ddddff 3px">
                         <div style="height:150px;overflow:auto">
                             <ul style="padding:0;margin:0;list-style:none inside none">
-                                <li><html:multibox property="filter_roles" value="a"
-                                                   onclick="filterCheckBox(this)"></html:multibox><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/></li>
+                                <li>
+                                    <input type="checkbox" name="filter_roles" value="a" onclick="filterCheckBox(this)" />
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/>
+                                </li>
                                 <%
                                     @SuppressWarnings("unchecked")
                                     List roles = (List) request.getAttribute("roles");
                                     for (int num = 0; num < roles.size(); ++num) {
                                         Secrole role = (Secrole) roles.get(num);
                                 %>
-                                <li><html:multibox property="filter_roles" value="<%=String.valueOf(role.getId())%>"
-                                                   onclick="filterCheckBox(this)"></html:multibox><%=role.getName()%>
+                                <li>
+                                    <input type="checkbox" name="filter_roles" value="<%=String.valueOf(role.getId())%>" onclick="filterCheckBox(this)" />
+                                    <%=role.getName()%>
                                 </li>
                                 <%
                                     }
@@ -357,10 +362,12 @@
                     <td style="border-left:solid #ddddff 3px;">
                         <div style="height:150px;overflow:auto">
                             <ul style="padding:0;margin:0;list-style:none inside none">
-                                <li><html:multibox property="issues" value="a"
-                                                   onclick="filterCheckBox(this)"></html:multibox><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/></li>
-                                <li><html:multibox property="issues" value="n"
-                                                   onclick="filterCheckBox(this)"></html:multibox>None
+                                <li>
+                                    <input type="checkbox" name="issues" value="a" onclick="filterCheckBox(this)" />
+                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.sortAll.title"/>
+                                </li>
+                                <li>
+                                    <input type="checkbox" name="issues" value="n" onclick="filterCheckBox(this)" />None
                                 </li>
 
                                 <%
@@ -369,9 +376,10 @@
                                     for (int num = 0; num < issues.size(); ++num) {
                                         CheckBoxBean issue_checkBoxBean = (CheckBoxBean) issues.get(num);
                                 %>
-                                <li><html:multibox property="issues"
-                                                   value="<%=String.valueOf(issue_checkBoxBean.getIssue().getId())%>"
-                                                   onclick="filterCheckBox(this)"></html:multibox><%=issue_checkBoxBean.getIssueDisplay().getResolved().equals("resolved") ? "* " : ""%> <%=issue_checkBoxBean.getIssueDisplay().getDescription()%>
+                                <li>
+                                    <input type="checkbox" name="issues" value="<%=String.valueOf(issue_checkBoxBean.getIssue().getId())%>"
+                                                   onclick="filterCheckBox(this)" />
+                                    <%=issue_checkBoxBean.getIssueDisplay().getResolved().equals("resolved") ? "* " : ""%> <%=issue_checkBoxBean.getIssueDisplay().getDescription()%>
                                 </li>
                                 <%
                                     }

@@ -79,14 +79,14 @@
         </tr>
         <tr>
             <td>Date:</td>
-            <td><html:text property="date"/></td>
+            <td><input type="text" name="date" id="date" /></td>
         </tr>
         <tr>
             <td>Time:</td>
-            <td><html:text property="time"/></td>
+            <td><input type="text" name="time" id="time" /></td>
         </tr>
         <tr>
-            <td><html:submit/></td>
+            <td><input type="submit" name="submit" value="Submit" /></td>
         </tr>
     </form>
 </table>

@@ -40,8 +40,11 @@ TODO: Localize Strings
         <td><label for="status">Change Type:</label></td>
         <td><select id="status" name="status"
                          onchange="javascript:document.forms[0].xml_status.value = this.value;callToggleWCB();">
-            <html:options collection="statusTypes" property="billingstatus"
-                          labelProperty="displayNameExt"/>
+            <c:forEach var="statusType" items="${statusTypes}">
+                <option value="${statusType.billingstatus}">
+                        ${statusType.displayNameExt}
+                </option>
+            </c:forEach>
         </select></td>
     </tr>
 </table>

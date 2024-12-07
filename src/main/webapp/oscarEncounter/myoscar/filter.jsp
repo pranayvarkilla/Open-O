@@ -68,18 +68,18 @@
         <input type="hidden" name="demoNo" id="demoNo" value="${param.demoNo}"/>
         <div class="input-group">
             <div class="input-group-addon">From</div>
-            <html:text styleId="from" name="EctMyOscarFilterForm" property="from" value="${param.from}"
-                       styleClass="form-control"/>
+            <input type="text" id="from" property="from" value="${param.from}"
+                       class="form-control"/>
         </div>
     </div>
     <div class="form-group">
         <div class="input-group">
             <div class="input-group-addon">To</div>
-            <html:text styleId="to" name="EctMyOscarFilterForm" property="to" value="${param.to}"
-                       styleClass="form-control"/>
+            <input type="text" id="to" name="to" value="${param.to}"
+                       class="form-control"/>
         </div>
     </div>
     <div class="form-group">
-        <html:submit value="Filter" styleClass="btn btn-default"/>
+        <input type="submit" value="Filter" class="btn btn-default"/>
     </div>
 </form>

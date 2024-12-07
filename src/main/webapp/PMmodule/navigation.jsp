@@ -106,7 +106,7 @@
 
         alert("Generating report from " + startDate + " to " + endDate + ". Please note: it is normal for the generation process to take up to a few minutes to complete, be patient.");
 
-        var url = '<html:rewrite action="/PMmodule/GenericIntake/Report"/>?' + 'method=report' + '&type=' + type + '&startDate=' + startDate + '&endDate=' + endDate + '&includePast=' + includePast;
+        var url = '<%=request.getContextPath() %>/PMmodule/GenericIntake/Report.do?' + 'method=report' + '&type=' + type + '&startDate=' + startDate + '&endDate=' + endDate + '&includePast=' + includePast;
 
         popupPage2(url, "IntakeReport" + type);
     }
@@ -114,7 +114,7 @@
 
     function getGeneralFormsReport() {
 
-        popupPage2('<html:rewrite action="/PMmodule/ClientManager.do"/>?method=getGeneralFormsReport', "generalFormsReport");
+        popupPage2('<%=request.getContextPath() %>/PMmodule/ClientManager.do?method=getGeneralFormsReport', "generalFormsReport");
     }
 
 
@@ -130,7 +130,7 @@
 
         alert('Generating report for date ' + startDate);
 
-        popupPage2('<html:rewrite action="/PMmodule/StreetHealthIntakeReportAction.do"/>?startDate=' + startDate, "StreetHealthReport");
+        popupPage2('<%=request.getContextPath() %>/PMmodule/StreetHealthIntakeReportAction.do?startDate=' + startDate, "StreetHealthReport");
     }
 
     function popupPage2(varpage, windowname) {

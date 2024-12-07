@@ -52,7 +52,7 @@
 
 <script>
     function cancel() {
-        location.href = '<html:rewrite action="/PMmodule/GenericIntake/Search.do"/>';
+        location.href = '<%=request.getContextPath() %>/PMmodule/GenericIntake/Search.do';
     }
 
     function submit() {

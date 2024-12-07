@@ -139,7 +139,11 @@
                         <c:out value="${defaultDocQueueProperty.value}"/>
                         <input type="hidden" name="method" value="<c:out value="${method}"/>">
                         <select name="existingDefaultDocQueueProperty.value" id="existingDefaultDocQueueProperty.value">
-                            <html:options collection="viewChoices" property="value" labelProperty="label"/>
+                            <c:forEach var="viewChoice" items="${viewChoices}">
+                                <option value="${viewChoice.value}">
+                                        ${viewChoice.label}
+                                </option>
+                            </c:forEach>
                         </select>
                     </div>
                 </td>
@@ -155,7 +159,7 @@
                 <td class="MainTableRightColumn">
                     <div id="saveNew" style="display:none">
                         <input type="hidden" name="method" value="<c:out value="${method}"/>">
-                        <html:text property="newDefaultDocQueueProperty.value"/>
+                        <input type="text" name="newDefaultDocQueueProperty.value" id="newDefaultDocQueueProperty.value" />
                     </div>
                 </td>
             </tr>

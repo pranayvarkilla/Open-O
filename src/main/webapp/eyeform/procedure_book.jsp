@@ -44,7 +44,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href='<html:rewrite page="/jsCalendar/skins/aqua/theme.css" />'/>
+    <link rel="stylesheet" type="text/css" href='${request.contextPath}/jsCalendar/skins/aqua/theme.css'/>
 
     <link rel="stylesheet" type="text/css" media="all" href="<%=request.getContextPath()%>/share/calendar/calendar.css"
           title="win2k-cold-1"/>
@@ -70,7 +70,7 @@ Book Procedure
         <tr>
             <td class="genericTableHeader">Procedure name</td>
             <td class="genericTableData">
-                <html:text property="data.procedureName" size="50"/>
+                <input type="checkbox" name="data.procedureName" size="50" />
             </td>
         </tr>
 
@@ -91,7 +91,7 @@ Book Procedure
         <tr>
             <td class="genericTableHeader">Location</td>
             <td class="genericTableData">
-                <html:text property="data.location" size="35"/>
+                <input type="checkbox" name="data.location" size="35" />
             </td>
         </tr>
         <tr>
@@ -107,7 +107,7 @@ Book Procedure
 
 
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <html:submit value="Book Procedure"/>
+                <input type="submit" value="Book Procedure" />
 
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="button" name="cancel" value="Cancel" onclick="window.close()"/>

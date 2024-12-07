@@ -107,16 +107,16 @@
                                 </tr>
 
                                 <tr valign="center">
-                                    <td colspan="2">Start Date: <html:text
-                                            property="startDate" size="10" maxlength="10"/>
+                                    <td colspan="2">Start Date: <input type="text"
+                                            name="startDate" size="10" maxlength="10"/>
                                         (yyyy-mm-dd OR yyyy-mm OR yyyy)
                                     </td>
 
                                 </tr>
 
                                 <tr valign="center">
-                                    <td colspan="2">Age Of Onset: <html:text
-                                            property="ageOfOnset" size="4" maxlength="4"/></td>
+                                    <td colspan="2">Age Of Onset: <input type="text"
+                                            name="ageOfOnset" size="4" maxlength="4"/></td>
 
                                 </tr>
 
@@ -146,8 +146,8 @@
 
 
                                 <tr>
-                                    <td colspan="2"><html:submit property="submit"
-                                                                 value="Add Allergy" styleClass="ControlPushButton"/>
+                                    <td colspan="2">
+                                        <input type="submit" name="submit" value="Add Allergy" class="ControlPushButton"/>
                                         <input
                                                 type=button class="ControlPushButton"
                                                 onclick="javascript:document.forms.RxAddAllergyForm.reactionDescription.value='';document.forms.RxAddAllergyForm.startDate.value='';document.forms.RxAddAllergyForm.ageOfOnset.value='';document.forms.RxAddAllergyForm.reactionDescription.focus();"

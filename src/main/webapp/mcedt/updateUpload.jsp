@@ -71,18 +71,31 @@
             <form action="${pageContext.request.contextPath}/mcedt/update" method="post" styleId="form"
                        enctype="multipart/form-data">
 
-                <html:errors/>
+                <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
 
-            <html:messages id="message" bundle="mcedt" message="true">
-                <c:out value="${message}"/>
-            </html:messages>
+                <c:if test="${not empty savedMessage}">
+                    <div class="messages">
+                            ${savedMessage}
+                    </div>
+                </c:if>
 
             <input id="method" name="method" type="hidden"
                    value="addUpdateRequest"/>
 
             <div class="form-group">
                 <label>Upload ID</label>
-                <html:text property="resourceId" readonly="true"/>
+                <input type="text" name="resourceId" readonly="true"/>
             </div>
 
             <div class="form-group">

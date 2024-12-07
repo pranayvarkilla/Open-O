@@ -129,7 +129,7 @@
         <table width="50%">
             <tr>
                 <td colspan="2">
-                    <html:submit value="Save"/> 
+                    <input type="submit" value="Save" /> 
                     <button type="button" onclick="window.history.back();">Cancel</button>
                 </td>
             </tr>

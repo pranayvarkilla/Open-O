@@ -822,7 +822,18 @@
     <body onload="javascript:loader();" onUnload="notifyChildren();"
           topmargin="0" leftmargin="0" bottommargin="0" rightmargin="0"
           vlink="#0000FF">
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
 
     <table border="0" cellpadding="0" cellspacing="0"
            style="border-collapse: collapse; width: 100%; height: 680"

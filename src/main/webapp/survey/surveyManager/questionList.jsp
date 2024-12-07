@@ -40,10 +40,10 @@
         <table>
             <tr>
                 <td>Description:</td>
-                <td><html:text property="survey.description"/></td>
+                <td><input type="text" name="survey.description" id="survey.description" /></td>
             </tr>
         </table>
-        <html:submit value="save"/>
+        <input type="submit" value="save" />
         <button type="button" onclick="window.history.back();">Cancel</button>
     </form>
     </body>

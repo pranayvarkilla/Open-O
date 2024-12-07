@@ -39,9 +39,9 @@
             </td>
         </tr>
         <tr>
-            <td><html:submit value="Import"/> <input type="button"
+            <td><input type="submit" value="Import" /> <input type="button"
                                                      value="Cancel"
-                                                     onclick="location.href='<html:rewrite action="/SurveyManager"/>'"/>
+                                                     onclick="location.href='<%=request.getContextPath() %>/SurveyManager.do'"/>
             </td>
         </tr>
     </table>

@@ -50,16 +50,16 @@
     <%if (!OscarProperties.getInstance().isTorontoRFQ()) { %>
     <tr>
         <td bgcolor="white">Primary Health Care Provider</td>
-        <td bgcolor="white"><html:text property="cpp.primaryPhysician"/></td>
+        <td bgcolor="white"><input type="text" name="cpp.primaryPhysician" id="cpp.primaryPhysician" /></td>
     </tr>
     <%} %>
     <tr>
         <td bgcolor="white">Primary Counsellor/Caseworker</td>
-        <td bgcolor="white"><html:text property="cpp.primaryCounsellor"/></td>
+        <td bgcolor="white"><input type="text" name="cpp.primaryCounsellor" id="cpp.primaryCounsellor" /></td>
     </tr>
     <tr>
         <td bgcolor="white">Other File Number</td>
-        <td bgcolor="white"><html:text property="cpp.otherFileNumber"/></td>
+        <td bgcolor="white"><input type="text" name="cpp.otherFileNumber" id="cpp.otherFileNumber" /></td>
     </tr>
     <tr height="10">
         <td bgcolor="white" colspan="2">&nbsp;</td>
@@ -100,10 +100,8 @@
                 name="otherSupportSystems" rows="2" cols="95"></textarea></td>
     </tr>
 </table>
-<html:submit value="Save"
-             onclick="this.form.method.value='patientCPPSave'"/>
-<html:submit value="Print Preview"
-             onclick="this.form.method.value='patientCppPrintPreview'"></html:submit>
+<input type="submit" name="submit" value="Save" onclick="this.form.method.value='patientCPPSave'"/>
+<input type="submit" name="submit" value="Print Preview" onclick="this.form.method.value='patientCppPrintPreview'" />
 <c:if test="${not empty requestScope.messages}">
     <c:forEach var="message" items="${requestScope.messages}">
         <div style="color: blue"><I><c:out value="${message}"/></I></div>

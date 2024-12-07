@@ -1551,7 +1551,18 @@ if (userAgent != null) {
     <body topmargin="0" leftmargin="0" vlink="#0000FF"
           onload="window.focus();disableDateFields();disableEditing();showSignatureImage();">
     <jsp:include page="../../images/spinner.jsp" flush="true"/>
-    <html:errors/>
+    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
     <form style="consultationRequestForm" action="${pageContext.request.contextPath}/oscarEncounter/RequestConsultation.do"
                 method="post" onsubmit="alert('HTHT'); return false;">
         <%
@@ -1977,12 +1988,12 @@ if (userAgent != null) {
                                                 <%
                                                     if (request.getAttribute("id") != null) {
                                                 %>
-                                                <html:text styleId="referalDate" property="referalDate"
+                                                <input type="text" id="referalDate" name="referalDate"
                                                            ondblclick="this.value='';"/>
                                                 <%
                                                 } else {
                                                 %>
-                                                <html:text styleId="referalDate" property="referalDate"
+                                                <input type="text" id="referalDate" name="referalDate"
                                                            ondblclick="this.value='';" value="<%=formattedDate%>"/>
                                                 <%
                                                     }
@@ -1994,7 +2005,7 @@ if (userAgent != null) {
                                                                     property="CONSULTATION_LOCK_REFERRAL_DATE">
 
                                             <td class="tite3">
-                                                <html:text styleId="referalDate" property="referalDate" readonly="true"
+                                                <input type="text" id="referalDate" name="referalDate" readonly="true"
                                                            value="<%=formattedDate%>"/>
                                             </td>
 
@@ -2146,9 +2157,7 @@ if (userAgent != null) {
                                                                 property="CONSULTATION_PATIENT_WILL_BOOK">
                                         <tr>
                                             <td class="tite4"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.ConsultationFormRequest.formPatientBook"/></td>
-                                            <td class="tite3"><html:checkbox property="patientWillBook" value="1"
-                                                                             onclick="disableDateFields()">
-                                            </html:checkbox></td>
+                                            <td class="tite3"><input type="checkbox" name="patientWillBook" value="1" onclick="disableDateFields()" /></td>
                                         </tr>
                                     </oscar:oscarPropertiesCheck>
 
@@ -2158,7 +2167,7 @@ if (userAgent != null) {
                                         </td>
                                         <td class="tite3"><img alt="calendar" id="appointmentDate_cal"
                                                                src="../../images/cal.gif">
-                                            <html:text styleId="appointmentDate" property="appointmentDate"
+                                            <input type="text" id="appointmentDate" name="appointmentDate"
                                                        readonly="true" ondblclick="this.value='';"/>
                                         </td>
                                     </tr>
@@ -2319,7 +2328,7 @@ if (userAgent != null) {
                                         </td>
                                         <td class="tite3">
                                             <img alt="calendar" id="followUpDate_cal" src="../../images/cal.gif"/>
-                                            <html:text styleId="followUpDate" property="followUpDate"
+                                            <input type="text" id="followUpDate" name="followUpDate"
                                                        ondblclick="this.value='';"/>
                                         </td>
 

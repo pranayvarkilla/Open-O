@@ -300,21 +300,21 @@
 
                 <input type="checkbox" onClick="toggle(this)"/>Select All<br/>
 
-                <html:checkbox property="exPersonalHistory"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.personalhistory"/></html:checkbox><br>
-                <html:checkbox property="exFamilyHistory"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.familyhistory"/></html:checkbox><br>
-                <html:checkbox property="exPastHealth"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.pasthealth"/></html:checkbox><br>
-                <html:checkbox property="exProblemList"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.problemlist"/></html:checkbox><br>
-                <html:checkbox property="exRiskFactors"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.riskfactors"/></html:checkbox><br>
-                <html:checkbox property="exAllergiesAndAdverseReactions"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.allergiesadversereaction"/></html:checkbox><br>
-                <html:checkbox property="exMedicationsAndTreatments"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.medicationstreatments"/></html:checkbox><br>
+                <input type="checkbox" name="exPersonalHistory" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.personalhistory"/><br>
+                <input type="checkbox" name="exFamilyHistory" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.familyhistory"/><br>
+                <input type="checkbox" name="exPastHealth" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.pasthealth"/><br>
+                <input type="checkbox" name="exProblemList" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.problemlist"/><br>
+                <input type="checkbox" name="exRiskFactors" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.riskfactors"/><br>
+                <input type="checkbox" name="exAllergiesAndAdverseReactions" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.allergiesadversereaction"/><br>
+                <input type="checkbox" name="exMedicationsAndTreatments" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.medicationstreatments"/><br>
 
-                <html:checkbox property="exImmunizations"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.immunization"/></html:checkbox><br>
-                <html:checkbox property="exLaboratoryResults"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.laboratoryresults"/></html:checkbox><br>
-                <html:checkbox property="exAppointments"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.appointments"/></html:checkbox><br>
-                <html:checkbox property="exClinicalNotes"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.clinicalnotes"/></html:checkbox><br>
-                <html:checkbox property="exReportsReceived"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.reportsreceived"/></html:checkbox><br>
-                <html:checkbox property="exCareElements"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.careelements"/></html:checkbox><br>
-                <html:checkbox property="exAlertsAndSpecialNeeds"><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.alertsandspecialneeds"/></html:checkbox>
+                <input type="checkbox" name="exImmunizations" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.immunization"/><br>
+                <input type="checkbox" name="exLaboratoryResults" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.laboratoryresults"/><br>
+                <input type="checkbox" name="exAppointments" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.appointments"/><br>
+                <input type="checkbox" name="exClinicalNotes" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.clinicalnotes"/><br>
+                <input type="checkbox" name="exReportsReceived" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.reportsreceived"/><br>
+                <input type="checkbox" name="exCareElements" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.careelements"/><br>
+                <input type="checkbox" name="exAlertsAndSpecialNeeds" value="true" /><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicexport.alertsandspecialneeds"/>
 
                 <br>
                 <input type="hidden" name="pgpReady" id="pgpReady" value="<%=pgp_ready%>"/>

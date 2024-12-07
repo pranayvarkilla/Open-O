@@ -96,10 +96,9 @@
                             <table>
                                 <tr>
                                     <td><fmt:setBundle basename="oscarResources"/><fmt:message key="ChoosePatient.textBox"/></td>
-                                    <td><html:text property="surname" size="16" maxlength="16"/>
+                                    <td><input type="checkbox" name="surname" size="16" maxlength="16" />
                                     </td>
-                                    <td><html:submit property="submit" value="Search"
-                                                     styleClass="ControlPushButton"/></td>
+                                    <td><input type="submit" name="submit" value="Search" class="ControlPushButton"/></td>
                                 </tr>
                             </table>
                         </form></td>

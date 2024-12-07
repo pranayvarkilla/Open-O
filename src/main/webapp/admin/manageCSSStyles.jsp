@@ -275,12 +275,15 @@
 
             <select name="selectedStyle" id="style">
                 <option value="-1"><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.manageCodeStyles.NoneSelected"/></option>
-                <html:optionsCollection property="styles" label="name" value="style"></html:optionsCollection>
+                <c:forEach items="${styles}" var="style">
+                    <option value="${style.style}">${style.name}</option>
+                </c:forEach>
             </select>
 
             <input class="btn" type="button" onclick="edit();return false;"
                    value="<fmt:setBundle basename="oscarResources"/><fmt:message key="admin.manageCodeStyles.Edit"/>"/>
-            <html:submit value="Delete" styleClass="btn" onclick="return deleteStyle();"></html:submit>
+            <input type="submit" name="submit" value="Delete" class="btn" onclick="return deleteStyle();"/>
+
 
         </div>
         <!--select existing styles-->
@@ -289,7 +292,7 @@
         <div class="row">
 
             <fmt:setBundle basename="oscarResources"/><fmt:message key="admin.manageCodeStyles.StyleName"/><br>
-            <html:text styleId="styleName" property="styleName"></html:text>
+            <input type="text" id="styleName" name="styleName"/>
             <!--<br><br>
 <small><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.manageCodeStyles.Instructions"/></small>-->
 
@@ -385,8 +388,7 @@
             <hr>
             <input class="btn btn-large" type="button" value="<fmt:setBundle basename="oscarResources"/><fmt:message key="admin.manageCodeStyles.Clear"/>"
                    onclick="reinit();return false;"/>
-            <html:submit value="Save" styleClass="btn btn-large btn-primary"
-                         onclick="return checkfields();"></html:submit>
+            <input type="submit" name="submit" value="Save" class="btn btn-large btn-primary" onclick="return checkfields();" />
         </div>
 
     </form>

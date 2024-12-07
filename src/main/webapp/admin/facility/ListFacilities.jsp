@@ -45,8 +45,8 @@
 <html>
     <head>
         <title>Facilities</title>
-        <link rel="stylesheet" type="text/css" href='<html:rewrite page="/css/tigris.css" />'/>
-        <link rel="stylesheet" type="text/css" href='<html:rewrite page="/css/displaytag.css" />'/>
+        <link rel="stylesheet" type="text/css" href='${request.contextPath}/css/tigris.css'/>
+        <link rel="stylesheet" type="text/css" href='${request.contextPath}/css/displaytag.css'/>
 
         <script>
             function ConfirmDelete(name) {
@@ -72,7 +72,7 @@
             <display:column property="description" sortable="true" title="Description"/>
 
             <display:column sortable="false" title="">
-                <a href="<html:rewrite action="/FacilityManager.do"/>?method=edit&id=<c:out value="${facility.id}" />">
+                <a href="<%=request.getContextPath() %>/FacilityManager.do?method=edit&id=<c:out value="${facility.id}" />">
                     Edit </a>
             </display:column>
             <!--

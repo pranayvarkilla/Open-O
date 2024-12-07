@@ -92,7 +92,7 @@
                     </c:forEach>
                 </select>
                 <label class="control-label" for="description">Description:</label>
-                <html:text styleId="description" property="description" value=""/>
+                <input type="text" name="description" id="description" value=""/>
 
                 <label class="control-label" for="content">File Upload</label>
                 <input type="file" name="content" id="content" style="content"/>

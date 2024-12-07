@@ -64,8 +64,8 @@
                 <%if (request.getAttribute("status") == null) {%>
                 <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
-                    <html:checkbox property="hideOldEchartLinkInApptProperty.checked">
-                        <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.btnHideOldEchartLinkInAppt"/></html:checkbox>
+                    <input type="checkbox" name="hideOldEchartLinkInApptProperty.checked" />
+                        <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.btnHideOldEchartLinkInAppt"/>
                     <br/><br/>
                     <input type="submit" value="<%=bundle.getString(providerbtnSubmit)%>"/>
                     <input type="button" value="<%=bundle.getString(providerbtnCancel)%>"

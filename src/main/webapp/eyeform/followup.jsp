@@ -33,7 +33,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href='<html:rewrite page="/jsCalendar/skins/aqua/theme.css" />'/>
+    <link rel="stylesheet" type="text/css" href='${request.contextPath}/jsCalendar/skins/aqua/theme.css'/>
 
     <link rel="stylesheet" type="text/css" media="all" href="<%=request.getContextPath()%>/share/calendar/calendar.css"
           title="win2k-cold-1"/>
@@ -80,7 +80,7 @@ Follow Up/Consult
             <td colspan="2">
 
 
-                <html:text property="followup.timespan" size="4" styleId="width: 25px;" styleClass="special"/>
+                <input type="text" name="followup.timespan" size="4" id="width: 25px;" class="special"/>
 
                 <select property="followup.timeframe" styleId="width: 50px;" styleClass="special">
                     <option value="days">days</option>
@@ -103,7 +103,7 @@ Follow Up/Consult
             </td>
         </tr>
         <tr>
-            <td><br/><html:submit value="submit"/></td>
+            <td><br/><input type="submit" value="submit" /></td>
         </tr>
         </tbody>
     </table>

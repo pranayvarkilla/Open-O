@@ -447,7 +447,7 @@
                     </div>
                     <div>
                         As of:
-                        <html:text property="asofDate" size="9" styleId="asofDate"/> <a id="date"><img title="Calendar"
+                        <input type="text" name="asofDate" size="9" styleId="asofDate"/> <a id="date"><img title="Calendar"
                                                                                                        src="../images/cal.gif"
                                                                                                        alt="Calendar"
                                                                                                        border="0"/></a>

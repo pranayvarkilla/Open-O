@@ -94,7 +94,7 @@
 
     <textarea name="srcText" rows="5" cols="80"></textarea>
     <input type="hidden" name="isPreview" id="isPreview" value="false"/>
-    <html:submit property="ok"/>
+    <input type="submit" name="ok" value="Apply" />
     <input type="hidden" name="pdfTitle" id="pdfTitle" value="<%=pdfTitle%>"/>
 
 </form>

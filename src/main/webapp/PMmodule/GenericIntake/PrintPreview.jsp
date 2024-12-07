@@ -45,7 +45,7 @@
             // -->
         </script>
         <script type="text/javascript"
-                src="<html:rewrite page="/dojoAjax/dojo.js" />"></script>
+                src="${request.contextPath}/dojoAjax/dojo.js"></script>
         <script type="text/javascript">
             <!--
             dojo.require("dojo.widget.*");

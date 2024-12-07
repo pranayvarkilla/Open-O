@@ -118,10 +118,7 @@
                 <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
                     <c:forEach var="viewChoice" items="${viewChoices}">
-                        <html:multibox property="rxProfileViewProperty.valueArray">
-                            <c:out value="${viewChoice.value}"/>
-                        </html:multibox>
-                        <c:out value="${viewChoice.label}"/>
+                        <input type="checkbox" name="valueArray" value="<c:out value="${viewChoice.value}"/>"/> <c:out value="${viewChoice.label}"/>
                     </c:forEach>
                     <br/>
                     <input type="submit" value="<%=bundle.getString(providerbtnSubmit)%>"/>

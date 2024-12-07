@@ -190,7 +190,18 @@
                                         <td>
                                             <div class="well">
                                                 <table class="table table-striped">
-                                                    <html:errors/>
+                                                    <% 
+    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    if (actionErrors != null && !actionErrors.isEmpty()) {
+%>
+    <div class="action-errors">
+        <ul>
+            <% for (String error : actionErrors) { %>
+                <li><%= error %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
                                                     <tr class="Header">
                                                         <th style="width:120px"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarMeasurements.Measurements.headingType"/>
                                                         </th>

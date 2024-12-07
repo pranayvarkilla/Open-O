@@ -76,13 +76,13 @@
                 <form action="${pageContext.request.contextPath}/setProviderStaleDate.do" method="post">
                     <input type="hidden" name="method" value="<c:out value="${method}"/>">
                     <br/>
-                    Name: <html:text property="appointmentCardName.value" size="50"/>
+                    Name: <input type="checkbox" name="appointmentCardName.value" size="50" />
                     <br/>
-                    Phone: <html:text property="appointmentCardPhone.value" size="50"/>
+                    Phone: <input type="checkbox" name="appointmentCardPhone.value" size="50" />
                     <br/>
-                    Fax: <html:text property="appointmentCardFax.value" size="50"/>
+                    Fax: <input type="checkbox" name="appointmentCardFax.value" size="50" />
                     <br/>
-                    <html:submit property="btnApply"/>
+                    <input type="submit" name="btnApply" value="Apply" />
                 </form>
 
                 <%} else {%>

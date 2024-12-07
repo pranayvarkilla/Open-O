@@ -91,10 +91,12 @@
         </tr>
 
         <tr>
-            <td colspan="2"><c:if
-                    test="${requestScope.hasOverridePermission}">
-                <html:submit property="submit.override">Override</html:submit>
-            </c:if> <button type="button" onclick="window.history.back();">Cancel</button></td>
+            <td colspan="2">
+                <c:if test="${requestScope.hasOverridePermission}">
+                    <input type="submit" name="submit" value="Override" />
+                </c:if>
+                <button type="button" onclick="window.history.back();">Cancel</button>
+            </td>
         </tr>
 
     </table>

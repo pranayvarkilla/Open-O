@@ -209,7 +209,7 @@
         </option>
                 <% } %>
         </select><br/>
-        Timeshift (in days +/-):&nbsp;<html:text property="timeshiftInDays" value="0" size="5"/></br/>
+        Timeshift (in days +/-):&nbsp;<input type="text" name="timeshiftInDays" value="0" size="5"/></br/>
                 <%} %>
         If patient's providers do not have OHIP numbers:<br>
         <input type="radio" name="matchProviderNames" value="true"/>

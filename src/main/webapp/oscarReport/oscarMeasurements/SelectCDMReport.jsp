@@ -78,10 +78,13 @@
                     <table class="TopStatusBar">
                         <tr>
                             <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgTitle"/></td>
-                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgSelectCDMGroup"/> <select
-                                    name="value(CDMgroup)">
-                                <html:options collection="CDMGroups" property="groupName"
-                                              labelProperty="groupName"/>
+                            <td><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.CDMReport.msgSelectCDMGroup"/>
+                                <select name="value(CDMgroup)">
+                                    <c:forEach var="CDMGroup" items="${CDMGroups}">
+                                        <option value="${CDMGroup.groupName}">
+                                                ${CDMGroup.groupName}
+                                        </option>
+                                    </c:forEach>
                             </select></td>
                             <td style="text-align: right"><a
                                     href="javascript:popupStart(300,400,'About.jsp')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.about"/></a> | <a

@@ -240,8 +240,7 @@
                                     %>
                                     <tr>
                                         <td class='<%= dm.getType() == 3 ? "integratedMessage" : "normalMessage" %>'
-                                            width="75"><html:checkbox
-                                                property="messageNo" value="<%=dm.getMessageId() %>"/> <%
+                                            width="75"><input type="checkbox" name="messageNo" value="<%=dm.getMessageId() %>"/> <%
                                             String atta = dm.getAttach();
                                             if (atta.equals("1")) {
                                         %><img src="img/clip4.jpg">

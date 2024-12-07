@@ -448,18 +448,14 @@
                                             <tr>
                                                 <td bgcolor="#EEEEFF"></td>
                                                 <td bgcolor="#EEEEFF" colspan="2">
-                                                    <html:submit styleClass="ControlPushButton" property="reply">
-                                                        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnReply"/>
-                                                    </html:submit> <html:submit styleClass="ControlPushButton"
-                                                                                property="replyAll">
-                                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnReplyAll"/>
-                                                </html:submit> <html:submit styleClass="ControlPushButton"
-                                                                            property="forward">
-                                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnForward"/>
-                                                </html:submit> <html:submit styleClass="ControlPushButton"
-                                                                            property="delete">
-                                                    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnDelete"/>
-                                                </html:submit>
+                                                    <input type="submit"  class="ControlPushButton"
+                                                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnReply"/>"/>
+                                                    <input type="submit" class="ControlPushButton"
+                                                        value=" <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnReplyAll"/>"/>
+                                                    <input type="submit" class="ControlPushButton"
+                                                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnForward"/>"/>
+                                                    <input type="submit" class="ControlPushButton"
+                                                        value="<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarMessenger.ViewMessage.btnDelete"/>"/>
                                                     <input type="hidden" name="messageNo" id="messageNo" value="${ viewMessageNo }"/>
                                                 </td>
                                             </tr>

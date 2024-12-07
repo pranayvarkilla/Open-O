@@ -662,8 +662,8 @@
                                 <table style="width: 100%">
                                     <tr>
                                         <td width="10%" class="tite4">cc:</td>
-                                        <td width="90%" class="tite4"><html:text style="width:100%"
-                                                                                 property="cp.cc"/></td>
+                                        <td width="90%" class="tite4"><input type="text" style="width:100%"
+                                                                                 name="cp.cc"/></td>
                                     </tr>
                                 </table>
                             </td>

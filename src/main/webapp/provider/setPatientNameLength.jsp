@@ -77,9 +77,9 @@
                         Invalid input.
                     </p>
                     <fmt:setBundle basename="oscarResources"/><fmt:message key="provider.patientNameLength.title"/>
-                    <html:text styleId="numericFormField" property="patientNameLength.value"/>
+                    <input type="text" id="numericFormField" name="patientNameLength.value"/>
                     <br/>
-                    <html:submit styleClass="btn btn-primary" property="btnApply"/>
+                    <input type="submit" name="submit" value="Apple" class="btn btn-primary" />
                 </form>
 
                 <%} else {%>
