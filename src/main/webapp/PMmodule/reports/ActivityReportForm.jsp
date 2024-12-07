@@ -32,8 +32,7 @@
     <h4>Program Activity Report Generator</h4>
 </div>
 
-<form action="/PMmodule/Reports/ProgramActivityReport"
-           styleId="actForm" class="well form-inline">
+<form action="<%=request.getContextPath() %>/PMmodule/Reports/ProgramActivityReport.do" id="actForm" class="well form-inline">
     <input type="hidden" name="method" value="generate"/>
     <input type="text" id="sdate" name="form.startDate" size="15"/>
     <input type="text" id="edate" name="form.endDate" size="15"/>

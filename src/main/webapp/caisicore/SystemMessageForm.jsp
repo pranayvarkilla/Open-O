@@ -66,8 +66,7 @@
 </table>
 
 <br/>
-<form action="/SystemMessage"
-           onsubmit="return validateRequiredFieldByName('system_message.message', 'Message', 4000);">
+<form action="<%=request.getContextPath() %>/SystemMessage.do" onsubmit="return validateRequiredFieldByName('system_message.message', 'Message', 4000);">
     <input type="hidden" name="method" value="save"/>
     <input type="hidden" name="id" id="id"/>
     <table width="60%" border="0" cellpadding="0" cellspacing="1"
