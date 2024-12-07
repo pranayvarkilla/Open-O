@@ -42,7 +42,7 @@ import org.oscarehr.caisi_integrator.ws.DemographicWs;
 import org.oscarehr.casemgmt.dao.IssueDAO;
 import org.oscarehr.casemgmt.model.Issue;
 import org.oscarehr.casemgmt.service.CaseManagementManager;
-import org.oscarehr.casemgmt.web.CaseManagementView2Action.IssueDisplay;
+import org.oscarehr.casemgmt.web.CaseManagementViewAction.IssueDisplay;
 import org.oscarehr.common.model.Admission;
 import org.oscarehr.common.model.Demographic;
 import org.oscarehr.common.model.Drug;

@@ -42,10 +42,21 @@ import org.oscarehr.util.SpringUtils;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
 
-public class GstControl2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+public class GstControl2Action extends ActionSupport implements ServletRequestAware, ServletResponseAware  {
+    private HttpServletRequest request;
+    private HttpServletResponse response;
+    @Override
+    public void setServletRequest(HttpServletRequest request) {
+        this.request = request;
+    }
+
+    @Override
+    public void setServletResponse(HttpServletResponse response) {
+        this.response = response;
+    }
 
 
     private GstControlDao dao = SpringUtils.getBean(GstControlDao.class);

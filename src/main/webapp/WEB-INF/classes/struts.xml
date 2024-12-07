@@ -3,6 +3,7 @@
 <struts>
     <constant name="struts.mapper.action.prefix.enabled" value="false"/>
 	<constant name="struts.action.extension" value="do" />
+    <constant name="struts.objectFactory" value="spring"/>
     <constant name="struts.enable.SlashesInActionNames" value="true" />
     <!-- Default package extending struts-default -->
 	<package name="default" namespace="/" extends="struts-default">
@@ -108,7 +109,7 @@
         </action>
         <action name="infirm" class="org.caisi.core.web.Infirm2Action"/>
         <action name="login" class="oscar.login.Login2Action">
-            <result name="provider">/provider/providercontrol.jsp</result>
+            <result name="provider" type="redirect">/provider/providercontrol.jsp</result>
             <result name="failure">/logout.jsp</result>
             <result name="error">/loginfailed.jsp</result>
             <result name="caisiPMM">/PMmodule/ProviderInfo.do</result>
@@ -168,9 +169,9 @@
             <result name="success">/oscarMessenger/ViewMessage.jsp</result>
             <result name="viewFromEncounter">/oscarMessenger/ViewMessageFromEncounter.jsp</result>
         </action>
-        <action name="oscarMessenger/ViewMessageByPosition" class="oscar.oscarMessenger.pageUtil.MsgViewMessageByPosition2Action">
+        <!--action name="oscarMessenger/ViewMessageByPosition" class="oscar.oscarMessenger.pageUtil.MsgViewMessageByPosition2Action">
             <result name="success">/oscarMessenger/ViewMessage.do</result>
-        </action>
+        </action-->
         <action name="oscarMessenger/Doc2PDF" class="oscar.oscarMessenger.pageUtil.MsgAttachPDF2Action">
             <result name="success">/oscarMessenger/selfCloseAndRefreshOpener.jsp</result>
             <result name="attaching">/oscarMessenger/generatePreviewPDF.jsp</result>
@@ -334,12 +335,12 @@
             <result name="close">/oscarRx/close.html</result>
             <result name="success">/oscarRx/SelectReason.jsp</result>
         </action>
-        <action name="oscarRx/GetmyDrugrefInfo" class="oscar.oscarRx.pageUtil.RxMyDrugrefInfo2Action">
+        <!--action name="oscarRx/GetmyDrugrefInfo" class="oscar.oscarRx.pageUtil.RxMyDrugrefInfo2Action">
             <result name="success">/oscarRx/MyDrugrefDisplay.jsp</result>
             <result name="failure">/oscarRx/MyDrugrefError.jsp</result>
             <result name="updateInteractions">/oscarRx/InteractionDisplay2.jsp</result>
             <result name="updateResources">/oscarRx/updateMyDrugrefResource.jsp</result>
-        </action>
+        </action-->
         <action name="oscarRx/GetRxPageSizeInfo" class="oscar.oscarRx.pageUtil.RxRxPageSizeInfo2Action">
             <result name="success">/oscarRx/ViewScript2.jsp</result>
         </action>
@@ -569,9 +570,9 @@
             <result name="printIndivica">/oscarEncounter/oscarConsultationRequest/printPdf2.do</result>
             <result name="fax">/fax/CoverPage.jsp</result>
         </action>
-        <action name="oscarEncounter/oscarConsultationRequest/printPdf" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctConsultationFormRequestPrint2Action">
+        <!--action name="oscarEncounter/oscarConsultationRequest/printPdf" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctConsultationFormRequestPrint2Action">
             <result name="error">/oscarEncounter/ViewRequest.do?error=true</result>
-        </action>
+        </action-->
         <action name="oscarEncounter/oscarConsultationRequest/printPdf2" class="oscar.oscarEncounter.oscarConsultationRequest.pageUtil.EctConsultationFormRequestPrintAction22Action">
             <result name="error">/oscarEncounter/ViewRequest.do?error=true</result>
             <result name="attachform">/form/forwardshortcutname.jsp</result>
@@ -634,14 +635,14 @@
             <result name="success">/oscarEncounter/InsertTemplate.jsp</result>
             <result name="success2">/oscarEncounter/InsertTemplate2.jsp</result>
         </action>
-        <action name="PatientOption" class="oscar.oscarEncounter.search.pageUtil.EctPatientOptions2Action">
+        <!--action name="PatientOption" class="oscar.oscarEncounter.search.pageUtil.EctPatientOptions2Action">
             <result name="consult">/oscarConsultationRequest/ConsultationFormRequest.jsp</result>
             <result name="viewAllConsult">/oscarConsultationRequest/DisplayDemographicConsultationRequests.jsp</result>
             <result name="success">/search/searchDemographicSearch.jsp</result>
         </action>
         <action name="CreateInitImmunization" class="oscar.oscarEncounter.immunization.config.pageUtil.EctCreateImmunizationSetInit2Action">
             <result name="success">/immunizationConfig/CreateImmunizationSetConfig.jsp</result>
-        </action>
+        </action-->
         <action name="CreateImmunizationSetConfig" class="oscar.oscarEncounter.immunization.config.pageUtil.EctImmCreateImmunizationSetConfig2Action">
             <result name="success">/immunizationConfig/AdministrateImmunizationSets.jsp</result>
             <result name="goBack">/immunizationConfig/CreateImmunizationSetConfig.jsp</result>
@@ -733,7 +734,7 @@
         <action name="oscarEncounter/oscarMeasurements/SetupMeasurements" class="oscar.oscarEncounter.oscarMeasurements.pageUtil.EctSetupMeasurements2Action">
             <result name="continue">/oscarEncounter/oscarMeasurements/Measurements.jsp</result>
         </action>
-        <action name="oscarEncounter/oscarMeasurements/StreamStyleSheet" class="oscar.oscarEncounter.oscarMeasurements.pageUtil.EctStreamStyleSheet2Action"/>
+        <!--action name="oscarEncounter/oscarMeasurements/StreamStyleSheet" class="oscar.oscarEncounter.oscarMeasurements.pageUtil.EctStreamStyleSheet2Action"/-->
         <action name="oscarEncounter/MeasurementData" class="org.oscarehr.measurements.web.MeasurementData2Action"/>
         <action name="oscarEncounter/oscarMeasurements/SetupDisplayHistory" class="oscar.oscarEncounter.oscarMeasurements.pageUtil.EctSetupDisplayHistory2Action">
             <result name="continue">/oscarEncounter/oscarMeasurements/DisplayHistory.jsp</result>
@@ -883,10 +884,10 @@
         <action name="oscarReport/RptRehabStudy" class="oscar.oscarReport.pageUtil.RptRehabStudy2Action">
             <result name="success">/oscarReport/oscarReportRehabStudy.jsp</result>
         </action>
-        <action name="oscarMaintenance" class="oscar.oscarMaintenance.pageUtil.Maintenance2Action">
+        <!--action name="oscarMaintenance" class="oscar.oscarMaintenance.pageUtil.Maintenance2Action">
             <result name="success">/oscarMaintenance/oscarMaintenanceDisplay.jsp</result>
             <result name="input">/oscarMaintenance/oscarMaintenanceInput.jsp</result>
-        </action>
+        </action-->
         <action name="EnterSignature" class="oscar.oscarProvider.pageUtil.ProEditSignature2Action">
             <result name="success">/provider/providerSignature.jsp</result>
         </action>
@@ -920,7 +921,7 @@
             <result name="EFORM">/eform/efmshowform_data.jsp</result>
             <result name="eFormError">/eform/efmshowform_data.jsp?error=true</result>
         </action>
-        <action name="admin/ManageEmails" class="org.oscarehr.email.admin.ManageEmails2Action">
+        <action name="admin/ManageEmails" class="org.oscarehr.email.admin.ManageEmails2Action" method="{1}">
             <result name="show">/admin/manageEmails.jsp</result>
             <result name="emailstatus">/admin/emailStatusResults.jspf</result>
             <result name="compose">/email/emailCompose.jsp</result>
@@ -1029,9 +1030,9 @@
             <result name="ON">/billing/CA/ON/billingOB2.jsp</result>
             <result name="private">/billing/CA/BC/billReceipt.jsp</result>
         </action>
-        <action name="billing/CA/BC/billingStatement" class="oscar.oscarBilling.ca.bc.pageUtil.CreateBillingStatement2Action">
+        <!--action name="billing/CA/BC/billingStatement" class="oscar.oscarBilling.ca.bc.pageUtil.CreateBillingStatement2Action">
             <result name="success">/billing/CA/BC/billStatement.jsp</result>
-        </action>
+        </action-->
         <action name="billing/CA/ON/BatchBill" class="org.oscarehr.billing.CA.ON.web.BatchBill2Action">
             <result name="saved">/billing/CA/ON/batchsaved.jsp</result>
             <result name="error">/billing/CA/ON/batcherror.jsp</result>
@@ -1080,9 +1081,9 @@
             <result name="survey">/oscarSurveillance/Surveillance.jsp</result>
             <result name="close">/oscarEncounter/TimeOut.jsp</result>
         </action>
-        <action name="PMmodule/remoteReferal" class="oscar.remotereferal.OscarRemoteReferal2Action">
+        <!--action name="PMmodule/remoteReferal" class="oscar.remotereferal.OscarRemoteReferal2Action">
             <result name="success">/eform/efmshowform_data.jsp</result>
-        </action>
+        </action-->
         <action name="oscarSurveillance/SurveillanceAnswer" class="oscar.oscarSurveillance.SurveillanceAnswer2Action">
             <result name="survey">/oscarSurveillance/CheckSurveillance.do</result>
         </action>
@@ -1101,9 +1102,9 @@
             <result name="editSuccess">/oscarWaitingList/SetupDisplayWaitingList.do</result>
             <result name="failure">/oscarWaitingList/EditWaitingListName.jsp</result>
         </action>
-        <action name="oscarWaitingList/WLWaitingList" class="oscar.pageUtil.WLWaitingList2Action">
+        <!--action name="oscarWaitingList/WLWaitingList" class="oscar.pageUtil.WLWaitingList2Action">
             <result name="success">/oscarWaitingList/WLDisplayPatientWaitingList.jsp</result>
-        </action>
+        </action-->
         <action name="demographic/printDemoLabelAction" class="oscar.oscarDemographic.PrintDemoLabel2Action"/>
         <action name="demographic/printDemoAddressLabelAction" class="oscar.oscarDemographic.PrintDemoAddressLabel2Action"/>
         <action name="demographic/printDemoChartLabelAction" class="oscar.oscarDemographic.PrintDemoChartLabel2Action"/>
@@ -1272,11 +1273,11 @@
         <action name="billing/CA/ON/benefitScheduleChange" class="oscar.oscarBilling.ca.on.OHIP.ScheduleOfBenefitsUpdate2Action">
             <result name="success">/billing/CA/ON/ScheduleOfBenefitsUpload.jsp</result>
         </action>
-        <action name="billing/CA/BC/receivePaymentAction" class="oscar.oscarBilling.ca.bc.pageUtil.BillingReceivePaymentActionForm2Action">
+        <!--action name="billing/CA/BC/receivePaymentAction" class="oscar.oscarBilling.ca.bc.pageUtil.BillingReceivePaymentActionForm2Action">
             <result name="success">/billing/CA/BC/billReceipt.jsp</result>
             <result name="internalAdjustment">/billing/CA/BC/adjustBill.jsp</result>
             <result name="internalAdjustmentWCB">/billing/CA/BC/billingTeleplanCorrectionWCB.jsp</result>
-        </action>
+        </action-->
         <action name="billing/CA/BC/receivePaymentAction" class="oscar.oscarBilling.ca.bc.pageUtil.ReceivePayment2Action">
             <result name="success">/billing/CA/BC/receivePayment.jsp</result>
         </action>
@@ -1371,7 +1372,7 @@
             <result name="remit">/billing/CA/BC/ProcessRemittance.do</result>
             <result name="checkElig">/billing/CA/BC/checkEligibility.jsp</result>
         </action>
-        <action name="billing/CA/BC/DownloadBilling" class="oscar.oscarBilling.ca.bc.pageUtil.DownloadFile2Action"/>
+        <!--action name="billing/CA/BC/DownloadBilling" class="oscar.oscarBilling.ca.bc.pageUtil.DownloadFile2Action"/-->
         <action name="Tickler" class="org.caisi.tickler.web.Tickler2Action" method="execute">
             <result name="list">/ticklerPlus/ticklerList.jsp</result>
             <result name="view">/ticklerPlus/ticklerView.jsp</result>
@@ -1771,16 +1772,16 @@
         </action>
         <action name="appointment/printAppointmentReceiptAction" class="oscar.oscarReport.pageUtil.PrintAppointmentReceipt2Action"/>
         <action name="oscarRx/updateDrugrefDB" class="oscar.oscarRx.pageUtil.RxUpdateDrugref2Action"/>
-        <action name="oscarRx/copyFavorite" class="oscar.oscarRx.web.CopyFavorites2Action" method="execute">
+        <!--action name="oscarRx/copyFavorite" class="oscar.oscarRx.web.CopyFavorites2Action" method="execute">
             <result name="success">/oscarRx/CopyFavorites.jsp</result>
             <result name="edit">/appointment/appointmentstatusedit.jsp</result>
-        </action>
+        </action-->
         <action name="oscarRx/hideCpp" class="oscar.oscarRx.web.RxHideCpp2Action"/>
         <action name="oscarRx/reorderDrug" class="oscar.oscarRx.web.RxReorder2Action"/>
-        <action name="oscarRx/copyFavorite2" class="oscar.oscarRx.web.CopyFavorites2Action" method="execute">
+        <!--action name="oscarRx/copyFavorite2" class="oscar.oscarRx.web.CopyFavorites2Action" method="execute">
             <result name="success">/oscarRx/CopyFavorites2.jsp</result>
             <result name="edit">/appointment/appointmentstatusedit.jsp</result>
-        </action>
+        </action-->
         <action name="PMmodule/Admin/SysAdmin" class="org.oscarehr.PMmodule.web.admin.AdminHome2Action" method="execute">
             <result name="admin">page.admin.home</result>
         </action>
@@ -1794,9 +1795,9 @@
         <action name="PMmodule/OcanWorkload" class="org.oscarehr.PMmodule.web.OcanWorkload2Action">
             <result name="view">/PMmodule/OcanWorkload.jsp</result>
         </action>
-        <action name="billing/CA/ON/moveMOHFiles" class="org.oscarehr.billing.CA.ON.web.MoveMOHFiles2Action">
+        <!--action name="billing/CA/ON/moveMOHFiles" class="org.oscarehr.billing.CA.ON.web.MoveMOHFiles2Action">
             <result name="success">/billing/CA/ON/viewMOHFiles.jsp</result>
-        </action>
+        </action-->
         <action name="billing/CA/ON/managePaymentType" class="oscar.oscarBilling.ca.on.pageUtil.PaymentType2Action" method="execute">
             <result name="success">/billing/CA/ON/manageBillingPaymentType.jsp</result>
         </action>
@@ -1983,7 +1984,7 @@
         <action name="oscarRx/Dispense" class="org.oscarehr.rx.dispensary.Dispensary2Action">
             <result name="list">/oscarRx/dispensary/list.jsp</result>
         </action>
-        <action name="consults/Consultations" class="org.oscarehr.consultations.Consultation2Action"/>
+        <!--action name="consults/Consultations" class="org.oscarehr.consultations.Consultation2Action"/-->
         <action name="DemographicExtService" class="org.oscarehr.common.web.DemographicExtService2Action"/>
         <action name="integrator/IntegratorPush" class="org.oscarehr.common.web.IntegratorPush2Action"/>
         <action name="printReferralLabelAction" class="org.oscarehr.common.web.PrintReferralLabel2Action"/>
@@ -1992,13 +1993,13 @@
             <result name="failure">/billing/CA/ON/billingON3rdPayments.jsp</result>
             <result name="viewPayment">/billing/CA/ON/billingON3rdViewPayment.jsp</result>
         </action>
-        <action name="billing/CA/ON/displayMOHXML" class="org.oscarehr.billing.CA.ON.web.DisplayMOHXML2Action">
+        <!--action name="billing/CA/ON/displayMOHXML" class="org.oscarehr.billing.CA.ON.web.DisplayMOHXML2Action">
             <result name="success">/billing/CA/ON/billingLreport.jsp</result>
             <result name="failure">/billing/CA/ON/billingLreport.jsp</result>
         </action>
         <action name="billing/CA/ON/moveMOHFiles" class="org.oscarehr.billing.CA.ON.web.ArchiveMOHFile2Action">
             <result name="showInbox">/billing/CA/ON/viewMOHFiles.jsp</result>
-        </action>
+        </action-->
         <action name="billing/ca/on/DisplayInvoiceLogo" class="org.oscarehr.billing.CA.ON.util.DisplayInvoiceLogo2Action"/>
         <action name="cvc" class="org.oscarehr.integration.born.CVCTester2Action"/>
         <action name="admin/AuditLogPurge" class="org.oscarehr.admin.web.AuditLogPurge2Action">

@@ -38,6 +38,13 @@ public class ManageEmails2Action extends ActionSupport {
     private final FormsManager formsManager = SpringUtils.getBean(FormsManager.class);
     private final SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
+    public String execute() {
+        if ("showEmailManager".equals(request.getParameter("method"))) {
+            return showEmailManager();
+        }
+        return SUCCESS;
+    }
+
     public String showEmailManager() {
         request.setAttribute("emailStatusList", EmailStatus.values());
         request.setAttribute("senderAccountList", emailComposeManager.getAllSenderAccounts());

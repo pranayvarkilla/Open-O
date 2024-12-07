@@ -27,9 +27,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.oscar-emr.com/tags/integration" prefix="i" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%@ page import="java.util.List" %>
 
 <%
     List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
