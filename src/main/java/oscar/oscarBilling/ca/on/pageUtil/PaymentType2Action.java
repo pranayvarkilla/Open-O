@@ -40,6 +40,7 @@ import org.oscarehr.common.dao.BillingPaymentTypeDao;
 
 import org.oscarehr.common.model.BillingPaymentType;
 import org.oscarehr.util.MiscUtils;
+import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
