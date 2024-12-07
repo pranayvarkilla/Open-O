@@ -728,12 +728,7 @@
         %>
 
 
-<<<<<<< HEAD
         <form action="<%=request.getContextPath() %>/billing/CA/ON/BillingONCorrection.do">
-=======
-        <form action="/billing/CA/ON/BillingONCorrection">
->>>>>>> fe2d9b0c274b847226525a32bdc1a4282b44edca
-
             <input type="hidden" name="method" value="updateInvoice"/>
             <input type="hidden" name="xml_billing_no" value="<%=billNo%>"/>
             <input type="hidden" name="update_date" value="<%=nullToEmpty(createTimestamp)%>"/>

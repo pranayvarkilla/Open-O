@@ -270,11 +270,7 @@
 
                 <oscar:oscarPropertiesCheck property="TORONTO_RFQ" value="yes">
                     <br/>
-<<<<<<< HEAD
                     <form action="<%=request.getContextPath() %>/demographic/AddRelation.do">
-=======
-                    <form action="/demographic/AddRelation">
->>>>>>> fe2d9b0c274b847226525a32bdc1a4282b44edca
                         <input type="hidden" name="origDemo" value="<%=creatorDemo%>"/>
                         <input type="submit" name="pmmClient" value="Finished"/>
                     </form>

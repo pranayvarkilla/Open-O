@@ -270,11 +270,7 @@
     <h3 style="text-align: left"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.oscarConsultationRequest.AttachDocPopup.header"/>
         <%=patientName%>
     </h3>
-<<<<<<< HEAD
     <form action="<%=request.getContextPath() %>/eform/attachDoc.do">
-=======
-    <form action="/eform/attachDoc">
->>>>>>> fe2d9b0c274b847226525a32bdc1a4282b44edca
         <input type="hidden" name="requestId" id="requestId" value="<%=requestId%>"/>
         <input type="hidden" name="demoNo" id="demoNo" value="<%=demoNo%>"/>
         <input type="hidden" name="providerNo" id="providerNo" value="<%=providerNo%>"/>
