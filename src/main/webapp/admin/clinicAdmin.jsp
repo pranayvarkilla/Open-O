@@ -60,7 +60,7 @@
     <h4><fmt:setBundle basename="oscarResources"/><fmt:message key="admin.admin.clinicAdmin"/></h4></h4>
     <div class="well">
 
-        <form action="/admin/ManageClinic" styleClass="form-horizontal">
+        <form action="<%=request.getContextPath() %>/admin/ManageClinic.do" class="form-horizontal">
             <input type="hidden" name="id" id="id"/>
             <input type="hidden" name="status" id="status" value="A"/>
             <input type="hidden" name="method" id="method" value="update"/>

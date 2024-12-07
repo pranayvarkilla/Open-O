@@ -128,7 +128,7 @@
         </c:choose>
     </c:if>
     <c:if test="${ empty opentext and empty param.opentext }">
-        <!-- <form styleClass="form-horizontal" action="/oscarReport/reportByTemplate/uploadTemplates"
+        <!-- <form styleClass="form-horizontal" action="<%=request.getContextPath() %>/oscarReport/reportByTemplate/uploadTemplates.do"
                         enctype="multipart/form-data">
         <div class="row-fluid">
         <div class="well">

@@ -728,7 +728,7 @@
         %>
 
 
-        <form action="/billing/CA/ON/BillingONCorrection">
+        <form action="<%=request.getContextPath() %>/billing/CA/ON/BillingONCorrection.do">
 
             <input type="hidden" name="method" value="updateInvoice"/>
             <input type="hidden" name="xml_billing_no" value="<%=billNo%>"/>

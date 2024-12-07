@@ -290,7 +290,7 @@
     <tr>
         <td class="MainTableLeftColumn"></td>
         <td class="MainTableRightColumn">
-            <form name="/oscarEncounter/scheduleEdit">
+            <form name="<%=request.getContextPath() %>/oscarEncounter/scheduleEdit.do">
                 <table>
                     <tr>
                         <td style="font-weight: bold">&nbsp;<%=immName%>

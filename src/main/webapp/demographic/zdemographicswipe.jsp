@@ -71,7 +71,7 @@
     </tr>
 </table>
 
-<form action="/demographic/ValidateSwipeCard" onsubmit="return verifyInput();">
+<form action="<%=request.getContextPath() %>/demographic/ValidateSwipeCard.do" onsubmit="return verifyInput();">
 
     <div class="container">
 

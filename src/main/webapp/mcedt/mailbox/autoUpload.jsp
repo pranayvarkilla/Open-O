@@ -210,7 +210,7 @@
         <h1>Uploading Claims from Oscar to MCEDT</h1>
         <div>
             <%-- <form action="<%=request.getContextPath() %>/mcedt/kaichpass.do" method="POST"> --%>
-            <%-- <form action="/mcedt/kaichpass" method="post" styleId="form">
+            <%-- <form action="<%=request.getContextPath() %>/mcedt/kaichpass.do" method="post" styleId="form">
             <input id="method" name="method" type="hidden" value="" />
             </form> --%>
             <div>

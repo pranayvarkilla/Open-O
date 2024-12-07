@@ -196,8 +196,7 @@
         showPatientDOB = true;
     }
 %>
-<form action="/form/formname" styleId="preview2Form">
-
+<form action="<%=request.getContextPath() %>/form/formname.do" id="preview2Form">
     <input type="hidden" name="demographic_no" value="<%=prescription.getDemographicId()%>"/>
     <p id="pharmInfo" style="float:right;">
     </p>
