@@ -51,6 +51,13 @@ public class CaseloadContent2Action extends ActionSupport {
 
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
+    public String execute() {
+        String mtd = request.getParameter("method");
+        if ("noteSearch".equals(mtd)) {
+            return noteSearch();
+        }
+        return search();
+    }
 
     public String noteSearch() {
 
@@ -221,7 +228,6 @@ public class CaseloadContent2Action extends ActionSupport {
         String[] clSortParams = null;
 
         if ("all".equals(caseloadProgram) && "all".equals(caseloadProv)) { // program and provider are all
-
             Integer facilityId = loggedInInfo.getCurrentFacility().getId();
 
             if (!StringUtils.isNullOrEmpty(caseloadDx) && !StringUtils.isNullOrEmpty(caseloadRoster)) {
