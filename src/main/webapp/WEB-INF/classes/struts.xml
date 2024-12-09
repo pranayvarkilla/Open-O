@@ -921,7 +921,7 @@
             <result name="EFORM">/eform/efmshowform_data.jsp</result>
             <result name="eFormError">/eform/efmshowform_data.jsp?error=true</result>
         </action>
-        <action name="admin/ManageEmails" class="org.oscarehr.email.admin.ManageEmails2Action" method="{1}">
+        <action name="admin/ManageEmails" class="org.oscarehr.email.admin.ManageEmails2Action">
             <result name="show">/admin/manageEmails.jsp</result>
             <result name="emailstatus">/admin/emailStatusResults.jspf</result>
             <result name="compose">/email/emailCompose.jsp</result>

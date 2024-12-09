@@ -39,10 +39,14 @@ public class ManageEmails2Action extends ActionSupport {
     private final SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
     public String execute() {
-        if ("showEmailManager".equals(request.getParameter("method"))) {
-            return showEmailManager();
+        String mtd = request.getParameter("method");
+        if ("fetchEmails".equals(mtd)) {
+            return fetchEmails();
+        } else if ("resendEmail".equals(mtd)) {
+            return resendEmail();
         }
-        return SUCCESS;
+
+        return showEmailManager();
     }
 
     public String showEmailManager() {

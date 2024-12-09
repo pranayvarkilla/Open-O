@@ -70,6 +70,10 @@ public class Infirm2Action extends ActionSupport {
         bpm.setDefaultProgramId(providerNo, Integer.parseInt(programId));
     }
 
+    public String execute() throws Exception {
+        return showProgram();
+    }
+
     public String showProgram()
             throws Exception {
         logger.debug("====> inside showProgram action.");
@@ -222,7 +226,7 @@ public class Infirm2Action extends ActionSupport {
             filteredDemographicBeans = demographicBeans;
         }
         se.setAttribute("infirmaryView_demographicBeans", filteredDemographicBeans);
-
+        response.getOutputStream().print(" ");
 
         return null;
     }
