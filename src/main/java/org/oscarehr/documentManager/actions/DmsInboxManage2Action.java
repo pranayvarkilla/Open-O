@@ -88,8 +88,25 @@ public class DmsInboxManage2Action extends ActionSupport {
         this.secObjectNameDao = secObjectNameDao;
     }
 
-    public String unspecified() {
-
+    public String execute() {
+        String mtd = request.getParameter("method");
+        if ("previewPatientDocLab".equals(mtd)) {
+            return previewPatientDocLab();
+        } else if ("prepareForIndexPage".equals(mtd)) {
+            return prepareForIndexPage();
+        } else if ("prepareForContentPage".equals(mtd)) {
+            return prepareForContentPage();
+        } else if ("addNewQueue".equals(mtd)) {
+            return addNewQueue();
+        } else if ("isDocumentLinkedToDemographic".equals(mtd)) {
+            return isDocumentLinkedToDemographic();
+        } else if ("isLabLinkedToDemographic".equals(mtd)) {
+            return isLabLinkedToDemographic();
+        } else if ("updateDocStatusInQueue".equals(mtd)) {
+            return updateDocStatusInQueue();
+        } else if ("getDocumentsInQueues".equals(mtd)) {
+            return getDocumentsInQueues();
+        }
         return null;
     }
 
