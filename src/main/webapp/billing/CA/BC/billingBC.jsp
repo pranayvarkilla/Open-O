@@ -1299,7 +1299,7 @@
 
     <div class="container-fluid">
         <% 
-    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    java.util.List<String> actionErrors = (java.util.List<String>) request.getAttribute("actionErrors");
     if (actionErrors != null && !actionErrors.isEmpty()) {
 %>
     <div class="action-errors">

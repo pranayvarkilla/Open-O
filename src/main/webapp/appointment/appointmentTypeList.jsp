@@ -128,7 +128,7 @@
                 <tr bgcolor="#486ebd" height="30">
                     <th align="LEFT" width="90%">
                         <font face="Helvetica" color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<% 
-    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    java.util.List<String> actionErrors = (java.util.List<String>) request.getAttribute("actionErrors");
     if (actionErrors != null && !actionErrors.isEmpty()) {
 %>
     <div class="action-errors">

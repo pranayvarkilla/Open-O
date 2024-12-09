@@ -59,7 +59,7 @@
     <body bgcolor="#FFFFFF" text="#000000" rightmargin="0" leftmargin="0"
           topmargin="10" marginwidth="0" marginheight="0">
     <h2><% 
-    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    java.util.List<String> actionErrors = (java.util.List<String>) request.getAttribute("actionErrors");
     if (actionErrors != null && !actionErrors.isEmpty()) {
 %>
     <div class="action-errors">

@@ -1552,7 +1552,7 @@ if (userAgent != null) {
           onload="window.focus();disableDateFields();disableEditing();showSignatureImage();">
     <jsp:include page="../../images/spinner.jsp" flush="true"/>
     <% 
-    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    java.util.List<String> actionErrors = (java.util.List<String>) request.getAttribute("actionErrors");
     if (actionErrors != null && !actionErrors.isEmpty()) {
 %>
     <div class="action-errors">
