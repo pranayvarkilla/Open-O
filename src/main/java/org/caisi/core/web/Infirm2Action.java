@@ -71,6 +71,14 @@ public class Infirm2Action extends ActionSupport {
     }
 
     public String execute() throws Exception {
+        String mtd = request.getParameter("action");
+        if ("getProgramList".equals(mtd)) {
+            return getProgramList();
+        } else if ("getSig".equals(mtd)) {
+            return getSig();
+        } else if ("toggleSig".equals(mtd)) {
+            return toggleSig();
+        }
         return showProgram();
     }
 
@@ -247,7 +255,6 @@ public class Infirm2Action extends ActionSupport {
             if (OscarProperties.getInstance().getBooleanProperty("FILTER_ON_FACILITY", "true")) {
                 facilityId = loggedInInfo.getCurrentFacility().getId();
             }
-
             List<LabelValueBean> programBeans = bpm.getProgramBeans(providerNo, facilityId);
 
             //this one seems to be for the caisi case management page, and caseload screens
@@ -387,6 +394,7 @@ public class Infirm2Action extends ActionSupport {
             }
             se.setAttribute("infirmaryView_demographicBeans", filteredDemographicBeans);
         } catch (Exception e) {
+            e.printStackTrace();
             logger.error(e);
         }
     }

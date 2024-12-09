@@ -64,7 +64,15 @@ public class FacilityMessage2Action extends ActionSupport {
         this.facilityDao = facilityDao;
     }
 
-    public String unspecified() {
+    public String execute() {
+        String mtd = request.getParameter("method");
+        if ("edit".equals(mtd)) {
+            return edit();
+        } else if ("save".equals(mtd)) {
+            return save();
+        } else if ("view".equals(mtd)) {
+            return view();
+        }
         return list();
     }
 
