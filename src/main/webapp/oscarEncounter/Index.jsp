@@ -823,7 +823,7 @@
           topmargin="0" leftmargin="0" bottommargin="0" rightmargin="0"
           vlink="#0000FF">
     <% 
-    List<String> actionErrors = (List<String>) request.getAttribute("actionErrors");
+    java.util.List<String> actionErrors = (java.util.List<String>) request.getAttribute("actionErrors");
     if (actionErrors != null && !actionErrors.isEmpty()) {
 %>
     <div class="action-errors">
