@@ -602,11 +602,19 @@
   }, {
     "groupId" : "com.sun.xml.bind",
     "artifactId" : "jaxb-impl",
-    "version" : "2.2.11",
+    "version" : "2.3.3",
     "scope" : "compile",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:SHj1ch5QB7Vhyh3O6nT9555KaP5WlsOO0RhYqrRlDqACqOZDYZpUUulLrNQ1typHgYgxwWe80F5zoqNyzivh4Q=="
+    "integrity" : "sha512:gkCQxFbuEgVxmb/Zj9rlNaMIBbFsgleUHsj+bsq7p7WHmhgz7QBNtAHH3ZKOXxAhb1BBVYSqSPw3smMkBf5jJQ=="
+  }, {
+    "groupId" : "com.sun.xml.bind",
+    "artifactId" : "jaxb-jxc",
+    "version" : "2.3.3",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:NhLLfVOadBrFpxHC6G3ItGoN/FRu4r3czaOYrnBhO1ZdMIEs/yyDv2GOGK4rejnVJ/2g1q8ShtoG7QQ06p3oeA=="
   }, {
     "groupId" : "com.sun.xml.bind",
     "artifactId" : "jaxb-xjc",
@@ -631,6 +639,79 @@
     "type" : "jar",
     "optional" : false,
     "integrity" : "sha512:RgtD95rqB0qX1ItJWJQfQdesZ7yJDHz+NyStxzQdEvc3vnYUIPfdsBTxWh0TnCtVF4cHoyAzL6YdYx8AcEiBbg=="
+  }, {
+    "groupId" : "com.sun.xml.stream.buffer",
+    "artifactId" : "streambuffer",
+    "version" : "1.5.9",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:1yf+ESX4OC13fIpYYZhM5tT08zPMqwjqO4YnfBryeUcJAJ+q6lqLdngPNDckztRVONrlNYNnywkCbfBDYlpl9Q=="
+  }, {
+    "groupId" : "com.sun.xml.ws",
+    "artifactId" : "jaxws-eclipselink-plugin",
+    "version" : "2.3.3",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:j3G8vPs87JKwG2ZlavVDSAPY2q75A9I/gNlPkpH4zE23d2agd5kTH0I2NiWzH5o0tLA3bw+XpmMEoZaDU8L+SQ=="
+  }, {
+    "groupId" : "com.sun.xml.ws",
+    "artifactId" : "jaxws-ri",
+    "version" : "2.3.3",
+    "scope" : "compile",
+    "type" : "pom",
+    "optional" : false,
+    "integrity" : "sha512:NOW4HD0qS0yKCsqyRv5r7e9/imkoOn+p/vpXhifQ61+VsjTI9ZnbWNVkuZtIe0hHMTjC/aX5JKB9gIPZcLfy9g=="
+  }, {
+    "groupId" : "com.sun.xml.ws",
+    "artifactId" : "jaxws-rt",
+    "version" : "2.3.3",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:S0GiY79Rz6zFvZ5Nnvi/XfRNSYHw/0/Qs5u2ygMdDJ9i+jhRsTmVuYTC5UCPSGOfMNVyMzclkUpJ0RRSMLkmCA=="
+  }, {
+    "groupId" : "com.sun.xml.ws",
+    "artifactId" : "jaxws-tools",
+    "version" : "2.3.3",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:FOebpQRLRdRCBe4q8YQbBW5L6bgjvskffxFE5o7kcvqTx+CQC9qApNnt7vI+7r6Lf16SRHm4eSMAZxjHjJIgHA=="
+  }, {
+    "groupId" : "com.sun.xml.ws",
+    "artifactId" : "policy",
+    "version" : "2.7.10",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:RPC2pRvgekQ0XeetiSgSyrv/eUOTm7YlMFg9nZ/+//If/EWTmUamU0dhS2y8igPH7Pw7mFq7L5tHesbiu40h9A=="
+  }, {
+    "groupId" : "com.sun.xml.ws",
+    "artifactId" : "release-documentation",
+    "version" : "2.3.3",
+    "scope" : "compile",
+    "type" : "zip",
+    "optional" : false,
+    "integrity" : "sha512:Yt/UMLXYp85tTUP16ejtMvO0rCMyJ/b7v/K8jA3CKwMLsaCXV0qDbdxh5JKunIgTvBQ0dtQxpcIeZEVz+leAYw==",
+    "classifier" : "docbook"
+  }, {
+    "groupId" : "com.sun.xml.ws",
+    "artifactId" : "samples",
+    "version" : "2.3.3",
+    "scope" : "compile",
+    "type" : "zip",
+    "optional" : false,
+    "integrity" : "sha512:PmNYB2kpRFBvXD3MTKW0FYZP3Q2zUGmlnn9YOXSj0DG3usJdE2zhI99W0sSrOw7Urnr0XwWuUwj8UAAOVdC4+g=="
+  }, {
+    "groupId" : "com.sun.xml.ws",
+    "artifactId" : "sdo-eclipselink-plugin",
+    "version" : "2.3.3",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:p1mCxjMUnNr1qsl4ergXxKyosF/hynX8XdWJlUfYYDjlymXszIdE5GGUlY7hwe2B0JHklbWb5+sl25Y0Pdx2PQ=="
   }, {
     "groupId" : "com.sun",
     "artifactId" : "pdfview",
@@ -938,11 +1019,11 @@
   }, {
     "groupId" : "javax.annotation",
     "artifactId" : "javax.annotation-api",
-    "version" : "1.3",
+    "version" : "1.3.2",
     "scope" : "compile",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:/pM3CZYQFY9RhmUCME/XIhPkrGU1jKDl7eHAl3HMY22jBu8jqezwlq6PmUzb4reX50Z0gXe28te6BzzkOhc3uQ=="
+    "integrity" : "sha512:Z5z0TDudY1tD7RIqVV1XApLD8JN8M4ccQEOKGlPiBYyAV4aU7JRm6snigOGb+3qVsmFZTMTBFhyF3JffYjXlUw=="
   }, {
     "groupId" : "javax.inject",
     "artifactId" : "javax.inject",
