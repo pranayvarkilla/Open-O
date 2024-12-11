@@ -18,6 +18,11 @@ build_and_deploy() {
   # Stop the Catalina server by calling the `server` script located in the same directory as this script.
   "$SCRIPT_DIR/server" stop
 
+  # Setup the over_ride_config.properties file.
+  echo "Setting up over_ride_config_properties..."
+  CONF_PATH="/workspace/src/test/resources/"
+  cp "${CONF_PATH}over_ride_config.properties.template" "${CONF_PATH}over_ride_config.properties"
+
   # Build the project with or without tests based on the input argument
   # - If run_tests is true, it builds the project and runs tests.
   # - If run_tests is false, it skips tests during the build.
