@@ -1,8 +1,9 @@
-FROM openjdk:11-jdk-slim
+FROM openjdk:21-jdk-slim
 
 # Set environment variables for Tomcat
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
+ENV CATALINA_OPTS="--add-opens java.base/java.net=ALL-UNNAMED"
 
 # Copy Tomcat installation from the official Tomcat image
 COPY --from=tomcat:9.0.97 /usr/local/tomcat $CATALINA_HOME
