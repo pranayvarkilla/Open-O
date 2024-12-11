@@ -46,7 +46,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import oscar.OscarProperties;
 import oscar.form.study.HSFO.RecommitDAO;
 import oscar.form.study.HSFO.RecommitSchedule;
-import oscar.form.study.HSFO.pageUtil.RecommitHSFOAction.ResubmitJob;
+import oscar.form.study.hsfo2.pageUtil.RecommitHSFO2Action;
 
 public class HsfoQuartzServlet implements Servlet {
     public static final String RESUBMIT_JOB = "hsfoResubmitJob";
@@ -82,7 +82,7 @@ public class HsfoQuartzServlet implements Servlet {
         Trigger trigger = new SimpleTrigger(RESUBMIT_TRIGGER,
                 Scheduler.DEFAULT_GROUP, startTime);
         JobDetail jobDetail = new JobDetail(RESUBMIT_JOB,
-                Scheduler.DEFAULT_GROUP, ResubmitJob.class);
+                Scheduler.DEFAULT_GROUP, RecommitHSFO2Action.ResubmitJob.class);
         scheduler.scheduleJob(jobDetail, trigger);
 
     }
