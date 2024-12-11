@@ -365,42 +365,6 @@
             <version>3.7.1</version>
         </dependency>
 
-        <!-- struts -->
-        <!-- Struts Core Library -->
-        <dependency>
-            <groupId>io.github.weblegacy</groupId>
-            <artifactId>struts-core</artifactId>
-            <version>${struts.version}</version>
-        </dependency>
-
-        <!-- Struts Taglib Library -->
-        <dependency>
-            <groupId>io.github.weblegacy</groupId>
-            <artifactId>struts-taglib</artifactId>
-            <version>${struts.version}</version>
-        </dependency>
-
-        <!-- Struts Extras Library -->
-        <dependency>
-            <groupId>io.github.weblegacy</groupId>
-            <artifactId>struts-extras</artifactId>
-            <version>${struts.version}</version>
-        </dependency>
-
-        <!-- Struts El Library -->
-        <dependency>
-            <groupId>io.github.weblegacy</groupId>
-            <artifactId>struts-el</artifactId>
-            <version>${struts.version}</version>
-        </dependency>
-
-        <!-- Commons Digester Library -->
-        <dependency>
-            <groupId>commons-digester</groupId>
-            <artifactId>commons-digester</artifactId>
-            <version>1.8</version>
-        </dependency>
-
         <!-- struts2 coming soon...-->
         <!--        <dependency>-->
         <!--            <groupId>org.apache.struts</groupId>-->
@@ -1458,6 +1422,16 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>2.5.33</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-spring-plugin</artifactId>
+            <version>2.5.33</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -1936,8 +1910,6 @@
         <!--            <exclude>src/main/java/oscar/entities/S22.java</exclude>-->
         <!--            <exclude>src/main/java/oscar/entities/S23.java</exclude>-->
         <!--            <exclude>src/main/java/oscar/oscarBilling/ca/bc/MSP/CDMReminderHlp.java</exclude>-->
-        <!--            <exclude>src/main/java/oscar/oscarBilling/ca/bc/MSP/CreateBillingReportActionForm.java</exclude>-->
-        <!--            <exclude>src/main/java/oscar/oscarBilling/ca/bc/MSP/CreateBillingReportAction.java</exclude>-->
         <!--            <exclude>src/main/java/oscar/oscarBilling/ca/bc/MSP/ServiceCodeValidationLogic.java</exclude>-->
         <!--            <exclude>src/main/java/oscar/oscarBilling/ca/bc/MSP/ServiceCodeValidator.java</exclude>-->
         <!--            <exclude>src/main/java/oscar/oscarBilling/ca/bc/MSP/SexValidator.java</exclude>-->
