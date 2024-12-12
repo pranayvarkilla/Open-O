@@ -85,8 +85,8 @@
 <html locale="true">
 <head>
     <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
-    <script type="text/javascript" src="../share/javascript/prototype.js"></script>
-    <script type="text/javascript" src="../share/javascript/Oscar.js"/>
+    <script type="text/javascript" src="<%= request.getContextPath() %>/share/javascript/prototype.js"></script>
+    <script type="text/javascript" src="<%= request.getContextPath() %>/share/javascript/Oscar.js"/>
     </script>
     <title><fmt:setBundle basename="oscarResources"/><fmt:message key="RxPreview.title"/></title>
     <style type="text/css" media="print">

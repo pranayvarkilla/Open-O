@@ -1218,7 +1218,7 @@
                           title="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.appointmentProviderAdminDay.viewNextDay"/>"></span>
                 </a>
                 <a id="calendarLink" href=#
-                   onClick="popupPage(425,430,'../share/CalendarPopup.jsp?urlfrom=../provider/providercontrol.jsp&year=<%=strYear%>&month=<%=strMonth%>&param=<%=URLEncoder.encode("&view=0&displaymode=day&dboperation=searchappointmentday&viewall="+viewall,"UTF-8")%>
+                   onClick="popupPage(425,430,'<%= request.getContextPath() %>/share/CalendarPopup.jsp?urlfrom=../provider/providercontrol.jsp&year=<%=strYear%>&month=<%=strMonth%>&param=<%=URLEncoder.encode("&view=0&displaymode=day&dboperation=searchappointmentday&viewall="+viewall,"UTF-8")%>
                            <%=isWeekView?URLEncoder.encode("&provider_no="+provNum, "UTF-8"):""%>')"><fmt:setBundle basename="oscarResources"/><fmt:message key="global.calendar"/></a>
 
                 <c:if test="${infirmaryView_isOscar != 'false'}">
@@ -2411,7 +2411,7 @@
                         popupOscarRx(600, 1024, '../billing/CA/<%=prov%>/billingReportCenter.jsp?displaymode=billreport&providerview=<%=loggedInInfo1.getLoggedInProviderNo()%>');
                         return false;  //code for 'B'illing
                     case <fmt:setBundle basename="oscarResources"/><fmt:message key="global.calendarShortcut"/> :
-                        popupOscarRx(425, 430, '../share/CalendarPopup.jsp?urlfrom=../provider/providercontrol.jsp&year=<%=strYear%>&month=<%=strMonth%>&param=<%=URLEncoder.encode("&view=0&displaymode=day&dboperation=searchappointmentday","UTF-8")%>');
+                        popupOscarRx(425, 430, '<%= request.getContextPath() %>/share/CalendarPopup.jsp?urlfrom=../provider/providercontrol.jsp&year=<%=strYear%>&month=<%=strMonth%>&param=<%=URLEncoder.encode("&view=0&displaymode=day&dboperation=searchappointmentday","UTF-8")%>');
                         return false;  //run code for 'C'alendar
                     case <fmt:setBundle basename="oscarResources"/><fmt:message key="global.edocShortcut"/> :
                         popupOscarRx('700', '1024', '../documentManager/documentReport.jsp?function=provider&functionid=<%=loggedInInfo1.getLoggedInProviderNo()%>&curUser=<%=loggedInInfo1.getLoggedInProviderNo()%>', 'edocView');

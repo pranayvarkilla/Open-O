@@ -54,9 +54,9 @@
 <html>
 <head>
     <title><fmt:setBundle basename="oscarResources"/><fmt:message key="inboxmanager.document.title"/></title>
-    <script type="text/javascript" src="../share/javascript/prototype.js"></script>
-    <script type="text/javascript" src="../share/javascript/scriptaculous.js"></script>
-    <link rel="stylesheet" type="text/css" href="../share/css/OscarStandardLayout.css"/>
+    <script type="text/javascript" src="<%= request.getContextPath() %>/share/javascript/prototype.js"></script>
+    <script type="text/javascript" src="<%= request.getContextPath() %>/share/javascript/scriptaculous.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/share/css/OscarStandardLayout.css"/>
 
     <%
         QueueDao queueDao = (QueueDao) SpringUtils.getBean(QueueDao.class);
@@ -124,12 +124,12 @@
             cursor: pointer;
         }
     </style>
-    <script type="text/javascript" src="../share/javascript/noswfupload.js"></script>
+    <script type="text/javascript" src="<%= request.getContextPath() %>/share/javascript/noswfupload.js"></script>
 
     <script type="text/javascript">
 
         // add dedicated css
-        noswfupload.css("../share/css/noswfupload.css", "../share/css/noswfupload-icons.css");
+        noswfupload.css("<%= request.getContextPath() %>/share/css/noswfupload.css", "<%= request.getContextPath() %>/share/css/noswfupload-icons.css");
         var upload_url;//global to attached provider no and queue no.
 
         onload = function () {

@@ -30,7 +30,7 @@
 <head>
     <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
     <title>Coronary Artery Disease Risk Prediction</title>
-    <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
+    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/encounterStyles.css">
     <script type="text/javascript">
 
         var ageM = new Array();

@@ -40,8 +40,8 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="eform.download.msgDownloadEform"/></title>
-        <link rel="stylesheet" href="../share/css/OscarStandardLayout.css">
-        <link rel="stylesheet" href="../share/css/eformStyle.css">
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/share/css/OscarStandardLayout.css">
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/share/css/eformStyle.css">
         <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
         <style type="text/css">
             table.listing td {

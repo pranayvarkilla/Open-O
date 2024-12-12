@@ -101,8 +101,8 @@
     <title>
         myOSCAR
     </title>
-    <script type="text/javascript" src="../../share/javascript/prototype.js"></script>
-    <script type="text/javascript" src="../../share/javascript/Oscar.js"></script>
+    <script type="text/javascript" src="../<%= request.getContextPath() %>/share/javascript/prototype.js"></script>
+    <script type="text/javascript" src="../<%= request.getContextPath() %>/share/javascript/Oscar.js"></script>
     <script type="text/javascript" src="../../phr/phr.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.js"></script>
     <style type="text/css">
@@ -644,7 +644,7 @@
         </td>
     </tr>
     <tr>
-        <script type="text/javascript" src="../../share/javascript/boxover.js"></script>
+        <script type="text/javascript" src="../<%= request.getContextPath() %>/share/javascript/boxover.js"></script>
         <td class="MainTableBottomRowLeftColumn">
         </td>
         <td class="MainTableBottomRowRightColumn">

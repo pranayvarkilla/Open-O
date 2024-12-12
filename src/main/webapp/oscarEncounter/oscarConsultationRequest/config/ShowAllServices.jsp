@@ -61,7 +61,7 @@
                 window.close();
             }
         </script>
-        <link rel="stylesheet" type="text/css" href="../../encounterStyles.css">
+        <link rel="stylesheet" type="text/css" href="../<%= request.getContextPath() %>/encounterStyles.css">
     </head>
 
     <body class="BodyStyle" vlink="#0000FF">

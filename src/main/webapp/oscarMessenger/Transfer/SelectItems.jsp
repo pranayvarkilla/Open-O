@@ -63,7 +63,7 @@
 %>
 
 
-<link rel="stylesheet" type="text/css" href="../encounterStyles.css">
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/encounterStyles.css">
 
 <%@page import="org.oscarehr.util.MiscUtils" %>
 <html>

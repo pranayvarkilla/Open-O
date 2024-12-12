@@ -33,7 +33,7 @@
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.calculators.OsteoporoticFracture.title"/></title>
-        <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
+        <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/encounterStyles.css">
         <script type="text/javascript">
 
             var osteFactorMale = new Array();

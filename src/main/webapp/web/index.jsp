@@ -600,7 +600,7 @@
     <script src="js/providerViewController.js"></script>
     <script src="js/messengerController.js"></script  -->
 
-    <script type="text/javascript" src="../share/javascript/Oscar.js"></script>
+    <script type="text/javascript" src="<%= request.getContextPath() %>/share/javascript/Oscar.js"></script>
 
     <script type="text/javascript" src="../js/bootstrap-timepicker.min.js"></script>
 

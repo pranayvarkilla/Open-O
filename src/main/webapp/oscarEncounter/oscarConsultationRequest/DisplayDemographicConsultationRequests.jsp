@@ -109,7 +109,7 @@
         }
     </script>
 
-    <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
+    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/encounterStyles.css">
     <body class="BodyStyle" vlink="#0000FF" onload="window.focus()">
     <!--  -->
     <table class="MainTable" id="scrollNumber1" name="encounterTable">

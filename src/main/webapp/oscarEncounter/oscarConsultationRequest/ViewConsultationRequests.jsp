@@ -177,12 +177,12 @@
 
         <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
 
-        <link rel="stylesheet" type="text/css" media="all" href="../../share/calendar/calendar.css"
+        <link rel="stylesheet" type="text/css" media="all" href="../<%= request.getContextPath() %>/share/calendar/calendar.css"
               title="win2k-cold-1"/>
-        <script type="text/javascript" src="../../share/calendar/calendar.js"></script>
+        <script type="text/javascript" src="../<%= request.getContextPath() %>/share/calendar/calendar.js"></script>
         <script type="text/javascript"
-                src="../../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
-        <script type="text/javascript" src="../../share/calendar/calendar-setup.js"></script>
+                src="../<%= request.getContextPath() %>/share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
+        <script type="text/javascript" src="../<%= request.getContextPath() %>/share/calendar/calendar-setup.js"></script>
         <!--META HTTP-EQUIV="Refresh" CONTENT="20;"-->
 
         <style type="text/css">
@@ -271,7 +271,7 @@
     </script>
 
 
-    <link rel="stylesheet" type="text/css" href="../encounterStyles.css">
+    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/encounterStyles.css">
     <body class="BodyStyle" vlink="#0000FF">
     <!--  -->
     <table class="MainTable" id="scrollNumber1" name="encounterTable">

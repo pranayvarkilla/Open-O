@@ -32,7 +32,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <link rel="stylesheet" type="text/css"
-      href="../oscarEncounter/encounterStyles.css">
+      href="<%= request.getContextPath() %>/oscarEncounter/encounterStyles.css">
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>

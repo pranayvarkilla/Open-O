@@ -77,7 +77,7 @@
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographiceditdemographic.msgAddRelation"/></title>
         <!--I18n-->
         <link rel="stylesheet" type="text/css"
-              href="../share/css/OscarStandardLayout.css"/>
+              href="<%= request.getContextPath() %>/share/css/OscarStandardLayout.css"/>
 
 
         <script type="text/javascript">

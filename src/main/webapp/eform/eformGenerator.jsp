@@ -1210,10 +1210,10 @@ and other liscences (MIT, LGPL etc) as indicated
 
             if (calendars) {
                 textTop += "\n&lt;!-- main calendar program --&gt;\n"
-                textTop += "&lt;script type=&quot;text/javascript&quot; src=&quot;../share/calendar/calendar.js&quot;&gt;&lt;/script&gt;\n"
-                textTop += "&lt;script type=&quot;text/javascript&quot; src=&quot;../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>&quot;&gt;&lt;/script&gt;\n"
-                textTop += "&lt;script type=&quot;text/javascript&quot; src=&quot;../share/calendar/calendar-setup.js&quot;&gt;&lt;/script&gt;\n"
-                textTop += "&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot; href=&quot;../share/calendar/calendar.css&quot; title=&quot;win2k-cold-1&quot; /&gt;\n\n"
+                textTop += "&lt;script type=&quot;text/javascript&quot; src=&quot;<%= request.getContextPath() %>/share/calendar/calendar.js&quot;&gt;&lt;/script&gt;\n"
+                textTop += "&lt;script type=&quot;text/javascript&quot; src=&quot;<%= request.getContextPath() %>/share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>&quot;&gt;&lt;/script&gt;\n"
+                textTop += "&lt;script type=&quot;text/javascript&quot; src=&quot;<%= request.getContextPath() %>/share/calendar/calendar-setup.js&quot;&gt;&lt;/script&gt;\n"
+                textTop += "&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot; href=&quot;<%= request.getContextPath() %>/share/calendar/calendar.css&quot; title=&quot;win2k-cold-1&quot; /&gt;\n\n"
 
             }
 

@@ -311,7 +311,7 @@
         </td>
     </tr>
     <tr>
-        <script type="text/javascript" src="../../share/javascript/boxover.js"></script>
+        <script type="text/javascript" src="../<%= request.getContextPath() %>/share/javascript/boxover.js"></script>
         <td class="MainTableBottomRowLeftColumn">
         </td>
         <td class="MainTableBottomRowRightColumn">

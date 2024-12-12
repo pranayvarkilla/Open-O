@@ -46,7 +46,7 @@
 
 
 <link rel="stylesheet" type="text/css"
-      href="../oscarEncounter/encounterStyles.css">
+      href="<%= request.getContextPath() %>/oscarEncounter/encounterStyles.css">
 <% //This could be done alot better.
     String curUser_no, userfirstname, userlastname;
     curUser_no = (String) session.getAttribute("user");

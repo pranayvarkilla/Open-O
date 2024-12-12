@@ -59,11 +59,11 @@ opener.updateLink(<%=filePath%>, <%=type%>);</script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>HRM Key Uploader</title>
     <link rel="stylesheet" type="text/css"
-          href="../../../share/css/OscarStandardLayout.css">
+          href="../../<%= request.getContextPath() %>/share/css/OscarStandardLayout.css">
     <link rel="stylesheet" type="text/css"
-          href="../share/css/OscarStandardLayout.css">
-    <script type="text/javascript" src="../../../share/javascript/Oscar.js"></script>
-    <script type="text/javascript" src="../share/javascript/Oscar.js"></script>
+          href="<%= request.getContextPath() %>/share/css/OscarStandardLayout.css">
+    <script type="text/javascript" src="../../<%= request.getContextPath() %>/share/javascript/Oscar.js"></script>
+    <script type="text/javascript" src="<%= request.getContextPath() %>/share/javascript/Oscar.js"></script>
     <script type="text/javascript">
         function selectOther() {
             if (document.UPLOAD.type.value == "PRIVATEKEY")

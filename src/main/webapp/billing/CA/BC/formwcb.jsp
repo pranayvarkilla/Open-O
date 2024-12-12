@@ -86,15 +86,15 @@
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <base href="<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>">
         <title>OSCAR BC Billing - WCB</title>
-        <link rel="stylesheet" href="../../../share/css/oscar.css">
-        <link rel="stylesheet" href="../../../share/css/reporting.css">
-        <link rel="stylesheet" href="../../../share/calendar/calendar.css">
-        <script src="../../../share/javascript/Oscar.js"></script>
-        <script src="../../../share/calendar/calendar.js"></script>
+        <link rel="stylesheet" href="../../<%= request.getContextPath() %>/share/css/oscar.css">
+        <link rel="stylesheet" href="../../<%= request.getContextPath() %>/share/css/reporting.css">
+        <link rel="stylesheet" href="../../<%= request.getContextPath() %>/share/calendar/calendar.css">
+        <script src="../../<%= request.getContextPath() %>/share/javascript/Oscar.js"></script>
+        <script src="../../<%= request.getContextPath() %>/share/calendar/calendar.js"></script>
         <script
-                src="../../../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"
+                src="../../<%= request.getContextPath() %>/share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"
                 type="text/javascript"></script>
-        <script src="../../../share/calendar/calendar-setup.js"
+        <script src="../../<%= request.getContextPath() %>/share/calendar/calendar-setup.js"
                 type="text/javascript"></script>
 
         <script language="JavaScript">

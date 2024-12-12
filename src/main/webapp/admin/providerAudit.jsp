@@ -112,7 +112,7 @@
         %>
 
         <title>Audit for </title>
-        <link rel="stylesheet" type="text/css" href="../share/css/OscarStandardLayout.css">
+        <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/share/css/OscarStandardLayout.css">
         <script type="text/javascript">
 
             function popupPageNew(vheight, vwidth, varpage) {
