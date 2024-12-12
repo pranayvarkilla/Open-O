@@ -53,7 +53,7 @@
             providerList = providerDao.getActiveProviders();
             demographicDao = SpringUtils.getBean(DemographicDao.class);
             demographic = demographicDao.getClientByDemographicNo(Integer.parseInt(demographicNoString));
-            demographicContacts = ContactAction.getDemographicContacts(demographic);
+            demographicContacts = Contact2Action.getDemographicContacts(demographic);
             contactSpecialtyDao = SpringUtils.getBean(ContactSpecialtyDao.class);
             specialty = contactSpecialtyDao.findAll();
         }

@@ -90,7 +90,7 @@
 <%@ page import="oscar.OscarProperties" %>
 <%@ page import="org.oscarehr.common.dao.*,org.oscarehr.common.model.*" %>
 <%@ page import="org.oscarehr.common.OtherIdManager" %>
-<%@ page import="org.oscarehr.common.web.ContactAction" %>
+<%@ page import="org.oscarehr.common.web.Contact2Action" %>
 <%@ page import="org.oscarehr.casemgmt.model.CaseManagementNoteLink" %>
 <%@ page import="org.oscarehr.casemgmt.service.CaseManagementManager" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
@@ -1695,7 +1695,7 @@
                                                                         ContactDao contactDao = (ContactDao) SpringUtils.getBean(ContactDao.class);
                                                                         DemographicContactDao dContactDao = (DemographicContactDao) SpringUtils.getBean(DemographicContactDao.class);
                                                                         List<DemographicContact> dContacts = dContactDao.findByDemographicNo(demographic.getDemographicNo());
-                                                                        dContacts = ContactAction.fillContactNames(dContacts);
+                                                                        dContacts = Contact2Action.fillContactNames(dContacts);
                                                                         for (DemographicContact dContact : dContacts) {
                                                                             String sdm = (dContact.getSdm() != null && dContact.getSdm().equals("true")) ? "<span title=\"SDM\" >/SDM</span>" : "";
                                                                             String ec = (dContact.getEc() != null && dContact.getEc().equals("true")) ? "<span title=\"Emergency Contact\" >/EC</span>" : "";
