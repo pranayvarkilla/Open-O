@@ -59,8 +59,9 @@
 <%@page import="org.oscarehr.casemgmt.model.Issue" %>
 
 <%
+    oscar.oscarRx.pageUtil.RxSessionBean bean = null;
     String rx_enhance = OscarProperties.getInstance().getProperty("rx_enhance");
-    oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
+    oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getSession().getAttribute("Patient");
 %>
 
 <%
@@ -98,7 +99,7 @@
 <c:if test="${not empty sessionScope.RxSessionBean}">
     <%
         // Directly access the RxSessionBean from the session
-        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
         if (bean != null && !bean.isValid()) {
             response.sendRedirect("error.html");
             return; // Ensure no further JSP processing
