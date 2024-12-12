@@ -60,7 +60,7 @@
         <script type="text/javascript" src="../share/calendar/calendar-setup.js"></script>
 
 
-        <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+        <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
 
         <script type="text/javascript">
             var denominator_fields = new Array();
@@ -113,7 +113,7 @@
             <td class="MainTableLeftColumn" valign="top">&nbsp;</td>
             <td valign="top" class="MainTableRightColumn">
 
-                <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+                <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
 
                 <%
 
@@ -195,9 +195,9 @@
 
 
     </script>
-    <script language="javascript" src="../commons/scripts/sort_table/css.js">
-    <script language="javascript" src="../commons/scripts/sort_table/common.js">
-        <script language="javascript" src="../commons/scripts/sort_table/standardista-table-sorting.js">
+    <script language="javascript" src="<%=request.getContextPath()%>/commons/scripts/sort_table/css.js">
+    <script language="javascript" src="<%=request.getContextPath()%>/commons/scripts/sort_table/common.js">
+        <script language="javascript" src="<%=request.getContextPath()%>/commons/scripts/sort_table/standardista-table-sorting.js">
         </body>
 </html>
 <%!

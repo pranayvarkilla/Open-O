@@ -81,7 +81,7 @@
     <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
     <title><fmt:setBundle basename="oscarResources"/><fmt:message key="demographic.demographicsearch2apptresults.title"/>(demographicsearch2reportresults)</title>
 
-    <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
     <script language="JavaScript">
         function setfocus() {
             this.focus();

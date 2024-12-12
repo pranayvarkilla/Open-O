@@ -183,7 +183,7 @@
     <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
     <title>Clincaid Billed Appointment Report</title>
     <link rel="stylesheet" href="../../../web.css">
-    <link rel="stylesheet" type="text/css" media="all" href="../../../share/css/extractedFromPages.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
     <!-- calendar stylesheet -->
     <link rel="stylesheet" type="text/css" media="all"
           href="../../../share/calendar/calendar.css" title="win2k-cold-1"/>

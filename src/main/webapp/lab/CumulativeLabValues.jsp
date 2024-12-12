@@ -68,7 +68,7 @@
         <script type="text/javascript" src="../share/javascript/Oscar.js"></script>
         <script type="text/javascript" src="../share/javascript/prototype.js"></script>
 
-        <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+        <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
 
         <link rel="stylesheet" type="text/css"
               href="../share/css/niftyCorners.css"/>
@@ -103,7 +103,7 @@
         </script>
 
 
-        <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+        <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
 
         <script language="JavaScript">
 

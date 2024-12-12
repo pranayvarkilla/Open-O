@@ -729,7 +729,7 @@
 
             -->
         </style>
-        <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+        <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
         <link rel="stylesheet" type="text/css" media="all" href="../css/print.css"/>
 
     </head>

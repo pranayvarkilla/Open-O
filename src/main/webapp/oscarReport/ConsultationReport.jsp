@@ -82,7 +82,7 @@
         <title><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarReport.ConsultationReport.title"/>
             <%= mons %>
         </title>
-        <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+        <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
 
         <script type="text/javascript">
             var remote = null;

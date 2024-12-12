@@ -51,7 +51,7 @@
 
         <title>HMP Registration</title>
 
-        <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+        <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
         <link rel="stylesheet" href="../form/hsfo2/hsfo2.css">
     </head>
     <%

@@ -40,7 +40,7 @@
     <script src="../js/jquery.ui.colorPicker.min.js" type="text/javascript"></script>
     <oscar:customInterface section="apptStatusEdit"/>
 </head>
-<link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
 <body>
 <script type="text/javascript">
     $(document).ready(function () {

@@ -240,7 +240,7 @@
         <link rel="stylesheet" type="text/css" href="../share/css/searchBox.css"/>
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/Demographic.css"/>
 
-        <!--link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"  /-->
+        <!--link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"  /-->
         <script language="JavaScript">
             function upCaseCtrl(ctrl) {
                 ctrl.value = ctrl.value.toUpperCase();

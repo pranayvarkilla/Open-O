@@ -221,7 +221,7 @@
             }
         </script>
 
-        <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+        <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
     </head>
 
     <body class="BodyStyle" demographic.demographicappthistory.msgTitle=vlink="#0000FF">

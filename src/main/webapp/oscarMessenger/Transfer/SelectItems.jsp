@@ -70,7 +70,7 @@
 <head>
     <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
 
-    <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
 
     <script language="javascript">
         var browserName = navigator.appName;

@@ -74,7 +74,7 @@ if ( request.getParameter("searchProviderNo") == null || request.getParameter("s
     <script type="text/javascript"
             src="<%= request.getContextPath() %>/share/javascript/jquery/jquery-1.4.2.js"></script>
     <link rel="stylesheet" type="text/css" href="encounterStyles.css">
-    <link rel="stylesheet" type="text/css" media="all" href="../share/css/extractedFromPages.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
 </head>
 
 

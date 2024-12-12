@@ -64,7 +64,7 @@
             src="../../../share/calendar/lang/<fmt:setBundle basename="oscarResources"/><fmt:message key="global.javascript.calendar"/>"></script>
     <script type="text/javascript"
             src="../../../share/calendar/calendar-setup.js"></script>
-    <link rel="stylesheet" type="text/css" media="all" href="../../../share/css/extractedFromPages.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../<%= request.getContextPath() %>/share/css/extractedFromPages.css"/>
     <script language="JavaScript">
         <!--
         function popupPage(vheight, vwidth, varpage) { //open a new popup window
