@@ -49,7 +49,7 @@
         if (!StringUtils.isBlank(demographicNoString)) {
             demographicDao = SpringUtils.getBean(DemographicDao.class);
             demographic = demographicDao.getClientByDemographicNo(Integer.parseInt(demographicNoString));
-            demographicContacts = ContactAction.getDemographicContacts(demographic);
+            demographicContacts = Contact2Action.getDemographicContacts(demographic);
             specialtyDao = SpringUtils.getBean(ContactSpecialtyDao.class);
             specialty = specialtyDao.findAll();
         }
