@@ -193,7 +193,7 @@
                 </c:when>
                 <c:when test="${'V' eq tabPrintLabel}">
                     <div>
-                        <a href='javascript:popupLabel("${pageContext.request.contextPath}/demographic/printBarcodeAction.do?clientId=${clientId}"></c:out>“)'>
+                        <a href="javascript:popupLabel('${pageContext.request.contextPath}/demographic/printBarcodeAction.do?clientId=${clientId}')">
                             Print Label</a>
                     </div>
                 </c:when>

@@ -44,6 +44,7 @@
 
     OscarLogDao oscarLogDao = SpringUtils.getBean(OscarLogDao.class);
     List<OscarLog> logs = oscarLogDao.findByActionAndData(request.getParameter("type"), admissionId);
+    OscarLog log = (OscarLog) request.getAttribute("log");
 
     pageContext.setAttribute("history", logs);
 %>

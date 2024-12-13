@@ -102,10 +102,7 @@ Conditions:
         <th><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarrx.showallergies.evaluate"/></th>
     </tr>
     <c:forEach var="conditionResult" items="${conditionResults}" varStatus="status">
-        <%
-            String cssClass = "even";
-            if (status.index % 2 == 1) cssClass = "odd";%>
-        <tr class="<%=cssClass%>">
+        <tr class="${status.index % 2 == 1 ? 'odd' : 'even'}">
             <td><c:out value="${conditionResult.condition.conditionType}"/></td>
             <td><c:out value="${conditionResult.condition.listOperator}"/></td>
             <td><c:out value="${conditionResult.condition.values}"/></td>

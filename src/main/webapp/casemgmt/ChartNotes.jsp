@@ -555,7 +555,7 @@
     <input type="hidden" name="appointmentDate" value="<%=apptDate%>"/>
     <input type="hidden" name="start_time" value="<%=startTime%>"/>
     <input type="hidden" name="billRegion"
-                 value="<%=(OscarProperties.getInstance().getProperty(\"billregion\",\"\")).trim().toUpperCase()%>"/>
+                 value="<%=(OscarProperties.getInstance().getProperty("billregion","")).trim().toUpperCase()%>"/>
     <input type="hidden" name="apptProvider" value="<%=apptProv%>"/>
     <input type="hidden" name="providerview" value="<%=provView%>"/>
     <input type="hidden" name="toBill" id="toBill" value="false">

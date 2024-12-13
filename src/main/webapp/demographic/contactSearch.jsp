@@ -56,9 +56,9 @@
         List<Contact> contacts;
 
         if ("all".equalsIgnoreCase(list)) {
-            contacts = ContactAction.searchAllContacts(search_mode, orderBy, keyword);
+            contacts = Contact2Action.searchAllContacts(search_mode, orderBy, keyword);
         } else {
-            contacts = ContactAction.searchContacts(search_mode, orderBy, keyword);
+            contacts = Contact2Action.searchContacts(search_mode, orderBy, keyword);
         }
 
         nItems = contacts.size();

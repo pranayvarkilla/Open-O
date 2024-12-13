@@ -172,6 +172,7 @@
                                             <c:set var="fav" value="${favoritesDao.findByProviderNo(copyProviderNo).get(i)}" />
                                             <c:set var="isCustom" value="${fav.gcnSeqNo == 0}" />
                                             <c:set var="style" value="style='background-color:#F5F5F5'" />
+                                        </c:forEach>
                                         <tr>
                                             <td>
                                                 <input type="hidden" name="countFavorites" value="<%=count%>"/>

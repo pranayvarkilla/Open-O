@@ -75,7 +75,7 @@
         String search_mode = request.getParameter("search_mode") == null ? "search_name" : request.getParameter("search_mode");
         String orderBy = request.getParameter("orderby") == null ? "c.lastName,c.firstName" : request.getParameter("orderby");
 
-        List<ProfessionalSpecialist> contacts = ContactAction.searchProfessionalSpecialists(keyword);
+        List<ProfessionalSpecialist> contacts = Contact2Action.searchProfessionalSpecialists(keyword);
         nItems = contacts.size();
         pageContext.setAttribute("contacts", contacts);
     }

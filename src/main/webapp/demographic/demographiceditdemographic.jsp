@@ -90,7 +90,7 @@
 <%@ page import="oscar.OscarProperties" %>
 <%@ page import="org.oscarehr.common.dao.*,org.oscarehr.common.model.*" %>
 <%@ page import="org.oscarehr.common.OtherIdManager" %>
-<%@ page import="org.oscarehr.common.web.ContactAction" %>
+<%@ page import="org.oscarehr.common.web.Contact2Action" %>
 <%@ page import="org.oscarehr.casemgmt.model.CaseManagementNoteLink" %>
 <%@ page import="org.oscarehr.casemgmt.service.CaseManagementManager" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
@@ -262,7 +262,7 @@
 
         <!-- calendar stylesheet -->
         <link rel="stylesheet" type="text/css" media="all"
-              href="../share/calendar/calendar.css" title="win2k-cold-1"/>
+              href="<%=request.getContextPath()%>/share/calendar/calendar.css" title="win2k-cold-1"/>
 
         <script type="text/javascript" src="<%=request.getContextPath()%>/library/jquery/jquery-1.12.0.min.js"></script>
         <script type="text/javascript"
@@ -277,7 +277,7 @@
               type="text/css"/>
 
         <!-- main calendar program -->
-        <script type="text/javascript" src="../share/calendar/calendar.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/share/calendar/calendar.js"></script>
 
         <!-- language for the calendar -->
         <script type="text/javascript"
@@ -285,7 +285,7 @@
 
         <!-- the following script defines the Calendar.setup helper function, which makes
        adding a calendar a matter of 1 or 2 lines of code. -->
-        <script type="text/javascript" src="../share/calendar/calendar-setup.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/share/calendar/calendar-setup.js"></script>
 
         <script type="text/javascript" src="<%=request.getContextPath() %>/js/check_hin.js"></script>
 
@@ -293,25 +293,25 @@
 
         <!-- calendar stylesheet -->
         <link rel="stylesheet" type="text/css" media="all"
-              href="../share/calendar/calendar.css" title="win2k-cold-1"/>
+              href="<%=request.getContextPath()%>/share/calendar/calendar.css" title="win2k-cold-1"/>
         <% if (isMobileOptimized) { %>
         <meta name="viewport"
               content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width"/>
         <link rel="stylesheet" type="text/css" href="../mobile/editdemographicstyle.css">
         <% } else { %>
-        <link rel="stylesheet" type="text/css" href="../oscarEncounter/encounterStyles.css">
-        <link rel="stylesheet" type="text/css" href="../share/css/searchBox.css">
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/oscarEncounter/encounterStyles.css">
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/share/css/searchBox.css">
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
         <% } %>
         <script language="javascript" type="text/javascript"
-                src="../share/javascript/Oscar.js"></script>
+                src="<%=request.getContextPath()%>/share/javascript/Oscar.js"></script>
 
         <!--popup menu for encounter type -->
         <script src="<c:out value="${ctx}"/>/share/javascript/popupmenu.js"
                 type="text/javascript"></script>
         <script src="<c:out value="${ctx}"/>/share/javascript/menutility.js"
                 type="text/javascript"></script>
-        <script type="text/javascript" src="../share/javascript/prototype.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/share/javascript/prototype.js"></script>
         <script>
             jQuery.noConflict();
         </script>
@@ -1695,7 +1695,7 @@
                                                                         ContactDao contactDao = (ContactDao) SpringUtils.getBean(ContactDao.class);
                                                                         DemographicContactDao dContactDao = (DemographicContactDao) SpringUtils.getBean(DemographicContactDao.class);
                                                                         List<DemographicContact> dContacts = dContactDao.findByDemographicNo(demographic.getDemographicNo());
-                                                                        dContacts = ContactAction.fillContactNames(dContacts);
+                                                                        dContacts = Contact2Action.fillContactNames(dContacts);
                                                                         for (DemographicContact dContact : dContacts) {
                                                                             String sdm = (dContact.getSdm() != null && dContact.getSdm().equals("true")) ? "<span title=\"SDM\" >/SDM</span>" : "";
                                                                             String ec = (dContact.getEc() != null && dContact.getEc().equals("true")) ? "<span title=\"Emergency Contact\" >/EC</span>" : "";

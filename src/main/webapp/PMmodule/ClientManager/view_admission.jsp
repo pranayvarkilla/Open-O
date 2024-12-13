@@ -27,6 +27,9 @@
 <%@ page import="org.oscarehr.common.model.OscarLog" %>
 <%@ page import="java.util.List" %>
 <%@ include file="/taglibs.jsp" %>
+<%
+    Admission admission = (Admission) request.getAttribute("admission");
+%>
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
