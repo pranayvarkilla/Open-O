@@ -223,7 +223,7 @@
         String pId = (String) session.getAttribute("case_program_id");
         if (pId == null) pId = "";
     %>
-    <nested:form action="/CaseManagementEntry">
+    <form action="<%=request.getContextPath() %>/CaseManagementEntry.do">
         <input type="hidden" name="chain" id="chain"/>
         <input type="hidden" name="demographicNo" id="demographicNo"/>
         <c:if test="${param.providerNo==null}">
@@ -287,98 +287,76 @@
                 <td></td>
             </tr>
 
-            <nested:iterate indexId="ind" id="issueCheckList" property="issueCheckList"
-                            type="org.oscarehr.casemgmt.web.CheckBoxBean">
-                <%
-                    String submitString = "this.form.method.value='issueChange';";
-                    submitString = submitString + "this.form.lineId.value=" + "'"
-                            + ind.intValue() + "';" + "this.form.submit();";
+            <c:forEach var="issueCheckList" items="${caseManagementEntryForm.issueCheckList}" varStatus="status">
+    <c:set var="cbb" value="${issueCheckList}" />
+    <c:set var="writeAccess" value="${cbb.issueDisplay.writeAccess}" />
+    <c:set var="disabled" value="${cbb.issueDisplay.location ne 'local' ? true : !writeAccess}" />
+    <c:set var="checkBoxDisabled" value="${cbb.issueDisplay.location ne 'local' ? false : disabled}" />
+    <c:set var="resolved" value="${cbb.issueDisplay.resolved eq 'resolved'}" />
 
-                    org.oscarehr.casemgmt.web.CheckBoxBean cbb = (org.oscarehr.casemgmt.web.CheckBoxBean) pageContext.getAttribute("issueCheckList");
-                    boolean writeAccess = cbb.getIssueDisplay().isWriteAccess();
-                    boolean disabled = !"local".equals(cbb.getIssueDisplay().location) ? true : !writeAccess;
-                    boolean checkBoxDisabled = !"local".equals(cbb.getIssueDisplay().location) ? false : disabled;
-                    boolean resolved = "resolved".equals(cbb.getIssueDisplay().resolved);
-                    int counter = 0;
+    <c:if test="${!resolved or showResolved}">
+        <c:set var="countIssuesDisplay" value="${countIssuesDisplay + 1}" />
+        <c:set var="counter" value="${status.count}" />
 
-                    if (!resolved || showResolved) {
-                        count_issues_display++;
-                        counter++;
-                %>
+        <tr style="background-color: ${counter % 2 == 0 ? '#EEEEFF' : 'white'}; text-align: center;">
+            <td>
+                <input type="checkbox" name="issueCheckList[${status.index}].checked"
+                       onchange="setChangeFlag(true);"
+                       ${checkBoxDisabled ? 'disabled' : ''} />
+            </td>
+            <td style="${cbb.issueDisplay.priority eq 'allergy' ? 'background-color: yellow;' : ''}">
+                ${cbb.issueDisplay.description}
+            </td>
+            <td>
+                <select name="issueCheckList[${status.index}].issueDisplay.acute" ${disabled ? 'disabled' : ''}>
+                    <option value="acute" ${cbb.issueDisplay.acute eq 'acute' ? 'selected' : ''}>acute</option>
+                    <option value="chronic" ${cbb.issueDisplay.acute eq 'chronic' ? 'selected' : ''}>chronic</option>
+                </select>
+            </td>
+            <td>
+                <select name="issueCheckList[${status.index}].issueDisplay.certain" ${disabled ? 'disabled' : ''}>
+                    <option value="certain" ${cbb.issueDisplay.certain eq 'certain' ? 'selected' : ''}>certain</option>
+                    <option value="uncertain" ${cbb.issueDisplay.certain eq 'uncertain' ? 'selected' : ''}>uncertain</option>
+                </select>
+            </td>
+            <td>
+                <select name="issueCheckList[${status.index}].issueDisplay.major" ${disabled ? 'disabled' : ''}>
+                    <option value="major" ${cbb.issueDisplay.major eq 'major' ? 'selected' : ''}>major</option>
+                    <option value="not major" ${cbb.issueDisplay.major eq 'not major' ? 'selected' : ''}>not major</option>
+                </select>
+            </td>
+            <td>
+                <select name="issueCheckList[${status.index}].issueDisplay.resolved" ${disabled ? 'disabled' : ''}>
+                    <option value="resolved" ${cbb.issueDisplay.resolved eq 'resolved' ? 'selected' : ''}>resolved</option>
+                    <option value="unresolved" ${cbb.issueDisplay.resolved eq 'unresolved' ? 'selected' : ''}>unresolved</option>
+                </select>
+            </td>
+            <td>
+                <input type="text" name="issueCheckList[${status.index}].issueDisplay.role" 
+                       value="${cbb.issueDisplay.role}" ${disabled ? 'disabled' : ''} />
+            </td>
+            <td>
+                <c:if test="${cbb.issueDisplay.location eq 'local'}">
+                    <c:if test="${!cbb.used}">
+                        <button type="submit" 
+                                onclick="this.form.method.value='issueDelete'; this.form.deleteId.value='${status.index}';">
+                            Delete
+                        </button>
+                    </c:if>
+                    <button type="submit" 
+                            onclick="this.form.method.value='changeDiagnosis'; this.form.deleteId.value='${status.index}';">
+                        Change Issue
+                    </button>
+                </c:if>
+                <c:if test="${cbb.issueDisplay.location ne 'local'}">
+                    <fmt:setBundle basename="oscarResources" />
+                    <fmt:message key="casemanagementEntry.activecommunityissue" />
+                </c:if>
+            </td>
+        </tr>
+    </c:if>
+</c:forEach>
 
-                <tr bgcolor="<%= (counter%2==0)?"#EEEEFF":"white" %>"
-                    align="center">
-                    <td>
-                        <nested:checkbox indexed="true" name="issueCheckList" property="checked"
-                                         onchange="setChangeFlag(true);"
-                                         disabled="<%=checkBoxDisabled%>"></nested:checkbox>
-                    </td>
-                    <td <%="allergy".equals(cbb.getIssueDisplay().priority) ? "bgcolor=\"yellow\"" : ""%>>
-                        <nested:write name="issueCheckList" property="issueDisplay.description"/>
-                    </td>
-                    <td>
-                        <nested:select indexed="true" name="issueCheckList" property="issueDisplay.acute"
-                                       disabled="<%=disabled%>">
-                            <option value="acute">acute</option>
-                            <option value="chronic">chronic</option>
-                        </nested:select>
-                    </td>
-                    <td>
-                        <nested:select indexed="true" name="issueCheckList" property="issueDisplay.certain"
-                                       disabled="<%=disabled%>">
-                            <option value="certain">certain</option>
-                            <option value="uncertain">uncertain</option>
-                        </nested:select>
-                    </td>
-                    <td>
-                        <nested:select indexed="true" name="issueCheckList" property="issueDisplay.major"
-                                       disabled="<%=disabled%>">
-                            <option value="major">major</option>
-                            <option value="not major">not major</option>
-                        </nested:select>
-                    </td>
-                    <td>
-                        <!-- removed onchange="<%=submitString%>" before disabled="<%=disabled %>" FOR THE ABOVE LINEs in this table -->
-                        <nested:select indexed="true" name="issueCheckList" property="issueDisplay.resolved"
-                                       disabled="<%=disabled%>">
-                            <option value="resolved">resolved</option>
-                            <option value="unresolved">unresolved</option>
-                        </nested:select>
-                    </td>
-                    <td>
-                        <nested:text indexed="true" name="issueCheckList" property="issueDisplay.role"
-                                     disabled="<%=disabled%>"/>
-                    </td>
-                    <td>
-                        <% if (cbb.getIssueDisplay().location != null && cbb.getIssueDisplay().location.equals("local")) { %>
-                        <security:oscarSec roleName="<%=roleName$%>" objectName="_casemgmt.issues" rights="u">
-                            <nested:equal name="issueCheckList" property="used"
-                                          value="false">
-                                <%
-                                    submitString = "this.form.method.value='issueDelete';";
-                                    submitString = submitString + "this.form.deleteId.value=" + "'"
-                                            + ind.intValue() + "';";
-                                %>
-                                <input type="submit" value="delete" onclick="<%=submitString%>">
-                            </nested:equal>
-
-                            <!-- change diagnosis button -->
-                            <%
-                                submitString = "this.form.method.value='changeDiagnosis';";
-                                submitString = submitString + "this.form.deleteId.value=" + "'"
-                                        + ind.intValue() + "';";
-                            %>
-                            <input type="submit" value="Change Issue" onclick="<%=submitString%>">
-                        </security:oscarSec>
-                        <%} else {%>
-                        <fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.activecommunityissue"/>
-                        <%}%>
-                    </td>
-                </tr>
-                <%
-                    }
-                %>
-            </nested:iterate>
 
         </table>
         <br>
@@ -398,7 +376,7 @@
         %>
         <br>
         <security:oscarSec roleName="<%=roleName$%>" objectName="_casemgmt.issues" rights="w">
-            <nested:submit value="add new issue" onclick="this.form.method.value='addNewIssue';"/>
+            <input type="submit" value="add new issue" onclick="this.form.method.value='addNewIssue';" />
         </security:oscarSec>
 
         <p><b><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.progressnoteentryview"/> </b></p>
@@ -419,7 +397,8 @@
             <tr>
                 <td class="fieldValue" colspan="1">
                     <textarea name="caseNote_note" id="caseNote_note" cols="60" rows="20" wrap="hard"
-                              onchange="setChangeFlag(true);"><nested:write property="caseNote.note"/></textarea>
+                              onchange="setChangeFlag(true);">${caseNote.note}
+                            </textarea>
                 </td>
                 <td class="fieldTitle"></td>
 
@@ -461,7 +440,8 @@
                         <tr>
                             <td class="fieldTitle"><fmt:setBundle basename="oscarResources"/><fmt:message key="casemanagementEntry.billing"/></td>
 
-                            <td class="fieldValue"><nested:text property="caseNote.billing_code"/>
+                            <td class="fieldValue">
+                                ${caseNote.billing_code}
                                 <input type="button" value="add billing"
                                        onclick="self.open('<%=(String)session.getAttribute("billing_url")%>','','scrollbars=yes,menubars=no,toolbars=no,resizable=yes');return false;">
                             </td>
@@ -490,7 +470,7 @@
             </tr>
 
         </table>
-    </nested:form>
+    </form>
 
 </security:oscarSec>
 <security:oscarSec roleName="<%=roleName$%>" objectName="_casemgmt.notes" rights="u" reverse="true">

@@ -338,14 +338,18 @@
                 <td align="left">
                     <table width="100%">
                         <c:forEach var="billingPaymentType" items="${paymentTypeList}" varStatus="ttr">
-                            <%= ttr.intValue() % 2 == 0 ? "<tr>" : "" %>
+                            <c:if test="${ttr.index % 2 == 0}">
+                                <tr>
+                            </c:if>
                             <td width="50%">
                                 <input type="radio" name="paymentType"
-                                       id="paymentType<c:out value='${billingPaymentType.id}'/>"
-                                       value="<c:out value='${billingPaymentType.id}'/>" <%=(ttr == 0 ? "checked=true" : "")%> />
+                                    id="paymentType${billingPaymentType.id}"
+                                    value="${billingPaymentType.id}" ${ttr.index == 0 ? "checked" : ""}/>
                                 <c:out value="${billingPaymentType.paymentType}"/>
                             </td>
-                            <%= ttr.intValue() % 2 == 0 ? "" : "</tr>" %>
+                            <c:if test="${ttr.index % 2 != 0}">
+                                </tr>
+                            </c:if>
                         </c:forEach>
                     </table>
                 </td>
@@ -433,24 +437,25 @@
         <c:if test="${not empty paymentsList}">
             <c:forEach var="displayPayment" items="${paymentsList}" varStatus="ctr">
                 <tr>
-                    <td><%= ctr + 1 %>
-                    </td>
+                    <td>${ctr.index + 1}</td>
                     <td><c:out value="${displayPayment.total_payment}"/></td>
-                    <td><%=types.get(ctr.intValue()) %>
-                    </td>
+                    <td>${types[ctr.index]}</td>
                     <td><c:out value="${displayPayment.paymentDateFormatted}"/></td>
                     <td><c:out value="${displayPayment.total_discount}"/></td>
                     <td><c:out value="${displayPayment.total_credit}"/></td>
                     <td><c:out value="${displayPayment.total_refund}"/></td>
-                    <%if (((BigDecimal) balances.get(index)).compareTo(BigDecimal.ZERO) == -1) {%>
-                    <td><%= "-" + currency.format(balances.get(index++)) %>
-                    </td>
-                    <%} else { %>
-                    <td><%= currency.format(balances.get(index++)) %>
-                    </td>
-                    <%} %>
                     <td>
-                        <a href="javascript:onViewPayment('<c:out value="${displayPayment.id}"/>')">view</a>
+                        <c:choose>
+                            <c:when test="${balances[ctr.index] < 0}">
+                                -${currency.format(balances[ctr.index])}
+                            </c:when>
+                            <c:otherwise>
+                                ${currency.format(balances[ctr.index])}
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>
+                        <a href="javascript:onViewPayment('<c:out value="${displayPayment.id}"/>')" >view</a>
                     </td>
                 </tr>
             </c:forEach>

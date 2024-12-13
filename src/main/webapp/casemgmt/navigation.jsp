@@ -601,29 +601,24 @@
                                     onChange="javascript:selectBox(this)"
                                     onMouseOver="javascript:window.status='View <%=bean.patientFirstName+" "+bean.patientLastName%>\'s lab results'; return true;">
                                 <option value="null" selected>-lab results-</option>
-                                <nested:iterate id="labrst" name="casemgmt_labsbeans"
-                                                type="oscar.oscarLab.ca.on.LabResultData">
-                                    <%
+                                <c:forEach var="labrst" items="${casemgmtLabsbeans}">
+                                    <c:set var="lablable" value="${labrst.dateTime}${labrst.discipline}" />
+                                    <c:set var="mdvalue" value="${bsurl}/oscarMDS/SegmentDisplay.jsp?providerNo=${bean.providerNo}&segmentID=${labrst.segmentID}&status=${labrst.reportStatus}" />
+                                    <c:set var="cmvalue" value="${bsurl}/lab/CA/ON/CMLDisplay.jsp?providerNo=${bean.providerNo}&segmentID=${labrst.segmentID}" />
+                                    <c:set var="otvalue" value="${bsurl}/lab/CA/BC/labDisplay.jsp?segmentID=${labrst.segmentID}&providerNo=${bean.providerNo}" />
 
-                                        String lablable = labrst.dateTime + "" + labrst.discipline;
-                                        String mdvalue = bsurl + "/oscarMDS/SegmentDisplay.jsp?providerNo=" + bean.providerNo + "&segmentID=" + labrst.segmentID + "&status=" + labrst.reportStatus;
-                                        String cmvalue = bsurl + "/lab/CA/ON/CMLDisplay.jsp?providerNo=" + bean.providerNo + "&segmentID=" + labrst.segmentID;
-                                        String otvalue = bsurl + "/lab/CA/BC/labDisplay.jsp?segmentID=" + labrst.segmentID + "&providerNo=" + bean.providerNo;
-                                        if (labrst.isMDS()) {
-                                    %>
-                                    <option value="<%=mdvalue%>"><%=lablable%>
-                                    </option>
-                                    <% } else {
-                                        if (labrst.isCML()) {
-                                    %>
-                                    <option value="<%=cmvalue%>"><%=lablable%>
-                                    </option>
-                                    <% } else {%>
-                                    <option value="<%=otvalue%>"><%=lablable%>
-                                    </option>
-                                    <% }
-                                    }%>
-                                </nested:iterate>
+                                    <c:choose>
+                                        <c:when test="${labrst.mds}">
+                                            <option value="${mdvalue}">${lablable}</option>
+                                        </c:when>
+                                        <c:when test="${labrst.cml}">
+                                            <option value="${cmvalue}">${lablable}</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="${otvalue}">${lablable}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
                             </select>
                             <%session.removeAttribute("casemgmt_labsbeans"); %>
                         </td>

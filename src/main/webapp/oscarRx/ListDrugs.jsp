@@ -52,6 +52,9 @@
 <%@page import="java.util.ArrayList,oscar.util.*,java.util.*,org.oscarehr.common.model.Drug,org.oscarehr.common.dao.*" %>
 <%@page import="org.oscarehr.managers.DrugDispensingManager" %>
 <%@page import="org.oscarehr.managers.CodingSystemManager" %>
+<%
+    oscar.oscarRx.data.RxPatientData.Patient patient = null;
+%>
 <c:if test="${empty sessionScope.RxSessionBean}">
     <c:redirect url="error.html"/>
 </c:if>
@@ -63,7 +66,7 @@
             response.sendRedirect("error.html");
             return; // Ensure no further JSP processing
         }
-        oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
+        patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
     %>
 </c:if>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
