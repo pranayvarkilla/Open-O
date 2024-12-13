@@ -62,10 +62,10 @@
 
 
     <%
-
         oscar.oscarRx.data.RxCodesData.FrequencyCode[] freq = new oscar.oscarRx.data.RxCodesData().getFrequencyCodes();
 
         int i, j;
+    %>
 
         <c:set var="providerNo" value="${bean.providerNo}" />
         <c:set var="share" value="false" />
@@ -79,7 +79,6 @@
         <c:if test="${not empty requestScope.copyProviderNo}">
             <c:set var="copyProviderNo" value="${requestScope.copyProviderNo}" />
         </c:if>
-    %>
 
 
     <script language=javascript>
