@@ -25,7 +25,7 @@ package org.oscarehr.common.model;
 
 import java.util.List;
 
-import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.oscarehr.util.MiscUtils;
 
 public abstract class AbstractModel<T> implements java.io.Serializable {
