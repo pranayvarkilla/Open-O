@@ -55,7 +55,7 @@
 
                 <table BORDER=0 NOSAVE width="100%">
                     <TR>
-                        <%@ include file="<%= request.getContextPath() %>/share/letterheader.htm" %>
+                        <%@ include file="../share/letterheader.html" %>
                         <TD WIDTH="20%" ALIGN="right" nowrap valign="top"><input
                                 type="button" name="Submit" value="Print" onClick="window.print()">
                             <input type="button" name="Submit2" value="Cancel"
