@@ -79,10 +79,10 @@
         List<?> contacts;
 
         if ("all".equalsIgnoreCase(list)) {
-            contacts = ContactAction.searchAllContacts(search_mode, orderBy, keyword);
+            contacts = Contact2Action.searchAllContacts(search_mode, orderBy, keyword);
             pageContext.setAttribute("toggleSearchTool", list);
         } else {
-            contacts = ContactAction.searchProContacts(search_mode, orderBy, keyword);
+            contacts = Contact2Action.searchProContacts(search_mode, orderBy, keyword);
         }
 
         nItems = contacts.size();

@@ -24,7 +24,7 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 
 <%@ page import="oscar.oscarRx.data.*,java.util.*" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>

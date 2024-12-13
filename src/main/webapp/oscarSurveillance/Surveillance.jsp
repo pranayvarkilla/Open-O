@@ -63,8 +63,8 @@
             <%=surveyQuestion%>
             <br/>
             <form action="${pageContext.request.contextPath}/oscarSurveillance/SurveillanceAnswer.do" method="post">
-                <input type="hidden" name="proceed" id="proceed" value='<%=(String) request.getAttribute(\"proceedURL\")%>'/>
-                <input type="hidden" name="demographicNo" id="demographicNo" value='<%=(String) request.getAttribute(\"demographic_no\")%>'/>
+                <input type="hidden" name="proceed" id="proceed" value='<%=(String) request.getAttribute("proceedURL")%>'/>
+                <input type="hidden" name="demographicNo" id="demographicNo" value='<%=(String) request.getAttribute("demographic_no")%>'/>
                 <input type="hidden" name="surveyId" id="surveyId" value="<%=(String) survey.getSurveyId()%>"/>
                 <input type="hidden" name="currentSurveyNum" id="currentSurveyNum" value="<%=currSurveyNum%>"/>
 
