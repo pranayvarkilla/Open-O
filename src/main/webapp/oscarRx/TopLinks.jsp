@@ -25,65 +25,65 @@
 --%>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<c:set var="ctx" value="${ pageContext.servletContext.contextPath }"/>
-<c:set var="url"
+<core:set var="ctx" value="${ pageContext.servletContext.contextPath }"/>
+<core:set var="url"
        value="${ ctx }/demographic/demographiccontrol.jsp?demographic_no=${ param.demographicNo }&displaymode=edit&dboperation=search_detail&appointment="/>
 
 <table id="${ not empty param.tableId ? param.tableId : 'topLink' }">
     <tr>
         <td id="topLinkLeftColumn">
-            <h1><c:out value="${ param.title }"/></h1>
+            <h1><core:out value="${ param.title }"/></h1>
         </td>
 
         <td id="topLinkCenterColumn">
 
-            <c:if test="${ not empty param.patientName }">
+            <core:if test="${ not empty param.patientName }">
                 <a href="javascript:void(0)" onClick="popupPage(700,1000,'${ url }'); return false;"
                    title="<fmt:setBundle basename="oscarResources"/><fmt:message key="provider.appointmentProviderAdminDay.msgMasterFile"/>">
-                    <c:out value="${ param.patientName }"/>
+                    <core:out value="${ param.patientName }"/>
                 </a>
-            </c:if>
+            </core:if>
 
-            <c:if test="${ not empty param.sex }">
+            <core:if test="${ not empty param.sex }">
 	        <span class="label">
 	        	sex
 	        </span>
                 <span>
                         ${ param.sex }
                 </span>
-            </c:if>
+            </core:if>
 
-            <c:if test="${ not empty param.age }">
+            <core:if test="${ not empty param.age }">
 	        <span class="label">
 	        	age
 	        </span>
                 <span>
                         ${ param.age }
                 </span>
-            </c:if>
+            </core:if>
 
-            <c:if test="${ not empty param.phone }">
+            <core:if test="${ not empty param.phone }">
 	        <span class="label">
 	        	home
 	        </span>
                 <span>
                         ${ param.phone }
                 </span>
-            </c:if>
+            </core:if>
 
-            <c:if test="${ not empty param.mrp }">
+            <core:if test="${ not empty param.mrp }">
                 <security:oscarSec roleName="${ security }" objectName="_newCasemgmt.doctorName" rights="r">
 	    	<span class="label">	
 	    		  <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.Index.msgMRP"/>  			   
 		    </span>
                     <span>
-		     	<c:out value="${ param.mrp }"/>
+		     	<core:out value="${ param.mrp }"/>
 		    </span>
                 </security:oscarSec>
-            </c:if>
+            </core:if>
         </td>
 
         <td id="topLinkRightColumn">
