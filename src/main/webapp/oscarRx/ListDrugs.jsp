@@ -54,6 +54,7 @@
 <%@page import="org.oscarehr.managers.CodingSystemManager" %>
 <%
     oscar.oscarRx.data.RxPatientData.Patient patient = null;
+    oscar.oscarRx.pageUtil.RxSessionBean bean = null;
 %>
 <c:if test="${empty sessionScope.RxSessionBean}">
     <c:redirect url="error.html"/>
@@ -61,7 +62,7 @@
 <c:if test="${not empty sessionScope.RxSessionBean}">
     <%
         // Directly access the RxSessionBean from the session
-        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
         if (bean != null && !bean.isValid()) {
             response.sendRedirect("error.html");
             return; // Ensure no further JSP processing

@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="/casemgmt/taglibs.jsp" %>
 <%@page import="org.oscarehr.casemgmt.model.CaseManagementNote" %>
 <%
@@ -58,7 +58,7 @@
         <div style="width: 99%; background-color: #EFEFEF; font-size: 12px; border-left: thin groove #000000; border-bottom: thin groove #000000; border-right: thin groove #000000;">
             <div>
                 <p>
-                    <c:out value="${note.note.replace('\n', '<br/>')}" />
+                <c:out value="${note.note}" escapeXml="false" />
                 </p>
             </div>
             <div style="color: #0000FF;">

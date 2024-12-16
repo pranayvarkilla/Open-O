@@ -29,6 +29,7 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <% long loadPage = System.currentTimeMillis(); %>
 <%@ include file="/casemgmt/taglibs.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page import="oscar.oscarEncounter.oscarMeasurements.MeasurementFlowSheet" %>
@@ -335,24 +336,18 @@
                         <select name="selectCurrentForms" class="ControlSelect" onChange="javascript:selectBox(this)"
                                 onMouseOver="javascript:window.status='View any of <%=bean.patientLastName+","+bean.patientFirstName%>\'s current forms.';return true;">
                             <option value="null" selected>-current forms-</option>
-                            <nested:iterate id="cf" name="casemgmt_newFormBeans"
-                                            type="org.oscarehr.common.model.EncounterForm">
-                                <%
-                                    String table = cf.getFormTable();
-                                    if (!table.equalsIgnoreCase("")) {
-                                        oscar.oscarEncounter.data.EctFormData.PatientForm[] pforms = oscar.oscarEncounter.data.EctFormData.getPatientForms(bean.demographicNo, table);
-                                        if (pforms.length > 0) {
-                                            oscar.oscarEncounter.data.EctFormData.PatientForm pfrm = pforms[0];
-                                            String value = session.getAttribute("casemgmt_oscar_baseurl") + "/form/forwardshortcutname.do?formname="
-                                                    + cf.getFormName() + "&demographic_no=" + bean.demographicNo;
-                                            String label = cf.getFormName() + "&nbsp;Cr:" + pfrm.getCreated() + "&nbsp;Ed:" + pfrm.getEdited();
-                                %>
-                                <option value="<%= value %>"><%=label%>
-                                </option>
-                                <%
-                                        }
-                                    }
-                                %></nested:iterate>
+                            <c:forEach var="cf" items="${casemgmt_newFormBeans}">
+                                <c:if test="${cf.formTable ne ''}">
+                                    <c:set var="pforms" value="${cf.patientForms}" />
+                                    <c:if test="${fn:length(pforms) > 0}">
+                                        <c:set var="pfrm" value="${pforms[0]}" />
+                                        <c:set var="value" value="${sessionScope.casemgmt_oscar_baseurl}/form/forwardshortcutname.do?formname=${cf.formName}&demographic_no=${bean.demographicNo}" />
+                                        <c:set var="label" value="${cf.formName}&nbsp;Cr:${pfrm.created}&nbsp;Ed:${pfrm.edited}" />
+                                        <option value="${value}">${label}</option>
+                                    </c:if>
+                                </c:if>
+                            </c:forEach>
+
 
                         </select>
                     </td>
@@ -364,17 +359,13 @@
                         <select name="selectNewForms" class="ControlSelect" onChange="javascript:selectBox(this)"
                                 onMouseOver="javascript:window.status='View <%=bean.patientLastName+","+bean.patientFirstName%>\'s new forms list.';return true;">
                             <option value="null" selected>-add new form-</option>
-                            <nested:iterate id="cf" name="casemgmt_newFormBeans"
-                                            type="org.oscarehr.common.model.EncounterForm">
-                                <% if (cf.isHidden()) {
-                                    String value = session.getAttribute("casemgmt_oscar_baseurl") + "/appointment/"
-                                            + cf.getFormValue() + bean.demographicNo + "&formId=0&provNo=" + bean.providerNo;
-                                    String label = cf.getFormName();
-                                %>
-                                <option value="<%= value %>"><%= label %>
-                                </option>
-                                <%} %>
-                            </nested:iterate>
+                            <c:forEach var="cf" items="${casemgmt_newFormBeans}">
+                                <c:if test="${cf.hidden}">
+                                    <c:set var="value" value="${sessionScope.casemgmt_oscar_baseurl}/appointment/${cf.formValue}${bean.demographicNo}&formId=0&provNo=${bean.providerNo}" />
+                                    <c:set var="label" value="${cf.formName}" />
+                                    <option value="${value}">${label}</option>
+                                </c:if>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
@@ -431,7 +422,7 @@
                                 onchange="javascript:popUpMsg(600,900,this.options[this.selectedIndex].value)">
                             <option value="null" selected>-Select Message-</option>
                             <c:forEach var="cmb" items="casemgmt_msgBeans">
-                                <option value="<%= cmb.getLabel() %>"><%= cmb.getValue() %></option>
+                                <option value="${cmb.label}">${cmb.value}</option>
                             </c:forEach>
                         </select>
                     </td>

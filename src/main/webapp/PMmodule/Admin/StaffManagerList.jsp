@@ -23,8 +23,6 @@
 
 --%>
 <%@ include file="/taglibs.jsp" %>
-<%@ taglib uri="/WEB-INF/quatro-tag.tld" prefix="quatro" %>
-
 <html>
     <head>
         <script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>

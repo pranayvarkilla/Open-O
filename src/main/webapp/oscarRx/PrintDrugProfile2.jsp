@@ -34,13 +34,16 @@
 <%@page import="java.util.List" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@page import="java.util.ArrayList,oscar.util.*,java.util.*,org.oscarehr.common.model.Drug,org.oscarehr.common.dao.*" %>
+<%
+    oscar.oscarRx.pageUtil.RxSessionBean bean = null;
+%>
 <c:if test="${empty sessionScope.RxSessionBean}">
     <c:redirect url="error.html"/>
 </c:if>
 <c:if test="${not empty sessionScope.RxSessionBean}">
     <%
         // Directly access the RxSessionBean from the session
-        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
         if (bean != null && !bean.isValid()) {
             response.sendRedirect("error.html");
             return; // Ensure no further JSP processing

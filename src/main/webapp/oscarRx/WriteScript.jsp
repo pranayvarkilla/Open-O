@@ -1437,14 +1437,14 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                 //RxPatientData.Patient.Allergy[] allerg = (RxPatientData.Patient.Allergy[]) request.getAttribute("ALLERGIES");
                                 org.oscarehr.common.model.Allergy[] allerg = bean.getAllergyWarnings(loggedInInfo, atcCode);
                                 if (allerg != null && allerg.length > 0) {
-                                    for (int i = 0; i < allerg.length; i++) {
+                                    for (int allergIndex = 0; allergIndex < allerg.length; allergIndex++) {
                             %>
                             <div
-                                    style="background-color:<%=severityOfReactionColor(allerg[i].getSeverityOfReaction())%>;margin-right:100px;margin-left:20px;margin-top:10px;padding-left:10px;padding-top:10px;padding-bottom:5px;border-bottom: 2px solid gray;border-right: 2px solid #999;border-top: 1px solid #CCC;border-left: 1px solid #CCC;">
-                                <b>Allergy:</b> <%= allerg[i].getDescription() %> <b>Reaction:</b>
-                                <%= allerg[i].getReaction() %>
-                                <b>Severity:</b> <%=severityOfReaction(allerg[i].getSeverityOfReaction())%>
-                                <b>Onset of Reaction:</b> <%=onSetOfReaction(allerg[i].getOnsetOfReaction())%>
+                                    style="background-color:<%=severityOfReactionColor(allerg[allergIndex].getSeverityOfReaction())%>;margin-right:100px;margin-left:20px;margin-top:10px;padding-left:10px;padding-top:10px;padding-bottom:5px;border-bottom: 2px solid gray;border-right: 2px solid #999;border-top: 1px solid #CCC;border-left: 1px solid #CCC;">
+                                <b>Allergy:</b> <%= allerg[allergIndex].getDescription() %> <b>Reaction:</b>
+                                <%= allerg[allergIndex].getReaction() %>
+                                <b>Severity:</b> <%=severityOfReaction(allerg[allergIndex].getSeverityOfReaction())%>
+                                <b>Onset of Reaction:</b> <%=onSetOfReaction(allerg[allergIndex].getOnsetOfReaction())%>
                             </div>
                             <% }
                             }%>
@@ -1505,7 +1505,7 @@ Outside ProOhip: <%= thisForm.getOutsideProviderOhip() %><br>
                                 <tr>
                                     <td width="60%" valign="top">
                                         <table cellspacing=0 cellpadding=5 width="100%">
-                                            <% int i = 0; %>
+                                            
                                             <c:forEach var="rx" items="${bean.stash}" varStatus="loopStatus" end="${stashSize - 1}">
                                                 <c:set var="rx2" value="${rx}" />
                                                 <c:choose>

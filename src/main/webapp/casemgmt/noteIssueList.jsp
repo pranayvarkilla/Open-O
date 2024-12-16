@@ -23,16 +23,14 @@
     Ontario, Canada
 
 --%>
-
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
-<%@ page
-        import="org.oscarehr.casemgmt.web.formbeans.CaseManagementEntryFormBean, org.oscarehr.common.model.Facility" %>
+<%@page import="org.oscarehr.casemgmt.web.formbeans.CaseManagementEntryFormBean, org.oscarehr.common.model.Facility" %>
 <%@page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@page import="org.oscarehr.PMmodule.model.Program" %>
 <%@page import="org.oscarehr.PMmodule.dao.ProgramDao" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>
 <%@ include file="/casemgmt/taglibs.jsp" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
     String roleName$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
     boolean authed = true;
@@ -46,10 +44,7 @@
         return;
     }
 %>
-
-
-<c:set var="ctx" value="${pageContext.request.contextPath}"
-       scope="request"/>
+<c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <%
     LoggedInInfo loggedInInfo73557 = LoggedInInfo.getLoggedInInfoFromSession(request);
     String noteIndex = "";
@@ -62,87 +57,85 @@
         request.setAttribute("caseManagementEntryForm", frm);
     }
 %>
-<nested:empty name="caseManagementEntryForm" property="caseNote.id">
-    <nested:notEmpty name="newNoteIdx">
-        <%
-            noteIndex = request.getParameter("newNoteIdx");
-        %>
-        <div id="sumary<nested:write name="newNoteIdx"/>">
-        <div id="observation<nested:write name="newNoteIdx"/>"
-        style="float: right; margin-right: 3px;">
-    </nested:notEmpty>
-    <nested:empty name="newNoteIdx">
-        <%
-            noteIndex = "0";
-        %>
-        <div id="sumary0">
-        <div id="observation0" style="float: right; margin-right: 3px;">
-    </nested:empty>
-</nested:empty>
-<nested:notEmpty name="caseManagementEntryForm" property="caseNote.id">
-    <%
-        noteIndex = String.valueOf(frm.getCaseNote().getId());
-    %>
-    <div style="background-color: #CCCCFF;"
-    id="sumary<nested:write name="caseManagementEntryForm" property="caseNote.id"/>">
-    <div
-    id="observation<nested:write name="caseManagementEntryForm" property="caseNote.id"/>"
-    style="float: right; margin-right: 3px;">
-</nested:notEmpty>
+<c:choose>
+    <c:when test="${empty caseManagementEntryForm.caseNote.id}">
+        <c:choose>
+            <c:when test="${not empty param.newNoteIdx}">
+                <c:set var="noteIndex" value="${param.newNoteIdx}" />
+                <div id="sumary${param.newNoteIdx}">
+                    <div id="observation${param.newNoteIdx}" style="float: right; margin-right: 3px;">
+                </div>
+            </c:when>
+            <c:otherwise>
+                <c:set var="noteIndex" value="0" />
+                <div id="sumary0">
+                    <div id="observation0" style="float: right; margin-right: 3px;">
+                </div>
+            </c:otherwise>
+        </c:choose>
+    </c:when>
+    <c:otherwise>
+        <c:set var="noteIndex" value="${caseManagementEntryForm.caseNote.id}" />
+        <div style="background-color: #CCCCFF;"
+             id="sumary${caseManagementEntryForm.caseNote.id}">
+            <div id="observation${caseManagementEntryForm.caseNote.id}" style="float: right; margin-right: 3px;">
+            </div>
+        </div>
+    </c:otherwise>
+</c:choose>
 </div>
 
 <div style="margin: 0 3px 0 0;"><span style="float: right;">
-<nested:notEmpty name="ajaxsave">
-	<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.encounterDate.title"/>:&nbsp;<span
-        id="obs<nested:write name="caseManagementEntryForm" property="caseNote.id" />">
-	<nested:write name="caseManagementEntryForm"
-                  property="caseNote.observation_date" format="dd-MMM-yyyy H:mm"/></span>&nbsp;
-        <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.noteRev.title"/><a href="#"
-                                                             onclick="return showHistory('<nested:write
-                                                                     name="caseManagementEntryForm"
-                                                                     property="caseNote.id"/>', event);"><nested:write
-        name="caseManagementEntryForm" property="caseNote.revision"/></a>
-</nested:notEmpty>
-<nested:empty name="ajaxsave">
-	<fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.encounterDate.title"/>:&nbsp;<img src="<c:out value="${ctx}/images/cal.gif" />"
-                                                                        id="observationDate_cal"
-                                                                        alt="calendar">&nbsp;<input type="text"
-                                                                                                    id="observationDate"
-                                                                                                    name="observation_date"
-                                                                                                    ondblclick="this.value='';"
-                                                                                                    style="border: none; width: 140px;"
-                                                                                                    readonly
-                                                                                                    value="<nested:write name="caseManagementEntryForm" property="caseNote.observation_date" format="dd-MMM-yyyy H:mm" />">
-                rev<a href="#"
-                      onclick="return showHistory('<nested:write name="caseManagementEntryForm"
-                                                                 property="caseNote.id"/>', event);"><nested:write
-        name="caseManagementEntryForm" property="caseNote.revision"/></a>
-</nested:empty>
+    <c:choose>
+        <c:when test="${not empty ajaxsave}">
+            <fmt:setBundle basename="oscarResources"/>
+            <fmt:message key="oscarEncounter.encounterDate.title"/>&nbsp;
+            <span id="obs${caseManagementEntryForm.caseNote.id}">
+                <fmt:formatDate value="${caseManagementEntryForm.caseNote.observation_date}" pattern="dd-MMM-yyyy H:mm"/>
+            </span>&nbsp;
+            <fmt:setBundle basename="oscarResources"/>
+            <fmt:message key="oscarEncounter.noteRev.title"/>
+            <a href="#" onclick="return showHistory('${caseManagementEntryForm.caseNote.id}', event);">
+                ${caseManagementEntryForm.caseNote.revision}
+            </a>
+        </c:when>
+        <c:otherwise>
+            <fmt:setBundle basename="oscarResources"/>
+            <fmt:message key="oscarEncounter.encounterDate.title"/>&nbsp;
+            <img src="${ctx}/images/cal.gif" id="observationDate_cal" alt="calendar">&nbsp;
+            <input type="text" id="observationDate" name="observation_date" ondblclick="this.value='';"
+                   style="border: none; width: 140px;" readonly
+                   value="<fmt:formatDate value="${caseManagementEntryForm.caseNote.observation_date}" pattern="dd-MMM-yyyy H:mm"/>">
+            rev
+            <a href="#" onclick="return showHistory('${caseManagementEntryForm.caseNote.id}', event);">
+                ${caseManagementEntryForm.caseNote.revision}
+            </a>
+        </c:otherwise>
+    </c:choose>    
 </div>
 
 <div style="margin-left: 3px;"><span style="float: left;">
 <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.editors.title"/>:</span>
-    <nested:equal
-            name="newNote" value="false">
+<c:choose>
+    <c:when test="${newNote == 'false'}">
         <ul style="list-style: none inside none; margin: 0;">
-            <nested:iterate indexId="eIdx" id="editor" property="caseNote.editors"
-                            name="caseManagementEntryForm">
-
-                <c:if test="${eIdx % 2 == 0}">
-                    <li><nested:write property="formattedName"/>;
+            <c:forEach var="editor" items="${caseManagementEntryForm.caseNote.editors}" varStatus="status">
+                <c:if test="${status.index % 2 == 0}">
+                    <li>${editor.formattedName};
                 </c:if>
-                <c:if test="${eIdx % 2 != 0}">
-                    <nested:write property="formattedName"/>
-                    </li>
+                <c:if test="${status.index % 2 != 0}">
+                    ${editor.formattedName}</li>
                 </c:if>
-            </nested:iterate>
-            <c:if test="${eIdx % 2 == 0}">
+            </c:forEach>
+            <c:if test="${not empty caseManagementEntryForm.caseNote.editors and caseManagementEntryForm.caseNote.editors.size() % 2 == 1}">
                 </li>
             </c:if>
         </ul>
-    </nested:equal> <nested:equal name="newNote" value="true">
+    </c:when>
+    <c:otherwise>
         <div style="margin: 0;">&nbsp;</div>
-    </nested:equal>
+    </c:otherwise>
+</c:choose>
 </div>
 
 <%
@@ -156,24 +149,28 @@
     if (currentFacility.isEnableEncounterTime() || (currentProgram != null && currentProgram.getEnableEncounterTime())) {
 %>
 <div style="clear: right; margin: 0 30px 0 0; float: right;"><span>
-<nested:notEmpty name="ajaxsave">
-    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.encounterTime.title"/>:&nbsp;
-    <span id="encTimeHr<nested:write name="caseManagementEntryForm" property="caseNote.id" />">
-		<nested:write name="caseManagementEntryForm" property="caseNote.hourOfEncounterTime"/>
-	</span>:
-    <span id="encTimeMin<nested:write name="caseManagementEntryForm" property="caseNote.id" />">
-		<nested:write name="caseManagementEntryForm" property="caseNote.minuteOfEncounterTime"/>
-	</span>
-</nested:notEmpty>
-<nested:empty name="ajaxsave">
-    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.encounterTime.title"/>:&nbsp;
-    <input type="text" tabindex="11" id="hourOfEncounterTime" name="hourOfEncounterTime" maxlength="2"
-           style="border: 1px; width: 20px; height:12px"
-           value="<nested:write name="caseManagementEntryForm" property="caseNote.hourOfEncounterTime"/>">&nbsp;<b>:</b>&nbsp;
-    <input type="text" tabindex="12" id="minuteOfEncounterTime" name="minuteOfEncounterTime" maxlength="2"
-           style="border: 1px; width: 20px; height:12px"
-           value="<nested:write name="caseManagementEntryForm" property="caseNote.minuteOfEncounterTime"/>">
-</nested:empty>
+    <c:choose>
+        <c:when test="${not empty ajaxsave}">
+            <fmt:setBundle basename="oscarResources"/>
+            <fmt:message key="oscarEncounter.encounterTime.title"/>:&nbsp;
+            <span id="encTimeHr${caseManagementEntryForm.caseNote.id}">
+                ${caseManagementEntryForm.caseNote.hourOfEncounterTime}
+            </span>:
+            <span id="encTimeMin${caseManagementEntryForm.caseNote.id}">
+                ${caseManagementEntryForm.caseNote.minuteOfEncounterTime}
+            </span>
+        </c:when>
+        <c:otherwise>
+            <fmt:setBundle basename="oscarResources"/>
+            <fmt:message key="oscarEncounter.encounterTime.title"/>:&nbsp;
+            <input type="text" tabindex="11" id="hourOfEncounterTime" name="hourOfEncounterTime" maxlength="2"
+                   style="border: 1px; width: 20px; height: 12px;"
+                   value="${caseManagementEntryForm.caseNote.hourOfEncounterTime}">&nbsp;<b>:</b>&nbsp;
+            <input type="text" tabindex="12" id="minuteOfEncounterTime" name="minuteOfEncounterTime" maxlength="2"
+                   style="border: 1px; width: 20px; height: 12px;"
+                   value="${caseManagementEntryForm.caseNote.minuteOfEncounterTime}">
+        </c:otherwise>
+    </c:choose>    
 </span></div>
 <%}%>
 
@@ -181,25 +178,29 @@
     if (currentFacility.isEnableEncounterTransportationTime() || (currentProgram != null && currentProgram.isEnableEncounterTransportationTime())) {
 %>
 <div style="clear: right; margin: 0 30px 0 0; float: right;"><span>
-<nested:notEmpty name="ajaxsave">
-    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.encounterTransportation.title"/>:&nbsp;
-    <span id="encTransTimeHr<nested:write name="caseManagementEntryForm" property="caseNote.id" />">
-		<nested:write name="caseManagementEntryForm" property="caseNote.hourOfEncTransportationTime"/>
-	</span>:
-    <span id="encTransTimeMin<nested:write name="caseManagementEntryForm" property="caseNote.id" />">
-		<nested:write name="caseManagementEntryForm" property="caseNote.minuteOfEncTransportationTime"/>
-	</span>
-</nested:notEmpty>
-<nested:empty name="ajaxsave">
-    <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.encounterTransportation.title"/>:&nbsp;
-    <input type="text" tabindex="13" id="hourOfEncTransportationTime" name="hourOfEncTransportationTime" maxlength="2"
-           style="border: 1px; width: 20px; height:12px"
-           value="<nested:write name="caseManagementEntryForm" property="caseNote.hourOfEncTransportationTime"/>">&nbsp;<b>:</b>&nbsp;
-    <input type="text" tabindex="14" id="minuteOfEncTransportationTime" name="minuteOfEncTransportationTime"
-           maxlength="2"
-           style="border: 1px; width: 20px; height:12px"
-           value="<nested:write name="caseManagementEntryForm" property="caseNote.minuteOfEncTransportationTime"/>">
-</nested:empty>
+    <c:choose>
+        <c:when test="${not empty ajaxsave}">
+            <fmt:setBundle basename="oscarResources"/>
+            <fmt:message key="oscarEncounter.encounterTransportation.title"/>:&nbsp;
+            <span id="encTransTimeHr${caseManagementEntryForm.caseNote.id}">
+                ${caseManagementEntryForm.caseNote.hourOfEncTransportationTime}
+            </span>:
+            <span id="encTransTimeMin${caseManagementEntryForm.caseNote.id}">
+                ${caseManagementEntryForm.caseNote.minuteOfEncTransportationTime}
+            </span>
+        </c:when>
+        <c:otherwise>
+            <fmt:setBundle basename="oscarResources"/>
+            <fmt:message key="oscarEncounter.encounterTransportation.title"/>:&nbsp;
+            <input type="text" tabindex="13" id="hourOfEncTransportationTime" name="hourOfEncTransportationTime" maxlength="2"
+                   style="border: 1px; width: 20px; height:12px;"
+                   value="${caseManagementEntryForm.caseNote.hourOfEncTransportationTime}">&nbsp;<b>:</b>&nbsp;
+            <input type="text" tabindex="14" id="minuteOfEncTransportationTime" name="minuteOfEncTransportationTime" maxlength="2"
+                   style="border: 1px; width: 20px; height:12px;"
+                   value="${caseManagementEntryForm.caseNote.minuteOfEncTransportationTime}">
+        </c:otherwise>
+    </c:choose>
+    
 </span></div>
 <%}%>
 
@@ -211,56 +212,77 @@
 <div style="clear: right; margin: 0 3px 0 0; float: right;">
     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.encType.title"/>:&nbsp;
     <span id="encType<%=noteIndex%>">
-	<nested:empty name="ajaxsave">
-        <select id="<%=encSelect%>" class="encTypeCombo"
-                     name="encounter_type">
-            <option value=""></option>
-            <option value="face to face encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.faceToFaceEnc.title"/></option>
-            <option value="telephone encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.telephoneEnc.title"/></option>
-            <option value="email encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.emailEnc.title"/></option>
-            <option value="encounter without client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.noClientEnc.title"/></option>
-
-            <%
-                if (loggedInInfo73557.getCurrentFacility().isEnableGroupNotes()) {
-            %>
-
-            <option value="group face to face encounter"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.groupFaceEnc.title"/></option>
-            <option value="group telephone encounter"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.groupTelephoneEnc.title"/></option>
-            <option value="group encounter with client"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.emailEnc.title"/></option>
-            <option value="group encounter without group"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.groupNoClientEnc.title"/></option>
-
-            <%
-                }
-            %>
-        </select>
-    </nested:empty> <nested:notEmpty name="ajaxsave">
-        &quot;<nested:write name="caseManagementEntryForm"
-                            property="caseNote.encounter_type"/>&quot;
-    </nested:notEmpty> 
+        <c:choose>
+            <c:when test="${empty ajaxsave}">
+                <select id="${encSelect}" class="encTypeCombo" name="encounter_type">
+                    <option value=""></option>
+                    <option value="face to face encounter with client">
+                        <fmt:setBundle basename="oscarResources"/>
+                        <fmt:message key="oscarEncounter.faceToFaceEnc.title"/>
+                    </option>
+                    <option value="telephone encounter with client">
+                        <fmt:setBundle basename="oscarResources"/>
+                        <fmt:message key="oscarEncounter.telephoneEnc.title"/>
+                    </option>
+                    <option value="email encounter with client">
+                        <fmt:setBundle basename="oscarResources"/>
+                        <fmt:message key="oscarEncounter.emailEnc.title"/>
+                    </option>
+                    <option value="encounter without client">
+                        <fmt:setBundle basename="oscarResources"/>
+                        <fmt:message key="oscarEncounter.noClientEnc.title"/>
+                    </option>
+        
+                    <c:if test="${loggedInInfo73557.currentFacility.enableGroupNotes}">
+                        <option value="group face to face encounter">
+                            <fmt:setBundle basename="oscarResources"/>
+                            <fmt:message key="oscarEncounter.groupFaceEnc.title"/>
+                        </option>
+                        <option value="group telephone encounter">
+                            <fmt:setBundle basename="oscarResources"/>
+                            <fmt:message key="oscarEncounter.groupTelephoneEnc.title"/>
+                        </option>
+                        <option value="group encounter with client">
+                            <fmt:setBundle basename="oscarResources"/>
+                            <fmt:message key="oscarEncounter.emailEnc.title"/>
+                        </option>
+                        <option value="group encounter without group">
+                            <fmt:setBundle basename="oscarResources"/>
+                            <fmt:message key="oscarEncounter.groupNoClientEnc.title"/>
+                        </option>
+                    </c:if>
+                </select>
+            </c:when>
+            <c:otherwise>
+                "&quot;<c:out value="${caseManagementEntryForm.caseNote.encounter_type}"/>&quot;"
+            </c:otherwise>
+        </c:choose>        
 </span></div>
 
 
-<nested:size id="numIssues" name="caseManagementEntryForm"
-             property="caseNote.issues"/>
-<%-- <nested:equal name="numIssues" value="0">
-        <div>&nbsp;</div>
-    </nested:equal> --%>
-<nested:greaterThan name="numIssues" value="0">
-    <div style="margin: 0px 0px 0px 3px;"><span style="float: left;"><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.assignedIssues.title"/>
-	</span>
+<c:set var="numIssues" value="${fn:length(caseManagementEntryForm.caseNote.issues)}"/>
+
+<c:if test="${numIssues > 0}">
+    <div style="margin: 0px 0px 0px 3px;">
+        <span style="float: left;">
+            <fmt:setBundle basename="oscarResources"/>
+            <fmt:message key="oscarEncounter.assignedIssues.title"/>
+        </span>
         <ul style="float: left; list-style: circle inside; margin: 0px;">
-            <nested:iterate id="noteIssue" property="caseNote.issues"
-                            name="caseManagementEntryForm">
+            <c:forEach var="noteIssue" items="${caseManagementEntryForm.caseNote.issues}">
                 <li><c:out value="${noteIssue.issue.description}"/></li>
-            </nested:iterate>
+            </c:forEach>
         </ul>
         <br style="clear: both;">
     </div>
-</nested:greaterThan>
-<nested:equal name="numIssues" value="0">
-    <div style="margin: 0px;"><br style="clear: both;">
+</c:if>
+
+<c:if test="${numIssues == 0}">
+    <div style="margin: 0px;">
+        <br style="clear: both;">
     </div>
-</nested:equal>
+</c:if>
+
 
 
 <div id="noteIssues">
@@ -268,112 +290,77 @@
         <b><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.referenceResolvedIssues.title"/></b>
         <% int countResolvedIssue = -1; %>
         <table id="setIssueList">
-            <nested:iterate indexId="ind" id="issueCheckList" property="issueCheckList" name="caseManagementEntryForm"
-                            type="org.oscarehr.casemgmt.web.CheckBoxBean">
-                <nested:equal name="issueCheckList" property="issue.resolved" value="true">
-                    <%
-                        String winame = "window" + issueCheckList.getIssueDisplay().getDescription();
-                        winame = winame.replaceAll("\\s|\\/|\\*", "_");
-                        winame = winame.replaceAll("'", "");
-                        winame = StringEscapeUtils.escapeJavaScript(winame);
-                        countResolvedIssue++;
-                        if (countResolvedIssue % 2 == 0) {
-                    %>
-                    <tr>
-                        <%
-                            }
-                        %>
+            <c:set var="countResolvedIssue" value="0"/>
 
+<c:forEach var="issueCheckList" items="${caseManagementEntryForm.issueCheckList}" varStatus="status">
+    <c:if test="${issueCheckList.issue.resolved == true}">
+        <tr>
+            <td style="width: 50%; background-color: #CCCCFF;">
+                <c:set var="winame" value="window${issueCheckList.issueDisplay.description}"/>
+                <c:set var="winame" value="${fn:replace(winame, ' ', '_')}" />
+                <c:set var="winame" value="${fn:replace(winame, '/', '_')}" />
+                <c:set var="winame" value="${fn:replace(winame, '*', '_')}" />
+                
+                <c:set var="submitString" value="this.form.method.value='issueChange'; this.form.lineId.value='${status.index}'; return ajaxUpdateIssues('issueChange', $('noteIssues').up().id);" />
+                <c:set var="id" value="noteIssue${status.index}" />
 
-                        <td style="width: 50%; background-color: #CCCCFF;">
-                            <%
-                                String submitString = "this.form.method.value='issueChange';";
-                                submitString = submitString + "this.form.lineId.value=" + "'" + ind.intValue() + "'; return ajaxUpdateIssues('issueChange', $('noteIssues').up().id);";
-                                String id = "noteIssue" + ind;
-                                org.oscarehr.casemgmt.web.CheckBoxBean cbb = (org.oscarehr.casemgmt.web.CheckBoxBean) pageContext.getAttribute("issueCheckList");
-                                boolean writeAccess = cbb.getIssueDisplay().isWriteAccess();
-                                boolean disabled = !writeAccess;
-                            %>
+                <c:set var="writeAccess" value="${issueCheckList.issueDisplay.writeAccess}" />
+                <c:set var="disabled" value="${!writeAccess}" />
 
+                <input type="checkbox" id="${id}" name="issueCheckList" property="checked" ${disabled ? 'disabled="disabled"' : ''}/>
 
-                            <nested:checkbox styleId="<%=id%>" indexed="true" name="issueCheckList" property="checked"
-                                             disabled="<%=disabled%>"></nested:checkbox>
-                            <a href="#" onclick="return displayIssue('<%=winame%>');">
-                                <nested:write name="issueCheckList" property="issueDisplay.description"/>
-                            </a>
+                <a href="#" onclick="return displayIssue('${winame}');">
+                    <c:out value="${issueCheckList.issueDisplay.description}" />
+                </a>
 
-                            <nested:equal name="issueCheckList" property="used" value="false">
-                                <%
-                                    String submitDelete = "removeIssue('" + winame + "');document.forms['caseManagementEntryForm'].deleteId.value=" + "'" + ind.intValue() + "';return ajaxUpdateIssues('issueDelete', $('noteIssues').up().id);";
-                                %>
-                                &nbsp;
-                                <a href="#" onclick="<%=submitDelete%>">Delete</a>
-                                &nbsp;
-                            </nested:equal>
+                <c:if test="${issueCheckList.used == false}">
+                    <c:set var="submitDelete" value="removeIssue('${winame}');document.forms['caseManagementEntryForm'].deleteId.value='${status.index}';return ajaxUpdateIssues('issueDelete', $('noteIssues').up().id);" />
+                    &nbsp;
+                    <a href="#" onclick="${submitDelete}">Delete</a>&nbsp;
+                </c:if>
 
-                            <!--  change diagnosis button -->
-                            <%
-                                String submitChange = "return changeDiagnosisResolved('" + ind.intValue() + "');";
-                            %>
-                            &nbsp;
-                            <a href="#" onclick="<%=submitChange%>">Change</a>
+                <!-- change diagnosis button -->
+                <c:set var="submitChange" value="return changeDiagnosisResolved('${status.index}');" />
+                &nbsp;
+                <a href="#" onclick="${submitChange}">Change</a>
 
-                            <div id="<%=winame%>" style="margin-left: 20px; display: none;">
-                                <div>
-                                    <div style="width: 50%; float: left; display: inline;"><nested:radio indexed="true"
-                                                                                                         name="issueCheckList"
-                                                                                                         property="issue.acute"
-                                                                                                         value="true"
-                                                                                                         onchange="<%=submitString%>">acute</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline; clear: right;"><nested:radio
-                                            indexed="true" name="issueCheckList" property="issue.acute" value="false"
-                                            onchange="<%=submitString%>">chronic</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline;"><nested:radio indexed="true"
-                                                                                                         name="issueCheckList"
-                                                                                                         property="issue.certain"
-                                                                                                         disabled="<%=disabled%>"
-                                                                                                         value="true"
-                                                                                                         onchange="<%=submitString%>">certain</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline; clear: right;"><nested:radio
-                                            indexed="true" name="issueCheckList" property="issue.certain"
-                                            disabled="<%=disabled%>" value="false"
-                                            onchange="<%=submitString%>">uncertain</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline;"><nested:radio indexed="true"
-                                                                                                         name="issueCheckList"
-                                                                                                         property="issue.major"
-                                                                                                         disabled="<%=disabled%>"
-                                                                                                         value="true"
-                                                                                                         onchange="<%=submitString%>">major</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline; clear: right;"><nested:radio
-                                            indexed="true" name="issueCheckList" property="issue.major"
-                                            disabled="<%=disabled%>" value="false"
-                                            onchange="<%=submitString%>">not major</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline;"><nested:radio indexed="true"
-                                                                                                         name="issueCheckList"
-                                                                                                         property="issue.resolved"
-                                                                                                         value="true"
-                                                                                                         onchange="<%=submitString%>">resolved</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline; clear: right;"><nested:radio
-                                            indexed="true" name="issueCheckList" property="issue.resolved" value="false"
-                                            onchange="<%=submitString%>">unresolved</nested:radio></div>
-                                    <div style="text-align: center;"><nested:text indexed="true" name="issueCheckList"
-                                                                                  property="issueDisplay.role" size="10"
-                                                                                  disabled="<%=disabled%>"/></div>
-                                </div>
-                            </div>
+                <div id="${winame}" style="margin-left: 20px; display: none;">
+                    <div>
+                        <div style="width: 50%; float: left; display: inline;">
+                            <input type="radio" name="issueCheckList" property="issue.acute" value="true" onchange="${submitString}"> acute
+                        </div>
+                        <div style="width: 50%; float: left; display: inline; clear: right;">
+                            <input type="radio" name="issueCheckList" property="issue.acute" value="false" onchange="${submitString}"> chronic
+                        </div>
+                        <div style="width: 50%; float: left; display: inline;">
+                            <input type="radio" name="issueCheckList" property="issue.certain" value="true" ${disabled ? 'disabled="disabled"' : ''} onchange="${submitString}"> certain
+                        </div>
+                        <div style="width: 50%; float: left; display: inline; clear: right;">
+                            <input type="radio" name="issueCheckList" property="issue.certain" value="false" ${disabled ? 'disabled="disabled"' : ''} onchange="${submitString}"> uncertain
+                        </div>
+                        <div style="width: 50%; float: left; display: inline;">
+                            <input type="radio" name="issueCheckList" property="issue.major" value="true" ${disabled ? 'disabled="disabled"' : ''} onchange="${submitString}"> major
+                        </div>
+                        <div style="width: 50%; float: left; display: inline; clear: right;">
+                            <input type="radio" name="issueCheckList" property="issue.major" value="false" ${disabled ? 'disabled="disabled"' : ''} onchange="${submitString}"> not major
+                        </div>
+                        <div style="width: 50%; float: left; display: inline;">
+                            <input type="radio" name="issueCheckList" property="issue.resolved" value="true" onchange="${submitString}"> resolved
+                        </div>
+                        <div style="width: 50%; float: left; display: inline; clear: right;">
+                            <input type="radio" name="issueCheckList" property="issue.resolved" value="false" onchange="${submitString}"> unresolved
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="text" name="issueCheckList" property="issueDisplay.role" size="10" ${disabled ? 'disabled="disabled"' : ''} />
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
 
-
-                        </td>
-
-                        <%
-                            if (countResolvedIssue % 2 != 0) {
-                        %>
-                    </tr>
-                    <%
-                        }
-                    %>
-                </nested:equal>
-            </nested:iterate>
+        <c:set var="countResolvedIssue" value="${countResolvedIssue + 1}" />
+    </c:if>
+</c:forEach>
         </table>
     </div>
 
@@ -384,101 +371,82 @@
         <b><fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.referenceUnresolvedIssues.title"/></b>
 
         <table id="setIssueList">
-            <nested:iterate indexId="ind" id="issueCheckList" property="issueCheckList" name="caseManagementEntryForm"
-                            type="org.oscarehr.casemgmt.web.CheckBoxBean">
+            <c:forEach var="issueCheckList" items="${caseManagementEntryForm.issueCheckList}" varStatus="status">
+    <c:if test="${issueCheckList.issue.resolved == false}">
+        
+        <c:set var="winame" value="window${issueCheckList.issueDisplay.description}" />
+        <c:set var="winame" value="${fn:replace(winame, ' ', '_')}" />
+        <c:set var="winame" value="${fn:replace(winame, '/', '_')}" />
+        <c:set var="winame" value="${fn:replace(winame, '*', '_')}" />
+        <c:set var="winame" value="${fn:escapeXml(winame)}" />
+        <c:set var="countUnresolvedIssue" value="${status.index + 1}" />
 
-                <nested:equal name="issueCheckList" property="issue.resolved" value="false">
+        <c:if test="${countUnresolvedIssue % 2 == 0}">
+            <tr>
+        </c:if>
 
+        <td style="width: 50%; background-color: #CCCCFF;">
+            <c:set var="submitString" value="this.form.method.value='issueChange'; this.form.lineId.value='${status.index}'; return ajaxUpdateIssues('issueChange', $('noteIssues').up().id);" />
+            <c:set var="id" value="noteIssue${status.index}" />
+            
+            <c:set var="writeAccess" value="${issueCheckList.issueDisplay.writeAccess}" />
+            <c:set var="disabled" value="${!writeAccess}" />
 
-                    <%
-                        String winame = "window" + issueCheckList.getIssueDisplay().getDescription();
-                        winame = winame.replaceAll("\\s|\\/|\\*", "_");
-                        winame = winame.replaceAll("'", "");
-                        winame = StringEscapeUtils.escapeJavaScript(winame);
-                        countUnresolvedIssue++;
-                        if (countUnresolvedIssue % 2 == 0) {
-                    %>
-                    <tr><%
-                        }
-                    %>
-                        <td style="width: 50%; background-color: #CCCCFF;">
-                            <%
-                                String submitString = "this.form.method.value='issueChange';";
-                                submitString = submitString + "this.form.lineId.value=" + "'" + ind.intValue() + "'; return ajaxUpdateIssues('issueChange', $('noteIssues').up().id);";
-                                String id = "noteIssue" + ind;
-                                org.oscarehr.casemgmt.web.CheckBoxBean cbb = (org.oscarehr.casemgmt.web.CheckBoxBean) pageContext.getAttribute("issueCheckList");
-                                boolean writeAccess = cbb.getIssueDisplay().isWriteAccess();
-                                boolean disabled = !writeAccess;
-                            %>
-                            <nested:checkbox styleId="<%=id%>" indexed="true" name="issueCheckList" property="checked"
-                                             disabled="<%=disabled%>">
-                            </nested:checkbox>
-                            <a href="#" onclick="return displayIssue('<%=winame%>');">
-                                <nested:write name="issueCheckList" property="issueDisplay.description"/>
-                            </a>
-                            <nested:equal name="issueCheckList" property="used" value="false">
-                                <%
-                                    String submitDelete = "removeIssue('" + winame + "');document.forms['caseManagementEntryForm'].deleteId.value=" + "'" + ind.intValue() + "';return ajaxUpdateIssues('issueDelete', $('noteIssues').up().id);";
-                                %>
-                                &nbsp;
-                                <a href="#" onclick="<%=submitDelete%>">Delete</a>
-                                &nbsp;
-                            </nested:equal>
-                            <!--  change diagnosis button -->
-                            <%
-                                String submitChange = "return changeDiagnosisUnresolved('" + ind.intValue() + "');";
-                            %>
-                            &nbsp;
-                            <a href="#" onclick="<%=submitChange%>">Change</a>
-                            <div id="<%=winame%>" style="margin-left: 20px; display: none;">
-                                <div>
-                                    <div style="width: 50%; float: left; display: inline;"><nested:radio indexed="true"
-                                                                                                         name="issueCheckList"
-                                                                                                         property="issue.acute"
-                                                                                                         value="true"
-                                                                                                         onchange="<%=submitString%>">acute</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline; clear: right;"><nested:radio
-                                            indexed="true" name="issueCheckList" property="issue.acute" value="false"
-                                            onchange="<%=submitString%>">chronic</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline;"><nested:radio indexed="true"
-                                                                                                         name="issueCheckList"
-                                                                                                         property="issue.certain"
-                                                                                                         disabled="<%=disabled%>"
-                                                                                                         value="true"
-                                                                                                         onchange="<%=submitString%>">certain</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline; clear: right;"><nested:radio
-                                            indexed="true" name="issueCheckList" property="issue.certain"
-                                            disabled="<%=disabled%>" value="false"
-                                            onchange="<%=submitString%>">uncertain</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline;"><nested:radio indexed="true"
-                                                                                                         name="issueCheckList"
-                                                                                                         property="issue.major"
-                                                                                                         disabled="<%=disabled%>"
-                                                                                                         value="true"
-                                                                                                         onchange="<%=submitString%>">major</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline; clear: right;"><nested:radio
-                                            indexed="true" name="issueCheckList" property="issue.major"
-                                            disabled="<%=disabled%>" value="false"
-                                            onchange="<%=submitString%>">not major</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline;"><nested:radio indexed="true"
-                                                                                                         name="issueCheckList"
-                                                                                                         property="issue.resolved"
-                                                                                                         value="true"
-                                                                                                         onchange="<%=submitString%>">resolved</nested:radio></div>
-                                    <div style="width: 50%; float: left; display: inline; clear: right;"><nested:radio
-                                            indexed="true" name="issueCheckList" property="issue.resolved" value="false"
-                                            onchange="<%=submitString%>">unresolved</nested:radio></div>
-                                    <div style="text-align: center;"><nested:text indexed="true" name="issueCheckList"
-                                                                                  property="issueDisplay.role" size="10"
-                                                                                  disabled="<%=disabled%>"/></div>
-                                </div>
-                            </div>
-                        </td>
-                        <% if (countUnresolvedIssue % 2 != 0) { %>
-                    </tr>
-                    <% } %>
-                </nested:equal>
-            </nested:iterate>
+            <input type="checkbox" id="${id}" name="issueCheckList" value="${status.index}" ${disabled ? 'disabled' : ''} />
+            
+            <a href="#" onclick="return displayIssue('${winame}');">
+                ${issueCheckList.issueDisplay.description}
+            </a>
+
+            <c:if test="${issueCheckList.issue.used == false}">
+                <c:set var="submitDelete" value="removeIssue('${winame}');document.forms['caseManagementEntryForm'].deleteId.value='${status.index}';return ajaxUpdateIssues('issueDelete', $('noteIssues').up().id);" />
+                &nbsp;
+                <a href="#" onclick="${submitDelete}">Delete</a>
+                &nbsp;
+            </c:if>
+
+            &nbsp;
+            <a href="#" onclick="return changeDiagnosisUnresolved('${status.index}');">Change</a>
+
+            <div id="${winame}" style="margin-left: 20px; display: none;">
+                <div>
+                    <div style="width: 50%; float: left; display: inline;">
+                        <input type="radio" name="issueCheckList[${status.index}].issue.acute" value="true" onchange="${submitString}"> Acute
+                    </div>
+                    <div style="width: 50%; float: left; display: inline; clear: right;">
+                        <input type="radio" name="issueCheckList[${status.index}].issue.acute" value="false" onchange="${submitString}"> Chronic
+                    </div>
+                    <div style="width: 50%; float: left; display: inline;">
+                        <input type="radio" name="issueCheckList[${status.index}].issue.certain" value="true" disabled="${disabled}" onchange="${submitString}"> Certain
+                    </div>
+                    <div style="width: 50%; float: left; display: inline; clear: right;">
+                        <input type="radio" name="issueCheckList[${status.index}].issue.certain" value="false" disabled="${disabled}" onchange="${submitString}"> Uncertain
+                    </div>
+                    <div style="width: 50%; float: left; display: inline;">
+                        <input type="radio" name="issueCheckList[${status.index}].issue.major" value="true" disabled="${disabled}" onchange="${submitString}"> Major
+                    </div>
+                    <div style="width: 50%; float: left; display: inline; clear: right;">
+                        <input type="radio" name="issueCheckList[${status.index}].issue.major" value="false" disabled="${disabled}" onchange="${submitString}"> Not Major
+                    </div>
+                    <div style="width: 50%; float: left; display: inline;">
+                        <input type="radio" name="issueCheckList[${status.index}].issue.resolved" value="true" onchange="${submitString}"> Resolved
+                    </div>
+                    <div style="width: 50%; float: left; display: inline; clear: right;">
+                        <input type="radio" name="issueCheckList[${status.index}].issue.resolved" value="false" onchange="${submitString}"> Unresolved
+                    </div>
+                    <div style="text-align: center;">
+                        <input type="text" name="issueCheckList[${status.index}].issueDisplay.role" size="10" disabled="${disabled}" />
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <c:if test="${countUnresolvedIssue % 2 != 0}">
+            </tr>
+        </c:if>
+        
+    </c:if>
+</c:forEach>
         </table>
     </div> <!-- end of div noteIssues-unresolved -->
 </div>
@@ -489,34 +457,37 @@
 
     //check to see if we need to update div containers to most recent note id
     //this happens only when we're called thru ajaxsave
-    <nested:notEmpty name="ajaxsave">
-    var origId = "<nested:write name="origNoteId" />";
-    var newId = "<nested:write name="ajaxsave" />";
-    var oldDiv;
-    var newDiv;
-    var prequel = ["n", "sig", "signed", "full", "bgColour", "print", "editWarn"];
+    <c:if test="${not empty ajaxsave}">
+    <script type="text/javascript">
+        var origId = "${origNoteId}";
+        var newId = "${ajaxsave}";
+        var oldDiv;
+        var newDiv;
+        var prequel = ["n", "sig", "signed", "full", "bgColour", "print", "editWarn"];
 
-    for (var idx = 0; idx < prequel.length; ++idx) {
-        oldDiv = prequel[idx] + origId;
-        newDiv = prequel[idx] + newId;
-        if ($(oldDiv) != null)
-            $(oldDiv).id = newDiv;
-    }
-    updatedNoteId = newId;
+        for (var idx = 0; idx < prequel.length; ++idx) {
+            oldDiv = prequel[idx] + origId;
+            newDiv = prequel[idx] + newId;
+            if ($(oldDiv) != null)
+                $(oldDiv).id = newDiv;
+        }
+        updatedNoteId = newId;
 
-    <%//CaseManagementEntryFormBean form = (CaseManagementEntryFormBean)request.getAttribute("caseManagementEntryForm");
-             String noteTxt = frm.getCaseNote().getNote();
-             noteTxt = org.apache.commons.lang.StringEscapeUtils.escapeJavaScript(noteTxt);%>
-    completeChangeToView("<%=noteTxt%>", newId);
-    if (origId.substr(0, 1) == "0") {
-        $("nc" + origId).id = "nc" + numNotes;
-        ++numNotes;
-    }
+        // Assuming noteTxt comes from request attribute or is passed in a similar way
+        var noteTxt = "${fn:escapeXml(noteTxt)}"; // Escape any special characters in noteTxt
+        completeChangeToView(noteTxt, newId);
 
-    <nested:notEmpty name="DateError">
-    alert("<nested:write name="DateError"/>");
-    </nested:notEmpty>
-    </nested:notEmpty>
+        if (origId.substr(0, 1) == "0") {
+            $("nc" + origId).id = "nc" + numNotes;
+            ++numNotes;
+        }
+
+        <c:if test="${not empty DateError}">
+            alert("${DateError}");
+        </c:if>
+    </script>
+</c:if>
+
 
     var c = "bgColour" + "<%=noteIndex%>";
     var txtStyles = $F(c).split(";");
@@ -542,7 +513,7 @@
     }
 
     //do we have a custom encounter type?  if so add an option to the encounter type select
-    var encounterType = '<nested:write name="caseManagementEntryForm" property="caseNote.encounter_type"/>';
+    var encounterType = '${caseManagementEntryForm.caseNote.encounter_type}';
     var selectEnc = "<%=encSelect%>";
 
     if ($(selectEnc) != null) {
