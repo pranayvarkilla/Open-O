@@ -34,7 +34,7 @@ import java.util.List;
 import org.oscarehr.PMmodule.dao.ProgramClientRestrictionDAO;
 import org.oscarehr.PMmodule.exception.ClientAlreadyRestrictedException;
 import org.oscarehr.PMmodule.model.ProgramClientRestriction;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
@@ -166,7 +166,7 @@ public class ClientRestrictionManagerImpl implements ClientRestrictionManager {
         return programClientRestrictionDAO;
     }
 
-    @Required
+    @Autowired
     public void setProgramClientRestrictionDAO(ProgramClientRestrictionDAO programClientRestrictionDAO) {
         this.programClientRestrictionDAO = programClientRestrictionDAO;
     }
