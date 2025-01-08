@@ -38,8 +38,8 @@ import oscar.oscarLab.FileUploadCheck;
 import oscar.oscarLab.ca.bc.PathNet.Connection;
 import oscar.oscarLab.ca.bc.PathNet.HL7.Message;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;

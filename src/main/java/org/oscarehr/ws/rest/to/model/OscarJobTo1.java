@@ -27,7 +27,7 @@ package org.oscarehr.ws.rest.to.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "OscarJob")
 public class OscarJobTo1 implements Serializable {

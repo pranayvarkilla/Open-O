@@ -27,7 +27,7 @@ package org.oscarehr.common.dao.forms;
 import org.oscarehr.common.dao.AbstractDaoImpl;
 import oscar.form.model.FormBCAR2020Data;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import java.util.List;
 
 public class FormBCAR2020DataDao extends AbstractDaoImpl<FormBCAR2020Data> {

@@ -21,10 +21,9 @@ package org.oscarehr.common.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.lang.StringUtils;
 import org.oscarehr.common.dao.SiteDao;
 import org.oscarehr.common.model.Site;

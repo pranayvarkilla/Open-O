@@ -34,16 +34,14 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-import com.itextpdf.text.pdf.draw.LineSeparator;
-import net.sf.json.JSONObject;
 import org.apache.commons.io.FileUtils;
 
 import net.sf.jasperreports.engine.JRException;
@@ -65,7 +63,6 @@ import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
 import org.oscarehr.web.PrescriptionQrCodeUIBean;
 
-import org.owasp.encoder.Encode;
 import oscar.OscarProperties;
 import oscar.log.LogAction;
 import oscar.log.LogConst;
@@ -81,7 +78,7 @@ public class FrmCustomedPDFServlet extends HttpServlet {
     private static FaxManager faxManager = SpringUtils.getBean(FaxManager.class);
 
     @Override
-    public void service(HttpServletRequest req, HttpServletResponse res) throws javax.servlet.ServletException, java.io.IOException {
+    public void service(HttpServletRequest req, HttpServletResponse res) throws jakarta.servlet.ServletException, java.io.IOException {
 
         LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(req);
         boolean isFax = "oscarRxFax".equals(req.getParameter("__method"));

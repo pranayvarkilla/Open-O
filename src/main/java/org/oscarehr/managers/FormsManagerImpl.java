@@ -57,9 +57,9 @@ import oscar.log.LogAction;
 import oscar.oscarEncounter.data.EctFormData;
 import oscar.oscarEncounter.data.EctFormData.PatientForm;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * This class will change soon to incorporate dealing with forms

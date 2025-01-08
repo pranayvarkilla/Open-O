@@ -36,10 +36,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
-import javax.persistence.PersistenceException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.soap.SOAPFaultException;
+import jakarta.persistence.PersistenceException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.xml.ws.soap.SOAPFaultException;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.common.dao.CtlDocumentDao;

@@ -33,7 +33,7 @@ import java.util.List;
 import org.oscarehr.common.model.PHRVerification;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 @Repository
 public class PHRVerificationDaoImpl extends AbstractDaoImpl<PHRVerification> implements PHRVerificationDao {

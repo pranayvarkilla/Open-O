@@ -30,8 +30,8 @@ import org.apache.struts2.ServletActionContext;
 import org.oscarehr.util.SpringUtils;
 import oscar.oscarBilling.ca.bc.data.SupServiceCodeAssocDAO;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class SupServiceCodeAssoc2Action extends ActionSupport {

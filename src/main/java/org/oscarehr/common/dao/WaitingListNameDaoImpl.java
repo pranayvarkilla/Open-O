@@ -30,7 +30,7 @@ package org.oscarehr.common.dao;
 import org.oscarehr.common.model.MyGroup;
 import org.oscarehr.common.model.WaitingListName;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 

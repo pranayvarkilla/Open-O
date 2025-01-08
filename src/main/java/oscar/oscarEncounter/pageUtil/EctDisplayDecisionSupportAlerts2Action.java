@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.Logger;
@@ -61,7 +61,6 @@ import oscar.util.StringUtils;
 /**
  * @author apavel
  */
-import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class EctDisplayDecisionSupportAlerts2Action extends EctDisplayAction {

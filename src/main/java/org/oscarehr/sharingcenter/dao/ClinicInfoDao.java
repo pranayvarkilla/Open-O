@@ -25,7 +25,7 @@
 package org.oscarehr.sharingcenter.dao;
 
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.dao.AbstractDaoImpl;
 import org.oscarehr.sharingcenter.model.ClinicInfoDataObject;

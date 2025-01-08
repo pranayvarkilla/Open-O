@@ -35,7 +35,7 @@ import org.oscarehr.util.SpringUtils;
 import oscar.util.OscarRoleObjectPrivilege;
 import oscar.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Properties;
 import java.util.Vector;

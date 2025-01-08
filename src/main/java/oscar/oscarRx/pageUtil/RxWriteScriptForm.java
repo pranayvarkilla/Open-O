@@ -28,8 +28,6 @@ package oscar.oscarRx.pageUtil;
 
 import org.oscarehr.util.MiscUtils;
 
-import javax.servlet.http.HttpServletRequest;
-
 public final class RxWriteScriptForm {
     String action = "";
     int drugId = 0;

@@ -29,9 +29,9 @@ package oscar.oscarEncounter.oscarConsultationRequest.tld;
 import java.util.Calendar;
 import java.util.Date;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.TagSupport;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspWriter;
+import jakarta.servlet.jsp.tagext.TagSupport;
 
 import org.oscarehr.common.dao.ConsultationRequestDao;
 import org.oscarehr.common.dao.UserPropertyDAO;

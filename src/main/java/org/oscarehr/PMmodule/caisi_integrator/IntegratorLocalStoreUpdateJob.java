@@ -29,7 +29,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.xml.ws.WebServiceException;
+import jakarta.xml.ws.WebServiceException;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.caisi_integrator.ws.DemographicWs;

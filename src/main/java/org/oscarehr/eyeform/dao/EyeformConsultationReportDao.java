@@ -31,7 +31,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.common.dao.AbstractDaoImpl;

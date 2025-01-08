@@ -45,7 +45,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import com.lowagie.text.*;
 import com.lowagie.text.Font;

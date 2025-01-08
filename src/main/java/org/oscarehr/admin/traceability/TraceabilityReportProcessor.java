@@ -33,7 +33,7 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.zip.GZIPInputStream;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;

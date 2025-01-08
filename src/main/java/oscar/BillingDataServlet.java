@@ -31,8 +31,8 @@ package oscar;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
 
 import org.oscarehr.util.MiscUtils;
 
@@ -45,7 +45,7 @@ public class BillingDataServlet extends HttpServlet implements java.io.Serializa
      * @param request Object that encapsulates the request to the servlet
      * @param response Object that encapsulates the response from the servlet
      */
-    public void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws IOException, ServletException {
+    public void doPost(jakarta.servlet.http.HttpServletRequest request, jakarta.servlet.http.HttpServletResponse response) throws IOException, ServletException {
         try {
 
 //          instantiate the beans and store them so they can be accessed by the called page

@@ -32,7 +32,7 @@ import org.springframework.stereotype.Repository;
 import org.oscarehr.common.model.GroupMembers;
 import oscar.oscarMessenger.data.ContactIdentifier;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import java.util.Collections;
 import java.util.List;
 

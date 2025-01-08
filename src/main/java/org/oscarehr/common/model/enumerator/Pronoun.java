@@ -26,7 +26,7 @@ package org.oscarehr.common.model.enumerator;
 
 import org.oscarehr.common.model.AbstractModel;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity

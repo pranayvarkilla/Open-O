@@ -30,10 +30,10 @@ import org.oscarehr.util.LoggedInInfo;
 import oscar.oscarLab.ca.on.HRMResultsData;
 import oscar.oscarLab.ca.on.LabResultData;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;

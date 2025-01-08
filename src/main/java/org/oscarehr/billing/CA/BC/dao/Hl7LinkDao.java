@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.billing.CA.BC.model.Hl7Link;
 import org.oscarehr.common.NativeSql;

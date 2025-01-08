@@ -20,5 +20,5 @@
  * Toronto, Ontario, Canada
  */
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://caisi.org/wl/")
+@jakarta.xml.bind.annotation.XmlSchema(namespace = "http://caisi.org/wl/")
 package org.caisi.wl;

@@ -34,7 +34,7 @@ import java.util.concurrent.Executors;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.spec.SecretKeySpec;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.logging.log4j.Logger;

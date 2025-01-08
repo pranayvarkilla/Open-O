@@ -29,8 +29,8 @@ package oscar.scratch;
 import java.net.URLEncoder;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.oscarehr.common.dao.ScratchPadDao;
 import org.oscarehr.common.model.ScratchPad;

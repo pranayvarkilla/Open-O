@@ -29,7 +29,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.jsp.JspWriter;
+import jakarta.servlet.jsp.JspWriter;
 
 import org.apache.commons.beanutils.BeanComparator;
 import org.oscarehr.PMmodule.dao.ProviderDao;

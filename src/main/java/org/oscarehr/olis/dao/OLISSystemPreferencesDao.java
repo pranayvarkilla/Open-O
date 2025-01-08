@@ -9,7 +9,7 @@
  */
 package org.oscarehr.olis.dao;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.dao.AbstractDaoImpl;
 import org.oscarehr.olis.model.OLISSystemPreferences;
@@ -28,7 +28,7 @@ public class OLISSystemPreferencesDao extends AbstractDaoImpl<OLISSystemPreferen
             String sql = "select x from " + this.modelClass.getName() + " x";
             Query query = entityManager.createQuery(sql);
             return (OLISSystemPreferences) query.getSingleResult();
-        } catch (javax.persistence.NoResultException nre) {
+        } catch (jakarta.persistence.NoResultException nre) {
             return new OLISSystemPreferences();
         }
     }

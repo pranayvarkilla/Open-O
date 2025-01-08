@@ -27,7 +27,7 @@ package org.oscarehr.myoscar.utils;
 import java.io.Serializable;
 import java.util.Locale;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.oscarehr.myoscar.client.ws_manager.AccountManager;
 import org.oscarehr.myoscar.client.ws_manager.MyOscarLoggedInInfoInterface;

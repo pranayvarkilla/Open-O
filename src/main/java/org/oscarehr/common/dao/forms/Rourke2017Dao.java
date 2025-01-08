@@ -32,7 +32,7 @@ import org.springframework.stereotype.Repository;
 import oscar.form.model.FormBooleanValue;
 import oscar.form.model.FormRourke2017;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

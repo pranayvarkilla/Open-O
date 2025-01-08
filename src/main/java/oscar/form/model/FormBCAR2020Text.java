@@ -27,12 +27,12 @@ package oscar.form.model;
 import com.sun.istack.NotNull;
 import org.oscarehr.common.model.AbstractModel;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 

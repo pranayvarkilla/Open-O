@@ -50,7 +50,7 @@ import org.oscarehr.util.SpringUtils;
 import org.springframework.beans.factory.annotation.Required;
 import oscar.OscarProperties;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

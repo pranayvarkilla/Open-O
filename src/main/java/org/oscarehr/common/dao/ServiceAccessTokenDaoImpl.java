@@ -29,9 +29,7 @@ package org.oscarehr.common.dao;
 
 import java.util.List;
 
-import org.oscarehr.common.dao.ServiceAccessTokenDao;
-
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.ServiceAccessToken;
 import org.springframework.stereotype.Repository;

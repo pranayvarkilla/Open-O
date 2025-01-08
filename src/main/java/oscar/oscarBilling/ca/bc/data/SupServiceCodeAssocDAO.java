@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.billing.CA.BC.model.BillingTrayFee;
 import org.oscarehr.common.dao.AbstractDaoImpl;

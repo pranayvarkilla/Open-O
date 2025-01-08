@@ -33,7 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.oscarehr.common.dao.OscarAppointmentDao;
 import org.oscarehr.common.model.Appointment;
@@ -50,9 +50,6 @@ import oscar.oscarBilling.ca.bc.MSP.MSPReconcile.Bill;
 import oscar.oscarBilling.ca.on.data.BillingClaimHeader1Data;
 import oscar.oscarBilling.ca.on.data.BillingItemData;
 import oscar.oscarBilling.ca.on.data.JdbcBillingReviewImpl;
-
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public class EctDisplayBilling2Action extends EctDisplayAction {
 

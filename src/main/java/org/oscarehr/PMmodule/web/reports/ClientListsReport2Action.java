@@ -24,8 +24,8 @@ package org.oscarehr.PMmodule.web.reports;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.oscarehr.common.dao.DemographicDao;
 import org.oscarehr.PMmodule.model.Program;

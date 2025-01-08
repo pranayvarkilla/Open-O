@@ -12,7 +12,7 @@ package oscar.oscarEncounter.oscarConsultationRequest.pageUtil;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.util.MiscUtils;

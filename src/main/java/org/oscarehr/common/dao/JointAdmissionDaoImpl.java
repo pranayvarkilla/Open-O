@@ -30,7 +30,7 @@ package org.oscarehr.common.dao;
 import java.util.List;
 import java.util.ListIterator;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.JointAdmission;
 import org.springframework.stereotype.Repository;

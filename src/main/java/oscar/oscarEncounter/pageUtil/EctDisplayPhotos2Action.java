@@ -35,7 +35,7 @@ import org.oscarehr.util.MiscUtils;
 import oscar.util.DateUtils;
 import oscar.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

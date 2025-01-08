@@ -25,7 +25,6 @@
 package org.oscarehr.integration.mchcv;
 
 import ca.ontario.health.ebs.EbsFault;
-import ca.ontario.health.edt.EDTDelegate;
 import ca.ontario.health.hcv.Faultexception;
 import ca.ontario.health.hcv.HCValidation;
 import ca.ontario.health.hcv.HcvRequest;
@@ -40,8 +39,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.soap.SOAPFault;
-import javax.xml.ws.soap.SOAPFaultException;
+import jakarta.xml.soap.SOAPFault;
+import jakarta.xml.ws.soap.SOAPFaultException;
 
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.frontend.ClientProxy;

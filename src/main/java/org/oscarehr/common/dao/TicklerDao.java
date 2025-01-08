@@ -33,12 +33,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Query;
-
 import org.oscarehr.common.model.CustomFilter;
-import org.oscarehr.common.model.Provider;
 import org.oscarehr.common.model.Tickler;
-import org.springframework.stereotype.Repository;
 
 public interface TicklerDao extends AbstractDao<Tickler> {
 

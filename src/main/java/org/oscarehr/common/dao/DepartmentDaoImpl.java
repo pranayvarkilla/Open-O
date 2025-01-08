@@ -30,7 +30,7 @@ package org.oscarehr.common.dao;
 import org.oscarehr.common.model.Department;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import java.util.List;
 
 @Repository

@@ -24,7 +24,7 @@
  */
 package org.oscarehr.common.model.inbox;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 import java.io.Serializable;
 
 public class InboxItemDemographicCountPK implements Serializable {

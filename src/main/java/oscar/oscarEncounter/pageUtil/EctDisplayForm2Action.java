@@ -38,7 +38,7 @@ import oscar.oscarEncounter.data.EctFormData;
 import oscar.oscarLab.LabRequestReportLink;
 import oscar.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

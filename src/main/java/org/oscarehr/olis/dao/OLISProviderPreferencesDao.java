@@ -11,7 +11,7 @@ package org.oscarehr.olis.dao;
 
 import java.util.List;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.dao.AbstractDaoImpl;
 import org.oscarehr.olis.model.OLISProviderPreferences;
@@ -31,7 +31,7 @@ public class OLISProviderPreferencesDao extends AbstractDaoImpl<OLISProviderPref
             Query query = entityManager.createQuery(sql);
             query.setParameter(1, id);
             return (OLISProviderPreferences) query.getSingleResult();
-        } catch (javax.persistence.NoResultException nre) {
+        } catch (jakarta.persistence.NoResultException nre) {
             return null;
         }
     }

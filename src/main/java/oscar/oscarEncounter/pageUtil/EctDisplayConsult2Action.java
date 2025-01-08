@@ -31,7 +31,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.oscarehr.common.dao.UserPropertyDAO;
 import org.oscarehr.common.model.UserProperty;
@@ -46,8 +46,6 @@ import oscar.util.StringUtils;
 /**
  * Retrieves consultation requests for demographic
  */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public class EctDisplayConsult2Action extends EctDisplayAction {
     private String cmd = "consultation";

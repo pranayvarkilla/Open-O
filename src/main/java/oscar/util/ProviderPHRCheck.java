@@ -27,8 +27,8 @@
 package oscar.util;
 
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.TagSupport;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.tagext.TagSupport;
 
 import org.oscarehr.managers.AppManager;
 import org.oscarehr.util.LoggedInInfo;

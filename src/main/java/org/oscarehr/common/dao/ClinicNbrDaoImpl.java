@@ -15,7 +15,7 @@ package org.oscarehr.common.dao;
 
 import java.util.ArrayList;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.ClinicNbr;
 import org.springframework.stereotype.Repository;

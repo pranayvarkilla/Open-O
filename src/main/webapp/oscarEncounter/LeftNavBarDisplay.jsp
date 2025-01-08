@@ -218,7 +218,7 @@
         return "";
     }
 
-    public int display(ArrayList<NavBarDisplayDAO.Item> items, int numToDisplay, int numDisplayed, String reloadUrl, boolean xpanded, int numItems, StringBuilder js, int displayThreshold, String divReloadUrl, String cmd, javax.servlet.http.HttpServletRequest request, javax.servlet.jsp.JspWriter out) throws IOException {
+    public int display(ArrayList<NavBarDisplayDAO.Item> items, int numToDisplay, int numDisplayed, String reloadUrl, boolean xpanded, int numItems, StringBuilder js, int displayThreshold, String divReloadUrl, String cmd, jakarta.servlet.http.HttpServletRequest request, jakarta.servlet.jsp.JspWriter out) throws IOException {
         String stripe, colour, bgColour;
         String imgName;
         String dateFormat = "dd-MMM-yyyy";

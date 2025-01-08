@@ -30,10 +30,8 @@ import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.oscarehr.util.MiscUtils;
 import oscar.Misc;
 import oscar.entities.WCB;
-import oscar.util.StringUtils;
 import oscar.util.UtilDateUtilities;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public final class WCBForm {

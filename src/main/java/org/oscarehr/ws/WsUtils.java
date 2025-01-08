@@ -28,7 +28,7 @@ package org.oscarehr.ws;
 import java.lang.management.ManagementFactory;
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.PMmodule.dao.ProviderDao;

@@ -29,8 +29,8 @@ import org.oscarehr.common.dao.OnCallQuestionnaireDao;
 import org.oscarehr.common.model.OnCallQuestionnaire;
 import org.oscarehr.util.SpringUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

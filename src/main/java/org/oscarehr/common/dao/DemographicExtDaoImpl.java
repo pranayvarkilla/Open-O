@@ -32,7 +32,7 @@ import org.oscarehr.common.model.DemographicExt;
 import org.oscarehr.common.model.enumerator.DemographicExtKey;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import java.util.*;
 
 @Repository

@@ -33,7 +33,7 @@ import java.util.ListIterator;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.util.MiscUtils;

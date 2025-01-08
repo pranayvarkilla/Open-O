@@ -30,7 +30,7 @@ package org.oscarehr.common.dao;
 import java.io.InputStream;
 import java.util.Iterator;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.apache.commons.io.IOUtils;
 import org.codehaus.jettison.json.JSONObject;

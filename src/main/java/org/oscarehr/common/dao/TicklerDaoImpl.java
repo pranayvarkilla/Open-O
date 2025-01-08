@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.CustomFilter;
 import org.oscarehr.common.model.Provider;

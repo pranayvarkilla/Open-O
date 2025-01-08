@@ -28,7 +28,7 @@ package org.oscarehr.common.dao.forms;
 
 import java.util.List;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.oscarehr.common.dao.AbstractDaoImpl;

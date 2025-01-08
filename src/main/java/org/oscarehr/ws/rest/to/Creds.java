@@ -25,7 +25,7 @@ package org.oscarehr.ws.rest.to;
  * Ontario, Canada
  */
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Creds {

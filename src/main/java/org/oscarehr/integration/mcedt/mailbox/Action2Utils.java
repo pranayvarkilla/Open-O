@@ -32,8 +32,8 @@ import org.oscarehr.util.MiscUtils;
 import oscar.OscarProperties;
 import oscar.util.ConversionUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import java.io.*;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;

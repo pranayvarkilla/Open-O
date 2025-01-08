@@ -26,7 +26,7 @@ package oscar.oscarReport.reportByTemplate;
 
 import java.sql.ResultSet;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.oscarehr.common.dao.DxresearchDAO;
 import org.oscarehr.common.model.Demographic;

@@ -26,9 +26,9 @@ package org.oscarehr.common.model;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 
 /**
  * Entity implementation class for Entity: OnCallClinic
