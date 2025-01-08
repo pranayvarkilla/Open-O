@@ -37,7 +37,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.common.dao.DemographicDao;
 import org.oscarehr.common.dao.PrintResourceLogDao;
-import org.oscarehr.common.model.AbstractModel;
 import org.oscarehr.common.model.PrintResourceLog;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.util.LoggedInInfo;
@@ -51,8 +50,8 @@ import oscar.form.model.FormBCAR2020Data;
 import oscar.form.model.FormBCAR2020Text;
 import oscar.form.util.LanguageUtil;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URISyntaxException;

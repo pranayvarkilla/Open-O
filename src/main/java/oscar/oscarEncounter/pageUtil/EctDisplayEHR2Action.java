@@ -39,7 +39,7 @@ import org.oscarehr.util.MiscUtils;
 import oscar.OscarProperties;
 
 import javax.net.ssl.SSLContext;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.FileInputStream;
 import java.net.URLEncoder;
 import java.security.KeyStore;

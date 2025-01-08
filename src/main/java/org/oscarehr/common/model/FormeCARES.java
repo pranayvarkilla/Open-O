@@ -27,7 +27,7 @@ package org.oscarehr.common.model;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity

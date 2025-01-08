@@ -31,7 +31,7 @@ import org.oscarehr.util.MiscUtils;
 import oscar.eform.EFormUtil;
 import oscar.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

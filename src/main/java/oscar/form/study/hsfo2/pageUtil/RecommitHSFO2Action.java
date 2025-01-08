@@ -47,8 +47,8 @@ import org.quartz.JobExecutionException;
 import oscar.OscarProperties;
 import oscar.form.study.hsfo2.pageUtil.XMLTransferUtil.SoapElementKey;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;

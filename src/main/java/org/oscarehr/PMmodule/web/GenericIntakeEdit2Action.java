@@ -50,9 +50,9 @@ import org.oscarehr.util.SpringUtils;
 import oscar.OscarProperties;
 import oscar.util.LabelValueBean;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.WebServiceException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.xml.ws.WebServiceException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;

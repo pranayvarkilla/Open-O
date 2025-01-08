@@ -210,7 +210,7 @@
         String tblEnd = "</table>";
 
         void DrawDoc(Element root, JspWriter out)
-                throws javax.servlet.jsp.JspException, java.io.IOException {
+                throws jakarta.servlet.jsp.JspException, java.io.IOException {
 
             out.print(spanStartRoot + "Document Transfer" + spanEnd);
             out.print(tblStartRoot);
@@ -226,7 +226,7 @@
         }
 
         void DrawTable(Element tbl, JspWriter out)
-                throws javax.servlet.jsp.JspException, java.io.IOException {
+                throws jakarta.servlet.jsp.JspException, java.io.IOException {
             NodeList lst = tbl.getChildNodes();
 
             out.print(spanStart + tbl.getAttribute("name") + spanEnd);
@@ -241,7 +241,7 @@
         }
 
         void DrawItem(Element item, JspWriter out)
-                throws javax.servlet.jsp.JspException, java.io.IOException {
+                throws jakarta.servlet.jsp.JspException, java.io.IOException {
             out.print(spanStart);
             if (!item.getAttribute("removable").equalsIgnoreCase("false")) {
                 String sName = "item" + item.getAttribute("itemId");
@@ -262,7 +262,7 @@
         }
 
         void DrawContent(Element content, JspWriter out)
-                throws javax.servlet.jsp.JspException, java.io.IOException {
+                throws jakarta.servlet.jsp.JspException, java.io.IOException {
             NodeList lst = content.getChildNodes();
             for (int i = 0; i < lst.getLength(); i++) {
                 if (lst.item(i).getNodeType() == Node.ELEMENT_NODE) {

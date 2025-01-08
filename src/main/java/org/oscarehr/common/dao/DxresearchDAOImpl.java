@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.common.NativeSql;

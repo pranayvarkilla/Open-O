@@ -27,14 +27,14 @@ package org.oscarehr.ws.rest;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -195,7 +195,7 @@ public class TicklerWebService extends AbstractServiceImpl {
         if (serviceStartDate != null && !"".equals(serviceStartDate)) {
             serviceStartDate = serviceStartDate.startsWith("\"") ? serviceStartDate.substring(1, serviceStartDate.length() - 1) : serviceStartDate;
             try {
-                cf.setStartDate(javax.xml.bind.DatatypeConverter.parseDateTime(serviceStartDate).getTime());
+                cf.setStartDate(jakarta.xml.bind.DatatypeConverter.parseDateTime(serviceStartDate).getTime());
             } catch (Exception e) {
                 MiscUtils.getLogger().warn("Error parsing start date - " + serviceStartDate);
             }
@@ -203,7 +203,7 @@ public class TicklerWebService extends AbstractServiceImpl {
         if (serviceEndDate != null && !"".equals(serviceEndDate)) {
             serviceEndDate = serviceEndDate.startsWith("\"") ? serviceEndDate.substring(1, serviceEndDate.length() - 1) : serviceEndDate;
             try {
-                cf.setEndDate(javax.xml.bind.DatatypeConverter.parseDateTime(serviceEndDate).getTime());
+                cf.setEndDate(jakarta.xml.bind.DatatypeConverter.parseDateTime(serviceEndDate).getTime());
             } catch (Exception e) {
                 MiscUtils.getLogger().warn("Error parsing end date - " + serviceEndDate);
             }
@@ -335,7 +335,7 @@ public class TicklerWebService extends AbstractServiceImpl {
         //tickler.setUpdateDate(new Date());
 
         String dt = json.getString("serviceDate");
-        tickler.setServiceDate(javax.xml.bind.DatatypeConverter.parseDateTime(dt).getTime());
+        tickler.setServiceDate(jakarta.xml.bind.DatatypeConverter.parseDateTime(dt).getTime());
 
         response.setSuccess(ticklerManager.updateTickler(getLoggedInInfo(), tickler));
 

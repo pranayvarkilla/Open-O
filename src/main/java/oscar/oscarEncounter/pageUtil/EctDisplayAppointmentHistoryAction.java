@@ -30,7 +30,7 @@ package oscar.oscarEncounter.pageUtil;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.common.dao.OscarAppointmentDao;

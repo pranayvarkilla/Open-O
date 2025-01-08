@@ -31,8 +31,8 @@ import oscar.form.pharmaForms.formBPMH.bean.BpmhForm2Bean;
 import oscar.form.pharmaForms.formBPMH.business.BpmhForm2Handler;
 import oscar.form.pharmaForms.formBPMH.pdf.PDFController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;

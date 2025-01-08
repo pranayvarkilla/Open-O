@@ -36,8 +36,8 @@ import oscar.oscarBilling.ca.bc.MSP.TeleplanSubmission;
 import oscar.oscarBilling.ca.bc.data.BillingmasterDAO;
 import oscar.oscarProvider.data.ProviderData;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**

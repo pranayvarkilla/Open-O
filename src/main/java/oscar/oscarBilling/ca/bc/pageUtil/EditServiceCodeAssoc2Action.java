@@ -25,8 +25,7 @@
 
 package oscar.oscarBilling.ca.bc.pageUtil;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 
 
 import com.opensymphony.xwork2.ActionSupport;

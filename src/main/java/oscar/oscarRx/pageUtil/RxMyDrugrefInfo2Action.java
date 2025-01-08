@@ -2,7 +2,7 @@ package oscar.oscarRx.pageUtil;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import com.opensymphony.xwork2.ActionSupport;
 

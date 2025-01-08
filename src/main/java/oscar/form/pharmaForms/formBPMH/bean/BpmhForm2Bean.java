@@ -31,9 +31,9 @@ import org.oscarehr.common.model.Demographic;
 import org.oscarehr.common.model.DemographicCust;
 import org.oscarehr.common.model.Provider;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;

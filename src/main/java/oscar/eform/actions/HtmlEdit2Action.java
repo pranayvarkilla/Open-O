@@ -36,8 +36,8 @@ import org.oscarehr.util.WebUtils;
 import oscar.eform.EFormUtil;
 import oscar.eform.data.EFormBase;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.util.HashMap;
 

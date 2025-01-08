@@ -26,10 +26,10 @@
 
 package org.oscarehr.ws;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.xml.ws.WebServiceContext;
-import javax.xml.ws.handler.MessageContext;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.xml.ws.WebServiceContext;
+import jakarta.xml.ws.handler.MessageContext;
 
 import org.oscarehr.common.model.Provider;
 import org.oscarehr.common.model.Security;

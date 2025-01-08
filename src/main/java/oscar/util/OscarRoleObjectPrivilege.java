@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
 
-import javax.servlet.jsp.PageContext;
+import jakarta.servlet.jsp.PageContext;
 
 import org.apache.commons.lang.StringUtils;
 import org.oscarehr.common.dao.SecObjPrivilegeDao;

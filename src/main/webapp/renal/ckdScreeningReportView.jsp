@@ -50,8 +50,8 @@
 <%@page import="org.oscarehr.renal.CkdScreenerReportHandler" %>
 <%@page import="org.oscarehr.renal.CKDReportContainer" %>
 <%@page import="org.oscarehr.PMmodule.dao.ProviderDao" %>
-<%@page import="javax.xml.bind.JAXBContext" %>
-<%@page import="javax.xml.bind.Unmarshaller" %>
+<%@page import="jakarta.xml.bind.JAXBContext" %>
+<%@page import="jakarta.xml.bind.Unmarshaller" %>
 <%@page import="org.oscarehr.renal.CkdScreeningReportContainer" %>
 <%@page import="org.oscarehr.common.dao.ORNCkdScreeningReportLogDao" %>
 <%@page import="org.oscarehr.common.model.ORNCkdScreeningReportLog" %>

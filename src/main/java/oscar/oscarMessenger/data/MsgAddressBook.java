@@ -28,7 +28,7 @@ package oscar.oscarMessenger.data;
 
 import java.util.List;
 
-import javax.servlet.jsp.JspWriter;
+import jakarta.servlet.jsp.JspWriter;
 
 import org.oscarehr.common.dao.OscarCommLocationsDao;
 import org.oscarehr.common.model.OscarCommLocations;

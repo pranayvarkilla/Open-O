@@ -28,7 +28,7 @@ import org.oscarehr.integration.fhir.interfaces.ContactInterface;
 import org.oscarehr.integration.fhir.resources.constants.ContactRelationship;
 import org.oscarehr.integration.fhir.resources.constants.ContactType;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 

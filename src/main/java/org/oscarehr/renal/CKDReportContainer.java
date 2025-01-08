@@ -24,7 +24,7 @@
  */
 package org.oscarehr.renal;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import org.oscarehr.common.model.Demographic;
 

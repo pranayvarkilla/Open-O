@@ -38,7 +38,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Repository;
 import oscar.util.UtilDateUtilities;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import java.util.*;
 import java.util.Map.Entry;
 

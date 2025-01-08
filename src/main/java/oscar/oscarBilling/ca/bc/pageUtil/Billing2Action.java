@@ -27,16 +27,15 @@
 package oscar.oscarBilling.ca.bc.pageUtil;
 
 import org.apache.logging.log4j.Logger;
-import org.oscarehr.billing.Clinicaid.util.ClinicaidCommunication;
 import org.oscarehr.decisionSupport.model.DSConsequence;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import oscar.oscarBilling.ca.bc.decisionSupport.BillingGuidelines;
 import oscar.util.plugin.OscarProperties;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 //import oscar.util.SqlUtils;

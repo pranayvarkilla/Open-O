@@ -31,7 +31,7 @@ import org.springframework.stereotype.Repository;
 import oscar.form.model.BooleanValueForm;
 import oscar.form.model.FormBooleanValue;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import java.util.HashMap;
 
 @Repository

@@ -28,7 +28,6 @@ package oscar.oscarReport.pageUtil;
 import org.oscarehr.util.MiscUtils;
 import oscar.util.ConversionUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

@@ -44,7 +44,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import javax.persistence.PersistenceException;
+import jakarta.persistence.PersistenceException;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
@@ -68,7 +68,6 @@ import org.oscarehr.caisi_integrator.ws.MatchingDemographicParameters;
 import org.oscarehr.common.DemographicSearchResultTransformer;
 import org.oscarehr.common.Gender;
 import org.oscarehr.common.NativeSql;
-import org.oscarehr.common.dao.DemographicDao;
 import org.oscarehr.common.model.Admission;
 import org.oscarehr.common.model.Demographic;
 import org.oscarehr.common.model.DemographicExt;

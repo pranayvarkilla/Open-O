@@ -30,19 +30,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.commons.beanutils.DynaBean;
 import org.oscarehr.common.dao.DxresearchDAO;
 import org.oscarehr.common.dao.MyGroupDao;
 import org.oscarehr.common.model.DxRegistedPTInfo;
 import org.oscarehr.managers.CodingSystemManager;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import oscar.OscarDocumentCreator;
 import oscar.oscarResearch.oscarDxResearch.bean.dxCodeSearchBean;

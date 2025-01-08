@@ -32,8 +32,8 @@ import org.oscarehr.common.model.UserProperty;
 import org.oscarehr.util.SpringUtils;
 import oscar.OscarProperties;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class User2Action extends ActionSupport {
     HttpServletRequest request = ServletActionContext.getRequest();

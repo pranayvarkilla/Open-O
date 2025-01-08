@@ -44,9 +44,9 @@ import oscar.oscarBilling.ca.on.bean.BillingEDTOBECOutputSpecificationBean;
 import oscar.oscarBilling.ca.on.bean.BillingEDTOBECOutputSpecificationBeanHandler;
 import oscar.oscarBilling.ca.on.data.BillingClaimsErrorReportBeanHandlerSave;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
 import java.util.ArrayList;

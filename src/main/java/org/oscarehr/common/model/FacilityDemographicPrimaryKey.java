@@ -25,7 +25,7 @@ package org.oscarehr.common.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 import org.oscarehr.caisi_integrator.ws.FacilityIdIntegerCompositePk;
 

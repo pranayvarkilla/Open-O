@@ -24,8 +24,8 @@
  */
 package org.oscarehr.common.model;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class ProgramAccessRolesId implements java.io.Serializable {

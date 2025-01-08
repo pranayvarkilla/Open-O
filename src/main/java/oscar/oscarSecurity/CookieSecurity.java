@@ -29,7 +29,7 @@ package oscar.oscarSecurity;
 import java.util.Random;
 import java.util.zip.Adler32;
 
-import javax.servlet.http.Cookie;
+import jakarta.servlet.http.Cookie;
 
 public class CookieSecurity {
     public static String providerCookie = "oscprvid";

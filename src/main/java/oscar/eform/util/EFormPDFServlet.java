@@ -42,11 +42,11 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.itextpdf.text.*;
 import net.sf.jasperreports.engine.JRException;
@@ -88,7 +88,7 @@ public class EFormPDFServlet extends HttpServlet {
         super();
     }
 
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws javax.servlet.ServletException,
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws jakarta.servlet.ServletException,
             java.io.IOException {
         doPost(req, res);
     }
@@ -97,7 +97,7 @@ public class EFormPDFServlet extends HttpServlet {
      * @param req HTTP request object
      * @param res HTTP response object
      */
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws javax.servlet.ServletException,
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws jakarta.servlet.ServletException,
             java.io.IOException {
 
         ByteArrayOutputStream baosPDF = null;

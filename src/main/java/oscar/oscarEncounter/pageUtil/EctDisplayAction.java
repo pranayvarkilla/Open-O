@@ -37,9 +37,9 @@ import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
 import oscar.util.UtilDateUtilities;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -288,7 +288,7 @@ public class EctDisplayAction extends ActionSupport {
 
     /**
      * Checks if the action is enabled. Non-enabled actions should not render the encounter
-     * screen widget (i.e. return true in {@link #getInfo(EctSessionBean, javax.servlet.http.HttpServletRequest, NavBarDisplayDAO, org.apache.struts.util.MessageResources)}
+     * screen widget (i.e. return true in {@link #getInfo(EctSessionBean, jakarta.servlet.http.HttpServletRequest, NavBarDisplayDAO, org.apache.struts.util.MessageResources)}
      * and must not modify the nav bar dao).
      *
      * @return Returns true of the actions is enabled and false otherwise.
@@ -299,7 +299,7 @@ public class EctDisplayAction extends ActionSupport {
 
     /**
      * Sets if the action is enabled. Non-enabled actions should not render the encounter
-     * screen widget (i.e. return true in {@link #getInfo(EctSessionBean, javax.servlet.http.HttpServletRequest, NavBarDisplayDAO, org.apache.struts.util.MessageResources)}
+     * screen widget (i.e. return true in {@link #getInfo(EctSessionBean, jakarta.servlet.http.HttpServletRequest, NavBarDisplayDAO, org.apache.struts.util.MessageResources)}
      * and must not modify the nav bar dao).
      *
      * @param enabled Boolean flag that indicates if the actions is enabled.

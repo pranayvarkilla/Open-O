@@ -11,7 +11,7 @@ package org.oscarehr.olis.dao;
 
 import java.util.List;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.dao.AbstractDaoImpl;
 import org.oscarehr.olis.model.OLISRequestNomenclature;

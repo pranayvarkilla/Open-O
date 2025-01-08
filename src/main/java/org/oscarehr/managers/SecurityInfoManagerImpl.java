@@ -43,7 +43,7 @@ import com.quatro.dao.security.SecuserroleDao;
 import com.quatro.model.security.Secobjprivilege;
 import com.quatro.model.security.Secuserrole;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class SecurityInfoManagerImpl implements SecurityInfoManager {

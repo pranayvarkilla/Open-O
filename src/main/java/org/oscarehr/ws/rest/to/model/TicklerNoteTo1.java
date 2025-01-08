@@ -27,7 +27,7 @@ package org.oscarehr.ws.rest.to.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "ticklerNote")
 public class TicklerNoteTo1 implements Serializable {

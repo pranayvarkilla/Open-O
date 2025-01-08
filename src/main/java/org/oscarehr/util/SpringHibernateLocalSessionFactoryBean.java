@@ -29,16 +29,15 @@ import java.util.*;
 
 import javax.naming.NamingException;
 import javax.naming.Reference;
-import javax.persistence.EntityGraph;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceUnitUtil;
-import javax.persistence.SynchronizationType;
-import javax.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.EntityGraph;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceUnitUtil;
+import jakarta.persistence.SynchronizationType;
+import jakarta.persistence.criteria.CriteriaBuilder;
 
 import org.apache.logging.log4j.Logger;
 import org.hibernate.*;
 import org.hibernate.boot.spi.SessionFactoryOptions;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.spi.FilterDefinition;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.metadata.CollectionMetadata;
@@ -46,7 +45,6 @@ import org.hibernate.stat.Statistics;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.service.ServiceRegistry;
 
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
@@ -243,7 +241,7 @@ public class SpringHibernateLocalSessionFactoryBean extends LocalSessionFactoryB
         }
 
         @Override
-        public void addNamedQuery(String name, javax.persistence.Query query) {
+        public void addNamedQuery(String name, jakarta.persistence.Query query) {
 
         }
 

@@ -38,7 +38,7 @@
 <%@ page import="org.w3c.dom.*" %>
 <%@ page
         import="oscar.oscarDemographic.data.*,org.oscarehr.common.model.Demographic,org.oscarehr.common.dao.DemographicDao,org.oscarehr.util.SpringUtils" %>
-<%@ page import="javax.servlet.http.HttpServletRequest.*" %>
+<%@ page import="jakarta.servlet.http.HttpServletRequest.*" %>
 <%@ page import="java.util.Iterator.*" %>
 <%@ page import="java.util.Enumeration.*" %>
 <%@ page import="org.apache.commons.collections.iterators.*" %>

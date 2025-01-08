@@ -36,12 +36,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import javax.persistence.Query;
-
-import org.oscarehr.common.NativeSql;
 import org.oscarehr.common.model.Measurement;
 import org.oscarehr.common.model.MeasurementType;
-import org.springframework.stereotype.Repository;
 import org.oscarehr.common.dao.MeasurementDaoImpl.SearchCriteria;
 
 public interface MeasurementDao extends AbstractDao<Measurement> {

@@ -31,10 +31,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Query;
-
 import org.oscarehr.common.model.FaxJob;
-import org.springframework.stereotype.Repository;
 
 public interface FaxJobDao extends AbstractDao<FaxJob> {
 

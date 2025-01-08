@@ -27,7 +27,7 @@ package org.oscarehr.sharingcenter.model;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import org.marc.shic.core.configuration.consent.AclDefinition;
 import org.marc.shic.core.configuration.consent.DemandPermission;

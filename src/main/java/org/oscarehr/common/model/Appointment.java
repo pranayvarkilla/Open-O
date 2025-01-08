@@ -23,7 +23,7 @@
 
 package org.oscarehr.common.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Comparator;

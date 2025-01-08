@@ -25,8 +25,8 @@
 
 package org.oscarehr.billing.Clinicaid.util;
 
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.BufferedReader;
 import java.io.OutputStreamWriter;

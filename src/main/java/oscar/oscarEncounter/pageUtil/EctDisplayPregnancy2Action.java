@@ -33,7 +33,7 @@ import oscar.oscarEncounter.data.EctFormData;
 import oscar.util.OscarRoleObjectPrivilege;
 import oscar.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;

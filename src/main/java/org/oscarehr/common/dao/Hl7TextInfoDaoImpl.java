@@ -36,7 +36,7 @@ import java.util.Date;
 import java.util.List;
 import java.text.SimpleDateFormat;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.apache.commons.codec.binary.Base64;
 import org.oscarehr.common.NativeSql;

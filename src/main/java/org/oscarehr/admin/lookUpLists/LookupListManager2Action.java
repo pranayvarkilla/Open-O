@@ -28,8 +28,8 @@ package org.oscarehr.admin.lookUpLists;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.oscarehr.common.model.LookupListItem;
 import org.oscarehr.managers.LookupListManager;

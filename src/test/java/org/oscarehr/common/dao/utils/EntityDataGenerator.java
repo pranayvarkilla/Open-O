@@ -36,8 +36,8 @@ import java.util.Set;
 
 import javassist.Modifier;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Id;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Id;
 
 import org.oscarehr.common.model.DemographicExt;
 import org.oscarehr.common.model.Provider;

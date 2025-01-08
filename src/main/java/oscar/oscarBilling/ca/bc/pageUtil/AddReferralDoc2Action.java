@@ -28,8 +28,8 @@ package oscar.oscarBilling.ca.bc.pageUtil;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.oscarehr.common.dao.BillingreferralDao;
 import org.oscarehr.common.model.Billingreferral;
