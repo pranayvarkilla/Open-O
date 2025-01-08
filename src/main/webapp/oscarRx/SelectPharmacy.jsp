@@ -24,11 +24,13 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ page import="oscar.oscarRx.data.*,java.util.*" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
+    oscar.oscarRx.pageUtil.RxSessionBean bean = null;
+    oscar.oscarRx.data.RxPatientData.Patient patient = null;
     String roleName2$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
     boolean authed = true;
 %>
@@ -54,12 +56,12 @@
         <c:if test="${not empty sessionScope.RxSessionBean}">
     <%
         // Directly access the RxSessionBean from the session
-        oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+        bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
         if (bean != null && !bean.isValid()) {
             response.sendRedirect("error.html");
             return; // Ensure no further JSP processing
         }
-        oscar.oscarRx.data.RxPatientData.Patient patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
+        patient = (oscar.oscarRx.data.RxPatientData.Patient) request.getAttribute("Patient");
     %>
         </c:if>
         <link rel="stylesheet" type="text/css" href="styles.css">

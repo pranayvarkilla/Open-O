@@ -108,39 +108,27 @@
 
                 <%-- table contents --%>
 
-            <nested:iterate indexId="ind" id="newIssueCheckList" property="newIssueCheckList"
-                            type="org.oscarehr.casemgmt.web.CheckIssueBoxBean">
-                <tr bgcolor="<%= (ind.intValue()%2==0)?"#EEEEFF":"white" %>" align="center">
-                    <td><nested:checkbox indexed="true" name="newIssueCheckList" property="checked"></nested:checkbox>
-                    <td>
-                        <c:if test="${newIssueCheckList.communityString == 'false'}">
-                            Local
-                        </c:if>
-                        <c:choose>
-                            <c:when test="${newIssueCheckList.communityString != 'false'}">
-                                Community
-                            </c:when>
-                        </c:choose>
-                    </td>
-                    <td><nested:write name="newIssueCheckList" property="issue.code"/></td>
-                    <c:if test="${newIssueCheckList.issue.priority == 'allergy'}">
-                        <td bgcolor="yellow">
-                            <nested:write name="newIssueCheckList" property="issue.description"/>
+                <c:forEach var="newIssueCheckList" items="${newIssueCheckList}" varStatus="status">
+                    <tr bgcolor="${status.index % 2 == 0 ? '#EEEEFF' : 'white'}" align="center">
+                        <td>
+                            <input type="checkbox" name="newIssueCheckList[${status.index}].checked" value="true" ${newIssueCheckList.checked ? 'checked' : ''} />
                         </td>
-                    </c:if>
-                    <c:choose>
-                        <c:when test="${newIssueCheckList.issue.priority != 'allergy'}">
-                            <td>
-                                <nested:write name="newIssueCheckList" property="issue.description"/>
-                            </td>
-                        </c:when>
-                    </c:choose>
-                    <td><nested:write name="newIssueCheckList" property="issue.role"/></td>
-                </tr>
-            </nested:iterate>
-
+                        <td>
+                            <c:if test="${newIssueCheckList.communityString == 'false'}">
+                                Local
+                            </c:if>
+                            <c:if test="${newIssueCheckList.communityString != 'false'}">
+                                Community
+                            </c:if>
+                        </td>
+                        <td>${newIssueCheckList.issue.code}</td>
+                        <td bgcolor="${newIssueCheckList.issue.priority == 'allergy' ? 'yellow' : ''}">
+                            ${newIssueCheckList.issue.description}
+                        </td>
+                        <td>${newIssueCheckList.issue.role}</td>
+                    </tr>
+                </c:forEach>
         </table>
-
         <br>
         <input type="button" value="add checked issue" name="submit_add_issue"
                onclick="this.form.method.value='issueAdd'; this.disabled = true; this.className='processing' ;this.form.submit();"/>

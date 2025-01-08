@@ -97,6 +97,6 @@
         <button ng-show="hasRight" ng-click="saver(newDemographic)" type="button" class="btn btn-primary">
             <fmt:message bundle="${oscarBundle}" key="modal.newPatient.submit"/></button>
         <button ng-hide="hasRight" ng-click="cancel()" type="button" class="btn">
-            <fmt:message bundle="${oscarBundle}"key="modal.newPatient.close"/></button>
+            <fmt:message bundle="${oscarBundle}" key="modal.newPatient.close"/></button>
     </div>
 </div>

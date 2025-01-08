@@ -25,8 +25,6 @@
 --%>
 <%@page import="oscar.oscarRx.data.RxPatientData" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
-
 <%@ taglib uri="/WEB-INF/oscarProperties-tag.tld" prefix="oscar" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="oscar.oscarProvider.data.ProSignatureData, oscar.oscarProvider.data.ProviderData" %>
@@ -55,6 +53,7 @@
     String providerNo = loggedInInfo.getLoggedInProviderNo();
     String scriptid = request.getParameter("scriptId");
     String rx_enhance = OscarProperties.getInstance().getProperty("rx_enhance");
+    oscar.oscarRx.pageUtil.RxSessionBean bean = null;
 %>
 
 <%@page import="org.oscarehr.web.PrescriptionQrCodeUIBean" %>
@@ -110,7 +109,7 @@
         <c:if test="${not empty sessionScope.RxSessionBean}">
             <%
                 // Directly access the RxSessionBean from the session
-                oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+                bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
                 if (bean != null && !bean.isValid()) {
                     response.sendRedirect("error.html");
                     return; // Ensure no further JSP processing

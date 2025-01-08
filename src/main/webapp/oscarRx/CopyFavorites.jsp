@@ -32,6 +32,7 @@
     FavoritesDao favoritesDao = SpringUtils.getBean(FavoritesDao.class);
     FavoritesPrivilegeDao favoritesPrivilegeDao = SpringUtils.getBean(FavoritesPrivilegeDao.class);
     ProviderDao providerDao = SpringUtils.getBean(ProviderDao.class);
+    oscar.oscarRx.pageUtil.RxSessionBean bean = null;
 %>
 <html>
     <head>
@@ -45,7 +46,7 @@
         <c:if test="${not empty RxSessionBean}">
             <%
                 // Directly access the RxSessionBean from the session
-                oscar.oscarRx.pageUtil.RxSessionBean bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
+                bean = (oscar.oscarRx.pageUtil.RxSessionBean) session.getAttribute("RxSessionBean");
                 if (bean != null && !bean.isValid()) {
                     response.sendRedirect("error.html");
                     return; // Ensure no further JSP processing
