@@ -57,7 +57,7 @@ import org.oscarehr.managers.RoomManager;
 import org.oscarehr.managers.RoomDemographicManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import oscar.log.LogAction;
@@ -485,52 +485,52 @@ public class AdmissionManagerImpl implements AdmissionManager {
         }
     }
 
-    @Required
+    @Autowired
     public void setAdmissionDao(AdmissionDao dao) {
         this.dao = dao;
     }
 
-    @Required
+    @Autowired
     public void setProgramDao(ProgramDao programDao) {
         this.programDao = programDao;
     }
 
-    @Required
+    @Autowired
     public void setProgramQueueDao(ProgramQueueDao dao) {
         this.programQueueDao = dao;
     }
 
-    @Required
+    @Autowired
     public void setClientReferralDAO(ClientReferralDAO dao) {
         this.clientReferralDAO = dao;
     }
 
-    @Required
+    @Autowired
     public void setBedDemographicManager(BedDemographicManager bedDemographicManager) {
         this.bedDemographicManager = bedDemographicManager;
     }
 
-    @Required
+    @Autowired
     public void setProgramClientStatusDAO(ProgramClientStatusDAO programClientStatusDAO) {
         this.programClientStatusDAO = programClientStatusDAO;
     }
 
-    @Required
+    @Autowired
     public void setClientRestrictionManager(ClientRestrictionManager clientRestrictionManager) {
         this.clientRestrictionManager = clientRestrictionManager;
     }
 
-    @Required
+    @Autowired
     public void setRoomManager(RoomManager roomManager) {
         this.roomManager = roomManager;
     }
 
-    @Required
+    @Autowired
     public void setBedManager(BedManager bedManager) {
         this.bedManager = bedManager;
     }
 
-    @Required
+    @Autowired
     public void setRoomDemographicManager(RoomDemographicManager roomDemographicManager) {
         this.roomDemographicManager = roomDemographicManager;
     }

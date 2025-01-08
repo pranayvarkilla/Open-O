@@ -36,7 +36,7 @@ import org.oscarehr.common.dao.DemographicDao;
 import org.oscarehr.common.dao.ProviderDefaultProgramDao;
 import org.oscarehr.common.model.Demographic;
 import org.oscarehr.common.model.ProviderDefaultProgram;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import oscar.util.LabelValueBean;
 
@@ -51,22 +51,22 @@ public class InfirmBedProgramManagerImpl implements InfirmBedProgramManager {
 
     private ProgramDao programDao;
 
-    @Required
+    @Autowired
     public void setProviderDefaultProgramDao(ProviderDefaultProgramDao providerDefaultProgramDao) {
         this.providerDefaultProgramDao = providerDefaultProgramDao;
     }
 
-    @Required
+    @Autowired
     public void setBedProgramDao(BedProgramDao dao) {
         this.bedProgramDao = dao;
     }
 
-    @Required
+    @Autowired
     public void setProgramDao(ProgramDao dao) {
         this.programDao = dao;
     }
 
-    @Required
+    @Autowired
     public void setDemographicDao(DemographicDao dao) {
         this.demographicDao = dao;
     }

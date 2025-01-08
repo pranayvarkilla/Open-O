@@ -39,7 +39,7 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.MailException;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
@@ -59,7 +59,7 @@ public class AsyncMailSender implements MailSender {
     private TaskExecutor taskExecutor;
 
 
-    @Required
+    @Autowired
     public void setTaskExecutor(TaskExecutor taskExecutor) {
         this.taskExecutor = taskExecutor;
     }

@@ -44,7 +44,7 @@ import org.oscarehr.common.model.Admission;
 import org.oscarehr.common.model.Demographic;
 import org.oscarehr.common.model.DemographicExt;
 import org.oscarehr.common.model.JointAdmission;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface ClientManager {

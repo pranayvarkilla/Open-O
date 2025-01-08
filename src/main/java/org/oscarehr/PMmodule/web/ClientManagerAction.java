@@ -47,7 +47,7 @@ import org.oscarehr.managers.RoomManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 import oscar.OscarProperties;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -114,7 +114,7 @@ public class ClientManagerAction {
         return (StringEscapeUtils.escapeHtml(display));
     }
 
-    @Required
+    @Autowired
     public void setClientRestrictionManager(ClientRestrictionManager clientRestrictionManager) {
         this.clientRestrictionManager = clientRestrictionManager;
     }

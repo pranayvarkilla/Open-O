@@ -89,7 +89,7 @@ import org.oscarehr.match.MatchManagerException;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import oscar.log.LogAction;
 
@@ -1538,7 +1538,7 @@ public class ProgramManager2Action extends ActionSupport {
         return ((in1 == null && in2 == null) || in1.equals(in2));
     }
 
-    @Required
+    @Autowired
     public void setClientRestrictionManager(ClientRestrictionManager clientRestrictionManager) {
         this.clientRestrictionManager = clientRestrictionManager;
     }
