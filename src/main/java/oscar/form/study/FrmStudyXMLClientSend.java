@@ -52,12 +52,12 @@ package oscar.form.study;
 
 import java.io.FileInputStream;
 import java.sql.ResultSet;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Properties;
 import java.util.Vector;
 
-import javax.xml.messaging.URLEndpoint;
 import jakarta.xml.soap.AttachmentPart;
 import jakarta.xml.soap.MessageFactory;
 import jakarta.xml.soap.SOAPBody;
@@ -172,7 +172,7 @@ public class FrmStudyXMLClientSend {
 
             message.addAttachmentPart(ap1);
 
-            URLEndpoint endPoint = new URLEndpoint(URLService);  //"https://67.69.12.115:8443/OscarComm/DummyReceiver");
+            URL endPoint = new URL(URLService);  //"https://67.69.12.115:8443/OscarComm/DummyReceiver");
             SOAPMessage reply = connection.call(message, endPoint);
 
             connection.close();
