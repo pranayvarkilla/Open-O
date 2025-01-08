@@ -35,7 +35,6 @@
     String appointment = request.getParameter("appointment");
 
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
-    LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 %>
 
 <%@ page import="java.util.*, java.sql.*, oscar.eform.*" %>
@@ -65,9 +64,7 @@
         UserPropertyDAO userPropDAO = (UserPropertyDAO) SpringUtils.getBean(UserPropertyDAO.class);
         UserProperty usrProp = userPropDAO.getProp(user, UserProperty.EFORM_FAVOURITE_GROUP);
         if (usrProp != null) {
-        if (usrProp != null) {
             groupView = usrProp.getValue();
-        } else {
         } else {
             groupView = "";
         }

@@ -49,7 +49,7 @@
 
 <div ng-if="me != null">
 
-    <p class="lead"><fmt:message bundle="${uiBundle}" key="dashboard.welcome"fmt:message bundle="${uiBundle}" /> {{me.firstName}} <span
+    <p class="lead"><fmt:message bundle="${uiBundle}" key="dashboard.welcome" /> {{me.firstName}} <span
             class="pull-right">{{displayDate() | date:'MMMM d, y'}}</span>
     </p>
     <hr>
@@ -69,11 +69,11 @@
                     <thead>
                     <tr>
                         <th class="flag-column"></th>
-                        <th><fmt:message bundle="${uiBundle}" key="dashboard.inbox.header.patient"fmt:message bundle="${uiBundle}" /></th>
-                        <th><fmt:message bundle="${uiBundle}" key="dashboard.inbox.header.category"fmt:message bundle="${uiBundle}" /></th>
+                        <th><fmt:message bundle="${uiBundle}" key="dashboard.inbox.header.patient"/></th>
+                        <th><fmt:message bundle="${uiBundle}" key="dashboard.inbox.header.category"/></th>
                         <!--  <th>Source</th> -->
-                        <th><fmt:message bundle="${uiBundle}" key="dashboard.inbox.header.date"fmt:message bundle="${uiBundle}" /></th>
-                        <th><fmt:message bundle="${uiBundle}" key="dashboard.inbox.header.status"fmt:message bundle="${uiBundle}" /></th>
+                        <th><fmt:message bundle="${uiBundle}" key="dashboard.inbox.header.date"/></th>
+                        <th><fmt:message bundle="${uiBundle}" key="dashboard.inbox.header.status"/></th>
                     </tr>
                     </thead>
 
@@ -112,10 +112,10 @@
                     <thead>
                     <tr>
                         <!-- 	<th class="flag-column"></th> -->
-                        <th><fmt:message bundle="${uiBundle}" key="dashboard.messages.header.from"fmt:message bundle="${uiBundle}" /></th>
-                        <th><fmt:message bundle="${uiBundle}" key="dashboard.messages.header.subject"fmt:message bundle="${uiBundle}" /></th>
-                        <th><fmt:message bundle="${uiBundle}" key="dashboard.messages.header.date"fmt:message bundle="${uiBundle}" /></th>
-                        <th><fmt:message bundle="${uiBundle}" key="dashboard.messages.header.patient"fmt:message bundle="${uiBundle}" /></th>
+                        <th><fmt:message bundle="${uiBundle}" key="dashboard.messages.header.from" /></th>
+                        <th><fmt:message bundle="${uiBundle}" key="dashboard.messages.header.subject" /></th>
+                        <th><fmt:message bundle="${uiBundle}" key="dashboard.messages.header.date" /></th>
+                        <th><fmt:message bundle="${uiBundle}" key="dashboard.messages.header.patient" /></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -190,9 +190,9 @@
                         <th class="flag-column">
                             <span class="glyphicon glyphicon-cog hand-hover" ng-click="configureTicklers()"></span>
                         </th>
-                        <th><fmt:message bundle="${uiBundle}" key="dashboard.tickler.header.demographicName"fmt:message bundle="${uiBundle}" /></th>
-                        <th><fmt:message bundle="${uiBundle}" key="dashboard.tickler.header.due"fmt:message bundle="${uiBundle}" /></th>
-                        <th><fmt:message bundle="${uiBundle}" key="dashboard.tickler.header.message"fmt:message bundle="${uiBundle}" /></th>
+                        <th><fmt:message bundle="${uiBundle}" key="dashboard.tickler.header.demographicName" /></th>
+                        <th><fmt:message bundle="${uiBundle}" key="dashboard.tickler.header.due" /></th>
+                        <th><fmt:message bundle="${uiBundle}" key="dashboard.tickler.header.message" /></th>
 
                     </tr>
                     </thead>
@@ -222,7 +222,7 @@
 
         </div>
 
-        <p class="lead"><fmt:message bundle="${uiBundle}" key="dashboard.k2a.header"fmt:message bundle="${uiBundle}" /></p>
+        <p class="lead"><fmt:message bundle="${uiBundle}" key="dashboard.k2a.header" /></p>
         <div id="rightColumn" class="col-md-3 hidden-xs" ng-hide="!k2afeed && !authenticatek2a"
              style="height:80vh;overflow-y:scroll">
             <div infinite-scroll="updateFeed(k2afeed.length,10)" infinite-scroll-parent="true">

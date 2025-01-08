@@ -32,15 +32,9 @@
 
 <%@page import="java.util.*,oscar.eform.*" %>
 <%@page import="org.oscarehr.web.eform.EfmPatientFormList" %>
-<%@ page import="org.owasp.encoder.Encode" %>
-<%@ page import="org.oscarehr.managers.DemographicManager" %>
-<%@ page import="org.oscarehr.util.SpringUtils" %>
-<%@ page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-    LoggedInInfo loggedInInfo =
-    LoggedInInfo.getLoggedInInfoFromSession(request);
     String demographic_no = request.getParameter("demographic_no");
     String deepColor = "#CCCCFF", weakColor = "#EEEEFF";
 
@@ -112,7 +106,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 
-<html:html>
+<html>
 
     <head>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/global.js"></script>

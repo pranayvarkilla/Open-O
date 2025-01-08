@@ -67,36 +67,35 @@ public class EctDisplayAction extends ActionSupport {
 
     protected SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
-	public EctDisplayAction() {
-		super();
-		if (Actions == null) {
-			Actions = new HashMap<String, String>();
-			Actions.put("labs", "/oscarEncounter/displayLabs.do");
-			Actions.put("forms", "/oscarEncounter/displayForms.do");
-			Actions.put("msgs", "/oscarEncounter/displayMessages.do");
-			Actions.put("eforms", "/oscarEncounter/displayEForms.do");
-			Actions.put("docs", "/oscarEncounter/displayDocuments.do");
-			Actions.put("measurements", "/oscarEncounter/displayMeasurements.do");
-			Actions.put("tickler", "/oscarEncounter/displayTickler.do");
-			Actions.put("Dx", "/oscarEncounter/displayDisease.do");
-			Actions.put("preventions", "/oscarEncounter/displayPrevention.do");
-			Actions.put("consultation", "/oscarEncounter/displayConsultation.do");
-			Actions.put("allergies", "/oscarEncounter/displayAllergy.do");
-			Actions.put("unresolvedIssues", "/oscarEncounter/displayIssues.do");
-			Actions.put("resolvedIssues", "/oscarEncounter/displayIssues.do");
-			Actions.put("Rx", "/oscarEncounter/displayRx.do");
-			Actions.put("success", "/oscarEncounter/LeftNavBarDisplay.jsp");
-			Actions.put("error", "/oscarEncounter/LeftNavBarError.jsp");
-			Actions.put("HRM", "/oscarEncounter/displayHRM.do");
-			Actions.put("myoscar", "/oscarEncounter/displayMyOscar.do");
-			Actions.put("eams", "/eaaps/displayEctEaaps.do");
-			
-			if (logger.isDebugEnabled()) {
-				logger.debug("Instantiated encounter display actions: " + Actions);
-			}
-		}
-		
-	}
+    public EctDisplayAction() {
+        super();
+        if (Actions == null) {
+            Actions = new HashMap<String, String>();
+            Actions.put("labs", "/oscarEncounter/displayLabs.do");
+            Actions.put("forms", "/oscarEncounter/displayForms.do");
+            Actions.put("msgs", "/oscarEncounter/displayMessages.do");
+            Actions.put("eforms", "/oscarEncounter/displayEForms.do");
+            Actions.put("docs", "/oscarEncounter/displayDocuments.do");
+            Actions.put("measurements", "/oscarEncounter/displayMeasurements.do");
+            Actions.put("tickler", "/oscarEncounter/displayTickler.do");
+            Actions.put("Dx", "/oscarEncounter/displayDisease.do");
+            Actions.put("preventions", "/oscarEncounter/displayPrevention.do");
+            Actions.put("consultation", "/oscarEncounter/displayConsultation.do");
+            Actions.put("allergies", "/oscarEncounter/displayAllergy.do");
+            Actions.put("unresolvedIssues", "/oscarEncounter/displayIssues.do");
+            Actions.put("resolvedIssues", "/oscarEncounter/displayIssues.do");
+            Actions.put("Rx", "/oscarEncounter/displayRx.do");
+            Actions.put("success", "/oscarEncounter/LeftNavBarDisplay.jsp");
+            Actions.put("error", "/oscarEncounter/LeftNavBarError.jsp");
+            Actions.put("HRM", "/oscarEncounter/displayHRM.do");
+            Actions.put("myoscar", "/oscarEncounter/displayMyOscar.do");
+
+            if (logger.isDebugEnabled()) {
+                logger.debug("Instantiated encounter display actions: " + Actions);
+            }
+        }
+
+    }
 
     public String execute() throws IOException, ServletException {
 

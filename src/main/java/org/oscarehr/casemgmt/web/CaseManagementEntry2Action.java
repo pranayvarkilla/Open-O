@@ -2613,6 +2613,9 @@ public class CaseManagementEntry2Action extends ActionSupport {
         String noteid = request.getParameter("noteId");
 
         List<CaseManagementNote> history = caseManagementMgr.getHistory(noteid);
+        for (CaseManagementNote caseManagementNote : history) {
+            caseManagementNote.setNote(caseManagementNote.getNote().replace("\n", "<br/>"));
+        }
         request.setAttribute("history", history);
         ResourceBundle props = ResourceBundle.getBundle("oscarResources");
         request.setAttribute("title", props.getString("oscarEncounter.noteHistory.title"));

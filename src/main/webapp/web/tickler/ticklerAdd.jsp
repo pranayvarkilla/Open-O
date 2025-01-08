@@ -28,7 +28,7 @@
 <form name="ticklerAddForm" novalidate>
 
     <div class="modal-header">
-        <h4><fmt:message bundle="${uiBundle}"key="tickler.add.title"/></h4>
+        <h4><fmt:message bundle="${uiBundle}" key="tickler.add.title"/></h4>
     </div>
     <div class="modal-body">
         <div class="row" ng-show="showErrors === true">
@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <label>Patient:</label>
                     <input type="text" ng-model="tickler.demographicName"
-                           placeholder="<fmt:message bundle="${uiBundle}"key="tickler.add.patient"/>"
+                           placeholder="<fmt:message bundle="${uiBundle}" key="tickler.add.patient"/>"
                            uib-typeahead="pt.demographicNo as pt.name for pt in searchPatients($viewValue)"
                            typeahead-on-select="updateDemographicNo($item, $model, $label)"
                            class="form-control">
@@ -73,7 +73,7 @@
                 <div class="form-group">
                     <label>Assign to:</label>
                     <input type="text" ng-model="tickler.taskAssignedToName"
-                           placeholder="<fmt:message bundle="${uiBundle}"key="tickler.add.provider"/>"
+                           placeholder="<fmt:message bundle="${uiBundle}" key="tickler.add.provider"/>"
                            uib-typeahead="pt.providerNo as pt.name for pt in searchProviders($viewValue)"
                            typeahead-on-select="updateProviderNo($item, $model, $label)"
                            class="form-control">
@@ -84,7 +84,7 @@
 
             <div class="col-xs-5">
                 <div class="form-group">
-                    <label><fmt:message bundle="${uiBundle}"key="tickler.add.priority"/>:</label>
+                    <label><fmt:message bundle="${uiBundle}" key="tickler.add.priority"/>:</label>
                     <select ng-model="tickler.priority" ng-init="tickler.priority='Normal'"
                             ng-options="p for p in priorities" class="form-control">
                     </select>
@@ -95,7 +95,7 @@
 
         <div class="row" ng-hide="showServiceDateEditor === true" ng-click="showServiceDateEditor=true">
             <div class="col-xs-6">
-                <strong><fmt:message bundle="${uiBundle}"key="tickler.add.serviceDate"/>:</strong>
+                <strong><fmt:message bundle="${uiBundle}" key="tickler.add.serviceDate"/>:</strong>
                 {{tickler.serviceDateDate | date: 'yyyy-MM-dd'}} {{tickler.serviceDateTime | date: 'HH:mm'}}
                 <br/><br/>
             </div>
@@ -103,7 +103,7 @@
 
         <div class="row" ng-show="showServiceDateEditor === true">
             <div class="col-xs-6">
-                <strong ng-click="showServiceDateEditor=false"><fmt:message bundle="${uiBundle}"key="tickler.add.serviceDate"/>:</strong>
+                <strong ng-click="showServiceDateEditor=false"><fmt:message bundle="${uiBundle}" key="tickler.add.serviceDate"/>:</strong>
                 <datepicker ng-model="tickler.serviceDateDate" show-weeks="true" class="well well-sm"></datepicker>
 
             </div>
@@ -118,7 +118,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-group">
-                    <label><fmt:message bundle="${uiBundle}"key="tickler.add.templates"/>:</label>
+                    <label><fmt:message bundle="${uiBundle}" key="tickler.add.templates"/>:</label>
                     <select ng-model="tickler.suggestedTextId" ng-change="setSuggestedText()"
                             ng-options="a.id as a.suggestedText for a in textSuggestions" class="form-control">
                     </select>
@@ -134,12 +134,7 @@
 
     </div>
     <div class="modal-footer">
-        <button class="btn" ng-click="save()"><fmt:message bundle="${uiBundle}"key="global.save"/></button>
-        <button class="btn" ng-click="close()"><fmt:message bundle="${uiBundle}"key="global.close"/></button>
+        <button class="btn" ng-click="save()"><fmt:message bundle="${uiBundle}" key="global.save"/></button>
+        <button class="btn" ng-click="close()"><fmt:message bundle="${uiBundle}" key="global.close"/></button>
     </div>
 </form>
-
-
-
-
-

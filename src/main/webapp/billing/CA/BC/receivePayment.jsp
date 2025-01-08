@@ -32,7 +32,7 @@
         <legend><fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.CA.BC.received"/></legend>
         <div class="msgDisplay">
             <%
-                oscar.oscarBilling.ca.bc.pageUtil.ReceivePaymentActionForm frm = (oscar.oscarBilling.ca.bc.pageUtil.ReceivePaymentActionForm) request.getAttribute("receivePaymentActionForm");
+                oscar.oscarBilling.ca.bc.pageUtil.ReceivePayment2Action frm = (oscar.oscarBilling.ca.bc.pageUtil.ReceivePayment2Action) request.getAttribute("receivePaymentActionForm");
             %> <%=java.text.NumberFormat.getCurrencyInstance().format(new Double(frm.getAmountReceived()))%>
             <fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.CA.BC.credit"/> &nbsp; <fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.CA.BC.invoice"/> 
             <c:out value="${receivePaymentActionForm.billNo}"/> &nbsp; <fmt:setBundle basename="oscarResources"/><fmt:message key="oscar.billing.CA.BC.lineNo"/> 

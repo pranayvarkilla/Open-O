@@ -215,21 +215,10 @@
             }
 
             table#tablefoot {
-	            position: sticky;
-	            bottom: 0;
-	            background-color: white;
-	            width:100%;
-	            margin-bottom:50px;
+                margin-bottom: 50px;
             }
-
-            table#tablefoot tr td {
-	            padding: 5px;
-            }
-            .dataTables_wrapper {
-	            margin-top:20px;
-            }
-		</style>
-		<script type="application/javascript">
+        </style>
+        <script type="application/javascript">
 
 
             const ctx = '${pageContext.request.contextPath}';
