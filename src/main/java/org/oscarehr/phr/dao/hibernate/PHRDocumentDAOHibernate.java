@@ -32,7 +32,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.oscarehr.phr.dao.PHRDocumentDAO;
 import org.oscarehr.phr.model.PHRDocument;
@@ -55,9 +55,9 @@ public class PHRDocumentDAOHibernate extends HibernateDaoSupport
         Long num = (Long) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session session)
                     throws HibernateException {
-                Query q = session.createQuery("select count(*) from PHRDocument p where p.phrIndex= ?0");
+                Query<Long> q = session.createQuery("select count(*) from PHRDocument p where p.phrIndex= :index", Long.class);
                 q.setCacheable(true);
-                q.setParameter(0, index);
+                q.setParameter("index", index);
                 return q.uniqueResult();
             }
         });
@@ -186,11 +186,11 @@ public class PHRDocumentDAOHibernate extends HibernateDaoSupport
         Long num = (Long) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session session)
                     throws HibernateException {
-                Query q = session.createQuery("select count(*) from PHRDocument d where d.phrClassification = ?1 and d.receiverOscar = ?2 and d.status = ?3");
+                Query<Long> q = session.createQuery("select count(*) from PHRDocument d where d.phrClassification = :classification and d.receiverOscar = :providerNo and d.status = :status", Long.class);
                 q.setCacheable(true);
-                q.setParameter(1, classification);
-                q.setParameter(2, providerNo);
-                q.setParameter(3, PHRMessage.STATUS_NEW);
+                q.setParameter("classification", classification);
+                q.setParameter("providerNo", providerNo);
+                q.setParameter("status", PHRMessage.STATUS_NEW);
                 return q.uniqueResult();
             }
         });

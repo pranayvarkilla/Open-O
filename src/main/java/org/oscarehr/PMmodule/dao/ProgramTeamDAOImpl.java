@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.oscarehr.PMmodule.model.ProgramTeam;
 import org.oscarehr.util.MiscUtils;
@@ -76,25 +76,21 @@ public class ProgramTeamDAOImpl extends HibernateDaoSupport implements ProgramTe
         if (teamName == null || teamName.length() <= 0) {
             throw new IllegalArgumentException();
         }
-        // Session session = getSession();
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select pt.id from ProgramTeam pt where pt.programId = ?1 and pt.name = ?2" );
-        query.setParameter(1, programId.longValue());
-        query.setParameter(2, teamName);
-
-        List teams = new ArrayList();
+        Session session = sessionFactory.openSession();
         try {
-            teams = query.list();
+            Query<Long> query = session.createQuery("select pt.id from ProgramTeam pt where pt.programId = :programId and pt.name = :teamName", Long.class);
+            query.setParameter("programId", programId.longValue());
+            query.setParameter("teamName", teamName);
+
+            List<Long> teams = query.getResultList();
+            if (log.isDebugEnabled()) {
+                log.debug("teamNameExists: programId = " + programId + ", teamName = " + teamName + ", result = " + !teams.isEmpty());
+            }
+            return !teams.isEmpty();
         } finally {
-            // this.releaseSession(session);
             session.close();
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug("teamNameExists: programId = " + programId + ", teamName = " + teamName + ", result = " + !teams.isEmpty());
-        }
-
-        return !teams.isEmpty();
     }
 
     /*
@@ -129,13 +125,20 @@ public class ProgramTeamDAOImpl extends HibernateDaoSupport implements ProgramTe
         }
 
         String sSQL = "from ProgramTeam tp where tp.programId = ?0";
-        List<ProgramTeam> results = (List<ProgramTeam>) this.getHibernateTemplate().find(sSQL, programId);
+        Session session = sessionFactory.openSession();
+        try {
+            Query<ProgramTeam> query = session.createQuery(sSQL, ProgramTeam.class);
+            query.setParameter("0", programId);
+            List<ProgramTeam> results = query.getResultList();
 
-        if (log.isDebugEnabled()) {
-            log.debug("getProgramTeams: programId=" + programId + ",# of results=" + results.size());
+            if (log.isDebugEnabled()) {
+                log.debug("getProgramTeams: programId=" + programId + ",# of results=" + results.size());
+            }
+
+            return results;
+        } finally {
+            session.close();
         }
-
-        return results;
     }
 
     /*
@@ -149,7 +152,19 @@ public class ProgramTeamDAOImpl extends HibernateDaoSupport implements ProgramTe
             throw new IllegalArgumentException();
         }
 
-        this.getHibernateTemplate().saveOrUpdate(team);
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            session.saveOrUpdate(team);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            session.close();
+        }
 
         if (log.isDebugEnabled()) {
             log.debug("saveProgramTeam: id=" + team.getId());
@@ -167,7 +182,22 @@ public class ProgramTeamDAOImpl extends HibernateDaoSupport implements ProgramTe
             throw new IllegalArgumentException();
         }
 
-        this.getHibernateTemplate().delete(getProgramTeam(id));
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            ProgramTeam team = session.get(ProgramTeam.class, id);
+            if (team != null) {
+                session.delete(team);
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            session.close();
+        }
 
         if (log.isDebugEnabled()) {
             log.debug("deleteProgramTeam: id=" + id);

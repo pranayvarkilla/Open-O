@@ -433,7 +433,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.6.15.Final</version>
+            <version>6.6.4.Final</version>
             <exclusions>
                 <exclusion>
                     <groupId>javax.persistence</groupId>

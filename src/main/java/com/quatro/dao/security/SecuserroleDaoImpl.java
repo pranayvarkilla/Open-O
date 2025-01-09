@@ -31,10 +31,13 @@ import java.util.List;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.LockMode;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Example;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import org.oscarehr.PMmodule.web.formbean.StaffForm;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
@@ -211,8 +214,8 @@ public class SecuserroleDaoImpl extends HibernateDaoSupport implements Secuserro
         Session session = currentSession();
         ;
         try {
-            Secuserrole instance = (Secuserrole) session.get(
-                    "com.quatro.model.security.Secuserrole", id);
+            Secuserrole instance = session.get(
+                    Secuserrole.class, id);
             return instance;
         } catch (RuntimeException re) {
             logger.error("get failed", re);
@@ -230,10 +233,12 @@ public class SecuserroleDaoImpl extends HibernateDaoSupport implements Secuserro
         ;
         logger.debug("finding Secuserrole instance by example");
         try {
-            List results = session.createCriteria(
-                            "com.quatro.model.security.Secuserrole").add(
-                            Example.create(instance))
-                    .list();
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<Secuserrole> criteriaQuery = builder.createQuery(Secuserrole.class);
+            Root<Secuserrole> root = criteriaQuery.from(Secuserrole.class);
+            criteriaQuery.select(root);
+            criteriaQuery.where(builder.equal(root.get("roleName"), instance.getRoleName()));
+            List results = session.createQuery(criteriaQuery).getResultList();
             logger.debug("find by example successful, result size: "
                     + results.size());
             return results;

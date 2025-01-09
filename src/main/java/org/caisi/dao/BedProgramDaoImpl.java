@@ -31,7 +31,7 @@ import java.util.List;
 
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
-import org.hibernate.SQLQuery;
+import org.hibernate.query.Query;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.hibernate.type.StandardBasicTypes;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,11 +48,16 @@ public class BedProgramDaoImpl extends HibernateDaoSupport implements BedProgram
     }
 
     private List getProgramResultList(String q) {
-        return getHibernateTemplate().find(q);
+        Session session = currentSession();
+        Query query = session.createQuery(q);
+        return query.getResultList();
     }
 
     private List getProgramResultList(String q1, Object obj) {
-        return getHibernateTemplate().find(q1, obj);
+        Session session = currentSession();
+        Query query = session.createQuery(q1);
+        query.setParameter(0, obj);
+        return query.getResultList();
     }
 
     public List getAllBedProgram() {
@@ -88,7 +93,7 @@ public class BedProgramDaoImpl extends HibernateDaoSupport implements BedProgram
     public String[] getProgramInfo(int programId) {
         String[] result = new String[3];
         Session session = currentSession();
-        SQLQuery query = session.createSQLQuery("SELECT name,address,phone,fax from program where id=" + programId);
+        Query query = session.createNativeQuery("SELECT name,address,phone,fax from program where id=" + programId);
         query.addScalar("name", StandardBasicTypes.STRING);
         query.addScalar("address", StandardBasicTypes.STRING);
         query.addScalar("phone", StandardBasicTypes.STRING);

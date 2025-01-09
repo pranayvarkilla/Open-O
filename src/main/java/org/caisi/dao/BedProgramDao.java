@@ -30,7 +30,7 @@ package org.caisi.dao;
 import java.util.List;
 
 import org.hibernate.Hibernate;
-import org.hibernate.SQLQuery;
+import org.hibernate.query.Query;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.hibernate.type.StandardBasicTypes;
 import org.springframework.beans.factory.annotation.Autowired;

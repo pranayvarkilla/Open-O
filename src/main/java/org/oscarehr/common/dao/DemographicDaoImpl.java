@@ -49,18 +49,12 @@ import jakarta.persistence.PersistenceException;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
+import jakarta.persistence.criteria.*;
+import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Expression;
-import org.hibernate.criterion.LogicalExpression;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Property;
-import org.hibernate.criterion.Restrictions;
 import org.oscarehr.PMmodule.model.ProgramProvider;
 import org.oscarehr.PMmodule.web.formbean.ClientListsReportFormBean;
 import org.oscarehr.PMmodule.web.formbean.ClientSearchFormBean;
@@ -1840,10 +1834,13 @@ public class DemographicDaoImpl extends HibernateDaoSupport implements Applicati
     @SuppressWarnings("unchecked")
     @Override
     public List<Demographic> search(ClientSearchFormBean bean, boolean returnOptinsOnly, boolean excludeMerged) {
-        // Session session = this.getSession();
         Session session = currentSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<Demographic> cq = cb.createQuery(Demographic.class);
+        Root<Demographic> root = cq.from(Demographic.class);
 
-        Criteria criteria = session.createCriteria(Demographic.class);
+        List<Predicate> predicates = new ArrayList<>();
+
         String firstName = "";
         String lastName = "";
         String firstNameL = "";
@@ -1854,120 +1851,90 @@ public class DemographicDaoImpl extends HibernateDaoSupport implements Applicati
         String active = "";
         String gender = "";
 
-        String sql = "";
-
-        List<Demographic> results = null;
-
         if (bean.getFirstName() != null && bean.getFirstName().length() > 0) {
             firstName = bean.getFirstName();
-            // firstName = StringEscapeUtils.escapeSql(firstName);
             firstNameL = firstName + "%";
         }
 
         if (bean.getLastName() != null && bean.getLastName().length() > 0) {
             lastName = bean.getLastName();
-            // lastName = StringEscapeUtils.escapeSql(lastName);
             lastNameL = lastName + "%";
         }
 
         String clientNo = bean.getDemographicNo();
-        // exclude merged client
-        if (excludeMerged)
-            criteria.add(Expression.eq("merged", Boolean.FALSE));
+        if (excludeMerged) {
+            predicates.add(cb.equal(root.get("merged"), Boolean.FALSE));
+        }
         if (clientNo != null && !"".equals(clientNo)) {
             if (com.quatro.util.Utility.IsInt(clientNo)) {
-                criteria.add(Expression.eq("DemographicNo", Integer.valueOf(clientNo)));
-                results = criteria.list();
+                predicates.add(cb.equal(root.get("DemographicNo"), Integer.valueOf(clientNo)));
+                cq.where(predicates.toArray(new Predicate[0]));
+                TypedQuery<Demographic> query = session.createQuery(cq);
+                return query.getResultList();
             } else {
-                /* invalid client no generates a empty search results */
-                results = new ArrayList<Demographic>();
+                return new ArrayList<>();
             }
-            // this.releaseSession(session);
-            //session.close();
-            return results;
         }
 
         if (firstName.length() > 0) {
-            // sql = "(LEFT(SOUNDEX(first_name),4) = LEFT(SOUNDEX('" + firstName + "'),4))";
-            // sql2 = "(LEFT(SOUNDEX(alias),4) = LEFT(SOUNDEX('" + firstName + "'),4))";
-            // condFirstName = Restrictions.or(Restrictions.ilike("FirstName", firstNameL),
-            // Restrictions.sqlRestriction(sql));
-            // condAlias1 = Restrictions.or(Restrictions.ilike("Alias",
-            // firstNameL),Restrictions.sqlRestriction(sql2));
-            criteria.add(Restrictions.or(Restrictions.or(Restrictions.ilike("LastName", firstNameL),
-                    Restrictions.ilike("Alias", firstNameL)), Restrictions.ilike("FirstName", firstNameL)));
+            predicates.add(cb.or(
+                cb.or(cb.like(root.get("LastName"), firstNameL), cb.like(root.get("Alias"), firstNameL)),
+                cb.like(root.get("FirstName"), firstNameL)
+            ));
         }
         if (lastName.length() > 0) {
-            // sql = "(LEFT(SOUNDEX(last_name),4) = LEFT(SOUNDEX('" + lastName + "'),4))";
-            // sql2 = "(LEFT(SOUNDEX(alias),4) = LEFT(SOUNDEX('" + lastName + "'),4))";
-            // condLastName = Restrictions.or(Restrictions.ilike("LastName", lastNameL),
-            // Restrictions.sqlRestriction(sql));
-            // condAlias2 = Restrictions.or(Restrictions.ilike("Alias",
-            // lastNameL),Restrictions.sqlRestriction(sql2));
-            criteria.add(Restrictions.or(
-                    Restrictions.or(Restrictions.ilike("FirstName", lastNameL), Restrictions.ilike("Alias", lastNameL)),
-                    Restrictions.ilike("LastName", lastNameL)));
+            predicates.add(cb.or(
+                cb.or(cb.like(root.get("FirstName"), lastNameL), cb.like(root.get("Alias"), lastNameL)),
+                cb.like(root.get("LastName"), lastNameL)
+            ));
         }
-        /*
-         * if (firstName.length() > 0 && lastName.length()>0)
-         * {
-         * criteria.add(Restrictions.or(Restrictions.and(condFirstName, condLastName),
-         * Restrictions.or(condAlias1, condAlias2)));
-         * }
-         * else if (firstName.length() > 0)
-         * {
-         * criteria.add(Restrictions.or(condFirstName,condAlias1));
-         * }
-         * else if (lastName.length()>0)
-         * {
-         * criteria.add(Restrictions.or(condLastName,condAlias2));
-         * }
-         */
+
         if (bean.getDob() != null && bean.getDob().length() > 0) {
-            criteria.add(Expression.eq("DateOfBirth", MyDateFormat.getCalendar(bean.getDob())));
+            predicates.add(cb.equal(root.get("DateOfBirth"), MyDateFormat.getCalendar(bean.getDob())));
         }
 
         if (bean.getHealthCardNumber() != null && bean.getHealthCardNumber().length() > 0) {
-            criteria.add(Expression.eq("Hin", bean.getHealthCardNumber()));
+            predicates.add(cb.equal(root.get("Hin"), bean.getHealthCardNumber()));
         }
 
         if (bean.getHealthCardVersion() != null && bean.getHealthCardVersion().length() > 0) {
-            criteria.add(Expression.eq("Ver", bean.getHealthCardVersion()));
+            predicates.add(cb.equal(root.get("Ver"), bean.getHealthCardVersion()));
         }
 
         if (bean.getBedProgramId() != null && bean.getBedProgramId().length() > 0) {
             bedProgramId = bean.getBedProgramId();
-            sql = " demographic_no in (select decode(dm.merged_to,null,i.client_id,dm.merged_to) from intake i,demographic_merged dm where i.client_id=dm.demographic_no(+) and i.program_id in ("
+            String sql = " demographic_no in (select decode(dm.merged_to,null,i.client_id,dm.merged_to) from intake i,demographic_merged dm where i.client_id=dm.demographic_no(+) and i.program_id in ("
                     + bedProgramId + "))";
-            criteria.add(Restrictions.sqlRestriction(sql));
+            predicates.add(cb.isTrue(cb.function("SQL_PREDICATE", Boolean.class, cb.literal(sql))));
         }
         if (bean.getAssignedToProviderNo() != null && bean.getAssignedToProviderNo().length() > 0) {
             assignedToProviderNo = bean.getAssignedToProviderNo();
-            sql = " demographic_no in (select decode(dm.merged_to,null,a.client_id,dm.merged_to) from admission a,demographic_merged dm where a.client_id=dm.demographic_no(+)and a.primaryWorker='"
+            String sql = " demographic_no in (select decode(dm.merged_to,null,a.client_id,dm.merged_to) from admission a,demographic_merged dm where a.client_id=dm.demographic_no(+)and a.primaryWorker='"
                     + assignedToProviderNo + "')";
-            criteria.add(Restrictions.sqlRestriction(sql));
+            predicates.add(cb.isTrue(cb.function("SQL_PREDICATE", Boolean.class, cb.literal(sql))));
         }
 
         active = bean.getActive();
         if ("1".equals(active)) {
-            criteria.add(Expression.ge("activeCount", new Integer(1)));
+            predicates.add(cb.ge(root.get("activeCount"), 1));
         } else if ("0".equals(active)) {
-            criteria.add(Expression.eq("activeCount", new Integer(0)));
+            predicates.add(cb.equal(root.get("activeCount"), 0));
         }
 
         gender = bean.getGender();
         if (gender != null && !"".equals(gender)) {
-            criteria.add(Expression.eq("Sex", gender));
+            predicates.add(cb.equal(root.get("Sex"), gender));
         }
-        criteria.addOrder(Order.asc("LastName"));
-        criteria.addOrder(Order.asc("FirstName"));
-        results = criteria.list();
+
+        cq.where(predicates.toArray(new Predicate[0]));
+        cq.orderBy(cb.asc(root.get("LastName")), cb.asc(root.get("FirstName")));
+
+        TypedQuery<Demographic> query = session.createQuery(cq);
+        List<Demographic> results = query.getResultList();
 
         if (log.isDebugEnabled()) {
             log.debug("search: # of results=" + results.size());
         }
-        // this.releaseSession(session);
-        //session.close();
         return results;
     }
 
@@ -2736,14 +2703,14 @@ public class DemographicDaoImpl extends HibernateDaoSupport implements Applicati
         return (List<Integer>) this.getHibernateTemplate().find(sSQL, value);
     }
 
-    protected final void setLimit(Query query, int itemsToReturn) {
+    protected final void setLimit(TypedQuery<?> query, int itemsToReturn) {
         if (itemsToReturn > MAX_SELECT_SIZE)
             throw (new IllegalArgumentException("Requested too large of a result list size : " + itemsToReturn));
 
         query.setMaxResults(itemsToReturn);
     }
 
-    protected final void setLimit(SQLQuery query, int itemsToReturn) {
+    protected final void setLimit(Query query, int itemsToReturn) {
         if (itemsToReturn > MAX_SELECT_SIZE)
             throw (new IllegalArgumentException("Requested too large of a result list size : " + itemsToReturn));
 

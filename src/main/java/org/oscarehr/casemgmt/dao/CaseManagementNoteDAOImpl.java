@@ -45,12 +45,12 @@ import java.util.TreeMap;
 import java.util.UUID;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
-import org.hibernate.SQLQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+import org.hibernate.query.Query;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.Session;
-import org.hibernate.criterion.Expression;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import org.oscarehr.PMmodule.model.Program;
 import org.oscarehr.casemgmt.model.CaseManagementNote;
 import org.oscarehr.casemgmt.model.CaseManagementSearchBean;

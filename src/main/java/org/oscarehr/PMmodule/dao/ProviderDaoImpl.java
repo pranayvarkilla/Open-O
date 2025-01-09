@@ -35,14 +35,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
+import org.hibernate.query.Query;
+import org.hibernate.query.NativeQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
-import org.hibernate.criterion.Expression;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import org.oscarehr.common.NativeSql;
 import org.oscarehr.common.dao.ProviderFacilityDao;
 import org.oscarehr.common.dao.UserPropertyDAO;
@@ -377,29 +377,39 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
         // Session session = getSession();
         Session session = currentSession();
 
-        Criteria c = session.createCriteria(Provider.class);
-        if (isOracle) {
-            c.add(Restrictions.or(Expression.ilike("FirstName", name + "%"),
-                    Expression.ilike("LastName", name + "%")));
-        } else {
-            c.add(Restrictions.or(Expression.like("FirstName", name + "%"),
-                    Expression.like("LastName", name + "%")));
-        }
-        c.addOrder(Order.asc("ProviderNo"));
-
-        List<Provider> results = new ArrayList<Provider>();
-
         try {
-            results = c.list();
-        } finally {
-            // this.releaseSession(session);
-            //session.close();
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Provider> query = cb.createQuery(Provider.class);
+            Root<Provider> root = query.from(Provider.class);
+    
+            Predicate predicate;
+            if (isOracle) {
+                predicate = cb.or(
+                    cb.like(cb.lower(root.get("firstName")), name.toLowerCase() + "%"),
+                    cb.like(cb.lower(root.get("lastName")), name.toLowerCase() + "%")
+                );
+            } else {
+                predicate = cb.or(
+                    cb.like(root.get("firstName"), name + "%"),
+                    cb.like(root.get("lastName"), name + "%")
+                );
+            }
+    
+            query.select(root)
+                 .where(predicate)
+                 .orderBy(cb.asc(root.get("providerNo")));
+    
+            Query<Provider> hQuery = session.createQuery(query);
+            List<Provider> results = hQuery.getResultList();
+    
+            if (log.isDebugEnabled()) {
+                log.debug("search: # of results=" + results.size());
+            }
+            return results;
+        } catch (RuntimeException re) {
+            log.error("Search failed", re);
+            throw re;
         }
-
-        if (log.isDebugEnabled()) {
-            log.debug("search: # of results=" + results.size());
-        }
-        return results;
     }
 
     @Override
@@ -439,17 +449,16 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
         " and b.provider_no=?1 and a.codecsv like '%S' || c.id  || ',%'";
         Session session = currentSession();
 
-        Query query = session.createSQLQuery(sql);
-        ((SQLQuery) query).addScalar("shelter_id", StandardBasicTypes.INTEGER);
-        query.setParameter(1, provider_no);
-        List lst = new ArrayList();
         try {
-            lst = query.list();
-        } finally {
-            // this.releaseSession(session);
-            //session.close();
+            Query<Integer> query = session.createNativeQuery(sql, Integer.class);
+            query.setParameter(1, provider_no);
+    
+            List<Integer> shelterIds = query.getResultList();
+            return shelterIds;
+        } catch (RuntimeException e) {
+            log.error("Error executing getShelterIds query", e);
+            throw e;
         }
-        return lst;
 
     }
 
@@ -482,32 +491,36 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
 
     @Override
     public List<Integer> getFacilityIds(String provider_no) {
-        // Session session = getSession();
         Session session = currentSession();
+
+        String sql = "SELECT facility_id " +
+                 "FROM provider_facility, Facility " +
+                 "WHERE Facility.id = provider_facility.facility_id " +
+                 "AND Facility.disabled = 0 " +
+                 "AND provider_no = :providerNo";
+
         try {
-            SQLQuery query = session.createSQLQuery(
-                    "select facility_id from provider_facility,Facility where Facility.id=provider_facility.facility_id and Facility.disabled=0 and provider_no=\'"
-                            + provider_no + "\'");
-            List<Integer> results = query.list();
-            return results;
-        } finally {
-            // this.releaseSession(session);
-            //session.close();
+            Query<Integer> query = session.createNativeQuery(sql, Integer.class);
+            query.setParameter("providerNo", provider_no); 
+            return query.getResultList();
+        } catch (RuntimeException e) {
+            log.error("Error in getFacilityIds", e);
+            throw e;
         }
     }
 
     @Override
     public List<String> getProviderIds(int facilityId) {
-        // Session session = getSession();
         Session session = currentSession();
+
+        String sql = "SELECT provider_no FROM provider_facility WHERE facility_id = :facilityId";
         try {
-            SQLQuery query = session
-                    .createSQLQuery("select provider_no from provider_facility where facility_id=" + facilityId);
-            List<String> results = query.list();
-            return results;
-        } finally {
-            // this.releaseSession(session);
-            //session.close();
+            Query<String> query = session.createNativeQuery(sql, String.class);
+            query.setParameter("facilityId", facilityId); // 使用命名参数
+            return query.getResultList();
+        } catch (RuntimeException e) {
+            log.error("Error in getProviderIds", e);
+            throw e;
         }
 
     }
@@ -643,19 +656,23 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
     @NativeSql({"provider", "providersite"})
     @Override
     public List<String> getActiveTeamsViaSites(String providerNo) {
-        // Session session = getSession();
         Session session = currentSession();
+
+        String sql = "SELECT DISTINCT team " +
+                 "FROM provider p " +
+                 "INNER JOIN providersite s ON s.provider_no = p.provider_no " +
+                 "WHERE s.site_id IN (SELECT site_id FROM providersite WHERE provider_no = :providerNo) " +
+                 "ORDER BY team";
+
         try {
             // providersite is not mapped in hibernate - this can be rewritten w.o.
             // subselect with a cross product IHMO
-            SQLQuery query = session.createSQLQuery(
-                    "select distinct team from provider p inner join providersite s on s.provider_no = p.provider_no " +
-                            " where s.site_id in (select site_id from providersite where provider_no = '" + providerNo
-                            + "') order by team ");
-            return query.list();
-        } finally {
-            // this.releaseSession(session);
-            //session.close();
+            Query<String> query = session.createNativeQuery(sql, String.class);
+            query.setParameter("providerNo", providerNo); 
+            return query.getResultList();
+        } catch (RuntimeException e) {
+            log.error("Error in getActiveTeamsViaSites", e);
+            throw e;
         }
     }
 
@@ -755,41 +772,45 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
 
         sqlCommand += " ORDER BY x.LastName,x.FirstName";
 
-        // Session session = this.getSession();
         Session session = currentSession();
         try {
-            Query q = session.createQuery(sqlCommand);
+            Query<Provider> query = session.createQuery(sqlCommand, Provider.class);
 
-            q.setString("status", active ? "1" : "0");
+            query.setParameter("status", active ? "1" : "0");
             if (term != null && term.length() > 0) {
-                q.setString("term", term + "%");
+                query.setParameter("term", term + "%");
             }
 
-            q.setFirstResult(startIndex);
-            q.setMaxResults(itemsToReturn);
-            return (q.list());
-        } finally {
-            // this.releaseSession(session);
-            //session.close();
+            query.setFirstResult(startIndex);
+            query.setMaxResults(itemsToReturn);
+            return query.getResultList();
+        } catch (RuntimeException e) {
+            log.error("Error in search", e);
+            throw e;
         }
     }
 
     @NativeSql({"provider", "appointment"})
     @Override
     public List<String> getProviderNosWithAppointmentsOnDate(Date appointmentDate) {
-        // Session session = getSession();
         Session session = currentSession();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            String sql = "SELECT p.provider_no FROM provider p WHERE p.provider_no IN (SELECT DISTINCT a.provider_no FROM appointment a WHERE a.appointment_date = '"
-                    + sdf.format(appointmentDate) + "') " +
-                    "AND p.Status='1'";
-            SQLQuery query = session.createSQLQuery(sql);
 
-            return query.list();
-        } finally {
-            // this.releaseSession(session);
-            //session.close();
+        String sql = "SELECT p.provider_no " +
+                 "FROM provider p " +
+                 "WHERE p.provider_no IN ( " +
+                 "    SELECT DISTINCT a.provider_no " +
+                 "    FROM appointment a " +
+                 "    WHERE a.appointment_date = :appointmentDate " +
+                 ") AND p.status = '1'";
+
+        try {
+            Query<String> query = session.createNativeQuery(sql, String.class);
+            query.setParameter("appointmentDate", sdf.format(appointmentDate));
+            return query.getResultList();
+        } catch (RuntimeException e) {
+            log.error("Error in getProviderNosWithAppointmentsOnDate", e);
+            throw e;
         }
     }
 

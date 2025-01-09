@@ -27,8 +27,7 @@ package org.oscarehr.dashboard.handler;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
-import org.hibernate.SQLQuery;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.oscarehr.dashboard.handler.IndicatorTemplateXML.RangeType;
 import org.oscarehr.dashboard.query.Column;
@@ -81,19 +80,14 @@ public abstract class AbstractQueryHandler extends HibernateDaoSupport {
 
         setResultList(null);
 
-        //Session session = getSession();
         Session session = sessionFactory.getCurrentSession();
-        SQLQuery sqlQuery = session.createSQLQuery(query);
-        List<?> results = sqlQuery.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP).list();
+        Query<?> sqlQuery = session.createNativeQuery(query);
+        List<?> results = sqlQuery.getResultList();
 
         logger.info("Thread " + Thread.currentThread().getName() + "[" + Thread.currentThread().getId()
                 + "] Query results " + results);
 
-        //TODO work on method to detect and exclude demographic files that are
-        // defined in the securityInfoManager object.
-
         setResultList(results);
-        //releaseSession( session );
         session.close();
 
         return results;
