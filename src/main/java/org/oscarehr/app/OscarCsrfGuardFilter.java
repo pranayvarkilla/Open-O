@@ -28,12 +28,13 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.oscarehr.util.MiscUtils;
 import org.owasp.csrfguard.CsrfGuard;
 import org.owasp.csrfguard.CsrfGuardException;
+import org.owasp.csrfguard.CsrfGuardFilter;
+import org.owasp.csrfguard.CsrfValidator;
 import org.owasp.csrfguard.action.IAction;
 import org.owasp.csrfguard.http.InterceptRedirectResponse;
-import org.owasp.csrfguard.log.LogLevel;
 import org.owasp.csrfguard.util.RandomGenerator;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import oscar.OscarProperties;
 
 import jakarta.servlet.Filter;
@@ -48,6 +49,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Oscar OscarCsrfGuardFilter
@@ -67,6 +71,7 @@ public class OscarCsrfGuardFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 
         CsrfGuard csrfGuard = CsrfGuard.getInstance();
+        CsrfValidator csrfValidator = new CsrfValidator();
 
         //maybe the short circuit to disable is set
         if (!csrfGuard.isEnabled()) {
@@ -87,7 +92,7 @@ public class OscarCsrfGuardFilter implements Filter {
              * If true: short circuit the process.
              */
             if ((session == null && !csrfGuard.isValidateWhenNoSessionExists())
-                    || !csrfGuard.isProtectedPage(httpRequest.getRequestURI())) {
+                    || !csrfValidator.isProtectedPage(httpRequest.getRequestURI()).isProtected()) {
                 filterChain.doFilter(httpRequest, response);
                 return;
             }
@@ -251,7 +256,8 @@ public class OscarCsrfGuardFilter implements Filter {
             try {
                 action.execute(request, response, csrfe, csrfGuard);
             } catch (CsrfGuardException exception) {
-                csrfGuard.getLogger().log(LogLevel.Error, exception);
+                Logger logger = LoggerFactory.getLogger(CsrfGuardFilter.class);
+                logger.error("CSRFGuard action execution failed", exception);
             }
         }
     }
