@@ -24,12 +24,13 @@
  */
 package org.oscarehr.app;
 
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletFileUpload;
 import org.oscarehr.util.MiscUtils;
 import org.owasp.csrfguard.CsrfGuard;
 import org.owasp.csrfguard.CsrfGuardException;
 import org.owasp.csrfguard.CsrfGuardFilter;
 import org.owasp.csrfguard.CsrfValidator;
+import org.owasp.csrfguard.ProtectionResult;
 import org.owasp.csrfguard.action.IAction;
 import org.owasp.csrfguard.http.InterceptRedirectResponse;
 import org.owasp.csrfguard.util.RandomGenerator;
@@ -119,15 +120,16 @@ public class OscarCsrfGuardFilter implements Filter {
             InterceptRedirectResponse httpResponse = new InterceptRedirectResponse((HttpServletResponse) response, httpRequest, csrfGuard);
 
             if ((session != null && session.isNew()) && csrfGuard.isUseNewTokenLandingPage()) {
-                csrfGuard.writeLandingPage(httpRequest, httpResponse);
-            } else if (ServletFileUpload.isMultipartContent(httpRequest)) {
+                String logicalSessionKey = session.getId();
+                csrfGuard.writeLandingPage(httpResponse, logicalSessionKey);
+            } else if (JakartaServletFileUpload.isMultipartContent(httpRequest)) {
                 MultiReadHttpServletRequest multiReadHttpRequest = new MultiReadHttpServletRequest(httpRequest);
                 if (isValidMultipartRequest(multiReadHttpRequest, httpResponse)) {
                     filterChain.doFilter(multiReadHttpRequest, httpResponse);
                 } else if (!doRedirect) {
                     filterChain.doFilter(multiReadHttpRequest, httpResponse);
                 }
-            } else if (csrfGuard.isValidRequest(httpRequest, httpResponse)) {
+            } else if (csrfValidator.isValid(httpRequest, httpResponse)) {
                 filterChain.doFilter(httpRequest, httpResponse);
             } else if (!doRedirect) {
                 filterChain.doFilter(httpRequest, httpResponse);
@@ -150,9 +152,13 @@ public class OscarCsrfGuardFilter implements Filter {
 
     private boolean isValidMultipartRequest(MultiReadHttpServletRequest request, HttpServletResponse response) {
         CsrfGuard csrfGuard = CsrfGuard.getInstance();
-        boolean valid = !csrfGuard.isProtectedPageAndMethod(request);
+        CsrfValidator csrfValidator = new CsrfValidator();
+        String requestURI = request.getRequestURI();
+        String requestMethod = request.getMethod();
+        ProtectionResult protectionResult = csrfValidator.isProtectedPageAndMethod(requestURI, requestMethod);
+        boolean valid = !protectionResult.isProtected();
         HttpSession session = request.getSession(true);
-        String tokenFromSession = (String) session.getAttribute(csrfGuard.getSessionKey());
+        String tokenFromSession = (String) session.getAttribute(csrfGuard.getLogicalSessionExtractor().extract(request).getKey());
 
         /** sending request to protected resource - verify token **/
         if (tokenFromSession != null && !valid) {
@@ -215,8 +221,8 @@ public class OscarCsrfGuardFilter implements Filter {
         Map<String, String> pageTokens = (Map<String, String>) session.getAttribute(CsrfGuard.PAGE_TOKENS_KEY);
 
         String tokenFromPages = (pageTokens != null ? pageTokens.get(request.getRequestURI()) : null);
-        String tokenFromSession = (String) session.getAttribute(csrfGuard.getSessionKey());
-        MultipartHttpServletRequest multipartRequest = new CommonsMultipartResolver().resolveMultipart(request);
+        String tokenFromSession = (String) session.getAttribute(csrfGuard.getLogicalSessionExtractor().extract(request).getKey());
+        MultipartHttpServletRequest multipartRequest = new StandardServletMultipartResolver().resolveMultipart(request);
         String tokenFromRequest = multipartRequest.getParameter(csrfGuard.getTokenName());
 
         if (tokenFromRequest == null) {
@@ -236,8 +242,8 @@ public class OscarCsrfGuardFilter implements Filter {
     private void verifySessionToken(MultiReadHttpServletRequest request) throws CsrfGuardException {
         CsrfGuard csrfGuard = CsrfGuard.getInstance();
         HttpSession session = request.getSession(true);
-        String tokenFromSession = (String) session.getAttribute(csrfGuard.getSessionKey());
-        MultipartHttpServletRequest multipartRequest = new CommonsMultipartResolver().resolveMultipart(request);
+        String tokenFromSession = (String) session.getAttribute(csrfGuard.getLogicalSessionExtractor().extract(request).getKey());
+        MultipartHttpServletRequest multipartRequest = new StandardServletMultipartResolver().resolveMultipart(request);
         String tokenFromRequest = multipartRequest.getParameter(csrfGuard.getTokenName());
 
         if (tokenFromRequest == null) {
@@ -275,7 +281,7 @@ public class OscarCsrfGuardFilter implements Filter {
             throw new RuntimeException(String.format("unable to generate the random token - %s", e.getLocalizedMessage()), e);
         }
 
-        session.setAttribute(csrfGuard.getSessionKey(), tokenFromSession);
+        session.setAttribute(csrfGuard.getLogicalSessionExtractor().extract(request).getKey(), tokenFromSession);
 
         /** rotate page token **/
         if (csrfGuard.isTokenPerPageEnabled()) {
