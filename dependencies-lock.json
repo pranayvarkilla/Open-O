@@ -779,11 +779,11 @@
   }, {
     "groupId" : "commons-fileupload",
     "artifactId" : "commons-fileupload",
-    "version" : "1.5",
+    "version" : "1.2",
     "scope" : "compile",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:q5F3iyYB6gsABiSPQ2q1eojfMQKzVFtF7sZ1+trz0kBZDQhVnLeBOfAa5jCHr9yz3SOvBgqO0nRG6aJfezCDGA=="
+    "integrity" : "sha512:3pbAbZz23CvRAJJn9OaHa6HxxDHDhZo+vM4dT9pqwGTWvRLjbD1YpPGSRVMNg2gWA0cTjQ+7IQOLHwBDoRzXBA=="
   }, {
     "groupId" : "commons-httpclient",
     "artifactId" : "commons-httpclient",
@@ -1337,6 +1337,22 @@
     "type" : "jar",
     "optional" : false,
     "integrity" : "sha512:FUP7PQZJGiXav9uImAiULtMaQD7jSdWf0ceoULdPyCbohHzPye79oRHxJv44KYCDyuWWjB9EfW2BAF6gZEnDvg=="
+  }, {
+    "groupId" : "org.apache.commons",
+    "artifactId" : "commons-fileupload2-core",
+    "version" : "2.0.0-M2",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:sV/nu4YRDJbo7/ypez3kQZHLMapQrsJUzxceXXFLYGhpNnWTNt8lwki7zfzpwuVlYfA2IHcLYml3pHotXqFrRw=="
+  }, {
+    "groupId" : "org.apache.commons",
+    "artifactId" : "commons-fileupload2-jakarta-servlet6",
+    "version" : "2.0.0-M2",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:sTFX2QxWse1TtMvL59aQDsChyDvtUDKf3+9EhGJYHlM0hTNEuSSKjFEKV6f0egI8zg/SEzlalRQWCgRarTmBpg=="
   }, {
     "groupId" : "org.apache.commons",
     "artifactId" : "commons-lang3",
