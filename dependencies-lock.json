@@ -312,6 +312,14 @@
     "optional" : false,
     "integrity" : "sha512:f8R2TrZSJ/W6YUaYpc8vlDATP0LsbirlO0xyTuU/JYVBoBCf4GWeC55FcptGyVwAIn5pa40a3c13LIX4d2WMmg=="
   }, {
+    "groupId" : "com.github.ben-manes.caffeine",
+    "artifactId" : "caffeine",
+    "version" : "2.9.3",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:mwOfe5U11WhlQqA1Liw5QQ3z518ZLwKkZqXkazH4FYTABZenONNq/gWTnADujjZv2xtSyHSGu5cYlUu0niR5NQ=="
+  }, {
     "groupId" : "com.github.cliftonlabs",
     "artifactId" : "json-simple",
     "version" : "3.0.2",
@@ -1268,11 +1276,11 @@
   }, {
     "groupId" : "ognl",
     "artifactId" : "ognl",
-    "version" : "3.1.29",
+    "version" : "3.3.5",
     "scope" : "compile",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:8gfH1V4+1lfbepROC81OVKSH3Gke3mH2bBqv4oPfuSyTvM6lq37wccot/m+BlUaxm468GlkJnoMB1RddsUuArg=="
+    "integrity" : "sha512:HCPMWPi6LC5iY6Sj7mFwZpWNqT0FAJx62Nu5dj8XJJ2jxjlc4o1aITl9UqCbP+crhjriGpE8iJW9Gda71nSZqQ=="
   }, {
     "groupId" : "omd",
     "artifactId" : "hrm",
@@ -2100,19 +2108,19 @@
   }, {
     "groupId" : "org.apache.struts",
     "artifactId" : "struts2-core",
-    "version" : "2.5.33",
+    "version" : "6.7.0",
     "scope" : "compile",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:HnTy9GCQNkcQbF49pxEC5i8mdlUoXvmiMebLrBPNm/Fo17TiRaNcS0TZB7szaoxclczw01eeyS5+wnPuvraJ4A=="
+    "integrity" : "sha512:HIcTv/qEGnDwXRPB75Lw3brpEe5wYAv/OZRNnH/7bP39Kavv4AcDSyGj8XaWiIKFE2mbILnAmuEnIRu7ZuwPJQ=="
   }, {
     "groupId" : "org.apache.struts",
     "artifactId" : "struts2-spring-plugin",
-    "version" : "2.5.33",
+    "version" : "6.7.0",
     "scope" : "compile",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:6t+uUpMgr3cUbXNb/dD4h69D25eM3TIoH9yl0bBYFOaOj2N0JIz2hdiolkRxz2U1zknw+VU+/JjPSlH4ChlGlw=="
+    "integrity" : "sha512:/bJ6EdZ9vypq7mg9b6P6KSgyapkgA8LUH4bdFkeUnjdQtXN1Llq1TlR4pa6VJtJRaqy1s4b5Hkdwebiq/dStBA=="
   }, {
     "groupId" : "org.apache.tika",
     "artifactId" : "tika-core",
@@ -2589,11 +2597,11 @@
   }, {
     "groupId" : "org.freemarker",
     "artifactId" : "freemarker",
-    "version" : "2.3.31",
+    "version" : "2.3.33",
     "scope" : "compile",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:sd9RhnzTJFCpDSfqG5EyLPBMhjfhovWskN3zZM/AZhwerMPW8ZxFWpQefx6ZyVwGExOg5IDsDOzIVa4PfQ0JlQ=="
+    "integrity" : "sha512:OMYE1Ng3tAib6VQP0ReSpY4h/6Fw+ph14Jy1WrLCEx9QxB+xL1JoOTsKQPl3d1MlturcYUMup1OSuLdjtyqJhw=="
   }, {
     "groupId" : "org.glassfish.external",
     "artifactId" : "management-api",
@@ -3458,14 +3466,6 @@
     "type" : "jar",
     "optional" : false,
     "integrity" : "sha512:DXgT/lDZxY34I2yMX29ObFQxS2iy97sa2s5S6z/jLWwYR75FRM9vsrpJtgp7DE/oc3wrDpAJJi6l5SulsEvcKg=="
-  }, {
-    "groupId" : "org.springframework",
-    "artifactId" : "spring-webmvc-struts",
-    "version" : "2.5.6.SEC03",
-    "scope" : "compile",
-    "type" : "jar",
-    "optional" : false,
-    "integrity" : "sha512:2H9rbyMrWgaN95DaEWp/LtKFnVImqrqgif2yXAZEicrlN+C330oEGSebGejks449LDy1qzgRBLsuO8P8insqTw=="
   }, {
     "groupId" : "org.springframework",
     "artifactId" : "spring-webmvc",
