@@ -57,6 +57,7 @@ import oscar.util.UtilDateUtilities;
 
 import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class EctSaveEncounter2Action extends ActionSupport {
     HttpServletRequest httpservletrequest = ServletActionContext.getRequest();

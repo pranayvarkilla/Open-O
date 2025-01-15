@@ -26,6 +26,7 @@ package org.oscarehr.survey.web;
 import org.apache.struts2.ActionSupport;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.apache.xmlbeans.XmlOptions;
 import org.oscarehr.common.dao.CaisiFormDao;
 import org.oscarehr.common.model.Survey;
@@ -50,8 +51,9 @@ import java.io.StringWriter;
 import java.util.*;
 
 public class SurveyManager2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
     private static Logger log = MiscUtils.getLogger();
 
     private SurveyManager surveyManager = (SurveyManager) SpringUtils.getBean(SurveyManager.class);

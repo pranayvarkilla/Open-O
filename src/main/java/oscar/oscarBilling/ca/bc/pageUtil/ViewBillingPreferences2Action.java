@@ -47,11 +47,12 @@ import java.util.*;
  */
 import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class ViewBillingPreferences2Action
         extends ActionSupport {
     HttpServletRequest servletRequest = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private final BillingPreferencesDAO dao = SpringUtils.getBean(BillingPreferencesDAO.class);

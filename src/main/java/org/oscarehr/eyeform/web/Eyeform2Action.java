@@ -113,10 +113,12 @@ import com.itextpdf.text.pdf.PdfCopyFields;
 
 import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class Eyeform2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     static Logger log = MiscUtils.getLogger();
     static String[] cppIssues = {"CurrentHistory", "PastOcularHistory", "MedHistory", "OMeds", "OcularMedication", "DiagnosticNotes", "FamHistory"};

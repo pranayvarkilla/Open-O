@@ -28,6 +28,7 @@ package oscar.eform.actions;
 
 import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.util.MiscUtils;
 import oscar.OscarProperties;
 
@@ -44,8 +45,9 @@ import java.util.ArrayList;
  * and Paul
  */
 public class DisplayImage2Action extends ActionSupport {
-    private HttpServletRequest request = ServletActionContext.getRequest();
-    private HttpServletResponse response = ServletActionContext.getResponse();
+    private ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    private HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     /**
      * Creates a new instance of DisplayImage2Action

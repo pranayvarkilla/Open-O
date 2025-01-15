@@ -62,6 +62,7 @@ import oscar.util.StringUtils;
  * @author apavel
  */
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class EctDisplayDecisionSupportAlerts2Action extends EctDisplayAction {
     private String cmd = "Guidelines";

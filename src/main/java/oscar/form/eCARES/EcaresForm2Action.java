@@ -29,6 +29,7 @@ import com.Ostermiller.util.ExcelCSVPrinter;
 import org.apache.struts2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.managers.FormeCARESManager;
 import org.oscarehr.managers.SecurityInfoManager;
 import org.oscarehr.managers.constants.Constants;
@@ -44,8 +45,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class EcaresForm2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private final FormeCARESManager formeCARESManager = SpringUtils.getBean(FormeCARESManager.class);
     private final SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);

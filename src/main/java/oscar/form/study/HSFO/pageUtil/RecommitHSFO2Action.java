@@ -30,6 +30,7 @@ import org.apache.struts2.ActionSupport;
 import noNamespace.HsfoHbpsDataDocument;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.caisi.dao.ProviderDAO;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.common.dao.SecurityDao;
@@ -53,7 +54,8 @@ import java.util.Date;
 import java.util.List;
 
 public class RecommitHSFO2Action extends ActionSupport {
-    private HttpServletRequest request = ServletActionContext.getRequest();
+    private ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
     protected static Logger logger = org.oscarehr.util.MiscUtils.getLogger();
 
     public String showSchedule() {

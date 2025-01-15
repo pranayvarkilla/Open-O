@@ -37,9 +37,11 @@ import oscar.oscarBilling.ca.bc.data.BillingCodeData;
 
 import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public final class BillingAddCode2Action extends ActionSupport {
-    private HttpServletRequest request = ServletActionContext.getRequest();
+    private ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
 
     public String execute() {
         if (request.getSession().getAttribute("user") == null) {

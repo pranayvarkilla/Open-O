@@ -29,9 +29,11 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class DeleteServiceCodeAssoc2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
     public String execute() {
         String svcCode = request.getParameter("svcCode");
         BillingAssociationPersistence per = new BillingAssociationPersistence();

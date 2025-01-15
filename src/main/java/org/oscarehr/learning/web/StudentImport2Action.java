@@ -30,6 +30,7 @@ import com.Ostermiller.util.ExcelCSVParser;
 import org.apache.struts2.ActionSupport;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.learning.StudentImporter;
 import org.oscarehr.learning.StudentInfo;
 import org.oscarehr.util.LoggedInInfo;
@@ -44,8 +45,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentImport2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private static Logger logger = MiscUtils.getLogger();

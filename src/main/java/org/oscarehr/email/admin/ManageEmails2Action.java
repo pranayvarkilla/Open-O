@@ -4,6 +4,7 @@ package org.oscarehr.email.admin;
 import org.apache.struts2.ActionSupport;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.common.model.EmailAttachment;
 import org.oscarehr.common.model.EmailConfig;
 import org.oscarehr.common.model.EmailLog;
@@ -27,8 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManageEmails2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
     private static final Logger logger = MiscUtils.getLogger();
 
     private final DemographicManager demographicManager = SpringUtils.getBean(DemographicManager.class);

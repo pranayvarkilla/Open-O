@@ -4,6 +4,7 @@ package org.oscarehr.contactRegistry;
 import org.apache.struts2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.common.model.ProfessionalSpecialist;
 import org.oscarehr.managers.ProfessionalSpecialistsManager;
 import org.oscarehr.util.JsonUtil;
@@ -16,8 +17,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public class ProfessionalSpecialist2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private final ProfessionalSpecialistsManager professionalSpecialistsManager = SpringUtils.getBean(ProfessionalSpecialistsManager.class);
 

@@ -29,6 +29,7 @@ package org.oscarehr.eyeform.web;
 import org.apache.struts2.ActionSupport;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.common.dao.BillingServiceDao;
 import org.oscarehr.eyeform.dao.MacroDao;
@@ -45,8 +46,9 @@ import java.util.Date;
 import java.util.List;
 
 public class Macro2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     public static List<LabelValueBean> sliCodeList = new ArrayList<LabelValueBean>();

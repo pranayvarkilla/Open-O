@@ -32,9 +32,11 @@ import org.oscarehr.util.SpringUtils;
 
 import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class ProEditPrinter2Action extends ActionSupport {
-    private HttpServletRequest request = ServletActionContext.getRequest();
+    private ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
     private UserPropertyDAO propertyDao = SpringUtils.getBean(UserPropertyDAO.class);
 
     public String execute() throws Exception {

@@ -27,6 +27,7 @@ package oscar.oscarResearch.oscarDxResearch.pageUtil;
 
 import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.common.dao.DxresearchDAO;
 import org.oscarehr.common.dao.PartialDateDao;
 import org.oscarehr.common.model.Dxresearch;
@@ -47,8 +48,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class dxResearchUpdate2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private static final PartialDateDao partialDateDao = (PartialDateDao) SpringUtils.getBean(PartialDateDao.class);
     private static SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);

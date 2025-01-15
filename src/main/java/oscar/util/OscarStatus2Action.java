@@ -26,6 +26,7 @@ import oscar.OscarProperties;
 
 import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class OscarStatus2Action extends ActionSupport {
     HttpServletRequest servletRequest = ServletActionContext.getRequest();

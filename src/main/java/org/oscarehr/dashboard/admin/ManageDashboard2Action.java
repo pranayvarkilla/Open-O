@@ -29,6 +29,7 @@ import org.apache.struts2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.dom4j.Document;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.SAXValidator;
@@ -57,8 +58,9 @@ import java.util.List;
 import java.util.Map;
 
 public class ManageDashboard2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private static Logger logger = MiscUtils.getLogger();

@@ -31,6 +31,7 @@ import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 import net.sf.json.processors.JsDateJsonBeanProcessor;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.eyeform.dao.EyeformSpecsHistoryDao;
 import org.oscarehr.eyeform.model.EyeformSpecsHistory;
@@ -47,8 +48,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class SpecsHistory2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private EyeformSpecsHistoryDao dao = (EyeformSpecsHistoryDao) SpringUtils.getBean(EyeformSpecsHistoryDao.class);
