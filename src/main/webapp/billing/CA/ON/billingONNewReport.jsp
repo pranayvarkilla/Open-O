@@ -54,7 +54,7 @@
 <%@ page import="org.oscarehr.common.model.Provider" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%
     ReportProviderDao reportProviderDao = SpringUtils.getBean(ReportProviderDao.class);

@@ -24,7 +24,7 @@
 
 --%>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%
     // Force the page to un-cache itself so user cannot go back after logout

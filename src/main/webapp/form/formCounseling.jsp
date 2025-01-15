@@ -41,7 +41,7 @@
 
 <!DOCTYPE html>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%@ page import="oscar.form.FrmRecord" %>
 <%@ page import="oscar.form.FrmRecordFactory" %>
 <%@ page import="org.oscarehr.util.LocaleUtils" %>

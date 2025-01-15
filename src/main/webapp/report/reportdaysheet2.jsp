@@ -18,7 +18,7 @@
 
 --%>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%
     String roleName$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;

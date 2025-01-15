@@ -39,7 +39,7 @@
     }
 %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <%@page import="org.marc.shic.core.configuration.IheActorType" %>
 <%@page import="org.marc.shic.core.configuration.consent.PolicyActionOutcome" %>

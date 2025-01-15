@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <div ng-controller="PatientListProgramCtrl">
     <fmt:setBundle basename="uiResources" var="uiBundle"/>
     <a ng-repeat="admission in admissions | filter:query" ng-click="goToRecord(admission.demographic)"

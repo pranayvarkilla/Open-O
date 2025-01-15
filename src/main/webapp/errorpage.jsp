@@ -26,7 +26,7 @@
 
 <%@ page isErrorPage="true" %>
 <!-- only true can access exception object -->
-<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix="c" %>
+<%@ taglib uri='jakarta.tags.core' prefix="c" %>
 <jsp:useBean id="LoginResourceBean" beanName="oscar.login.LoginResourceBean" type="oscar.login.LoginResourceBean"/>
 <!DOCTYPE html>
 <html>

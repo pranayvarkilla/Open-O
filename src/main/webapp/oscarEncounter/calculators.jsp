@@ -43,7 +43,7 @@
 <%@page import="oscar.util.StringUtils" %>
 <%@ page
         import="oscar.oscarDemographic.data.*, org.oscarehr.common.model.Demographic" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <%

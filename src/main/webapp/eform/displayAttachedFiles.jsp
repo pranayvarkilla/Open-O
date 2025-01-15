@@ -56,7 +56,7 @@
 <%@ page import="org.oscarehr.documentManager.EDocUtil" %>
 <%@ page import="org.oscarehr.documentManager.EDoc" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);

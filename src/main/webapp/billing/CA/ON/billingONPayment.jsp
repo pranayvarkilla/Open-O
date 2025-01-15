@@ -26,7 +26,7 @@
 --%>
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@page import="org.oscarehr.util.SpringUtils,org.oscarehr.util.LocaleUtils,org.oscarehr.util.MiscUtils, oscar.util.DateUtils" %>
 <%@page import="org.oscarehr.common.model.Demographic, org.oscarehr.common.model.BillingONItem, org.oscarehr.common.model.BillingOnItemPayment, org.oscarehr.common.model.RaDetail" %>

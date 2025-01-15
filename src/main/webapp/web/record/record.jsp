@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <div class="page-header" style="margin-top: 0px; margin-bottom: 0px;">
     <h1 class="patientHeaderName" style="margin-top: 0px;" ng-cloak>

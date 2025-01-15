@@ -44,7 +44,7 @@
     boolean bodd = false;
 %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%@ page import="java.util.*,oscar.*,java.io.*,java.net.*,oscar.util.*,org.apache.commons.io.FileUtils"
          errorPage="/errorpage.jsp" %>
 <% java.util.Properties oscarVariables = OscarProperties.getInstance(); %>

@@ -43,7 +43,7 @@
 <%@ page
         import="java.util.*, org.w3c.dom.*, oscar.oscarEncounter.oscarConsultationRequest.pageUtil.*" %>
 <%@ page import="oscar.oscarClinic.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 

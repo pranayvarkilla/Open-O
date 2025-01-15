@@ -72,7 +72,7 @@
 <%@page import="org.oscarehr.common.model.ConsentType" %>
 <%@page import="oscar.OscarProperties" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 

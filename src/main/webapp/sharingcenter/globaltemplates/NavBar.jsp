@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <div class="page-header">
     <h1><a href="#">Oscar Sharing Center</a></h1>

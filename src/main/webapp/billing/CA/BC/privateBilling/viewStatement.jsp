@@ -9,8 +9,8 @@
 <%@ page import="org.oscarehr.common.model.Provider" %>
 <%@ page import="org.oscarehr.PMmodule.dao.ProviderDao" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
 
 

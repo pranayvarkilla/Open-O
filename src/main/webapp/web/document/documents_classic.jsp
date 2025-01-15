@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <fmt:setBundle basename="uiResources" var="uiBundle"/>
 <p class="info">
     <a class="hand-hover" ng-click="openPopup()"><fmt:message key="document.panel" bundle="${uiBundle}"/></a>

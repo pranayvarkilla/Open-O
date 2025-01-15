@@ -42,7 +42,7 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ page
         import="java.util.*,oscar.oscarLab.ca.on.*,oscar.oscarDemographic.data.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%
 
     String labType = request.getParameter("labType");

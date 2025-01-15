@@ -25,7 +25,7 @@
 --%>
 
 <!-- make div layout more fluid see medical history as an example -->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <div class="modal-content">
 
     <div class="modal-header">

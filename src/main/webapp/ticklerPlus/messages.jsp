@@ -22,7 +22,7 @@
     Toronto, Ontario, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%-- Error Messages --%>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="1"

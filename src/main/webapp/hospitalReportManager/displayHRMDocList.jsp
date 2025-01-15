@@ -12,7 +12,7 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@page import="java.util.*, org.oscarehr.hospitalReportManager.*,org.oscarehr.hospitalReportManager.model.HRMCategory" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%

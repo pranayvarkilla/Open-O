@@ -41,7 +41,7 @@
 %>
 
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@ page import="java.sql.*, java.util.*,java.security.*,oscar.*,oscar.oscarDB.*" errorPage="/errorpage.jsp" %>
 <%@ page import="oscar.log.LogAction,oscar.log.LogConst" %>

@@ -45,7 +45,7 @@
 <%@page errorPage="../provider/errorpage.jsp" %>
 <%@ page
         import="java.util.*, oscar.oscarMDS.data.*,oscar.oscarLab.ca.on.CML.*,oscar.oscarLab.LabRequestReportLink,oscar.oscarDB.*,java.sql.*,oscar.log.*,org.oscarehr.util.SpringUtils,org.oscarehr.casemgmt.service.CaseManagementManager,org.oscarehr.casemgmt.model.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%
 

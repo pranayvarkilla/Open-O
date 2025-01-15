@@ -24,7 +24,7 @@
 
 --%>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%
     String roleName2$ = session.getAttribute("userrole") + "," + session.getAttribute("user");
     boolean authed = true;
@@ -39,9 +39,9 @@
     }
 %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@page import="java.util.*" %>
 <html>
     <head>

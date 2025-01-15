@@ -23,7 +23,7 @@
     Vancouver, British Columbia, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page import="java.util.List, org.apache.commons.lang.StringUtils" %>
 <%@ page import="org.oscarehr.common.web.Contact2Action" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
@@ -62,7 +62,7 @@
     <%-- DETACHED VIEW ENABLED  --%>
     <c:if test="${ param.view eq 'detached' }">
 
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+        <%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
         <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 
         <!DOCTYPE html>

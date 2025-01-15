@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <div class="modal-header">
     <form class="form-inline" ng-submit="$ctrl.fullSearch()">
         <div class="input-group">

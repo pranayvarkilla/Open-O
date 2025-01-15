@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <fmt:setBundle basename="uiResources" var="uiBundle"/>
 <fmt:setBundle basename="oscarResources" var="oscarBundle"/>
 <div class="modal-content">

@@ -26,7 +26,7 @@
 <!DOCTYPE html>
 <%@ page import="java.util.*, java.net.*, oscar.*, oscar.util.*, java.lang.*" %>
 <jsp:useBean id="scheduleRscheduleBean" class="oscar.RscheduleBean" scope="session"/>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>

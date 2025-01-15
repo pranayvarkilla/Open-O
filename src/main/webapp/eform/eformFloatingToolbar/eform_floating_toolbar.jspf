@@ -32,7 +32,7 @@
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import=" org.oscarehr.managers.FaxManager"%>
 <%@ page import=" org.oscarehr.managers.EmailComposeManager"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "c" uri = "jakarta.tags.core" %>
 <%
   EmailComposeManager emailComposeManager = SpringUtils.getBean(EmailComposeManager.class);
   pageContext.setAttribute("faxActive", FaxManager.isEnabled());

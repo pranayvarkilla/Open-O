@@ -44,8 +44,8 @@
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@page import="oscar.oscarDemographic.data.*,org.oscarehr.util.SpringUtils" %>
 <%@page import="java.text.*, java.util.*, oscar.oscarBilling.ca.bc.data.*,oscar.oscarBilling.ca.bc.pageUtil.*,oscar.*,oscar.entities.*" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="jakarta.tags.core" prefix="c" %>
+<%@taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%
     String demographicNo = request.getParameter("demographicNo");
     String wcbid = request.getParameter("wcbid");

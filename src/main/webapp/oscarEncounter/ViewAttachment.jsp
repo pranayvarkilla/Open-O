@@ -43,7 +43,7 @@
         import="oscar.oscarEncounter.immunization.data.*,oscar.util.UtilXML" %>
 <%@ page
         import="oscar.oscarEncounter.immunization.pageUtil.*, java.util.*, org.w3c.dom.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 

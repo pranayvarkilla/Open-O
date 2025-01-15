@@ -30,10 +30,10 @@
 <%@page import="oscar.oscarDemographic.data.*,java.util.*,oscar.oscarPrevention.*,oscar.oscarProvider.data.*,oscar.util.*,oscar.oscarReport.data.*,oscar.oscarPrevention.pageUtil.*,java.net.*,oscar.eform.*" %>
 <%@page import="oscar.OscarProperties, org.oscarehr.util.SpringUtils, org.oscarehr.common.dao.BillingONCHeader1Dao" %>
 <%@ page import="org.owasp.encoder.Encode" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <jsp:useBean id="providerBean" class="java.util.Properties" scope="session"/>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 

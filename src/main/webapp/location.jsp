@@ -30,7 +30,7 @@
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page import="org.caisi.service.InfirmBedProgramManager" %>
 <%@ page import="oscar.util.LabelValueBean" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ include file="/common/webAppContextAndSuperMgr.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

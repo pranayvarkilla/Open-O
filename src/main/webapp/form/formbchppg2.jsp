@@ -41,7 +41,7 @@
 
 <%@ page
         import="java.util.*, oscar.util.UtilDateUtilities, oscar.form.*, oscar.form.data.*, oscar.oscarPrevention.PreventionData,oscar.oscarRx.data.RxPrescriptionData" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
 <%

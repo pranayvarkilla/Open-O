@@ -38,7 +38,7 @@
     }
 %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page import="java.util.Set, java.util.List, java.util.Iterator" %>
 <%@ page import="org.oscarehr.casemgmt.model.CaseManagementNote" %>
 <%@ page import="org.oscarehr.casemgmt.model.CaseManagementIssue" %>

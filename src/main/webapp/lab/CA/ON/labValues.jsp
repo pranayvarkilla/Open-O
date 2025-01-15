@@ -50,7 +50,7 @@
 <%@ page import="org.oscarehr.common.model.Demographic" %>
 <%@ page import="org.oscarehr.managers.DemographicManager" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%
     String labType = request.getParameter("labType");
     String demographicNo = request.getParameter("demo");

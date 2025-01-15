@@ -46,7 +46,7 @@
     String userlastname = (String) session.getAttribute("userlastname");
 %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <jsp:useBean id="oscarVariables" class="java.util.Properties"
              scope="page"/>

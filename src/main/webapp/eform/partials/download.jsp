@@ -29,7 +29,7 @@
 <%@page import="org.joda.time.*" %>
 <%@page import="org.oscarehr.ws.rest.FormsService" %>
 <%@page import="org.oscarehr.app.AppOAuth1Config" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <html>
 

@@ -40,7 +40,7 @@
 %>
 
 <%@ include file="../admin/dbconnection.jsp" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@page import="java.math.*, java.util.*, java.sql.*, oscar.*, java.net.*" errorPage="/errorpage.jsp" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>

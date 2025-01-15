@@ -25,10 +25,10 @@
 --%>
 <!DOCTYPE html>
 <%@ page import="oscar.eform.data.*, oscar.OscarProperties, oscar.eform.*, java.util.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <html>
 

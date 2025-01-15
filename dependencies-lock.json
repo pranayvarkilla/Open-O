@@ -969,6 +969,14 @@
     "optional" : false,
     "integrity" : "sha512:K9WhZoTE6BRIl7ptxGdijRuKhTJiNSQOTCAQG23zaB0jruvDDKmeOV7ISPM8tSRAhQMbKg+850bI7ecUil58HQ=="
   }, {
+    "groupId" : "jakarta.el",
+    "artifactId" : "jakarta.el-api",
+    "version" : "5.0.0",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:/z1Kynvm0hWvn0iQL9kago1dwemfGtLu1bUoPEmfYb6FLIZwlZzY0fq6iPuq6u2oM5WEcbzRI6riE1+ocNzAKA=="
+  }, {
     "groupId" : "jakarta.inject",
     "artifactId" : "jakarta.inject-api",
     "version" : "2.0.1",
@@ -1000,6 +1008,14 @@
     "type" : "jar",
     "optional" : false,
     "integrity" : "sha512:X/g8at4T7/XKna988Tu7pGosiuw8xq5O6ohAJqCBaY0EJdGIBBR6B1RZwCSA0lyIUoqUK+4/Z3ih6QOmofyCYw=="
+  }, {
+    "groupId" : "jakarta.servlet.jsp.jstl",
+    "artifactId" : "jakarta.servlet.jsp.jstl-api",
+    "version" : "3.0.1",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:H/lGQDmJQeD53lkNRfyvg2wHowj/uOLb1zz+LYKl0J5E6vOaZ0PXlzxkTL4+F2huye5ujvyI68SyNSeBLPGSwA=="
   }, {
     "groupId" : "jakarta.servlet.jsp",
     "artifactId" : "jakarta.servlet.jsp-api",
@@ -1080,14 +1096,6 @@
     "type" : "jar",
     "optional" : false,
     "integrity" : "sha512:NYJKA86QsZiq+xjnlDWU7YM7JXvwLl75aQ14IiTmg4IyKYQwYnRVu163qRvNQhRLNCc8+Ec3GdfX9kY4FkyJ+Q=="
-  }, {
-    "groupId" : "javax.servlet",
-    "artifactId" : "jstl",
-    "version" : "1.2",
-    "scope" : "compile",
-    "type" : "jar",
-    "optional" : false,
-    "integrity" : "sha512:+2/jOSJjG7ohtgbLXVPERXBx5pXsVjIgUYUoHn2z4tY9lSSLQ7nH+yy1BC0Uome4fSxdp0LJiRdMNSbczyOu7A=="
   }, {
     "groupId" : "javax.ws.rs",
     "artifactId" : "javax.ws.rs-api",
@@ -2658,6 +2666,14 @@
     "type" : "jar",
     "optional" : false,
     "integrity" : "sha512:rw518KfDgB/jAwU8Qqlf/fLGrMavSoI7Iv9lzCRAAJH2NP+HaGcYHMKVqBi6xbkZYLIqJBPdS6LKIK/YnxRbOg=="
+  }, {
+    "groupId" : "org.glassfish.web",
+    "artifactId" : "jakarta.servlet.jsp.jstl",
+    "version" : "3.0.1",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:ijTJJ1LCbQBHACcRU1erjDT51gB77q+OYegf6sihy0wOHiSQY5btokCTvjXnjzDr4k+/nLIgWWszG+b0+2qg+Q=="
   }, {
     "groupId" : "org.hamcrest",
     "artifactId" : "hamcrest-core",

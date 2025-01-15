@@ -26,7 +26,7 @@
 <%@page language="java" import="java.util.*" %>
 <%@page import="org.oscarehr.PMmodule.wlmatch.MatchBO" %>
 <%@ include file="/taglibs.jsp" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 
 <table height="100%" width="100%" border="1" class="simple" cellpadding="3" cellspacing="2">

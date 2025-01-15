@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <div class="col-sm-3">
     <fieldset ng-repeat="mod in $ctrl.page.columnOne.modules">
         <legend style="margin-bottom:0px;">

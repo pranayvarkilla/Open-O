@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <fmt:setBundle basename="uiResources" var="uiBundle"/>
 <div class="modal-header">
     <h4><fmt:message key="patientsearch.integrator.title" bundle="${uiBundle}"/>s ({{total}} <fmt:message key="patientsearch.integrator.found" bundle="${uiBundle}"/>)</h4>

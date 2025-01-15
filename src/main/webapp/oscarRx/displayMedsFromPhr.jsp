@@ -34,7 +34,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page
         import="java.util.*,org.oscarehr.common.model.Drug,org.oscarehr.phr.model.PHRMedication,oscar.oscarRx.data.RxPrescriptionData" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%

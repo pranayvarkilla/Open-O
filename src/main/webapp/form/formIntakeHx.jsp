@@ -41,7 +41,7 @@
 
 <!DOCTYPE html>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

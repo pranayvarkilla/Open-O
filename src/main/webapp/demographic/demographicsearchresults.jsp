@@ -51,10 +51,10 @@
 <%@page import="org.oscarehr.caisi_integrator.ws.MatchingDemographicTransferScore" %>
 <%@page import="org.oscarehr.casemgmt.service.CaseManagementManager" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 

@@ -45,7 +45,7 @@
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="oscar.util.UtilMisc" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 
@@ -172,7 +172,7 @@
     <body bgproperties="fixed">
     <div id="maincontent" class="flex-container">
 
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
         <c:if test="${param.warning eq 'history'}">
             <script type="text/javascript">

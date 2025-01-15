@@ -34,7 +34,7 @@
 <%@page import="org.oscarehr.phr.util.MyOscarUtils" %>
 <%@page import="org.oscarehr.phr.util.MyOscarServerRelationManager" %>
 <%@page import="org.oscarehr.myoscar_server.ws.MessageTransfer" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%@ page import="org.w3c.dom.*" %>
 <%@ page
         import="oscar.oscarDemographic.data.*,org.oscarehr.common.model.Demographic,org.oscarehr.common.dao.DemographicDao,org.oscarehr.util.SpringUtils" %>
@@ -43,7 +43,7 @@
 <%@ page import="java.util.Enumeration.*" %>
 <%@ page import="org.apache.commons.collections.iterators.*" %>
 <%@ page import="oscar.util.UtilDateUtilities,java.util.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <%
     Demographic demographic = null;

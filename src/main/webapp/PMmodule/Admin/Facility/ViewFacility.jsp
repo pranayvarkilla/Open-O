@@ -23,7 +23,7 @@
 
 --%>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ include file="/taglibs.jsp" %>
 
 <%@ include file="/common/messages.jsp" %>

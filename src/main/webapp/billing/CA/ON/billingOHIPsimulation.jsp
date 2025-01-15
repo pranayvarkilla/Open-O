@@ -19,7 +19,7 @@
 --%>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%@ page import="org.oscarehr.util.DateRange" %>
 <%! boolean bMultisites = org.oscarehr.common.IsPropertiesOn.isMultisitesEnable(); %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>

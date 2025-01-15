@@ -39,7 +39,7 @@
 %>
 
 <%@ page import="oscar.oscarProvider.data.*, oscar.OscarProperties, oscar.oscarClinic.ClinicData, java.util.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <%! boolean bMultisites = org.oscarehr.common.IsPropertiesOn.isMultisitesEnable(); %>

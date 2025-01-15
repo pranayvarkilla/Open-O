@@ -42,7 +42,7 @@
 <%@ page import="oscar.form.*, oscar.OscarProperties" %>
 <%@page import="org.oscarehr.common.dao.FrmLabReqPreSetDao, org.oscarehr.util.SpringUtils" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <html>
     <head>

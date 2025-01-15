@@ -33,7 +33,7 @@
 %>
 <%@ page import="oscar.eform.data.*, oscar.eform.*, java.util.*, oscar.util.*" %>
 <%@ page import="java.util.*,oscar.oscarRx.data.*,oscar.oscarRx.pageUtil.*,java.io.*,org.apache.xmlrpc.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@page import="org.oscarehr.util.MiscUtils" %>
 <html>

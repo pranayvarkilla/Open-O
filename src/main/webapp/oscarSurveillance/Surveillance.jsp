@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@page import="oscar.oscarSurveillance.*,java.util.*,org.commonmark.node.*,org.commonmark.parser.Parser,org.commonmark.renderer.html.HtmlRenderer" %>
 <%

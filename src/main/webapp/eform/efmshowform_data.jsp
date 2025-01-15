@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <%@ page import="oscar.eform.data.*" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>

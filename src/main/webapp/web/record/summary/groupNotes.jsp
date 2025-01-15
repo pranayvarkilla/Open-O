@@ -36,7 +36,7 @@
 </style>
 
 <!-- make div layout more fluid see medical history as an example -->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <div class="modal-content" style="background-color: #996633; color: white;   border:0px;  border-radius: 0px;"
      ng-click="checkAction($event)" ng-keypress="checkAction($event)">
 

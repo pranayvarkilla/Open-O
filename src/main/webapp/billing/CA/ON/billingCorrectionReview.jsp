@@ -21,7 +21,7 @@
     if (session.getValue("user") == null) response.sendRedirect("../../../logout.htm");
 %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <html>

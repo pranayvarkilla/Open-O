@@ -47,7 +47,7 @@
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import="org.oscarehr.common.model.Demographic" %>
 <%@ page import="org.oscarehr.managers.DemographicManager" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%
     LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
     DemographicManager demographicManager = SpringUtils.getBean(DemographicManager.class);

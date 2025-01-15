@@ -38,7 +38,7 @@
     }
 %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>

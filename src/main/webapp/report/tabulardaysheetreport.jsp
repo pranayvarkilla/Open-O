@@ -14,7 +14,7 @@
 %>
 
 <%@page import="org.apache.commons.lang.time.DateUtils" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%
 
     String orderby = request.getParameter("orderby") != null ? request.getParameter("orderby") : ("a.start_time");

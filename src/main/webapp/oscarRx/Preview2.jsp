@@ -24,9 +24,9 @@
 
 --%>
 <%@page import="oscar.oscarRx.data.RxPatientData" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/oscarProperties-tag.tld" prefix="oscar" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page import="oscar.oscarProvider.data.ProSignatureData, oscar.oscarProvider.data.ProviderData" %>
 <%@ page import="oscar.oscarRx.data.*" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>

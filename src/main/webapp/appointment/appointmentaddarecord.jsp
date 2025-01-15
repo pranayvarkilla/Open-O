@@ -52,7 +52,7 @@
 <%@page import="oscar.util.UtilDateUtilities" %>
 <%@ page import="org.oscarehr.event.EventService" %>
 <%@page import="org.oscarehr.managers.DemographicManager" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <html>
     <head>

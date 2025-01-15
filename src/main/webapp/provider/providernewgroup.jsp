@@ -26,7 +26,7 @@
 
 <%@ page import="java.util.*,java.sql.*" errorPage="../provider/errorpage.jsp" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import="org.oscarehr.common.model.MyGroup" %>

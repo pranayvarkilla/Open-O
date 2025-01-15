@@ -75,7 +75,7 @@ and other liscences (MIT, LGPL etc) as indicated
 -->
 
 <%@page import="org.oscarehr.util.MiscUtils" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%
     boolean eformGeneratorIndivicaPrintEnabled = OscarProperties.getInstance().isPropertyActive("eform_generator_indivica_print_enabled");
     boolean eformGeneratorIndivicaFaxEnabled = OscarProperties.getInstance().isPropertyActive("eform_generator_indivica_fax_enabled");

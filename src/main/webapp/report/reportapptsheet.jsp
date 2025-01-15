@@ -49,7 +49,7 @@
 <%@ page import="org.oscarehr.common.model.ProviderData" %>
 <%@ page import="org.oscarehr.common.dao.ProviderDataDao" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <jsp:useBean id="daySheetBean" class="oscar.AppointmentMainBean" scope="page"/>
 <jsp:useBean id="myGroupBean" class="java.util.Properties" scope="page"/>
