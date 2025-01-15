@@ -50,7 +50,7 @@ import oscar.oscarDemographic.data.DemographicData;
 /**
  * @author apavel
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class DSGuideline2Action extends ActionSupport {

@@ -33,7 +33,7 @@ import org.oscarehr.common.model.Facility;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class OcanIarSubmit2Action extends ActionSupport {

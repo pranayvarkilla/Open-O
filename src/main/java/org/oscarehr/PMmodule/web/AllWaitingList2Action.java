@@ -30,7 +30,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * @author AnooshTech
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class AllWaitingList2Action extends ActionSupport {

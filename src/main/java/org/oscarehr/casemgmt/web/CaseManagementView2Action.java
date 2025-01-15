@@ -23,7 +23,7 @@
 
 package org.oscarehr.casemgmt.web;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import com.quatro.model.security.Secrole;
 import com.quatro.service.security.RolesManager;
 import net.sf.json.JSONObject;

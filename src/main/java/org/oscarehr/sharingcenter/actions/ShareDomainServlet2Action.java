@@ -35,7 +35,7 @@ import org.oscarehr.sharingcenter.model.AffinityDomainDataObject;
 import org.oscarehr.sharingcenter.model.PatientSharingNetworkDataObject;
 import org.oscarehr.util.SpringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ShareDomainServlet2Action extends ActionSupport {

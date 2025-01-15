@@ -39,7 +39,7 @@ import org.oscarehr.util.SpringUtils;
 
 import oscar.oscarMessenger.data.MsgAddressBookMaker;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class MsgMessengerCreateGroup2Action extends ActionSupport {

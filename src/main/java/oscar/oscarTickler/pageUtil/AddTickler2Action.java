@@ -40,7 +40,7 @@ import oscar.oscarTickler.TicklerData;
 /**
  * @author Jay Gallagher
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class AddTickler2Action extends ActionSupport {

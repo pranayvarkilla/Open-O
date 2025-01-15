@@ -39,7 +39,7 @@ import oscar.oscarReport.reportByTemplate.Reporter;
  *
  * @author apavel (Paul)
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class GenerateReport2Action extends ActionSupport {

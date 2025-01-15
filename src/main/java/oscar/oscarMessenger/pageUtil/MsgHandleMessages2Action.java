@@ -44,7 +44,7 @@ import org.oscarehr.util.SpringUtils;
 
 import oscar.oscarMessenger.data.ContactIdentifier;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class MsgHandleMessages2Action extends ActionSupport {

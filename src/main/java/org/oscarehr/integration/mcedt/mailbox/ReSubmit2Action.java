@@ -41,7 +41,7 @@ import org.apache.logging.log4j.Logger;
 import org.oscarehr.integration.mcedt.DelegateFactory;
 import org.oscarehr.integration.mcedt.McedtMessageCreator;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ReSubmit2Action extends ActionSupport {

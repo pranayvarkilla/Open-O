@@ -43,7 +43,7 @@ import org.oscarehr.common.dao.ProviderDataDao;
 /**
  * @author jackson
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class SearchProviderAutoComplete2Action extends ActionSupport {

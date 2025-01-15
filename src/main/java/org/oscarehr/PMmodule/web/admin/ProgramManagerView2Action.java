@@ -73,7 +73,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import oscar.log.LogAction;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ProgramManagerView2Action extends ActionSupport {

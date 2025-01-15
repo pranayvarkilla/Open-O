@@ -48,7 +48,7 @@ import org.oscarehr.util.SpringUtils;
 /**
  * Responsible for managing beds
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class BedManager2Action extends ActionSupport {

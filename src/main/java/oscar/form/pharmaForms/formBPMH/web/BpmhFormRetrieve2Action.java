@@ -24,7 +24,7 @@
  */
 package oscar.form.pharmaForms.formBPMH.web;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import oscar.OscarProperties;
 import oscar.form.pharmaForms.formBPMH.bean.BpmhForm2Bean;

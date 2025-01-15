@@ -54,7 +54,7 @@ import oscar.oscarLab.ForwardingRules;
 /**
  * @author wrighd
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ForwardingRules2Action extends ActionSupport {

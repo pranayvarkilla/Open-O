@@ -40,7 +40,7 @@ import org.oscarehr.billing.CA.dao.GstControlDao;
 import org.oscarehr.billing.CA.model.GstControl;
 import org.oscarehr.util.SpringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 

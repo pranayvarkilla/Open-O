@@ -71,7 +71,7 @@ import com.indivica.olis.queries.Z07Query;
 import com.indivica.olis.queries.Z08Query;
 import com.indivica.olis.queries.Z50Query;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class OLISSearch2Action extends ActionSupport {

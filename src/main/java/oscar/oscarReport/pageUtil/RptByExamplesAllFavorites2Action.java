@@ -35,7 +35,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import oscar.oscarReport.bean.RptByExampleQueryBeanHandler;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class RptByExamplesAllFavorites2Action extends ActionSupport {

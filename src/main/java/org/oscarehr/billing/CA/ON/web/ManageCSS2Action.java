@@ -26,7 +26,7 @@
 
 package org.oscarehr.billing.CA.ON.web;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.BillingServiceDao;
 import org.oscarehr.common.dao.CSSStylesDAO;

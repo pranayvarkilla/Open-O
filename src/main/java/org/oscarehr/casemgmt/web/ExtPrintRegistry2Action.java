@@ -33,7 +33,7 @@ import org.apache.logging.log4j.Logger;
 import org.oscarehr.casemgmt.util.ExtPrintRegistry;
 import org.oscarehr.util.MiscUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ExtPrintRegistry2Action extends ActionSupport {

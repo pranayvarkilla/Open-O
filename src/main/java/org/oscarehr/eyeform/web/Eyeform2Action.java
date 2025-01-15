@@ -111,7 +111,7 @@ import oscar.util.UtilDateUtilities;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfCopyFields;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class Eyeform2Action extends ActionSupport {

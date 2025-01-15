@@ -34,7 +34,7 @@ import org.oscarehr.util.LoggedInInfo;
 import oscar.oscarProvider.data.ProviderFaxUpdater;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ProEditFaxNum2Action extends ActionSupport {

@@ -40,7 +40,7 @@ import org.oscarehr.common.model.ShelterPopulation;
 import org.oscarehr.common.model.ShelterUsage;
 import org.oscarehr.common.service.PopulationReportManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class PopulationReport2Action extends ActionSupport {

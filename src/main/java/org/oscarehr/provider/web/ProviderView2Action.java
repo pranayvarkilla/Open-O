@@ -35,7 +35,7 @@ import org.oscarehr.common.model.View;
 /**
  * @author rjonasz
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ProviderView2Action extends ActionSupport {

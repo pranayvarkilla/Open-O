@@ -60,7 +60,7 @@ import oscar.util.UtilDateUtilities;
 /**
  * Class used to fill data for the HSFO form Study
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ManageHSFO2Action extends ActionSupport {

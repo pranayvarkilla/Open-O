@@ -36,7 +36,7 @@ import org.oscarehr.common.dao.ConfigImmunizationDao;
 import org.oscarehr.common.model.ConfigImmunization;
 import org.oscarehr.util.SpringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class EctImmDeleteImmunizationSet2Action extends ActionSupport {

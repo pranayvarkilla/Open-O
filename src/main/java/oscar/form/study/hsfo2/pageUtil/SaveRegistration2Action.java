@@ -44,7 +44,7 @@ import oscar.form.study.hsfo2.HSFODAO;
 /**
  * Class used to save data from the HSFO Study form
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class SaveRegistration2Action extends ActionSupport {

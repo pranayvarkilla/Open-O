@@ -55,7 +55,7 @@ import org.oscarehr.util.SpringUtils;
 
 import oscar.OscarProperties;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class Tickler2Action extends ActionSupport {

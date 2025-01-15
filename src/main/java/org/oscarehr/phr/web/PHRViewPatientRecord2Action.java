@@ -55,7 +55,7 @@ import oscar.util.UtilDateUtilities;
 /**
  * @author apavel
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class PHRViewPatientRecord2Action extends ActionSupport {

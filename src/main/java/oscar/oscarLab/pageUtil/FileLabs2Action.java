@@ -43,7 +43,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import oscar.oscarLab.ca.on.CommonLabResultData;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class FileLabs2Action extends ActionSupport {

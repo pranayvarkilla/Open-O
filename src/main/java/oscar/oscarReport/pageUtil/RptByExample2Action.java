@@ -48,7 +48,7 @@ import oscar.OscarProperties;
 import oscar.oscarReport.bean.RptByExampleQueryBeanHandler;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class RptByExample2Action extends ActionSupport {

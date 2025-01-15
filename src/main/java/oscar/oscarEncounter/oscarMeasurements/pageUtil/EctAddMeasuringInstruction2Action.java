@@ -47,7 +47,7 @@ import oscar.oscarEncounter.oscarMeasurements.bean.EctValidationsBeanHandler;
 import oscar.oscarMessenger.util.MsgStringQuote;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class EctAddMeasuringInstruction2Action extends ActionSupport {

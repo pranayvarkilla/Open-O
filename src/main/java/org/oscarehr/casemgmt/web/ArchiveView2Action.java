@@ -28,7 +28,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import org.oscarehr.PMmodule.service.ProgramManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ArchiveView2Action extends ActionSupport {

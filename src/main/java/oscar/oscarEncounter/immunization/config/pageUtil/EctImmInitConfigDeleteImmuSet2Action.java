@@ -38,7 +38,7 @@ import org.oscarehr.util.SpringUtils;
 
 import oscar.oscarEncounter.immunization.config.data.EctImmImmunizationSetData;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class EctImmInitConfigDeleteImmuSet2Action extends ActionSupport {

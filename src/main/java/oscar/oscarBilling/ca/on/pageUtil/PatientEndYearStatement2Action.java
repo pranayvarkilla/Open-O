@@ -52,7 +52,7 @@ import oscar.OscarDocumentCreator;
 /**
  * @author Eugene Katyukhin
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class PatientEndYearStatement2Action extends ActionSupport {

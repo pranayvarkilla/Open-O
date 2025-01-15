@@ -51,7 +51,7 @@ import org.oscarehr.util.SpringUtils;
 /**
  * @author Marc Dumontier (marc@mdumontier.com)
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class StreetHealthIntakeReport2Action extends ActionSupport {

@@ -47,7 +47,7 @@ import oscar.oscarReport.ClinicalReports.Denominator;
 import oscar.oscarReport.ClinicalReports.Numerator;
 import oscar.oscarReport.ClinicalReports.ReportEvaluator;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class RunClinicalReport2Action extends ActionSupport {

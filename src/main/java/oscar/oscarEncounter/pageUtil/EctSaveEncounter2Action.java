@@ -55,7 +55,7 @@ import oscar.oscarSurveillance.SurveillanceMaster;
 import oscar.util.ConversionUtils;
 import oscar.util.UtilDateUtilities;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class EctSaveEncounter2Action extends ActionSupport {

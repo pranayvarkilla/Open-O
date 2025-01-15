@@ -29,7 +29,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import org.oscarehr.sharingcenter.DocumentType;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class DocumentPreviewServlet2Action extends ActionSupport {

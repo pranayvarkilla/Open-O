@@ -34,7 +34,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.oscarehr.common.dao.OscarCommLocationsDao;
 import org.oscarehr.util.SpringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public final class EctViewAttachment2Action extends ActionSupport {

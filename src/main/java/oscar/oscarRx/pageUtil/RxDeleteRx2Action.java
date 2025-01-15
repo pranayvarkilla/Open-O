@@ -59,7 +59,7 @@ import oscar.log.LogConst;
 import oscar.oscarEncounter.data.EctProgram;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public final class RxDeleteRx2Action extends ActionSupport {

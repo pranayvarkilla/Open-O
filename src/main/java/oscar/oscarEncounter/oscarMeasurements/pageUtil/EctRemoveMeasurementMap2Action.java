@@ -51,7 +51,7 @@ import oscar.oscarEncounter.oscarMeasurements.data.MeasurementMapConfig;
 /**
  * @author wrighd
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class EctRemoveMeasurementMap2Action extends ActionSupport {

@@ -23,7 +23,7 @@
 
 package org.oscarehr.casemgmt.web;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.OnCallQuestionnaireDao;
 import org.oscarehr.common.model.OnCallQuestionnaire;

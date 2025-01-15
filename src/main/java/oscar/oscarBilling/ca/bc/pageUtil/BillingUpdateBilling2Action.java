@@ -48,7 +48,7 @@ import oscar.oscarBilling.ca.bc.data.BillingNote;
 /**
  * @author root
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public final class BillingUpdateBilling2Action

@@ -66,7 +66,7 @@ import oscar.oscarPrevention.pageUtil.PreventionPrintPdf;
 /**
  * @author apavel
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class PHRGenericSendToPhr2Action extends ActionSupport {

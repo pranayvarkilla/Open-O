@@ -43,7 +43,7 @@ import org.oscarehr.PMmodule.service.ProviderManager;
  * 2) # of bed programs
  * 3) # of service programs
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class BasicReport2Action extends ActionSupport {

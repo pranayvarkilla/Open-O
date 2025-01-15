@@ -43,7 +43,7 @@ import org.oscarehr.util.SpringUtils;
 /**
  * Creates a provider notification record.
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ProviderNotification2Action extends ActionSupport {

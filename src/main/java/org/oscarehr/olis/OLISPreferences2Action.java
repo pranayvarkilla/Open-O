@@ -26,7 +26,7 @@ import org.oscarehr.util.SpringUtils;
 import org.springframework.scheduling.concurrent.ScheduledExecutorTask;
 //import org.springframework.scheduling.timer.ScheduledTimerTask;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class OLISPreferences2Action extends ActionSupport {

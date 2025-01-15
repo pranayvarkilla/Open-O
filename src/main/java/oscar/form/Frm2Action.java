@@ -28,7 +28,7 @@
 // c_lastVisited, formId - if the form has multiple pages
 package oscar.form;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.Logger;

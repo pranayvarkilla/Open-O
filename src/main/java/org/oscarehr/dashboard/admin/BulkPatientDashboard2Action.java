@@ -49,7 +49,7 @@ import org.oscarehr.dashboard.handler.MessageHandler;
 import org.oscarehr.managers.DashboardManager;
 import org.oscarehr.managers.SecurityInfoManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class BulkPatientDashboard2Action extends ActionSupport {

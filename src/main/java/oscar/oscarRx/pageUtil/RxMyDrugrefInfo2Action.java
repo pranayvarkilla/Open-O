@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import jakarta.servlet.ServletException;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 
 public class RxMyDrugrefInfo2Action extends ActionSupport {
     public String execute() throws IOException, ServletException {

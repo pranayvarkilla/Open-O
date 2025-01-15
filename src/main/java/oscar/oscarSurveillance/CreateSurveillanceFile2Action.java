@@ -36,7 +36,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * @author Jay Gallagher
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class CreateSurveillanceFile2Action extends ActionSupport {

@@ -28,7 +28,7 @@ package oscar.oscarBilling.ca.bc.pageUtil;
 import jakarta.servlet.http.HttpServletRequest;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class EditServiceCodeAssoc2Action extends ActionSupport {

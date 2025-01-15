@@ -43,7 +43,7 @@ import oscar.oscarDemographic.data.DemographicRelationship;
 /**
  * @author jay
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class DeleteDemographicRelationship2Action extends ActionSupport {

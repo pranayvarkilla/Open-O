@@ -42,7 +42,7 @@ import com.quatro.service.LookupManager;
 import com.quatro.service.security.SecurityManager;
 import com.quatro.service.security.UserAccessManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public final class ShelterSelection2Action extends ActionSupport {

@@ -41,7 +41,7 @@ import oscar.oscarProvider.data.ProviderData;
 /**
  * @author jay
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class MsgSendDemographicMessage2Action extends ActionSupport {

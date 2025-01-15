@@ -40,7 +40,7 @@ import org.oscarehr.util.SpringUtils;
 /**
  * @author jay
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class Scratch2Action extends ActionSupport {

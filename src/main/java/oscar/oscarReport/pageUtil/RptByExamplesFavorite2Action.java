@@ -40,7 +40,7 @@ import org.oscarehr.util.SpringUtils;
 
 import oscar.oscarReport.bean.RptByExampleQueryBeanHandler;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class RptByExamplesFavorite2Action extends ActionSupport {

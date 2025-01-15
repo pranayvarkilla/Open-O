@@ -45,7 +45,7 @@ import oscar.util.UtilXML;
 /**
  * @author Jay Gallagher
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class EctImmDeleteImmSchedule2Action extends ActionSupport {

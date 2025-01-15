@@ -25,7 +25,7 @@
 
 package oscar.oscarTickler.pageUtil;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.dao.TicklerTextSuggestDao;

@@ -32,7 +32,7 @@ import com.quatro.model.security.NoAccessException;
 import com.quatro.service.LookupManager;
 import com.quatro.util.Utility;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class LookupList2Action extends ActionSupport {

@@ -55,7 +55,7 @@ import oscar.oscarEncounter.oscarMeasurements.util.RecommendationCondition;
 import oscar.oscarEncounter.oscarMeasurements.util.TargetColour;
 import oscar.oscarEncounter.oscarMeasurements.util.TargetCondition;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class FlowSheetCustom2Action extends ActionSupport {

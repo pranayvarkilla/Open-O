@@ -184,7 +184,7 @@ import oscar.util.UtilDateUtilities;
 /**
  * @author Ronnie Cheng
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class DemographicExportAction42Action extends ActionSupport {

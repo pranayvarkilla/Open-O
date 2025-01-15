@@ -59,7 +59,7 @@ import oscar.oscarRx.data.RxPrescriptionData.Prescription;
 /**
  * @author apavel
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class RxSendToPhr2Action extends ActionSupport {

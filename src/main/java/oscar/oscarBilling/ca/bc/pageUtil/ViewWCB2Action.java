@@ -54,7 +54,7 @@ import oscar.util.SqlUtils;
  * @author Joel Legris
  * @version 1.0
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import oscar.util.UtilDateUtilities;
 

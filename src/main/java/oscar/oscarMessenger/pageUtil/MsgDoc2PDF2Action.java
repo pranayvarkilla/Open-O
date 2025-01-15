@@ -37,7 +37,7 @@ import org.oscarehr.util.MiscUtils;
 
 import oscar.util.Doc2PDF;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public final class MsgDoc2PDF2Action extends ActionSupport {

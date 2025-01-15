@@ -47,7 +47,7 @@ import org.oscarehr.util.SpringUtils;
 /**
  * @author rjonasz
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class BatchBill2Action extends ActionSupport {

@@ -114,7 +114,7 @@ import oscar.oscarDemographic.data.DemographicRelationship;
 
 import com.quatro.service.LookupManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ClientManager2Action extends ActionSupport {

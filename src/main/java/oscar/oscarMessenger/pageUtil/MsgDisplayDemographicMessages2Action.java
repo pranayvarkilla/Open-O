@@ -48,7 +48,7 @@ import oscar.oscarMessenger.util.MsgDemoMap;
 /**
  * @author root
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class MsgDisplayDemographicMessages2Action extends ActionSupport {

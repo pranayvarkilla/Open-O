@@ -36,7 +36,7 @@ import org.oscarehr.util.LoggedInInfo;
 
 import oscar.log.LogAction;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class CppPreferences2Action extends ActionSupport {

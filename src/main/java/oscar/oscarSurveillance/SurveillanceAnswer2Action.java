@@ -47,7 +47,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * @author Jay Gallagher
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class SurveillanceAnswer2Action extends ActionSupport {

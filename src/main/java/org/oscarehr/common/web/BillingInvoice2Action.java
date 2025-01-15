@@ -46,7 +46,7 @@ import oscar.util.UtilDateUtilities;
 /**
  * @author mweston4
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class BillingInvoice2Action extends ActionSupport {

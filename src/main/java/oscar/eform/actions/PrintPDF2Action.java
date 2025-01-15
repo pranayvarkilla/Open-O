@@ -43,7 +43,7 @@ import org.oscarehr.util.SpringUtils;
 
 import oscar.eform.util.EFormPrintPDFUtil;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public final class PrintPDF2Action extends ActionSupport {

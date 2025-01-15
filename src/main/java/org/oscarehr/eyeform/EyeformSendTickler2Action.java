@@ -24,7 +24,7 @@ import org.oscarehr.util.SpringUtils;
 import oscar.oscarTickler.TicklerCreator;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class EyeformSendTickler2Action extends ActionSupport {

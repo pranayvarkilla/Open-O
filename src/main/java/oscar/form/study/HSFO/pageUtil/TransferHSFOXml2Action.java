@@ -38,7 +38,7 @@ import org.oscarehr.util.LoggedInInfo;
 
 import oscar.oscarDemographic.data.DemographicData;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class TransferHSFOXml2Action extends ActionSupport {

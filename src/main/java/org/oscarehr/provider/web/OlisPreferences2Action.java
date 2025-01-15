@@ -39,7 +39,7 @@ import org.oscarehr.olis.model.OLISProviderPreferences;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class OlisPreferences2Action extends ActionSupport {

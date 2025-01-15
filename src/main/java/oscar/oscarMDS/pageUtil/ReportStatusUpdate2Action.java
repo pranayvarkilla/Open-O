@@ -48,7 +48,7 @@ import oscar.log.LogConst;
 import oscar.oscarLab.ca.on.CommonLabResultData;
 import oscar.util.ConversionUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ReportStatusUpdate2Action extends ActionSupport {

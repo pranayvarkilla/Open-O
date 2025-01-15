@@ -51,7 +51,7 @@ import oscar.form.pharmaForms.formBPMH.util.JsonUtil;
 import oscar.oscarRx.data.RxAllergyData;
 import oscar.oscarRx.util.RxDrugRef;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public final class RxSearchAllergy2Action extends ActionSupport {

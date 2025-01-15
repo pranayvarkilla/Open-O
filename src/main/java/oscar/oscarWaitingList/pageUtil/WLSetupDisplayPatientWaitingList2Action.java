@@ -37,7 +37,7 @@ import org.oscarehr.util.SpringUtils;
 import oscar.oscarDemographic.data.DemographicData;
 import oscar.oscarWaitingList.bean.WLPatientWaitingListBeanHandler;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public final class WLSetupDisplayPatientWaitingList2Action extends ActionSupport {

@@ -40,7 +40,7 @@ import org.oscarehr.util.SpringUtils;
 import oscar.oscarReport.reportByTemplate.ReportManager;
 import oscar.oscarReport.reportByTemplate.ReportObjectGeneric;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class RBTGetTemplatesInGroup2Action extends ActionSupport {

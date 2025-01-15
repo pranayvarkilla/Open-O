@@ -24,7 +24,7 @@ import org.apache.commons.io.FileUtils;
 import oscar.OscarProperties;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class OscarStatus2Action extends ActionSupport {

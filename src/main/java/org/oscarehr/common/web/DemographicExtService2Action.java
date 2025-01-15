@@ -40,7 +40,7 @@ import org.oscarehr.util.SpringUtils;
 
 import oscar.log.LogAction;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import oscar.util.LabelValueBean;
 

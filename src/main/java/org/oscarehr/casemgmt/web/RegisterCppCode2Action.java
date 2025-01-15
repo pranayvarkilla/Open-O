@@ -33,7 +33,7 @@ import org.apache.logging.log4j.Logger;
 import org.oscarehr.util.CppUtils;
 import org.oscarehr.util.MiscUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class RegisterCppCode2Action extends ActionSupport {

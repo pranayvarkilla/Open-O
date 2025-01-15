@@ -30,7 +30,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import com.quatro.model.LookupCodeValue;
 import com.quatro.service.LookupManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class LookupTableList2Action extends ActionSupport {

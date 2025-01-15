@@ -27,7 +27,7 @@
 package oscar.oscarLab.ca.all.pageUtil;
 
 import ca.uhn.hl7v2.model.v26.message.ORU_R01;
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;

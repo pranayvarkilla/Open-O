@@ -36,7 +36,7 @@ import org.oscarehr.util.SpringUtils;
 import org.oscarehr.util.LoggedInInfo;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class RBTDeleteGroup2Action extends ActionSupport {

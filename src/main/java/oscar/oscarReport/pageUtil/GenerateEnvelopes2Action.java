@@ -55,7 +55,7 @@ import org.oscarehr.common.model.UserProperty;
 /**
  * @author jay
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class GenerateEnvelopes2Action extends ActionSupport {

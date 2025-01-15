@@ -54,7 +54,7 @@ import oscar.oscarProvider.data.ProviderData;
 /**
  * @author rjonasz
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class SendDocToPhr2Action extends ActionSupport {

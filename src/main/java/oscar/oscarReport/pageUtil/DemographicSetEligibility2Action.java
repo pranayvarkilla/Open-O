@@ -38,7 +38,7 @@ import oscar.oscarReport.data.DemographicSets;
 /**
  * @author Jay Gallagher
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class DemographicSetEligibility2Action extends ActionSupport {

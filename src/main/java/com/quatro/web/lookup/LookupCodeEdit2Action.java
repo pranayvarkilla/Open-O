@@ -37,7 +37,7 @@ import com.quatro.model.LookupTableDefValue;
 import com.quatro.service.LookupManager;
 import com.quatro.util.Utility;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class LookupCodeEdit2Action extends ActionSupport {

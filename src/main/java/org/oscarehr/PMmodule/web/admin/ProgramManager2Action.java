@@ -95,7 +95,7 @@ import oscar.log.LogAction;
 
 import com.quatro.service.security.RolesManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ProgramManager2Action extends ActionSupport {

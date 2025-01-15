@@ -40,7 +40,7 @@ import org.oscarehr.util.LoggedInInfo;
 /**
  * @author apavel
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class TestActionW2Action extends ActionSupport {

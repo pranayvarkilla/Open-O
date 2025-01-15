@@ -55,7 +55,7 @@ import oscar.util.StringUtils;
 /**
  * @author Jay Gallagher & Jackson Bi
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public final class RxManagePharmacy2Action extends ActionSupport {

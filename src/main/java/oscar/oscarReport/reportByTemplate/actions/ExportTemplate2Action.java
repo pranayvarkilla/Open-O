@@ -39,7 +39,7 @@ import org.oscarehr.ws.rest.to.model.RssItem;
 
 import oscar.oscarReport.reportByTemplate.ReportManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ExportTemplate2Action extends ActionSupport {

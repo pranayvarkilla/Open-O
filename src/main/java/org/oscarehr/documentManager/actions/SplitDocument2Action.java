@@ -52,7 +52,7 @@ import org.oscarehr.documentManager.EDocUtil;
 import oscar.oscarLab.ca.all.upload.ProviderLabRouting;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class SplitDocument2Action extends ActionSupport {

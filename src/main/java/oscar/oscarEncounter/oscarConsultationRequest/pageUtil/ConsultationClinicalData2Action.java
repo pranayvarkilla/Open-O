@@ -46,7 +46,7 @@ import org.oscarehr.util.SpringUtils;
 
 import net.sf.json.JSONObject;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ConsultationClinicalData2Action extends ActionSupport {

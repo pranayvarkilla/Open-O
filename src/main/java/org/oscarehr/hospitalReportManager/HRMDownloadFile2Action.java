@@ -24,7 +24,7 @@
  */
 package org.oscarehr.hospitalReportManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.oscarehr.hospitalReportManager.dao.HRMDocumentDao;

@@ -44,7 +44,7 @@ import org.oscarehr.util.SpringUtils;
  *
  * @author oscar
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class DemographicExportServlet2Action extends ActionSupport {

@@ -32,7 +32,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.oscarehr.common.dao.SystemMessageDao;
 import org.oscarehr.common.model.SystemMessage;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class SystemMessage2Action extends ActionSupport {

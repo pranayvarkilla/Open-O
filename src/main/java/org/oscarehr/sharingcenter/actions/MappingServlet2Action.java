@@ -44,7 +44,7 @@ import org.oscarehr.sharingcenter.model.MiscMapping;
 import org.oscarehr.sharingcenter.model.SiteMapping;
 import org.oscarehr.util.SpringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class MappingServlet2Action extends ActionSupport {

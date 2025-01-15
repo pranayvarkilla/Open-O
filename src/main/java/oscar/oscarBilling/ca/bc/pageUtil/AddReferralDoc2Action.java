@@ -38,7 +38,7 @@ import org.oscarehr.util.SpringUtils;
 /**
  * @author Jay Gallagher
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class AddReferralDoc2Action extends ActionSupport {

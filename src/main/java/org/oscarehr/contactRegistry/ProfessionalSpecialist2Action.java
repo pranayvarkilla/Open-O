@@ -1,7 +1,7 @@
 //CHECKSTYLE:OFF
 package org.oscarehr.contactRegistry;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
 import org.oscarehr.common.model.ProfessionalSpecialist;

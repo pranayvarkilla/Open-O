@@ -46,7 +46,7 @@ import oscar.oscarEncounter.immunization.data.EctImmImmunizationData;
 import oscar.oscarEncounter.pageUtil.EctSessionBean;
 import oscar.util.UtilXML;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public final class EctImmSaveConfig2Action extends ActionSupport {

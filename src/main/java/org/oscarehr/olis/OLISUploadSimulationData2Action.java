@@ -26,7 +26,7 @@ import org.oscarehr.util.MiscUtils;
 
 import com.indivica.olis.Driver;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class OLISUploadSimulationData2Action extends ActionSupport {

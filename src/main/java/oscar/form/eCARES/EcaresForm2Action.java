@@ -26,7 +26,7 @@
 package oscar.form.eCARES;
 
 import com.Ostermiller.util.ExcelCSVPrinter;
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
 import org.oscarehr.managers.FormeCARESManager;

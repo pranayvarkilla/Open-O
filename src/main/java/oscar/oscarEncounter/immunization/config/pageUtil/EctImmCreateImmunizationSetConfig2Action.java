@@ -42,7 +42,7 @@ import oscar.oscarEncounter.immunization.config.data.EctImmImmunizationSetWriter
 import oscar.oscarEncounter.immunization.config.data.EctImmImmunizations;
 import oscar.oscarEncounter.pageUtil.EctSessionBean;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class EctImmCreateImmunizationSetConfig2Action extends ActionSupport {

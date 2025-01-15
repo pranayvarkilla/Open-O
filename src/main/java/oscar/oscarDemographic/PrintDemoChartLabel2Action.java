@@ -30,7 +30,7 @@ import org.oscarehr.util.SpringUtils;
 
 import oscar.OscarDocumentCreator;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class PrintDemoChartLabel2Action extends ActionSupport {

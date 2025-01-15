@@ -34,7 +34,7 @@ import org.oscarehr.util.LoggedInInfo;
 import oscar.oscarProvider.data.ProviderMyOscarIdData;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class ProEditMyOscarId2Action extends ActionSupport {
