@@ -232,6 +232,22 @@
     "optional" : false,
     "integrity" : "sha512:kGAn8E5VII/duD6uY/Elj64QAQfijpy9Z2qNS99znBh9P5v6nLNyEc5KC3LzZQHeMAzYgG4fSwO8O9mDA7laOw=="
   }, {
+    "groupId" : "ch.qos.logback",
+    "artifactId" : "logback-classic",
+    "version" : "1.5.16",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:yuNMcINQ7y799rP4mUWQY4p6qIqONQWx6o1/yiV53WneNT/uHTs6FWye+HkeWN0ZLgHQG7gzoJLaUz53yHeEPQ=="
+  }, {
+    "groupId" : "ch.qos.logback",
+    "artifactId" : "logback-core",
+    "version" : "1.5.16",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:858DEl9HVRdTDkfNcw+4Nc2vwwVhX0v4nm1i31FNZm3tGEUhvBoW88/7F9XdWSUCyqIWjEUgRe839LBCcr/hjA=="
+  }, {
     "groupId" : "com.atlassian.commonmark",
     "artifactId" : "commonmark",
     "version" : "0.10.0",
@@ -3261,11 +3277,11 @@
   }, {
     "groupId" : "org.slf4j",
     "artifactId" : "slf4j-api",
-    "version" : "1.7.32",
+    "version" : "2.1.0-alpha1",
     "scope" : "compile",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:TKQEV3WoecPOMCGQjbe0d4I1oyL9jiVn2pYBVvJLnahuaBKklWyNwZkgzYPkxhFBFoxYCCn0PxC7rJJdRlw/0Q=="
+    "integrity" : "sha512:d5gIUZBJmDOlxxWS7itJPnAb3gY6LOLjHqfHAy1YZDxZINZbWkySCpFIX7BVVWoLcDu4Vij+8zQcfZrc11eSZQ=="
   }, {
     "groupId" : "org.slf4j",
     "artifactId" : "slf4j-jdk14",
