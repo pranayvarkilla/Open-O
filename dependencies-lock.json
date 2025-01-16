@@ -2115,6 +2115,14 @@
     "integrity" : "sha512:OTblLFZRHNCIGyTUxNukrFGdvRLVZ+T9zli27AJTdxdyAPhc+KuCnBHXWwpg03Mr2bp4/sFAAYaBWDHs1MoA5w=="
   }, {
     "groupId" : "org.apache.struts",
+    "artifactId" : "struts2-convention-plugin",
+    "version" : "6.7.0",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:MInqtOaCDfaTjJ38w56a9u4u+rrbaW232ih2OYkipCpIX0xyxIQzr70pjP/XucYMfP/h1qEoKEbBhp10pBCSog=="
+  }, {
+    "groupId" : "org.apache.struts",
     "artifactId" : "struts2-core",
     "version" : "6.7.0",
     "scope" : "compile",
@@ -3146,6 +3154,22 @@
     "type" : "jar",
     "optional" : false,
     "integrity" : "sha512:rKUGTFlxVsKVz5atGo8YDxjbm91mnziUe/hK7hUn0aWKTAX6bh3xTZD5f2/DoR4mZQdkWcCeBls1LbbbApeoPg=="
+  }, {
+    "groupId" : "org.ow2.asm",
+    "artifactId" : "asm-commons",
+    "version" : "9.7.1",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:gdr1dl44fmruxdRcS55OG0cftPNQkx5aIUhFx8ZXohQnaPaQJ2XknAzixZWWLl0AiIPLouSkDEvc6PLpJRjS2w=="
+  }, {
+    "groupId" : "org.ow2.asm",
+    "artifactId" : "asm-tree",
+    "version" : "9.7.1",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:5VAIw5L9016V00BHZrEt1LRuE9XDYvzQq0KmV1GoJzfq8OvIV2kdGRYZDTRAet/eRDdhXWnCeHhUFv2RHgCXjQ=="
   }, {
     "groupId" : "org.ow2.asm",
     "artifactId" : "asm",

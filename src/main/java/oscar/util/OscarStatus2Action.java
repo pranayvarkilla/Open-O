@@ -29,9 +29,9 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.ActionContext;
 
 public class OscarStatus2Action extends ActionSupport {
-    HttpServletRequest servletRequest = ServletActionContext.getRequest();
-    HttpServletResponse servletResponse = ServletActionContext.getResponse();
-
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest servletRequest = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse servletResponse = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     public String execute() {
 

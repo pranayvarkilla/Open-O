@@ -41,27 +41,25 @@ import org.oscarehr.billing.CA.model.GstControl;
 import org.oscarehr.util.SpringUtils;
 
 import org.apache.struts2.ActionSupport;
-import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.ServletResponseAware;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
-public class GstControl2Action extends ActionSupport implements ServletRequestAware, ServletResponseAware  {
-    private HttpServletRequest request;
-    private HttpServletResponse response;
-    @Override
-    public void setServletRequest(HttpServletRequest request) {
-        this.request = request;
-    }
-
-    @Override
-    public void setServletResponse(HttpServletResponse response) {
-        this.response = response;
-    }
-
-
+public class GstControl2Action extends ActionSupport {
     private GstControlDao dao = SpringUtils.getBean(GstControlDao.class);
 
+    private String gstPercent;
 
     public String execute() throws ServletException, IOException {
+        ActionContext context = ActionContext.getContext();
+        HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+        HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
+
+        gstPercent = request.getParameter("gstPercent");
+        if (gstPercent == null || gstPercent.isEmpty()) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "GST Percent is required.");
+            return ERROR;
+        }
+        
         writeDatabase(this.getGstPercent());
 
         return SUCCESS;
@@ -81,7 +79,6 @@ public class GstControl2Action extends ActionSupport implements ServletRequestAw
         }
         return props;
     }
-    String gstPercent;
 
     public String getGstPercent() {
         return gstPercent;

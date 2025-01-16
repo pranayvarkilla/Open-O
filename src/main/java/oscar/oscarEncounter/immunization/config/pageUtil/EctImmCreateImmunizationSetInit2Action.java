@@ -25,9 +25,7 @@
 package oscar.oscarEncounter.immunization.config.pageUtil;
 
 import org.apache.struts2.ActionSupport;
-import org.apache.struts2.validator.annotations.Validation;
 
-@Validation
 public class EctImmCreateImmunizationSetInit2Action extends ActionSupport {
     private String setName;
     private String numRows;
