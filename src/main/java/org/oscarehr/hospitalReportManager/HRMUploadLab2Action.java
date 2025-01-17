@@ -12,10 +12,11 @@ package org.oscarehr.hospitalReportManager;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.core.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload2.core.DiskFileItemFactory;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletFileUpload;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 
@@ -46,7 +47,7 @@ public class HRMUploadLab2Action extends ActionSupport {
     @Override
     public String execute() {
         String success = SUCCESS;
-        if (!ServletFileUpload.isMultipartContent(request)) {
+        if (!JakartaServletFileUpload.isMultipartContent(request)) {
             return success;
         }
 
@@ -82,8 +83,8 @@ public class HRMUploadLab2Action extends ActionSupport {
     }
 
     private List<FileItem> getFiles(HttpServletRequest request) {
-        DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
-        ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
+        DiskFileItemFactory diskFileItemFactory = DiskFileItemFactory.builder().setPath(System.getProperty("java.io.tmpdir")).get();
+        JakartaServletFileUpload servletFileUpload = new JakartaServletFileUpload(diskFileItemFactory);
 
         try {
             return servletFileUpload.parseRequest(request);

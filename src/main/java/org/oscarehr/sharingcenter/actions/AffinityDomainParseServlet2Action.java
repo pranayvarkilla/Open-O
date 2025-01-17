@@ -31,10 +31,10 @@ import java.util.List;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.core.FileUploadException;
+import org.apache.commons.fileupload2.core.DiskFileItemFactory;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletFileUpload;
 import org.marc.shic.core.configuration.IheAffinityDomainConfiguration;
 import org.marc.shic.core.exceptions.IheConfigurationException;
 import org.marc.shic.core.utils.ConfigurationUtility;
@@ -66,7 +66,9 @@ public class AffinityDomainParseServlet2Action extends ActionSupport {
         }
 
         try {
-            List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+            DiskFileItemFactory factory = DiskFileItemFactory.builder().setPath(System.getProperty("java.io.tmpdir")).get();
+            JakartaServletFileUpload upload = new JakartaServletFileUpload(factory);
+            List<FileItem> items = upload.parseRequest(request);
             for (FileItem item : items) {
                 if (item.isFormField()) {
                     //nothing to do here.

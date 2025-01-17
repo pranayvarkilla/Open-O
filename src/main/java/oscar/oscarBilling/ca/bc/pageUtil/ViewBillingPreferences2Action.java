@@ -51,7 +51,8 @@ import org.apache.struts2.ActionContext;
 
 public class ViewBillingPreferences2Action
         extends ActionSupport {
-    HttpServletRequest servletRequest = ServletActionContext.getRequest();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest servletRequest =  (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
     HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 

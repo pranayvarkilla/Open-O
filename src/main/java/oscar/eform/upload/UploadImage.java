@@ -43,9 +43,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.DiskFileUpload;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletDiskFileUpload;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.core.FileUploadException;
 import org.oscarehr.util.MiscUtils;
 
 import oscar.OscarProperties;
@@ -60,7 +60,7 @@ public class UploadImage extends HttpServlet {
         foldername = ap.getProperty("eform_image");
 
         //		 Create a new file upload handler
-        DiskFileUpload upload = new DiskFileUpload();
+        JakartaServletDiskFileUpload upload = new JakartaServletDiskFileUpload();
 
         try {
             //		 Parse the request
@@ -82,7 +82,7 @@ public class UploadImage extends HttpServlet {
                     fileheader = fullFile[fullFile.length - 1];
                     MiscUtils.getLogger().debug(fileheader + "uploaded to \n" +
                             foldername);
-                    item.write(savedFile);
+                    item.write(savedFile.toPath());
                 }
             }
         } catch (FileUploadException e) {

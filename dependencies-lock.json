@@ -1387,6 +1387,14 @@
     "integrity" : "sha512:sTFX2QxWse1TtMvL59aQDsChyDvtUDKf3+9EhGJYHlM0hTNEuSSKjFEKV6f0egI8zg/SEzlalRQWCgRarTmBpg=="
   }, {
     "groupId" : "org.apache.commons",
+    "artifactId" : "commons-fileupload2-jakarta",
+    "version" : "2.0.0-M1",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:PBH6BdSNJDjdiLC/NPlulwOiWBC41m8lEKEpwLNQtUs/CBt7AnPJlSdtd+f75ZsYm+qEQqWO1Qv2syiq4gwiTg=="
+  }, {
+    "groupId" : "org.apache.commons",
     "artifactId" : "commons-lang3",
     "version" : "3.17.0",
     "scope" : "compile",

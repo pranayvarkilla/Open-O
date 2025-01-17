@@ -49,9 +49,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletFileUpload;
 import org.apache.logging.log4j.Logger;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;
 import org.marc.shic.core.CertificateIdentifier;
@@ -89,7 +88,7 @@ public class SecurityInfrastructureServlet2Action extends ActionSupport {
         String status = "error";
         //if this is an update request from the chain import page
         if (request.getMethod().equalsIgnoreCase("post")) {
-            status = performImport(new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request));
+            status = performImport((new JakartaServletFileUpload()).parseRequest(request));
             response.sendRedirect(request.getContextPath() + status);
         } else if (request.getParameter("id") != null && !request.getParameter("id").equals("")) {
             try {

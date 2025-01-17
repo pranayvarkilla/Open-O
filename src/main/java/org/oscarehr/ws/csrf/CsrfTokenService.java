@@ -28,8 +28,10 @@ package org.oscarehr.ws.csrf;
 import net.sf.json.JSONObject;
 import org.oscarehr.ws.oauth.AbstractServiceImpl;
 import org.owasp.csrfguard.CsrfGuard;
+import org.owasp.csrfguard.token.service.TokenService;
 import org.springframework.stereotype.Component;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -43,9 +45,16 @@ public class CsrfTokenService extends AbstractServiceImpl {
     @Produces("application/json")
     public String getToken() {
         CsrfGuard csrfGuard = CsrfGuard.getInstance();
+        TokenService tokenService = csrfGuard.getTokenService();
+
+        HttpServletRequest request = getHttpServletRequest();
+        String logicalSessionKey = request.getSession().getId();
+        String resourceUri = request.getRequestURI();
+
         JSONObject token = new JSONObject();
         token.put("name", csrfGuard.getTokenName());
-        token.put("value", csrfGuard.getTokenValue(getHttpServletRequest()));
+        token.put("value", tokenService.getTokenValue(logicalSessionKey, resourceUri));
+        
         return token.toString();
     }
 }

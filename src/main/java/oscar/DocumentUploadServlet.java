@@ -36,9 +36,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.DiskFileUpload;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletDiskFileUpload;
+import org.apache.commons.fileupload2.core.DiskFileItem;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.core.FileUploadException;
 import org.apache.commons.io.FileUtils;
 import org.oscarehr.util.MiscUtils;
 
@@ -71,14 +72,14 @@ public class DocumentUploadServlet extends HttpServlet {
             fileheader = providedFilename;
         } else {
 
-            DiskFileUpload upload = new DiskFileUpload();
+            JakartaServletDiskFileUpload upload = new JakartaServletDiskFileUpload();
 
             try {
                 // Parse the request
                 @SuppressWarnings("unchecked")
-                List<FileItem> /* FileItem */items = upload.parseRequest(request);
+                List<DiskFileItem> /* FileItem */items = upload.parseRequest(request);
                 // Process the uploaded items
-                Iterator<FileItem> iter = items.iterator();
+                Iterator<DiskFileItem> iter = items.iterator();
                 while (iter.hasNext()) {
                     FileItem item = iter.next();
 
@@ -88,7 +89,7 @@ public class DocumentUploadServlet extends HttpServlet {
                         String[] fullFile = pathName.split("[/|\\\\]");
                         File savedFile = new File(foldername, fullFile[fullFile.length - 1]);
                         fileheader = fullFile[fullFile.length - 1];
-                        item.write(savedFile);
+                        item.write(savedFile.toPath());
                         if (OscarProperties.getInstance().isPropertyActive("moh_file_management_enabled")) {
                             FileUtils.copyFileToDirectory(savedFile, new File(inboxFolder));
                         }

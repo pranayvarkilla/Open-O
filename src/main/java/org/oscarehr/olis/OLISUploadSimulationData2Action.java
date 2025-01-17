@@ -16,9 +16,9 @@ import java.util.List;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.DefaultFileItemFactory;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUpload;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.core.DiskFileItemFactory;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletFileUpload;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.util.LoggedInInfo;
@@ -45,7 +45,8 @@ public class OLISUploadSimulationData2Action extends ActionSupport {
         boolean simulationError = false;
 
         try {
-            FileUpload upload = new FileUpload(new DefaultFileItemFactory());
+            DiskFileItemFactory factory = DiskFileItemFactory.builder().setPath(System.getProperty("java.io.tmpdir")).get();
+            JakartaServletFileUpload upload = new JakartaServletFileUpload(factory);
             @SuppressWarnings("unchecked")
             List<FileItem> items = upload.parseRequest(request);
             for (FileItem item : items) {

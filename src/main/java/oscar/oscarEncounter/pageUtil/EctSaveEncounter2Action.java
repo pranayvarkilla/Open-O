@@ -60,8 +60,9 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.ActionContext;
 
 public class EctSaveEncounter2Action extends ActionSupport {
-    HttpServletRequest httpservletrequest = ServletActionContext.getRequest();
-    HttpServletResponse httpservletresponse = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest httpservletrequest = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse httpservletresponse = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     static Logger log = MiscUtils.getLogger();
     AppointmentArchiveDao appointmentArchiveDao = (AppointmentArchiveDao) SpringUtils.getBean(AppointmentArchiveDao.class);

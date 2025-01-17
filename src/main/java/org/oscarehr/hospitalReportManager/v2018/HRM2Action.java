@@ -31,14 +31,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.core.FileUploadException;
+import org.apache.commons.fileupload2.core.DiskFileItemFactory;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletFileUpload;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
@@ -118,15 +117,10 @@ public class HRM2Action extends ActionSupport {
         try {
 
             // Create a factory for disk-based file items
-            DiskFileItemFactory factory = new DiskFileItemFactory();
-
-            // Configure a repository (to ensure a secure temp location is used)
-            ServletContext servletContext = ServletActionContext.getServletContext();
-            File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
-            factory.setRepository(repository);
+            DiskFileItemFactory factory = DiskFileItemFactory.builder().setPath(System.getProperty("java.io.tmpdir")).get();
 
             // Create a new file upload handler
-            ServletFileUpload upload = new ServletFileUpload(factory);
+            JakartaServletFileUpload upload = new JakartaServletFileUpload(factory);
 
             // Parse the request
             List<FileItem> items = upload.parseRequest(request);
@@ -135,7 +129,7 @@ public class HRM2Action extends ActionSupport {
                 if ("hrm_file".equals(item.getFieldName())) {
 
                     File file = new File(downloadDirectory, item.getName());
-                    item.write(file);
+                    item.write(file.toPath());
 
                     HRMReport report = HRMReportParser.parseReport(loggedInInfo, file.getAbsolutePath());
                     if (report != null) {
@@ -186,15 +180,10 @@ public class HRM2Action extends ActionSupport {
         try {
 
             // Create a factory for disk-based file items
-            DiskFileItemFactory factory = new DiskFileItemFactory();
-
-            // Configure a repository (to ensure a secure temp location is used)
-            ServletContext servletContext = ServletActionContext.getServletContext();
-            File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
-            factory.setRepository(repository);
+            DiskFileItemFactory factory = DiskFileItemFactory.builder().setPath(System.getProperty("java.io.tmpdir")).get();
 
             // Create a new file upload handler
-            ServletFileUpload upload = new ServletFileUpload(factory);
+            JakartaServletFileUpload upload = new JakartaServletFileUpload(factory);
 
             // Parse the request
             List<FileItem> items = upload.parseRequest(request);
@@ -202,7 +191,7 @@ public class HRM2Action extends ActionSupport {
             for (FileItem item : items) {
                 if ("privateKeyFile".equals(item.getFieldName())) {
                     File file = new File(privateKeyDirectory, item.getName());
-                    item.write(file);
+                    item.write(file.toPath());
 
                     //update props
                     saveUserProperty("hrm_private_key_file", item.getName());
