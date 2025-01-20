@@ -1612,11 +1612,11 @@
   }, {
     "groupId" : "org.apache.cxf",
     "artifactId" : "cxf-rt-frontend-jaxrs",
-    "version" : "2.7.4",
+    "version" : "4.1.0",
     "scope" : "compile",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:Uw7OZnhaIFOdggGMvSvuFna5wg5O3RpWHjmW5tKOksPeUrF0TQ8PR0sYZqT24qqGy/IYgTQD4VtmcAK2JCRzIg=="
+    "integrity" : "sha512:f9if806QlsNsFftcKr9ZivDj7o5DU3loRZY3eUpC2Zs9+QSfptZ46Wzs4O/Rzqw3VvPXNWTXXCTFO88qLPBz3g=="
   }, {
     "groupId" : "org.apache.cxf",
     "artifactId" : "cxf-rt-frontend-jaxws",
@@ -1657,6 +1657,14 @@
     "type" : "jar",
     "optional" : false,
     "integrity" : "sha512:tNYdVy2HsEPemlPCf/fGjw4ZWaSfrn0MEWX8Bfkp3Kid2shqeGo/i02yy3kofxmPkNPV0UsspbGhPmBDIc0pFQ=="
+  }, {
+    "groupId" : "org.apache.cxf",
+    "artifactId" : "cxf-rt-rs-client",
+    "version" : "4.1.0",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:I7OKfxUbI1BXcLp62imsZ+jdvhdIDIFALP4kro9v6td2mx2UQyc5E4RaaP191izUTER+Q/+Owy9l7q0ixrWMYA=="
   }, {
     "groupId" : "org.apache.cxf",
     "artifactId" : "cxf-rt-rs-extension-providers",

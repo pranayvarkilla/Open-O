@@ -1132,6 +1132,11 @@
             <artifactId>cxf-rt-ws-security</artifactId>
             <version>4.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-client</artifactId>
+            <version>4.1.0</version>
+        </dependency>
         <!-- wss4j -->
         <!-- https://mvnrepository.com/artifact/org.apache.wss4j/wss4j-ws-security-common -->
         <dependency>

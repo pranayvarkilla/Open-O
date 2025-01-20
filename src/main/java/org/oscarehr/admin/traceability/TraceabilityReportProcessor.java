@@ -35,10 +35,10 @@ import java.util.zip.GZIPInputStream;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.core.FileItemFactory;
+import org.apache.commons.fileupload2.core.DiskFileItemFactory;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletFileUpload;
 import org.oscarehr.common.dao.ClinicDAO;
 import org.oscarehr.common.model.Clinic;
 import org.oscarehr.util.SpringUtils;
@@ -71,8 +71,8 @@ public class TraceabilityReportProcessor implements Callable<String> {
         String originDate = null;
         String gitSHA = null;
         clinicName = (clinicName == null) ? "" : clinicName;
-        FileItemFactory factory = new DiskFileItemFactory();
-        ServletFileUpload upload = new ServletFileUpload(factory);
+        DiskFileItemFactory factory = DiskFileItemFactory.builder().setPath(System.getProperty("java.io.tmpdir")).get();
+            JakartaServletFileUpload upload = new JakartaServletFileUpload(factory);
         PrintWriter pw = new PrintWriter(outputStream);
         List<FileItem> items = upload.parseRequest(request);
         for (FileItem diskFileItem : items) {
