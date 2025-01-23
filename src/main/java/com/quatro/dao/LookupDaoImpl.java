@@ -54,6 +54,7 @@ import com.quatro.model.security.SecProvider;
 import com.quatro.util.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
 
 public class LookupDaoImpl extends HibernateDaoSupport implements LookupDao {
 
@@ -588,7 +589,7 @@ public class LookupDaoImpl extends HibernateDaoSupport implements LookupDao {
             // Session session = getSession();
             Session session = sessionFactory.getCurrentSession();
             try {
-                session.createSQLQuery(sql).executeUpdate();
+                session.createNativeQuery(sql).executeUpdate();
             } finally {
                 // this.releaseSession(session);
                 session.close();

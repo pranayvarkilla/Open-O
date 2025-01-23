@@ -27,14 +27,14 @@ package com.quatro.dao.security;
 
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.LockMode;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Example;
+import org.hibernate.query.Query;
 import org.oscarehr.PMmodule.web.formbean.StaffForm;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
@@ -42,6 +42,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.quatro.model.security.Secuserrole;
+
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -226,7 +232,7 @@ public class SecuserroleDaoImpl extends HibernateDaoSupport implements Secuserro
     @Override
     public List findByExample(Secuserrole instance) {
         // Session session = getSession();
-        Session session = currentSession();
+        /*Session session = currentSession();
         ;
         logger.debug("finding Secuserrole instance by example");
         try {
@@ -240,10 +246,41 @@ public class SecuserroleDaoImpl extends HibernateDaoSupport implements Secuserro
         } catch (RuntimeException re) {
             logger.error("find by example failed", re);
             throw re;
-        }
+        }*/
         // finally {
         // this.releaseSession(session);
         // }
+        Session session = currentSession();
+        logger.debug("Finding Secuserrole instance by example");
+
+        try {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Secuserrole> cq = cb.createQuery(Secuserrole.class);
+            Root<Secuserrole> root = cq.from(Secuserrole.class);
+
+            // Build where conditions dynamically based on non-null properties in 'instance'
+            List<Predicate> predicates = new ArrayList<>();
+            if (instance.getUserName() != null) {
+                predicates.add(cb.equal(root.get("username"), instance.getUserName()));
+            }
+            if (instance.getRoleName() != null) {
+                predicates.add(cb.equal(root.get("role"), instance.getRoleName()));
+            }
+            // Add other conditions as needed
+
+            cq.select(root).where(predicates.toArray(new Predicate[0]));
+            Query<Secuserrole> query = session.createQuery(cq);
+
+            List<Secuserrole> results = query.getResultList();
+            logger.debug("Find by example successful, result size: " + results.size());
+
+            return results;
+        } catch (RuntimeException re) {
+            logger.error("Find by example failed", re);
+            throw re;
+        } finally {
+            // No need to close the session if managed by Spring or Java EE container
+        }
     }
 
     @Override

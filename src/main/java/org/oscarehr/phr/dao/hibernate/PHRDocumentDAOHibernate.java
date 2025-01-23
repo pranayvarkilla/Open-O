@@ -32,13 +32,14 @@ import java.util.List;
 
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.oscarehr.phr.dao.PHRDocumentDAO;
 import org.oscarehr.phr.model.PHRDocument;
 import org.oscarehr.phr.model.PHRMessage;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.HibernateCallback;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 /**
@@ -51,7 +52,7 @@ public class PHRDocumentDAOHibernate extends HibernateDaoSupport
 
 
     public boolean hasIndex(String idx) {
-        final String index = idx;
+        /*final String index = idx;
         Long num = (Long) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session session)
                     throws HibernateException {
@@ -66,6 +67,19 @@ public class PHRDocumentDAOHibernate extends HibernateDaoSupport
             return true;
         }
         return false;
+
+        */
+        HibernateTemplate hibernateTemplate = getHibernateTemplate();
+        Long num = hibernateTemplate.execute(session -> {
+            // Create a type-safe query specifying the result class as Long
+            Query<Long> query = session.createQuery("SELECT COUNT(*) FROM PHRDocument p WHERE p.phrIndex = :index", Long.class);
+            query.setParameter("index", idx);
+            query.setCacheable(true); // Enable query cache if configured
+            return query.uniqueResult(); // Directly returns the result as Long
+        });
+
+        log.debug("Number of documents with that idx: " + num);
+        return num != null && num > 0;
     }
 
 

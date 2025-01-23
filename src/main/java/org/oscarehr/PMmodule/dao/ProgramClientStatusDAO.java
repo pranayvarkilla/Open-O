@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.oscarehr.PMmodule.model.ProgramClientStatus;
 import org.oscarehr.common.model.Admission;

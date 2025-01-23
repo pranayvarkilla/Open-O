@@ -31,16 +31,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.persister.collection.mutation.RowMutationOperations.Restrictions;
+import org.oscarehr.common.dao.MaxSelectLimitExceededException;
 import org.oscarehr.phr.model.PHRAction;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
+import org.hibernate.query.Query;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 public class PHRActionDAO extends HibernateDaoSupport {
     private static Logger logger = MiscUtils.getLogger();
@@ -189,7 +193,7 @@ public class PHRActionDAO extends HibernateDaoSupport {
 
     // checks to see whether this document has been sent to indivo before (for update/add decision)
     public boolean isIndivoRegistered(final String classification, final String oscarId) {
-        Long num = (Long) getHibernateTemplate().execute(new HibernateCallback() {
+        /*Long num = (Long) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
                 Query q = session.createQuery("select count(*) from PHRAction a where a.phrClassification = ?1 and a.oscarId = ?2");
                 q.setParameter(1, classification);
@@ -199,12 +203,25 @@ public class PHRActionDAO extends HibernateDaoSupport {
             }
         });
         if (num > 0) return true;
-        return false;
+        return false;*/
+        // Open a session directly, managing it with try-with-resources to ensure it's closed
+        try (Session session = currentSession()) {
+            // Create a query using a type-safe manner to avoid SQL injection and make it more maintainable
+            Query<Long> query = session.createQuery("select count(*) from PHRAction a where a.phrClassification = :classification and a.oscarId = :oscarId", Long.class);
+            query.setParameter("classification", classification);
+            query.setParameter("oscarId", oscarId);
+            query.setCacheable(true);  // Enable query cache if configured
 
+            // Execute the query and get the unique result
+            Long count = query.uniqueResult();
+
+            // Return true if the count is more than 0, indicating at least one record exists
+            return count != null && count > 0;
+        }
     }
 
     public String getPhrIndex(final String classification, final String oscarId) {
-        List<PHRAction> list = (List<PHRAction>) getHibernateTemplate().execute(new HibernateCallback() {
+        /*List<PHRAction> list = (List<PHRAction>) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
                 Criteria criteria = session.createCriteria(PHRAction.class);
                 criteria.add(Restrictions.eq("phrClassification", classification));
@@ -221,6 +238,32 @@ public class PHRActionDAO extends HibernateDaoSupport {
          * Criteria criteria = this.getSession().createCriteria(PHRAction.class); criteria.add(Restrictions.eq("phrClassification", classification)); criteria.add(Restrictions.eq("oscarId", oscarId)); criteria.add(Restrictions.eq("sent",
          * PHRAction.STATUS_SENT)); criteria.setMaxResults(1); List<PHRAction> list = criteria.list(); if (list.size() > 0) return list.get(0).getPhrIndex(); return null;
          */
+        try (Session session = currentSession()) {
+            // Create the CriteriaBuilder and CriteriaQuery for PHRAction
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<PHRAction> cq = cb.createQuery(PHRAction.class);
+            Root<PHRAction> root = cq.from(PHRAction.class);
+    
+            // Add conditions to the query
+            cq.select(root).where(
+                cb.and(
+                    cb.equal(root.get("phrClassification"), classification),
+                    cb.equal(root.get("oscarId"), oscarId),
+                    cb.equal(root.get("status"), PHRAction.STATUS_SENT)
+                )
+            ).orderBy(cb.desc(root.get("someTimestampField"))); // Assuming you might need the latest one based on some timestamp.
+    
+            // Limit the results to just one
+            Query<PHRAction> query = session.createQuery(cq);
+            query.setMaxResults(1);
+    
+            // Execute the query and obtain the result
+            List<PHRAction> list = query.getResultList();
+            if (list != null && !list.isEmpty()) {
+                return list.get(0).getPhrIndex();
+            }
+            return null;
+        }
     }
 
     /*

@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.oscarehr.PMmodule.model.ProgramClientStatus;
 import org.oscarehr.common.model.Admission;
@@ -38,6 +37,7 @@ import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 public class ProgramClientStatusDAOImpl extends HibernateDaoSupport implements ProgramClientStatusDAO {
 
@@ -83,7 +83,7 @@ public class ProgramClientStatusDAOImpl extends HibernateDaoSupport implements P
         }
 
         // Session session = getSession();
-        Session session = sessionFactory.getCurrentSession();
+        /*Session session = sessionFactory.getCurrentSession();
         List teams = new ArrayList();
         try {
             Query query = session.createQuery("select pt.id from ProgramClientStatus pt where pt.programId = ?1 and pt.name = ?2");
@@ -100,6 +100,25 @@ public class ProgramClientStatusDAOImpl extends HibernateDaoSupport implements P
             session.close();
         }
         return !teams.isEmpty();
+        */
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            // Use a named query for clarity and safety
+            String hql = "SELECT pt.id FROM ProgramClientStatus pt WHERE pt.programId = :programId AND pt.name = :statusName";
+            Query<Long> query = session.createQuery(hql, Long.class);
+            query.setParameter("programId", programId);
+            query.setParameter("statusName", statusName);
+
+            List<Long> results = query.getResultList();
+            
+            if (log.isDebugEnabled()) {
+                log.debug("clientStatusNameExists: programId = " + programId + ", statusName = '" + statusName + "', result = " + !results.isEmpty());
+            }
+
+            return !results.isEmpty();
+        } finally {
+            // The session should be closed by the framework, not manually, unless specifically handled in non-managed environments
+        }
     }
 
     public List<Admission> getAllClientsInStatus(Integer programId, Integer statusId) {

@@ -31,12 +31,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import com.quatro.dao.security.SecobjprivilegeDao;
 import com.quatro.model.security.Secobjprivilege;
@@ -90,7 +90,7 @@ public class SecobjprivilegeDaoImpl extends HibernateDaoSupport implements Secob
 
     @Override
     public int update(Secobjprivilege instance) {
-        logger.debug("update Secobjprivilege instance");
+        /*logger.debug("update Secobjprivilege instance");
         Session session = sessionFactory.getCurrentSession();
         try {
             String queryString = "update Secobjprivilege as model set model.providerNo ='" + instance.getProviderNo()
@@ -109,6 +109,32 @@ public class SecobjprivilegeDaoImpl extends HibernateDaoSupport implements Secob
         } finally {
             // this.releaseSession(session);
             session.close();
+        }*/
+        logger.debug("Updating Secobjprivilege instance");
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            // Construct a parameterized HQL update query
+            String queryString = "UPDATE Secobjprivilege SET providerNo = :providerNo " +
+                                "WHERE objectnameCode = :objectnameCode AND privilegeCode = :privilegeCode " +
+                                "AND roleusergroup = :roleusergroup";
+
+            Query queryObject = session.createQuery(queryString);
+            
+            // Bind values to named parameters in the query to prevent SQL injection
+            queryObject.setParameter("providerNo", instance.getProviderNo());
+            queryObject.setParameter("objectnameCode", instance.getObjectname_code());
+            queryObject.setParameter("privilegeCode", instance.getPrivilege_code());
+            queryObject.setParameter("roleusergroup", instance.getRoleusergroup());
+
+            // Execute the update and return the result
+            int result = queryObject.executeUpdate();
+            logger.debug("Update successful");
+            return result;
+        } catch (RuntimeException re) {
+            logger.error("Update failed", re);
+            throw re;
+        } finally {
+            // No need to explicitly close the session if it's managed by a framework like Spring
         }
     }
 

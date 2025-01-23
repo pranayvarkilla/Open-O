@@ -41,8 +41,11 @@ import org.hibernate.boot.spi.SessionFactoryOptions;
 import org.hibernate.engine.spi.FilterDefinition;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.metadata.CollectionMetadata;
+import org.hibernate.query.criteria.HibernateCriteriaBuilder;
+import org.hibernate.relational.SchemaManager;
 import org.hibernate.stat.Statistics;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.hibernate.graph.RootGraph;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
@@ -144,26 +147,6 @@ public class SpringHibernateLocalSessionFactoryBean extends LocalSessionFactoryB
 //	        sessionFactory.evictQueries(arg0);
 //        }
 
-        public Map getAllClassMetadata() throws HibernateException {
-            return sessionFactory.getAllClassMetadata();
-        }
-
-        public Map getAllCollectionMetadata() throws HibernateException {
-            return sessionFactory.getAllCollectionMetadata();
-        }
-
-        public ClassMetadata getClassMetadata(Class arg0) throws HibernateException {
-            return sessionFactory.getClassMetadata(arg0);
-        }
-
-        public ClassMetadata getClassMetadata(String arg0) throws HibernateException {
-            return sessionFactory.getClassMetadata(arg0);
-        }
-
-        public CollectionMetadata getCollectionMetadata(String arg0) throws HibernateException {
-            return sessionFactory.getCollectionMetadata(arg0);
-        }
-
         // public Session getCurrentSession() throws HibernateException {
         //     return(trackSession(sessionFactory.getCurrentSession()));
         // }
@@ -221,11 +204,6 @@ public class SpringHibernateLocalSessionFactoryBean extends LocalSessionFactoryB
         }
 
         @Override
-        public TypeHelper getTypeHelper() {
-            return ((SessionFactoryImplementor) this).getTypeHelper();
-        }
-
-        @Override
         public boolean containsFetchProfileDefinition(String s) {
             return false;
         }
@@ -263,19 +241,17 @@ public class SpringHibernateLocalSessionFactoryBean extends LocalSessionFactoryB
 
         @Override
         public SessionFactoryOptions getSessionFactoryOptions() {
-            return null;
+            return sessionFactory.getSessionFactoryOptions();
         }
 
         @Override
         public SessionBuilder withOptions() {
-            // TODO Auto-generated method stub
-            return null;
+            return sessionFactory.withOptions();
         }
 
         @Override
         public StatelessSessionBuilder withStatelessOptions() {
-            // TODO Auto-generated method stub
-            return null;
+            return sessionFactory.withStatelessOptions();
         }
 
         @Override
@@ -304,7 +280,7 @@ public class SpringHibernateLocalSessionFactoryBean extends LocalSessionFactoryB
         }
 
         @Override
-        public CriteriaBuilder getCriteriaBuilder() {
+        public HibernateCriteriaBuilder getCriteriaBuilder() {
             return null;
         }
 
@@ -316,6 +292,21 @@ public class SpringHibernateLocalSessionFactoryBean extends LocalSessionFactoryB
         @Override
         public boolean isOpen() {
             return false;
+        }
+
+        @Override
+        public SchemaManager getSchemaManager() {
+            return sessionFactory.getSchemaManager();
+        }
+
+        @Override
+        public RootGraph<?> findEntityGraphByName(String name) {
+            return sessionFactory.findEntityGraphByName(name);
+        }
+
+        @Override
+        public Set<String> getDefinedFetchProfileNames() {
+            return sessionFactory.getDefinedFetchProfileNames();
         }
     }
 	
@@ -336,6 +327,5 @@ public class SpringHibernateLocalSessionFactoryBean extends LocalSessionFactoryB
         System.out.println("Output of building session factory: " + sessionFactory);
         return new TrackingSessionFactory(sessionFactory);
     }
-
 
 }

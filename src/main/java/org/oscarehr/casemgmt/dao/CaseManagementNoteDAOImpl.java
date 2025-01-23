@@ -36,6 +36,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -45,12 +46,7 @@ import java.util.TreeMap;
 import java.util.UUID;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import org.hibernate.criterion.Expression;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import org.oscarehr.PMmodule.model.Program;
 import org.oscarehr.casemgmt.model.CaseManagementNote;
 import org.oscarehr.casemgmt.model.CaseManagementSearchBean;
@@ -61,8 +57,14 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import oscar.OscarProperties;
 import oscar.util.SqlUtils;
 
@@ -437,7 +439,8 @@ public class CaseManagementNoteDAOImpl extends HibernateDaoSupport implements Ca
     @Override
     public Collection<CaseManagementNote> findNotesByDemographicAndIssueCode(Integer demographic_no,
                                                                              String[] issueCodes) {
-        String issueCodeList = null;
+        
+        /*                                                                        String issueCodeList = null;
         if (issueCodes != null && issueCodes.length > 0)
             issueCodeList = SqlUtils.constructInClauseForStatements(issueCodes, true);
 
@@ -471,12 +474,54 @@ public class CaseManagementNoteDAOImpl extends HibernateDaoSupport implements Ca
         }
 
         return (sortedResults.values());
+        */
+        List<CaseManagementNote> notes = new ArrayList<>();
+        String sqlCommand = "SELECT DISTINCT cmn.note_id " +
+                            "FROM issue i, casemgmt_issue cmi, casemgmt_issue_notes cmin, casemgmt_note cmn " +
+                            "WHERE cmi.issue_id = i.issue_id " +
+                            "AND cmi.demographic_no = :demographicNo " +
+                            "AND cmin.id = cmi.id " +
+                            "AND cmin.note_id = cmn.note_id";
+
+        if (issueCodes != null && issueCodes.length > 0) {
+            sqlCommand += " AND i.code IN (:issueCodes)";
+        }
+
+        try (Session session = currentSession()) {
+            NativeQuery<Integer> query = session.createNativeQuery(sqlCommand, Integer.class);
+            query.setParameter("demographicNo", demographic_no);
+            if (issueCodes != null && issueCodes.length > 0) {
+                query.setParameterList("issueCodes", issueCodes);
+            }
+
+            List<Integer> ids = query.getResultList();
+            for (Integer id : ids) {
+                notes.add(getNote(id.longValue()));
+            }
+        }  // Session auto-closed here
+
+        // Ensuring uniqueness and sorting by update date
+        Map<String, CaseManagementNote> uniqueNotes = new HashMap<>();
+        for (CaseManagementNote note : notes) {
+            CaseManagementNote existingNote = uniqueNotes.get(note.getUuid());
+            if (existingNote == null || note.getUpdate_date().after(existingNote.getUpdate_date())) {
+                uniqueNotes.put(note.getUuid(), note);
+            }
+        }
+
+        // Sorting notes by observation date
+        TreeMap<Date, CaseManagementNote> sortedResults = new TreeMap<>();
+        for (CaseManagementNote note : uniqueNotes.values()) {
+            sortedResults.put(note.getObservation_date(), note);
+        }
+
+        return sortedResults.values();
     }
 
     @Override
     public Collection<CaseManagementNote> findNotesByDemographicAndIssueCodeInEyeform(Integer demographic_no,
                                                                                       String[] issueCodes) {
-        String issueCodeList = null;
+        /*String issueCodeList = null;
         if (issueCodes != null && issueCodes.length > 0)
             issueCodeList = SqlUtils.constructInClauseForStatements(issueCodes, true);
 
@@ -513,6 +558,51 @@ public class CaseManagementNoteDAOImpl extends HibernateDaoSupport implements Ca
         }
 
         return (sortedResults.values());
+        */
+        // Construct the SQL command using parameters for security
+        String sqlCommand = "SELECT DISTINCT cn.note_id " +
+                            "FROM issue i, casemgmt_issue ci, casemgmt_issue_notes cin, casemgmt_note cn " +
+                            "WHERE ci.issue_id = i.issue_id " +
+                            "AND ci.demographic_no = :demographicNo " +
+                            "AND cin.id = ci.id " +
+                            "AND cin.note_id = cn.note_id";
+
+        if (issueCodes != null && issueCodes.length > 0) {
+            sqlCommand += " AND i.code IN :issueCodes";
+        }
+        sqlCommand += " ORDER BY cn.note_id DESC";
+
+        try (Session session = currentSession()) {
+            NativeQuery<Integer> query = session.createNativeQuery(sqlCommand, Integer.class);
+            query.setParameter("demographicNo", demographic_no);
+
+            if (issueCodes != null && issueCodes.length > 0) {
+                query.setParameterList("issueCodes", issueCodes); // Use parameter list for IN clause
+            }
+
+            List<Integer> ids = query.getResultList();
+            List<CaseManagementNote> notes = new ArrayList<>();
+            for (Integer id : ids) {
+                notes.add(getNote(id.longValue()));  // This presumably fetches the note by id
+            }
+
+            // Make unique by appointmentNo
+            Map<Integer, CaseManagementNote> uniqueForApptId = new HashMap<>();
+            for (CaseManagementNote note : notes) {
+                CaseManagementNote existingNote = uniqueForApptId.get(note.getAppointmentNo());
+                if (existingNote == null || note.getUpdate_date().after(existingNote.getUpdate_date())) {
+                    uniqueForApptId.put(note.getAppointmentNo(), note);
+                }
+            }
+
+            // Sort by update date
+            TreeMap<Date, CaseManagementNote> sortedResults = new TreeMap<>(Comparator.reverseOrder());
+            for (CaseManagementNote note : uniqueForApptId.values()) {
+                sortedResults.put(note.getUpdate_date(), note);
+            }
+
+            return sortedResults.values();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -564,7 +654,7 @@ public class CaseManagementNoteDAOImpl extends HibernateDaoSupport implements Ca
 
     @Override
     public List<CaseManagementNote> search(CaseManagementSearchBean searchBean) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        /*SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         // Session session = getSession();
         Session session = currentSession();
@@ -608,7 +698,46 @@ public class CaseManagementNoteDAOImpl extends HibernateDaoSupport implements Ca
         }
 
         return results;
+*/
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        List<CaseManagementNote> results = new ArrayList<>();
 
+        try (Session session = currentSession()) {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<CaseManagementNote> cq = cb.createQuery(CaseManagementNote.class);
+            Root<CaseManagementNote> note = cq.from(CaseManagementNote.class);
+            List<Predicate> predicates = new ArrayList<>();
+
+            // Basic demographic_no search
+            predicates.add(cb.equal(note.get("demographicNo"), searchBean.getDemographicNo()));
+
+            // Role ID and Program ID search
+            if (searchBean.getSearchRoleId() > 0) {
+                predicates.add(cb.equal(note.get("reporterCaisiRole"), searchBean.getSearchRoleId()));
+            }
+            if (searchBean.getSearchProgramId() > 0) {
+                predicates.add(cb.equal(note.get("programNo"), searchBean.getSearchProgramId()));
+            }
+
+            // Date range for update_date
+            Date startDate;
+            Date endDate;
+            try {
+                startDate = searchBean.getSearchStartDate().isEmpty() ? formatter.parse("1970-01-01") : formatter.parse(searchBean.getSearchStartDate());
+                endDate = searchBean.getSearchEndDate().isEmpty() ? new Date() : formatter.parse(searchBean.getSearchEndDate());
+                predicates.add(cb.between(note.get("updateDate"), startDate, endDate));
+            } catch (ParseException e) {
+                log.warn("Date parsing error in search", e);
+            }
+
+            cq.select(note).where(cb.and(predicates.toArray(new Predicate[0]))).orderBy(cb.desc(note.get("updateDate")));
+            Query<CaseManagementNote> query = session.createQuery(cq);
+            results = query.getResultList();
+        } catch (Exception e) {
+            log.error("Error during search", e);
+        }
+
+        return results;
     }
 
     @Override
@@ -621,7 +750,7 @@ public class CaseManagementNoteDAOImpl extends HibernateDaoSupport implements Ca
     @Override
     public boolean haveIssue(Long issid, String demoNo) {
         // Session session = getSession();
-        Session session = currentSession();
+        /*Session session = currentSession();
         try {
             SQLQuery query = session.createSQLQuery("select * from casemgmt_issue_notes where id=" + issid.longValue());
             List results = query.list();
@@ -631,13 +760,28 @@ public class CaseManagementNoteDAOImpl extends HibernateDaoSupport implements Ca
             return false;
         } finally {
             //session.close();
+        }*/
+        Session session = currentSession();
+        try {
+            // Use parameterized query to prevent SQL injection
+            String sql = "SELECT * FROM casemgmt_issue_notes WHERE id = :issid";
+            NativeQuery<?> query = session.createNativeQuery(sql);
+            query.setParameter("issid", issid);
+
+            List<?> results = query.getResultList();
+            logger.info("haveIssue - DAO - # of results = " + results.size());
+
+            // Return true if results are found
+            return !results.isEmpty();
+        } finally {
+            // No need to close the session if it's managed by Spring or JEE container
         }
     }
 
     @Override
     public boolean haveIssue(String issueCode, Integer demographicId) {
         // Session session=getSession();
-        Session session = currentSession();
+        /*Session session = currentSession();
         try {
             SQLQuery query = session.createSQLQuery(
                     "select casemgmt_issue.id from casemgmt_issue_notes,casemgmt_issue,issue   where issue.issue_id=casemgmt_issue.issue_id and casemgmt_issue.id=casemgmt_issue_notes.id and demographic_no="
@@ -649,6 +793,21 @@ public class CaseManagementNoteDAOImpl extends HibernateDaoSupport implements Ca
             return false;
         } finally {
             //session.close();
+        }*/
+        try (Session session = currentSession()) {
+            // Use parameterized queries to prevent SQL injection
+            String sql = "SELECT ci.id FROM casemgmt_issue_notes cin " +
+                         "JOIN casemgmt_issue ci ON ci.id = cin.id " +
+                         "JOIN issue i ON ci.issue_id = i.issue_id " +
+                         "WHERE ci.demographic_no = :demographicId AND i.code = :issueCode";
+    
+            NativeQuery<Integer> query = session.createNativeQuery(sql, Integer.class);
+            query.setParameter("demographicId", demographicId);
+            query.setParameter("issueCode", issueCode);
+    
+            List<Integer> results = query.getResultList();
+            log.info("haveIssue - DAO - # of results = " + results.size());
+            return !results.isEmpty();
         }
     }
 

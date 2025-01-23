@@ -35,14 +35,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import org.hibernate.criterion.Expression;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import org.oscarehr.common.NativeSql;
 import org.oscarehr.common.dao.ProviderFacilityDao;
 import org.oscarehr.common.dao.UserPropertyDAO;
@@ -58,9 +52,17 @@ import org.hibernate.type.StandardBasicTypes;
 import oscar.OscarProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.SessionFactory;
+import org.hibernate.persister.collection.mutation.RowMutationOperations.Restrictions;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.quatro.model.security.SecProvider;
+
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @SuppressWarnings("unchecked")
 @Transactional
@@ -372,7 +374,7 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
 
     @Override
     public List<Provider> search(String name) {
-        boolean isOracle = OscarProperties.getInstance().getDbType().equals(
+        /*boolean isOracle = OscarProperties.getInstance().getDbType().equals(
                 "oracle");
         // Session session = getSession();
         Session session = currentSession();
@@ -400,6 +402,33 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
             log.debug("search: # of results=" + results.size());
         }
         return results;
+        */
+        // Assuming OscarProperties provides application-specific configurations
+        boolean isOracle = OscarProperties.getInstance().getDbType().equals("oracle");
+        Session session = currentSession(); // Get the current Hibernate session
+
+        try {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Provider> cq = cb.createQuery(Provider.class);
+            Root<Provider> provider = cq.from(Provider.class);
+            
+            // Applying case-insensitive search for Oracle, case-sensitive for others
+            Predicate firstNamePredicate = isOracle ?
+                cb.like(cb.lower(provider.get("firstName")), name.toLowerCase() + "%") :
+                cb.like(provider.get("firstName"), name + "%");
+            Predicate lastNamePredicate = isOracle ?
+                cb.like(cb.lower(provider.get("lastName")), name.toLowerCase() + "%") :
+                cb.like(provider.get("lastName"), name + "%");
+
+            // Combine the predicates with OR
+            cq.where(cb.or(firstNamePredicate, lastNamePredicate));
+            cq.orderBy(cb.asc(provider.get("providerNo"))); // Ordering by provider number
+            
+            Query<Provider> query = session.createQuery(cq);
+            return query.getResultList(); // Execute the query and return the results
+        } finally {
+            // Session is managed via Spring or Java EE, no need to explicitly close
+        }
     }
 
     @Override
@@ -434,7 +463,7 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
     @Override
     public List getShelterIds(String provider_no) {
 
-        String sql = "select distinct c.id as shelter_id from lst_shelter c, lst_orgcd a, secUserRole b " +
+        /*String sql = "select distinct c.id as shelter_id from lst_shelter c, lst_orgcd a, secUserRole b " +
         "where instr('RO',substr(b.orgcd,1,1)) = 0 and a.codecsv like '%' || b.orgcd || ',%'" +
         " and b.provider_no=?1 and a.codecsv like '%S' || c.id  || ',%'";
         Session session = currentSession();
@@ -450,7 +479,24 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
             //session.close();
         }
         return lst;
+        */
+        Session session = currentSession(); // Assume session is correctly managed by the container/framework
+        try {
+            String sql = "SELECT DISTINCT c.id AS shelter_id FROM lst_shelter c, lst_orgcd a, secUserRole b " +
+                        "WHERE INSTR('RO', SUBSTR(b.orgcd, 1, 1)) = 0 " +
+                        "AND a.codecsv LIKE '%' || b.orgcd || ',%' " +
+                        "AND b.provider_no = :providerNo " +
+                        "AND a.codecsv LIKE '%S' || c.id  || ',%'";
 
+            // Using NativeQuery for SQL queries
+            NativeQuery<Integer> query = session.createNativeQuery(sql, Integer.class);
+            query.addScalar("shelter_id", StandardBasicTypes.INTEGER); // Properly type the query
+            query.setParameter("providerNo", provider_no); // Safely set the parameter to avoid SQL injection
+
+            return query.getResultList(); // Execute the query and collect the results
+        } finally {
+            // Proper resource management assumed by session scope
+        }
     }
 
     @Override
@@ -483,7 +529,7 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
     @Override
     public List<Integer> getFacilityIds(String provider_no) {
         // Session session = getSession();
-        Session session = currentSession();
+        /*Session session = currentSession();
         try {
             SQLQuery query = session.createSQLQuery(
                     "select facility_id from provider_facility,Facility where Facility.id=provider_facility.facility_id and Facility.disabled=0 and provider_no=\'"
@@ -493,13 +539,26 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
         } finally {
             // this.releaseSession(session);
             //session.close();
-        }
+        }*/
+        try (Session session = currentSession()) {
+            // Construct a safe SQL query using parameters to avoid SQL injection
+            String sql = "SELECT facility_id FROM provider_facility " +
+                        "JOIN Facility ON Facility.id = provider_facility.facility_id " +
+                        "WHERE Facility.disabled = 0 AND provider_no = :providerNo";
+
+            // Creating a native query specifying the return type
+            NativeQuery<Integer> query = session.createNativeQuery(sql, Integer.class);
+            query.setParameter("providerNo", provider_no);  // Safely set the provider_no parameter
+
+            // Execute the query and return the results
+            return query.getResultList();
+        } 
     }
 
     @Override
     public List<String> getProviderIds(int facilityId) {
         // Session session = getSession();
-        Session session = currentSession();
+        /*Session session = currentSession();
         try {
             SQLQuery query = session
                     .createSQLQuery("select provider_no from provider_facility where facility_id=" + facilityId);
@@ -508,8 +567,20 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
         } finally {
             // this.releaseSession(session);
             //session.close();
+        }*/
+        try (Session session = currentSession()) {
+            // Constructing the SQL query using parameter placeholders to ensure security against SQL injection
+            String sql = "SELECT provider_no FROM provider_facility WHERE facility_id = :facilityId";
+    
+            // Creating a native query using the session object
+            NativeQuery<String> query = session.createNativeQuery(sql, String.class);
+            
+            // Setting the parameter for the facility ID safely
+            query.setParameter("facilityId", facilityId);
+    
+            // Execute the query and return the results
+            return query.getResultList();
         }
-
     }
 
     @Override
@@ -644,7 +715,7 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
     @Override
     public List<String> getActiveTeamsViaSites(String providerNo) {
         // Session session = getSession();
-        Session session = currentSession();
+        /*Session session = currentSession();
         try {
             // providersite is not mapped in hibernate - this can be rewritten w.o.
             // subselect with a cross product IHMO
@@ -656,6 +727,18 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
         } finally {
             // this.releaseSession(session);
             //session.close();
+        }*/
+        try (Session session = currentSession()) {
+            // Using a parameterized native SQL query to avoid SQL injection
+            String sql = "SELECT DISTINCT team FROM provider p " +
+                         "INNER JOIN providersite s ON s.provider_no = p.provider_no " +
+                         "WHERE s.site_id IN (SELECT site_id FROM providersite WHERE provider_no = :providerNo) " +
+                         "ORDER BY team";
+    
+            NativeQuery<String> query = session.createNativeQuery(sql, String.class);
+            query.setParameter("providerNo", providerNo);  // Safely setting the parameter
+    
+            return query.getResultList();
         }
     }
 
@@ -747,7 +830,7 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
     @SuppressWarnings("unchecked")
     @Override
     public List<Provider> search(String term, boolean active, int startIndex, int itemsToReturn) {
-        String sqlCommand = "select x from Provider x WHERE x.Status = :status ";
+        /*String sqlCommand = "select x from Provider x WHERE x.Status = :status ";
 
         if (term != null && term.length() > 0) {
             sqlCommand += "AND (x.LastName like :term  OR x.FirstName like :term) ";
@@ -771,6 +854,32 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
         } finally {
             // this.releaseSession(session);
             //session.close();
+        }*/
+        String sqlCommand = "SELECT x FROM Provider x WHERE x.status = :status ";
+
+        // Adding conditions based on the search term
+        if (term != null && !term.isEmpty()) {
+            sqlCommand += "AND (x.lastName LIKE :term OR x.firstName LIKE :term) ";
+        }
+
+        // Adding order by clause
+        sqlCommand += "ORDER BY x.lastName, x.firstName";
+
+        try (Session session = currentSession()) {  // Using try-with-resources for session management
+            Query<Provider> query = session.createQuery(sqlCommand, Provider.class);  // Using typed query for type safety
+
+            // Setting parameters
+            query.setParameter("status", active ? "1" : "0");  // Assuming status is stored as String "1" or "0"
+            if (term != null && !term.isEmpty()) {
+                query.setParameter("term", term + "%");  // Using '%' for SQL LIKE pattern match
+            }
+
+            // Setting pagination parameters
+            query.setFirstResult(startIndex);
+            query.setMaxResults(itemsToReturn);
+
+            // Executing query and returning results
+            return query.getResultList();
         }
     }
 
@@ -778,7 +887,7 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
     @Override
     public List<String> getProviderNosWithAppointmentsOnDate(Date appointmentDate) {
         // Session session = getSession();
-        Session session = currentSession();
+        /*Session session = currentSession();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             String sql = "SELECT p.provider_no FROM provider p WHERE p.provider_no IN (SELECT DISTINCT a.provider_no FROM appointment a WHERE a.appointment_date = '"
@@ -790,6 +899,21 @@ public class ProviderDaoImpl extends HibernateDaoSupport implements ProviderDao 
         } finally {
             // this.releaseSession(session);
             //session.close();
+        }*/
+        try (Session session = currentSession()) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            // Construct the query with parameter placeholders to avoid SQL injection
+            String sql = "SELECT p.provider_no FROM provider p " +
+                         "WHERE p.provider_no IN (" +
+                         "SELECT DISTINCT a.provider_no FROM appointment a WHERE a.appointment_date = :appDate) " +
+                         "AND p.Status = '1'";
+    
+            // Using NativeQuery to execute the SQL
+            NativeQuery<String> query = session.createNativeQuery(sql, String.class);
+            query.setParameter("appDate", sdf.format(appointmentDate));  // Safely set the date parameter
+    
+            // Execute the query and return the results
+            return query.getResultList();
         }
     }
 

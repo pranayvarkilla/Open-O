@@ -31,14 +31,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.oscarehr.PMmodule.model.FunctionalUserType;
 import org.oscarehr.PMmodule.model.ProgramFunctionalUser;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 public class ProgramFunctionalUserDAOImpl extends HibernateDaoSupport implements ProgramFunctionalUserDAO {
 
@@ -160,7 +161,7 @@ public class ProgramFunctionalUserDAOImpl extends HibernateDaoSupport implements
 
     @Override
     public Long getFunctionalUserByUserType(Long programId, Long userTypeId) {
-        if (programId == null || programId.intValue() <= 0) {
+        /*if (programId == null || programId.intValue() <= 0) {
             throw new IllegalArgumentException();
         }
         if (userTypeId == null || userTypeId.intValue() <= 0) {
@@ -190,6 +191,30 @@ public class ProgramFunctionalUserDAOImpl extends HibernateDaoSupport implements
                     + result);
         }
 
+        return result;*/
+        if (programId == null || programId <= 0 || userTypeId == null || userTypeId <= 0) {
+            throw new IllegalArgumentException("Invalid programId or userTypeId");
+        }
+    
+        Long result = null;
+        // Assumed query to be HQL. If it's SQL, use session.createNativeQuery instead.
+        String hql = "SELECT pfu.programId FROM ProgramFunctionalUser pfu WHERE pfu.programId = :programId AND pfu.userTypeId = :userTypeId";
+    
+        try (Session session = sessionFactory.getCurrentSession()) { // Using try-with-resources for session management
+            Query<Long> query = session.createQuery(hql, Long.class);
+            query.setParameter("programId", programId);
+            query.setParameter("userTypeId", userTypeId);
+            List<Long> results = query.list(); // Fetch the list of results
+    
+            if (!results.isEmpty()) {
+                result = results.get(0); // Assuming only one or the most relevant result is fetched
+            }
+        } // Session is automatically closed here
+    
+        if (log.isDebugEnabled()) {
+            log.debug("getFunctionalUserByUserType: programId=" + programId + ", userTypeId=" + userTypeId + ", result=" + result);
+        }
+    
         return result;
     }
 }

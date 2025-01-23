@@ -31,14 +31,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Expression;
 import org.oscarehr.PMmodule.model.ClientReferral;
 import org.oscarehr.PMmodule.model.Program;
 import org.oscarehr.common.model.Admission;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
+import org.hibernate.query.Query;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.SessionFactory;
 
@@ -280,7 +284,7 @@ public class ClientReferralDAOImpl extends HibernateDaoSupport implements Client
     @SuppressWarnings("unchecked")
     public List<ClientReferral> search(ClientReferral referral) {
         //Session session = getSession();
-        Session session = sessionFactory.getCurrentSession();
+        /*Session session = sessionFactory.getCurrentSession();
         try {
             Criteria criteria = session.createCriteria(ClientReferral.class);
 
@@ -292,6 +296,18 @@ public class ClientReferralDAOImpl extends HibernateDaoSupport implements Client
         } finally {
             //this.releaseSession(session);
             session.close();
+        }*/
+        try (Session session = sessionFactory.getCurrentSession()) {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<ClientReferral> cq = cb.createQuery(ClientReferral.class);
+            Root<ClientReferral> root = cq.from(ClientReferral.class);
+    
+            if (referral != null && referral.getProgramId() != null && referral.getProgramId() > 0) {
+                cq.where(cb.equal(root.get("programId"), referral.getProgramId()));
+            }
+    
+            Query<ClientReferral> query = session.createQuery(cq);
+            return query.getResultList();
         }
     }
 
