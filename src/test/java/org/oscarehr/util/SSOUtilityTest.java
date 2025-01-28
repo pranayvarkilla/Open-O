@@ -40,8 +40,8 @@ public class SSOUtilityTest {
         try {
             System.out.println(SSOUtility.getLoginRedirectUrl(context));
             URL url = new URL(SSOUtility.getLoginRedirectUrl(context));
-            Assert.isTrue(url.getQuery().contains("ssoLogin"));
-            Assert.isTrue(url.getPath().contains("ssoLogin.do"));
+            Assert.isTrue(url.getQuery().contains("ssoLogin"), "query doesn't contain ssoLogin");
+            Assert.isTrue(url.getPath().contains("ssoLogin.do"), "path doesn't contain ssoLogin.do");
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (URISyntaxException e) {
@@ -55,8 +55,8 @@ public class SSOUtilityTest {
         String context = "http://localhost/oscar/ssoLogin.do";
         try {
             URL url = new URL(SSOUtility.getLogoutRedirectUrl(context));
-            Assert.isTrue(url.getQuery().contains("ssoLogout"));
-            Assert.isTrue(url.getPath().contains("ssoLogin.do"));
+            Assert.isTrue(url.getQuery().contains("ssoLogout"), "query doesn't contain ssoLogout");
+            Assert.isTrue(url.getPath().contains("ssoLogin.do"), "path doesn't contain ssoLogin.do");
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -66,11 +66,11 @@ public class SSOUtilityTest {
     public void getSSOPresetsFromOscarProperties() {
         System.out.println("Test: getSSOPresetsFromOscarProperties");
         Map<SSOUtility.SSO_SETTING, String> settings = SSOUtility.getSSOPresetsFromOscarProperties();
-        Assert.isTrue(settings.containsKey(SSOUtility.SSO_SETTING.sso_url_login));
-        Assert.isTrue(settings.containsKey(SSOUtility.SSO_SETTING.sso_url_logout));
-        Assert.isTrue(settings.containsKey(SSOUtility.SSO_SETTING.sso_entity_id));
-        Assert.isTrue(settings.containsKey(SSOUtility.SSO_SETTING.sso_entity_metadata));
-        Assert.isTrue(settings.containsKey(SSOUtility.SSO_SETTING.sso_idp_x509cert));
+        Assert.isTrue(settings.containsKey(SSOUtility.SSO_SETTING.sso_url_login), "setting doesn't contain sso_url_login");
+        Assert.isTrue(settings.containsKey(SSOUtility.SSO_SETTING.sso_url_logout), "setting doesn't contain sso_url_logout");
+        Assert.isTrue(settings.containsKey(SSOUtility.SSO_SETTING.sso_entity_id), "setting doesn't contain sso_entity_id");
+        Assert.isTrue(settings.containsKey(SSOUtility.SSO_SETTING.sso_entity_metadata), "setting doesn't contain sso_entity_metadata");
+        Assert.isTrue(settings.containsKey(SSOUtility.SSO_SETTING.sso_idp_x509cert), "setting doesn't contain sso_idp_x509cert");
     }
 
     @Test

@@ -1,22 +1,16 @@
 package oscar.util;
 
+import com.quatro.model.security.Secrole;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import org.oscarehr.common.model.Demographic;
+import org.oscarehr.common.model.Provider;
+import org.springframework.orm.hibernate5.HibernateCallback;
+import org.springframework.orm.hibernate5.HibernateTemplate;
+
 import java.util.ArrayList;
 import java.util.List;
-
-
-import org.oscarehr.common.model.Demographic;
-import org.springframework.orm.hibernate5.HibernateTemplate;
-import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
-import org.hibernate.Session;
-import org.springframework.orm.hibernate5.HibernateCallback;
-import org.hibernate.HibernateException;
-
-import java.sql.SQLException;
-
-import org.hibernate.Query;
-
-import com.quatro.model.security.Secrole;
-import org.oscarehr.common.model.Provider;
 
 public class HibernateTestDao {
     HibernateTemplate template;
@@ -24,7 +18,6 @@ public class HibernateTestDao {
     public void setTemplate(HibernateTemplate template) {
         this.template = template;
     }
-
 
     public void findByExample() {
 
@@ -86,7 +79,7 @@ public class HibernateTestDao {
         return (List<Demographic>) template.execute(new HibernateCallback<List<Demographic>>() {
             @Override
             public List<Demographic> doInHibernate(Session session) throws HibernateException {
-                Query query = session.createQuery("FROM Demographic d WHERE d.PatientStatus = 'AC'");
+                /*Query query = session.createQuery("FROM Demographic d WHERE d.PatientStatus = 'AC'");
                 if (offset > 0) {
                     query.setFirstResult(offset);
                 }
@@ -101,6 +94,30 @@ public class HibernateTestDao {
                 query.setMaxResults(aLimit);
 
                 return query.list();
+                */
+                // Define the HQL query string
+                String hql = "FROM Demographic d WHERE d.PatientStatus = 'AC'";
+                Query<Demographic> query = session.createQuery(hql, Demographic.class);  // Ensure type safety with typed query
+
+                // Set pagination parameters
+                if (offset > 0) {
+                    query.setFirstResult(offset);
+                }
+
+                // Validate and set the limit for maximum results
+                int aLimit = limit;
+                if (aLimit <= 0) {
+                    aLimit = 500;  // Default to 500 if the provided limit is non-positive
+                }
+                if (aLimit > 500) {
+                    // Log error or handle it according to your application's requirements
+                    throw new IllegalArgumentException("Maximum limit of 500 exceeded: " + aLimit);
+                }
+                query.setMaxResults(aLimit);
+
+                // Execute the query and return the results
+                List<Demographic> results = query.getResultList();
+                return results;
             }
         });
     }
