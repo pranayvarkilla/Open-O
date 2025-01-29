@@ -6,6 +6,10 @@ on:
   pull_request:
     branches:
       - main
+      - develop/alpaca
+      - develop/bullfrog
+      - develop/coyote
+      - develop/dolphin
 
 jobs:
   build:
