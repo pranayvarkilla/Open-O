@@ -1137,6 +1137,17 @@
             <artifactId>cxf-rt-rs-client</artifactId>
             <version>4.1.0</version>
         </dependency>
+        <!-- ScribeJava for OAuth1.0a -->
+        <dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-apis</artifactId>
+            <version>8.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-core</artifactId>
+            <version>8.3.3</version>
+        </dependency>
         <!-- wss4j -->
         <!-- https://mvnrepository.com/artifact/org.apache.wss4j/wss4j-ws-security-common -->
         <dependency>

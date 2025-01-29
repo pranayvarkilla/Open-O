@@ -318,7 +318,7 @@
     "scope" : "compile",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:mwOfe5U11WhlQqA1Liw5QQ3z518ZLwKkZqXkazH4FYTABZenONNq/gWTnADujjZv2xtSyHSGu5cYlUu0niR5NQ=="
+    "integrity" : "sha512:Y3V1dVYVPr2MLwbf8kf6+N6SCjvYN8+dbJ1QkkNQXm+OLgjDmUB1YOs8zmSYrFJjhh9aNaidl1Xsb83BXaFTqA=="
   }, {
     "groupId" : "com.github.cliftonlabs",
     "artifactId" : "json-simple",
@@ -383,6 +383,30 @@
     "type" : "jar",
     "optional" : false,
     "integrity" : "sha512:wrZgw3qzidHOj5azKeYKrI+wvrbXYXSg2e0e0Ue4bRsZ6/r4ckq+E1bELl9aMRXRjdWeyIKmsj6es5ws0uQzfg=="
+  }, {
+    "groupId" : "com.github.scribejava",
+    "artifactId" : "scribejava-apis",
+    "version" : "8.3.3",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:lLEza8HPLUwJiAihUOXImG2NImnjSwW5V5xa7Oo4MvqzaQc8zIw1JXEitKlwtZ66a7SY6SYV6B+gHUUmi8VVKw=="
+  }, {
+    "groupId" : "com.github.scribejava",
+    "artifactId" : "scribejava-core",
+    "version" : "8.3.3",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:3yi2ZQBJ1j+kIKrTwYSZ1QO6WU2tVjZt2uf2skRB9l0RkDd2xXRvbWyyFQ/bXplrnr8ow9U7bJfpGkagr4GwvQ=="
+  }, {
+    "groupId" : "com.github.scribejava",
+    "artifactId" : "scribejava-java8",
+    "version" : "8.3.3",
+    "scope" : "compile",
+    "type" : "jar",
+    "optional" : false,
+    "integrity" : "sha512:L+w8UAxL7RQ6SOhOmNWTjcR3SDDpyHbK8M/Di9nq7RiQcnjropJGd1T9EyyfuzCTAJ89yR91/xprznH09dQ7FA=="
   }, {
     "groupId" : "com.google.code.findbugs",
     "artifactId" : "jsr305",
