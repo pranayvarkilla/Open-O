@@ -25,7 +25,7 @@
 
 package oscar.login;
 
-import com.onelogin.saml2.Auth;
+import com.onelogin.saml2.customize.Auth;
 import com.onelogin.saml2.exception.Error;
 import com.onelogin.saml2.exception.SettingsException;
 import com.onelogin.saml2.settings.Saml2Settings;
