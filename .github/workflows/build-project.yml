@@ -1,0 +1,30 @@
+# This workflow will build the project on any major PR.
+
+name: Build Open-O
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker containers
+        uses: hoverkraft-tech/compose-action@v2.1.0
+        with:
+          compose-file: ".devcontainer/docker-compose.yml"
+      
+      - name: Generate make file
+        run: docker exec devcontainer-open-o-1 .devcontainer/development/scripts/make lock
+      
+      - name: Build project
+        run: docker exec devcontainer-open-o-1 .devcontainer/development/scripts/make install
+
+      - name: Build JSP files
+        run: docker exec devcontainer-open-o-1 mvn package -Pjspc
+
