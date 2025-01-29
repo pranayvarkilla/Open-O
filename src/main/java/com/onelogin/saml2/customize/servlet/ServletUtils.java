@@ -18,6 +18,10 @@ import com.onelogin.saml2.util.Util;
  * ServletUtils class of OneLogin's Java Toolkit.
  *
  * A class that contains several auxiliary methods related to HttpServletRequest and HttpServletResponse
+ * 
+ * NOTE: There is no compatible version of OneLogin with Jakarta EE yet.
+ * This is the class customed by the development team in Jan 2025 to replace javax to jakarta 
+ * to make it compatible with the application.
  */
 public class ServletUtils {
 

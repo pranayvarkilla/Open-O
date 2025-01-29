@@ -50,6 +50,10 @@ import com.onelogin.saml2.util.Util;
  * SAML Response, a Logout Request or a Logout Response).
  *
  * This is stateful and not thread-safe, you should create a new instance for each request/response.
+ * 
+ * NOTE: There is no compatible version of OneLogin with Jakarta EE yet.
+ * This is the class customed by the development team in Jan 2025 to replace javax to jakarta 
+ * to make it compatible with the application.
  */
 public class Auth {
 	/**
