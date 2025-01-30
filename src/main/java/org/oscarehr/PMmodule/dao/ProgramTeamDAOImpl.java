@@ -31,13 +31,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.oscarehr.PMmodule.model.ProgramTeam;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 public class ProgramTeamDAOImpl extends HibernateDaoSupport implements ProgramTeamDAO {
 
@@ -77,7 +77,7 @@ public class ProgramTeamDAOImpl extends HibernateDaoSupport implements ProgramTe
             throw new IllegalArgumentException();
         }
         // Session session = getSession();
-        Session session = sessionFactory.getCurrentSession();
+        /*Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select pt.id from ProgramTeam pt where pt.programId = ?1 and pt.name = ?2" );
         query.setParameter(1, programId.longValue());
         query.setParameter(2, teamName);
@@ -94,7 +94,26 @@ public class ProgramTeamDAOImpl extends HibernateDaoSupport implements ProgramTe
             log.debug("teamNameExists: programId = " + programId + ", teamName = " + teamName + ", result = " + !teams.isEmpty());
         }
 
-        return !teams.isEmpty();
+        return !teams.isEmpty();*/
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            // Using a type-safe query and named parameters
+            String hql = "SELECT pt.id FROM ProgramTeam pt WHERE pt.programId = :programId AND pt.name = :teamName";
+            Query<Long> query = session.createQuery(hql, Long.class);
+            query.setParameter("programId", programId);
+            query.setParameter("teamName", teamName);
+
+            List<Long> results = query.getResultList();
+
+            // Debug logging
+            if (log.isDebugEnabled()) {
+                log.debug("teamNameExists: programId = " + programId + ", teamName = " + teamName + ", result = " + !results.isEmpty());
+            }
+
+            return !results.isEmpty();
+        } finally {
+            // Session should not be closed manually if managed by a framework that handles transactions and sessions
+        }
     }
 
     /*

@@ -27,8 +27,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
@@ -55,12 +55,14 @@ import org.oscarehr.util.SpringUtils;
 
 import oscar.OscarProperties;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class Tickler2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private static Logger log = MiscUtils.getLogger();
     private TicklerManager ticklerManager = SpringUtils.getBean(TicklerManager.class);

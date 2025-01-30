@@ -25,10 +25,11 @@
 
 package org.oscarehr.fax.action;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.common.model.FaxConfig;
 import org.oscarehr.common.model.FaxJob;
 import org.oscarehr.common.model.FaxJob.STATUS;
@@ -41,9 +42,9 @@ import org.oscarehr.util.PDFGenerationException;
 import org.oscarehr.util.SpringUtils;
 import oscar.form.JSONUtil;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,8 +56,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Fax2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private static final Logger logger = MiscUtils.getLogger();
     private final FaxManager faxManager = SpringUtils.getBean(FaxManager.class);

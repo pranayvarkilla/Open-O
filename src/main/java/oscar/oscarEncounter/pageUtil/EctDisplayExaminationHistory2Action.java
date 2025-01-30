@@ -30,7 +30,7 @@ package oscar.oscarEncounter.pageUtil;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 public class EctDisplayExaminationHistory2Action extends EctDisplayAction {
     private static final String cmd = "examhistory";

@@ -18,8 +18,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -46,12 +46,14 @@ import oscar.oscarLab.ca.all.parsers.OLISHL7Handler;
 import oscar.oscarLab.ca.all.upload.MessageUploader;
 import oscar.oscarLab.ca.all.util.Utilities;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class OLISResults2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     public static HashMap<String, OLISHL7Handler> searchResultsMap = new HashMap<String, OLISHL7Handler>();

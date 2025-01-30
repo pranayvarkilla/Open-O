@@ -33,10 +33,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Query;
-
 import org.oscarehr.common.model.PharmacyInfo;
-import org.springframework.stereotype.Repository;
 
 public interface PharmacyInfoDao extends AbstractDao<PharmacyInfo> {
 

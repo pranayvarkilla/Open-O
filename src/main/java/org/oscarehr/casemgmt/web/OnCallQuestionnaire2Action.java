@@ -23,21 +23,23 @@
 
 package org.oscarehr.casemgmt.web;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.common.dao.OnCallQuestionnaireDao;
 import org.oscarehr.common.model.OnCallQuestionnaire;
 import org.oscarehr.util.SpringUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class OnCallQuestionnaire2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private OnCallQuestionnaireDao dao = SpringUtils.getBean(OnCallQuestionnaireDao.class);

@@ -49,9 +49,6 @@ package oscar.oscarBilling.ca.bc.pageUtil;
  * Hamilton
  * Ontario, Canada
  */
-import oscar.util.StringUtils;
-
-import javax.servlet.http.HttpServletRequest;
 
 public final class BillingReProcessBill2Form {
     String billingmasterNo = null;

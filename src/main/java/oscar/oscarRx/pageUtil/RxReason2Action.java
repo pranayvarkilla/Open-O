@@ -26,8 +26,9 @@
 
 package oscar.oscarRx.pageUtil;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.common.dao.DrugReasonDao;
 import org.oscarehr.common.dao.Icd9Dao;
 import org.oscarehr.common.model.DrugReason;
@@ -39,14 +40,15 @@ import org.oscarehr.util.SpringUtils;
 import oscar.log.LogAction;
 import oscar.log.LogConst;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 
 public final class RxReason2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 

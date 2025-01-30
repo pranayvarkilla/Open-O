@@ -32,8 +32,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.common.model.CVCImmunization;
@@ -57,12 +57,14 @@ import net.sf.json.JSONObject;
  * baseDstu3/Medication?_tag=CVC1&code=http://www.gs1.org/gtin|067055043550 - Returns bundle containing resource with single Medication that has a GTIN 067055043550
  * baseDstu3/Medication?_tag=CVC1&code=http://snomed.info/sct|7641000087107 - Returns bundle containing resource with single Medication that has SNOMED CT code 7641000087107
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class CVCTester2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     Logger logger = MiscUtils.getLogger();

@@ -42,7 +42,7 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 <%@ page
         import="java.util.*,oscar.oscarReport.data.*,oscar.util.*,oscar.oscarDB.*,java.sql.*,oscar.oscarDemographic.data.*,oscar.oscarPrevention.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <link rel="stylesheet" type="text/css"

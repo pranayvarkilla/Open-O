@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.billing.CA.BC.model.BillingPrivateTransactions;
 import org.oscarehr.common.dao.AbstractDaoImpl;

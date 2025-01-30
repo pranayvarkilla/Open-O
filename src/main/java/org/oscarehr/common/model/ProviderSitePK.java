@@ -26,7 +26,7 @@
 
 package org.oscarehr.common.model;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 
 
 public class ProviderSitePK implements java.io.Serializable {

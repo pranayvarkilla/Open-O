@@ -30,7 +30,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.PMmodule.caisi_integrator.CaisiIntegratorManager;
@@ -48,8 +48,6 @@ import oscar.util.StringUtils;
 /**
  * retrieves info to display Disease entries for demographic
  */
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 
 public class EctDisplayAllergy2Action extends EctDisplayAction {
 

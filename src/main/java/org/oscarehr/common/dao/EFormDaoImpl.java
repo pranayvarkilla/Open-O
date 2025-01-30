@@ -30,11 +30,10 @@ package org.oscarehr.common.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.EForm;
 import org.springframework.stereotype.Repository;
-import org.oscarehr.common.dao.EFormDao;
 
 @Repository
 public class EFormDaoImpl extends AbstractDaoImpl<EForm> implements EFormDao {

@@ -37,10 +37,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.xml.ws.WebServiceException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.xml.ws.WebServiceException;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringEscapeUtils;
@@ -106,7 +106,7 @@ import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
 import org.oscarehr.util.WebUtils;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import oscar.OscarProperties;
 import oscar.log.LogAction;
@@ -114,12 +114,14 @@ import oscar.oscarDemographic.data.DemographicRelationship;
 
 import com.quatro.service.LookupManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class ClientManager2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private static final Logger logger = MiscUtils.getLogger();
@@ -2005,7 +2007,7 @@ public class ClientManager2Action extends ActionSupport {
         return (StringEscapeUtils.escapeHtml(display));
     }
 
-    @Required
+    @Autowired
     public void setClientRestrictionManager(ClientRestrictionManager clientRestrictionManager) {
         this.clientRestrictionManager = clientRestrictionManager;
     }

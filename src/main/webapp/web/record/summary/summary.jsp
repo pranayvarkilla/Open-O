@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <div class="col-lg-12" ng-hide="page.canRead">
     <fmt:setBundle basename="oscarResources"/><fmt:message key="oscarEncounter.accessDenied"/>
 </div>

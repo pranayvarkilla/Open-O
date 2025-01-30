@@ -24,10 +24,10 @@
 
 --%>
 <%@page import="oscar.oscarRx.data.RxPatientData" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page import="oscar.oscarProvider.data.*" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page import="oscar.*,java.lang.*" %>

@@ -24,9 +24,10 @@
  */
 package org.oscarehr.hospitalReportManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.hospitalReportManager.dao.HRMDocumentDao;
 import org.oscarehr.hospitalReportManager.model.HRMDocument;
 import org.oscarehr.managers.SecurityInfoManager;
@@ -34,14 +35,15 @@ import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
 import oscar.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.util.List;
 
 public class HRMDownloadFile2Action extends ActionSupport {
-    private HttpServletRequest request = ServletActionContext.getRequest();
-    private HttpServletResponse response = ServletActionContext.getResponse();
+    private ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    private HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private HRMDocumentDao hrmDocumentDao = SpringUtils.getBean(HRMDocumentDao.class);
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);

@@ -34,7 +34,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.message.Message;

@@ -1,9 +1,9 @@
 //CHECKSTYLE:OFF
 package org.oscarehr.common.model;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.Objects;
 

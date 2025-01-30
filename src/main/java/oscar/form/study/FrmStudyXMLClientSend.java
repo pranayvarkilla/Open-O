@@ -52,23 +52,23 @@ package oscar.form.study;
 
 import java.io.FileInputStream;
 import java.sql.ResultSet;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Properties;
 import java.util.Vector;
 
-import javax.xml.messaging.URLEndpoint;
-import javax.xml.soap.AttachmentPart;
-import javax.xml.soap.MessageFactory;
-import javax.xml.soap.SOAPBody;
-import javax.xml.soap.SOAPBodyElement;
-import javax.xml.soap.SOAPConnection;
-import javax.xml.soap.SOAPConnectionFactory;
-import javax.xml.soap.SOAPEnvelope;
-import javax.xml.soap.SOAPHeader;
-import javax.xml.soap.SOAPHeaderElement;
-import javax.xml.soap.SOAPMessage;
-import javax.xml.soap.SOAPPart;
+import jakarta.xml.soap.AttachmentPart;
+import jakarta.xml.soap.MessageFactory;
+import jakarta.xml.soap.SOAPBody;
+import jakarta.xml.soap.SOAPBodyElement;
+import jakarta.xml.soap.SOAPConnection;
+import jakarta.xml.soap.SOAPConnectionFactory;
+import jakarta.xml.soap.SOAPEnvelope;
+import jakarta.xml.soap.SOAPHeader;
+import jakarta.xml.soap.SOAPHeaderElement;
+import jakarta.xml.soap.SOAPMessage;
+import jakarta.xml.soap.SOAPPart;
 
 import org.oscarehr.common.dao.StudyDataDao;
 import org.oscarehr.common.model.StudyData;
@@ -172,7 +172,7 @@ public class FrmStudyXMLClientSend {
 
             message.addAttachmentPart(ap1);
 
-            URLEndpoint endPoint = new URLEndpoint(URLService);  //"https://67.69.12.115:8443/OscarComm/DummyReceiver");
+            URL endPoint = new URL(URLService);  //"https://67.69.12.115:8443/OscarComm/DummyReceiver");
             SOAPMessage reply = connection.call(message, endPoint);
 
             connection.close();

@@ -26,11 +26,12 @@
 
 package org.oscarehr.web;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import net.sf.json.JSONArray;
 import org.apache.commons.lang.WordUtils;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
@@ -53,8 +54,8 @@ import org.oscarehr.web.reports.ocan.SummaryOfActionsAndCommentsReportGenerator;
 import org.oscarehr.web.reports.ocan.beans.*;
 import oscar.util.LabelValueBean;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -62,8 +63,9 @@ import java.util.List;
 import java.util.*;
 
 public class OcanReporting2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     Logger logger = MiscUtils.getLogger();

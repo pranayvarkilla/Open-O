@@ -33,7 +33,7 @@ import java.util.List;
 
 import org.oscarehr.PMmodule.model.ProgramClientRestriction;
 import org.oscarehr.common.dao.DemographicDao;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 /**

@@ -31,9 +31,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.xml.namespace.QName;
-import javax.xml.soap.SOAPElement;
-import javax.xml.soap.SOAPException;
-import javax.xml.soap.SOAPFactory;
+import jakarta.xml.soap.SOAPElement;
+import jakarta.xml.soap.SOAPException;
+import jakarta.xml.soap.SOAPFactory;
 
 import org.oscarehr.oscarRx.erx.model.PrescriptionFormat;
 

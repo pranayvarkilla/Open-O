@@ -36,8 +36,8 @@ import org.oscarehr.common.dao.AbstractDaoImpl;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.*;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.*;
 
 /**
  * Implementation of ProgramDao interface for database access to Program model objects.

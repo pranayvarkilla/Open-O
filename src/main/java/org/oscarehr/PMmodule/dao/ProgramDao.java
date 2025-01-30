@@ -33,11 +33,7 @@ import java.util.List;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Expression;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import org.oscarehr.PMmodule.model.Program;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;

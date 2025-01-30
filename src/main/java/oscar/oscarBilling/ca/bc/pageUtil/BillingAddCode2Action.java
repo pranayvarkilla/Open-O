@@ -29,19 +29,19 @@ package oscar.oscarBilling.ca.bc.pageUtil;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.oscarehr.util.MiscUtils;
 
 import oscar.oscarBilling.ca.bc.data.BillingCodeData;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public final class BillingAddCode2Action extends ActionSupport {
-    private HttpServletRequest request = ServletActionContext.getRequest();
+    private ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
 
     public String execute() {
         if (request.getSession().getAttribute("user") == null) {

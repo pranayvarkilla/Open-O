@@ -25,17 +25,23 @@
 
 package com.quatro.dao.security;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
 import org.hibernate.LockMode;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Example;
+import org.hibernate.query.Query;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.quatro.model.security.SecProvider;
+
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 /**
  * @author JZhang
@@ -116,12 +122,38 @@ public class SecProviderDaoImpl extends HibernateDaoSupport implements SecProvid
         logger.debug("finding Provider instance by example");
         Session session = currentSession();
         try {
-            List results = session.createCriteria(
+            /*List results = session.createCriteria(
                             "com.quatro.model.security.SecProvider").add(
                             Example.create(instance))
                     .list();
             logger.debug("find by example successful, result size: "
                     + results.size());
+            return results;*/
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<SecProvider> cq = cb.createQuery(SecProvider.class);
+            Root<SecProvider> root = cq.from(SecProvider.class);
+
+            List<Predicate> predicates = new ArrayList<>();
+
+            // Use reflection to dynamically add criteria for non-null fields
+            Field[] fields = SecProvider.class.getDeclaredFields();
+            for (Field field : fields) {
+                field.setAccessible(true);  // Break encapsulation
+                try {
+                    Object value = field.get(instance);
+                    if (value != null) {
+                        predicates.add(cb.equal(root.get(field.getName()), value));
+                    }
+                } catch (IllegalAccessException e) {
+                    logger.error("Access error while reflecting field: " + field.getName(), e);
+                }
+            }
+
+            cq.where(cb.and(predicates.toArray(new Predicate[0])));
+            Query<SecProvider> query = session.createQuery(cq);
+            List<SecProvider> results = query.getResultList();
+
+            logger.debug("Find by example successful, result size: " + results.size());
             return results;
         } catch (RuntimeException re) {
             logger.error("find by example failed", re);
@@ -133,13 +165,31 @@ public class SecProviderDaoImpl extends HibernateDaoSupport implements SecProvid
     public List findByProperty(String propertyName, Object value) {
         logger.debug("finding Provider instance with property: " + propertyName
                 + ", value: " + value);
-        Session session = currentSession();
+        /*Session session = currentSession();
         try {
             String queryString = "from Provider as model where model."
                     + propertyName + "= ?1";
             Query queryObject = session.createQuery(queryString);
             queryObject.setParameter(1, value);
             return queryObject.list();
+        } catch (RuntimeException re) {
+            logger.error("find by property name failed", re);
+            throw re;
+        }*/
+        try (Session session = currentSession()) {
+            // Create the CriteriaBuilder and CriteriaQuery for the Provider class
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<SecProvider> cq = cb.createQuery(SecProvider.class);
+            Root<SecProvider> root = cq.from(SecProvider.class);
+    
+            // Create the query condition based on the propertyName and its value
+            cq.where(cb.equal(root.get(propertyName), value));
+    
+            // Prepare the query for execution
+            Query<SecProvider> query = session.createQuery(cq);
+    
+            // Execute the query and return the result list
+            return query.getResultList();
         } catch (RuntimeException re) {
             logger.error("find by property name failed", re);
             throw re;

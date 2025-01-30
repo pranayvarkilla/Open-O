@@ -23,7 +23,7 @@
 
 package org.oscarehr.casemgmt.web;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import com.quatro.model.security.Secrole;
 import com.quatro.service.security.RolesManager;
 import net.sf.json.JSONObject;
@@ -32,6 +32,7 @@ import net.sf.json.processors.JsDateJsonBeanProcessor;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.PMmodule.caisi_integrator.CaisiIntegratorManager;
 import org.oscarehr.PMmodule.caisi_integrator.IntegratorFallBackManager;
 import org.oscarehr.PMmodule.dao.SecUserRoleDao;
@@ -72,9 +73,9 @@ import oscar.util.ConversionUtils;
 import oscar.util.LabelValueBean;
 import oscar.util.OscarRoleObjectPrivilege;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -83,8 +84,9 @@ import java.util.*;
 
 public class CaseManagementView2Action extends ActionSupport {
 
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private static final Integer MAX_INVOICES = 20;
     private static Logger logger = MiscUtils.getLogger();

@@ -28,9 +28,10 @@ package oscar.oscarDemographic.pageUtil;
 
 import cdsrourke.PatientDocument;
 import cdsrourke.PatientDocument.Patient;
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.apache.xmlbeans.XmlOptions;
 import org.oscarehr.common.dao.ClinicDAO;
 import org.oscarehr.common.dao.DataExportDao;
@@ -46,8 +47,8 @@ import oscar.oscarReport.data.DemographicSets;
 import oscar.util.StringUtils;
 import oscar.util.UtilDateUtilities;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -55,8 +56,9 @@ import java.sql.Timestamp;
 import java.util.*;
 
 public class RourkeExport2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private ClinicDAO clinicDAO;
     private DataExportDao dataExportDAO;

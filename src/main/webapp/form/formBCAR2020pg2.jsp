@@ -45,7 +45,7 @@
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="oscar.util.UtilMisc" %>
 <%@ page import="oscar.OscarProperties" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 

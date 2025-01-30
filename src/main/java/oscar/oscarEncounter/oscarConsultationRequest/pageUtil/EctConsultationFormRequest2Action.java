@@ -29,12 +29,13 @@ package oscar.oscarEncounter.oscarConsultationRequest.pageUtil;
 import ca.uhn.hl7v2.HL7Exception;
 import ca.uhn.hl7v2.model.v26.message.ORU_R01;
 import ca.uhn.hl7v2.model.v26.message.REF_I12;
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.common.dao.*;
 import org.oscarehr.common.hl7.v2.oscar_to_oscar.OruR01;
 import org.oscarehr.common.hl7.v2.oscar_to_oscar.OruR01.ObservationData;
@@ -61,9 +62,9 @@ import oscar.oscarLab.ca.on.LabResultData;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.security.InvalidKeyException;
@@ -75,8 +76,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class EctConsultationFormRequest2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private static final Logger logger = MiscUtils.getLogger();

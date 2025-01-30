@@ -42,7 +42,7 @@
 
 <%@page contentType='text/xml'
         import="oscar.oscarMessenger.docxfer.send.*, oscar.oscarMessenger.docxfer.util.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <c:if test="${empty sessionScope.msgSessionBean}">

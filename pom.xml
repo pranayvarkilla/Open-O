@@ -74,7 +74,7 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-framework-bom</artifactId>
-                <version>5.3.39</version>
+                <version>6.2.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -95,7 +95,7 @@
         <dependency>
             <groupId>net.bull.javamelody</groupId>
             <artifactId>javamelody-core</artifactId>
-            <version>1.95.0</version>
+            <version>2.4.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -122,6 +122,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
             <version>1.10.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!--Log4j-2 libraries-->
@@ -131,6 +137,12 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j2.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -142,13 +154,30 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-1.2-api</artifactId>
             <version>${log4j2.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- SLF4J -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <version>2.1.0-alpha1</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.16</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- commons -->
@@ -161,16 +190,53 @@
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>
             <version>1.3.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-digester</groupId>
+                    <artifactId>commons-digester</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-beanutils</groupId>
+                    <artifactId>commons-beanutils</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.18.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-fileupload2-jakarta-servlet6 -->
         <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>1.5</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-fileupload2-jakarta-servlet6</artifactId>
+            <version>2.0.0-M2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-fileupload2-jakarta -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-fileupload2-jakarta</artifactId>
+            <version>2.0.0-M1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-fileupload2-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>commons-collections</groupId>
@@ -182,6 +248,16 @@
             <groupId>commons-digester</groupId>
             <artifactId>commons-digester</artifactId>
             <version>1.8</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-beanutils</groupId>
+                    <artifactId>commons-beanutils</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- apache commons codec -->
         <dependency>
@@ -189,16 +265,56 @@
             <artifactId>commons-codec</artifactId>
             <version>1.7</version>
         </dependency>
-        <!-- commons-betwixt ... what is this for? -->
+        <!-- commons-betwixt ... what is this for? if removed causesv 1 ConsultationConfiguration.java error -->
         <dependency>
             <groupId>commons-betwixt</groupId>
             <artifactId>commons-betwixt</artifactId>
             <version>0.7</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-beanutils</groupId>
+                    <artifactId>commons-beanutils</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-beanutils</groupId>
+                    <artifactId>commons-beanutils-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-digester</groupId>
+                    <artifactId>commons-digester</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>xerces</groupId>
+                    <artifactId>xercesImpl</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
             <version>1.26.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -220,92 +336,411 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Jakarta EE -->
+        <!-- https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.activation</groupId>
+                    <artifactId>jakarta.activation-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.moxy -->
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>org.eclipse.persistence.moxy</artifactId>
+            <version>4.0.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.xml.bind</groupId>
+                    <artifactId>jakarta.xml.bind-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.angus</groupId>
+                    <artifactId>angus-activation</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.angus</groupId>
+                    <artifactId>angus-mail</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp/jakarta.servlet.jsp-api -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <version>4.0.0</version>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.annotation/jakarta.annotation-api -->
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.xml.ws/jakarta.xml.ws-api -->
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+            <version>4.0.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.xml.bind</groupId>
+                    <artifactId>jakarta.xml.bind-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.xml.soap</groupId>
+                    <artifactId>jakarta.xml.soap-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.jws/jakarta.jws-api -->
+        <dependency>
+            <groupId>jakarta.jws</groupId>
+            <artifactId>jakarta.jws-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.ws.rs/jakarta.ws.rs-api -->
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.xml.soap/jakarta.xml.soap-api -->
+        <dependency>
+            <groupId>jakarta.xml.soap</groupId>
+            <artifactId>jakarta.xml.soap-api</artifactId>
+            <version>3.0.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.activation</groupId>
+                    <artifactId>jakarta.activation-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>3.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.servlet</groupId>
+                    <artifactId>jakarta.servlet-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.el</groupId>
+                    <artifactId>jakarta.el-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp.jstl -->
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.inject/jakarta.inject-api -->
+        <dependency>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.transaction/jakarta.transaction-api -->
+        <dependency>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.activation/jakarta.activation-api -->
+        <dependency>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <version>2.1.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.sun.activation/jakarta.activation -->
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        
 
         <!-- hapi/HL7 -->
         <dependency>
             <groupId>ca.uhn.hapi</groupId>
             <artifactId>hapi-base</artifactId>
             <version>1.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-cli</groupId>
+                    <artifactId>commons-cli</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>xalan</groupId>
+                    <artifactId>xalan</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>xerces</groupId>
+                    <artifactId>xercesImpl</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>ca.uhn.hapi</groupId>
             <artifactId>hapi-structures-v26</artifactId>
             <version>1.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ca.uhn.hapi</groupId>
+                    <artifactId>hapi-base</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>ca.uhn.hapi</groupId>
             <artifactId>hapi-structures-v25</artifactId>
             <version>1.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ca.uhn.hapi</groupId>
+                    <artifactId>hapi-base</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>ca.uhn.hapi</groupId>
             <artifactId>hapi-structures-v23</artifactId>
             <version>1.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ca.uhn.hapi</groupId>
+                    <artifactId>hapi-base</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>ca.uhn.hapi</groupId>
             <artifactId>hapi-structures-v22</artifactId>
             <version>1.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ca.uhn.hapi</groupId>
+                    <artifactId>hapi-base</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>ca.uhn.hapi</groupId>
             <artifactId>hapi-structures-v231</artifactId>
             <version>1.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ca.uhn.hapi</groupId>
+                    <artifactId>hapi-base</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.3.39</version>
+            <version>6.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-jcl</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>5.3.39</version>
+            <version>6.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>5.3.39</version>
+            <version>6.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-tx</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>5.3.39</version>
+            <version>6.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-aop</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-web</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-expression</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- throws an compilation error when removed/commented -->
         <dependency>
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-ftp</artifactId>
-            <version>5.3.10.RELEASE</version>
+            <version>6.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.integration</groupId>
+                    <artifactId>spring-integration-file</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.integration</groupId>
+                    <artifactId>spring-integration-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context-support</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-sftp</artifactId>
-            <version>5.3.10.RELEASE</version>
+            <version>6.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.integration</groupId>
+                    <artifactId>spring-integration-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.sshd</groupId>
+                    <artifactId>sshd-sftp</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>    
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- throws 10 compilation errors when removed/commented -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
-            <version>5.3.39</version>
+            <version>6.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.3.39</version>
+            <version>6.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>5.3.39</version>
+            <version>6.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>   
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>6.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>   
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.micrometer</groupId>
+                    <artifactId>micrometer-observation</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -320,6 +755,22 @@
                 <exclusion>
                     <groupId>org.codehaus.woodstox</groupId>
                     <artifactId>woodstox-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>joda-time</groupId>
+                    <artifactId>joda-time</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -337,6 +788,24 @@
             <groupId>org.apache.santuario</groupId>
             <artifactId>xmlsec</artifactId>
             <version>2.1.8</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>   
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.xml.bind</groupId>
+                    <artifactId>jakarta.xml.bind-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.woodstox</groupId>
+                    <artifactId>woodstox-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- hibernate / sql -->
@@ -344,18 +813,92 @@
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-pool</groupId>
+                    <artifactId>commons-pool</artifactId>   
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- throws a 404 error when removed/uncommented -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.protobuf</groupId>
+                    <artifactId>protobuf-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.6.15.Final</version>
+            <version>6.4.10.Final</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.persistence</groupId>
+                    <artifactId>javax.persistence-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jboss.spec.javax.transaction</groupId>
+                    <artifactId>jboss-transaction-api_1.2_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.activation</groupId>
+                    <artifactId>javax.activation-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.persistence</groupId>
+                    <artifactId>jakarta.persistence-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.transaction</groupId>
+                    <artifactId>jakarta.transaction-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.xml.bind</groupId>
+                    <artifactId>jakarta.xml.bind-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-runtime</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.inject</groupId>
+                    <artifactId>jakarta.inject-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.bytebuddy</groupId>
+                    <artifactId>byte-buddy</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jboss.logging</groupId>
+                    <artifactId>jboss-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.hibernate.common</groupId>
+                    <artifactId>hibernate-commons-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>jandex</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml</groupId>
+                    <artifactId>classmate</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.antlr</groupId>
+                    <artifactId>antlr4-runtime</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- pdf / jpedal -->
@@ -370,38 +913,38 @@
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox</artifactId>
             <version>2.0.27</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.pdfbox</groupId>
+                    <artifactId>fontbox</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- throws an compilation error when removed/commented -->
         <dependency>
             <groupId>com.twelvemonkeys.imageio</groupId>
             <artifactId>imageio-jpeg</artifactId>
             <version>3.7.1</version>
-        </dependency>
-
-        <!-- struts2 coming soon...-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.struts</groupId>-->
-        <!--            <artifactId>struts2-core</artifactId>-->
-        <!--            <version>2.5.33</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.struts</groupId>-->
-        <!--            <artifactId>struts2-spring-plugin</artifactId>-->
-        <!--            <version>2.5.33</version> -->
-        <!--        </dependency>-->
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc-struts</artifactId>
-            <version>2.5.6.SEC03</version>
             <exclusions>
                 <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-webmvc</artifactId>
+                    <groupId>com.twelvemonkeys.imageio</groupId>
+                    <artifactId>imageio-core</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-web</artifactId>
+                    <groupId>com.twelvemonkeys.imageio</groupId>
+                    <artifactId>imageio-metadata</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.twelvemonkeys.common</groupId>
+                    <artifactId>common-io</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.twelvemonkeys.common</groupId>
+                    <artifactId>common-image</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -428,6 +971,12 @@
             <groupId>com.github.openosp</groupId>
             <artifactId>ultrabuk-htmltopdf-java</artifactId>
             <version>1.0.10.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>net.java.dev.jna</groupId>
+                    <artifactId>jna</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- rtf / lowagie -->
@@ -461,6 +1010,28 @@
             <artifactId>json-lib</artifactId>
             <version>2.4</version>
             <classifier>jdk15</classifier>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-beanutils</groupId>
+                    <artifactId>commons-beanutils</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-collections</groupId>
+                    <artifactId>commons-collections</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-lang</groupId>
+                    <artifactId>commons-lang</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.sf.ezmorph</groupId>
+                    <artifactId>ezmorph</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- apache xmlrpc -->
@@ -511,12 +1082,58 @@
                     <groupId>com.fasterxml.jackson.core</groupId>
                     <artifactId>jackson-annotations</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>javax.inject</groupId>
+                    <artifactId>javax.inject</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-beanutils</groupId>
+                    <artifactId>commons-beanutils</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-digester</groupId>
+                    <artifactId>commons-digester</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.lowagie</groupId>
+                    <artifactId>itext</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jfree</groupId>
+                    <artifactId>jfreechart</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.codehaus.castor</groupId>
+                    <artifactId>castor-xml</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-collections4</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jfree</groupId>
+                    <artifactId>jcommon</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.jdt</groupId> 
+                    <artifactId>ecj</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.12.7.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.sourceforge.barbecue</groupId>
@@ -632,11 +1249,27 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.13</version>
+             <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpmime</artifactId>
             <version>4.5.6</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- quartz -->
@@ -649,14 +1282,25 @@
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-api</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>javax.transaction</groupId>
+                    <artifactId>jta</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 
         <!-- email -->
+        <!-- https://mvnrepository.com/artifact/com.sun.mail/jakarta.mail -->
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>jakarta.mail</artifactId>
-            <version>1.6.7</version>
+            <version>2.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.activation</groupId>
+                    <artifactId>jakarta.activation</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.jfree/jfreechart -->
@@ -678,6 +1322,12 @@
             <groupId>org.oscarehr.ar2005</groupId>
             <artifactId>ar2005</artifactId>
             <version>1.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.xmlbeans</groupId>
+                    <artifactId>xmlbeans</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- FOR BORN18MWBV Project - Rourke, NDDS, 18M Summary in XML format -->
@@ -702,6 +1352,12 @@
             <groupId>org.oscarehr.ckd</groupId>
             <artifactId>ckd</artifactId>
             <version>1.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.xmlbeans</groupId>
+                    <artifactId>xmlbeans</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- patientSiteVisit.jar , suspect this is generated classes and should be removed as a jar in the future -->
@@ -718,13 +1374,6 @@
             <version>0.0-SNAPSHOT</version>
         </dependency>
 
-        <!-- jaxm api ... why do we need this? -->
-        <dependency>
-            <groupId>javax.xml</groupId>
-            <artifactId>jaxm-api</artifactId>
-            <version>UNKNOWN</version>
-        </dependency>
-
         <!-- apache poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -734,6 +1383,26 @@
                 <exclusion>
                     <groupId>org.slf4j</groupId>
                     <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-collections4</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-math3</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.zaxxer</groupId>
+                    <artifactId>SparseBitSet</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -772,6 +1441,22 @@
                 <exclusion>
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-collections</groupId>
+                    <artifactId>commons-collections</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-lang</groupId> 
+                    <artifactId>commons-lang</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.lowagie</groupId>
+                    <artifactId>itext</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-beanutils</groupId>
+                    <artifactId>commons-beanutils</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -830,17 +1515,18 @@
             <artifactId>jsoup</artifactId>
             <version>1.17.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.17.2</version>
-        </dependency>
 
         <!-- xerces -->
         <dependency>
             <groupId>xerces</groupId>
             <artifactId>xercesImpl</artifactId>
             <version>2.12.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- janino -->
@@ -881,6 +1567,16 @@
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcpkix-jdk18on</artifactId>
             <version>1.78.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcprov-jdk18on</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcutil-jdk18on</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- AXIS2 (for OLIS) -->
@@ -907,6 +1603,42 @@
                     <groupId>org.apache.neethi</groupId>
                     <artifactId>neethi</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpcore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.woden</groupId>
+                    <artifactId>woden-impl-dom</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-httpclient</groupId>   
+                    <artifactId>commons-httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.ws.commons.axiom</groupId>
+                    <artifactId>axiom-dom</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.ws.commons.axiom</groupId>
+                    <artifactId>axiom-impl</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>wsdl4j</groupId>
+                    <artifactId>wsdl4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.ws.commons.axiom</groupId>
+                    <artifactId>axiom-api</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 
@@ -919,6 +1651,10 @@
                 <exclusion>
                     <groupId>org.apache.commons</groupId>
                     <artifactId>commons-lang3</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -940,23 +1676,96 @@
                     <groupId>org.apache.struts</groupId>
                     <artifactId>struts-tiles</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.velocity</groupId>
+                    <artifactId>velocity-engine-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-digester3</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.github.cliftonlabs</groupId>
+                    <artifactId>json-simple</artifactId>
+                </exclusion>
+                 <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-collections</groupId>
+                    <artifactId>commons-collections</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.sun.xml.messaging.saaj/saaj-impl -->
         <dependency>
             <groupId>com.sun.xml.messaging.saaj</groupId>
             <artifactId>saaj-impl</artifactId>
-            <version>1.3.18</version>
+            <version>3.0.4</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.xml.soap</groupId>
+                    <artifactId>jakarta.xml.soap-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.activation</groupId>
+                    <artifactId>jakarta.activation-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jvnet.staxex</groupId>
+                    <artifactId>stax-ex</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.angus</groupId>
+                    <artifactId>angus-activation</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- CXF -->
         <!-- Detected as "Unused dependency" but don't remove it, it's using actually -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
-            <artifactId>apache-cxf</artifactId>
-            <version>3.2.0</version>
-            <type>pom</type>
+            <artifactId>cxf-core</artifactId>
+            <version>4.1.0</version>
             <exclusions>
+                <exclusion>
+                    <groupId>jakarta.annotation</groupId>
+                    <artifactId>jakarta.annotation-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-runtime</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.angus</groupId>
+                    <artifactId>angus-activation</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.xml.bind</groupId>
+                    <artifactId>jakarta.xml.bind-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.woodstox</groupId>
+                    <artifactId>woodstox-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.ws.xmlschema</groupId>
+                    <artifactId>xmlschema-core</artifactId>
+                </exclusion>
+            </exclusions>
+            <!-- <type>pom</type> -->
+            <!-- <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-asm</artifactId>
@@ -993,23 +1802,103 @@
                     <groupId>com.fasterxml.woodstox</groupId>
                     <artifactId>woodstox-core</artifactId>
                 </exclusion>
-            </exclusions>
+                <exclusion>
+                    <groupId>javax.ws.rs</groupId>
+                    <artifactId>javax.ws.rs-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.annotation</groupId>
+                    <artifactId>javax.annotation-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>javax.servlet-api</artifactId>
+                </exclusion>
+            </exclusions> -->
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxws</artifactId>
-            <version>3.2.0</version>
+            <version>4.1.0</version>
             <exclusions>
+                <exclusion>
+                    <groupId>xml-resolver</groupId> 
+                    <artifactId>xml-resolver</artifactId> 
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-rt-bindings-soap</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-rt-bindings-xml</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-rt-frontend-simple</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-rt-ws-addr</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.angus</groupId>
+                    <artifactId>angus-activation</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.ow2.asm</groupId>
+                    <artifactId>asm</artifactId>
+                </exclusion>
+            </exclusions>
+            <!-- <exclusions>
                 <exclusion>
                     <groupId>org.codehaus.woodstox</groupId>
                     <artifactId>woodstox-core-asl</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions> -->
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
-            <version>3.2.0</version>
+            <version>4.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-security</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-client</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+        <!-- ScribeJava for OAuth1.0a -->
+        <dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-apis</artifactId>
+            <version>8.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-core</artifactId>
+            <version>8.3.3</version>
+        </dependency>
+        <!-- wss4j -->
+        <!-- https://mvnrepository.com/artifact/org.apache.wss4j/wss4j-ws-security-common -->
+        <dependency>
+            <groupId>org.apache.wss4j</groupId>
+            <artifactId>wss4j-ws-security-common</artifactId>
+            <version>3.0.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.wss4j/wss4j-ws-security-dom -->
+        <dependency>
+            <groupId>org.apache.wss4j</groupId>
+            <artifactId>wss4j-ws-security-dom</artifactId>
+            <version>3.0.4</version>
         </dependency>
 
         <dependency>
@@ -1171,7 +2060,7 @@
         <dependency>
             <groupId>org.owasp</groupId>
             <artifactId>csrfguard</artifactId>
-            <version>3.1.0</version>
+            <version>4.4.0-jakarta</version>
         </dependency>
 
         <dependency>
@@ -1246,7 +2135,7 @@
         <dependency>
             <groupId>org.apache.openjpa</groupId>
             <artifactId>openjpa</artifactId>
-            <version>3.0.0</version>
+            <version>4.0.1</version>
         </dependency>
 
         <!-- HAPI FHIR -->
@@ -1287,41 +2176,43 @@
         <dependency>
            <groupId>com.sun.xml.ws</groupId>
            <artifactId>jaxws-ri</artifactId>
-           <version>2.3.3</version>
+           <version>4.0.3</version>
            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>1.3.2</version>
         </dependency>
         
         <!-- Added for Tomcat 9.0.97 -->
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>2.3.3</version>
+            <version>4.0.5</version>
         </dependency>
-        <dependency>
+
+        <!-- <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-        </dependency>
+        </dependency> -->
         
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
-            <version>2.5.33</version>
+            <version>6.7.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-fileupload</groupId>
+                    <artifactId>commons-fileupload</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-spring-plugin</artifactId>
-            <version>2.5.33</version>
+            <version>6.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-convention-plugin</artifactId>
+            <version>6.7.0</version>
         </dependency>
     </dependencies>
 
@@ -1619,22 +2510,6 @@
                             <locale>en_US</locale>
                             <timeZone>Canada/Eastern</timeZone>
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Update lockfile - mvn se.vandmo:dependency-lock-maven-plugin:lock -->
-            <plugin>
-                <groupId>se.vandmo</groupId>
-                <artifactId>dependency-lock-maven-plugin</artifactId>
-                <version>1.1.0</version>
-                <executions>
-                    <execution>
-                        <id>check</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>

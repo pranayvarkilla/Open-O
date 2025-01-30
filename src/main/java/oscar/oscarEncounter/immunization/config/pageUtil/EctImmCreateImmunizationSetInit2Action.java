@@ -24,10 +24,8 @@
  */
 package oscar.oscarEncounter.immunization.config.pageUtil;
 
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.validator.annotations.Validation;
+import org.apache.struts2.ActionSupport;
 
-@Validation
 public class EctImmCreateImmunizationSetInit2Action extends ActionSupport {
     private String setName;
     private String numRows;

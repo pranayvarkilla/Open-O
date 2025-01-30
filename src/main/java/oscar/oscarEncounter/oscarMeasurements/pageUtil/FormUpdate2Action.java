@@ -17,10 +17,10 @@ import java.util.Map;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.commons.validator.GenericValidator;
 import org.oscarehr.common.dao.FlowSheetCustomizationDao;
@@ -51,12 +51,14 @@ import org.oscarehr.casemgmt.model.CaseManagementNote;
 import org.oscarehr.casemgmt.service.CaseManagementManager;
 import org.apache.logging.log4j.Logger;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class FormUpdate2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private static Logger log = MiscUtils.getLogger();

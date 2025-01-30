@@ -33,7 +33,7 @@ import java.util.List;
 
 import org.oscarehr.PMmodule.model.ProgramClientRestriction;
 import org.oscarehr.common.dao.DemographicDao;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 /**
@@ -117,17 +117,17 @@ public class ProgramClientRestrictionDAOImpl extends HibernateDaoSupport impleme
         return pcr;
     }
 
-    @Required
+    @Autowired
     public void setDemographicDao(DemographicDao demographicDao) {
         this.demographicDao = demographicDao;
     }
 
-    @Required
+    @Autowired
     public void setProgramDao(ProgramDao programDao) {
         this.programDao = programDao;
     }
 
-    @Required
+    @Autowired
     public void setProviderDao(ProviderDao providerDao) {
         this.providerDao = providerDao;
     }

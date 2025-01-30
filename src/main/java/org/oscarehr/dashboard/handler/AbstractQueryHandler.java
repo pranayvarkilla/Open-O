@@ -25,10 +25,9 @@
 package org.oscarehr.dashboard.handler;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Criteria;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.oscarehr.dashboard.handler.IndicatorTemplateXML.RangeType;
 import org.oscarehr.dashboard.query.Column;
@@ -42,6 +41,8 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.transform.Transformers;
 
 @Service
 public abstract class AbstractQueryHandler extends HibernateDaoSupport {
@@ -78,7 +79,7 @@ public abstract class AbstractQueryHandler extends HibernateDaoSupport {
     }
 
     protected List<?> execute(String query) {
-
+        /*
         setResultList(null);
 
         //Session session = getSession();
@@ -97,6 +98,29 @@ public abstract class AbstractQueryHandler extends HibernateDaoSupport {
         session.close();
 
         return results;
+        */
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            // Create a native SQL query using Hibernate's NativeQuery interface
+            NativeQuery<Map<String, Object>> sqlQuery = session.createNativeQuery(query);
+
+            // Since Hibernate 5.2, setResultTransformer is deprecated. Use Hibernate's
+            // result transformers or adapt with a custom transformer if needed. For a simple
+            // key-value pair (alias to entity map), you can use the addScalar method for each expected column,
+            // or handle transformations manually. Assuming a generic approach here:
+            sqlQuery.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+
+            List<Map<String, Object>> results = sqlQuery.list();
+
+            logger.info("Thread " + Thread.currentThread().getName() + "[" + Thread.currentThread().getId()
+                        + "] Query results " + results);
+
+            // Optionally process results to exclude certain items as per TODO comments
+            return results;
+        } finally {
+            // If session is not managed (e.g., not bound to a transactional context), close it
+            // However, in most managed environments, closing the session is not needed here
+        }
     }
 
 

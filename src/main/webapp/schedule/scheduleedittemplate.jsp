@@ -32,7 +32,7 @@
         errorPage="../appointment/errorpage.jsp" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page import="oscar.OscarProperties" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <jsp:useBean id="myTempBean" class="oscar.ScheduleTemplateBean" scope="page"/>

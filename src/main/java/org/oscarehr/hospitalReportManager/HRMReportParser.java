@@ -14,17 +14,19 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.StringReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.nio.charset.StandardCharsets;
 
 import javax.xml.XMLConstants;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -33,8 +35,8 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.cxf.helpers.FileUtils;
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.common.dao.DemographicCustDao;
@@ -57,6 +59,7 @@ import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
 import org.springframework.core.io.ClassPathResource;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import oscar.OscarProperties;
@@ -109,11 +112,12 @@ public class HRMReportParser {
                     logger.warn("unable to find the HRM report. checked " + hrmReportFileLocation + ", and in the document_dir");
                     return null;
                 }
-                if (tmpXMLholder.exists()) fileData = FileUtils.getStringFromFile(tmpXMLholder);
+                if (tmpXMLholder.exists()) {
+                    fileData = FileUtils.readFileToString(tmpXMLholder, StandardCharsets.UTF_8);
+                }
                 // Parse an XML document into a DOM tree.
                 DocumentBuilder parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
                 // Create a SchemaFactory capable of understanding WXS schemas.
-
 
                 //SchemaFactory factory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");//XMLConstants.W3C_XML_SCHEMA_NS_URI);
                 SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);

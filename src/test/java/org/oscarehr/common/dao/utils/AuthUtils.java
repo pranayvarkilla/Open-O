@@ -25,7 +25,7 @@ package org.oscarehr.common.dao.utils;
 
 import java.util.Locale;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.oscarehr.common.model.Facility;
 import org.oscarehr.common.model.Provider;

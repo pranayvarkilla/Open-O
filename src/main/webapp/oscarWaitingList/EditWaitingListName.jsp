@@ -31,7 +31,7 @@
 <%@page import="org.oscarehr.common.model.ProviderPreference" %>
 <%@page import="org.oscarehr.util.SessionConstants" %>
 <%@page import="oscar.oscarWaitingList.bean.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <html>
     <head>
         <script src="${pageContext.request.contextPath}/js/global.js"></script>

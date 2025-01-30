@@ -43,7 +43,7 @@ import org.oscarehr.util.LoggedInInfo;
 import oscar.util.DateUtils;
 
 import java.util.Locale;
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import java.util.Date;
 
 import org.oscarehr.common.model.Provider;

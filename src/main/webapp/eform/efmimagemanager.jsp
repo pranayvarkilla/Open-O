@@ -25,7 +25,7 @@
 --%>
 <%@page import="java.net.URLEncoder" %>
 <%@ page import="oscar.eform.data.*, oscar.OscarProperties, oscar.eform.*, java.util.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <!DOCTYPE html>

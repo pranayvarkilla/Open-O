@@ -25,7 +25,7 @@ package org.oscarehr.util;
 
 import java.util.Date;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 
 public class TestClass {
 

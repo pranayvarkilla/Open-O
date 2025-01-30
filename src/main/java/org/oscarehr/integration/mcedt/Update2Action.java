@@ -25,14 +25,15 @@
 package org.oscarehr.integration.mcedt;
 
 import ca.ontario.health.edt.*;
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.util.MiscUtils;
 import oscar.util.ConversionUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.math.BigInteger;
 import java.nio.file.Files;
@@ -42,8 +43,9 @@ import static org.oscarehr.integration.mcedt.ActionUtils.*;
 import static org.oscarehr.integration.mcedt.McedtConstants.SESSION_KEY_UPLOAD_DETAILS;
 
 public class Update2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private static Logger logger = MiscUtils.getLogger();

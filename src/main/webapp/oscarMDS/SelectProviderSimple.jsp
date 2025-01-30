@@ -9,7 +9,7 @@
 
 --%>
 <%@ page language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <%@ page import="oscar.oscarMDS.data.ProviderData, java.util.ArrayList" %>

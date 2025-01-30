@@ -30,7 +30,7 @@ package org.oscarehr.common.dao;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.logging.log4j.Logger;

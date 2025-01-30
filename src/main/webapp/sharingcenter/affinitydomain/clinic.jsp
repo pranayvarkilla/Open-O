@@ -39,7 +39,7 @@
     }
 %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <%@page import="org.oscarehr.sharingcenter.model.ClinicInfoDataObject" %>
 <%@page import="org.oscarehr.sharingcenter.dao.ClinicInfoDao" %>

@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.xml.ws.soap.SOAPFaultException;
+import jakarta.xml.ws.soap.SOAPFaultException;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.oscarehr.integration.mcedt.mailbox.ActionUtils;
 

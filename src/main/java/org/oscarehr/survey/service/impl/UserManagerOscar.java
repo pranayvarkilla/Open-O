@@ -23,7 +23,7 @@
 
 package org.oscarehr.survey.service.impl;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.oscarehr.survey.service.UserManager;
 import org.springframework.stereotype.Component;

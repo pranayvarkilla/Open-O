@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.common.model.BedCheckTime;

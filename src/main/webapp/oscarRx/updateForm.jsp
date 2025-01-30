@@ -27,7 +27,7 @@
 <%@page import="org.oscarehr.common.model.Drug" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>
 <%@page import="org.oscarehr.common.dao.DrugDao" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>

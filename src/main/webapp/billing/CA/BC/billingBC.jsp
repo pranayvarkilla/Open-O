@@ -43,8 +43,8 @@
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
 <%@taglib uri="/WEB-INF/rewrite-tag.tld" prefix="rewrite" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@page import="java.util.*, oscar.oscarBilling.ca.bc.data.*,oscar.oscarBilling.ca.bc.pageUtil.*,oscar.*,oscar.entities.*" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>

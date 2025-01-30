@@ -28,8 +28,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.jsp.PageContext;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.jsp.PageContext;
 
 import org.oscarehr.common.dao.SecurityDao;
 import org.oscarehr.common.model.Security;

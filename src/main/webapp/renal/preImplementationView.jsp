@@ -33,8 +33,8 @@
 <%@page import="org.oscarehr.renal.ReportDataContainer" %>
 <%@page import="org.oscarehr.common.model.ORNPreImplementationReportLog" %>
 <%@page import="org.oscarehr.common.dao.ORNPreImplementationReportLogDao" %>
-<%@page import="javax.xml.bind.JAXBContext" %>
-<%@page import="javax.xml.bind.Unmarshaller" %>
+<%@page import="jakarta.xml.bind.JAXBContext" %>
+<%@page import="jakarta.xml.bind.Unmarshaller" %>
 <%@ include file="/taglibs.jsp" %>
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>

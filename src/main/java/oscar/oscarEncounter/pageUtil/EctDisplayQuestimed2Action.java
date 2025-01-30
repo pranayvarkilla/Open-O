@@ -33,7 +33,7 @@ import org.oscarehr.ws.rest.util.QuestimedUtil;
 import oscar.OscarProperties;
 import oscar.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

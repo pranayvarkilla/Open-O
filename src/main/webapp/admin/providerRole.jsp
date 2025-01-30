@@ -43,7 +43,7 @@
 <%@ page import="org.oscarehr.common.dao.RecycleBinDao" %>
 <%@ page import="org.oscarehr.common.dao.ProviderDataDao" %>
 <%@ page import="org.owasp.encoder.Encode" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%
     ProgramDao programDao = SpringUtils.getBean(ProgramDao.class);
     SecRoleDao secRoleDao = SpringUtils.getBean(SecRoleDao.class);

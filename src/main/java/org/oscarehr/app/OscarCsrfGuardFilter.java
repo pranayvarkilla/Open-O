@@ -24,30 +24,37 @@
  */
 package org.oscarehr.app;
 
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletFileUpload;
 import org.oscarehr.util.MiscUtils;
 import org.owasp.csrfguard.CsrfGuard;
 import org.owasp.csrfguard.CsrfGuardException;
+import org.owasp.csrfguard.CsrfGuardFilter;
+import org.owasp.csrfguard.CsrfValidator;
+import org.owasp.csrfguard.ProtectionResult;
 import org.owasp.csrfguard.action.IAction;
 import org.owasp.csrfguard.http.InterceptRedirectResponse;
-import org.owasp.csrfguard.log.LogLevel;
-import org.owasp.csrfguard.util.RandomGenerator;
+import org.owasp.csrfguard.token.TokenUtils;
+import org.owasp.csrfguard.token.storage.Token;
+import org.owasp.csrfguard.token.storage.TokenHolder;
+import org.owasp.csrfguard.token.storage.impl.PageTokenValue;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+
 import oscar.OscarProperties;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Oscar OscarCsrfGuardFilter
@@ -67,6 +74,7 @@ public class OscarCsrfGuardFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 
         CsrfGuard csrfGuard = CsrfGuard.getInstance();
+        CsrfValidator csrfValidator = new CsrfValidator();
 
         //maybe the short circuit to disable is set
         if (!csrfGuard.isEnabled()) {
@@ -79,6 +87,7 @@ public class OscarCsrfGuardFilter implements Filter {
 
             HttpServletRequest httpRequest = (HttpServletRequest) request;
             HttpSession session = httpRequest.getSession(false);
+            String logicalSessionKey = session.getId();
 
             /*
              * if there is no session and we aren't validating when no session exists.
@@ -87,7 +96,7 @@ public class OscarCsrfGuardFilter implements Filter {
              * If true: short circuit the process.
              */
             if ((session == null && !csrfGuard.isValidateWhenNoSessionExists())
-                    || !csrfGuard.isProtectedPage(httpRequest.getRequestURI())) {
+                    || !csrfValidator.isProtectedPage(httpRequest.getRequestURI()).isProtected()) {
                 filterChain.doFilter(httpRequest, response);
                 return;
             }
@@ -114,22 +123,19 @@ public class OscarCsrfGuardFilter implements Filter {
             InterceptRedirectResponse httpResponse = new InterceptRedirectResponse((HttpServletResponse) response, httpRequest, csrfGuard);
 
             if ((session != null && session.isNew()) && csrfGuard.isUseNewTokenLandingPage()) {
-                csrfGuard.writeLandingPage(httpRequest, httpResponse);
-            } else if (ServletFileUpload.isMultipartContent(httpRequest)) {
+                csrfGuard.writeLandingPage(httpResponse, logicalSessionKey);
+            } else if (JakartaServletFileUpload.isMultipartContent(httpRequest)) {
                 MultiReadHttpServletRequest multiReadHttpRequest = new MultiReadHttpServletRequest(httpRequest);
                 if (isValidMultipartRequest(multiReadHttpRequest, httpResponse)) {
                     filterChain.doFilter(multiReadHttpRequest, httpResponse);
                 } else if (!doRedirect) {
                     filterChain.doFilter(multiReadHttpRequest, httpResponse);
                 }
-            } else if (csrfGuard.isValidRequest(httpRequest, httpResponse)) {
+            } else if (csrfValidator.isValid(httpRequest, httpResponse)) {
                 filterChain.doFilter(httpRequest, httpResponse);
             } else if (!doRedirect) {
                 filterChain.doFilter(httpRequest, httpResponse);
             }
-
-            /* update tokens */
-            csrfGuard.updateTokens(httpRequest);
 
         } else {
             filterConfig.getServletContext().log(String.format("[WARNING] CsrfGuard does not know how to work with requests of class %s ", request.getClass().getName()));
@@ -145,9 +151,13 @@ public class OscarCsrfGuardFilter implements Filter {
 
     private boolean isValidMultipartRequest(MultiReadHttpServletRequest request, HttpServletResponse response) {
         CsrfGuard csrfGuard = CsrfGuard.getInstance();
-        boolean valid = !csrfGuard.isProtectedPageAndMethod(request);
+        CsrfValidator csrfValidator = new CsrfValidator();
+        String requestURI = request.getRequestURI();
+        String requestMethod = request.getMethod();
+        ProtectionResult protectionResult = csrfValidator.isProtectedPageAndMethod(requestURI, requestMethod);
+        boolean valid = !protectionResult.isProtected();
         HttpSession session = request.getSession(true);
-        String tokenFromSession = (String) session.getAttribute(csrfGuard.getSessionKey());
+        String tokenFromSession = (String) session.getAttribute(csrfGuard.getLogicalSessionExtractor().extract(request).getKey());
 
         /** sending request to protected resource - verify token **/
         if (tokenFromSession != null && !valid) {
@@ -205,43 +215,53 @@ public class OscarCsrfGuardFilter implements Filter {
 
     private void verifyPageToken(MultiReadHttpServletRequest request) throws CsrfGuardException {
         CsrfGuard csrfGuard = CsrfGuard.getInstance();
-        HttpSession session = request.getSession(true);
-        @SuppressWarnings("unchecked")
-        Map<String, String> pageTokens = (Map<String, String>) session.getAttribute(CsrfGuard.PAGE_TOKENS_KEY);
 
-        String tokenFromPages = (pageTokens != null ? pageTokens.get(request.getRequestURI()) : null);
-        String tokenFromSession = (String) session.getAttribute(csrfGuard.getSessionKey());
-        MultipartHttpServletRequest multipartRequest = new CommonsMultipartResolver().resolveMultipart(request);
+        String logicalSessionKey = csrfGuard.getLogicalSessionExtractor().extract(request).getKey();
+        MultipartHttpServletRequest multipartRequest = new StandardServletMultipartResolver().resolveMultipart(request);
         String tokenFromRequest = multipartRequest.getParameter(csrfGuard.getTokenName());
+        String requestURI = request.getRequestURI();
 
         if (tokenFromRequest == null) {
-            /** FAIL: token is missing from the request **/
             throw new CsrfGuardException("required token is missing from the request");
-        } else if (tokenFromPages != null) {
-            if (!tokenFromPages.equals(tokenFromRequest)) {
+        }
+
+        TokenHolder tokenHolder = csrfGuard.getTokenHolder();
+        Token token = tokenHolder.getToken(logicalSessionKey);
+
+        PageTokenValue pageToken = token.getTimedPageToken(requestURI);
+
+        if (pageToken != null) {
+            if (!pageToken.getValue().equals(tokenFromRequest)) {
                 /** FAIL: request does not match page token **/
                 throw new CsrfGuardException("request token does not match page token");
             }
-        } else if (!tokenFromSession.equals(tokenFromRequest)) {
+        } else {
             /** FAIL: the request token does not match the session token **/
-            throw new CsrfGuardException("request token does not match session token");
+            String masterToken = token.getMasterToken();
+            if (!masterToken.equals(tokenFromRequest)) {
+                throw new CsrfGuardException("request token does not match session token");
+            }
         }
     }
 
     private void verifySessionToken(MultiReadHttpServletRequest request) throws CsrfGuardException {
         CsrfGuard csrfGuard = CsrfGuard.getInstance();
-        HttpSession session = request.getSession(true);
-        String tokenFromSession = (String) session.getAttribute(csrfGuard.getSessionKey());
-        MultipartHttpServletRequest multipartRequest = new CommonsMultipartResolver().resolveMultipart(request);
+ 
+        String logicalSessionKey = csrfGuard.getLogicalSessionExtractor().extract(request).getKey();
+        String requestURI = request.getRequestURI();
+        
+        TokenHolder tokenHolder = csrfGuard.getTokenHolder();
+        String masterToken = tokenHolder.getToken(logicalSessionKey).getMasterToken();
+
+        MultipartHttpServletRequest multipartRequest = new StandardServletMultipartResolver().resolveMultipart(request);
         String tokenFromRequest = multipartRequest.getParameter(csrfGuard.getTokenName());
 
         if (tokenFromRequest == null) {
             /** FAIL: token is missing from the request **/
             throw new CsrfGuardException("required token is missing from the request");
-        } else if (!tokenFromSession.equals(tokenFromRequest)) {
-            /** FAIL: the request token does not match the session token **/
-            throw new CsrfGuardException("request token does not match session token");
-        }
+        } 
+    
+        csrfGuard.getTokenService().verifyToken(request, requestURI, logicalSessionKey, masterToken);
     }
 
     private void callActionsOnError(MultiReadHttpServletRequest request,
@@ -251,36 +271,21 @@ public class OscarCsrfGuardFilter implements Filter {
             try {
                 action.execute(request, response, csrfe, csrfGuard);
             } catch (CsrfGuardException exception) {
-                csrfGuard.getLogger().log(LogLevel.Error, exception);
+                Logger logger = LoggerFactory.getLogger(CsrfGuardFilter.class);
+                logger.error("CSRFGuard action execution failed", exception);
             }
         }
     }
 
     private void rotateTokens(MultiReadHttpServletRequest request) {
         CsrfGuard csrfGuard = CsrfGuard.getInstance();
-        HttpSession session = request.getSession(true);
 
-        /** rotate master token **/
-        String tokenFromSession = null;
+        String logicalSessionKey = csrfGuard.getLogicalSessionExtractor().extract(request).getKey();
+        TokenHolder tokenHolder = csrfGuard.getTokenHolder();
+        tokenHolder.setMasterToken(logicalSessionKey, TokenUtils.generateRandomToken());
 
-        try {
-            tokenFromSession = RandomGenerator.generateRandomId(csrfGuard.getPrng(), csrfGuard.getTokenLength());
-        } catch (Exception e) {
-            throw new RuntimeException(String.format("unable to generate the random token - %s", e.getLocalizedMessage()), e);
-        }
-
-        session.setAttribute(csrfGuard.getSessionKey(), tokenFromSession);
-
-        /** rotate page token **/
         if (csrfGuard.isTokenPerPageEnabled()) {
-            @SuppressWarnings("unchecked")
-            Map<String, String> pageTokens = (Map<String, String>) session.getAttribute(CsrfGuard.PAGE_TOKENS_KEY);
-
-            try {
-                pageTokens.put(request.getRequestURI(), RandomGenerator.generateRandomId(csrfGuard.getPrng(), csrfGuard.getTokenLength()));
-            } catch (Exception e) {
-                throw new RuntimeException(String.format("unable to generate the random token - %s", e.getLocalizedMessage()), e);
-            }
+            tokenHolder.rotateAllPageTokens(logicalSessionKey, TokenUtils::generateRandomToken);
         }
     }
 }

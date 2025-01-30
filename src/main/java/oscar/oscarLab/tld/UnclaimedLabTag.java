@@ -27,8 +27,8 @@ package oscar.oscarLab.tld;
 
 import java.util.List;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.TagSupport;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.tagext.TagSupport;
 
 import org.oscarehr.common.dao.ProviderLabRoutingDao;
 import org.oscarehr.common.model.ProviderLabRoutingModel;

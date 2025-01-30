@@ -24,7 +24,7 @@
  */
 package org.oscarehr.managers;
 
-import com.onelogin.saml2.Auth;
+import com.onelogin.saml2.customize.Auth;
 import com.onelogin.saml2.settings.Saml2Settings;
 import com.onelogin.saml2.settings.SettingsBuilder;
 import org.apache.logging.log4j.Logger;

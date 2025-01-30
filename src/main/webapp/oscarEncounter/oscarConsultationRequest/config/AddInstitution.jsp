@@ -26,7 +26,7 @@
 
 <%@ page import="java.util.ResourceBundle" %>
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>

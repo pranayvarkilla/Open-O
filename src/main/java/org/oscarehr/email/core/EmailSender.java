@@ -93,7 +93,7 @@ public class EmailSender {
 
     // For debugging
     private void checkProtocolSupport() {
-        logger.info("JavaMail version: " + javax.mail.Session.class.getPackage().getImplementationVersion());
+        logger.info("JavaMail version: " + jakarta.mail.Session.class.getPackage().getImplementationVersion());
         try {
             logger.info(String.join(" ", SSLContext.getDefault().getSupportedSSLParameters().getProtocols()));
         } catch (NoSuchAlgorithmException e) {

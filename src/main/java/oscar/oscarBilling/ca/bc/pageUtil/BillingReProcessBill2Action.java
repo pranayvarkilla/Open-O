@@ -33,9 +33,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.common.dao.BillingDao;
@@ -43,8 +43,6 @@ import org.oscarehr.common.model.Billing;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import oscar.Misc;
 import oscar.MyDateFormat;
@@ -60,12 +58,14 @@ import oscar.oscarDemographic.data.DemographicData;
 import oscar.util.SqlUtils;
 import oscar.util.StringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class BillingReProcessBill2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private static final Logger logger = MiscUtils.getLogger();
     private final BillingDao billingDao = SpringUtils.getBean(BillingDao.class);

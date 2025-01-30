@@ -48,11 +48,11 @@
     String str = null;
 %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page
         import="java.util.*, oscar.*, oscar.oscarDemographic.data.ProvinceNames, oscar.oscarDemographic.pageUtil.Util, oscar.oscarWaitingList.WaitingList" %>
 <%@ page

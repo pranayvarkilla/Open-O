@@ -25,18 +25,19 @@
 
 package oscar.oscarBilling.ca.bc.pageUtil;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class EditServiceCodeAssoc2Action extends ActionSupport {
     private String svcCode;
     private String mode;
     private ServiceCodeAssociation serviceCodeAssociation;
-    private HttpServletRequest request = ServletActionContext.getRequest();
+    private ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
 
     // Action properties
     public String getSvcCode() {

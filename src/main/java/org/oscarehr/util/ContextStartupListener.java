@@ -42,12 +42,12 @@ import org.quartz.impl.StdSchedulerFactory;
 import com.quatro.dao.security.SecroleDao;
 import oscar.OscarProperties;
 
-public class ContextStartupListener implements javax.servlet.ServletContextListener {
+public class ContextStartupListener implements jakarta.servlet.ServletContextListener {
     private static final Logger logger = org.oscarehr.util.MiscUtils.getLogger();
     private static final OscarProperties oscarProperties = OscarProperties.getInstance();
 
     @Override
-    public void contextInitialized(javax.servlet.ServletContextEvent sce) {
+    public void contextInitialized(jakarta.servlet.ServletContextEvent sce) {
 
         // ensure cxf uses log4j2
         System.setProperty("org.apache.cxf.Logger", "org.apache.cxf.common.logging.Log4j2Logger");
@@ -136,7 +136,7 @@ public class ContextStartupListener implements javax.servlet.ServletContextListe
     }
 
     @Override
-    public void contextDestroyed(javax.servlet.ServletContextEvent sce) {
+    public void contextDestroyed(jakarta.servlet.ServletContextEvent sce) {
         logger.info("Server processes stopping. context=" + sce.getServletContext().getContextPath());
 
         WaitListEmailThread.stopTask();

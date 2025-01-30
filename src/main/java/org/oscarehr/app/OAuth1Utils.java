@@ -71,7 +71,7 @@ public class OAuth1Utils {
 
             webclient = webclient.replaceHeader("Authorization", OAuthClientUtils.createAuthorizationHeader(consumer, accessToken, "GET", appAuthConfig.getBaseURL() + baseRequestURI));
 
-            javax.ws.rs.core.Response reps = webclient.get();
+            jakarta.ws.rs.core.Response reps = webclient.get();
 
             in = (InputStream) reps.getEntity();
             bufferedReader = new BufferedReader(new InputStreamReader(in));
@@ -115,7 +115,7 @@ public class OAuth1Utils {
 
             webclient = webclient.replaceHeader("Authorization", OAuthClientUtils.createAuthorizationHeader(consumer, accessToken, "POST", appAuthConfig.getBaseURL() + baseRequestURI));
 
-            javax.ws.rs.core.Response reps = webclient.accept("application/json, text/plain, */*").acceptEncoding("gzip, deflate").type("application/json;charset=utf-8").post(obj);
+            jakarta.ws.rs.core.Response reps = webclient.accept("application/json, text/plain, */*").acceptEncoding("gzip, deflate").type("application/json;charset=utf-8").post(obj);
 
             in = (InputStream) reps.getEntity();
             bufferedReader = new BufferedReader(new InputStreamReader(in));

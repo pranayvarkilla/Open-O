@@ -24,7 +24,7 @@
  */
 package oscar.form.model;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 import java.io.Serializable;
 
 public class CompositeFormBCAR2020DataId implements Serializable {

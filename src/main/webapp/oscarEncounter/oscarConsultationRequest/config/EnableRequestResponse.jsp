@@ -44,7 +44,7 @@
 <%@ page import="org.oscarehr.common.dao.PropertyDao, org.oscarehr.common.model.Property" %>
 <%@ page import="org.oscarehr.managers.ConsultationManager" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <%

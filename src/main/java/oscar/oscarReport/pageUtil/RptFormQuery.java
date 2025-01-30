@@ -32,7 +32,7 @@ package oscar.oscarReport.pageUtil;
 import java.util.Enumeration;
 import java.util.Vector;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import oscar.oscarReport.data.RptReportCreator;
 

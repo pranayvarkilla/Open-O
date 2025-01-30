@@ -29,14 +29,12 @@ package org.oscarehr.common.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.NonUniqueResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
-import org.oscarehr.common.dao.AbstractDao;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NonUniqueResultException;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.AbstractModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -269,7 +267,7 @@ public abstract class AbstractDaoImpl<T extends AbstractModel<?>> implements Abs
         // return((Integer)query.getSingleResult());
 
         String tableName = modelClass.getSimpleName();
-        javax.persistence.Table t = modelClass.getAnnotation(javax.persistence.Table.class);
+        jakarta.persistence.Table t = modelClass.getAnnotation(jakarta.persistence.Table.class);
         if (t != null && t.name() != null && t.name().length() > 0) {
             tableName = t.name();
         }

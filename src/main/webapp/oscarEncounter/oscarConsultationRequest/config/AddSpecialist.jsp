@@ -42,10 +42,10 @@
 
 <%@ page import="java.util.ResourceBundle" %>
 <% java.util.Properties oscarVariables = oscar.OscarProperties.getInstance(); %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@page import="oscar.oscarEncounter.oscarConsultationRequest.config.pageUtil.EctConAddSpecialistForm" %>
 <%@page import="java.util.List" %>
 <%@page import="java.util.Map" %>

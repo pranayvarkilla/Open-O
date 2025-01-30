@@ -36,8 +36,8 @@ import oscar.oscarBilling.ca.bc.data.BillingFormData;
 import oscar.oscarBilling.ca.bc.data.BillingPreference;
 import oscar.oscarBilling.ca.bc.data.BillingPreferencesDAO;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.*;
 
 /**
@@ -45,13 +45,15 @@ import java.util.*;
  *
  * @version 1.0
  */
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class ViewBillingPreferences2Action
         extends ActionSupport {
-    HttpServletRequest servletRequest = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest servletRequest =  (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private final BillingPreferencesDAO dao = SpringUtils.getBean(BillingPreferencesDAO.class);

@@ -25,9 +25,9 @@
 
 package org.oscarehr.integration.born;
 
-import javax.xml.soap.SOAPException;
-import javax.xml.soap.SOAPHeader;
-import javax.xml.soap.SOAPMessage;
+import jakarta.xml.soap.SOAPException;
+import jakarta.xml.soap.SOAPHeader;
+import jakarta.xml.soap.SOAPMessage;
 
 import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.message.Message;

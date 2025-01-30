@@ -40,7 +40,7 @@
 %>
 
 <%@ page import="java.util.*,oscar.oscarReport.data.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <link rel="stylesheet" type="text/css"

@@ -29,9 +29,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.Logger;
 import org.hibernate.LockMode;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Example;
 import org.oscarehr.util.MiscUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 

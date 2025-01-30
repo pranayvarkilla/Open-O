@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.common.dao.BillingONCHeader1Dao;

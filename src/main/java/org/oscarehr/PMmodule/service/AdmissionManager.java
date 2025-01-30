@@ -56,7 +56,7 @@ import org.oscarehr.managers.RoomManager;
 import org.oscarehr.managers.RoomDemographicManager;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.SpringUtils;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface AdmissionManager {

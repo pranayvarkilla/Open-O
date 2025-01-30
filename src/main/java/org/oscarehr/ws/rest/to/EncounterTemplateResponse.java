@@ -26,7 +26,7 @@ package org.oscarehr.ws.rest.to;
 
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import org.oscarehr.ws.rest.to.model.EncounterTemplateTo1;
 

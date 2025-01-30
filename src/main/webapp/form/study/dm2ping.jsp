@@ -32,7 +32,7 @@
 <jsp:useBean id="studyMapping" class="java.util.Properties" scope="page"/>
 
 <%@ taglib uri="/WEB-INF/oscarProperties-tag.tld" prefix="oscarProp" %>
-<%@ page import="java.util.*,oscar.ping.xml.*,oscar.ping.xml.impl.*,javax.xml.bind.*" %>
+<%@ page import="java.util.*,oscar.ping.xml.*,oscar.ping.xml.impl.*,jakarta.xml.bind.*" %>
 <%@ page import="org.chip.ping.client.*" %>
 <%@ page import="org.chip.ping.xml.*" %>
 <%@ page import="org.chip.ping.xml.talk.*" %>

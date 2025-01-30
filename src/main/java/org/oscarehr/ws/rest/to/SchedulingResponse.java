@@ -27,7 +27,7 @@ package org.oscarehr.ws.rest.to;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import org.oscarehr.ws.rest.to.model.AppointmentStatusTo1;
 import org.oscarehr.ws.rest.to.model.AppointmentTo1;

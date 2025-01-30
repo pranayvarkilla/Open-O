@@ -146,7 +146,7 @@
     // List<BillingService> sL = bcds.findAllPrivateCodes();
     List<BillingService> sL = new ArrayList<>();
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

@@ -30,7 +30,7 @@
         import="org.oscarehr.common.dao.ProviderLabRoutingFavoritesDao, org.oscarehr.common.model.ProviderLabRoutingFavorite" %>
 <%@ page import="org.oscarehr.PMmodule.dao.ProviderDao, org.oscarehr.common.model.Provider" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <html>
 <head>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/global.js"></script>

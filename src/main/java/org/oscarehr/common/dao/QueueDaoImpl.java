@@ -32,8 +32,8 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.Queue;
 import org.oscarehr.util.MiscUtils;

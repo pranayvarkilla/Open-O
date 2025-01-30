@@ -27,26 +27,27 @@
 package oscar.oscarBilling.ca.bc.pageUtil;
 
 import org.apache.logging.log4j.Logger;
-import org.oscarehr.billing.Clinicaid.util.ClinicaidCommunication;
 import org.oscarehr.decisionSupport.model.DSConsequence;
 import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import oscar.oscarBilling.ca.bc.decisionSupport.BillingGuidelines;
 import oscar.util.plugin.OscarProperties;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 //import oscar.util.SqlUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public final class Billing2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private static Logger _log = MiscUtils.getLogger();
 

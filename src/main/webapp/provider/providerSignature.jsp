@@ -24,7 +24,7 @@
 
 --%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <%@ page import="oscar.oscarProvider.data.*" %>
@@ -37,7 +37,7 @@
     ProSignatureData sig = new ProSignatureData();
 %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <html>
     <head>

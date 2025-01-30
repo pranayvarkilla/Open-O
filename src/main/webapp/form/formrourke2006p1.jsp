@@ -42,7 +42,7 @@
 <%@ page import="oscar.util.*, oscar.form.*, oscar.form.data.*" %>
 <%@page import="org.oscarehr.util.LoggedInInfo" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%
     String formClass = "Rourke2006";
     String formLink = "formrourke2006p1.jsp";

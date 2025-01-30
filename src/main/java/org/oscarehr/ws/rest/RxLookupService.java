@@ -38,7 +38,7 @@ import org.springframework.stereotype.Component;
 import oscar.oscarRx.data.RxPrescriptionData;
 import oscar.oscarRx.util.RxUtil;
 
-import javax.ws.rs.*;
+import jakarta.ws.rs.*;
 import java.util.ArrayList;
 import java.util.List;
 

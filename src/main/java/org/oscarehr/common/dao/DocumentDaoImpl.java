@@ -37,7 +37,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.ConsultDocs;
 import org.oscarehr.common.model.Demographic;
@@ -47,7 +47,6 @@ import org.springframework.stereotype.Repository;
 
 import org.oscarehr.documentManager.EDocUtil.EDocSort;
 import oscar.util.ConversionUtils;
-import org.oscarehr.common.dao.DocumentDao;
 
 @Repository
 public class DocumentDaoImpl extends AbstractDaoImpl<Document> implements DocumentDao {

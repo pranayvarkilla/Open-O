@@ -9,11 +9,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.net.ssl.X509TrustManager;
 import javax.xml.namespace.QName;
-import javax.xml.soap.SOAPElement;
-import javax.xml.soap.SOAPFactory;
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.soap.SOAPBinding;
+import jakarta.xml.soap.SOAPElement;
+import jakarta.xml.soap.SOAPFactory;
+import jakarta.xml.ws.BindingProvider;
+import jakarta.xml.ws.soap.SOAPBinding;
 
+import org.apache.cxf.binding.soap.SoapBindingConfiguration;
 import org.apache.cxf.configuration.jsse.TLSClientParameters;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.frontend.ClientProxy;
@@ -209,6 +210,9 @@ public class EdtClientBuilder {
 		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
 		factory.setServiceClass(clientClass);
 		factory.setAddress(getConfig().getServiceUrl());
+		SoapBindingConfiguration config = new SoapBindingConfiguration();
+		config.setMtomEnabled(true);
+		factory.setBindingConfig(config);
 		return (T) factory.create();
 	}
 
@@ -287,7 +291,7 @@ public class EdtClientBuilder {
 
 		Map<String, Object> outProps = newWSSOutInterceptorConfiguration();
 		WSS4JOutInterceptor wssOut = new WSS4JOutInterceptor(outProps);
-		wssOut.setAllowMTOM(true);
+		//wssOut.setAllowMTOM(true);
 		client.getEndpoint().getOutInterceptors().add(wssOut);
 	}
 

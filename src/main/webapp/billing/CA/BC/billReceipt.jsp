@@ -53,7 +53,7 @@
 <%@ page import="org.oscarehr.common.model.SystemPreferences" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="org.oscarehr.common.model.Property" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%
     double totalPayments = 0;
     double totalRefunds = 0;

@@ -35,11 +35,12 @@
 
 package oscar.oscarLab.ca.all.pageUtil;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.common.OtherIdManager;
 import org.oscarehr.common.dao.OscarKeyDao;
 import org.oscarehr.common.dao.PublicKeyDao;
@@ -58,8 +59,8 @@ import oscar.oscarLab.ca.all.util.Utilities;
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
 import javax.crypto.spec.SecretKeySpec;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.file.Files;
 import java.security.KeyFactory;
@@ -71,8 +72,9 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
 
 public class LabUpload2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     protected static Logger logger = org.oscarehr.util.MiscUtils.getLogger();
 

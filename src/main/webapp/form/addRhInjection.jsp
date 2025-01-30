@@ -45,7 +45,7 @@
         import="oscar.util.*, oscar.form.*, oscar.form.data.*,java.util.*,oscar.oscarPrevention.*" %>
 <%@ page
         import="oscar.oscarProvider.data.*,oscar.oscarWorkflow.*,oscar.oscarEncounter.oscarMeasurements.bean.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 

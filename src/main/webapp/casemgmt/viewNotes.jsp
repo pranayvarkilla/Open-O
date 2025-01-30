@@ -23,7 +23,7 @@
     Ontario, Canada
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="jakarta.tags.functions" prefix="fn" %>
 <%@page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@page import="oscar.util.ConversionUtils" %>
 <%@page import="org.oscarehr.casemgmt.web.NoteDisplay" %>

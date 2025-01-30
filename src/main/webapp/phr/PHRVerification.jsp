@@ -33,8 +33,8 @@
 <%@ page import="org.oscarehr.phr.util.MyOscarServerRelationManager,org.oscarehr.phr.util.MyOscarUtils" %>
 
 <%@ taglib uri="/WEB-INF/phr-tag.tld" prefix="phr" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>

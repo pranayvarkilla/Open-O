@@ -27,7 +27,7 @@ package org.oscarehr.fax.core;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PreDestroy;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.util.MiscUtils;

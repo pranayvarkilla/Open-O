@@ -29,7 +29,6 @@ package oscar.oscarBilling.ca.bc.pageUtil;
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.util.MiscUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public final class BillingCreateBilling2Form {

@@ -40,10 +40,10 @@ LoggedInInfo loggedInInfo = LoggedInInfo.getLoggedInInfoFromSession(request);
 <%@ page import="java.util.*, java.sql.*, oscar.eform.*" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import="org.oscarehr.managers.DemographicManager" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="jakarta.tags.core" prefix="c"%>
 <%@page import="org.oscarehr.common.dao.UserPropertyDAO, org.oscarehr.common.model.UserProperty" %>
 <%
     String user = (String) session.getAttribute("user");

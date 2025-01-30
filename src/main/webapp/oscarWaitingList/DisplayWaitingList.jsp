@@ -33,7 +33,7 @@
 %>
 <%@ page
         import="java.util.*,oscar.util.*, oscar.oscarWaitingList.bean.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%

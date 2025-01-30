@@ -27,7 +27,7 @@ package org.oscarehr.ws.rest.to;
 import org.oscarehr.common.model.Measurement;
 import org.oscarehr.e2e.constant.Mappings;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;

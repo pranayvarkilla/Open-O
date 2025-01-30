@@ -16,21 +16,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 
 import oscar.OscarProperties;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class OscarStatus2Action extends ActionSupport {
-    HttpServletRequest servletRequest = ServletActionContext.getRequest();
-    HttpServletResponse servletResponse = ServletActionContext.getResponse();
-
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest servletRequest = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse servletResponse = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     public String execute() {
 

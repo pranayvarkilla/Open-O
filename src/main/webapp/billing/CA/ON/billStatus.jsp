@@ -26,7 +26,7 @@
 
 <%@ page
         import="java.math.*,java.util.*, java.sql.*, oscar.*, java.net.*,oscar.oscarBilling.ca.bc.MSP.*,oscar.util.*,oscar.oscarProvider.data.*,oscar.oscarBilling.ca.on.data.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <%--
@@ -35,7 +35,7 @@ you must also add the JSTL library to the project. The Add Library... action
 on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 --%>
 <%--
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@taglib uri="jakarta.tags.core" prefix="c"%> 
 --%>
 
 <jsp:forward page="billingONStatus.jsp"/>

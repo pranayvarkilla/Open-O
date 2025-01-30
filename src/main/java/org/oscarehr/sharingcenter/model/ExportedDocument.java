@@ -28,7 +28,7 @@ package org.oscarehr.sharingcenter.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import org.oscarehr.common.model.AbstractModel;
 

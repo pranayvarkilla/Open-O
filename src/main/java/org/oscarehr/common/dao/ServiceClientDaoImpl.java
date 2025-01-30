@@ -31,7 +31,7 @@ import java.util.List;
 
 import org.oscarehr.common.model.ServiceClient;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 

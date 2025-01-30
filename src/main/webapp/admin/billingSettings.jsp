@@ -39,11 +39,11 @@
     }
 %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <%@ taglib uri="/WEB-INF/oscar-tag.tld" prefix="oscar" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="org.oscarehr.common.dao.PropertyDao" %>

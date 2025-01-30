@@ -1,7 +1,7 @@
 //CHECKSTYLE:OFF
 package org.oscarehr.common.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import org.oscarehr.common.model.enumerator.DocumentType;
 

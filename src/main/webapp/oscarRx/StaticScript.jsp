@@ -34,8 +34,8 @@
 <%@page import="org.oscarehr.util.SessionConstants" %>
 <%@page import="org.oscarehr.oscarRx.StaticScriptBean" %>
 <%@page import="java.util.ArrayList" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
 <%
     String roleName2$ = (String) session.getAttribute("userrole") + "," + (String) session.getAttribute("user");

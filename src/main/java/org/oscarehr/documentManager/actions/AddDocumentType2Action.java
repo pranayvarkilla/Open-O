@@ -12,7 +12,7 @@ package org.oscarehr.documentManager.actions;
 
 import java.util.HashMap;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.oscarehr.documentManager.EDocUtil;
 import org.oscarehr.managers.SecurityInfoManager;
@@ -20,11 +20,13 @@ import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class AddDocumentType2Action extends ActionSupport {
-    private HttpServletRequest request = ServletActionContext.getRequest();
+    private ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
 
     @Override

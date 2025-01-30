@@ -41,8 +41,8 @@
 <%@page import="org.oscarehr.common.model.Provider" %>
 <%@page import="org.oscarehr.phr.RegistrationHelper" %>
 <%@page import="org.oscarehr.myoscar_server.ws.PersonTransfer3" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/phr-tag.tld" prefix="phr" %>
 <%@ page import="oscar.oscarDemographic.data.DemographicData" %>
 <%@ page import="org.oscarehr.common.model.DemographicExt" %>

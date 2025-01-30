@@ -30,8 +30,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Response;
 
 import org.oscarehr.casemgmt.dao.IssueDAO;
 import org.oscarehr.casemgmt.model.Issue;

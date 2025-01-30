@@ -26,9 +26,10 @@
 package oscar.form.study.hsfo2.pageUtil;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.caisi.dao.ProviderDAO;
 import org.hsfo.v2.HsfHmpDataDocument;
 import org.oscarehr.PMmodule.dao.ProviderDao;
@@ -47,8 +48,8 @@ import org.quartz.JobExecutionException;
 import oscar.OscarProperties;
 import oscar.form.study.hsfo2.pageUtil.XMLTransferUtil.SoapElementKey;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -56,8 +57,9 @@ import java.util.List;
 import java.util.Map;
 
 public class RecommitHSFO2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     static Logger logger = MiscUtils.getLogger();
     private static Hsfo2RecommitScheduleDao rd = (Hsfo2RecommitScheduleDao) SpringUtils.getBean(Hsfo2RecommitScheduleDao.class);

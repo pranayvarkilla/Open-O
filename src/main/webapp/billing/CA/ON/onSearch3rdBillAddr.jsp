@@ -62,7 +62,7 @@
          import="java.util.*,java.sql.*,java.net.*" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page import="org.apache.commons.lang.WordUtils" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <html>
     <head>

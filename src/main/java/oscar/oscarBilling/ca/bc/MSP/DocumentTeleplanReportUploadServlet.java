@@ -32,16 +32,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-import org.apache.commons.fileupload.DiskFileUpload;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletDiskFileUpload;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.core.FileUploadException;
 import org.oscarehr.util.MiscUtils;
 
 import oscar.DocumentBean;
@@ -78,7 +78,7 @@ public class DocumentTeleplanReportUploadServlet extends HttpServlet {
 
 
         //		 Create a new file upload handler
-        DiskFileUpload upload = new DiskFileUpload();
+        JakartaServletDiskFileUpload upload = new JakartaServletDiskFileUpload();
 
         try {
             //		 Parse the request
@@ -99,7 +99,7 @@ public class DocumentTeleplanReportUploadServlet extends HttpServlet {
 
                     fileheader = fullFile[fullFile.length - 1];
 
-                    item.write(savedFile);
+                    item.write(savedFile.toPath());
                 }
             }
         } catch (FileUploadException e) {

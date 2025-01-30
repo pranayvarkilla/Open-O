@@ -33,7 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.ListIterator;
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.PMmodule.dao.ProgramDao;
 import org.oscarehr.PMmodule.model.AdmissionSearchBean;

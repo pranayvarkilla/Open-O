@@ -33,9 +33,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.WebServiceException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.xml.ws.WebServiceException;
 
 import net.sf.json.JSONObject;
 
@@ -67,7 +67,6 @@ import org.oscarehr.PMmodule.service.ProgramManager;
 import org.oscarehr.PMmodule.service.ProgramQueueManager;
 import org.oscarehr.PMmodule.service.ProviderManager;
 import org.oscarehr.PMmodule.service.VacancyTemplateManager;
-import org.oscarehr.PMmodule.service.VacancyTemplateManagerImpl;
 import org.oscarehr.PMmodule.utility.ProgramAccessCache;
 import org.oscarehr.caisi_integrator.ws.CachedProvider;
 import org.oscarehr.caisi_integrator.ws.DemographicTransfer;
@@ -91,18 +90,19 @@ import org.oscarehr.util.LoggedInInfo;
 import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SpringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 
 import oscar.log.LogAction;
 
 import com.quatro.service.security.RolesManager;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class ProgramManager2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private static final Logger logger = MiscUtils.getLogger();
@@ -1540,7 +1540,7 @@ public class ProgramManager2Action extends ActionSupport {
         return ((in1 == null && in2 == null) || in1.equals(in2));
     }
 
-    @Required
+    @Autowired
     public void setClientRestrictionManager(ClientRestrictionManager clientRestrictionManager) {
         this.clientRestrictionManager = clientRestrictionManager;
     }

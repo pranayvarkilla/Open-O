@@ -42,7 +42,7 @@
 %>
 
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <html ng-app="appointmentSearchConfig">
 <head>

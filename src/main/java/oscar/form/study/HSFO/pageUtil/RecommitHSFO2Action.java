@@ -26,10 +26,11 @@
 
 package oscar.form.study.HSFO.pageUtil;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import noNamespace.HsfoHbpsDataDocument;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.caisi.dao.ProviderDAO;
 import org.oscarehr.PMmodule.dao.ProviderDao;
 import org.oscarehr.common.dao.SecurityDao;
@@ -46,14 +47,15 @@ import oscar.OscarProperties;
 import oscar.form.study.HSFO.RecommitDAO;
 import oscar.form.study.HSFO.RecommitSchedule;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class RecommitHSFO2Action extends ActionSupport {
-    private HttpServletRequest request = ServletActionContext.getRequest();
+    private ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
     protected static Logger logger = org.oscarehr.util.MiscUtils.getLogger();
 
     public String showSchedule() {

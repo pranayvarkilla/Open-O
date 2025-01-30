@@ -39,8 +39,8 @@
     }
 %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <%@page import="org.oscarehr.sharingcenter.dao.AffinityDomainDao" %>
 <%@page import="org.oscarehr.sharingcenter.model.AffinityDomainDataObject" %>

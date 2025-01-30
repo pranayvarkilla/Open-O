@@ -30,7 +30,7 @@ package org.oscarehr.common.dao;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.DrugDispensingMapping;
 import org.springframework.stereotype.Repository;

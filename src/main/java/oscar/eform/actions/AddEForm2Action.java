@@ -28,9 +28,6 @@ package oscar.eform.actions;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.common.model.Demographic;
-import org.oscarehr.common.model.EmailConfig;
-import org.oscarehr.common.model.EmailConfig.EmailProvider;
-import org.oscarehr.common.model.EmailConfig.EmailType;
 import org.oscarehr.common.model.enumerator.DocumentType;
 import org.oscarehr.documentManager.DocumentAttachmentManager;
 import org.oscarehr.managers.DemographicManager;
@@ -52,21 +49,23 @@ import oscar.eform.data.EForm;
 import oscar.oscarEncounter.data.EctProgram;
 import oscar.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class AddEForm2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
 
     private static final Logger logger = MiscUtils.getLogger();

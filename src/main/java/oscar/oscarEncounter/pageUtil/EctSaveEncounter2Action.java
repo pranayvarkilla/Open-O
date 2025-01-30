@@ -31,9 +31,9 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.common.dao.AppointmentArchiveDao;
@@ -55,12 +55,14 @@ import oscar.oscarSurveillance.SurveillanceMaster;
 import oscar.util.ConversionUtils;
 import oscar.util.UtilDateUtilities;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 
 public class EctSaveEncounter2Action extends ActionSupport {
-    HttpServletRequest httpservletrequest = ServletActionContext.getRequest();
-    HttpServletResponse httpservletresponse = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest httpservletrequest = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse httpservletresponse = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     static Logger log = MiscUtils.getLogger();
     AppointmentArchiveDao appointmentArchiveDao = (AppointmentArchiveDao) SpringUtils.getBean(AppointmentArchiveDao.class);

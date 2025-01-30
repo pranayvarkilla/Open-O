@@ -42,7 +42,7 @@
 <%@page import="java.util.*" %>
 <%@page import="org.oscarehr.common.dao.DemographicExtDao" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <%
     String demographic_no = request.getParameter("demo");

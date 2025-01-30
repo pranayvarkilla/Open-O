@@ -27,10 +27,11 @@
 package oscar.oscarLab.ca.all.pageUtil;
 
 import ca.uhn.hl7v2.model.v26.message.ORU_R01;
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ActionSupport;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.ActionContext;
 import org.oscarehr.common.dao.ClinicDAO;
 import org.oscarehr.common.dao.ProfessionalSpecialistDao;
 import org.oscarehr.common.hl7.v2.oscar_to_oscar.OruR01;
@@ -47,17 +48,18 @@ import org.oscarehr.util.SpringUtils;
 import org.oscarehr.util.WebUtils;
 import oscar.util.DateUtils;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.GregorianCalendar;
 
 public class OruR01Upload2Action extends ActionSupport {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpServletResponse response = ServletActionContext.getResponse();
+    ActionContext context = ActionContext.getContext();
+    HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+    HttpServletResponse response = (HttpServletResponse) context.get(ServletActionContext.HTTP_RESPONSE);
 
     private SecurityInfoManager securityInfoManager = SpringUtils.getBean(SecurityInfoManager.class);
     private static Logger logger = MiscUtils.getLogger();

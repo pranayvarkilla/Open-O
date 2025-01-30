@@ -17,8 +17,8 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@page import="org.oscarehr.common.model.BillingONPayment" %>
 <%@page import="org.oscarehr.common.model.BillingPaymentType" %>
 <%@page import="org.oscarehr.common.dao.BillingPaymentTypeDao" %>

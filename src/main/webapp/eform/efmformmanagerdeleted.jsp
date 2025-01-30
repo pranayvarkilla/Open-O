@@ -24,7 +24,7 @@
 
 --%>
 <%@ page import="oscar.eform.data.*, oscar.eform.*, java.util.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%
     String orderByRequest = request.getParameter("orderby");

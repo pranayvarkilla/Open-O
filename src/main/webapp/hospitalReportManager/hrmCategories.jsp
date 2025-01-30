@@ -28,7 +28,7 @@
 <%@page import="org.oscarehr.hospitalReportManager.model.HRMCategory" %>
 <%@page import="org.oscarehr.util.SpringUtils" %>
 <%@page import="org.oscarehr.hospitalReportManager.dao.HRMCategoryDao" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%
     HRMCategoryDao hrmCategoryDao = SpringUtils.getBean(HRMCategoryDao.class);

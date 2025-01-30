@@ -50,7 +50,7 @@
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page import="org.oscarehr.common.dao.UserPropertyDAO" %>
 <%@ page import="org.oscarehr.common.model.UserProperty" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%
     String formClass = "BCAR2020";
     Integer pageNo = 6;

@@ -8,7 +8,7 @@
     and "gnu.org/licenses/gpl-2.0.html".
 
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <html>
 <head>
     <link rel="stylesheet" type="text/css"

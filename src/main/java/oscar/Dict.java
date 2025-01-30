@@ -28,7 +28,7 @@ package oscar;
 
 import java.util.Properties;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 public class Dict extends Properties {
     //it is a help class for storing retrieving Strings, derived from Hashtable

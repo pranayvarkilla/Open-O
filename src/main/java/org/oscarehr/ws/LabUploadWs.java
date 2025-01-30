@@ -38,9 +38,9 @@ import oscar.oscarLab.ca.all.upload.HandlerClassFactory;
 import oscar.oscarLab.ca.all.upload.handlers.MessageHandler;
 import oscar.oscarLab.ca.all.util.Utilities;
 
-import javax.jws.WebParam;
-import javax.jws.WebService;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.jws.WebParam;
+import jakarta.jws.WebService;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;

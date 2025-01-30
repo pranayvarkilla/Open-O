@@ -30,8 +30,8 @@ package org.oscarehr.common.dao;
 
 import java.util.List;
 
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.Query;
 
 import org.oscarehr.common.model.Property;
 import org.springframework.stereotype.Repository;

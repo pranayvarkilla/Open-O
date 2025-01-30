@@ -42,7 +42,7 @@
 
 <%@ page import="java.sql.*, java.util.*, oscar.*, oscar.util.*, org.oscarehr.common.OtherIdManager" %>
 <%@ page import="org.oscarehr.event.EventService" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@page import="org.oscarehr.common.dao.AppointmentArchiveDao" %>
 <%@page import="org.oscarehr.common.dao.OscarAppointmentDao" %>

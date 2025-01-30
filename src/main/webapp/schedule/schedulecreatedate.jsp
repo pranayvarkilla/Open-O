@@ -53,7 +53,7 @@
 <%@ page
         import="java.util.*, java.sql.*, oscar.*, java.text.*, java.lang.*,java.net.*"
         errorPage="../appointment/errorpage.jsp" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <jsp:useBean id="scheduleRscheduleBean" class="oscar.RscheduleBean" scope="session"/>
 <jsp:useBean id="scheduleDateBean" class="java.util.Hashtable" scope="session"/>

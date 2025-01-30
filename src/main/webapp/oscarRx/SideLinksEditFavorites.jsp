@@ -31,7 +31,7 @@
 
 <%@page import="oscar.oscarRx.data.RxPatientData" %>
 <%@ page import="org.oscarehr.util.LoggedInInfo" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <%
     oscar.oscarRx.pageUtil.RxSessionBean bean2 = (oscar.oscarRx.pageUtil.RxSessionBean) request.getSession().getAttribute("RxSessionBean");
 

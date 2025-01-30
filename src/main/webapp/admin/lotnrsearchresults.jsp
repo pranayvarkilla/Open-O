@@ -26,7 +26,7 @@
 
 <%@page import="java.net.URLEncoder" %>
 <%@page import="java.text.SimpleDateFormat, java.util.*,oscar.oscarPrevention.*,oscar.util.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@ taglib uri="/WEB-INF/caisi-tag.tld" prefix="caisi" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>

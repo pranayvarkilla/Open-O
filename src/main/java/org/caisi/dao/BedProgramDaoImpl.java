@@ -31,11 +31,11 @@ import java.util.List;
 
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
-import org.hibernate.SQLQuery;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.hibernate.type.StandardBasicTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.Session;
 
 public class BedProgramDaoImpl extends HibernateDaoSupport implements BedProgramDao {
@@ -86,7 +86,7 @@ public class BedProgramDaoImpl extends HibernateDaoSupport implements BedProgram
     }
 
     public String[] getProgramInfo(int programId) {
-        String[] result = new String[3];
+        /*String[] result = new String[3];
         Session session = currentSession();
         SQLQuery query = session.createSQLQuery("SELECT name,address,phone,fax from program where id=" + programId);
         query.addScalar("name", StandardBasicTypes.STRING);
@@ -98,6 +98,28 @@ public class BedProgramDaoImpl extends HibernateDaoSupport implements BedProgram
             result[0] = new String(o[0] + "\n" + o[1]);
             result[1] = (String) o[2];
             result[2] = (String) o[3];
+        }
+        return result;*/
+        String[] result = new String[3];
+        try (Session session = currentSession()) {
+            // Create a NativeQuery using parameterized SQL for safety
+            NativeQuery<Object[]> query = session.createNativeQuery(
+                "SELECT name, address, phone, fax FROM program WHERE id = :programId")
+                .setParameter("programId", programId);
+
+            // Define the types of the scalars to ensure proper type handling
+            query.addScalar("name", StandardBasicTypes.STRING)
+                .addScalar("address", StandardBasicTypes.STRING)
+                .addScalar("phone", StandardBasicTypes.STRING)
+                .addScalar("fax", StandardBasicTypes.STRING);
+
+            // Execute the query and fetch the unique result
+            Object[] o = query.uniqueResult();
+            if (o != null) {
+                result[0] = o[0] + "\n" + o[1]; // Concatenate name and address with a newline
+                result[1] = (String) o[2];      // Phone number
+                result[2] = (String) o[3];      // Fax number
+            }
         }
         return result;
     }

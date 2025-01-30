@@ -27,7 +27,7 @@
 <%@page import="org.oscarehr.common.model.TicklerTextSuggest, org.oscarehr.common.dao.TicklerTextSuggestDao" %>
 <%@ page import="org.oscarehr.util.SpringUtils" %>
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 
 <%

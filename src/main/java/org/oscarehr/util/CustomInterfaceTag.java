@@ -29,10 +29,10 @@ package org.oscarehr.util;
 import java.io.IOException;
 import java.util.Random;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.TagSupport;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspWriter;
+import jakarta.servlet.jsp.tagext.TagSupport;
 
 import org.apache.logging.log4j.Logger;
 import org.oscarehr.provider.web.CppPreferencesUIBean;

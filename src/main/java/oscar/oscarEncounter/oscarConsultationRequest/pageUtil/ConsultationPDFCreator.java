@@ -32,7 +32,7 @@ import oscar.oscarClinic.ClinicData;
 import oscar.oscarRx.data.RxProviderData;
 import oscar.oscarRx.data.RxProviderData.Provider;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

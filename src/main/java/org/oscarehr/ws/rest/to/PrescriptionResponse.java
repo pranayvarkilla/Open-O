@@ -27,7 +27,7 @@ package org.oscarehr.ws.rest.to;
 import org.oscarehr.ws.rest.to.model.DrugTo1;
 import org.oscarehr.ws.rest.to.model.PrescriptionTo1;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.List;
 

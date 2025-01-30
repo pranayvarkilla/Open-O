@@ -39,7 +39,7 @@
 <%@ page import="org.owasp.encoder.Encode" %>
 
 <%@ taglib uri="/WEB-INF/security.tld" prefix="security" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%
     SecRoleDao secRoleDao = SpringUtils.getBean(SecRoleDao.class);
@@ -116,7 +116,7 @@
             SecRole secRole = null;
             try {
                 secRole = secRoleDao.findByName(role_name);
-            } catch (javax.persistence.NoResultException e) {
+            } catch (jakarta.persistence.NoResultException e) {
             }
 
             if (secRole != null) {
