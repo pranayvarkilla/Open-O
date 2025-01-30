@@ -23,6 +23,7 @@
 
 package org.oscarehr.casemgmt.web;
 
+import jakarta.servlet.ServletContext;
 import org.apache.struts2.ActionSupport;
 import com.quatro.model.security.Secrole;
 import net.sf.json.JSONObject;
@@ -3557,7 +3558,8 @@ public class CaseManagementEntry2Action extends ActionSupport {
     }
 
     protected WebApplicationContext getSpringContext() {
-        return WebApplicationContextUtils.getWebApplicationContext(ServletActionContext.getServletContext());
+        ServletContext servletContext = (ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
+        return WebApplicationContextUtils.getWebApplicationContext(servletContext);
     }
 
     /* remove related issue list from note */

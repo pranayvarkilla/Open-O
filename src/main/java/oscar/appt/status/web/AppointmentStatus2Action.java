@@ -96,10 +96,6 @@ public class AppointmentStatus2Action extends ActionSupport {
         return SUCCESS;
     }
 
-    public WebApplicationContext getApptContext() {
-        return WebApplicationContextUtils.getRequiredWebApplicationContext(ServletActionContext.getServletContext());
-    }
-
     public AppointmentStatusMgr getApptStatusMgr() {
         return new AppointmentStatusMgrImpl();
     }

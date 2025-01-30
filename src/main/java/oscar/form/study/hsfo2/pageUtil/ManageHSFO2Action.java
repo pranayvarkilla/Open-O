@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -467,7 +468,8 @@ public class ManageHSFO2Action extends ActionSupport {
         //graphDirPath = this.getServlet().getServletContext().getContextPath() + "/" + graphDirPath;
         //graphDirPath = request.getContextPath() + "/" + graphDirPath;
 
-        String graphDirRealPath = ServletActionContext.getServletContext().getRealPath(graphDirPath);
+        ServletContext servletContext = (ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
+        String graphDirRealPath = servletContext.getRealPath(graphDirPath);
         //make sure the directory exists
         File graphDir = new File(graphDirRealPath);
         if (!graphDir.exists() || !graphDir.isDirectory()) {

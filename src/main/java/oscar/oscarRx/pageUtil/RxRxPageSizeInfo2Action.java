@@ -26,6 +26,7 @@
 
 package oscar.oscarRx.pageUtil;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -53,7 +54,8 @@ public final class RxRxPageSizeInfo2Action extends ActionSupport {
         long start = System.currentTimeMillis();
         String provider = (String) request.getSession().getAttribute("user");
 
-        WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(ServletActionContext.getServletContext());
+        ServletContext servletContext = (ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
+        WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(servletContext);
         UserPropertyDAO propDAO = (UserPropertyDAO) ctx.getBean(UserPropertyDAO.class);
 
         UserProperty prop = propDAO.getProp(provider, UserProperty.RX_PAGE_SIZE);

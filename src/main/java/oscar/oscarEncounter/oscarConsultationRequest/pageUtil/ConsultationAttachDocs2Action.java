@@ -33,6 +33,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -238,7 +240,9 @@ public class ConsultationAttachDocs2Action extends ActionSupport {
             formTransportContainer.setProviderNo(loggedInInfo.getLoggedInProviderNo());
             formTransportContainer.setSubject(formName + " Form ID " + formId);
             formTransportContainer.setFormName(formName);
-            formTransportContainer.setRealPath(ServletActionContext.getServletContext().getRealPath(File.separator));
+            ServletContext servletContext = (ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
+            String path = servletContext.getRealPath(File.separator);
+            formTransportContainer.setRealPath(path);
             Path formPDF = faxManager.renderFaxDocument(loggedInInfo, FaxManager.TransactionType.FORM, formTransportContainer);
             generateResponse(response, getBase64(formPDF));
         } catch (ServletException | IOException e) {
