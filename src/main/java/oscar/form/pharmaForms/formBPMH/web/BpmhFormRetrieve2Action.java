@@ -24,6 +24,7 @@
  */
 package oscar.form.pharmaForms.formBPMH.web;
 
+import jakarta.servlet.ServletContext;
 import org.apache.struts2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.ActionContext;
@@ -114,7 +115,9 @@ public class BpmhFormRetrieve2Action extends ActionSupport {
 
         bpmhFormHandler.populateFormBean();
 
-        PDFController pdfController = new PDFController(ServletActionContext.getServletContext().getRealPath(BPMH_PDF_TEMPLATE));
+        ServletContext servletContext = (ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
+        String path = servletContext.getRealPath(BPMH_PDF_TEMPLATE);
+        PDFController pdfController = new PDFController(path);
         pdfController.setOutputPath(OscarProperties.getInstance().getProperty("DOCUMENT_DIR"));
         pdfController.writeDataToPDF(form, new String[]{"1"}, demographicNo + "");
 

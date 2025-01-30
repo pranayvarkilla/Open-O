@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -53,6 +54,7 @@ import org.oscarehr.util.MiscUtils;
 import org.oscarehr.util.SessionConstants;
 import org.oscarehr.util.SpringUtils;
 
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import oscar.OscarProperties;
 
 import org.apache.struts2.ActionSupport;
@@ -432,7 +434,8 @@ public class Tickler2Action extends ActionSupport {
     /* get a list of prepared ticklers */
     public String prepared_tickler_list() {
         log.debug("prepared_tickler_list");
-        String path = ServletActionContext.getServletContext().getRealPath("/");
+        ServletContext servletContext = (ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
+        String path = servletContext.getRealPath("/");
         preparedTicklerMgr.setPath(path);
         request.setAttribute("preparedTicklers", preparedTicklerMgr.getTicklers());
         request.setAttribute("from", getFrom(request));

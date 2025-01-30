@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -59,7 +60,8 @@ public class CreateBillingReport2Action extends ActionSupport {
     public String execute() {
         request.getSession().getServletContext().getServletContextName();
         if (!System.getProperties().containsKey("jasper.reports.compile.class.path")) {
-            String classpath = (String) ServletActionContext.getServletContext().getAttribute("org.apache.catalina.jsp_classpath");
+            ServletContext servletContext = (ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
+            String classpath = (String) servletContext.getAttribute("org.apache.catalina.jsp_classpath");
             if (classpath == null)
                 classpath = (String) request.getSession().getServletContext().getAttribute("com.ibm.websphere.servlet.application.classpath");
             System.setProperty("jasper.reports.compile.class.path", classpath);

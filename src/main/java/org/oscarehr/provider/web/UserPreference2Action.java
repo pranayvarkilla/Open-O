@@ -26,6 +26,7 @@
 
 package org.oscarehr.provider.web;
 
+import jakarta.servlet.ServletContext;
 import org.apache.struts2.ActionSupport;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
@@ -82,7 +83,8 @@ public class UserPreference2Action extends ActionSupport {
 
     protected void init() {
         try {
-            InputStream in = ServletActionContext.getServletContext().getResourceAsStream("/WEB-INF/classes/pref.defaults");
+            ServletContext servletContext = (ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
+            InputStream in = servletContext.getResourceAsStream("/WEB-INF/classes/pref.defaults");
             Properties p = new Properties();
             p.load(in);
 
