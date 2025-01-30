@@ -42,10 +42,6 @@
             <url>https://hl7api.sourceforge.net/m2</url>
         </repository>
 
-        <repository>
-            <id>oscar_repo</id>
-            <url>https://oscarmcmaster.sourceforge.net/m2</url>
-        </repository>
         <!-- for the com.github.openosp htmltopdf dependency only. Upgrades
         from this dependency are welcome -->
         <repository>
@@ -62,10 +58,6 @@
         <pluginRepository>
             <id>local_repo</id>
             <url>file://${basedir}/local_repo</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>oscar_repo</id>
-            <url>https://oscarmcmaster.sourceforge.net/m2</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -1411,6 +1403,12 @@
                     <source>21</source>
                     <target>21</target>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
             </plugin>
 
             <plugin>
