@@ -1173,11 +1173,11 @@
             <version>3.1-SNAPSHOT</version>
         </dependency>
 
-        <!-- jcharts -->
+        <!-- jfreechart -->
         <dependency>
-            <groupId>net.sf.jcharts</groupId>
-            <artifactId>krysalis-jCharts</artifactId>
-            <version>0.7.5</version>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.5.5</version>
         </dependency>
         
         <!-- cds -->
