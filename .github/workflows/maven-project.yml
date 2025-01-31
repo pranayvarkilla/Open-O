@@ -46,6 +46,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /home/runner/.docker
+          key: ${{ runner.os }}-docker-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-docker-
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       - name: Build Docker containers
         uses: hoverkraft-tech/compose-action@v2.1.0
         with:
@@ -66,10 +82,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /home/runner/.docker
+          key: ${{ runner.os }}-docker-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-docker-
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       - name: Build Docker containers
         uses: hoverkraft-tech/compose-action@v2.1.0
         with:
           compose-file: ".devcontainer/docker-compose.yml"
-
+          
       - name: Run Maven Checkstyle plugin
         run: docker exec devcontainer-open-o-1 mvn checkstyle:checkstyle
