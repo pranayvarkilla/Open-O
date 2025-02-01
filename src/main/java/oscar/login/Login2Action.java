@@ -710,10 +710,6 @@ public final class Login2Action extends ActionSupport {
 
     }
 
-    public ApplicationContext getAppContext() {
-        return WebApplicationContextUtils.getWebApplicationContext(ServletActionContext.getServletContext());
-    }
-
     private String username;
     private String password;
     private String pin;

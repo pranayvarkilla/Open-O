@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringEscapeUtils;
@@ -97,7 +98,8 @@ public class EctDisplayDecisionSupportAlerts2Action extends EctDisplayAction {
             StringBuilder javascript = new StringBuilder("<script type=\"text/javascript\">");
             String js = "";
 
-            WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(ServletActionContext.getServletContext());
+            ServletContext servletContext = (ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
+            WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);
             DSService dsService = (DSService) ctx.getBean(DSService.class);
 
             List<DSGuideline> dsGuidelines = dsService.getDsGuidelinesByProvider(bean.providerNo);

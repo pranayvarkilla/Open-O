@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -205,7 +206,9 @@ public class EctConsultationFormRequestPrintAction22Action extends ActionSupport
                 formTransportContainer.setProviderNo(loggedInInfo.getLoggedInProviderNo());
                 formTransportContainer.setSubject(formItem.getFormName() + " Form ID " + formItem.getFormId());
                 formTransportContainer.setFormName(formItem.getFormName());
-                formTransportContainer.setRealPath(ServletActionContext.getServletContext().getRealPath(File.separator));
+                ServletContext servletContext = (ServletContext) ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
+                String realPath = servletContext.getRealPath(File.separator);
+                formTransportContainer.setRealPath(realPath);
                 Path attachedForm = faxManager.renderFaxDocument(loggedInInfo, FaxManager.TransactionType.FORM, formTransportContainer);
                 alist.add(Files.newInputStream(attachedForm));
             }

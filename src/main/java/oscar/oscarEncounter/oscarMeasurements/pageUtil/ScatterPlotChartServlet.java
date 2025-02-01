@@ -27,10 +27,6 @@ package oscar.oscarEncounter.oscarMeasurements.pageUtil;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Paint;
-import java.awt.Shape;
-import java.awt.Stroke;
-import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -40,22 +36,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.jCharts.axisChart.AxisChart;
-import org.jCharts.axisChart.ScatterPlotAxisChart;
-import org.jCharts.chartData.AxisChartDataSet;
-import org.jCharts.chartData.DataSeries;
-import org.jCharts.chartData.ScatterPlotDataSeries;
-import org.jCharts.chartData.ScatterPlotDataSet;
-import org.jCharts.encoders.ServletEncoderHelper;
-import org.jCharts.properties.AxisProperties;
-import org.jCharts.properties.ChartProperties;
-import org.jCharts.properties.DataAxisProperties;
-import org.jCharts.properties.LegendProperties;
-import org.jCharts.properties.LineChartProperties;
-import org.jCharts.properties.PointChartProperties;
-import org.jCharts.properties.ScatterPlotProperties;
-import org.jCharts.properties.util.ChartFont;
-import org.jCharts.types.ChartType;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtils;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 import org.oscarehr.common.dao.MeasurementDao;
 import org.oscarehr.common.dao.MeasurementTypeDao;
 import org.oscarehr.common.dao.ValidationsDao;
@@ -68,258 +57,295 @@ import org.oscarehr.util.SpringUtils;
 import oscar.oscarEncounter.pageUtil.EctSessionBean;
 import oscar.util.ConversionUtils;
 
+/**
+ * A servlet that generates scatter plots and blood pressure charts using JFreeChart.
+ * This servlet can handle both regular measurements (displayed as scatter plots)
+ * and blood pressure measurements (displayed as line charts with systolic and diastolic values).
+ */
 public class ScatterPlotChartServlet extends HttpServlet {
-    //---all of my charts serviced by this Servlet will have the same properties.
-    protected LegendProperties legendProperties;
-    protected AxisProperties axisProperties;
-    protected ChartProperties chartProperties;
-
     protected int width = 550;
     protected int height = 360;
+    
+    protected Font titleFont;
+    protected Font axisFont;
 
-    /**********************************************************************************************
-     *
-     **********************************************************************************************/
+    /**
+     * Initializes the servlet by setting up the fonts used for chart titles and axes.
+     */
     public void init() {
-        this.legendProperties = new LegendProperties();
-        this.chartProperties = new ChartProperties();
-        this.axisProperties = new AxisProperties(true);
-        ChartFont axisScaleFont = new ChartFont(new Font("Georgia Negreta cursiva", Font.PLAIN, 13), Color.black);
-        axisProperties.getXAxisProperties().setScaleChartFont(axisScaleFont);
-        axisProperties.getYAxisProperties().setScaleChartFont(axisScaleFont);
-
-        ChartFont axisTitleFont = new ChartFont(new Font("Arial Narrow", Font.PLAIN, 14), Color.black);
-        axisProperties.getXAxisProperties().setTitleChartFont(axisTitleFont);
-        axisProperties.getYAxisProperties().setTitleChartFont(axisTitleFont);
-
-        ChartFont titleFont = new ChartFont(new Font("Georgia Negreta cursiva", Font.PLAIN, 14), Color.black);
-        this.chartProperties.setTitleFont(titleFont);
+        this.titleFont = new Font("Georgia Negreta cursiva", Font.PLAIN, 14);
+        this.axisFont = new Font("Arial Narrow", Font.PLAIN, 14);
     }
 
-    /******************************************************************************************
+    /**
+     * Creates a scatter plot chart for regular measurements.
      *
-     *
-     ******************************************************************************************/
-    private ScatterPlotProperties createScatterPlotProperties() {
-        Stroke[] strokes = new Stroke[]{LineChartProperties.DEFAULT_LINE_STROKE};
-        Shape[] shapes = new Shape[]{PointChartProperties.SHAPE_CIRCLE};
-
-        return new ScatterPlotProperties(strokes, shapes);
-    }
-
-    /******************************************************************************************
-     *
-     *
-     ******************************************************************************************/
-    private LineChartProperties createLineChartProperties() {
-        Stroke[] strokes = {LineChartProperties.DEFAULT_LINE_STROKE, LineChartProperties.DEFAULT_LINE_STROKE};
-        Shape[] shapes = {PointChartProperties.SHAPE_TRIANGLE, PointChartProperties.SHAPE_CIRCLE};
-
-        return new LineChartProperties(strokes, shapes);
-    }
-
-    /*****************************************************************************************
-     * Generates dataset
-     *
-     * @return scatterPlotDataSeries
-     ******************************************************************************************/
-    private ScatterPlotDataSeries createScatterPlotDataSeries(String demo, String type, String mInstrc) {
+     * @param demo    The demographic number of the patient
+     * @param type    The type of measurement
+     * @param mInstrc The measuring instruction
+     * @return A JFreeChart object containing the scatter plot, or null if data is invalid
+     */
+    private JFreeChart createScatterPlot(String demo, String type, String mInstrc) {
         long[][] results = generateResult(demo, type, mInstrc);
         String chartTitle = type + "-" + mInstrc;
-        ScatterPlotDataSet scatterPlotDataSet = new ScatterPlotDataSet(this.createScatterPlotProperties());
-        ScatterPlotDataSeries scatterPlotDataSeries = null;
-
-        if (results != null) {
-
-            if (type.compareTo("BP") != 0) {
-                Point2D.Double[] points = new Point2D.Double[results[0].length];
-                for (int x = 0; x < results[0].length; x++) {
-                    points[x] = ScatterPlotDataSet.createPoint2DDouble();
-                    points[x].setLocation(results[0][x] - results[0][0], results[1][x]);
-                }
-
-                scatterPlotDataSet.addDataPoints(points, Color.red, chartTitle);
-                scatterPlotDataSeries = new ScatterPlotDataSeries(scatterPlotDataSet, "Day (note: only the last data on the same observation date is plotted)", "Test Results", chartTitle);
+        
+        if (results == null) return null;
+        
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        if (type.compareTo("BP") != 0) {
+            XYSeries series = new XYSeries(chartTitle);
+            
+            for (int x = 0; x < results[0].length; x++) {
+                series.add(results[0][x] - results[0][0], results[1][x]);
             }
+            
+            dataset.addSeries(series);
+            
+            JFreeChart chart = ChartFactory.createScatterPlot(
+                chartTitle,
+                "Day (note: only the last data on the same observation date is plotted)",
+                "Test Results",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
+            );
+            
+            customizeChart(chart);
+            customizeScatterPlot(chart);
+            
+            return chart;
         }
-
-        return scatterPlotDataSeries;
+        return null;
     }
-
-    /*****************************************************************************************
-     * Generates Blood pressure dataset
+    
+    /**
+     * Creates a line chart for blood pressure measurements showing both systolic and diastolic values.
      *
-     * @return DataSeries
-     ******************************************************************************************/
-    private DataSeries createBloodPressureDataSeries(String demo, String type, String mInstrc) {
-
+     * @param demo    The demographic number of the patient
+     * @param type    The type of measurement (should be "BP")
+     * @param mInstrc The measuring instruction
+     * @return A JFreeChart object containing the blood pressure chart, or null if data is invalid
+     */
+    private JFreeChart createBloodPressureChart(String demo, String type, String mInstrc) {
         long[][] results = generateResult(demo, type, mInstrc);
-        DataSeries dataSeries = null;
+        
+        if (results == null || type.compareTo("BP") != 0) return null;
+        
         String chartTitle = type + "-" + mInstrc;
-        String xAxisTitle = "Tests (note: only the last data on the same observation date is plotted)";
-        String yAxisTitle = "Hgmm";
-
-        if (results != null) {
-
-            if (type.compareTo("BP") == 0) {
-                double[][] points = new double[2][results[1].length / 2];
-                String[] legendLabels = {"Systolic", "Diastolic"};
-                Paint[] paints = {Color.red, Color.blue};
-                LineChartProperties lineChartProperties = this.createLineChartProperties();
-                int offset = results[1].length / 2;
-                String[] xAxisLabels = new String[offset];
-
-                for (int x = 0; x < results[1].length / 2; x++) {
-                    MiscUtils.getLogger().debug("systolic" + x + " " + results[1][x]);
-                    points[0][x] = results[1][x];
-                    int testNum = x + 1;
-                    String xAxisLabel = "test" + testNum;
-                    xAxisLabels[x] = xAxisLabel;
-                    MiscUtils.getLogger().debug("xAxisLabel is " + xAxisLabels[x]);
-                }
-
-                for (int x = 0; x < results[1].length / 2; x++) {
-                    MiscUtils.getLogger().debug("Diastolic" + x + results[1][x + offset]);
-                    points[1][x] = results[1][x + offset];
-                }
-
-                try {
-                    AxisChartDataSet acds = new AxisChartDataSet(points, legendLabels, paints, ChartType.LINE, lineChartProperties);
-                    dataSeries = new DataSeries(xAxisLabels, xAxisTitle, yAxisTitle, chartTitle);
-                    dataSeries.addIAxisPlotDataSet(acds);
-                    MiscUtils.getLogger().debug("the diastolic data has been added successfully");
-                } catch (Exception e) {
-                    MiscUtils.getLogger().debug("debug", e);
-                }
-
-            }
-
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        
+        int offset = results[1].length / 2;
+        
+        // Create systolic series
+        XYSeries systolicSeries = new XYSeries("Systolic");
+        for (int x = 0; x < offset; x++) {
+            systolicSeries.add(x + 1, results[1][x]);
         }
-        return dataSeries;
+        dataset.addSeries(systolicSeries);
+        
+        // Create diastolic series
+        XYSeries diastolicSeries = new XYSeries("Diastolic");
+        for (int x = 0; x < offset; x++) {
+            diastolicSeries.add(x + 1, results[1][x + offset]);
+        }
+        dataset.addSeries(diastolicSeries);
+        
+        JFreeChart chart = ChartFactory.createXYLineChart(
+            chartTitle,
+            "Tests (note: only the last data on the same observation date is plotted)",
+            "Hgmm",
+            dataset,
+            PlotOrientation.VERTICAL,
+            true,
+            true,
+            false
+        );
+        
+        customizeChart(chart);
+        customizeBloodPressureChart(chart);
+        
+        return chart;
     }
-
-    /*****************************************************************************************
-     * Generates generate result from the database
+    
+    /**
+     * Applies common customization to all charts (scatter plots and blood pressure charts).
+     * This includes setting fonts, background colors, and grid lines.
      *
-     * @return DataSeries
-     ******************************************************************************************/
+     * @param chart The JFreeChart object to customize
+     */
+    private void customizeChart(JFreeChart chart) {
+        chart.getTitle().setFont(titleFont);
+        
+        XYPlot plot = (XYPlot) chart.getPlot();
+        plot.setBackgroundPaint(Color.white);
+        plot.setDomainGridlinePaint(Color.lightGray);
+        plot.setRangeGridlinePaint(Color.lightGray);
+        
+        NumberAxis domainAxis = (NumberAxis) plot.getDomainAxis();
+        NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+        domainAxis.setTickLabelFont(axisFont);
+        rangeAxis.setTickLabelFont(axisFont);
+        domainAxis.setLabelFont(axisFont);
+        rangeAxis.setLabelFont(axisFont);
+    }
+    
+    /**
+     * Applies specific customization for scatter plots.
+     * Configures the renderer to show shapes but no lines between points.
+     *
+     * @param chart The scatter plot chart to customize
+     */
+    private void customizeScatterPlot(JFreeChart chart) {
+        XYPlot plot = (XYPlot) chart.getPlot();
+        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer(false, true);
+        renderer.setSeriesPaint(0, Color.red);
+        renderer.setSeriesShapesVisible(0, true);
+        plot.setRenderer(renderer);
+    }
+    
+    /**
+     * Applies specific customization for blood pressure charts.
+     * Configures the renderer to show both lines and shapes for systolic and diastolic values.
+     *
+     * @param chart The blood pressure chart to customize
+     */
+    private void customizeBloodPressureChart(JFreeChart chart) {
+        XYPlot plot = (XYPlot) chart.getPlot();
+        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer(true, true);
+        renderer.setSeriesPaint(0, Color.red);    // Systolic
+        renderer.setSeriesPaint(1, Color.blue);   // Diastolic
+        plot.setRenderer(renderer);
+    }
+    
+    /**
+     * Generates the data points for the chart from the database.
+     * Handles both regular measurements and blood pressure measurements differently.
+     *
+     * @param demo    The demographic number of the patient
+     * @param type    The type of measurement
+     * @param mInstrc The measuring instruction
+     * @return A 2D array containing the x and y coordinates for the chart points,
+     *         or null if no data is found
+     */
     private long[][] generateResult(String demo, String type, String mInstrc) {
-        //plot only last data of the day?!
-
         long[][] points = null;
 
         MeasurementDao dao = SpringUtils.getBean(MeasurementDao.class);
         if (isNumeric(type, mInstrc)) {
-            List<Object> dates = dao.findObservationDatesByDemographicNoTypeAndMeasuringInstruction(ConversionUtils.fromIntString(demo), type, mInstrc);
+            List<Object> dates = dao.findObservationDatesByDemographicNoTypeAndMeasuringInstruction(
+                ConversionUtils.fromIntString(demo), type, mInstrc);
             int nbData = dates.size();
             points = new long[2][nbData];
+            
             for (int i = 0; i < nbData; i++) {
-                Measurement m = dao.findByDemographicNoTypeAndDate(ConversionUtils.fromIntString(demo), type, (java.util.Date) dates.get(i));
-
+                Measurement m = dao.findByDemographicNoTypeAndDate(
+                    ConversionUtils.fromIntString(demo), type, (Date) dates.get(i));
+                
                 if (m != null) {
-                    java.util.Date dateObserved = m.getDateObserved();
+                    Date dateObserved = m.getDateObserved();
                     points[0][i] = dateObserved.getTime() / 1000 / 60 / 60 / 24;
                     points[1][i] = ConversionUtils.fromLongString(m.getDataField());
-                    MiscUtils.getLogger().debug("Date: " + points[0][i] + " Value: " + points[1][i]);
                 }
             }
         } else if (type.compareTo("BP") == 0) {
-            List<Date> measurements = dao.findByDemographicNoTypeAndMeasuringInstruction(ConversionUtils.fromIntString(demo), type, mInstrc);
+            List<Date> measurements = dao.findByDemographicNoTypeAndMeasuringInstruction(
+                ConversionUtils.fromIntString(demo), type, mInstrc);
             int nbPatient = measurements.size();
             points = new long[2][nbPatient * 2];
+            
             for (int i = 0; i < nbPatient; i++) {
-                //Measurement m = measurements.get(i);
-
-                Measurement mm = dao.findByDemographicNoTypeAndDate(ConversionUtils.fromIntString(demo), type, measurements.get(i));
+                Measurement mm = dao.findByDemographicNoTypeAndDate(
+                    ConversionUtils.fromIntString(demo), type, measurements.get(i));
+                
                 if (mm != null) {
                     String bloodPressure = mm.getDataField();
-                    MiscUtils.getLogger().debug("bloodPressure: " + bloodPressure);
                     int slashIndex = bloodPressure.indexOf("/");
+                    
                     if (slashIndex >= 0) {
                         String systolic = bloodPressure.substring(0, slashIndex);
-                        java.util.Date dateObserved = mm.getDateObserved();
+                        Date dateObserved = mm.getDateObserved();
                         points[0][i] = dateObserved.getTime() / 1000 / 60 / 60 / 24;
                         points[1][i] = Long.parseLong(systolic);
-                        MiscUtils.getLogger().debug("systolic: " + i + " " + systolic);
-
+                        
                         String diastolic = bloodPressure.substring(slashIndex + 1);
                         points[0][i + nbPatient] = dateObserved.getTime() / 1000 / 60 / 60 / 24;
                         points[1][i + nbPatient] = Long.parseLong(diastolic);
-                        MiscUtils.getLogger().debug("diastolic: " + points[1][i + nbPatient]);
                     }
                 }
-
             }
-
-            MiscUtils.getLogger().debug("Store blood pressure data to a new array successfully");
         }
-
+        
         return points;
     }
-
+    
+    /**
+     * Checks if a measurement type is numeric based on its validation rules.
+     *
+     * @param type    The type of measurement
+     * @param mInstrc The measuring instruction
+     * @return true if the measurement type is numeric, false otherwise
+     */
     private boolean isNumeric(String type, String mInstrc) {
         boolean result = false;
         MeasurementTypeDao dao = SpringUtils.getBean(MeasurementTypeDao.class);
         List<MeasurementType> measurementTypes = dao.findByTypeAndMeasuringInstruction(type, mInstrc);
-
+        
         if (!measurementTypes.isEmpty()) {
             String validation = measurementTypes.get(0).getValidation();
-
+            
             ValidationsDao valDao = SpringUtils.getBean(ValidationsDao.class);
             Validations v = valDao.find(Integer.parseInt(validation));
             if (v != null && v.isNumeric() != null && v.isNumeric()) {
                 result = true;
             }
         }
-
+        
         return result;
     }
-
-    /**********************************************************************************************
+    
+    /**
+     * Handles the HTTP service request to generate and return a chart image.
+     * Supports both scatter plots for regular measurements and line charts for blood pressure.
      *
-     **********************************************************************************************/
-
-    public void service(HttpServletRequest request, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+     * @param request  The HTTP servlet request
+     * @param response The HTTP servlet response
+     * @throws ServletException If a servlet-specific error occurs
+     * @throws IOException      If an I/O error occurs
+     */
+    @Override
+    public void service(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
         String type = request.getParameter("type");
         String mInstrc = request.getParameter("mInstrc");
         EctSessionBean bean = (EctSessionBean) request.getSession().getAttribute("EctSessionBean");
         String demographicNo = null;
-
+        
         if (request.getParameter("demographicNo") != null) {
             demographicNo = request.getParameter("demographicNo");
         }
-
+        
         if (demographicNo == null && bean != null) {
             demographicNo = bean.getDemographicNo();
         }
-
-
+        
         try {
-            //addIAxisPlotDataSet(IAxisPlotDataSet
-            DataAxisProperties xAxisProperties = new DataAxisProperties();
-            DataAxisProperties yAxisProperties = new DataAxisProperties();
-
-            ChartProperties chartProperties = new ChartProperties();
-            LegendProperties legendProperties = new LegendProperties();
-
-
+            JFreeChart chart = null;
+            
             if (type.compareTo("BP") == 0) {
-                AxisProperties axisProperties = new AxisProperties(false);
-                DataSeries dataSeries = this.createBloodPressureDataSeries(demographicNo, type, mInstrc);
-                AxisChart axisChart = new AxisChart(dataSeries, chartProperties, axisProperties, legendProperties, 550, 360);
-                ServletEncoderHelper.encodeJPEG13(axisChart, 1.0f, httpServletResponse);
+                chart = createBloodPressureChart(demographicNo, type, mInstrc);
             } else {
-                AxisProperties axisProperties = new AxisProperties(xAxisProperties, yAxisProperties);
-                ScatterPlotDataSeries scatterPlotDataSeries = this.createScatterPlotDataSeries(demographicNo, type, mInstrc);
-                if (scatterPlotDataSeries != null) {
-                    ScatterPlotAxisChart scatterPlotAxisChart = new ScatterPlotAxisChart(scatterPlotDataSeries, chartProperties, axisProperties, legendProperties, 500, 400);
-
-                    ServletEncoderHelper.encodeJPEG13(scatterPlotAxisChart, 1.0f, httpServletResponse);
-                }
+                chart = createScatterPlot(demographicNo, type, mInstrc);
             }
-        } catch (Exception t) {
-            MiscUtils.getLogger().error("Error", t);
+            
+            if (chart != null) {
+                response.setContentType("image/jpeg");
+                ChartUtils.writeChartAsJPEG(response.getOutputStream(), chart, width, height);
+            }
+            
+        } catch (Exception e) {
+            MiscUtils.getLogger().error("Error", e);
         }
-
     }
 }
