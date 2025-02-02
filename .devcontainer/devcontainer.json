@@ -4,7 +4,7 @@
     "service": "open-o",
     "workspaceFolder": "/workspace",
     "shutdownAction": "stopCompose",
-    "postCreateCommand": "cd /workspace && mvn -B dependency:go-offline",
+    "postCreateCommand": "cd /workspace && mvn -B dependency:go-offline dependency:sources dependency:resolve -Dclassifier=javadoc",
 
     "customizations": {
         "vscode": {
@@ -15,8 +15,12 @@
                 "vscjava.vscode-java-pack"
             ],
             "settings": {
-                "terminal.integrated.shell.linux": "/bin/bash"
-            }
+                "terminal.integrated.shell.linux": "/bin/bash",
+                "java.compile.nullAnalysis.mode": "automatic",
+                "java.configuration.updateBuildConfiguration": "interactive",
+                "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms512m -Xlog:disable",
+                "java.maven.downloadSources": false
+              }
         }
     },
 
