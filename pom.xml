@@ -1303,13 +1303,6 @@
             </exclusions>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.jfree/jfreechart -->
-        <dependency>
-            <groupId>org.jfree</groupId>
-            <artifactId>jfreechart</artifactId>
-            <version>1.5.4</version>
-        </dependency>
-
         <!-- ocan.jar , suspect this is generated classes and should be removed as a jar in the future -->
         <dependency>
             <groupId>ocan</groupId>
@@ -1580,10 +1573,6 @@
         </dependency>
 
         <!-- AXIS2 (for OLIS) -->
-        <!-- 
-            Suggestted to upgrade to 1.8.0 or later by GitHub Dependabot, but got 
-            100+ compliation errors after upgrading, will stay at 1.5.4 now 
-        -->
         <dependency>
             <groupId>org.apache.axis2</groupId>
             <artifactId>axis2</artifactId>

@@ -2589,11 +2589,11 @@
   }, {
     "groupId" : "org.jfree",
     "artifactId" : "jfreechart",
-    "version" : "1.5.4",
+    "version" : "1.5.5",
     "scope" : "compile",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:ZpCfpiT7QTYw0PGVp/WzkPhPtIuYZs+BChY0AoT0DGa+vIIrhE3UOdMsUOQNx4rkwG2G2mKlbXcmDUUoFmOZcA=="
+    "integrity" : "sha512:vfVjvcRUTiwrqNVB/7fh2p1LNH91uKMzD09UVryCcqiycs4S8V2pqp/Lou20w/jKHWB/EbENPo5byUsmAgqFrQ=="
   }, {
     "groupId" : "org.jrobin",
     "artifactId" : "jrobin",
