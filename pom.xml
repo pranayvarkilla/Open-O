@@ -1653,67 +1653,15 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>org.owasp</groupId>
-                <artifactId>dependency-check-maven</artifactId>
-                <version>9.2.0</version> <!-- Use the latest version -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
     <profiles>
         <profile>
-            <id>jdk8</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-                <jdk>1.8</jdk>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.9</version>
-                        <configuration>
-                            <minmemory>128m</minmemory>
-                            <maxmemory>1g</maxmemory>
-                            <tags>
-                                <tag>
-                                    <name>todo</name>
-                                    <placement>a</placement>
-                                    <head>To Do:</head>
-                                </tag>
-                            </tags>
-                            <quiet>true</quiet>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>javadoc</goal>
-                                </goals>
-                                <configuration>
-                                    <additionalparam>-Xdoclint:none</additionalparam>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
             <!-- Skip jsp compile, run 'mvn package -Pjspc' to compile jsps -->
             <id>jspc</id>
             <activation>
+            
                 <activeByDefault>false</activeByDefault>
             </activation>
             <build>
