@@ -776,7 +776,8 @@ function fillAjaxBox(boxNameId, jsonData, initialLoad) {
 			$("#" + boxNameId + " .title").click((function (action) {
 				return function(e) {
 					e.stopPropagation();
-					eval("(function() { " + action + "})()");
+					const safeFunction = new Function(action);
+					safeFunction();
 				};
 			})(jsonData.LeftURL));
 		}
@@ -860,7 +861,11 @@ function fillAjaxBox(boxNameId, jsonData, initialLoad) {
 				$("#" + boxNameId + " .addBtn").click((function(action) {
 					return function(e) {
 						e.stopPropagation();
-						eval("(function() { " + action + "})()");
+						if (typeof window[action] === "function") {
+ 						   window[action](); // Call function safely
+						} else {
+    							console.error("Invalid function call:", action);
+						}
 					};
 				})(jsonData.RightURL));
 			}
