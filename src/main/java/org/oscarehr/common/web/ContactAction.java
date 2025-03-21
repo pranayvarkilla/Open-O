@@ -722,7 +722,8 @@ public class ContactAction extends DispatchAction {
 			
 			demographicContactId = demographicContact.getId()+""; 
 			
-			logger.info("Linked contact id " + contactType + "-" + contactId + " with demographic " + demographic_no );
+			String safeDemographicNo = demographic_no.replaceAll("[\r\n]", "");
+logger.info("Linked contact id " + contactType + "-" + contactId + " with demographic " + safeDemographicNo);
 			
 			request.setAttribute("demographic_no", demographic_no);
 			request.setAttribute("id", demographicContactId);
@@ -991,7 +992,29 @@ public class ContactAction extends DispatchAction {
 		Integer currentPharmacyId = pharmacyInfo.getId();
 		pharmacyInfo.setStatus( PharmacyInfo.ACTIVE );
 		
-		logger.debug( "Incoming Pharmacy ID " + currentPharmacyId );
+import org.apache.commons.text.StringEscapeUtils;  // Import this for escaping
+
+// Sanitize user input
+String demographicNoSanitized = StringEscapeUtils.escapeJava(
+    request.getParameter("demographic_no") != null 
+        ? request.getParameter("demographic_no").trim() 
+        : "UNKNOWN"
+);
+
+String safePharmacyId = (currentPharmacyId != null)
+    ? StringEscapeUtils.escapeJava(currentPharmacyId.toString().trim()) 
+    : "UNKNOWN";
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+private static final Logger logger = LoggerFactory.getLogger(ContactAction.class);
+
+// Use parameterized logging to prevent injection
+logger.debug("Incoming Pharmacy ID: {}", safePharmacyId);
+logger.debug("Sanitized Demographic No: {}", demographicNoSanitized);
+
+
 		
 		if( demographic_no == null ) {
 			demographic_no = "";
