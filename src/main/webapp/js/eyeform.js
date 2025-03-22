@@ -1,4 +1,4 @@
-/*
+*
  * Copyright (c) 2008-2012 Indivica Inc.
  *
  * This software is made available under the terms of the
@@ -862,10 +862,10 @@ function fillAjaxBox(boxNameId, jsonData, initialLoad) {
 					return function(e) {
 						e.stopPropagation();
 						if (typeof window[action] === "function") {
- 						   window[action](); // Call function safely
+    							window[action](); // Call function safely
 						} else {
     							console.error("Invalid function call:", action);
-						}
+}
 					};
 				})(jsonData.RightURL));
 			}
